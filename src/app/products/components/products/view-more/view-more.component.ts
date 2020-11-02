@@ -93,6 +93,7 @@ export class ViewMoreComponent implements OnInit {
       let id= param.id;
       this.catalogoservice.getInfoProducto(id).subscribe(response => {
         this.infoProducto=response;
+        console.log(this.infoProducto);
       });
     });
   }
