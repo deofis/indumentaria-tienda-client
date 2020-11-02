@@ -307,8 +307,9 @@ header {
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 580px) {
    header{
+       width: 100%;
        .contacto{
            display: none;
        }
@@ -322,18 +323,277 @@ header {
                align-self: flex-start;
                margin-bottom: -40px;
                img{
-                width: 150px;
-                height: 40px;
+                width: 140px;
+                height: 28px;
                }
            }
            #fila-header{
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               margin-top: 20px;
+               position: relative;
+               width: 100%;
             nav{
                 display: none;
             }
             #menu{
-                display: initial;
+                display: block;
+                position: absolute;
+                left: 4.68vw;
+                top: 20px;
+            }
+            form{
+                position: absolute;
+                top: 5vw;
+                left: 18vw;
+                .buscador{
+                    .barraDeBusqueda{
+                        width: 52vw;
+                        height: 32px;
+                    }
+                    .btn-lupa{
+                        margin-left: -5.6vw;
+                    }
+                }
+            }
+            #contenedor_iconos{
+                display: flex;
+                flex-direction: column-reverse;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                width: fit-content;
+                align-self: baseline;
+               right: 3.15vw;
+               top: -55px;
+                .iconos{
+                    margin-left: auto;
+                    margin-right: auto;
+                    i{
+                        font-size: 1.1em
+                    }
+                }
+                .miperfil{
+                    margin-bottom: -10px;
+                    i{
+                        font-size: 1.2em;
+                    }
+                }
+                .carrito{
+                    .circulo{
+                        margin-left: -19px;
+                    }
+                }
             }
            }
        }
    }
 }
+@media screen and  (min-width: 581px) and (max-width: 700px) {
+    header{
+        width: 100%;
+        .contacto{
+            display: none;
+        }
+        .menu-header{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            .logo{
+                margin-left:0px;
+               width: fit-content;
+                margin-bottom: -40px;
+                img{
+                 width: 140px;
+                 height: 28px;
+                }
+            }
+            #fila-header{
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                margin-top: 20px;
+                width: 100%;
+             nav{
+                 display: none;
+             }
+             #menu{
+                 display: block;
+               
+             }
+             form{
+                 .buscador{
+                     margin-right: -3px;
+                     .barraDeBusqueda{
+                         width: 52vw;
+                         height: 35px;
+                     }
+                     .btn-lupa{
+                         margin-left: -3vw;
+                     }
+                 }
+             }
+             #contenedor_iconos{
+                 display: flex;
+                 flex-direction: row;
+                 justify-content: space-between;
+                 align-items: center;
+                 width: 23vw;
+                 margin-right: -35px;
+                 .iconos{
+                     i{
+                         font-size: 1.1em
+                     }
+                 }
+                 .miperfil{
+                     i{
+                         font-size: 1.2em;
+                     }
+                 }
+                 .carrito{
+                     .circulo{
+                         margin-left: -18px;
+                     }
+                 }
+             }
+            }
+        }
+    }
+ }
+ @media screen and  (min-width: 701px) and (max-width: 1020px) {
+    header{
+        width: 100%;
+        .contacto{
+            display:flex;
+            justify-content: flex-end;
+            align-items: center;
+            border-bottom: 0px;
+            width: 94%;
+        }
+        .menu-header{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            .logo{
+                margin-left:0px;
+               width: fit-content;
+               top: -40px;
+                position: absolute;
+                left: 0px;
+                img{
+                 width: 140px;
+                 height: 28px;
+                }
+            }
+            #fila-header{
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                margin-top: 12px;
+                width: 100%;
+             nav{
+                 display: none;
+             }
+             #menu{
+                 display: block;
+               
+             }
+             form{
+                 .buscador{
+                     margin-right: -3px;
+                     .barraDeBusqueda{
+                         width: 52vw;
+                         height: 35px;
+                     }
+                     .btn-lupa{
+                         margin-left: -3vw;
+                     }
+                 }
+             }
+             #contenedor_iconos{
+                 display: flex;
+                 flex-direction: row;
+                 justify-content: space-between;
+                 align-items: center;
+                 width: 23vw;
+                 margin-right: -35px;
+                 .iconos{
+                     i{
+                         font-size: 1.1em
+                     }
+                 }
+                 .miperfil{
+                     i{
+                         font-size: 1.2em;
+                     }
+                 }
+                 .carrito{
+                     position: relative;
+                     .circulo{
+                         position: absolute;
+                         left: 52%;
+                     }
+                 }
+             }
+            }
+        }
+    } 
+ }
+ @media screen and  (min-width: 1021px) and (max-width: 1200px) {
+     header{
+         .menu-header{
+             #fila-header{
+                 width: 78%;
+                 form{
+                     margin-right: -35px;
+                 }
+                 nav{
+                     width: 20vw;
+                     margin-right: -30px;
+                     ul{
+                         width: 100%;
+                         li{ 
+                             margin-left: 5px;
+                             margin-right: 5px;
+                         }
+                     }
+                 }
+                 #contenedor_iconos{
+                    .carrito{
+                        position: relative;
+                        .circulo{
+                            position: absolute;
+                            left: 52%;
+                        }
+                    }
+                 }
+             }
+
+         }
+     }
+ }
+@media screen and (min-width: 420px) and (max-width: 700px){
+header{
+    .menu-header{
+        #fila-header{
+            form{
+                top: 3vw;
+            }
+            #contenedor_iconos{
+                top: -50px;
+                .carrito{
+                    .circulo{
+                        margin-left: -13px;
+                        top: -7px;
+                    }
+                }
+            }
+        }
+    }
+}
+}
+
