@@ -139,12 +139,12 @@ header {
         #contenedor_iconos {
             display: flex;
             justify-content: space-between;
-            width: 21vw;
+            width: 15vw;
             align-items: baseline;
             .iconos {
                 display: flex;
                 flex-direction: column;
-                width: 19.5vw;
+                width: 12.5vw;
                 margin-right: 20px;
                 align-items: center;
                 align-self: baseline;
@@ -176,7 +176,7 @@ header {
                     width: 15px;
                     height: 15px;
                     top: -5px;
-                    left: 34px;
+                    left: 42px;
                     position: absolute;
                     display: flex;
                     justify-content: center;
