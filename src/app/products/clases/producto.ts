@@ -1,14 +1,14 @@
 import { Categoria } from './categoria';
 import { Marca } from './marca';
 import { UnidadMedida } from './unidad-medida';
-
+import { Subcategoria } from "./subcategoria";
 export class Producto {
     id: number;
     nombre: string;
     descripcion: string;
     precio: number;
     marca: Marca;
-    categoria: Categoria;
+    subcategoria: Subcategoria;
     unidadMedida: UnidadMedida;
     fechaCreacion: number;
     foto: string;
