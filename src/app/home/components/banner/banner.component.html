@@ -2,7 +2,7 @@
 <ngb-carousel *ngIf="images" id="banner">
     
     <ng-template ngbSlide  *ngFor="let image of images">
-        <i class="fas fa-times" style="position: absolute;right:20px; top: 20px;z-index: 2; color: rgba(255, 255, 255, 0.514);" (click)= "hideBanner()" ></i>
+        <i class="fas fa-times" style="position: absolute;right:15px; top: 10px;z-index: 2; color: rgba(255, 255, 255, 0.514);" (click)= "hideBanner()" ></i>
       <div class="picsum-img-wrapper" style="height: 70vh;">
         <img src="{{image.img}}" alt="banner" style="width: 100vw;">
       </div>

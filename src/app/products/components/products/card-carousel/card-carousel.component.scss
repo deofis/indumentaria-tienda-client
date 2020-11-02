@@ -22,7 +22,7 @@ $color-ppal:#fff;
 }
 
 .items{
-    width: 240px;
+    width: 17vw;
     height: fit-content;
     border-radius: 15px;
     margin-top:15px ;
@@ -34,7 +34,8 @@ $color-ppal:#fff;
     box-sizing: border-box;
     outline: none;
     box-shadow: 2px 2px 2px grey;
-
+    margin-left: 15px;
+    margin-right: 25px;
     background-image: linear-gradient(0deg, rgb(243, 236, 236) 20%,  white 45%, );
     &:hover{
         transform: scale(1.06);
