@@ -149,18 +149,63 @@ $color-ppal:#fff;
 @media  screen and (max-width: 500px)  {
 
     .items{
-        width: 70vw;
-        height: 350px;
-        padding: 15px 15px;
-                             
+        width: 43vw;
+        height: 200px;
+        padding: 0px 0px;
+        grid-template-rows: 8px 95px 27px  40px 30px;
+        margin-left: 5px;
+        margin-right: 10px;
+        .i-fondo{
+            i{
+                font-size: 0.9em;
+                right: 10px;
+                top: 10px;
+            }
+        }                     
+        .img-fondo{
+            height: fit-content;
+            .etiqueta{
+                 padding: 1px 3px;
+            }
+            .off{
+             font-size: 10px;
+             font-weight: bold;
+            }
+            .destacado{
+             font-size: 9px;
+             font-weight: bold;
+            }
+             img{
+                 width: 95px ;
+                 height: 95px;
+                
+             }
+         }
         h3{
-            font-size: 16px;
+            font-size: 14px;
+            margin-top: -2px;
         }
-       
-        .descrip{
-            font-size: 14px; 
+        .cont-precios{
+            margin-top: 18px;
+        .precio{
+            font-size: 19px;
         }
-        
+        span{
+             font-size: 13px;
+        }
+        }
+        a{
+            font-size: 14px;
+           .botones{
+            font-size: 14px;
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-top: 0;
+           }}
     }
 
 }
+
+// @media screen and (max-width: 600px){
+
+// } 

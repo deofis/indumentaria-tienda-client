@@ -205,18 +205,18 @@ $color-ppal:#fff;
 
 
 // //// categories
-h2{
-  font-family: $fte-ppal;
-   text-transform: uppercase;
-  color: $color-sec;
-  
-}
-.contenedorProductos{
+
+.section-categories{
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.container-categories{
+  h2{
+    font-family: $fte-ppal;
+     text-transform: uppercase;
+    color: $color-sec;
+    
+  }
+  .container-categories{
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -275,6 +275,7 @@ h2{
      text-transform: uppercase;
     }
   }
+}
 }
 .animacion{
   animation-name: mostrar;
