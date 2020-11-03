@@ -310,6 +310,7 @@ header {
 @media screen and (max-width: 580px) {
    header{
        width: 100%;
+       box-shadow: none;
        .contacto{
            display: none;
        }
@@ -351,6 +352,7 @@ header {
                     .barraDeBusqueda{
                         width: 52vw;
                         height: 32px;
+                        box-shadow: 1px 1px 2px $color-sec;
                     }
                     .btn-lupa{
                         margin-left: -5.6vw;
@@ -392,6 +394,7 @@ header {
 }
 @media screen and  (min-width: 581px) and (max-width: 700px) {
     header{
+        box-shadow: none;
         width: 100%;
         .contacto{
             display: none;
@@ -429,6 +432,7 @@ header {
                      .barraDeBusqueda{
                          width: 52vw;
                          height: 35px;
+                         box-shadow: 1px 1px 2px $color-sec;
                      }
                      .btn-lupa{
                          margin-left: -3vw;
@@ -464,6 +468,7 @@ header {
  }
  @media screen and  (min-width: 701px) and (max-width: 1020px) {
     header{
+        box-shadow: none;
         width: 100%;
         .contacto{
             display:flex;
@@ -508,6 +513,7 @@ header {
                      .barraDeBusqueda{
                          width: 52vw;
                          height: 35px;
+                         box-shadow: 1px 1px 2px $color-sec;
                      }
                      .btn-lupa{
                          margin-left: -3vw;
