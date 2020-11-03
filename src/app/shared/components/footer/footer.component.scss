@@ -95,7 +95,7 @@ $color-ppal:#fff;
             padding: 20px 5px;
             box-shadow: 3px 4px 3px grey;
             margin-left: -90px;
-            width: 340px;
+            width: 23vw;
             position: absolute;
             right: 0;
             height: 100%;
@@ -199,10 +199,11 @@ $color-ppal:#fff;
     }
 }
 
-@media  screen and (max-width: 500px)  {
+@media  screen and (max-width: 600px)  {
     .footer{
     width: 100%;
     margin-top: 25px;
+    overflow: hidden;
     article{
         display: flex;
         flex-direction: column;
@@ -351,3 +352,110 @@ $color-ppal:#fff;
    
 }
 }
+@media  screen and (min-width: 601px) and (max-width: 900px) {
+    .footer{
+        overflow: hidden;
+    article{
+        
+        .row1{
+            position: relative;
+           .newsletter{
+               display: none;
+           }
+           .Contacto{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 0px;
+            margin-left: 80px;
+            p{
+                line-height: 0px;
+                margin-bottom: 0px;
+            font-size: 14px;
+            }
+            h4{
+                align-self: flex-start;
+            }
+            .campo{
+                display: flex;
+                align-items:center;
+                justify-content: flex-start;
+                margin-bottom: 16px;
+                width: 100%;
+                i{
+                    margin-right: 10px;
+                }
+                .direccion{
+                    line-height: 20px;
+                    width: 70%;          
+                    
+                }
+                p{
+                    line-height: 0px;
+                }
+         
+            }
+            
+           }
+           .Nosotros{
+               position: absolute;
+               right: 0px;
+               top: 260px;
+               
+               .marca{
+                   display: none;
+               }
+           }
+            
+        }
+       
+    }
+   
+}
+}
+
+@media  screen and (min-width: 901px) and (max-width: 1250px) {
+    .footer{
+        overflow: hidden;
+    article{
+        
+        .row1{
+            position: relative;
+           .newsletter{
+               display: none;
+           }
+           .Contacto{
+           .campo{
+               width: 80%;
+           }
+           
+           }
+           .Nosotros{
+             margin-left: -20px;
+               .marca{
+                   display: block;
+                   margin-top: 40px;
+               }
+           }
+            
+        }
+       
+    }
+}
+}
+@media  screen and (min-width: 12511px) and (max-width: 1250px) {
+    .footer{
+        overflow: hidden;
+    article{
+        .row1{
+           .newsletter{
+               display: none;
+           }
+                    
+            
+        }
+       
+    }
+}
+}
+

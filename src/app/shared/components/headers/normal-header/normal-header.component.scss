@@ -12,7 +12,7 @@ header {
     align-items: center;
     background-color: $color-ppal;
     height: 115px;
-    box-shadow: 3px 3px 5px rgb(128, 126, 126);
+    box-shadow: 0px 3px 5px rgb(128, 126, 126);
     width: 100%;
     // position: sticky;
     // top:0;
@@ -310,7 +310,7 @@ header {
 @media screen and (max-width: 580px) {
    header{
        width: 100%;
-       box-shadow: none;
+       box-shadow: 0px 3px 5px rgb(128, 126, 126);
        .contacto{
            display: none;
        }
@@ -394,7 +394,7 @@ header {
 }
 @media screen and  (min-width: 581px) and (max-width: 700px) {
     header{
-        box-shadow: none;
+        box-shadow: 0px 3px 5px rgb(128, 126, 126);
         width: 100%;
         .contacto{
             display: none;
@@ -468,7 +468,7 @@ header {
  }
  @media screen and  (min-width: 701px) and (max-width: 1020px) {
     header{
-        box-shadow: none;
+        box-shadow: 0px 3px 5px rgb(128, 126, 126);
         width: 100%;
         .contacto{
             display:flex;
@@ -551,6 +551,7 @@ header {
  }
  @media screen and  (min-width: 1021px) and (max-width: 1200px) {
      header{
+        box-shadow: 0px 3px 5px rgb(128, 126, 126);
          .menu-header{
              #fila-header{
                  width: 78%;
