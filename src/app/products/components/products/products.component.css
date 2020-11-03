@@ -6,12 +6,14 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 94%;
+  width: 87%;
   margin-left: auto;
   margin-right: auto;
 }
 
 .cont-destacados h2 {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
   color: #575353;
   margin-top: 30px;
 }
@@ -98,7 +100,6 @@
 .cont-destacados .contenedor-principal .contenedor-carousel .carousel .tarjetas {
   -webkit-transition: .3s ease all;
   transition: .3s ease all;
-  min-width: 20%;
 }
 
 .cont-destacados .contenedor-principal .contenedor-carousel .carousel .tarjetas.hover {
@@ -138,13 +139,14 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 94%;
+  width: 87%;
   margin-left: auto;
   margin-right: auto;
 }
 
 .cont-ofertas h2 {
   font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
   color: #575353;
   margin-top: 30px;
 }
@@ -231,7 +233,6 @@
 .cont-ofertas .contenedor-principal .contenedor-carousel .carousel .tarjetas {
   -webkit-transition: .3s ease all;
   transition: .3s ease all;
-  min-width: 20%;
 }
 
 .cont-ofertas .contenedor-principal .contenedor-carousel .carousel .tarjetas.hover {
@@ -263,19 +264,45 @@
   background-color: red;
 }
 
-.container-categories {
+.section-categories {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.section-categories h2 {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  color: #575353;
+}
+
+.section-categories .container-categories {
   margin-left: auto;
   margin-right: auto;
-  width: 85%;
+  width: 100%;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr;
   -ms-grid-rows: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
+  margin-bottom: 55px;
+  min-height: 80vh;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-.container-categories .card-c {
+.section-categories .container-categories .card-c {
+  opacity: 0;
+  -webkit-transition: all 1s;
+  transition: all 1s;
   -ms-grid-row-align: center;
       align-self: center;
   -ms-grid-column-align: center;
@@ -291,34 +318,228 @@
           align-items: center;
   justify-items: center;
   width: 22vw;
-  margin-bottom: 10px;
+  min-width: 170px;
+  margin-bottom: 20px;
   padding-left: 20px;
   padding-right: 20px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  outline: none;
 }
 
-.container-categories .card-c:hover > img {
+.section-categories .container-categories .card-c:hover > img {
   opacity: 0.7;
 }
 
-.container-categories .card-c:hover > h3 {
+.section-categories .container-categories .card-c:hover > h3 {
   background-color: #575353;
+  color: #fff;
+  font-weight: normal;
 }
 
-.container-categories .card-c img {
+.section-categories .container-categories .card-c:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.section-categories .container-categories .card-c img {
   width: 100%;
-  height: 180px;
-  border-radius: 20px 20px 0px 0px;
+  height: 70%px;
+  border-radius: 15px 15px 0px 0px;
 }
 
-.container-categories .card-c h3 {
-  background-color: #fff;
-  color: white;
+.section-categories .container-categories .card-c h3 {
+  background-color: #aca5a5;
+  color: #575353;
+  font-weight: bold;
   width: 100%;
   padding: 10px 10px;
   font-size: 15px;
   text-align: center;
-  border-radius: 0px 0px 20px 0px;
+  border-radius: 0px 0px 15px 15px;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+}
+
+.animacion {
+  -webkit-animation-name: mostrar;
+          animation-name: mostrar;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+
+@-webkit-keyframes mostrar {
+  0% {
+    -webkit-transform: translateY(60px);
+            transform: translateY(60px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@keyframes mostrar {
+  0% {
+    -webkit-transform: translateY(60px);
+            transform: translateY(60px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .cont-destacados {
+    width: 93%;
+  }
+  .cont-destacados h2 {
+    margin-top: 0px;
+    font-size: 18px;
+  }
+  .cont-destacados .contenedor-principal .flecha {
+    position: absolute;
+    font-size: 20px;
+    height: 12%;
+    top: calc(50%-6%);
+    line-height: 40px;
+    width: 20px;
+  }
+  .cont-destacados .contenedor-principal .flecha-derecha {
+    right: -5px;
+  }
+  .cont-destacados .contenedor-principal .flecha-izquierda {
+    left: -5px;
+  }
+  .cont-ofertas h2 {
+    margin-top: 5px;
+    font-size: 18px;
+  }
+  .cont-ofertas .contenedor-principal .flecha {
+    position: absolute;
+    font-size: 20px;
+    height: 12%;
+    top: calc(50%-6%);
+    line-height: 40px;
+    width: 20px;
+  }
+  .cont-ofertas .contenedor-principal .flecha-derecha {
+    right: -5px;
+  }
+  .cont-ofertas .contenedor-principal .flecha-izquierda {
+    left: -5px;
+  }
+  .section-categories h2 {
+    margin-top: 0px;
+    font-size: 18px;
+    margin-bottom: -10px;
+  }
+  .section-categories .container-categories {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .section-categories .container-categories .card-c {
+    width: 250px;
+  }
+}
+
+@media screen and (min-width: 341px) and (max-width: 540px) {
+  .cont-destacados h2 {
+    margin-top: 0px;
+    font-size: 20px;
+  }
+  .cont-destacados .contenedor-principal .flecha {
+    position: absolute;
+    font-size: 20px;
+    height: 12%;
+    top: calc(50%-6%);
+    line-height: 40px;
+    width: 20px;
+  }
+  .cont-destacados .contenedor-principal .flecha-derecha {
+    right: -5px;
+  }
+  .cont-destacados .contenedor-principal .flecha-izquierda {
+    left: -5px;
+  }
+  .cont-ofertas h2 {
+    margin-top: 5px;
+    font-size: 20px;
+  }
+  .cont-ofertas .contenedor-principal .flecha {
+    position: absolute;
+    font-size: 20px;
+    height: 12%;
+    top: calc(50%-6%);
+    line-height: 40px;
+    width: 20px;
+  }
+  .cont-ofertas .contenedor-principal .flecha-derecha {
+    right: -5px;
+  }
+  .cont-ofertas .contenedor-principal .flecha-izquierda {
+    left: -5px;
+  }
+  .section-categories h2 {
+    margin-top: 0px;
+    font-size: 20px;
+    margin-bottom: -10px;
+  }
+  .section-categories .container-categories {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+  .section-categories .container-categories .card-c {
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
+  .section-categories .container-categories .card-c h3 {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 541px) and (max-width: 690px) {
+  .section-categories .container-categories {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+  }
+  .section-categories .container-categories .card-c {
+    padding-left: 3vw;
+    padding-right: 3vw;
+    width: 170px;
+  }
+  .section-categories .container-categories .card-c h3 {
+    font-size: 13px;
+  }
+}
+
+@media screen and (min-width: 691px) and (max-width: 860px) {
+  .section-categories .container-categories {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+  }
+  .section-categories .container-categories .card-c {
+    padding-left: 3vw;
+    padding-right: 3vw;
+    width: 220px;
+  }
+  .section-categories .container-categories .card-c h3 {
+    font-size: 14px;
+  }
 }
 /*# sourceMappingURL=products.component.css.map */

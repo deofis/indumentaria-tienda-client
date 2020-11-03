@@ -396,3 +396,215 @@ $color-ppal:#fff;
         transform: translateY(0);
     }
 }
+
+@media screen and (max-width: 500px){
+    #img-ppal{
+        
+        display: block;
+        width:3000px;
+        height: 30000px;
+        background-color: red;
+    }
+    section{
+        .contenedor-uno{
+            display: flex;
+            flex-direction: column;
+            width: 98vw;
+            #izquierda{
+                display: flex;
+                flex-direction: column-reverse;
+                justify-content: space-between;
+                align-items: center;
+                width:100%;
+              
+                .img-sec{
+                    width: 20%;
+                    display: flex;
+                    flex-direction:column;
+                
+                }
+                
+            }
+            // #derecha{
+            //     border: none;
+            //     border-radius: 15px;
+            //     margin-left: 3vw;
+            //     width: 28vw;
+            //     position: relative;
+            //     #caja-titulo{
+            //         display: flex;
+            //         justify-content: space-between;
+            //         align-items: center;
+            //         width: 100%;
+            //         padding-right: 5px;
+            //         margin-bottom: 15px;
+            //         margin-top: 7px;
+            //         h2{
+            //             font-size: 33px;
+            //             font-family: $fte-ppal;
+            //             text-transform: uppercase;
+            //             width: 20vw;
+            //             font-weight: bolder;
+            //             color: $color-sec;
+            //         }
+            //         div{
+            //             display: flex;
+            //             justify-content: space-between;
+            //             width:5vw ;
+            //             align-items: center;
+            //             a{
+            //              text-decoration: none;
+                            
+            //                 i{
+            //                     font-size: 1.4em;
+            //                     color: $color-sec;
+            //                     &:hover{
+            //                         font-size: 1.6em;
+            //                     }
+            //                 }
+            //             }
+                        
+            //         }
+            //     }
+            //     #caja-precio{
+            //         display: flex;                   
+            //         h3{
+            //             font-family: $fte-sec;
+            //             font-weight: normal;
+            //             font-size: 40px;
+            //             margin-bottom: 25px;
+            //             color: $color-sec;
+            //         }
+            //         .oferta{
+            //             margin-left: 10px;
+            //             span{
+            //                 font-family: $fte-sec;
+            //                 text-decoration: line-through;
+            //                 color: $color-sec;
+            //                 color: rgb(187, 24, 24);
+            //                 margin-left: auto;
+            //                 margin-right: auto;
+            //             }
+            //             p{
+            //                 display: block;
+            //                 background-color: rgb(187, 24, 24);
+            //                 color: white;
+            //                 font-family: $fte-sec;
+            //                 padding: 1px 6px;
+            //                 font-size: 14px;
+            //                 text-align: center;
+            //                 margin-left: auto;
+            //                 box-shadow: 2px 4px 3px rgba(0, 0, 0, 0.719);
+            //             }
+            //         }
+            //     }
+            //     #caja-carrito{
+            //         margin-top: 25px;
+            //         display: flex;
+            //         flex-direction: column;
+            //         .color-quantity{
+            //             display: flex;
+            //             justify-content: space-around;
+            //             width: 100%;
+            //             margin-left: auto;
+            //             margin-right: auto;
+            //             .modify-quantity{
+            //                 border: none;
+            //                 border-radius: 5px;
+            //                 display: flex;
+            //                 justify-content: space-around;
+            //                 align-items: center;
+            //                 width: 25%;
+            //                 i{
+            //                     color: $color-sec;
+            //                     font-size: 1em;
+            //                 }
+            //                 .fa-minus-circle{
+            //                     &:hover{
+            //                         font-size: 1.1em;
+            //                         cursor: pointer;
+                                   
+            //                     }
+            //                 }
+            //                 .fa-plus-circle{
+            //                     &:hover{
+            //                         font-size: 1.1em;
+            //                         cursor: pointer;
+            //                     }
+            //                 }
+            //                 .item-quantity{
+            //                     font-weight: bold;
+            //                     font-family: $fte-ppal;
+            //                     font-size: 17px;
+            //                 }
+            //             }
+            //             #color{
+            //                 width: 120px;
+            //                 height: 30px;
+            //                 font-family: $fte-sec;
+            //                 font-size: 17px;
+            //                 text-align: center;
+            //                 font-weight: bold;
+            //                 border: 1px solid $color-ter;
+            //                 border-radius: 5px;
+            //                 outline: none;
+            //                 padding-left: 10px;
+            //                 &:focus{
+            //                     outline: none;
+            //                 }
+            //             }
+            //         }
+            //         .talles{
+            //             display: flex;
+            //             justify-content: space-around;
+            //             width: 90%;
+            //             margin-top: 25px;
+            //             align-items: center;
+            //             div{
+            //                 input{
+            //                     margin-right: 5px;
+            //                 }
+            //                 label{
+            //                     font-family: $fte-sec;
+            //                 }
+            //             }
+                        
+            //         }
+            //         p{
+            //             font-family: $fte-sec;
+            //             font-style: italic;
+            //             color: $color-ter;
+            //             display: block;
+            //             margin-top: -13px;
+            //             font-size: 13px;
+                    
+
+            //         }
+            //         .btn{
+            //             background-color: $color-sec;
+            //             color: white;
+            //             font-family: $fte-ppal;
+            //             text-transform: uppercase;
+            //             font-size: 18px;
+            //             border: 0px ;
+            //             padding: 8px 15px;
+            //             align-self: center;
+            //             box-sizing: border-box;
+            //             width: 100%;
+            //             border-radius: 0px;                        
+            //             &:hover{
+            //                 transform: scale(1.03);
+            //             }
+            //         }
+            //         #btn-carrito{
+            //             margin-bottom: 10px;
+            //         }
+            //         #btn-comprar{
+            //             margin-bottom: 15px;
+            //         }
+            //     }
+            // }
+        }
+    }
+
+}

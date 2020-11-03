@@ -1,66 +1,3 @@
-section .contenedor-form .campos-inicio-s h2, section .contenedor-form #contenedor-forgot-psw h2 {
-  font-family: "Poppins", sans-serif;
-  color: #103d77;
-  -ms-flex-item-align: start;
-      align-self: flex-start;
-  display: block;
-  border-bottom: 1px solid grey;
-  width: 100%;
-  padding-bottom: 5px;
-}
-
-section .contenedor-form .campos-inicio-s .campo, section .contenedor-form #contenedor-forgot-psw .campo {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: relative;
-}
-
-section .contenedor-form .campos-inicio-s .campo i, section .contenedor-form #contenedor-forgot-psw .campo i {
-  position: absolute;
-  padding: 13px;
-  font-size: 1.1em;
-  color: grey;
-}
-
-section .contenedor-form .campos-inicio-s .campo #username, section .contenedor-form #contenedor-forgot-psw .campo #emailPsw {
-  margin-top: 7px;
-  height: 44px;
-  width: 100%;
-  font-family: "Poppins", sans-serif;
-  font-size: 15px;
-  padding-left: 40px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-section .contenedor-form .campos-inicio-s .campo #username:focus, section .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus {
-  outline: none;
-  border: 1px solid #b4aaaa;
-}
-
-section .contenedor-form .campos-inicio-s .campo #password {
-  height: 44px;
-  width: 100%;
-  font-family: "Poppins", sans-serif;
-  font-size: 15px;
-  padding-left: 40px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-section .contenedor-form .campos-inicio-s .campo #password:focus {
-  outline: none;
-  border: 1px solid #b4aaaa;
-}
-
 section {
   height: 100%;
   width: 100%;
@@ -77,8 +14,9 @@ section {
 }
 
 section .fondo {
-  background-color: #2d7be0;
-  height: 40vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(#575353), color-stop(#aca5a5), color-stop(#f3ecec), to(white));
+  background: linear-gradient(to bottom, #575353, #aca5a5, #f3ecec, white);
+  height: 80vh;
   width: 100%;
 }
 
@@ -92,12 +30,12 @@ section .fondo img {
 
 section .contenedor-form {
   padding-top: 20px;
-  padding-bottom: 40px;
-  background-color: white;
-  border-radius: 20px;
+  padding-bottom: 30px;
+  background: #f3ecec;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  border-radius: 15px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -105,8 +43,10 @@ section .contenedor-form {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: -190px;
-  width: 30vw;
+  margin-top: -460px;
+  width: 420px;
+  -webkit-box-shadow: 2px 4px 10px grey;
+          box-shadow: 2px 4px 10px grey;
 }
 
 section .contenedor-form .campos-inicio-s {
@@ -127,12 +67,89 @@ section .contenedor-form .campos-inicio-s {
   height: 300px;
 }
 
+section .contenedor-form .campos-inicio-s h2 {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  color: #575353;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  display: block;
+  border-bottom: 1px solid grey;
+  width: 100%;
+  padding-bottom: 5px;
+}
+
+section .contenedor-form .campos-inicio-s .campo {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+section .contenedor-form .campos-inicio-s .campo i {
+  position: absolute;
+  padding: 13px;
+  font-size: 1.1em;
+  color: #aca5a5;
+}
+
 section .contenedor-form .campos-inicio-s .campo .fa-user {
   top: 7.1px;
 }
 
-section .contenedor-form .campos-inicio-s .campo .fa-eye {
+section .contenedor-form .campos-inicio-s .campo .fa-eye,
+section .contenedor-form .campos-inicio-s .campo .fa-eye-slash {
   margin-left: 86%;
+}
+
+section .contenedor-form .campos-inicio-s .campo .fa-eye-slash {
+  visibility: hidden;
+}
+
+section .contenedor-form .campos-inicio-s .campo #username {
+  margin-top: 7px;
+  height: 44px;
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+  padding-left: 40px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+section .contenedor-form .campos-inicio-s .campo #username:focus {
+  outline: none;
+  border: 1px solid #b4aaaa;
+}
+
+section .contenedor-form .campos-inicio-s .campo #username:focus ~ i {
+  color: #222121;
+}
+
+section .contenedor-form .campos-inicio-s .campo #password {
+  height: 44px;
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+  padding-left: 40px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+section .contenedor-form .campos-inicio-s .campo #password:focus {
+  outline: none;
+  border: 1px solid #b4aaaa;
+}
+
+section .contenedor-form .campos-inicio-s .campo #password:focus ~ .fa-lock {
+  color: #222121;
 }
 
 section .contenedor-form .campos-inicio-s #btn-entrar {
@@ -143,8 +160,8 @@ section .contenedor-form .campos-inicio-s #btn-entrar {
 section .contenedor-form .campos-inicio-s p {
   -ms-flex-item-align: start;
       align-self: flex-start;
-  font-family: "Poppins", sans-serif;
-  color: #2d7be0;
+  font-family: "Open Sans", sans-serif;
+  color: #222121;
   font-size: 12px;
   margin-top: -5px;
   margin-bottom: 5px;
@@ -168,13 +185,15 @@ section .contenedor-form .separacion {
 }
 
 section .contenedor-form .separacion p {
-  color: grey;
+  margin-bottom: 0px;
+  display: block;
+  color: #222121;
   font-size: 17px;
 }
 
 section .contenedor-form .separacion span {
   display: block;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid #575353;
   width: 42%;
 }
 
@@ -200,7 +219,6 @@ section .contenedor-form .social-media {
 section .contenedor-form .social-media button {
   width: 100%;
   height: 40px;
-  border-radius: 30px;
   border: none;
   outline: none;
 }
@@ -213,7 +231,7 @@ section .contenedor-form .social-media button:hover {
 section .contenedor-form .social-media button a {
   text-decoration: none;
   color: white;
-  font-family: "Poppins", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 15px;
   display: block;
   width: 100%;
@@ -239,6 +257,16 @@ section .contenedor-form #contenedor-forgot-psw {
 }
 
 section .contenedor-form #contenedor-forgot-psw h2 {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  color: #575353;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  display: block;
+  border-bottom: 1px solid grey;
+  width: 100%;
+  padding-bottom: 5px;
+  font-size: 23px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -249,46 +277,92 @@ section .contenedor-form #contenedor-forgot-psw h2 {
 
 section .contenedor-form #contenedor-forgot-psw h2 i {
   font-size: 0.7em;
-  color: grey;
+  color: #222121;
   margin-right: 8px;
 }
 
 section .contenedor-form #contenedor-forgot-psw p {
-  font-family: "Poppins", sans-serif;
-  color: gray;
+  font-family: "Open Sans", sans-serif;
+  color: #222121;
+  margin-bottom: -15px;
+}
+
+section .contenedor-form #contenedor-forgot-psw .campo {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+section .contenedor-form #contenedor-forgot-psw .campo i {
+  position: absolute;
+  padding: 13px;
+  font-size: 1.1em;
+  color: #aca5a5;
 }
 
 section .contenedor-form #contenedor-forgot-psw .campo .fa-user {
   top: 7.1px;
 }
 
+section .contenedor-form #contenedor-forgot-psw .campo #emailPsw {
+  margin-top: 7px;
+  height: 44px;
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+  padding-left: 40px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+section .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus {
+  outline: none;
+  border: 1px solid #b4aaaa;
+}
+
+section .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus ~ i {
+  color: #222121;
+}
+
 section .footer-is {
-  width: 50%;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   position: absolute;
-  bottom: 8px;
+  bottom: 0px;
+  background-color: black;
 }
 
 section .footer-is a {
+  padding-top: 2px;
+  padding-bottom: 3px;
+  padding-right: 40px;
   text-decoration: none;
-  color: #103d77;
-  font-family: "Poppins", sans-serif;
-  font-size: 12px;
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
 }
 
 .boton {
   width: 100%;
   height: 40px;
-  background-color: #103d77;
+  background-color: #222121;
   color: white;
   font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
   font-size: 16px;
-  border-radius: 30px;
   border: none;
   outline: none;
 }
@@ -296,9 +370,127 @@ section .footer-is a {
 .boton:hover {
   -webkit-box-shadow: 1px 2px 2px gray;
           box-shadow: 1px 2px 2px gray;
+  background-color: #575353;
 }
 
 .primer {
   margin-top: 15px;
+}
+
+@media screen and (max-width: 500px) {
+  section .fondo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  section .fondo img {
+    top: 15px;
+    left: 20px;
+    width: 150px;
+    height: 45px;
+  }
+  section .contenedor-form {
+    padding-top: 20px;
+    padding-bottom: 35px;
+    margin-top: -400px;
+    width: 85vw;
+  }
+  section .contenedor-form .campos-inicio-s h2 {
+    font-size: 19px;
+    margin-bottom: -12px;
+  }
+  section .contenedor-form .campos-inicio-s .campo i {
+    font-size: 0.9em;
+  }
+  section .contenedor-form .campos-inicio-s .campo .fa-user {
+    top: -27px;
+  }
+  section .contenedor-form .campos-inicio-s .campo .fa-lock {
+    top: -24px;
+  }
+  section .contenedor-form .campos-inicio-s .campo .fa-eye,
+  section .contenedor-form .campos-inicio-s .campo .fa-eye-slash {
+    margin-left: 83%;
+    top: -24px;
+  }
+  section .contenedor-form .campos-inicio-s .campo .fa-eye-slash {
+    visibility: hidden;
+  }
+  section .contenedor-form .campos-inicio-s .campo #username {
+    margin-top: -25px;
+    height: 38px;
+  }
+  section .contenedor-form .campos-inicio-s .campo #password {
+    height: 38px;
+    margin-top: -25px;
+  }
+  section .contenedor-form .campos-inicio-s #btn-entrar {
+    margin-top: -20px;
+    margin-bottom: -25px;
+  }
+  section .contenedor-form .campos-inicio-s p {
+    margin-top: -33px;
+    margin-bottom: 0px;
+  }
+  section .contenedor-form .campos-inicio-s p:hover {
+    cursor: pointer;
+  }
+  section .contenedor-form .separacion {
+    margin-top: -20px;
+    margin-bottom: -5px;
+  }
+  section .contenedor-form .social-media {
+    height: 80px;
+  }
+  section .contenedor-form .social-media button {
+    height: 37px;
+  }
+  section .contenedor-form .social-media .btn2 {
+    margin-top: -15px;
+  }
+  section .contenedor-form #contenedor-forgot-psw {
+    height: 210px;
+    padding-bottom: 0px;
+  }
+  section .contenedor-form #contenedor-forgot-psw h2 {
+    font-size: 17px;
+  }
+  section .contenedor-form #contenedor-forgot-psw h2 i {
+    font-size: 0.8em;
+  }
+  section .contenedor-form #contenedor-forgot-psw p {
+    margin-top: -30px;
+    font-size: 14px;
+    margin-bottom: -30px;
+  }
+  section .contenedor-form #contenedor-forgot-psw .campo {
+    width: 100%;
+  }
+  section .contenedor-form #contenedor-forgot-psw .campo i {
+    font-size: 1em;
+  }
+  section .contenedor-form #contenedor-forgot-psw .campo .fa-user {
+    top: 7.1px;
+  }
+  section .contenedor-form #contenedor-forgot-psw .campo #emailPsw {
+    margin-top: 5px;
+    height: 38px;
+  }
+  section .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus {
+    outline: none;
+    border: 1px solid #b4aaaa;
+  }
+  section .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus ~ i {
+    color: #222121;
+  }
+  section .footer-is {
+    display: none;
+  }
 }
 /*# sourceMappingURL=user-login.component.css.map */

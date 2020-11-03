@@ -13,7 +13,7 @@ section {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  min-height: 75vh;
+  min-height: 82vh;
 }
 
 .container-left {
@@ -22,6 +22,7 @@ section {
 
 .container-left h2 {
   font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
   border-bottom: 1px solid #bebbbb;
   margin-bottom: 5px;
   margin-top: 10px;
@@ -36,8 +37,8 @@ section {
 }
 
 .container-left .msg-empty-cart p {
-  font-family: "Poppins", sans-serif;
-  color: #2d7be0;
+  font-family: "Open Sans", sans-serif;
+  color: #aca5a5;
   font-size: 15px;
   text-align: center;
 }
@@ -55,17 +56,17 @@ section {
       -ms-flex-align: center;
           align-items: center;
   background-color: white;
-  border-radius: 20px;
   padding: 10px 10px;
   margin-top: 20px;
   margin-bottom: 5px;
-  -webkit-box-shadow: 1px 2px 1px #aaa8a8;
-          box-shadow: 1px 2px 1px #aaa8a8;
+  -webkit-box-shadow: 1px 3px 5px #aaa8a8;
+          box-shadow: 1px 3px 5px #aaa8a8;
 }
 
 .container-left .products-list ul li:hover {
-  -webkit-box-shadow: 2px 3px 3px #aaa8a8;
-          box-shadow: 2px 3px 3px #aaa8a8;
+  -webkit-box-shadow: 2px 4px 6px #575353;
+          box-shadow: 2px 4px 6px #575353;
+  cursor: default;
 }
 
 .container-left .products-list ul li img {
@@ -86,7 +87,7 @@ section {
 }
 
 .container-left .products-list ul li .info .row-info span {
-  color: grey;
+  color: #575353;
   font-size: 12px;
 }
 
@@ -110,7 +111,7 @@ section {
 }
 
 .container-left .products-list ul li .quantity .modify-quantity {
-  border: 1px solid #103d77;
+  border: 1px solid #575353;
   border-radius: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -124,7 +125,7 @@ section {
 }
 
 .container-left .products-list ul li .quantity .modify-quantity i {
-  color: #103d77;
+  color: #575353;
   font-size: 0.8em;
 }
 
@@ -162,7 +163,7 @@ section {
 
 .container-right {
   background-color: white;
-  border-radius: 20px;
+  border-radius: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -174,11 +175,13 @@ section {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  margin-top: 50px;
+  margin-top: 45px;
+  -webkit-box-shadow: 2px 4px 4px #575353;
+          box-shadow: 2px 4px 4px #575353;
 }
 
 .container-right .summary {
-  font-family: "Poppins", sans-serif;
+  font-family: "Open Sans", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -189,7 +192,9 @@ section {
 }
 
 .container-right .summary h2 {
-  color: #103d77;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  color: #575353;
   font-size: 20px;
   border-bottom: 1px solid #bebbbb;
   margin-bottom: 5px;
@@ -220,18 +225,18 @@ section {
 }
 
 .container-right .summary #subtotal-summary {
-  color: grey;
-  font-size: 15px;
+  color: #aca5a5;
+  font-size: 16px;
 }
 
 .container-right .summary #total-summary {
   font-weight: bolder;
   font-size: 19px;
-  background-color: rgba(221, 210, 210, 0.692);
+  background-color: #f3ecec;
 }
 
 .container-right .summary .coupon {
-  border: 2px solid #103d77;
+  border: 2px solid #575353;
   border-radius: 10px;
   width: 85%;
   -ms-flex-item-align: center;
@@ -254,7 +259,7 @@ section {
 }
 
 .container-right .summary .coupon i {
-  color: #103d77;
+  color: #575353;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
@@ -262,12 +267,12 @@ section {
 .container-right .summary .coupon span {
   font-size: 13px;
   font-weight: bolder;
-  color: #103d77;
+  color: #575353;
 }
 
 .container-right .summary .coupon:hover {
   cursor: pointer;
-  background-color: #103d77;
+  background-color: #575353;
 }
 
 .container-right .summary .coupon:hover > i {
@@ -280,17 +285,17 @@ section {
 }
 
 .container-right button {
-  background-color: #103d77;
-  font-size: 15px;
+  background-color: #222121;
+  font-size: 16px;
   color: white;
   font-family: "Poppins", sans-serif;
-  border-radius: 0px 0px 20px 20px;
+  border-radius: 0px 0px 15px 15px;
   border: 0px;
   margin-top: 5px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 100%;
-  padding: 3px 25px;
+  padding: 4px 25px;
   -ms-flex-item-align: end;
       align-self: flex-end;
   outline: none;
@@ -299,5 +304,28 @@ section {
 .container-right button:hover {
   font-size: 16px;
   cursor: pointer;
+  background-color: #575353;
+}
+
+@media screen and (max-width: 500px) {
+  section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 95%;
+  }
+  section .container-left {
+    width: 95%;
+  }
+  section .container-right {
+    width: 95%;
+  }
 }
 /*# sourceMappingURL=shopping-cart.component.css.map */

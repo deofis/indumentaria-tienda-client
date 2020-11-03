@@ -118,6 +118,7 @@ header .menu-header #fila-header nav .menu li a {
   background-size: 0% 2px;
   -webkit-transition: background-size .3s;
   transition: background-size .3s;
+  color: #575353;
 }
 
 header .menu-header #fila-header nav .menu li a:visited {

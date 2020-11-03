@@ -1,91 +1,172 @@
+.items a, .items a .botones {
+  background-color: #575353;
+  font-size: 14px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  border-radius: 0px 0px 15px 15px;
+  border: 0px;
+  margin-top: 5px;
+  padding: 3px 10px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  outline: none;
+}
+
 .items {
-  width: 240px;
-  height: 340px;
+  width: 17vw;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   border-radius: 15px;
-  border: 1px solid rgba(128, 128, 128, 0.363);
   margin-top: 15px;
   margin-bottom: 15px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
-  -ms-grid-rows: 20px 140px 55px 50px 30px 45px;
-      grid-template-rows: 20px 140px 55px 50px 30px 45px;
+  -ms-grid-rows: 20px 140px 55px  30px 45px;
+      grid-template-rows: 20px 140px 55px  30px 45px;
   justify-items: center;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   outline: none;
+  -webkit-box-shadow: 2px 2px 2px grey;
+          box-shadow: 2px 2px 2px grey;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(20%, #f3ecec), color-stop(45%, white));
+  background-image: linear-gradient(0deg, #f3ecec 20%, white 45%);
 }
 
 .items:hover {
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
-  border: 1px solid #103d77;
+  -webkit-transform: scale(1.06);
+          transform: scale(1.06);
   cursor: pointer;
+  -webkit-box-shadow: 2px 3px 4px grey;
+          box-shadow: 2px 3px 4px grey;
 }
 
 .items:hover > h3 {
-  color: #103d77;
+  color: #575353;
 }
 
-.items i {
-  justify-self: flex-end;
+.items .img-fondo {
+  background-color: #fff;
+  width: 100%;
+  outline: none;
   position: relative;
-  font-size: 1.2em;
-  margin-right: 20px;
-  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.items img {
+.items .img-fondo .etiqueta {
+  display: block;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  padding: 1px 6px;
+  text-align: center;
+  -webkit-box-shadow: 2px 4px 3px rgba(0, 0, 0, 0.719);
+          box-shadow: 2px 4px 3px rgba(0, 0, 0, 0.719);
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: -7px;
+}
+
+.items .img-fondo .off {
+  background-color: #bb1818;
+  font-size: 14px;
+}
+
+.items .img-fondo .destacado {
+  background-color: #ffee00;
+  color: black;
+  font-size: 12px;
+}
+
+.items .img-fondo img {
   width: 140px;
   height: 140px;
+  display: block;
+  position: absolute;
+  top: 0;
+}
+
+.items .i-fondo {
+  background-color: #fff;
   outline: none;
+  border-radius: 15px 15px 0px 0px;
+  width: 100%;
+  position: relative;
+}
+
+.items .i-fondo i {
+  outline: none;
+  position: absolute;
+  font-size: 1.2em;
+  right: 20px;
+  top: 10px;
+  z-index: 1;
 }
 
 .items h3 {
+  outline: none;
   text-align: center;
   font-size: 18px;
   font-weight: bold;
   padding-left: 5px;
   padding-right: 5px;
+  font-family: "Open Sans", sans-serif;
+  margin-top: 12px;
 }
 
-.items .botones {
-  background-color: #103d77;
-  font-size: 13px;
-  color: white;
-  font-family: "Poppins", sans-serif;
-  border-radius: 0px 0px 15px 15px;
-  border: 0px;
-  margin-top: 5px;
-  padding: 3px 10px;
-  width: 100%;
+.items h3::first-letter {
+  text-transform: uppercase;
 }
 
-.items .descrip {
-  font-size: 15px;
-  text-align: center;
-  color: grey;
-  padding-left: 5px;
-  padding-right: 5px;
+.items .cont-precios {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: -10px;
+  outline: none;
 }
 
-.items .precio {
+.items .cont-precios .precio {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 22px;
+  font-family: "Open Sans", sans-serif;
+  outline: none;
 }
 
-@media screen and (max-width: 500px) {
-  .items {
-    width: 70vw;
-    height: 350px;
-    padding: 15px 15px;
-  }
-  .items h3 {
-    font-size: 16px;
-  }
-  .items .descrip {
-    font-size: 14px;
-  }
+.items .cont-precios span {
+  text-decoration: line-through;
+  font-size: 13px;
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: -10px;
+  outline: none;
+}
+
+.move {
+  top: 20px;
+  margin-top: 20px;
 }
 /*# sourceMappingURL=card-grid.component.css.map */
