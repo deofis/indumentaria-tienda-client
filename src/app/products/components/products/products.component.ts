@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Categoria } from 'src/app/products/clases/categoria';
 import { Producto } from '../../clases/producto';
 import { CatalogoService } from '../../services/catalogo.service';
-//  import * as M from '../../../../assets/materialize/js/materialize.min.js'
 
 @Component({
   selector: 'app-products',
