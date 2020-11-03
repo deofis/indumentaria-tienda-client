@@ -10,7 +10,7 @@ import { ShoppingCartComponent } from './cart/components/shopping-cart/shopping-
 import { CheckoutComponent } from './cart/components/checkout/checkout/checkout.component';
 import { PreCheckoutComponent } from './cart/components/checkout/pre-checkout/pre-checkout.component';
 import { Oauth2RedirectHandlerComponent } from './log-in/oauth2/oauth2-redirect-handler/oauth2-redirect-handler.component';
-import { PruebaComponent } from './prueba/prueba/prueba.component';
+import { PruebaComponent } from './prueba/prueba.component';
 import { AuthGuard } from './log-in/guards/auth.guard';
 import { RoleGuard } from './log-in/guards/role.guard';
 
