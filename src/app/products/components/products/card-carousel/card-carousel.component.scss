@@ -146,7 +146,7 @@ $color-ppal:#fff;
     margin-top: 20px;
     
 }
-@media  screen and (max-width: 500px)  {
+@media  screen and (max-width: 380px)  {
 
     .items{
         width: 43vw;
@@ -202,6 +202,122 @@ $color-ppal:#fff;
             padding-bottom: 0;
             margin-top: 0;
            }}
+    }
+
+}
+@media  screen and (min-width: 381px) and (max-width: 780px) {
+
+    .items{
+        width: 36vw;
+        height: 220px;
+        grid-template-rows: 8px 100px 32px  45px 35px;
+        .i-fondo{
+            i{
+                font-size: 1em;
+                right: 10px;
+                top: 10px;
+            }
+        }                     
+        .img-fondo{
+            height: fit-content;
+            .etiqueta{
+                 padding: 1px 3px;
+            }
+            .off{
+             font-size: 10px;
+            }
+            .destacado{
+             font-size: 9px;
+             font-weight: bold;
+            }
+             img{
+                 width: 100px ;
+                 height: 100px;
+                
+             }
+         }
+        h3{
+            font-size: 15px;
+            margin-top: -2px;
+        }
+        .cont-precios{
+            margin-top: 18px;
+        .precio{
+            font-size: 20px;
+        }
+        span{
+             font-size: 14px;
+        }
+        }
+        a{
+            font-size: 14px;
+           .botones{
+            font-size: 14px;
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-top: 0;
+           }}
+    }
+
+}
+@media  screen and (min-width: 550px) and (max-width: 780px) {
+    .items{
+        width: 28vw;
+        max-width: 190px;
+    }
+}
+@media  screen and (min-width: 781px) and (max-width: 1100px) {
+    .items{
+        width: 25vw;
+        max-width: 205px;
+        height: 240px;
+        grid-template-rows: 8px 105px 42px  50px 35px;
+        .i-fondo{
+            i{
+                font-size: 1em;
+                right: 10px;
+                top: 10px;
+            }
+        }                     
+        .img-fondo{
+            height: fit-content;
+            .etiqueta{
+                 padding: 1px 4px;
+            }
+            .off{
+             font-size: 11px;
+            }
+            .destacado{
+             font-size: 10px;
+             font-weight: bold;
+            }
+             img{
+                 width: 105px ;
+                 height: 105px;
+                
+             }
+         }
+        h3{
+            font-size: 16px;
+            margin-top: 3px;
+        }
+        .cont-precios{
+            margin-top: 8px;
+        .precio{
+            font-size: 21px;
+        }
+        span{
+             font-size: 15px;
+        }
+        }
+        a{
+            font-size: 14px;
+            .botones{
+             font-size: 14px;
+             padding-top: 0;
+             padding-bottom: 0;
+             margin-top: 0;
+            }}
     }
 
 }
