@@ -85,19 +85,21 @@ a {
     font-size: 14px;
     display: flex;
     align-items: baseline;
-    padding-left: 70px;
+    padding-left: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     input{
         margin-right: 7px;
     }
     .pcio{
-        width: 30%;
+        width: 35%;
         font-size: 13px;
         padding-top: 2px;
         padding-bottom: 2px;
         padding-left: 10px;
     }
     i{
-        font-size: 1.1em;
+        font-size: 1.2em;
         &:hover{
            transform:scale(1.1);
            background-color: $color-menues;
@@ -124,32 +126,10 @@ ul {
 
 
 
-@media  screen and (max-width: 500px)  {
+@media  screen and (max-width: 900px)  {
 .contenedor{
     display: none;
 }
 
 }
 
-
-// @media screen and (max-width: 450px) {
-// 	body {
-// 		padding-top: 80px;
-// 	}
-
-// 	.contenedor-menu {
-// 		margin: 0;
-// 		width: 100%;
-// 		position: fixed;
-// 		top:0;
-// 		z-index: 1000;
-// 	}
-
-// 	.btn-menu {
-// 		display: block;
-// 	}
-
-// 	.contenedor-menu .menu {
-// 		display: none;
-// 	}
-// }
