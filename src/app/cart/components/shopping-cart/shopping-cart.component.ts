@@ -16,16 +16,10 @@ export class ShoppingCartComponent implements OnInit {
 
   carrito: Carrito;
   totalProductos: number;
-  //  items: Array<ItemCarrito>;
-  //  totalPrice:number ;
-  //  totalQuantity:number;
-  // carrito:MockCarrito;
 
-  constructor(private carritoService: CarritoService, private _cartService:MockCartService) {
+  constructor(private carritoService: CarritoService) {
     this.carrito = new Carrito();
     this.totalProductos = 0;
-    // this.carrito=new MockCarrito();
-    // this.items=[]
    }
 
   ngOnInit(): void {
@@ -83,20 +77,33 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   incrementarCantidad(item: DetalleCarrito): void {
+    let productoId = item.producto.id;
     
+    this.carrito.items = this.carrito.items.map((item: DetalleCarrito) => {
+      if (productoId == item.producto.id) {
+        ++item.cantidad;
+      };
+      return item;
+    });
+
+    console.log(item.cantidad);
+
+    this.carritoService.actualizarCantidad(item.cantidad.toString(), productoId.toString()).subscribe(response => {
+      this.carrito = response.carritoActualizado;
+    });
   }
 
 
   ///inicio carrito de compras eliminar , sumar 
-  public remove(item:ItemCarrito){
-    this._cartService.removeElementCart(item);
-  }
-  public  removeOne(item:ItemCarrito){
-    this._cartService.removeOneElementCart(item)
-  }
-  public addOne(item:ItemCarrito){
-    this._cartService.addOneElementCart(item)
-  }
+  // public remove(item:ItemCarrito){
+  //   this._cartService.removeElementCart(item);
+  // }
+  // public  removeOne(item:ItemCarrito){
+  //   this._cartService.removeOneElementCart(item)
+  // }
+  // public addOne(item:ItemCarrito){
+  //   this._cartService.addOneElementCart(item)
+  // }
 
 //// fin carrito de compras eliminar sumar 
 

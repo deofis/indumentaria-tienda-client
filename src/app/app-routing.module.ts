@@ -13,6 +13,7 @@ import { Oauth2RedirectHandlerComponent } from './log-in/oauth2/oauth2-redirect-
 import { PruebaComponent } from './prueba/prueba/prueba.component';
 import { AuthGuard } from './log-in/guards/auth.guard';
 import { RoleGuard } from './log-in/guards/role.guard';
+import { MisComprasComponent } from './user-options/mis-compras/mis-compras.component';
 
 const routes: Routes = [
 {path:"home",component:HomeComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
 {path:'oauth2/redirect', component: Oauth2RedirectHandlerComponent},
 {path:"search/:termino", component:BuscadorComponent},
 {path:"user-profile",component:UserProfileComponent},
+{path:"user-mis-compras",component:MisComprasComponent},
 {path:"user-sign-up",component:UserSignUpComponent},
 {path:"shopping-cart",component:ShoppingCartComponent},
 {path:"checkout",component:CheckoutComponent},

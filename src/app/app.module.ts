@@ -26,7 +26,6 @@ import { AdminProfileComponent } from './profile/admin-profile/admin-profile.com
 import { ViewMoreComponent } from './products/components/products/view-more/view-more.component';
 import { CardCarouselComponent } from './products/components/products/card-carousel/card-carousel.component';
 import { CardGridComponent } from './products/components/products/card-grid/card-grid.component';
-import { AdminLoginComponent } from './log-in/admin/admin-login/admin-login.component';
 import { UserLoginComponent } from './log-in/user/user-login/user-login.component';
 import { UserSignUpComponent } from './log-in/user/user-sign-up/user-sign-up.component';
 import { Oauth2RedirectHandlerComponent } from './log-in/oauth2/oauth2-redirect-handler/oauth2-redirect-handler.component';
@@ -37,6 +36,7 @@ import { PreCheckoutComponent } from './cart/components/checkout/pre-checkout/pr
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BenefitsRowComponent } from './benefits-row/benefits-row/benefits-row.component';
 import { FormLogInComponent } from './log-in/user/form-log-in/form-log-in.component';
+import { MisComprasComponent } from './user-options/mis-compras/mis-compras.component';
 
 
 
@@ -58,7 +58,6 @@ import { FormLogInComponent } from './log-in/user/form-log-in/form-log-in.compon
     ViewMoreComponent,
     CardCarouselComponent,
     CardGridComponent,
-    AdminLoginComponent,
     UserLoginComponent,
     UserSignUpComponent,
     Oauth2RedirectHandlerComponent,
@@ -67,7 +66,8 @@ import { FormLogInComponent } from './log-in/user/form-log-in/form-log-in.compon
     PreCheckoutComponent,
     CheckoutComponent,
     ShoppingCartComponent,
-    FormLogInComponent
+    FormLogInComponent,
+    MisComprasComponent
   ],
   imports: [
     BrowserModule,

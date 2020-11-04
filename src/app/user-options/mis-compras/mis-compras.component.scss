@@ -1,0 +1,200 @@
+$fte-ppal: 'Poppins',
+sans-serif;
+$fte-sec: 'Open Sans',
+sans-serif;
+$color-ppal:#fff;
+$color-sec: rgb(87, 83, 83);
+$color-ter: rgb(172, 165, 165);
+$color-menues: rgb(243, 236, 236);
+
+
+section{
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns:20px auto ;
+    height: fit-content;
+    min-height: 80vh;
+    #lateralMenu{
+        background-color: rgb(34, 33, 33);
+        width: 30px;
+        position: relative;
+        z-index: 4;
+        box-shadow: 1px 2px 2px $color-ter;
+        // .boton{
+        //     position: sticky;
+        //     left:35px;
+        //     top: 380px;
+        //     font-size: 3em;
+        //     background-color: $color-sec;
+        //     color: white;
+            
+        // }
+        .lateral-container{
+            position: sticky;
+            top: 20vh;
+            bottom:80vh;
+            display: none;
+            .userOptions{ 
+                list-style: none;
+                cursor: pointer;
+                li{
+                    outline: none;
+                    font-size: 16px;
+                    color:$color-ppal;
+                    width: 100%;
+                    padding:10px 18px ;
+                    box-sizing: border-box;
+                    font-family: $fte-ppal;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    &:last-child{
+                        border-top: 0.2px solid rgb(204, 193, 193);
+                    }
+                    &:hover{
+                        background-color: $color-ppal;
+                        cursor: pointer;
+                        color:$color-sec;
+                    }
+                    &:hover >i{
+                        font-size: 1em;
+                    }
+                    i{
+                        font-size: 0.8em;
+                        margin-bottom: 3px;
+                    }
+                
+                }
+            }
+          }
+    }
+    .container-myprofile{
+        
+        display: flex;
+        justify-content: center;
+        background: linear-gradient(to bottom,$color-menues, white);
+        .frame{
+            width:75% ;
+            margin-top: 60px;
+            margin-left: 50px;
+            .title{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+                h2{
+                    font-family: $fte-ppal;
+                    text-transform: uppercase;
+                    font-size: 24px;
+                    color: $color-sec;
+                }
+                .filtros-miscompras{
+                    width: 20%;
+                    ul{
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        li{
+                            display: flex;
+                            justify-items: center;
+                            align-items: center;
+                            font-family: $fte-sec;
+                            font-size: 13px;
+                            margin-left: 5px;
+                            .fa-angle-down{
+                                color: $color-sec;
+                                margin-left: 5px;
+                            }
+                           
+                        }
+                    }
+                }
+            }
+            .detalleCompras{
+    
+                .row-information{
+                    background-color: white;
+                    padding: 30px 30px;
+                    box-shadow: 1px 2px 3px $color-sec;
+                   margin-bottom: 10px;
+                    width: 100%;
+                    
+                    font-family: $fte-sec;
+                    font-size: 15px;
+                    .row1{
+                        width: 100%;
+                        display: grid;
+                    grid-template-columns: 10% 60% 23% 7%;
+                    grid-template-rows: 1fr;
+                    justify-items: center;
+                    align-items: center;
+                    padding-bottom: 8px;
+                    
+                        .campo{
+                            span{
+                                color: $color-sec;
+                                text-align: center;
+                                cursor: default;
+                                text-align: center;
+                            }
+                            .total-price{
+                                font-weight: bold;
+                                font-size: 17px;
+                            }
+                        }                 
+                       div{
+                        i{
+                            text-align: right;
+                            color: $color-sec;
+                            cursor: pointer;
+                            font-size: 1.2em;
+                            &:hover{
+                                font-size: 1.3em;
+                            }
+                        }
+                        .fa-angle-up{
+                            display: none;
+                        }
+                    }
+                    }
+                    .row2{
+                        display: none;
+                        padding-top: 20px;
+                       width: 90%;
+                       margin-left: auto;
+                       margin-right: auto;
+                        .conceptos{
+                        display: grid;
+                        grid-template-rows: 1fr;
+                        grid-template-columns: 20% 20% 20% 20% 20%;
+                        font-family: $fte-sec;
+                        font-weight: bold;
+                        font-size: 13px;
+                        color: rgb(34, 33, 33);
+                        p{
+                            margin-left: 20px;
+                        }
+                    }
+                        .lista-productos{
+                            margin-top: -9px;
+                            .producto{
+                             display: grid;
+                            grid-template-rows: 1fr;
+                            grid-template-columns: 20% 20% 20% 20% 20%;
+                                p{
+                                    font-size: 13px;
+                                    color: $color-sec;
+                                    margin-left: 20px;
+                                }
+                        }
+                        }
+                    }
+                 
+                }
+            }
+        }
+    }
+
+}

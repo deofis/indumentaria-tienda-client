@@ -1,0 +1,150 @@
+<section>
+    <div id="lateralMenu" (mouseover)="showLateralMenu()" (mouseout)="hiddeLateralMenu()">
+        <!-- <i class="fas fa-angle-down boton"></i> -->
+        <div class="lateral-container" id="lateral-container">
+            <ul class="userOptions">
+                <li [routerLink]="['/user-mis-compras']"><i class="fas fa-shopping-bag"></i>Compras</li>
+                <li><i class="fas fa-heart"></i> Favoritos </li>
+                <li> <i class="fas fa-file-invoice"></i> Mis Datos </li>
+                <li><i class="fas fa-sign-out-alt"></i>Cerrar Sesión </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-myprofile">
+        <div class="frame">
+            <div class="title">
+                <h2>Mis Compras</h2>
+                <div class="filtros-miscompras">
+                    <ul>
+                        <li>Ordenar<i class="fas fa-caret-down"></i></li>
+                        <li>Mostrar <i class="fas fa-caret-down"></i></li>
+                    </ul>
+                </div>
+            </div>
+            <article class="detalleCompras">
+                <div class="row-information">
+                    <div class="row1" >
+                        <div class=" campo date">
+                            <span id="date"> 02/11/19 </span>
+                        </div>
+                        <div class="campo id-compra">
+                            <span>ID: 5a4569bg832--2</span>
+                        </div>
+                        <div class=" campo total">
+                            <span class="total-price">$560000</span>
+                        </div>
+                        <div >
+                        <i class="fas fa-angle-down" (click)="showDetail()"></i>
+                        <i class="fas fa-angle-up" (click)="hideDetail()"></i>
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="conceptos">
+                            <p>Producto:</p>
+                            <p>Descripción:</p>
+                            <p>Pcio Unitario:</p>
+                            <p>Cantidad:</p>
+                            <p>Total:</p>
+                        </div>
+                        <div class="lista-productos">
+                            <div class="producto" >
+                                <p>Samsung Galaxy J2</p>
+                                <p>Negro</p>
+                                <p>$22000</p>
+                                <p>1</p>
+                                <p>$22000</p>
+                            </div>
+                            <div class="producto" >
+                                <p>Iphone 11</p>
+                                <p>Plateado</p>
+                                <p>$170000</p>
+                                <p>2</p>
+                                <p>$340000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>       
+                
+                <div class="row-information">
+                    <div class="row1" >
+                        <div class=" campo date">
+                            <span id="date"> 25/08/19 </span>
+                        </div>
+                        <div class="campo id-compra">
+                            <span>ID: 5adfkj88469bg8325-2</span>
+                        </div>
+                        <div class=" campo total">
+                            <span class="total-price">$2600</span>
+                        </div>
+                        <div >
+                            <i class="fas fa-angle-down" (click)="showDetail()"></i>
+                            <i class="fas fa-angle-up" (click)="hideDetail()"></i>
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="conceptos">
+                            <p>Producto:</p>
+                            <p>Descripción:</p>
+                            <p>Pcio Unitario:</p>
+                            <p>Cantidad:</p>
+                            <p>Total:</p>
+                        </div>
+                        <div class="lista-productos">
+                            <div class="producto" >
+                                <p>Termo Stanley</p>
+                                <p>Verde</p>
+                                <p>$2600</p>
+                                <p>1</p>
+                                <p>$2600</p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div> 
+
+                <div class="row-information">
+                    <div class="row1" >
+                        <div class=" campo date">
+                            <span id="date"> 04/02/18 </span>
+                        </div>
+                        <div class="campo id-compra">
+                            <span>ID: 5a456s767s--3</span>
+                        </div>
+                        <div class=" campo total">
+                            <span class="total-price">$15000</span>
+                        </div>
+                        <div >
+                            <i class="fas fa-angle-down" (click)="showDetail()"></i>
+                            <i class="fas fa-angle-up" (click)="hideDetail()"></i>
+                            </div>
+                    </div>
+                    <div class="row2">
+                        <div class="conceptos">
+                            <p>Producto:</p>
+                            <p>Descripción:</p>
+                            <p>Pcio Unitario:</p>
+                            <p>Cantidad:</p>
+                            <p>Total:</p>
+                        </div>
+                        <div class="lista-productos">
+                            <div class="producto" >
+                                <p>Samsung Galaxy J7</p>
+                                <p>Dorado</p>
+                                <p>$15000</p>
+                                <p>1</p>
+                                <p>$15000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+
+
+
+
+
+            </article>
+        </div>
+    </div>
+
+
+</section>

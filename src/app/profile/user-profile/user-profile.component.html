@@ -3,8 +3,9 @@
         <!-- <i class="fas fa-angle-down boton"></i> -->
         <div class="lateral-container" id="lateral-container" >
             <ul class="userOptions" >
-                <li><i class="fas fa-shopping-bag"></i>Compras</li>
+                <li [routerLink]="['/user-mis-compras']"><i class="fas fa-shopping-bag"></i>Compras</li>
                 <li><i class="fas fa-heart"></i> Favoritos </li>
+                <li> <i class="fas fa-file-invoice"></i> Mis Datos </li>
                 <li><i class="fas fa-sign-out-alt"></i>Cerrar Sesión </li>
             </ul>
         </div>
@@ -26,6 +27,15 @@
                     <p>E-mail: </p> <span>juanperez@hotmail.com</span> <i class="far fa-edit"></i>
                 </div>
                 <div class="item-information">
+                    <p> Fecha de Nacimiento:</p> <span> 02/12/1996</span> <i class="far fa-edit"></i>
+                </div>
+                <div class="item-information">
+                    <p> DNI:</p> <span>37569824</span> <i class="far fa-edit"></i>
+                </div>
+                <div class="item-information">
+                    <p> Dirección:</p> <span>Av Emilio Olmos 33 - CP 5000 - Córdoba, Argentina</span> <i class="far fa-edit"></i>
+                </div>
+                <div class="item-information">
                     <p> Teléfono:</p> <span>351 6598742</span> <i class="far fa-edit"></i>
                 </div>
                 <div class="item-information">
@@ -37,7 +47,7 @@
                 <h2>Mis Tarjetas</h2>
             </div>
             <article class="cards">
-                <div class="card">
+                <div class="card-row">
                     <img src="../../../assets/imagenes/master.png" alt="">
                     <div>
                         <p>Terminada en 256</p>
@@ -46,7 +56,7 @@
                     </div>
                     <p id="delete">Eliminar</p>
                 </div>
-                <div class="card">
+                <div class="card-row">
                     <img src="../../../assets/imagenes/master.png" alt="">
                     <div>
                         <p>Terminada en 256</p>
@@ -55,7 +65,7 @@
                     </div>
                     <p id="delete">Eliminar</p>
                 </div>
-                <div class="card">
+                <div class="card-row">
                     <img src="../../../assets/imagenes/master.png" alt="">
                     <div>
                         <p>Terminada en 256</p>
