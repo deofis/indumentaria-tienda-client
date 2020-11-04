@@ -36,6 +36,7 @@ import { CheckoutComponent } from './cart/components/checkout/checkout/checkout.
 import { PreCheckoutComponent } from './cart/components/checkout/pre-checkout/pre-checkout.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BenefitsRowComponent } from './benefits-row/benefits-row/benefits-row.component';
+import { FormLogInComponent } from './log-in/user/form-log-in/form-log-in.component';
 
 
 
@@ -65,7 +66,8 @@ import { BenefitsRowComponent } from './benefits-row/benefits-row/benefits-row.c
     BenefitsRowComponent,
     PreCheckoutComponent,
     CheckoutComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    FormLogInComponent
   ],
   imports: [
     BrowserModule,

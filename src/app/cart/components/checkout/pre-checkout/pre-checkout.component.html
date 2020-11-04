@@ -1,4 +1,4 @@
-<section>
+<!-- <section>
     <div class="container">
         <p class="title">Con el fin de poder enviarle actualizaciones con respecto a su compra, y para finalizar la operación, debe
             completar los siguientes datos:</p>
@@ -30,5 +30,24 @@
         <p class="leyenda">*Todos los campos son obligatorios.</p>
         <button type="submit"   [routerLink]="['/checkout']" (click)="saveOnlocalStorage()">CONTINUAR</button>
     </div>
-</section>
+</section> -->
 
+<section class="container-precheckout">
+    <article class="subcontainer">
+    <div class="left">
+        <div class="msj">
+            <p>Estimado/a usuario/a, necesitamos que inicie sesión o se registre antes de continuar con el proceso de compra.
+            <br>
+            ¡Muchas gracias!
+            </p>
+        </div>
+    </div>
+    <div class="right">
+        <div class="container-form">
+            <app-form-log-in></app-form-log-in>
+    </div>
+    </div>
+</article>
+
+
+</section>

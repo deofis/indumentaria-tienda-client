@@ -6,11 +6,11 @@ import { Router } from '@angular/router';
 import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL } from '../../../config/config';
 
 @Component({
-  selector: 'app-user-login',
-  templateUrl: './user-login.component.html',
-  styleUrls: ['./user-login.component.scss']
+  selector: 'app-form-log-in',
+  templateUrl: './form-log-in.component.html',
+  styleUrls: ['./form-log-in.component.scss']
 })
-export class UserLoginComponent implements OnInit {
+export class FormLogInComponent implements OnInit {
 
   GOOGLE_AUTH_URL = GOOGLE_AUTH_URL;
   FACEBOOK_AUTH_URL = FACEBOOK_AUTH_URL;
@@ -151,6 +151,5 @@ return(){
   tres.style.alignItems="center";
 }
  ///FIN metodo para ir atras 
-
 
 }
