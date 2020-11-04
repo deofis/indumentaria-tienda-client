@@ -26,13 +26,16 @@ a {
 }
 .contenedor{
     width: 22vw;
+    max-width: 310px;
+    min-width:270px ;
     float: left;
     margin-left: 30px;
     margin-top: 30px;
     margin-bottom: 30px;
     .contenedor-menu {
         width: 22vw;
-        min-width: 300px;
+        min-width: 270px;
+        max-width: 310px;
         font-family: $fte-sec;
         line-height: 20px;
         .menu{
@@ -85,9 +88,9 @@ a {
     font-size: 14px;
     display: flex;
     align-items: baseline;
-    padding-left: 20px;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    padding-left: 70px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     input{
         margin-right: 7px;
     }
@@ -109,6 +112,9 @@ a {
 }
 .pcio-min-max{
     display: flex;
+    padding-left: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 ul {

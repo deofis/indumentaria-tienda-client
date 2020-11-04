@@ -104,7 +104,8 @@ $color-ppal:#fff;
         padding-left: 5px;
         padding-right: 5px;
         font-family: $fte-sec;
-        margin-top: 12px;
+        margin-top: 4px;
+        line-height: 19px;
         &::first-letter{
             text-transform: uppercase;
         }
@@ -144,4 +145,214 @@ $color-ppal:#fff;
     top: 20px;
     margin-top: 20px;
     
+}
+
+@media  screen and (max-width: 400px) {
+
+    .items{
+        width: 100%;
+        max-width: 230px;
+        height: 220px;
+        grid-template-rows: 8px 100px 32px  45px 35px;
+        .i-fondo{
+            i{
+                font-size: 1em;
+                right: 10px;
+                top: 10px;
+            }
+        }                     
+        .img-fondo{
+            height: fit-content;
+            .etiqueta{
+                 padding: 1px 3px;
+            }
+            .off{
+             font-size: 10px;
+            }
+            .destacado{
+             font-size: 9px;
+             font-weight: bold;
+            }
+             img{
+                 width: 100px ;
+                 height: 100px;
+                
+             }
+         }
+        h3{
+            font-size: 17px;
+            margin-top: 0px;
+        }
+        .cont-precios{
+            margin-top: 18px;
+        .precio{
+            font-size: 20px;
+        }
+        span{
+             font-size: 14px;
+        }
+        }
+        a{
+            font-size: 14px;
+           .botones{
+            font-size: 14px;
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-top: 0;
+           }}
+    }
+}
+@media  screen and (min-width: 401px) and (max-width: 700px)   {
+
+    .items{
+        width: 100%;
+        max-width: 215px;
+        height: 220px;
+        grid-template-rows: 8px 100px 32px  45px 35px;
+        .i-fondo{
+            i{
+                font-size: 1em;
+                right: 10px;
+                top: 10px;
+            }
+        }                     
+        .img-fondo{
+            height: fit-content;
+            .etiqueta{
+                 padding: 1px 3px;
+            }
+            .off{
+             font-size: 10px;
+            }
+            .destacado{
+             font-size: 9px;
+             font-weight: bold;
+            }
+             img{
+                 width: 100px ;
+                 height: 100px;
+                
+             }
+         }
+        h3{
+            font-size: 17px;
+            margin-top: 0px;
+        }
+        .cont-precios{
+            margin-top: 18px;
+        .precio{
+            font-size: 20px;
+        }
+        span{
+             font-size: 14px;
+        }
+        }
+        a{
+            font-size: 14px;
+           .botones{
+            font-size: 14px;
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-top: 0;
+           }}
+    }
+}
+@media  screen and (min-width: 701px) and (max-width: 900px)   {
+
+    .items{
+        width: 100%;
+        height: 220px;
+        grid-template-rows: 8px 100px 32px  45px 35px;
+        .i-fondo{
+            i{
+                font-size: 1em;
+                right: 10px;
+                top: 10px;
+            }
+        }                     
+        .img-fondo{
+            height: fit-content;
+            .etiqueta{
+                 padding: 1px 3px;
+            }
+            .off{
+             font-size: 10px;
+            }
+            .destacado{
+             font-size: 9px;
+             font-weight: bold;
+            }
+             img{
+                 width: 100px ;
+                 height: 100px;
+                
+             }
+         }
+        h3{
+            font-size: 17px;
+            margin-top: 0px;
+        }
+        .cont-precios{
+            margin-top: 18px;
+        .precio{
+            font-size: 20px;
+        }
+        span{
+             font-size: 14px;
+        }
+        }
+        a{
+            font-size: 14px;
+           .botones{
+            font-size: 14px;
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-top: 0;
+           }}
+    }
+}
+@media  screen and (min-width: 901px) and (max-width: 1200px)   {
+
+    .items{
+        width: 100%;
+        max-width: 270px;
+        height: 250px;
+        grid-template-rows: 8px 120px 12px  65px 45px;
+        .i-fondo{
+            i{
+                font-size: 1em;
+                right: 10px;
+                top: 10px;
+            }
+        }                     
+        .img-fondo{
+            height: fit-content;
+             img{
+                 width: 120px ;
+                 height: 120px;
+                
+             }
+         }
+        h3{
+            font-size: 18px;
+            margin-top: 4px;
+        }
+        .cont-precios{
+            margin-top: 35px;
+        .precio{
+            font-size: 22px;
+        }
+        span{
+             font-size: 14px;
+        }
+        }
+        a{
+            font-size: 16px;
+           .botones{
+            font-size: 16px;
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-top: 0;
+           }}
+    }
 }
