@@ -37,11 +37,12 @@ $color-ppal:#fff;
             display: flex;
             justify-content: space-between;
             padding: 0px 15px 0px 15px;
-            width: 86vw;
-            #izquierda{
+            width: 86%;
+         
+            .izquierda{
                 display: flex;
                 justify-content: space-around;
-                width: 50vw;
+                width: 50%;
               
                 #img-sec{
                     display: grid;
@@ -90,7 +91,7 @@ $color-ppal:#fff;
                 border: none;
                 border-radius: 15px;
                 margin-left: 3vw;
-                width: 28vw;
+                width: 28%;
                 position: relative;
                 #caja-titulo{
                     display: flex;
@@ -397,214 +398,347 @@ $color-ppal:#fff;
     }
 }
 
-@media screen and (max-width: 500px){
-    #img-ppal{
-        
-        display: block;
-        width:3000px;
-        height: 30000px;
-        background-color: red;
-    }
-    section{
-        .contenedor-uno{
-            display: flex;
-            flex-direction: column;
-            width: 98vw;
-            #izquierda{
+@media screen and (max-width: 760px){
+    #contenedor-vermas{
+        section{
+            .contenedor-uno{
                 display: flex;
-                flex-direction: column-reverse;
+                flex-direction: column;
                 justify-content: space-between;
-                align-items: center;
-                width:100%;
-              
-                .img-sec{
-                    width: 20%;
+                width: 95%;
+                max-width: 500px;
+                #izquierda{
+                    display: unset;
                     display: flex;
-                    flex-direction:column;
-                
-                }
-                
-            }
-            // #derecha{
-            //     border: none;
-            //     border-radius: 15px;
-            //     margin-left: 3vw;
-            //     width: 28vw;
-            //     position: relative;
-            //     #caja-titulo{
-            //         display: flex;
-            //         justify-content: space-between;
-            //         align-items: center;
-            //         width: 100%;
-            //         padding-right: 5px;
-            //         margin-bottom: 15px;
-            //         margin-top: 7px;
-            //         h2{
-            //             font-size: 33px;
-            //             font-family: $fte-ppal;
-            //             text-transform: uppercase;
-            //             width: 20vw;
-            //             font-weight: bolder;
-            //             color: $color-sec;
-            //         }
-            //         div{
-            //             display: flex;
-            //             justify-content: space-between;
-            //             width:5vw ;
-            //             align-items: center;
-            //             a{
-            //              text-decoration: none;
+                    flex-direction: column-reverse;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                  
+                    #img-sec{
+                        margin-top: 0px;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        width: 100%;
+                        max-width: 480px;
+                       
+                        #img-uno{
+                            background-image: url(https://d26lpennugtm8s.cloudfront.net/stores/086/894/products/img-20200518-wa00101-9587272a3a2cc19c4715898271067988-1024-1024.jpg);
+                        
+                        }
+                        #img-dos{
+                            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQrVkIGh9jsHdgQi8RYojCJmVbWcvktrY4wWA&usqp=CAU);
+                        }
+                        #img-cuatro{
+                            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQrVkIGh9jsHdgQi8RYojCJmVbWcvktrY4wWA&usqp=CAU);
+                        }
+                        #img-tres{
+                            background-image: url(https://d2ye0ltusw47tz.cloudfront.net/196572-large_default/termo-stanley-clasico-14-lts-plegable-rojo-10-08999-007.jpg);
                             
-            //                 i{
-            //                     font-size: 1.4em;
-            //                     color: $color-sec;
-            //                     &:hover{
-            //                         font-size: 1.6em;
-            //                     }
-            //                 }
-            //             }
+                        }
+                        #img-cinco{
+                            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQrVkIGh9jsHdgQi8RYojCJmVbWcvktrY4wWA&usqp=CAU);
+                        }
+                        #img-seis{
+                            background-image: url(https://d2ye0ltusw47tz.cloudfront.net/196572-large_default/termo-stanley-clasico-14-lts-plegable-rojo-10-08999-007.jpg);
+                        }
+                    }
+                    #img-ppal{
+                        width: 95vw;
+                        max-width: 460px;
+                        height:87.5vw; 
+                        max-height: 460px;
+                        margin-top: -20px;
+                        background-image: url(https://d26lpennugtm8s.cloudfront.net/stores/086/894/products/img-20200518-wa00101-9587272a3a2cc19c4715898271067988-1024-1024.jpg);
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                     
                         
-            //         }
-            //     }
-            //     #caja-precio{
-            //         display: flex;                   
-            //         h3{
-            //             font-family: $fte-sec;
-            //             font-weight: normal;
-            //             font-size: 40px;
-            //             margin-bottom: 25px;
-            //             color: $color-sec;
-            //         }
-            //         .oferta{
-            //             margin-left: 10px;
-            //             span{
-            //                 font-family: $fte-sec;
-            //                 text-decoration: line-through;
-            //                 color: $color-sec;
-            //                 color: rgb(187, 24, 24);
-            //                 margin-left: auto;
-            //                 margin-right: auto;
-            //             }
-            //             p{
-            //                 display: block;
-            //                 background-color: rgb(187, 24, 24);
-            //                 color: white;
-            //                 font-family: $fte-sec;
-            //                 padding: 1px 6px;
-            //                 font-size: 14px;
-            //                 text-align: center;
-            //                 margin-left: auto;
-            //                 box-shadow: 2px 4px 3px rgba(0, 0, 0, 0.719);
-            //             }
-            //         }
-            //     }
-            //     #caja-carrito{
-            //         margin-top: 25px;
-            //         display: flex;
-            //         flex-direction: column;
-            //         .color-quantity{
-            //             display: flex;
-            //             justify-content: space-around;
-            //             width: 100%;
-            //             margin-left: auto;
-            //             margin-right: auto;
-            //             .modify-quantity{
-            //                 border: none;
-            //                 border-radius: 5px;
-            //                 display: flex;
-            //                 justify-content: space-around;
-            //                 align-items: center;
-            //                 width: 25%;
-            //                 i{
-            //                     color: $color-sec;
-            //                     font-size: 1em;
-            //                 }
-            //                 .fa-minus-circle{
-            //                     &:hover{
-            //                         font-size: 1.1em;
-            //                         cursor: pointer;
-                                   
-            //                     }
-            //                 }
-            //                 .fa-plus-circle{
-            //                     &:hover{
-            //                         font-size: 1.1em;
-            //                         cursor: pointer;
-            //                     }
-            //                 }
-            //                 .item-quantity{
-            //                     font-weight: bold;
-            //                     font-family: $fte-ppal;
-            //                     font-size: 17px;
-            //                 }
-            //             }
-            //             #color{
-            //                 width: 120px;
-            //                 height: 30px;
-            //                 font-family: $fte-sec;
-            //                 font-size: 17px;
-            //                 text-align: center;
-            //                 font-weight: bold;
-            //                 border: 1px solid $color-ter;
-            //                 border-radius: 5px;
-            //                 outline: none;
-            //                 padding-left: 10px;
-            //                 &:focus{
-            //                     outline: none;
-            //                 }
-            //             }
-            //         }
-            //         .talles{
-            //             display: flex;
-            //             justify-content: space-around;
-            //             width: 90%;
-            //             margin-top: 25px;
-            //             align-items: center;
-            //             div{
-            //                 input{
-            //                     margin-right: 5px;
-            //                 }
-            //                 label{
-            //                     font-family: $fte-sec;
-            //                 }
-            //             }
-                        
-            //         }
-            //         p{
-            //             font-family: $fte-sec;
-            //             font-style: italic;
-            //             color: $color-ter;
-            //             display: block;
-            //             margin-top: -13px;
-            //             font-size: 13px;
-                    
-
-            //         }
-            //         .btn{
-            //             background-color: $color-sec;
-            //             color: white;
-            //             font-family: $fte-ppal;
-            //             text-transform: uppercase;
-            //             font-size: 18px;
-            //             border: 0px ;
-            //             padding: 8px 15px;
-            //             align-self: center;
-            //             box-sizing: border-box;
-            //             width: 100%;
-            //             border-radius: 0px;                        
-            //             &:hover{
-            //                 transform: scale(1.03);
-            //             }
-            //         }
-            //         #btn-carrito{
-            //             margin-bottom: 10px;
-            //         }
-            //         #btn-comprar{
-            //             margin-bottom: 15px;
-            //         }
-            //     }
-            // }
+                    }
+                }
+                #derecha{
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 100%;
+                    position: relative;
+                    #caja-titulo{
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: flex-start;;
+                        width: 100%;
+                        max-width: 500px;
+                        padding-right: 5px;
+                        margin-bottom: 5px;
+                        margin-top: 25px;
+                        h2{
+                            font-size: 25px;
+                            width: 75%;
+                        }
+                        div{
+                            width:20%;
+                            max-width: 50px;
+                            a{
+                                i{
+                                    font-size: 1.1em;
+                                }
+                            }
+                        }
+                    }
+                    #caja-precio{
+                        display: flex;  
+                        justify-content: center;
+                        align-items: flex-end;                 
+                        h3{
+                            font-size: 33px;
+                            margin-bottom: 20px;
+                        }
+                    }
+                    #caja-carrito{
+                        .color-quantity{
+                            #color{
+                                width: 90px;
+                                height: 27px;
+                                font-family: $fte-sec;
+                                font-size: 17px;
+                                text-align: center;
+                                font-weight: bold;
+                                border: 1px solid $color-ter;
+                                border-radius: 5px;
+                                outline: none;
+                                padding-left: 10px;
+                                &:focus{
+                                    outline: none;
+                                }
+                            }
+                        }
+                        .talles{
+                            width: 100%;
+                            max-width: 500px;
+                        }
+                        .btn{
+                            font-size: 16px;
+                            padding: 5px 15px;
+                            box-shadow: 1px 2px 3px $color-ter;
+                            max-width: 500px;
+                        }
+                        #btn-carrito{
+                            margin-bottom: 10px;
+                        }
+                        #btn-comprar{
+                            margin-bottom: 15px;
+                        }
+                    }
+                }
+            }
+            .contenedor-dos{
+                margin-top: 15px;
+                #datos{
+                    display: initial;
+                    justify-content: space-around;
+                    border-bottom: 1px solid $color-ter;
+                    padding-bottom: 8px;
+                    p{
+                        font-size: 15px;
+                    }
+                }
+                #descripcion-producto{
+                    width: 90%;
+                    padding-top: 20px;
+                    padding-bottom: 50px;
+                    h3{
+                        font-size:21px ;
+                        margin-bottom: 15px;
+                    }
+                    p{
+                        font-size: 15px;
+                        font-family: $fte-sec;
+                        line-height: 25px; 
+                        color: $color-ter;
+                    }
+                }
+    
+            }
+            .contenedor-tres{
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                    height: fit-content;
+                    margin-bottom: 30px;
+                    width: 90%;
+                    margin-top: 25px;
+                #titulo-a{
+                    font-size: 17px;
+                    padding-bottom: 0px;
+                    text-align: center;
+                    animation: none;                   
+                }
+    
+                #pregunta{
+                    font-size: 15px;
+                    height: 150px;
+                    &:focus{
+                        border: 2px solid $color-sec;
+                    }
+                }
+                div{
+                    background:none;
+                    height: fit-content;
+                    padding: 5px 10px;
+                    #cartel{
+                        font-size: 15px;
+                    }
+                    }
+                button{
+                    width: 90%;
+                    background-color: $color-menues;
+                    height: 39px;
+                    border-radius: 8px 0px 8px 8px;                 
+                    }                    
+            
+    
+            }
         }
     }
-
+}
+@media screen and (min-width: 761px) and (max-width: 1100px){
+    #contenedor-vermas{
+        section{
+            .contenedor-uno{
+                display: flex;
+                justify-content: space-between;
+                padding: 0px 15px 0px 15px;
+                width: 86%;
+                #izquierda{
+                    display: flex;
+                    justify-content: space-around;
+                    width: 56%;                  
+                    #img-sec{
+                        display: grid;
+                        grid-template-columns: 1fr;
+                        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+                        align-items: center;
+                       
+                        #img-uno{
+                            background-image: url(https://d26lpennugtm8s.cloudfront.net/stores/086/894/products/img-20200518-wa00101-9587272a3a2cc19c4715898271067988-1024-1024.jpg);
+                        }
+                        #img-dos{
+                            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQrVkIGh9jsHdgQi8RYojCJmVbWcvktrY4wWA&usqp=CAU);
+                        }
+                        #img-cuatro{
+                            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQrVkIGh9jsHdgQi8RYojCJmVbWcvktrY4wWA&usqp=CAU);
+                        }
+                        #img-tres{
+                            background-image: url(https://d2ye0ltusw47tz.cloudfront.net/196572-large_default/termo-stanley-clasico-14-lts-plegable-rojo-10-08999-007.jpg);
+                            
+                        }
+                        #img-cinco{
+                            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQrVkIGh9jsHdgQi8RYojCJmVbWcvktrY4wWA&usqp=CAU);
+                        }
+                        #img-seis{
+                            background-image: url(https://d2ye0ltusw47tz.cloudfront.net/196572-large_default/termo-stanley-clasico-14-lts-plegable-rojo-10-08999-007.jpg);
+                        }
+                    }
+                    #img-ppal{
+                        width: 45vw;
+                        height:470px; 
+                    }
+                }
+                #derecha{
+                    margin-left: 1vw;
+                    width: 38%;
+                    position: relative;
+                    #caja-titulo{
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: flex-start;;
+                        width: 100%;
+                        max-width: 500px;
+                        padding-right: 5px;
+                        margin-bottom: 5px;
+                        margin-top: 25px;
+                        h2{
+                            font-size: 25px;
+                            width: 75%;
+                        }
+                        div{
+                            width:20%;
+                            max-width: 60px;
+                            a{
+                                i{
+                                    font-size: 1.2em;
+                                }
+                            }
+                        }
+                    }
+                    #caja-precio{
+                        display: flex;                  
+                        h3{
+                            font-size: 33px;
+                            margin-bottom: 20px;
+                        }
+                    }
+                    #caja-carrito{
+                        .color-quantity{
+                            #color{
+                                width: 90px;
+                                height: 27px;
+                                font-family: $fte-sec;
+                                font-size: 17px;
+                                text-align: center;
+                                font-weight: bold;
+                                border: 1px solid $color-ter;
+                                border-radius: 5px;
+                                outline: none;
+                                padding-left: 10px;
+                                &:focus{
+                                    outline: none;
+                                }
+                            }
+                        }
+                        .talles{
+                            width: 100%;
+                            max-width: 500px;
+                        }
+                        .btn{
+                            font-size: 16px;
+                            padding: 5px 15px;
+                            box-shadow: 1px 2px 3px $color-ter;
+                            max-width: 500px;
+                        }
+                        #btn-carrito{
+                            margin-bottom: 10px;
+                        }
+                        #btn-comprar{
+                            margin-bottom: 15px;
+                        }
+                    }
+                }
+            }
+            .contenedor-tres{
+               
+                #titulo-a{
+                    font-size: 17px;
+                    padding-bottom: 0px;
+                    text-align: center;
+                    animation: none;                   
+                }
+                div{
+                    
+                    padding: 5px 10px;
+                    #cartel{
+                        font-size: 13px;
+                    }
+                    }
+                button{
+                    height: 39px;                 
+                    }                    
+            
+    
+            }
+           
+        }
+    }
 }
