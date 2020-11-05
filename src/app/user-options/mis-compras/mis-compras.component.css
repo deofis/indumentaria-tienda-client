@@ -251,6 +251,14 @@ section .container-miscompras .frame .detalleCompras .row-information .row1 .cam
   font-size: 17px;
 }
 
+section .container-miscompras .frame .detalleCompras .row-information .row1 div {
+  position: relative;
+}
+
+section .container-miscompras .frame .detalleCompras .row-information .row1 div:hover > ul {
+  display: block;
+}
+
 section .container-miscompras .frame .detalleCompras .row-information .row1 div i {
   text-align: right;
   color: #575353;
@@ -264,6 +272,39 @@ section .container-miscompras .frame .detalleCompras .row-information .row1 div 
 
 section .container-miscompras .frame .detalleCompras .row-information .row1 div .fa-angle-up {
   display: none;
+}
+
+section .container-miscompras .frame .detalleCompras .row-information .row1 div ul {
+  display: none;
+  list-style: none;
+  position: absolute;
+  top: 25px;
+  right: -3px;
+  width: 105px;
+  background: -webkit-gradient(linear, left bottom, left top, from(#f3ecec), to(white));
+  background: linear-gradient(to top, #f3ecec, white);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 1px 2px 2px #aca5a5;
+          box-shadow: 1px 2px 2px #aca5a5;
+  cursor: pointer;
+  padding-bottom: 3px;
+  border-radius: 3px 0 3px 3px;
+}
+
+section .container-miscompras .frame .detalleCompras .row-information .row1 div ul .opciones-menu {
+  width: 100%;
+  color: #222121;
+  text-align: right;
+  font-size: 13px;
+  font-family: "Open Sans", sans-serif;
+  margin-right: 0px;
+  padding: 5px 5px;
+  display: block;
+}
+
+section .container-miscompras .frame .detalleCompras .row-information .row1 div ul .opciones-menu:hover {
+  background-color: #dbd8d8;
 }
 
 section .container-miscompras .frame .detalleCompras .row-information .row2 {
@@ -335,6 +376,16 @@ section .container-miscompras .frame .detalleCompras .row-information .row2 .lis
   section .container-miscompras .frame .title {
     padding-bottom: 0px;
     margin-bottom: 8px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
   }
   section .container-miscompras .frame .title h2 {
     font-size: 18px;
@@ -357,7 +408,7 @@ section .container-miscompras .frame .detalleCompras .row-information .row2 .lis
     width: 100%;
     display: -ms-grid;
     display: grid;
-        grid-template-areas: "id  arrow" "date price";
+        grid-template-areas: "id  id menu" "arrow date price";
     -ms-grid-columns: none;
         grid-template-columns: none;
     -ms-grid-rows: none;
@@ -379,14 +430,21 @@ section .container-miscompras .frame .detalleCompras .row-information .row2 .lis
     font-size: 17px;
   }
   section .container-miscompras .frame .detalleCompras .row-information .row1 .arrow {
-    -ms-grid-row: 1;
-    -ms-grid-column: 2;
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
     grid-area: arrow;
-    margin-right: -100px;
+    margin-left: -45px;
+    margin-top: 10px;
+  }
+  section .container-miscompras .frame .detalleCompras .row-information .row1 .menu {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+    grid-area: menu;
+    right: -47px;
   }
   section .container-miscompras .frame .detalleCompras .row-information .row1 .total {
     -ms-grid-row: 2;
-    -ms-grid-column: 2;
+    -ms-grid-column: 3;
     grid-area: price;
     margin-top: 15px;
   }
@@ -396,6 +454,7 @@ section .container-miscompras .frame .detalleCompras .row-information .row2 .lis
   section .container-miscompras .frame .detalleCompras .row-information .row1 .id-compra {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
     grid-area: id;
     -ms-grid-column-align: unset;
         justify-self: unset;
@@ -406,7 +465,7 @@ section .container-miscompras .frame .detalleCompras .row-information .row2 .lis
   }
   section .container-miscompras .frame .detalleCompras .row-information .row1 .date {
     -ms-grid-row: 2;
-    -ms-grid-column: 1;
+    -ms-grid-column: 2;
     grid-area: date;
     margin-top: 15px;
     margin-left: -75px;

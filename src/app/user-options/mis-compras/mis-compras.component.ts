@@ -6,33 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mis-compras.component.scss']
 })
 export class MisComprasComponent implements OnInit {
- compra1=[
-   {id:"s6726s6d88",
-   productos:[{nombre:"Samsung Galaxy S20",precio:25000,cantidad:1,color:"Negro"},
-              {nombre:"Termo Stanley",precio:2600,cantidad:2,color:"Verde"}],
-   fecha:"02/05/20",
-   total:30200
-  }]
- compra2=[
-  {id:"s6792js8a8",
-  productos:[{nombre:"Iphone 11",precio:240000,cantidad:1,color:"Blanco"},],
-  fecha:"18/12/19",
-  total:240000,
- }]
- compra3=[
- {id:"a23dg53fs8",
- productos:[{nombre:"Samsung Galaxy J2",precio:28600,cantidad:2,color:"Blanco"},],
- fecha:"05/02/18d",
- total:57200,
-}]
-
-compras=[this.compra1,this.compra2,this.compra3]
-  constructor() {
+ constructor() {
 
    }
 
   ngOnInit(): void {
-    console.log(this.compra1)
   }
   //// **** *** LATERAL MENU *** **** /////
   showLateralMenu(){
