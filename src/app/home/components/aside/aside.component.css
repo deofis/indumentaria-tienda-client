@@ -21,6 +21,8 @@ a {
 
 .contenedor {
   width: 22vw;
+  max-width: 310px;
+  min-width: 270px;
   float: left;
   margin-left: 30px;
   margin-top: 30px;
@@ -29,7 +31,8 @@ a {
 
 .contenedor .contenedor-menu {
   width: 22vw;
-  min-width: 300px;
+  min-width: 270px;
+  max-width: 310px;
   font-family: "Open Sans", sans-serif;
   line-height: 20px;
 }
@@ -85,6 +88,8 @@ a {
       -ms-flex-align: baseline;
           align-items: baseline;
   padding-left: 70px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .filtro input {
@@ -92,7 +97,7 @@ a {
 }
 
 .filtro .pcio {
-  width: 30%;
+  width: 35%;
   font-size: 13px;
   padding-top: 2px;
   padding-bottom: 2px;
@@ -100,7 +105,7 @@ a {
 }
 
 .filtro i {
-  font-size: 1.1em;
+  font-size: 1.2em;
 }
 
 .filtro i:hover {
@@ -114,13 +119,16 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding-left: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 ul {
   list-style: none;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 900px) {
   .contenedor {
     display: none;
   }

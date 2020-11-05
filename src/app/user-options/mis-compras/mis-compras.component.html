@@ -1,11 +1,11 @@
 <section>
     <div id="lateralMenu" (mouseover)="showLateralMenu()" (mouseout)="hiddeLateralMenu()">
-        <!-- <i class="fas fa-angle-down boton"></i> -->
+            <div id="openMenu" class="boton"> <i  class="fas fa-angle-right "></i> </div>
         <div class="lateral-container" id="lateral-container">
             <ul class="userOptions">
                 <li [routerLink]="['/user-mis-compras']"><i class="fas fa-shopping-bag"></i>Compras</li>
                 <li><i class="fas fa-heart"></i> Favoritos </li>
-                <li> <i class="fas fa-file-invoice"></i> Mis Datos </li>
+                <li [routerLink]="['/user-profile']"> <i class="fas fa-file-invoice"></i> Mis Datos </li>
                 <li><i class="fas fa-sign-out-alt"></i>Cerrar Sesión </li>
             </ul>
         </div>
@@ -16,14 +16,30 @@
                 <h2>Mis Compras</h2>
                 <div class="filtros-miscompras">
                     <ul>
-                        <li>Ordenar<i class="fas fa-caret-down"></i></li>
-                        <li>Mostrar <i class="fas fa-caret-down"></i></li>
+                        <li class="ordenar">
+                            <div> Ordenar<i class="fas fa-caret-down"></i></div>
+                            <ul>
+                                <li class="opciones">Más recientes</li>
+                                <li class="opciones">Más antiguos</li>
+                            </ul>
+                        </li>
+                        <li class="ordenar">
+                           <div> Mostrar <i class="fas fa-caret-down"></i></div>
+                            <ul>
+                                <li class="opciones">Pendientes</li>
+                                <li class="opciones"> Recibidos</li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
             <article class="detalleCompras">
                 <div class="row-information">
-                    <div class="row1" >
+                    <div class="row1"  id="cont-compra1">
+                        <div  class="arrow">
+                            <i class="fas fa-angle-down"id="down1"(click)="showDetail1()"></i>
+                            <i class="fas fa-angle-up" id="up1" (click)="hideDetail1()"></i>
+                        </div>
                         <div class=" campo date">
                             <span id="date"> 02/11/19 </span>
                         </div>
@@ -33,12 +49,10 @@
                         <div class=" campo total">
                             <span class="total-price">$560000</span>
                         </div>
-                        <div  class="arrow">
-                        <i class="fas fa-angle-down" (click)="showDetail()"></i>
-                        <i class="fas fa-angle-up" (click)="hideDetail()"></i>
-                        </div>
+                        <i class="fas fa-ellipsis-v"></i>
+                        
                     </div>
-                    <div class="row2">
+                    <div class="row2" id="compra1">
                         <div class="conceptos">
                             <p>Producto:</p>
                             <p>Descripción:</p>
@@ -66,45 +80,11 @@
                 </div>       
                 
                 <div class="row-information">
-                    <div class="row1" >
-                        <div class=" campo date">
-                            <span id="date"> 25/08/19 </span>
-                        </div>
-                        <div class="campo id-compra">
-                            <span>ID: 5adfkj8g8325-2</span>
-                        </div>
-                        <div class=" campo total">
-                            <span class="total-price">$2600</span>
-                        </div>
+                    <div class="row1" id="cont-compra2">
                         <div  class="arrow" >
-                            <i class="fas fa-angle-down" (click)="showDetail()"></i>
-                            <i class="fas fa-angle-up" (click)="hideDetail()"></i>
-                        </div>
-                    </div>
-                    <div class="row2">
-                        <div class="conceptos">
-                            <p>Producto:</p>
-                            <p>Descripción:</p>
-                            <p>Pcio Unitario:</p>
-                            <p>Cantidad:</p>
-                            <p>Total:</p>
-                        </div>
-                        <div class="lista-productos">
-                            <div class="producto" >
-                                <p> <span class="ver-mobile">Producto: </span>Termo Stanley</p>
-                                <p> <span class="ver-mobile">Descripción: </span>Verde</p>
-                                <p><span class="ver-mobile">Pcio Unitario: </span>$2600</p>
-                                <p> <span class="ver-mobile">Cantidad: </span>1</p>
-                                <p><span class="ver-mobile">Total: </span> $2600</p>
-
+                            <i class="fas fa-angle-down"id="down2" (click)="showDetail2()"></i>
+                            <i class="fas fa-angle-up" id="up2" (click)="hideDetail2()"></i>
                             </div>
-                            
-                        </div>
-                    </div>
-                </div> 
-
-                <div class="row-information">
-                    <div class="row1" >
                         <div class=" campo date">
                             <span id="date"> 04/02/18 </span>
                         </div>
@@ -114,12 +94,10 @@
                         <div class=" campo total">
                             <span class="total-price">$15000</span>
                         </div>
-                        <div  class="arrow" >
-                            <i class="fas fa-angle-down" (click)="showDetail()"></i>
-                            <i class="fas fa-angle-up" (click)="hideDetail()"></i>
-                            </div>
+                    
+                            <i class="fas fa-ellipsis-v"></i>
                     </div>
-                    <div class="row2">
+                    <div class="row2"  id="compra2" >
                         <div class="conceptos">
                             <p>Producto:</p>
                             <p>Descripción:</p>

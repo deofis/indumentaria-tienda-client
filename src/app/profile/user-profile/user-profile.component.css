@@ -9,11 +9,34 @@ section {
 }
 
 section #lateralMenu {
-  background-color: white;
+  background-color: #222121;
   width: 30px;
+  padding-bottom: 450px;
   position: relative;
-  z-index: 1;
-  border-radius: 0px 5px 5px 0px;
+  z-index: 4;
+  -webkit-box-shadow: 1px 2px 2px #aca5a5;
+          box-shadow: 1px 2px 2px #aca5a5;
+}
+
+section #lateralMenu .boton {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 45px;
+  margin-left: 10px;
+  top: 145px;
+  width: 35px;
+  height: 55px;
+  border-radius: 0 30px 30px 0;
+  font-size: 2.5em;
+  background-color: #222121;
+  color: white;
+}
+
+section #lateralMenu .boton i {
+  -webkit-transform: translateY(6px);
+          transform: translateY(6px);
+  margin-left: 5px;
+  display: block;
 }
 
 section #lateralMenu .lateral-container {
@@ -30,8 +53,9 @@ section #lateralMenu .lateral-container .userOptions {
 }
 
 section #lateralMenu .lateral-container .userOptions li {
+  outline: none;
   font-size: 16px;
-  color: grey;
+  color: #fff;
   width: 100%;
   padding: 10px 18px;
   -webkit-box-sizing: border-box;
@@ -53,9 +77,9 @@ section #lateralMenu .lateral-container .userOptions li:last-child {
 }
 
 section #lateralMenu .lateral-container .userOptions li:hover {
-  background-color: #2d7be0;
+  background-color: #fff;
   cursor: pointer;
-  color: white;
+  color: #575353;
 }
 
 section #lateralMenu .lateral-container .userOptions li:hover > i {
@@ -74,12 +98,13 @@ section .container-myprofile {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-color: rgba(45, 123, 224, 0.192);
+  background: -webkit-gradient(linear, left top, left bottom, from(#f3ecec), to(white));
+  background: linear-gradient(to bottom, #f3ecec, white);
 }
 
 section .container-myprofile .frame {
   width: 75%;
-  margin-top: 60px;
+  margin-top: 30px;
   margin-left: 50px;
 }
 
@@ -98,13 +123,17 @@ section .container-myprofile .frame .title {
 
 section .container-myprofile .frame .title h2 {
   font-family: "Poppins", sans-serif;
-  color: #103d77;
+  text-transform: uppercase;
+  font-size: 24px;
+  color: #575353;
 }
 
 section .container-myprofile .frame .title #save {
-  background-color: #103d77;
+  display: none;
+  background-color: #222121;
   color: white;
   font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
   width: 140px;
   height: 35px;
   border-radius: 30px;
@@ -113,6 +142,7 @@ section .container-myprofile .frame .title #save {
 }
 
 section .container-myprofile .frame .title #save:hover {
+  background-color: #575353;
   -webkit-transform: scale(1.03);
           transform: scale(1.03);
   -webkit-box-shadow: 1px 2px 1px grey;
@@ -122,7 +152,8 @@ section .container-myprofile .frame .title #save:hover {
 section .container-myprofile .frame .personalInformation {
   background-color: white;
   padding: 30px 60px;
-  border-radius: 0px 20px 20px 20px;
+  -webkit-box-shadow: 1px 2px 3px #575353;
+          box-shadow: 1px 2px 3px #575353;
   margin-bottom: 60px;
 }
 
@@ -133,9 +164,10 @@ section .container-myprofile .frame .personalInformation .item-information {
       grid-template-columns: 20% 70% 10%;
   -ms-grid-rows: 1fr;
       grid-template-rows: 1fr;
-  font-family: "Poppins", sans-serif;
-  padding-bottom: 8px;
-  padding-top: 8px;
+  font-family: "Open Sans", sans-serif;
+  padding-bottom: 1px;
+  padding-top: 5px;
+  font-size: 15px;
 }
 
 section .container-myprofile .frame .personalInformation .item-information:hover {
@@ -154,7 +186,7 @@ section .container-myprofile .frame .personalInformation .item-information span 
 
 section .container-myprofile .frame .personalInformation .item-information i {
   text-align: right;
-  color: #2d7be0;
+  color: #575353;
   cursor: pointer;
 }
 
@@ -168,51 +200,63 @@ section .container-myprofile .frame .title2 {
 
 section .container-myprofile .frame .title2 h2 {
   font-family: "Poppins", sans-serif;
-  color: #103d77;
+  color: #575353;
+  text-transform: uppercase;
+  font-size: 24px;
 }
 
 section .container-myprofile .frame .cards {
   background-color: white;
   padding: 40px 60px;
-  border-radius: 0px 20px 20px 20px;
-  margin-bottom: 50px;
+  -webkit-box-shadow: 1px 2px 3px #575353;
+          box-shadow: 1px 2px 3px #575353;
+  margin-bottom: 70px;
 }
 
-section .container-myprofile .frame .cards .card {
+section .container-myprofile .frame .cards .card-row {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 20% 70% 10%;
-      grid-template-columns: 20% 70% 10%;
+  -ms-grid-columns: 15% 75% 10%;
+      grid-template-columns: 15% 75% 10%;
   -ms-grid-rows: 1fr;
       grid-template-rows: 1fr;
   margin-bottom: 10px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-bottom: 1px solid #aca5a5;
+  margin-top: 10px;
 }
 
-section .container-myprofile .frame .cards .card img {
+section .container-myprofile .frame .cards .card-row img {
   width: 75px;
   height: 42px;
   cursor: default;
 }
 
-section .container-myprofile .frame .cards .card div {
+section .container-myprofile .frame .cards .card-row div {
   font-family: "Poppins", sans-serif;
 }
 
-section .container-myprofile .frame .cards .card div p {
+section .container-myprofile .frame .cards .card-row div p {
   color: grey;
   font-size: 13px;
+  line-height: 14px;
   cursor: default;
 }
 
-section .container-myprofile .frame .cards .card div p:first-child {
+section .container-myprofile .frame .cards .card-row div p:first-child {
   font-size: 16px;
   color: black;
 }
 
-section .container-myprofile .frame .cards .card #delete {
+section .container-myprofile .frame .cards .card-row #delete {
   font-family: "Poppins", sans-serif;
-  color: #2d7be0;
+  color: #575353;
   cursor: pointer;
+}
+
+section .container-myprofile .frame .cards .card-row #delete:hover {
+  color: #aca5a5;
 }
 
 .bg-menu {

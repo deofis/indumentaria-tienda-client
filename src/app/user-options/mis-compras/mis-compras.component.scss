@@ -21,15 +21,24 @@ section{
         position: relative;
         z-index: 4;
         box-shadow: 1px 2px 2px $color-ter;
-        // .boton{
-        //     position: sticky;
-        //     left:35px;
-        //     top: 380px;
-        //     font-size: 3em;
-        //     background-color: $color-sec;
-        //     color: white;
-            
-        // }
+        .boton{
+            position: sticky;
+            left:45px;
+            margin-left: 10px;
+            top: 145px;
+            width: 35px;
+            height: 55px;
+            border-radius: 0 30px 30px 0;
+            font-size: 2.5em;
+            background-color:rgb(34, 33, 33);
+            color: white;
+            i{
+               
+              transform: translateY(6px);
+              margin-left: 5px;
+                display: block;
+            }
+        }
         .lateral-container{
             position: sticky;
             top: 20vh;
@@ -76,7 +85,7 @@ section{
         background: linear-gradient(to bottom,$color-menues, white);
         .frame{
             width:75% ;
-            margin-top: 60px;
+            margin-top: 30px;
             margin-left: 50px;
             .title{
                 display: flex;
@@ -96,7 +105,16 @@ section{
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
-                        li{
+                        .ordenar{position: relative;
+                            padding-right: 5px;
+                            padding-left: 5px;
+                            z-index: 2;
+                            list-style: none;
+                            cursor: pointer;
+                            &:hover >ul{
+                                display: block;
+                            }
+                            div{
                             display: flex;
                             justify-items: center;
                             align-items: center;
@@ -106,6 +124,33 @@ section{
                             .fa-caret-down{
                                 color: $color-sec;
                                 margin-left: 5px;
+                            }
+                             }
+                            ul{
+                                display: none;
+                                list-style: none;
+                                position: absolute;
+                                right: -1px;
+                                width: 105px;
+                                background: linear-gradient(to top,$color-ter , $color-menues);
+                               box-sizing: border-box;
+                                cursor: pointer;
+                                padding-bottom: 3px;
+                                border-radius: 3px 0 3px 3px;
+                             
+                              .opciones{
+                                 width: 100%;
+                                  color: rgb(34, 33, 33);
+                                 text-align: right;
+                                  font-size: 13px;
+                                  font-family: $fte-sec;
+                                  margin-right: 0px;
+                                  padding: 5px 5px;
+                                  display: block;
+                                  &:hover{
+                                      background-color: rgb(219, 216, 216);
+                                  }
+                              }
                             }
                         }
                     }
@@ -125,7 +170,7 @@ section{
                     .row1{
                         width: 100%;
                         display: grid;
-                    grid-template-columns: 20% 50% 23% 7%;
+                    grid-template-columns: 7% 20% 43% 23% 7%;
                     grid-template-rows: 1fr;
                     justify-items: center;
                     align-items: center;

@@ -4,147 +4,27 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
   margin: 0;
 }
 
-section {
+.container-precheckout {
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  min-height: 90vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  min-height: 90vh;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding-top: 80px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#f3ecec), to(white));
-  background: linear-gradient(to bottom, #f3ecec, white);
-}
-
-section .container {
-  background-color: #fff;
-  border-radius: 15px;
-  margin-top: -20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 50%;
-  height: 400px;
-  padding: 0;
-  font-family: "Poppins", sans-serif;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  -webkit-box-shadow: 1px 2px 5px #575353;
-          box-shadow: 1px 2px 5px #575353;
+  background: -webkit-gradient(linear, left top, left bottom, from(#aca5a5), color-stop(#f3ecec), to(white));
+  background: linear-gradient(to bottom, #aca5a5, #f3ecec, white);
 }
 
-section .container .title {
-  width: 100%;
-  text-align: center;
-  background-color: #222121;
-  border-radius: 15px 15px 0px 0px;
-  display: block;
-  padding: 20px 20px 15px 20px;
-  color: white;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-family: "Open Sans", sans-serif;
-}
-
-section .container .row1 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  width: 90%;
-}
-
-section .container .row1 .name {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 45%;
-}
-
-section .container .row1 .lastname {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 45%;
-}
-
-section .container .row2 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  width: 90%;
-}
-
-section .container .row2 .email {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 45%;
-}
-
-section .container .row2 .cellphone {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 45%;
-}
-
-section .container .dni {
+.container-precheckout .subcontainer {
+  width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -153,56 +33,47 @@ section .container .dni {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 38%;
 }
 
-section .container .leyenda {
-  color: #575353;
-  font-size: 13px;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-  margin-bottom: -37px;
-  margin-right: 5px;
+.container-precheckout .subcontainer .left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-section .container button {
-  background-color: #222121;
-  font-size: 16px;
-  font-size: 16px;
-  color: white;
-  font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
-  border: 0px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 7px 35px;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-  width: 100%;
-  border-radius: 0px 0px 15px 15px;
+.container-precheckout .subcontainer .left .msj {
+  width: 25vw;
+  margin-top: -25px;
+  border-bottom: 1px solid #575353;
+  padding: 10px 15px;
 }
 
-section .container button:hover {
-  cursor: pointer;
-  background-color: #575353;
-}
-
-.form-newuser {
-  border: 1px solid #575353;
+.container-precheckout .subcontainer .left .msj p {
+  text-align: center;
   font-family: "Open Sans", sans-serif;
-  padding: 2px 10px;
-  width: 60%;
-  outline: none;
-}
-
-.form-newuser:hover {
-  border: 2px solid #575353;
-}
-
-label {
+  color: #575353;
   font-weight: bold;
-  color: #575353;
-  font-family: "Open Sans", sans-serif;
+}
+
+.container-precheckout .subcontainer .right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container-precheckout .subcontainer .right .container-form {
+  margin-top: 415px;
 }
 /*# sourceMappingURL=pre-checkout.component.css.map */
