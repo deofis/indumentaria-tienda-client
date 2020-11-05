@@ -269,4 +269,120 @@ section .container-myprofile .frame .cards .card-row #delete:hover {
   left: 0px;
   display: none;
 }
+
+@media screen and (max-width: 520px) {
+  section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  section #lateralMenu {
+    display: none;
+  }
+  section .container-myprofile .frame {
+    width: 90%;
+    margin-left: 0;
+    margin-top: 25px;
+  }
+  section .container-myprofile .frame .title {
+    padding-bottom: 0px;
+    margin-bottom: 8px;
+  }
+  section .container-myprofile .frame .title h2 {
+    font-size: 18px;
+  }
+  section .container-myprofile .frame .personalInformation {
+    padding: 15px 10px;
+    margin-bottom: 35px;
+  }
+  section .container-myprofile .frame .personalInformation .item-information {
+    margin-left: auto;
+    margin-right: auto;
+    -ms-grid-columns: none;
+        grid-template-columns: none;
+    -ms-grid-rows: none;
+        grid-template-rows: none;
+        grid-template-areas: "titulo titulo" "info  editar";
+    font-size: 14px;
+    width: 90%;
+  }
+  section .container-myprofile .frame .personalInformation .item-information span {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    grid-area: info;
+    text-align: left;
+    display: block;
+    width: 60%;
+  }
+  section .container-myprofile .frame .personalInformation .item-information i {
+    text-align: right;
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    grid-area: editar;
+  }
+  section .container-myprofile .frame .personalInformation .item-information p {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-area: titulo;
+    margin-bottom: -3px;
+  }
+  section .container-myprofile .frame .title2 {
+    margin-bottom: 20px;
+  }
+  section .container-myprofile .frame .title2 h2 {
+    font-size: 18px;
+  }
+  section .container-myprofile .frame .cards {
+    padding: 5px 10px;
+    padding-bottom: 25px;
+    margin-bottom: 40px;
+  }
+  section .container-myprofile .frame .cards .card-row {
+    -ms-grid-columns: none;
+        grid-template-columns: none;
+    -ms-grid-rows: none;
+        grid-template-rows: none;
+        grid-template-areas: " nada eliminar" "img info";
+    margin-bottom: 10px;
+    margin-top: 5px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  section .container-myprofile .frame .cards .card-row img {
+    width: 75px;
+    height: 42px;
+    cursor: default;
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    grid-area: img;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    margin-top: -8px;
+  }
+  section .container-myprofile .frame .cards .card-row div {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    grid-area: info;
+  }
+  section .container-myprofile .frame .cards .card-row div p {
+    line-height: 12px;
+    margin-bottom: 5px;
+  }
+  section .container-myprofile .frame .cards .card-row #delete {
+    font-size: 12px;
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    grid-area: eliminar;
+    display: block;
+    -webkit-transform: translateX(115px);
+            transform: translateX(115px);
+  }
+}
 /*# sourceMappingURL=user-profile.component.css.map */

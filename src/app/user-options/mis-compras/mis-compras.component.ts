@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/log-in/services/auth.service';
 
 @Component({
   selector: 'app-mis-compras',
@@ -6,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mis-compras.component.scss']
 })
 export class MisComprasComponent implements OnInit {
- constructor() {
+ constructor( private router:Router,
+              private authService: AuthService,) {
 
    }
 
@@ -100,4 +103,13 @@ hideDetail2(){
     let arrowUp1=document.getElementById("up2");
      arrowUp1.style.display="none"
 }
+
+  /**
+   * Cerrar sesión y eliminar datos de la misma.
+   */
+  logout(): void {
+    this.authService.logout();
+    
+    this.router.navigate(['/home']);
+  }
 }

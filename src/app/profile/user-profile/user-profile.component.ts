@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AuthService } from '../../log-in/services/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor( private router:Router,
+               private authService: AuthService,) { 
+                
+   }
 
   ngOnInit(): void {
   }
@@ -28,4 +32,13 @@ export class UserProfileComponent implements OnInit {
     arrow.style.display="block"
   }
  
+
+    /**
+   * Cerrar sesión y eliminar datos de la misma.
+   */
+  logout(): void {
+    this.authService.logout();
+    
+    this.router.navigate(['/home']);
+  }
 }

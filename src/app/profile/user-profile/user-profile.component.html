@@ -6,7 +6,7 @@
                 <li [routerLink]="['/user-mis-compras']"><i class="fas fa-shopping-bag"></i>Compras</li>
                 <li><i class="fas fa-heart"></i> Favoritos </li>
                 <li [routerLink]="['/user-profile']"> <i class="fas fa-file-invoice" ></i> Mis Datos </li>
-                <li><i class="fas fa-sign-out-alt"></i>Cerrar Sesión </li>
+                <li (click)="logout()"><i class="fas fa-sign-out-alt"></i>Cerrar Sesión </li>
             </ul>
         </div>
     </div>
