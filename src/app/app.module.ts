@@ -37,6 +37,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BenefitsRowComponent } from './benefits-row/benefits-row/benefits-row.component';
 import { FormLogInComponent } from './log-in/user/form-log-in/form-log-in.component';
 import { MisComprasComponent } from './user-options/mis-compras/mis-compras.component';
+import { NewPasswordComponent } from './log-in/user/new-password/new-password.component';
 
 
 
@@ -67,7 +68,8 @@ import { MisComprasComponent } from './user-options/mis-compras/mis-compras.comp
     CheckoutComponent,
     ShoppingCartComponent,
     FormLogInComponent,
-    MisComprasComponent
+    MisComprasComponent,
+    NewPasswordComponent
   ],
   imports: [
     BrowserModule,

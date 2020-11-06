@@ -20,14 +20,10 @@ div {
         border-radius: 15px;
         flex-direction: column;
         align-items: center;
-        margin-top: -460px;
-        width: 420px;
+        width: 30vw;
+        min-width:290px;
         box-shadow: 2px 4px 10px grey;
         .campos-inicio-s {
-            // display: flex;
-            // flex-direction: column;
-            // justify-content: space-around;
-            // align-items: center;
             width: 80%;
             margin-bottom: 10px;
             height: 300px;
@@ -261,10 +257,10 @@ div {
     font-family: $fte-sec;
     color: red;
     display: block;
-   transform: translate(94px,-6px);
+   transform: translate(7vw,-6px);
    }
    .uno{
-    transform: translate(113px,-4px);
+    transform: translate(8vw,-4px);
    }
    .msj-recup{
     transform: translate(100px,-50px);
@@ -290,4 +286,166 @@ div {
 }
 .primer {
     margin-top: 15px;
+}
+
+@media screen and (max-width: 1100px) {
+div{
+        .contenedor-form {
+            padding-top: 15px;
+            padding-bottom: 20px;
+            border-radius: 10px;
+            margin-top: 60px;
+            .campos-inicio-s {
+                width: 90%;
+                margin-bottom: 10px;
+                height: 240px;
+                h2 {
+                    font-size: 20px;
+                    padding-bottom: 5px;
+                }
+                div{
+                .campo {
+                    i {
+                        font-size: 1em;
+                    }
+                    #username {
+                        margin-top: -12px;
+                        height: 35px;
+                        font-size: 14px;
+                    }
+                    #password {
+                        margin-top: -43px;
+                        height: 35px;
+                        font-size: 14px;
+                        padding-left: 40px;
+                     
+                    }
+                    .fa-lock{
+                        top: -47px;
+                    }
+                    .fa-user {
+                        top: -17px;                    
+                    }
+                    .fa-eye,
+                    .fa-eye-slash {
+                        margin-left: 85%;
+                        position: absolute;
+                        top: -47px;
+                    }
+                
+                }
+                #recuperar {
+                    font-size: 12px;
+                    margin-top: -86px;
+                    margin-bottom: 5px;
+                }
+                 }
+                #btn-entrar {
+                    margin-top: -70px;
+                    margin-bottom: 5px;
+                }
+              
+            }
+            
+            .social-media {
+                width: 90%;
+                height: 80px;
+                margin-top: 10px;
+                button {
+                    height: 37px;
+                }
+            }
+            #contenedor-forgot-psw {
+                width: 80%;
+                margin-bottom: 10px;
+                display: none;
+                height: 230px;
+                h2 {
+                    font-family: $fte-ppal;
+                    text-transform: uppercase;
+                    color: $color-sec;
+                    align-self: flex-start;
+                    display: block;
+                    border-bottom: 1px solid grey;
+                    width: 100%;
+                    padding-bottom: 5px;
+                    font-size: 23px;
+                    display: flex;
+                    align-items: center;
+                    i {
+                        font-size: 0.7em;
+                        color: rgb(34, 33, 33);
+                        margin-right: 8px;
+                    }
+                }
+                p {
+                    font-family: $fte-sec;
+                    color: rgb(34, 33, 33);
+                    margin-bottom: -15px;
+                }
+                .campo {
+                    width: 100%;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    position: relative;
+                    margin-top: 18px;
+                    i {
+                        position: absolute;
+                        padding: 13px;
+                        font-size: 1.1em;
+                        color: $color-ter;
+                        left: 0;
+                        top: 15px;
+                    }
+                    .fa-user {
+                        top: 7.1px;
+                    }
+                    #emailPsw {
+                        margin-top: 16px;
+                        height: 44px;
+                        width: 100%;
+                        font-family: $fte-sec;
+                        font-size: 15px;
+                        padding-left: 40px;
+                        box-sizing: border-box;
+                        &:focus {
+                            outline: none;
+                            border: 1px solid rgb(180, 170, 170);
+                        }
+                        &:focus~i {
+                            color: rgb(34, 33, 33);
+                        }
+                    }
+                }
+            }
+        }
+    }   
+    .boton {
+        font-size: 15px;
+       
+    }
+    .text-rojo{
+       
+       transform: translate(20vw,-119px);
+       }
+       .uno{
+        transform: translate(25vw,-51px);
+       }
+       .msj-recup{
+        transform: translate(100px,-50px);
+       }
+
+}
+
+@media screen and (min-width: 330px)and (max-width: 1100px) {
+    .text-rojo{
+       
+        transform: translate(66px,-117px);
+        }
+        .uno{
+         transform: translate(80px,-49px);
+        }
+      
+    
 }

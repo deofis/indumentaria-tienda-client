@@ -11,21 +11,20 @@ section {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-section .fondo {
   background: -webkit-gradient(linear, left top, left bottom, from(#575353), color-stop(#aca5a5), color-stop(#f3ecec), to(white));
   background: linear-gradient(to bottom, #575353, #aca5a5, #f3ecec, white);
-  height: 80vh;
-  width: 100%;
 }
 
-section .fondo img {
+section a img {
   width: 200px;
   height: 60px;
   position: absolute;
   right: 50px;
   top: 20px;
+}
+
+section app-form-log-in {
+  margin-top: 5vw;
 }
 
 section .footer-is {
@@ -73,120 +72,15 @@ section .footer-is a {
   margin-top: 15px;
 }
 
-@media screen and (max-width: 500px) {
-  section .fondo {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  section .fondo img {
-    top: 15px;
-    left: 20px;
-    width: 150px;
-    height: 45px;
-  }
-  section .contenedor-form {
-    padding-top: 20px;
-    padding-bottom: 35px;
-    margin-top: -400px;
-    width: 85vw;
-  }
-  section .contenedor-form .campos-inicio-s h2 {
-    font-size: 19px;
-    margin-bottom: -12px;
-  }
-  section .contenedor-form .campos-inicio-s .campo i {
-    font-size: 0.9em;
-  }
-  section .contenedor-form .campos-inicio-s .campo .fa-user {
-    top: -27px;
-  }
-  section .contenedor-form .campos-inicio-s .campo .fa-lock {
-    top: -24px;
-  }
-  section .contenedor-form .campos-inicio-s .campo .fa-eye,
-  section .contenedor-form .campos-inicio-s .campo .fa-eye-slash {
-    margin-left: 83%;
-    top: -24px;
-  }
-  section .contenedor-form .campos-inicio-s .campo .fa-eye-slash {
-    visibility: hidden;
-  }
-  section .contenedor-form .campos-inicio-s .campo #username {
-    margin-top: -25px;
-    height: 38px;
-  }
-  section .contenedor-form .campos-inicio-s .campo #password {
-    height: 38px;
-    margin-top: -25px;
-  }
-  section .contenedor-form .campos-inicio-s #btn-entrar {
-    margin-top: -20px;
-    margin-bottom: -25px;
-  }
-  section .contenedor-form .campos-inicio-s p {
-    margin-top: -33px;
-    margin-bottom: 0px;
-  }
-  section .contenedor-form .campos-inicio-s p:hover {
-    cursor: pointer;
-  }
-  section .contenedor-form .separacion {
-    margin-top: -20px;
-    margin-bottom: -5px;
-  }
-  section .contenedor-form .social-media {
-    height: 80px;
-  }
-  section .contenedor-form .social-media button {
-    height: 37px;
-  }
-  section .contenedor-form .social-media .btn2 {
-    margin-top: -15px;
-  }
-  section .contenedor-form #contenedor-forgot-psw {
-    height: 210px;
-    padding-bottom: 0px;
-  }
-  section .contenedor-form #contenedor-forgot-psw h2 {
-    font-size: 17px;
-  }
-  section .contenedor-form #contenedor-forgot-psw h2 i {
-    font-size: 0.8em;
-  }
-  section .contenedor-form #contenedor-forgot-psw p {
-    margin-top: -30px;
-    font-size: 14px;
-    margin-bottom: -30px;
-  }
-  section .contenedor-form #contenedor-forgot-psw .campo {
-    width: 100%;
-  }
-  section .contenedor-form #contenedor-forgot-psw .campo i {
-    font-size: 1em;
-  }
-  section .contenedor-form #contenedor-forgot-psw .campo .fa-user {
-    top: 7.1px;
-  }
-  section .contenedor-form #contenedor-forgot-psw .campo #emailPsw {
-    margin-top: 5px;
-    height: 38px;
-  }
-  section .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus {
-    outline: none;
-    border: 1px solid #b4aaaa;
-  }
-  section .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus ~ i {
-    color: #222121;
-  }
-  section .footer-is {
-    display: none;
+@media screen and (max-width: 700px) {
+  section a img {
+    width: 160px;
+    height: 50px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 /*# sourceMappingURL=user-login.component.css.map */

@@ -6,6 +6,22 @@ $color-ppal:#fff;
 $color-sec: rgb(87, 83, 83);
 $color-ter: rgb(172, 165, 165);
 $color-menues: rgb(243, 236, 236);
+
+%campos{
+    margin-top: 7px;
+    margin-bottom: 15px;
+    height: 35px;
+   width: 100%;
+    font-family: $fte-sec;
+    font-size: 15px;
+    padding-left: 5px;
+    box-sizing: border-box;
+    &:focus {
+        outline: none;
+        border: 1px solid rgb(180, 170, 170);
+    }
+}
+
 section {
     height: 100%;
     width: 100%;
@@ -32,14 +48,14 @@ section {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: -490px;
-        width: 420px;
+        margin-top: -430px;
+        width: 40vw;
+        min-width: 500px;
         box-shadow: 2px 4px 10px grey;
         #contenedor-registrarse {
             width: 80%;
-            height: 530px;
+            height: fit-content;
             display: flex;
-            justify-content: space-between;
             align-items: center;
             flex-direction: column;
             h2 {
@@ -61,150 +77,113 @@ section {
                     outline: none;
                 }
             }
-            .campo {
-                width: 100%;
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                position: relative;
-                
-                i {
-                    position: absolute;
-                    padding: 13px;
-                    font-size: 1.1em;
-                    color: grey;
-                }
-                .fa-user {
-                    top: 7.1px;
-                }
-                #email {
-                    height: 44px;
-                    width: 100%;
-                    font-family: $fte-sec;
-                    font-size: 15px;
-                    padding-left: 40px;
-                    box-sizing: border-box;
-                    &:focus {
-                        outline: none;
-                        border: 1px solid rgb(180, 170, 170);
-                    }
-                    &:focus~i {
-                        color: rgb(34, 33, 33);
-                    }
-                }
-                #new-pasw,
-                #new-pasw-repeat {
-                    height: 44px;
-                    width: 100%;
-                    font-family: $fte-sec;
-                    font-size: 15px;
-                    padding-left: 40px;
-                    box-sizing: border-box;
-                    &:focus {
-                        outline: none;
-                        border: 1px solid rgb(180, 170, 170);
-                    }
-                    &:focus~i {
-                        color: rgb(34, 33, 33);
-                    }
-                }
-                .fa-eye,
-                .fa-eye-slash {
-                    margin-left: 86%;
-                }
-                .fa-eye-slash {
-                    visibility: hidden;
-                }
-                #username {
-                    height: 44px;
-                    width: 100%;
-                    font-family: $fte-sec;
-                    font-size: 15px;
-                    padding-left: 40px;
-                    box-sizing: border-box;
-                    &:focus {
-                        outline: none;
-                        border: 1px solid rgb(180, 170, 170);
-                    }
-                }
-                #password {
-                    height: 44px;
-                    width: 100%;
-                    font-family: $fte-sec;
-                    font-size: 15px;
-                    padding-left: 40px;
-                    box-sizing: border-box;
-                    &:focus {
-                        outline: none;
-                        border: 1px solid rgb(180, 170, 170);
-                    }
-                }
-            }
-   
+       
             .nombre-apellido{
                 width: 100%;
                 align-items: center;
                 display: flex;
-                flex-direction: column;
-                #name, #lastname{
-                    margin-top: 7px;
-                    height: 44px;
-                    font-family: $fte-sec;
-                    width: 100%;
-                    font-size: 15px;
-                    padding-left: 40px;
-                    box-sizing: border-box;
-                    &:focus {
-                        outline: none;
-                        border: 1px solid rgb(180, 170, 170);
+                justify-content: space-between;               
+                .name  {
+                    width: 45%;
+                    #name{
+                      @extend %campos;
+                    }
+                }
+                .lastname{
+                    width: 45%;
+                    #lastname{
+                        @extend %campos;
                     }
                 }
             }
-            .calle-ciudad{
-                margin-top: -9px;
+            .location{
                 width: 100%;
                 align-items: center;
-                display: flex;
-                flex-direction: column;
-                #calle, #ciudad{
-                    margin-top: 7px;
-                    height: 44px;
-                    font-family: $fte-sec;
-                    width: 100%;
-                    font-size: 15px;
-                    padding-left: 40px;
-                    box-sizing: border-box;
-                    &:focus {
-                        outline: none;
-                        border: 1px solid rgb(180, 170, 170);
-                    }
-                }
-            }
-            .nro-cp{
-                margin-top: -9px;
+                justify-content: space-between;
                 display: flex;
                 flex-direction: row;
-                justify-content: space-between !important;
+                .country{
+                   width: 30%;
+                   @extend %campos;
+                }
+                .state{
+                    width: 30%;
+                    @extend %campos;
+                 }
+                 .city{
+                    width: 30%;
+                    @extend %campos;
+                 }
+            }
+            .calle-nro{
                 width: 100%;
                 align-items: center;
-                 #cp, #nro {
-                    margin-top: 7px;
-                    height: 44px;
-                    font-family: $fte-sec;
-                    font-size: 15px;
-                    padding-left: 40px;
-                    box-sizing: border-box;
-                    width: 95%;
-                    &:focus {
-                        outline: none;
-                        border: 1px solid rgb(180, 170, 170);
+                justify-content: space-between;
+                display: flex;
+                flex-direction: row;
+                .calle {
+                    width: 55%;
+                    #calle{
+                        @extend %campos;
                     }
-                 }  
-                 #cp{
-                     margin-left: 6%;
-                 }           
-     
+                }
+                .nro{
+                    width: 15%;
+                    #nro{
+                        @extend %campos;
+                    }
+                }
+                .cp{
+                    width: 18%;
+                    #cp{
+                        @extend %campos;
+                    }
+                }
+
             }
+            .cont-email{
+                width: 100%;
+                .email{
+                    width: 55%;
+                    #email{
+                        @extend %campos;
+                    }
+
+                }
+            }
+            .passwords{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                .cont-psw1, .cont-psw2{
+                width: 100%;
+                .campo{
+                    width: 95%;
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                    #new-pasw, #new-pasw-repeat{
+                        @extend %campos
+                    }
+                    i {
+                     position: absolute;
+                    padding: 13px;
+                    font-size: 1.1em;
+                    color: grey;
+                    }
+                    .fa-eye,
+                .fa-eye-slash {
+                    margin-left: 78%;
+                    margin-top: -6px;
+                }
+                .fa-eye-slash {
+                    visibility: hidden;
+                }
+                }
+            }
+        }
         }
         #msje-registro {
             font-family: $fte-sec;

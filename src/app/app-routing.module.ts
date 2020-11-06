@@ -14,11 +14,13 @@ import { PruebaComponent } from './prueba/prueba/prueba.component';
 import { AuthGuard } from './log-in/guards/auth.guard';
 import { RoleGuard } from './log-in/guards/role.guard';
 import { MisComprasComponent } from './user-options/mis-compras/mis-compras.component';
+import {  NewPasswordComponent} from "./log-in/user/new-password/new-password.component";
 
 const routes: Routes = [
 {path:"home",component:HomeComponent},
 {path:"viewmore/:id", component:ViewMoreComponent},
 {path:"userLogIn", component:UserLoginComponent},
+{path:"new-password",component:NewPasswordComponent},
 {path:'oauth2/redirect', component: Oauth2RedirectHandlerComponent},
 {path:"search/:termino", component:BuscadorComponent},
 {path:"user-profile",component:UserProfileComponent},

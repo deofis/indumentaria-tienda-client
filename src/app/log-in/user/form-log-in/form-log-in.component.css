@@ -28,8 +28,8 @@ div .contenedor-form {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: -460px;
-  width: 420px;
+  width: 30vw;
+  min-width: 290px;
   -webkit-box-shadow: 2px 4px 10px grey;
           box-shadow: 2px 4px 10px grey;
 }
@@ -343,13 +343,13 @@ div .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus ~ i {
   font-family: "Open Sans", sans-serif;
   color: red;
   display: block;
-  -webkit-transform: translate(94px, -6px);
-          transform: translate(94px, -6px);
+  -webkit-transform: translate(7vw, -6px);
+          transform: translate(7vw, -6px);
 }
 
 .uno {
-  -webkit-transform: translate(113px, -4px);
-          transform: translate(113px, -4px);
+  -webkit-transform: translate(8vw, -4px);
+          transform: translate(8vw, -4px);
 }
 
 .msj-recup {
@@ -383,5 +383,168 @@ div .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus ~ i {
 
 .primer {
   margin-top: 15px;
+}
+
+@media screen and (max-width: 1100px) {
+  div .contenedor-form {
+    padding-top: 15px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    margin-top: 60px;
+  }
+  div .contenedor-form .campos-inicio-s {
+    width: 90%;
+    margin-bottom: 10px;
+    height: 240px;
+  }
+  div .contenedor-form .campos-inicio-s h2 {
+    font-size: 20px;
+    padding-bottom: 5px;
+  }
+  div .contenedor-form .campos-inicio-s div .campo i {
+    font-size: 1em;
+  }
+  div .contenedor-form .campos-inicio-s div .campo #username {
+    margin-top: -12px;
+    height: 35px;
+    font-size: 14px;
+  }
+  div .contenedor-form .campos-inicio-s div .campo #password {
+    margin-top: -43px;
+    height: 35px;
+    font-size: 14px;
+    padding-left: 40px;
+  }
+  div .contenedor-form .campos-inicio-s div .campo .fa-lock {
+    top: -47px;
+  }
+  div .contenedor-form .campos-inicio-s div .campo .fa-user {
+    top: -17px;
+  }
+  div .contenedor-form .campos-inicio-s div .campo .fa-eye,
+  div .contenedor-form .campos-inicio-s div .campo .fa-eye-slash {
+    margin-left: 85%;
+    position: absolute;
+    top: -47px;
+  }
+  div .contenedor-form .campos-inicio-s div #recuperar {
+    font-size: 12px;
+    margin-top: -86px;
+    margin-bottom: 5px;
+  }
+  div .contenedor-form .campos-inicio-s #btn-entrar {
+    margin-top: -70px;
+    margin-bottom: 5px;
+  }
+  div .contenedor-form .social-media {
+    width: 90%;
+    height: 80px;
+    margin-top: 10px;
+  }
+  div .contenedor-form .social-media button {
+    height: 37px;
+  }
+  div .contenedor-form #contenedor-forgot-psw {
+    width: 80%;
+    margin-bottom: 10px;
+    display: none;
+    height: 230px;
+  }
+  div .contenedor-form #contenedor-forgot-psw h2 {
+    font-family: "Poppins", sans-serif;
+    text-transform: uppercase;
+    color: #575353;
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+    display: block;
+    border-bottom: 1px solid grey;
+    width: 100%;
+    padding-bottom: 5px;
+    font-size: 23px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  div .contenedor-form #contenedor-forgot-psw h2 i {
+    font-size: 0.7em;
+    color: #222121;
+    margin-right: 8px;
+  }
+  div .contenedor-form #contenedor-forgot-psw p {
+    font-family: "Open Sans", sans-serif;
+    color: #222121;
+    margin-bottom: -15px;
+  }
+  div .contenedor-form #contenedor-forgot-psw .campo {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: relative;
+    margin-top: 18px;
+  }
+  div .contenedor-form #contenedor-forgot-psw .campo i {
+    position: absolute;
+    padding: 13px;
+    font-size: 1.1em;
+    color: #aca5a5;
+    left: 0;
+    top: 15px;
+  }
+  div .contenedor-form #contenedor-forgot-psw .campo .fa-user {
+    top: 7.1px;
+  }
+  div .contenedor-form #contenedor-forgot-psw .campo #emailPsw {
+    margin-top: 16px;
+    height: 44px;
+    width: 100%;
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    padding-left: 40px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  div .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus {
+    outline: none;
+    border: 1px solid #b4aaaa;
+  }
+  div .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus ~ i {
+    color: #222121;
+  }
+  .boton {
+    font-size: 15px;
+  }
+  .text-rojo {
+    -webkit-transform: translate(20vw, -119px);
+            transform: translate(20vw, -119px);
+  }
+  .uno {
+    -webkit-transform: translate(25vw, -51px);
+            transform: translate(25vw, -51px);
+  }
+  .msj-recup {
+    -webkit-transform: translate(100px, -50px);
+            transform: translate(100px, -50px);
+  }
+}
+
+@media screen and (min-width: 330px) and (max-width: 1100px) {
+  .text-rojo {
+    -webkit-transform: translate(66px, -117px);
+            transform: translate(66px, -117px);
+  }
+  .uno {
+    -webkit-transform: translate(80px, -49px);
+            transform: translate(80px, -49px);
+  }
 }
 /*# sourceMappingURL=form-log-in.component.css.map */

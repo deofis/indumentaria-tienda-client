@@ -1,3 +1,20 @@
+section .contenedor-form #contenedor-registrarse .nombre-apellido .name #name, section .contenedor-form #contenedor-registrarse .nombre-apellido .lastname #lastname, section .contenedor-form #contenedor-registrarse .location .country, section .contenedor-form #contenedor-registrarse .location .state, section .contenedor-form #contenedor-registrarse .location .city, section .contenedor-form #contenedor-registrarse .calle-nro .calle #calle, section .contenedor-form #contenedor-registrarse .calle-nro .nro #nro, section .contenedor-form #contenedor-registrarse .calle-nro .cp #cp, section .contenedor-form #contenedor-registrarse .cont-email .email #email, section .contenedor-form #contenedor-registrarse .passwords .cont-psw1 .campo #new-pasw, section .contenedor-form #contenedor-registrarse .passwords .cont-psw1 .campo #new-pasw-repeat, section .contenedor-form #contenedor-registrarse .passwords .cont-psw2 .campo #new-pasw, section .contenedor-form #contenedor-registrarse .passwords .cont-psw2 .campo #new-pasw-repeat {
+  margin-top: 7px;
+  margin-bottom: 15px;
+  height: 35px;
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+  padding-left: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+section .contenedor-form #contenedor-registrarse .nombre-apellido .name #name:focus, section .contenedor-form #contenedor-registrarse .nombre-apellido .lastname #lastname:focus, section .contenedor-form #contenedor-registrarse .location .country:focus, section .contenedor-form #contenedor-registrarse .location .state:focus, section .contenedor-form #contenedor-registrarse .location .city:focus, section .contenedor-form #contenedor-registrarse .calle-nro .calle #calle:focus, section .contenedor-form #contenedor-registrarse .calle-nro .nro #nro:focus, section .contenedor-form #contenedor-registrarse .calle-nro .cp #cp:focus, section .contenedor-form #contenedor-registrarse .cont-email .email #email:focus, section .contenedor-form #contenedor-registrarse .passwords .cont-psw1 .campo #new-pasw:focus, section .contenedor-form #contenedor-registrarse .passwords .cont-psw1 .campo #new-pasw-repeat:focus, section .contenedor-form #contenedor-registrarse .passwords .cont-psw2 .campo #new-pasw:focus, section .contenedor-form #contenedor-registrarse .passwords .cont-psw2 .campo #new-pasw-repeat:focus {
+  outline: none;
+  border: 1px solid #b4aaaa;
+}
+
 section {
   height: 100%;
   width: 100%;
@@ -43,21 +60,21 @@ section .contenedor-form {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: -490px;
-  width: 420px;
+  margin-top: -430px;
+  width: 40vw;
+  min-width: 500px;
   -webkit-box-shadow: 2px 4px 10px grey;
           box-shadow: 2px 4px 10px grey;
 }
 
 section .contenedor-form #contenedor-registrarse {
   width: 80%;
-  height: 530px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -93,111 +110,6 @@ section .contenedor-form #contenedor-registrarse h2 i {
   outline: none;
 }
 
-section .contenedor-form #contenedor-registrarse .campo {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: relative;
-}
-
-section .contenedor-form #contenedor-registrarse .campo i {
-  position: absolute;
-  padding: 13px;
-  font-size: 1.1em;
-  color: grey;
-}
-
-section .contenedor-form #contenedor-registrarse .campo .fa-user {
-  top: 7.1px;
-}
-
-section .contenedor-form #contenedor-registrarse .campo #email {
-  height: 44px;
-  width: 100%;
-  font-family: "Open Sans", sans-serif;
-  font-size: 15px;
-  padding-left: 40px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-section .contenedor-form #contenedor-registrarse .campo #email:focus {
-  outline: none;
-  border: 1px solid #b4aaaa;
-}
-
-section .contenedor-form #contenedor-registrarse .campo #email:focus ~ i {
-  color: #222121;
-}
-
-section .contenedor-form #contenedor-registrarse .campo #new-pasw,
-section .contenedor-form #contenedor-registrarse .campo #new-pasw-repeat {
-  height: 44px;
-  width: 100%;
-  font-family: "Open Sans", sans-serif;
-  font-size: 15px;
-  padding-left: 40px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-section .contenedor-form #contenedor-registrarse .campo #new-pasw:focus,
-section .contenedor-form #contenedor-registrarse .campo #new-pasw-repeat:focus {
-  outline: none;
-  border: 1px solid #b4aaaa;
-}
-
-section .contenedor-form #contenedor-registrarse .campo #new-pasw:focus ~ i,
-section .contenedor-form #contenedor-registrarse .campo #new-pasw-repeat:focus ~ i {
-  color: #222121;
-}
-
-section .contenedor-form #contenedor-registrarse .campo .fa-eye,
-section .contenedor-form #contenedor-registrarse .campo .fa-eye-slash {
-  margin-left: 86%;
-}
-
-section .contenedor-form #contenedor-registrarse .campo .fa-eye-slash {
-  visibility: hidden;
-}
-
-section .contenedor-form #contenedor-registrarse .campo #username {
-  height: 44px;
-  width: 100%;
-  font-family: "Open Sans", sans-serif;
-  font-size: 15px;
-  padding-left: 40px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-section .contenedor-form #contenedor-registrarse .campo #username:focus {
-  outline: none;
-  border: 1px solid #b4aaaa;
-}
-
-section .contenedor-form #contenedor-registrarse .campo #password {
-  height: 44px;
-  width: 100%;
-  font-family: "Open Sans", sans-serif;
-  font-size: 15px;
-  padding-left: 40px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-section .contenedor-form #contenedor-registrarse .campo #password:focus {
-  outline: none;
-  border: 1px solid #b4aaaa;
-}
-
 section .contenedor-form #contenedor-registrarse .nombre-apellido {
   width: 100%;
   -webkit-box-align: center;
@@ -206,61 +118,27 @@ section .contenedor-form #contenedor-registrarse .nombre-apellido {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-section .contenedor-form #contenedor-registrarse .nombre-apellido #name, section .contenedor-form #contenedor-registrarse .nombre-apellido #lastname {
-  margin-top: 7px;
-  height: 44px;
-  font-family: "Open Sans", sans-serif;
-  width: 100%;
-  font-size: 15px;
-  padding-left: 40px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+section .contenedor-form #contenedor-registrarse .nombre-apellido .name {
+  width: 45%;
 }
 
-section .contenedor-form #contenedor-registrarse .nombre-apellido #name:focus, section .contenedor-form #contenedor-registrarse .nombre-apellido #lastname:focus {
-  outline: none;
-  border: 1px solid #b4aaaa;
+section .contenedor-form #contenedor-registrarse .nombre-apellido .lastname {
+  width: 45%;
 }
 
-section .contenedor-form #contenedor-registrarse .calle-ciudad {
-  margin-top: -9px;
+section .contenedor-form #contenedor-registrarse .location {
   width: 100%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-section .contenedor-form #contenedor-registrarse .calle-ciudad #calle, section .contenedor-form #contenedor-registrarse .calle-ciudad #ciudad {
-  margin-top: 7px;
-  height: 44px;
-  font-family: "Open Sans", sans-serif;
-  width: 100%;
-  font-size: 15px;
-  padding-left: 40px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-section .contenedor-form #contenedor-registrarse .calle-ciudad #calle:focus, section .contenedor-form #contenedor-registrarse .calle-ciudad #ciudad:focus {
-  outline: none;
-  border: 1px solid #b4aaaa;
-}
-
-section .contenedor-form #contenedor-registrarse .nro-cp {
-  margin-top: -9px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -268,33 +146,105 @@ section .contenedor-form #contenedor-registrarse .nro-cp {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify !important;
-      -ms-flex-pack: justify !important;
-          justify-content: space-between !important;
+}
+
+section .contenedor-form #contenedor-registrarse .location .country {
+  width: 30%;
+}
+
+section .contenedor-form #contenedor-registrarse .location .state {
+  width: 30%;
+}
+
+section .contenedor-form #contenedor-registrarse .location .city {
+  width: 30%;
+}
+
+section .contenedor-form #contenedor-registrarse .calle-nro {
   width: 100%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
-section .contenedor-form #contenedor-registrarse .nro-cp #cp, section .contenedor-form #contenedor-registrarse .nro-cp #nro {
-  margin-top: 7px;
-  height: 44px;
-  font-family: "Open Sans", sans-serif;
-  font-size: 15px;
-  padding-left: 40px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+section .contenedor-form #contenedor-registrarse .calle-nro .calle {
+  width: 55%;
+}
+
+section .contenedor-form #contenedor-registrarse .calle-nro .nro {
+  width: 15%;
+}
+
+section .contenedor-form #contenedor-registrarse .calle-nro .cp {
+  width: 18%;
+}
+
+section .contenedor-form #contenedor-registrarse .cont-email {
+  width: 100%;
+}
+
+section .contenedor-form #contenedor-registrarse .cont-email .email {
+  width: 55%;
+}
+
+section .contenedor-form #contenedor-registrarse .passwords {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+section .contenedor-form #contenedor-registrarse .passwords .cont-psw1, section .contenedor-form #contenedor-registrarse .passwords .cont-psw2 {
+  width: 100%;
+}
+
+section .contenedor-form #contenedor-registrarse .passwords .cont-psw1 .campo, section .contenedor-form #contenedor-registrarse .passwords .cont-psw2 .campo {
   width: 95%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
 }
 
-section .contenedor-form #contenedor-registrarse .nro-cp #cp:focus, section .contenedor-form #contenedor-registrarse .nro-cp #nro:focus {
-  outline: none;
-  border: 1px solid #b4aaaa;
+section .contenedor-form #contenedor-registrarse .passwords .cont-psw1 .campo i, section .contenedor-form #contenedor-registrarse .passwords .cont-psw2 .campo i {
+  position: absolute;
+  padding: 13px;
+  font-size: 1.1em;
+  color: grey;
 }
 
-section .contenedor-form #contenedor-registrarse .nro-cp #cp {
-  margin-left: 6%;
+section .contenedor-form #contenedor-registrarse .passwords .cont-psw1 .campo .fa-eye,
+section .contenedor-form #contenedor-registrarse .passwords .cont-psw1 .campo .fa-eye-slash, section .contenedor-form #contenedor-registrarse .passwords .cont-psw2 .campo .fa-eye,
+section .contenedor-form #contenedor-registrarse .passwords .cont-psw2 .campo .fa-eye-slash {
+  margin-left: 78%;
+  margin-top: -6px;
+}
+
+section .contenedor-form #contenedor-registrarse .passwords .cont-psw1 .campo .fa-eye-slash, section .contenedor-form #contenedor-registrarse .passwords .cont-psw2 .campo .fa-eye-slash {
+  visibility: hidden;
 }
 
 section .contenedor-form #msje-registro {
