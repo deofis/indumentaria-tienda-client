@@ -24,10 +24,10 @@ div {
         width: 420px;
         box-shadow: 2px 4px 10px grey;
         .campos-inicio-s {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
+            // display: flex;
+            // flex-direction: column;
+            // justify-content: space-around;
+            // align-items: center;
             width: 80%;
             margin-bottom: 10px;
             height: 300px;
@@ -55,6 +55,9 @@ div {
                 }
                 .fa-user {
                     top: 7.1px;
+                    position: absolute;
+                    left: 0;
+                
                 }
                 .fa-eye,
                 .fa-eye-slash {
@@ -75,9 +78,16 @@ div {
                         outline: none;
                         border: 1px solid rgb(180, 170, 170);
                     }
+                    
                     &:focus~i {
                         color: rgb(34, 33, 33);
                     }
+                    &.is-invalid{
+                        border: 1px solid rgb(252, 62, 62);
+                      }
+                     &.is-invalid~i{
+                        color:rgb(150, 9, 9);
+                      }
                 }
                 #password {
                     height: 44px;
@@ -92,11 +102,25 @@ div {
                     }
                     &:focus~.fa-lock {
                         color: rgb(34, 33, 33);
+                    
                     }
+                    &.is-invalid{
+                        border: 1px solid rgb(252, 62, 62);
+                      }
+                     &.is-invalid~i{
+                        color:rgb(150, 9, 9);
+                      }
+                }
+                .fa-lock{
+                    position: absolute;
+                    left: 0;
+                    &.is-invalid{
+                        border: 1px solid red;
+                      }
                 }
             }
             #btn-entrar {
-                margin-top: 5px;
+                margin-top: 0px;
                 margin-bottom: 2px;
             }
             p {
@@ -114,6 +138,7 @@ div {
         .separacion {
             display: flex;
             justify-content: space-between;
+            flex-direction: row;
             align-items: center;
             width: 80%;
             p {
@@ -198,17 +223,20 @@ div {
                 justify-content: flex-start;
                 align-items: center;
                 position: relative;
+                margin-top: 18px;
                 i {
                     position: absolute;
                     padding: 13px;
                     font-size: 1.1em;
                     color: $color-ter;
+                    left: 0;
+                    top: 15px;
                 }
                 .fa-user {
                     top: 7.1px;
                 }
                 #emailPsw {
-                    margin-top: 7px;
+                    margin-top: 16px;
                     height: 44px;
                     width: 100%;
                     font-family: $fte-sec;
@@ -229,9 +257,22 @@ div {
   
 }
 
+.text-rojo{
+    font-family: $fte-sec;
+    color: red;
+    display: block;
+   transform: translate(94px,-6px);
+   }
+   .uno{
+    transform: translate(113px,-4px);
+   }
+   .msj-recup{
+    transform: translate(100px,-50px);
+   }
 .boton {
     width: 100%;
-    height: 40px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     background-color: rgb(34, 33, 33);
     color: white;
     font-family: $fte-ppal;
@@ -244,7 +285,9 @@ div {
     }
     outline: none;
 }
-
+#recuperar{
+    transform: translateY(-25px);
+}
 .primer {
     margin-top: 15px;
 }

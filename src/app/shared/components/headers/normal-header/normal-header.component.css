@@ -394,7 +394,7 @@ header .menu-header #contenedor_iconos .menu {
   list-style: none;
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 700px) {
   header {
     width: 100%;
     -webkit-box-shadow: 0px 3px 5px #807e7e;
@@ -466,27 +466,9 @@ header .menu-header #contenedor_iconos .menu {
     margin-left: -5.6vw;
   }
   header .menu-header #fila-header #contenedor_iconos {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
     position: absolute;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    -ms-flex-item-align: baseline;
-        align-self: baseline;
     right: 3.15vw;
-    top: -55px;
+    top: 6px;
   }
   header .menu-header #fila-header #contenedor_iconos .iconos {
     margin-left: auto;
@@ -496,106 +478,10 @@ header .menu-header #contenedor_iconos .menu {
     font-size: 1.1em;
   }
   header .menu-header #fila-header #contenedor_iconos .miperfil {
-    margin-bottom: -10px;
-  }
-  header .menu-header #fila-header #contenedor_iconos .miperfil i {
-    font-size: 1.2em;
+    display: none;
   }
   header .menu-header #fila-header #contenedor_iconos .carrito .circulo {
     margin-left: -19px;
-  }
-}
-
-@media screen and (min-width: 581px) and (max-width: 700px) {
-  header {
-    -webkit-box-shadow: 0px 3px 5px #807e7e;
-            box-shadow: 0px 3px 5px #807e7e;
-    width: 100%;
-  }
-  header .contacto {
-    display: none;
-  }
-  header .menu-header {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-  header .menu-header .logo {
-    margin-left: 0px;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    margin-bottom: -40px;
-  }
-  header .menu-header .logo img {
-    width: 140px;
-    height: 28px;
-  }
-  header .menu-header #fila-header {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-    margin-top: 20px;
-    width: 100%;
-  }
-  header .menu-header #fila-header nav {
-    display: none;
-  }
-  header .menu-header #fila-header #menu {
-    display: block;
-  }
-  header .menu-header #fila-header form .buscador {
-    margin-right: -3px;
-  }
-  header .menu-header #fila-header form .buscador .barraDeBusqueda {
-    width: 52vw;
-    height: 35px;
-    -webkit-box-shadow: 1px 1px 2px #575353;
-            box-shadow: 1px 1px 2px #575353;
-  }
-  header .menu-header #fila-header form .buscador .btn-lupa {
-    margin-left: -3vw;
-  }
-  header .menu-header #fila-header #contenedor_iconos {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    width: 23vw;
-    margin-right: -35px;
-  }
-  header .menu-header #fila-header #contenedor_iconos .iconos i {
-    font-size: 1.1em;
-  }
-  header .menu-header #fila-header #contenedor_iconos .miperfil i {
-    font-size: 1.2em;
-  }
-  header .menu-header #fila-header #contenedor_iconos .carrito .circulo {
-    margin-left: -18px;
   }
 }
 
@@ -745,11 +631,22 @@ header .menu-header #contenedor_iconos .menu {
     top: 3vw;
   }
   header .menu-header #fila-header #contenedor_iconos {
-    top: -50px;
+    position: absolute;
+    right: 3.15vw;
+    top: 6px;
+  }
+  header .menu-header #fila-header #contenedor_iconos .iconos {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  header .menu-header #fila-header #contenedor_iconos .iconos i {
+    font-size: 1.1em;
+  }
+  header .menu-header #fila-header #contenedor_iconos .miperfil {
+    display: none;
   }
   header .menu-header #fila-header #contenedor_iconos .carrito .circulo {
-    margin-left: -13px;
-    top: -7px;
+    margin-left: -8px;
   }
 }
 /*# sourceMappingURL=normal-header.component.css.map */

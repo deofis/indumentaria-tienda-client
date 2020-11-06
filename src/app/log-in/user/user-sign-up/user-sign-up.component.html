@@ -7,22 +7,47 @@
     <form class="contenedor-form" id="cont-form" autocomplete="off" [formGroup]="formRegistro" (ngSubmit)="registrarse()">
         <div id="contenedor-registrarse">
             <h2><i class="fas fa-arrow-circle-left" id="back1" [routerLink]="['/userLogIn']"></i>Crear cuenta</h2>
-            <div class="campo">
+            <div class="campo nombre-apellido">
+                <div class="name campo">
+                    <input type="text" class="form-newuser" id="name" placeholder="Juan" required>
+                </div>
+                <div class="lastname campo">
+                    <input type="text" class="form-newuser" placeholder="Perez" value="" required id="lastname">
+                </div>
+            </div>
+            <div class="campo calle-ciudad">
+                <div class=" campo">
+                    <input type="text" id="ciudad" placeholder="Ciudad" required>
+                </div>
+                <div class="campo">
+                    <input type="text"  placeholder="Calle" value="" required id="calle">
+                </div>
+            </div>
+            <div class="campo nro-cp">
+                <div class="campo adress">
+                    <input type="number" class="form-newuser" id="nro" placeholder="nro" value="" required >
+                </div>
+                <div class=" campo adress">
+                   
+                    <input type="number" class="form-newuser" id="cp" placeholder="CP" required>
+                </div>
+
+            </div>
+            <div class="campo email">
 
                 <input [ngClass]="{'is-invalid': emailInvalido}" type="email" id="email" placeholder="Correo electrónico" formControlName="email">
-                <i class="fas  fa-envelope" id="icono-envelope"></i>
+              
             </div>
             <span class="text-rojo" *ngIf="emailInvalido"><small>El email es obligatorio</small></span>
             <div class="campo">
                 <input [ngClass]="{'is-invalid': passwordInvalida}" type="password" id="new-pasw" placeholder="Contraseña" formControlName="password">
-                <i class="fas fa-lock" id="lock1"></i>
                 <i class="far fa-eye" id="show1" (click)="mostrarPsw1()"></i>
                 <i class="far fa-eye-slash" id="hide1" (click)="mostrarPsw1()"></i>
             </div>
             <span class="text-rojo" *ngIf="passwordInvalida"><small>Las contraseña deben coincidir</small></span>
             <div class="campo">
                 <input [ngClass]="{'is-invalid': passwordNoIguales}" type="password" id="new-pasw-repeat" placeholder="Repetir contraseña" formControlName="passwordRepeat">
-                <i class="fas fa-lock" id="lock2"></i>
+                
                 <i class="far fa-eye" id="show2" (click)="mostrarPsw2()"></i>
                 <i class="far fa-eye-slash" id="hide2" (click)="mostrarPsw2()"></i>
             </div>

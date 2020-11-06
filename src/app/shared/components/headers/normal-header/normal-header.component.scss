@@ -307,7 +307,7 @@ header {
     }
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 700px) {
    header{
        width: 100%;
        box-shadow: 0px 3px 5px rgb(128, 126, 126);
@@ -360,15 +360,9 @@ header {
                 }
             }
             #contenedor_iconos{
-                display: flex;
-                flex-direction: column-reverse;
-                justify-content: center;
-                align-items: center;
                 position: absolute;
-                width: fit-content;
-                align-self: baseline;
-               right: 3.15vw;
-               top: -55px;
+                  right: 3.15vw;
+                  top: 6px;
                 .iconos{
                     margin-left: auto;
                     margin-right: auto;
@@ -377,10 +371,7 @@ header {
                     }
                 }
                 .miperfil{
-                    margin-bottom: -10px;
-                    i{
-                        font-size: 1.2em;
-                    }
+                display: none;
                 }
                 .carrito{
                     .circulo{
@@ -392,80 +383,6 @@ header {
        }
    }
 }
-@media screen and  (min-width: 581px) and (max-width: 700px) {
-    header{
-        box-shadow: 0px 3px 5px rgb(128, 126, 126);
-        width: 100%;
-        .contacto{
-            display: none;
-        }
-        .menu-header{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            .logo{
-                margin-left:0px;
-               width: fit-content;
-                margin-bottom: -40px;
-                img{
-                 width: 140px;
-                 height: 28px;
-                }
-            }
-            #fila-header{
-                display: flex;
-                align-items: center;
-                justify-content: space-around;
-                margin-top: 20px;
-                width: 100%;
-             nav{
-                 display: none;
-             }
-             #menu{
-                 display: block;
-               
-             }
-             form{
-                 .buscador{
-                     margin-right: -3px;
-                     .barraDeBusqueda{
-                         width: 52vw;
-                         height: 35px;
-                         box-shadow: 1px 1px 2px $color-sec;
-                     }
-                     .btn-lupa{
-                         margin-left: -3vw;
-                     }
-                 }
-             }
-             #contenedor_iconos{
-                 display: flex;
-                 flex-direction: row;
-                 justify-content: space-between;
-                 align-items: center;
-                 width: 23vw;
-                 margin-right: -35px;
-                 .iconos{
-                     i{
-                         font-size: 1.1em
-                     }
-                 }
-                 .miperfil{
-                     i{
-                         font-size: 1.2em;
-                     }
-                 }
-                 .carrito{
-                     .circulo{
-                         margin-left: -18px;
-                     }
-                 }
-             }
-            }
-        }
-    }
- }
  @media screen and  (min-width: 701px) and (max-width: 1020px) {
     header{
         box-shadow: 0px 3px 5px rgb(128, 126, 126);
@@ -590,17 +507,31 @@ header{
             form{
                 top: 3vw;
             }
-            #contenedor_iconos{
-                top: -50px;
-                .carrito{
-                    .circulo{
-                        margin-left: -13px;
-                        top: -7px;
+           
+             #contenedor_iconos{
+                    position: absolute;
+                      right: 3.15vw;
+                      top: 6px;
+                    .iconos{
+                        margin-left: auto;
+                        margin-right: auto;
+                        i{
+                            font-size: 1.1em
+                        }
+                    }
+                    .miperfil{
+                    display: none;
+                    }
+                    .carrito{
+                        .circulo{
+                            margin-left: -8px;
+                        }
                     }
                 }
-            }
+            
         }
     }
 }
+
 }
 

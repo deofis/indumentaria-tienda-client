@@ -32,12 +32,12 @@ section {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: -440px;
+        margin-top: -490px;
         width: 420px;
         box-shadow: 2px 4px 10px grey;
         #contenedor-registrarse {
             width: 80%;
-            height: 270px;
+            height: 530px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -67,6 +67,7 @@ section {
                 justify-content: flex-start;
                 align-items: center;
                 position: relative;
+                
                 i {
                     position: absolute;
                     padding: 13px;
@@ -77,7 +78,6 @@ section {
                     top: 7.1px;
                 }
                 #email {
-                    margin-top: 7px;
                     height: 44px;
                     width: 100%;
                     font-family: $fte-sec;
@@ -116,7 +116,6 @@ section {
                     visibility: hidden;
                 }
                 #username {
-                    margin-top: 7px;
                     height: 44px;
                     width: 100%;
                     font-family: $fte-sec;
@@ -140,6 +139,71 @@ section {
                         border: 1px solid rgb(180, 170, 170);
                     }
                 }
+            }
+   
+            .nombre-apellido{
+                width: 100%;
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                #name, #lastname{
+                    margin-top: 7px;
+                    height: 44px;
+                    font-family: $fte-sec;
+                    width: 100%;
+                    font-size: 15px;
+                    padding-left: 40px;
+                    box-sizing: border-box;
+                    &:focus {
+                        outline: none;
+                        border: 1px solid rgb(180, 170, 170);
+                    }
+                }
+            }
+            .calle-ciudad{
+                margin-top: -9px;
+                width: 100%;
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                #calle, #ciudad{
+                    margin-top: 7px;
+                    height: 44px;
+                    font-family: $fte-sec;
+                    width: 100%;
+                    font-size: 15px;
+                    padding-left: 40px;
+                    box-sizing: border-box;
+                    &:focus {
+                        outline: none;
+                        border: 1px solid rgb(180, 170, 170);
+                    }
+                }
+            }
+            .nro-cp{
+                margin-top: -9px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between !important;
+                width: 100%;
+                align-items: center;
+                 #cp, #nro {
+                    margin-top: 7px;
+                    height: 44px;
+                    font-family: $fte-sec;
+                    font-size: 15px;
+                    padding-left: 40px;
+                    box-sizing: border-box;
+                    width: 95%;
+                    &:focus {
+                        outline: none;
+                        border: 1px solid rgb(180, 170, 170);
+                    }
+                 }  
+                 #cp{
+                     margin-left: 6%;
+                 }           
+     
             }
         }
         #msje-registro {

@@ -3,12 +3,14 @@
     <!--inicio form iniciar sesion-->
     <div class="campos-inicio-s" id="is-uno">
         <h2>Inicio de Sesión</h2>
-        <div class="campo primer">
+        <div >
+            <div class="campo primer">
             <input type="text" id="username" placeholder="Email" formControlName="email" [class.is-invalid]="emailInvalido">
-            <i class="fas fa-user" id="icono-user"></i>
+            <i class="fas fa-user" id="icono-user" [class.is-invalid]="emailInvalido"></i>
+            </div>
+            <span *ngIf="emailInvalido" class="text-rojo uno"><small>Ingrese su email</small></span>
         </div>
-        <span *ngIf="emailInvalido" class="text-rojo"><small>Ingrese su email</small></span>
-
+       <div>
         <div class="campo">
             <input type="password" id="password" placeholder="Contraseña" formControlName="password" [class.is-invalid]="passwordInvalida">
             <i class="fas fa-lock" id="icono-lock"></i>
@@ -16,8 +18,9 @@
             <i class="far fa-eye-slash" id="hide" (click)="mostrarPsw()"></i>
         </div>
         <span *ngIf="passwordInvalida" class="text-rojo"><small>Ingrese su contraseña</small></span>
-
-        <p id="recuperar">¿Olvidaste tu contraseña?</p>
+        <p id="recuperar">¿Olvidaste tu contraseña?</p>     
+    </div>
+       
         <button type="submit" id="btn-entrar" class="boton">Entrar</button>
         <button type="button" id="btn-registrar" class="boton" [routerLink]="['/user-sign-up']">Registrarme</button>
 
@@ -47,7 +50,7 @@
             <input [class.is-invalid]="emailInvalidoPass" type="email" id="emailPsw" placeholder="Correo electrónico" formControlName="email">
             <i class="fas fa-envelope" id="icono-env-psw"></i>
         </div>
-        <span *ngIf="emailInvalidoPass" class="text-rojo"><small>Ingrese su email</small></span>
+        <span *ngIf="emailInvalidoPass" class="text-rojo  msj-recup"><small>Ingrese su email</small></span>
 
         <button type="submit" id="btn-recover-psw" class="boton">Enviar</button>
 

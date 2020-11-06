@@ -35,18 +35,6 @@ div .contenedor-form {
 }
 
 div .contenedor-form .campos-inicio-s {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   width: 80%;
   margin-bottom: 10px;
   height: 300px;
@@ -87,6 +75,8 @@ div .contenedor-form .campos-inicio-s .campo i {
 
 div .contenedor-form .campos-inicio-s .campo .fa-user {
   top: 7.1px;
+  position: absolute;
+  left: 0;
 }
 
 div .contenedor-form .campos-inicio-s .campo .fa-eye,
@@ -118,6 +108,14 @@ div .contenedor-form .campos-inicio-s .campo #username:focus ~ i {
   color: #222121;
 }
 
+div .contenedor-form .campos-inicio-s .campo #username.is-invalid {
+  border: 1px solid #fc3e3e;
+}
+
+div .contenedor-form .campos-inicio-s .campo #username.is-invalid ~ i {
+  color: #960909;
+}
+
 div .contenedor-form .campos-inicio-s .campo #password {
   height: 44px;
   width: 100%;
@@ -137,8 +135,25 @@ div .contenedor-form .campos-inicio-s .campo #password:focus ~ .fa-lock {
   color: #222121;
 }
 
+div .contenedor-form .campos-inicio-s .campo #password.is-invalid {
+  border: 1px solid #fc3e3e;
+}
+
+div .contenedor-form .campos-inicio-s .campo #password.is-invalid ~ i {
+  color: #960909;
+}
+
+div .contenedor-form .campos-inicio-s .campo .fa-lock {
+  position: absolute;
+  left: 0;
+}
+
+div .contenedor-form .campos-inicio-s .campo .fa-lock.is-invalid {
+  border: 1px solid red;
+}
+
 div .contenedor-form .campos-inicio-s #btn-entrar {
-  margin-top: 5px;
+  margin-top: 0px;
   margin-bottom: 2px;
 }
 
@@ -163,6 +178,10 @@ div .contenedor-form .separacion {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -284,6 +303,7 @@ div .contenedor-form #contenedor-forgot-psw .campo {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
+  margin-top: 18px;
 }
 
 div .contenedor-form #contenedor-forgot-psw .campo i {
@@ -291,6 +311,8 @@ div .contenedor-form #contenedor-forgot-psw .campo i {
   padding: 13px;
   font-size: 1.1em;
   color: #aca5a5;
+  left: 0;
+  top: 15px;
 }
 
 div .contenedor-form #contenedor-forgot-psw .campo .fa-user {
@@ -298,7 +320,7 @@ div .contenedor-form #contenedor-forgot-psw .campo .fa-user {
 }
 
 div .contenedor-form #contenedor-forgot-psw .campo #emailPsw {
-  margin-top: 7px;
+  margin-top: 16px;
   height: 44px;
   width: 100%;
   font-family: "Open Sans", sans-serif;
@@ -317,9 +339,28 @@ div .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus ~ i {
   color: #222121;
 }
 
+.text-rojo {
+  font-family: "Open Sans", sans-serif;
+  color: red;
+  display: block;
+  -webkit-transform: translate(94px, -6px);
+          transform: translate(94px, -6px);
+}
+
+.uno {
+  -webkit-transform: translate(113px, -4px);
+          transform: translate(113px, -4px);
+}
+
+.msj-recup {
+  -webkit-transform: translate(100px, -50px);
+          transform: translate(100px, -50px);
+}
+
 .boton {
   width: 100%;
-  height: 40px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   background-color: #222121;
   color: white;
   font-family: "Poppins", sans-serif;
@@ -333,6 +374,11 @@ div .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus ~ i {
   -webkit-box-shadow: 1px 2px 2px gray;
           box-shadow: 1px 2px 2px gray;
   background-color: #575353;
+}
+
+#recuperar {
+  -webkit-transform: translateY(-25px);
+          transform: translateY(-25px);
 }
 
 .primer {

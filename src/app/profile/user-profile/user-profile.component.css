@@ -270,7 +270,7 @@ section .container-myprofile .frame .cards .card-row #delete:hover {
   display: none;
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 650px) {
   section {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -381,8 +381,63 @@ section .container-myprofile .frame .cards .card-row #delete:hover {
     -ms-grid-column: 2;
     grid-area: eliminar;
     display: block;
-    -webkit-transform: translateX(115px);
-            transform: translateX(115px);
+    -webkit-transform: translateX(36vw);
+            transform: translateX(36vw);
+  }
+}
+
+@media screen and (min-width: 650px) and (max-width: 900px) {
+  section .container-myprofile .frame {
+    width: 90%;
+    margin-left: 0;
+    margin-top: 25px;
+  }
+  section .container-myprofile .frame .cards {
+    padding: 5px 10px;
+    padding-bottom: 25px;
+    margin-bottom: 80px;
+  }
+  section .container-myprofile .frame .cards .card-row {
+    -ms-grid-columns: none;
+        grid-template-columns: none;
+    -ms-grid-rows: none;
+        grid-template-rows: none;
+        grid-template-areas: " nada eliminar" "img info";
+    margin-bottom: 10px;
+    margin-top: 5px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  section .container-myprofile .frame .cards .card-row img {
+    width: 75px;
+    height: 42px;
+    cursor: default;
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    grid-area: img;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    margin-top: -8px;
+  }
+  section .container-myprofile .frame .cards .card-row div {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    grid-area: info;
+  }
+  section .container-myprofile .frame .cards .card-row div p {
+    line-height: 12px;
+    margin-bottom: 5px;
+  }
+  section .container-myprofile .frame .cards .card-row #delete {
+    font-size: 12px;
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    grid-area: eliminar;
+    display: block;
+    -webkit-transform: translateX(36vw);
+            transform: translateX(36vw);
   }
 }
 /*# sourceMappingURL=user-profile.component.css.map */

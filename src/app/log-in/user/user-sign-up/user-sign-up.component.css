@@ -43,7 +43,7 @@ section .contenedor-form {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: -440px;
+  margin-top: -490px;
   width: 420px;
   -webkit-box-shadow: 2px 4px 10px grey;
           box-shadow: 2px 4px 10px grey;
@@ -51,7 +51,7 @@ section .contenedor-form {
 
 section .contenedor-form #contenedor-registrarse {
   width: 80%;
-  height: 270px;
+  height: 530px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -119,7 +119,6 @@ section .contenedor-form #contenedor-registrarse .campo .fa-user {
 }
 
 section .contenedor-form #contenedor-registrarse .campo #email {
-  margin-top: 7px;
   height: 44px;
   width: 100%;
   font-family: "Open Sans", sans-serif;
@@ -170,7 +169,6 @@ section .contenedor-form #contenedor-registrarse .campo .fa-eye-slash {
 }
 
 section .contenedor-form #contenedor-registrarse .campo #username {
-  margin-top: 7px;
   height: 44px;
   width: 100%;
   font-family: "Open Sans", sans-serif;
@@ -198,6 +196,105 @@ section .contenedor-form #contenedor-registrarse .campo #password {
 section .contenedor-form #contenedor-registrarse .campo #password:focus {
   outline: none;
   border: 1px solid #b4aaaa;
+}
+
+section .contenedor-form #contenedor-registrarse .nombre-apellido {
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+section .contenedor-form #contenedor-registrarse .nombre-apellido #name, section .contenedor-form #contenedor-registrarse .nombre-apellido #lastname {
+  margin-top: 7px;
+  height: 44px;
+  font-family: "Open Sans", sans-serif;
+  width: 100%;
+  font-size: 15px;
+  padding-left: 40px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+section .contenedor-form #contenedor-registrarse .nombre-apellido #name:focus, section .contenedor-form #contenedor-registrarse .nombre-apellido #lastname:focus {
+  outline: none;
+  border: 1px solid #b4aaaa;
+}
+
+section .contenedor-form #contenedor-registrarse .calle-ciudad {
+  margin-top: -9px;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+section .contenedor-form #contenedor-registrarse .calle-ciudad #calle, section .contenedor-form #contenedor-registrarse .calle-ciudad #ciudad {
+  margin-top: 7px;
+  height: 44px;
+  font-family: "Open Sans", sans-serif;
+  width: 100%;
+  font-size: 15px;
+  padding-left: 40px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+section .contenedor-form #contenedor-registrarse .calle-ciudad #calle:focus, section .contenedor-form #contenedor-registrarse .calle-ciudad #ciudad:focus {
+  outline: none;
+  border: 1px solid #b4aaaa;
+}
+
+section .contenedor-form #contenedor-registrarse .nro-cp {
+  margin-top: -9px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify !important;
+      -ms-flex-pack: justify !important;
+          justify-content: space-between !important;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+section .contenedor-form #contenedor-registrarse .nro-cp #cp, section .contenedor-form #contenedor-registrarse .nro-cp #nro {
+  margin-top: 7px;
+  height: 44px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+  padding-left: 40px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 95%;
+}
+
+section .contenedor-form #contenedor-registrarse .nro-cp #cp:focus, section .contenedor-form #contenedor-registrarse .nro-cp #nro:focus {
+  outline: none;
+  border: 1px solid #b4aaaa;
+}
+
+section .contenedor-form #contenedor-registrarse .nro-cp #cp {
+  margin-left: 6%;
 }
 
 section .contenedor-form #msje-registro {
