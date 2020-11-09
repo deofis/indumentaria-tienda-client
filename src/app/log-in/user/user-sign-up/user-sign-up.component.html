@@ -8,12 +8,16 @@
         (ngSubmit)="registrarse()">
         <div id="contenedor-registrarse">
             <h2><i class="fas fa-arrow-circle-left" id="back1" [routerLink]="['/userLogIn']"></i>Crear cuenta</h2>
-            <div class="nombre-apellido">
-                <div class="name ">
-                    <input type="text" id="name" placeholder="Juan" required>
-                </div>
-                <div class="lastname ">
-                    <input type="text" placeholder="Perez" value="" required id="lastname">
+            <div formGroupName="cliente">
+                <div class="nombre-apellido">
+                    <div class="name ">
+                        <input [class.is-invalid]="nombreInvalido" type="text" id="name" placeholder="*Nombre"
+                            formControlName="nombre">
+                    </div>
+                    <div class="lastname ">
+                        <input [class.is-invalid]="apellidoInvalido" type="text" placeholder="*Apellido" id="lastname"
+                            formControlName="apellido">
+                    </div>
                 </div>
             </div>
             <div class="location">
@@ -47,31 +51,32 @@
                 <div class="email">
 
                     <input [ngClass]="{'is-invalid': emailInvalido}" type="email" id="email"
-                        placeholder="Correo electrónico" formControlName="email">
+                        placeholder="*Correo electrónico" formControlName="email">
                 </div>
                 <span class="text-rojo" *ngIf="emailInvalido"><small>El email es obligatorio</small></span>
             </div>
             <div class="passwords">
-            <div class="cont-psw1">
-                <div class="campo">
-                    <input [ngClass]="{'is-invalid': passwordInvalida}" type="password" id="new-pasw"
-                        placeholder="Contraseña" formControlName="password">
-                    <i class="far fa-eye" id="show1" (click)="mostrarPsw1()"></i>
-                    <i class="far fa-eye-slash" id="hide1" (click)="mostrarPsw1()"></i>
+                <div class="cont-psw1">
+                    <div class="campo">
+                        <input [ngClass]="{'is-invalid': passwordInvalida}" type="password" id="new-pasw"
+                            placeholder="*Contraseña" formControlName="password">
+                        <i class="far fa-eye" id="show1" (click)="mostrarPsw1()"></i>
+                        <i class="far fa-eye-slash" id="hide1" (click)="mostrarPsw1()"></i>
+                    </div>
+                    <span class="text-rojo" *ngIf="passwordInvalida"><small>Las contraseña deben
+                            coincidir</small></span>
                 </div>
-                <span class="text-rojo" *ngIf="passwordInvalida"><small>Las contraseña deben coincidir</small></span>
-            </div>
-            <div class="cont-psw2">
-                <div class="campo">
-                    <input [ngClass]="{'is-invalid': passwordNoIguales}" type="password" id="new-pasw-repeat"
-                        placeholder="Repetir contraseña" formControlName="passwordRepeat">
+                <div class="cont-psw2">
+                    <div class="campo">
+                        <input [ngClass]="{'is-invalid': passwordNoIguales}" type="password" id="new-pasw-repeat"
+                            placeholder="Repetir contraseña" formControlName="passwordRepeat">
 
-                    <i class="far fa-eye" id="show2" (click)="mostrarPsw2()"></i>
-                    <i class="far fa-eye-slash" id="hide2" (click)="mostrarPsw2()"></i>
+                        <i class="far fa-eye" id="show2" (click)="mostrarPsw2()"></i>
+                        <i class="far fa-eye-slash" id="hide2" (click)="mostrarPsw2()"></i>
+                    </div>
+                    <span class="text-rojo" *ngIf="passwordNoIguales"><small>La contraseña es obligatoria</small></span>
                 </div>
-                <span class="text-rojo" *ngIf="passwordNoIguales"><small>Las contraseña deben coincidir</small></span>
             </div>
-        </div>
             <button type="submit" id="btn-sign-up" class="boton">Registrarme</button>
 
         </div>

@@ -12,6 +12,26 @@ export class ProductsComponent implements OnInit {
   productosDestacados: Producto[];
   target: HTMLInputElement;
    categorias:Categoria[];
+   images:any[]=[
+    {
+      img:'../../../../assets/imagenes/prod1.jpg'
+    },
+    {
+      img:'../../../../assets/imagenes/prod2.png ',
+    },
+    {
+      img:'../../../../assets/imagenes/prod3.jpg'},
+    {
+      img:'../../../../assets/imagenes/prod4.jpg',
+    },
+    {
+      img:'../../../../assets/imagenes/prod5.jpg',
+    },
+    {
+      img:'../../../../assets/imagenes/prod6.jpg',
+    }
+    
+  ]
   
 
 tarjeta= document.querySelectorAll(".tarjetas")
@@ -20,6 +40,9 @@ cantidadPaginas= Math.ceil(this.tarjeta.length /5);
 
   }
   ngOnInit(): void {
+    
+
+    console.log(this.images);
     /// ****  *** CARUSEL PRODUCTOS DESTACADOS *** ****  ///
     const fila=document.getElementById("contenedor-carouselDestacados");
     const flecha1= document.getElementById("flecha-izquierda-fila1");
@@ -85,8 +108,13 @@ showCategoriesEffect() {
   getProductosDestacados():void{
     this.catalogoService.getProductosDestacados().subscribe(response => {
       this.productosDestacados=response;
-      console.log(this.productosDestacados)}
-      );
+
+      for (let index = 0; index < this.productosDestacados.length; index++) {
+        this.productosDestacados[index].foto = this.images[index]?.img;       
+      }
+    console.log(this.productosDestacados);
+    });
+
   }
 
 

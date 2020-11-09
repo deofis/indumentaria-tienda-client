@@ -17,63 +17,60 @@ export class UserSignUpComponent implements OnInit {
   signupRequest: SignupRequest;
 
   constructor(private fb: FormBuilder,
-              private router: Router,
-              private validadores: ValidadoresService,
-              private authService: AuthService) {
+    private router: Router,
+    private validadores: ValidadoresService,
+    private authService: AuthService) {
     this.signupRequest = new SignupRequest();
   }
 
   ngOnInit(): void {
-   /***** mostrar mensaje cta creada */
-    
-      // let btnSignUp=document.getElementById("btn-sign-up");
-      // btnSignUp.addEventListener("click",this.showMessage)
- 
+    /***** mostrar mensaje cta creada */
+    this.crearFormulario();
   }
 
- //// ******** show psw *********///
+  //// ******** show psw *********///
 
-  mostrarPsw1(){
-    let input = document.getElementById("new-pasw")as HTMLInputElement ;   
-    if(input.type == "password"){
-        input.type = "text";
-      let icon= document.getElementById("show1")
-      icon.style.visibility="hidden";
-      let iconHide=document.getElementById("hide1");
-      iconHide.style.visibility="visible"
-    }else{
-        input.type = "password";
-        let icon= document.getElementById("show1")
-        icon.style.visibility="visible";
-        let iconHide=document.getElementById("hide1");
-        iconHide.style.visibility="hidden"
+  mostrarPsw1() {
+    let input = document.getElementById("new-pasw") as HTMLInputElement;
+    if (input.type == "password") {
+      input.type = "text";
+      let icon = document.getElementById("show1")
+      icon.style.visibility = "hidden";
+      let iconHide = document.getElementById("hide1");
+      iconHide.style.visibility = "visible"
+    } else {
+      input.type = "password";
+      let icon = document.getElementById("show1")
+      icon.style.visibility = "visible";
+      let iconHide = document.getElementById("hide1");
+      iconHide.style.visibility = "hidden"
     }
   }
-  mostrarPsw2(){
-    let input = document.getElementById("new-pasw-repeat")as HTMLInputElement ;   
-    if(input.type == "password"){
-        input.type = "text";
-      let icon= document.getElementById("show2")
-      icon.style.visibility="hidden";
-      let iconHide=document.getElementById("hide2");
-      iconHide.style.visibility="visible"
-    }else{
-        input.type = "password";
-        let icon= document.getElementById("show2")
-        icon.style.visibility="visible";
-        let iconHide=document.getElementById("hide2");
-        iconHide.style.visibility="hidden"
+  mostrarPsw2() {
+    let input = document.getElementById("new-pasw-repeat") as HTMLInputElement;
+    if (input.type == "password") {
+      input.type = "text";
+      let icon = document.getElementById("show2")
+      icon.style.visibility = "hidden";
+      let iconHide = document.getElementById("hide2");
+      iconHide.style.visibility = "visible"
+    } else {
+      input.type = "password";
+      let icon = document.getElementById("show2")
+      icon.style.visibility = "visible";
+      let iconHide = document.getElementById("hide2");
+      iconHide.style.visibility = "hidden"
     }
   }
-///// show message
-  showMessage(){
-      let contRegistr=document.getElementById("contenedor-registrarse");
-      contRegistr.style.display="none";
-      let msj=document.getElementById("msje-registro");
-      msj.style.display="block";
-      msj.style.width="70%";
-      let contBlanco=document.getElementById("cont-form");
-      contBlanco.style.marginTop="-380px";
+  ///// show message
+  showMessage() {
+    let contRegistr = document.getElementById("contenedor-registrarse");
+    contRegistr.style.display = "none";
+    let msj = document.getElementById("msje-registro");
+    msj.style.display = "block";
+    msj.style.width = "70%";
+    let contBlanco = document.getElementById("cont-form");
+    contBlanco.style.marginTop = "-380px";
   }
 
   /**
@@ -85,11 +82,25 @@ export class UserSignUpComponent implements OnInit {
     this.formRegistro = this.fb.group({
       // Expresion regular para verificar que sea un email correcto.
       email: ["", [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      password: ["", Validators.required],
-      passwordRepeat: ["", Validators.required]
+      password: ["", [Validators.required, Validators.minLength(8)]],
+      passwordRepeat: ["", Validators.required],
+      cliente: this.fb.group({
+        //id: [""],
+        nombre: ["", Validators.required],
+        apellido: ["", Validators.required],
+        // direccion: [""]
+      }),
     }, {
       validators: this.validadores.passwordIguales('password', 'passwordRepeat')
     });
+  }
+
+  get nombreInvalido() {
+    return this.formRegistro.get('cliente.nombre').invalid && this.formRegistro.get('cliente.nombre').touched;
+  }
+
+  get apellidoInvalido() {
+    return this.formRegistro.get('cliente.apellido').invalid && this.formRegistro.get('cliente.apellido').touched;
   }
 
   /**
@@ -116,7 +127,7 @@ export class UserSignUpComponent implements OnInit {
     const pass1 = this.formRegistro.get('password').value;
     const pass2 = this.formRegistro.get('passwordRepeat').value;
 
-    return (pass1 === pass2)?false : true;
+    return (pass1 === pass2) ? false : true;
   }
 
   /**
@@ -128,12 +139,15 @@ export class UserSignUpComponent implements OnInit {
 
     if (this.formRegistro.invalid) {
       return Object.values(this.formRegistro.controls)
-      .forEach(control => control.markAsTouched());
+        .forEach(control => control.markAsTouched());
     }
 
     this.signupRequest.email = this.formRegistro.controls.email.value;
     this.signupRequest.password = this.formRegistro.controls.password.value;
+    this.signupRequest.cliente = this.formRegistro.controls.cliente.value;
 
+    console.log(this.signupRequest);
+    
     this.authService.signup(this.signupRequest).subscribe(response => {
       console.log(response);
       
@@ -142,8 +156,6 @@ export class UserSignUpComponent implements OnInit {
       console.log(err.error);
       throwError(err);
     });
-
-
   }
 
 }

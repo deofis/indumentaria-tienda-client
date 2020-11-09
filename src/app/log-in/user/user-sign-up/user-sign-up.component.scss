@@ -165,7 +165,10 @@ section {
                     align-items: center;
                     position: relative;
                     #new-pasw, #new-pasw-repeat{
-                        @extend %campos
+                        @extend %campos;
+                     &.is-invalid~i{
+                         color:rgb(150, 9, 9);
+                    }
                     }
                     i {
                      position: absolute;
@@ -249,62 +252,182 @@ section {
     }
     outline: none;
 }
+.text-rojo{
+    font-family: $fte-sec;
+    color: red;
+    display: block;
+   transform: translate(7vw,-6px);
+   }
 
-@media screen and (max-width: 500px) {
+.is-invalid{
+    border: 1px solid rgb(252, 62, 62);
+}
+@media screen and (max-width: 550px) {
     section {
-        .fondo {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            img {
-                top: 15px;
-                left: 20px;
-                width: 150px;
-                height: 45px;
+        .contenedor-form {
+            padding-top: 10px;
+            padding-bottom: 20px;
+            margin-top: -430px;
+          min-width: 300px;
+            #contenedor-registrarse {
+                width: 90%;
+                h2 {
+                    font-size: 21px;
+                }
+                .nombre-apellido{
+                    width: 100%;
+                    align-items: center;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: unset;               
+                    .name  {
+                        width: 100%;
+                        #name{
+                          @extend %campos;
+                        }
+                    }
+                    .lastname{
+                        width: 100%;
+                        #lastname{
+                            @extend %campos;
+                        }
+                    }
+                }
+                .location{
+                    width: 100%;
+                    align-items: center;
+                    justify-content: unset;
+                    display: flex;
+                    flex-direction: column;
+                    .country{
+                       width: 1000%;
+                       @extend %campos;
+                    }
+                    .state{
+                        width: 100%;
+                        @extend %campos;
+                     }
+                     .city{
+                        width: 100%;
+                        @extend %campos;
+                     }
+                }
+                .calle-nro{
+                    width: 100%;
+                    display: grid;
+                    grid-template-areas: "calle calle"
+                                        "nro" "cp";
+                    .calle {
+                        width: 40%;
+                        grid-area: calle;
+                        #calle{
+                            @extend %campos;
+                        }
+                    }
+                    .nro{
+                        width: 15%;
+                        grid-area: numero;
+                        #nro{
+                            @extend %campos;
+                        }
+                    }
+                    .cp{
+                        width: 18%;
+                        grid-area: cp;
+                        #cp{
+                            @extend %campos;
+                        }
+                    }
+                }
+                .cont-email{
+                    width: 100%;
+                    .email{
+                        width: 55%;
+                        #email{
+                            @extend %campos;
+                        }
+    
+                    }
+                }
+                .passwords{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    .cont-psw1, .cont-psw2{
+                    width: 100%;
+                    .campo{
+                        width: 95%;
+                        display: flex;
+                        align-items: center;
+                        position: relative;
+                        #new-pasw, #new-pasw-repeat{
+                            @extend %campos
+                        }
+                        i {
+                         position: absolute;
+                        padding: 13px;
+                        font-size: 1.1em;
+                        color: grey;
+                        }
+                        .fa-eye,
+                    .fa-eye-slash {
+                        margin-left: 78%;
+                        margin-top: -6px;
+                    }
+                    .fa-eye-slash {
+                        visibility: hidden;
+                    }
+                    }
+                }
+            }
+            }
+            #msje-registro {
+                font-family: $fte-sec;
+                color: rgb(34, 33, 33);
+                text-align: center;
+                display: none;
+                margin-top: auto;
+                margin-bottom: auto;
+                span {
+                    font-size: 16px;
+                    color: $color-sec;
+                }
+                #name,
+                #lastname {
+                    margin-top: 7px;
+                    height: 39px;
+                    width: 100%;
+                    font-family: $fte-sec;
+                    font-size: 15px;
+                    padding-left: 20px;
+                    box-sizing: border-box;
+                    &:focus {
+                        outline: none;
+                        border: 1px solid rgb(180, 170, 170);
+                    }
+                }
+                #lastname {
+                    margin-bottom: 10px;
+                }
             }
         }
-        .contenedor-form {
-            padding-top: 20px;
-            padding-bottom: 35px;
-            margin-top: -400px;
-            width: 85vw;
-            height: 280px;
-            #contenedor-registrarse {
-                h2 {
-                    font-size: 18px;
-                    i {
-                        font-size: 0.9em;
-                    }
-                }
-                .campo {
-                    i {
-                        font-size: 1em;
-                    }
-                    #email {
-                        margin-top: -5px;
-                        height: 38px;
-                        width: 100%;
-                        font-family: $fte-sec;
-                        font-size: 15px;
-                        padding-left: 40px;
-                        margin-bottom: -8px;
-                    }
-                    #new-pasw,
-                    #new-pasw-repeat {
-                        height: 38px;
-                        padding-left: 40px;
-                        box-sizing: border-box;
-                        margin-bottom: -8px;
-                        margin-top: -3px;
-                    }
-                    .fa-eye,
-                    .fa-eye-slash {
-                        margin-left: 82%;
-                    }
-                    #password {
-                        height: 38px;
-                    }
-                }
+        .footer-is {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            position: absolute;
+            bottom: 0px;
+            background-color: black;
+            a {
+                padding-top: 2px;
+                padding-bottom: 3px;
+                padding-right: 40px;
+                text-decoration: none;
+                color: $color-ppal;
+                font-family: $fte-sec;
+                font-size: 13px;
             }
         }
     }

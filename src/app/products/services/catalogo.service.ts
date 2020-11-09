@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { API_BASE_URL } from 'src/app/config/config';
 import { Categoria } from '../clases/categoria';
 import { Producto } from '../clases/producto';
 
@@ -14,7 +15,7 @@ id:number;
   constructor(private http:HttpClient) { 
     //  this.url="https://api.deofisdev.online/api";
     // this.url="https://deofis-tienda-apirest.herokuapp.com/api";
-    this.url="http://186.138.202.106:8081/api"
+    this.url = `${API_BASE_URL}/api`
 
   }
   getProductosDestacados():Observable<Producto[]>{
