@@ -4,7 +4,7 @@ import { ViewMoreComponent } from './products/components/products/view-more/view
 import { HomeComponent } from './home/home.component';
 import { UserLoginComponent } from './log-in/user/user-login/user-login.component';
 import { BuscadorComponent } from './home/components/buscador/buscador.component';
-import { UserProfileComponent } from './profile/user-profile/user-profile.component';
+import { UserProfileComponent } from './user-options/user-profile/user-profile.component';
 import { UserSignUpComponent } from './log-in/user/user-sign-up/user-sign-up.component';
 import { ShoppingCartComponent } from './cart/components/shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './cart/components/checkout/checkout/checkout.component';

@@ -21,7 +21,7 @@ import { NormalHeaderComponent } from './shared/components/headers/normal-header
 import { UserHeaderComponent } from './shared/components/headers/user-header/user-header.component';
 import { AdminHeaderComponent } from './shared/components/headers/admin-header/admin-header.component';
 import { RouterModule } from '@angular/router';
-import { UserProfileComponent } from './profile/user-profile/user-profile.component';
+import { UserProfileComponent } from './user-options/user-profile/user-profile.component';
 import { AdminProfileComponent } from './profile/admin-profile/admin-profile.component';
 import { ViewMoreComponent } from './products/components/products/view-more/view-more.component';
 import { CardCarouselComponent } from './products/components/products/card-carousel/card-carousel.component';
@@ -38,6 +38,7 @@ import { BenefitsRowComponent } from './benefits-row/benefits-row/benefits-row.c
 import { FormLogInComponent } from './log-in/user/form-log-in/form-log-in.component';
 import { MisComprasComponent } from './user-options/mis-compras/mis-compras.component';
 import { NewPasswordComponent } from './log-in/user/new-password/new-password.component';
+
 
 
 
@@ -69,7 +70,7 @@ import { NewPasswordComponent } from './log-in/user/new-password/new-password.co
     ShoppingCartComponent,
     FormLogInComponent,
     MisComprasComponent,
-    NewPasswordComponent
+    NewPasswordComponent,
   ],
   imports: [
     BrowserModule,
