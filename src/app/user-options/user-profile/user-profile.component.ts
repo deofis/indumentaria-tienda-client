@@ -42,10 +42,12 @@ export class UserProfileComponent implements OnInit {
     lateralmenu.style.width="30px";
     let menu = document.getElementById("lateral-container");
     menu.style.display="none";
+    let boton = document.getElementById("botonMenu");
+    boton.style.display="block";
     let close = document.getElementById("close-menu");
     close.style.display="none";
     let arrow = document.getElementById("open-menu");
-    arrow.style.display="block"
+    arrow.style.display="block";
   }
  
 

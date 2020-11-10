@@ -27,6 +27,11 @@
   text-decoration: none;
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
+  color: #70b8f3;
+}
+
+#contenedor-vermas .routes p a:hover {
+  color: #2779cd;
 }
 
 #contenedor-vermas section {
@@ -122,7 +127,7 @@
   border: none;
   border-radius: 15px;
   margin-left: 3vw;
-  width: 28%;
+  width: 33%;
   position: relative;
 }
 
@@ -254,7 +259,7 @@
 }
 
 #contenedor-vermas section .contenedor-uno #derecha #caja-carrito .color-quantity .modify-quantity i {
-  color: #575353;
+  color: #1f4e84;
   font-size: 1em;
 }
 
@@ -322,7 +327,7 @@
 }
 
 #contenedor-vermas section .contenedor-uno #derecha #caja-carrito .btn {
-  background-color: #575353;
+  background-color: #223e66;
   color: white;
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
@@ -491,7 +496,7 @@
 }
 
 #contenedor-vermas section .contenedor-tres button i {
-  color: #575353;
+  color: #223e66;
   font-size: 1.6em;
 }
 

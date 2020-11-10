@@ -18,8 +18,6 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { BuscadorComponent } from './home/components/buscador/buscador.component';
 import { NormalHeaderComponent } from './shared/components/headers/normal-header/normal-header.component';
-import { UserHeaderComponent } from './shared/components/headers/user-header/user-header.component';
-import { AdminHeaderComponent } from './shared/components/headers/admin-header/admin-header.component';
 import { RouterModule } from '@angular/router';
 import { UserProfileComponent } from './user-options/user-profile/user-profile.component';
 import { AdminProfileComponent } from './profile/admin-profile/admin-profile.component';
@@ -53,8 +51,6 @@ import { NewPasswordComponent } from './log-in/user/new-password/new-password.co
     HomeComponent,
     BuscadorComponent,
     NormalHeaderComponent,
-    UserHeaderComponent,
-    AdminHeaderComponent,
     UserProfileComponent,
     AdminProfileComponent,
     ViewMoreComponent,

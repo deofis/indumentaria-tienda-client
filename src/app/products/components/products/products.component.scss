@@ -5,7 +5,10 @@ $color-ppal:#fff;
  $color-sec: rgb(87, 83, 83);
  $color-ter: rgb(172, 165, 165);
  $color-menues: rgb(243, 236, 236);
-
+ $color-wf1:#223e66;
+ $color-wf2:#1f4e84;
+ $color-wf3:#2779cd;
+ $color-wf4:#70b8f3;
 .cont-destacados{
   display: flex;
   flex-direction: column;
@@ -227,6 +230,7 @@ $color-ppal:#fff;
   min-height: 80vh;
   box-sizing: border-box;
   .card-c{
+    cursor: pointer;
     opacity: 0;
     transition: all 1s;
     align-self: center;
@@ -249,9 +253,10 @@ $color-ppal:#fff;
       opacity: 0.7;
     }
     &:hover>h3{
-      background-color: $color-sec;
+      background-color: $color-wf1;
       color: $color-ppal;
       font-weight: normal;
+      font-weight: bold;
     }
     &:hover{
       transform: scale(1.1);
@@ -263,9 +268,9 @@ $color-ppal:#fff;
     }
 
     h3{
-     background-color: $color-ter;
-     color: $color-sec;
-     font-weight: bold;
+     background-color: $color-wf2;
+     color: $color-menues;
+    //  font-weight: bold;
      width: 100%;
      padding: 10px 10px;
      font-size: 15px;

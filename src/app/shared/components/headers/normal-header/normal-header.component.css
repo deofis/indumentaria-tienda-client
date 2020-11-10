@@ -65,8 +65,8 @@ header .menu-header .logo {
 }
 
 header .menu-header .logo a img {
-  width: 215px;
-  height: 72px;
+  width: 200px;
+  height: 55px;
   margin-left: 15px;
 }
 
@@ -111,8 +111,8 @@ header .menu-header #fila-header nav .menu {
 
 header .menu-header #fila-header nav .menu li a {
   text-decoration: none;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(currentColor), to(currentColor));
-  background-image: linear-gradient(currentColor, currentColor);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#1f4e84), to(#70b8f3));
+  background-image: linear-gradient(#1f4e84, #70b8f3);
   background-position: 0% 100%;
   background-repeat: no-repeat;
   background-size: 0% 2px;
@@ -303,7 +303,7 @@ header .menu-header #contenedor_iconos .menu {
 }
 
 #userOptions li:hover {
-  background-color: #575353;
+  background-color: #223e66;
   color: #fff;
   cursor: pointer;
 }
@@ -362,7 +362,7 @@ header .menu-header #contenedor_iconos .menu {
 
 .contenedor-categorias .submenu li:hover {
   color: #fff;
-  background-color: #575353;
+  background-color: #223e66;
   cursor: default;
 }
 

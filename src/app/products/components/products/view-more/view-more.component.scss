@@ -5,6 +5,10 @@ $color-ppal:#fff;
  $color-sec: rgb(87, 83, 83);
  $color-ter: rgb(172, 165, 165);
  $color-menues: rgb(243, 236, 236);
+ $color-wf1:#223e66;
+ $color-wf2:#1f4e84;
+ $color-wf3:#2779cd;
+ $color-wf4:#70b8f3;
 
 %prop-bg-img{
     background-size: contain;
@@ -24,6 +28,10 @@ $color-ppal:#fff;
                     text-decoration: none;
                     font-family: $fte-sec;
                     font-size: 14px;
+                    color: $color-wf4;
+                    &:hover{
+                     color: $color-wf3;
+                        }
                 } 
             }
         }       
@@ -91,7 +99,7 @@ $color-ppal:#fff;
                 border: none;
                 border-radius: 15px;
                 margin-left: 3vw;
-                width: 28%;
+                width: 33%;
                 position: relative;
                 #caja-titulo{
                     display: flex;
@@ -178,7 +186,7 @@ $color-ppal:#fff;
                             align-items: center;
                             width: 25%;
                             i{
-                                color: $color-sec;
+                                color: $color-wf2;
                                 font-size: 1em;
                             }
                             .fa-minus-circle{
@@ -243,7 +251,7 @@ $color-ppal:#fff;
 
                     }
                     .btn{
-                        background-color: $color-sec;
+                        background-color: $color-wf1;
                         color: white;
                         font-family: $fte-ppal;
                         text-transform: uppercase;
@@ -371,7 +379,7 @@ $color-ppal:#fff;
                 }
                 
                 i{
-                    color: $color-sec;
+                    color: $color-wf1;
                     font-size: 1.6em;
                     
                 }

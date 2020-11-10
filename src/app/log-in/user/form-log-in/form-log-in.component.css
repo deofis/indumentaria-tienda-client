@@ -16,7 +16,7 @@ div {
 div .contenedor-form {
   padding-top: 20px;
   padding-bottom: 30px;
-  background: #f3ecec;
+  background-color: #f6f2f2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -216,7 +216,7 @@ div .contenedor-form .social-media {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 90px;
+  height: 95px;
   margin-top: 15px;
 }
 
@@ -247,6 +247,7 @@ div .contenedor-form .social-media button a i {
 
 div .contenedor-form .social-media .btn1 {
   background-color: #3b5998;
+  margin-bottom: 5px;
 }
 
 div .contenedor-form .social-media .btn2 {
@@ -361,7 +362,7 @@ div .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus ~ i {
   width: 100%;
   padding-top: 3px;
   padding-bottom: 3px;
-  background-color: #222121;
+  background-color: #223e66;
   color: white;
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
@@ -373,7 +374,7 @@ div .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus ~ i {
 .boton:hover {
   -webkit-box-shadow: 1px 2px 2px gray;
           box-shadow: 1px 2px 2px gray;
-  background-color: #575353;
+  background-color: #1f4e84;
 }
 
 #recuperar {

@@ -6,6 +6,8 @@ $color-ppal:#fff;
 $color-sec: rgb(87, 83, 83);
 $color-ter: rgb(172, 165, 165);
 $color-menues: rgb(243, 236, 236);
+$color-wf1:#223e66;
+$color-wf2:#1f4e84;
 div {
     height: 100%;
     width: 100%;
@@ -15,7 +17,7 @@ div {
     .contenedor-form {
         padding-top: 20px;
         padding-bottom: 30px;
-        background: $color-menues;
+        background-color:rgb(246, 242, 242);
         display: flex;
         border-radius: 15px;
         flex-direction: column;
@@ -155,7 +157,7 @@ div {
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            height: 90px;
+            height: 95px;
             margin-top: 15px;
             button {
                 width: 100%;
@@ -180,6 +182,7 @@ div {
             }
             .btn1 {
                 background-color: #3b5998;
+                margin-bottom: 5px;
             }
             .btn2 {
                 background-color: #db4a39;
@@ -269,7 +272,7 @@ div {
     width: 100%;
     padding-top: 3px;
     padding-bottom: 3px;
-    background-color: rgb(34, 33, 33);
+     background-color: $color-wf1;;
     color: white;
     font-family: $fte-ppal;
     text-transform: uppercase;
@@ -277,7 +280,7 @@ div {
     border: none;
     &:hover {
         box-shadow: 1px 2px 2px gray;
-        background-color: $color-sec;
+        background-color: $color-wf2;
     }
     outline: none;
 }

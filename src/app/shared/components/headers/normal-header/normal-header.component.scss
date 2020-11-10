@@ -6,6 +6,10 @@ $color-ppal:#fff;
 $color-sec: rgb(87, 83, 83);
 $color-ter: rgb(172, 165, 165);
 $color-menues: rgb(243, 236, 236);
+$color-wf1:#223e66;
+$color-wf2:#1f4e84;
+$color-wf3:#2779cd;
+$color-wf4:#70b8f3;
 header {
     display: flex;
     flex-direction: column;
@@ -31,6 +35,8 @@ header {
             text-decoration: none;
             i {
                 color: $color-ter;
+                // color: $color-wf1;
+                // opacity: 0.5;
                 font-size: 1.2em;
                 margin-left: 20px;
                 &:hover {
@@ -48,8 +54,8 @@ header {
             width: 15vw;
             a {
                 img {
-                    width: 215px;
-                    height: 72px;
+                    width: 200px;
+                    height:55px;
                     margin-left: 15px;
                 }
             }
@@ -78,7 +84,8 @@ header {
                     li {
                         a {
                             text-decoration: none;
-                            background-image: linear-gradient(currentColor, currentColor);
+                            background-image: linear-gradient($color-wf2, $color-wf4);
+                            // background-image: linear-gradient(currentColor, currentColor);
                             background-position: 0% 100%;
                             background-repeat: no-repeat;
                             background-size: 0% 2px;
@@ -227,7 +234,7 @@ header {
         align-items: center;
         text-transform: uppercase;
         &:hover {
-            background-color: $color-sec;
+            background-color: $color-wf1;
             color: $color-ppal;
             cursor: pointer;
         }
@@ -278,7 +285,7 @@ header {
             text-transform: uppercase;
             &:hover {
                 color: $color-ppal;
-                background-color: $color-sec;
+                background-color: $color-wf1;
                 cursor: default;
             }
             &:hover>i {

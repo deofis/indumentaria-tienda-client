@@ -300,6 +300,7 @@
 }
 
 .section-categories .container-categories .card-c {
+  cursor: pointer;
   opacity: 0;
   -webkit-transition: all 1s;
   transition: all 1s;
@@ -332,9 +333,10 @@
 }
 
 .section-categories .container-categories .card-c:hover > h3 {
-  background-color: #575353;
+  background-color: #223e66;
   color: #fff;
   font-weight: normal;
+  font-weight: bold;
 }
 
 .section-categories .container-categories .card-c:hover {
@@ -349,9 +351,8 @@
 }
 
 .section-categories .container-categories .card-c h3 {
-  background-color: #aca5a5;
-  color: #575353;
-  font-weight: bold;
+  background-color: #1f4e84;
+  color: #f3ecec;
   width: 100%;
   padding: 10px 10px;
   font-size: 15px;

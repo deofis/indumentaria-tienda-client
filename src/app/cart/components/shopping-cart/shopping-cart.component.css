@@ -125,7 +125,7 @@ section {
 }
 
 .container-left .products-list ul li .quantity .modify-quantity i {
-  color: #575353;
+  color: #1f4e84;
   font-size: 0.8em;
 }
 
@@ -285,7 +285,7 @@ section {
 }
 
 .container-right button {
-  background-color: #222121;
+  background-color: #223e66;
   font-size: 16px;
   color: white;
   font-family: "Poppins", sans-serif;
@@ -304,7 +304,7 @@ section {
 .container-right button:hover {
   font-size: 16px;
   cursor: pointer;
-  background-color: #575353;
+  background-color: #1f4e84;
 }
 
 @media screen and (max-width: 500px) {

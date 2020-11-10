@@ -7,6 +7,11 @@
   text-decoration: none;
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
+  color: #70b8f3;
+}
+
+.routes p a:hover {
+  color: #2779cd;
 }
 
 .routes .cantidad-rdos {

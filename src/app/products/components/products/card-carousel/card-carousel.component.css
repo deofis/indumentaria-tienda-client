@@ -1,5 +1,5 @@
 .items a, .items a .botones {
-  background-color: #575353;
+  background-color: #1f4e84;
   font-size: 14px;
   color: white;
   font-family: "Poppins", sans-serif;
@@ -50,6 +50,14 @@
 
 .items:hover > h3 {
   color: #575353;
+}
+
+.items:hover > a {
+  background-color: #223e66;
+}
+
+.items:hover > a > button {
+  background-color: #223e66;
 }
 
 .items .img-fondo {
