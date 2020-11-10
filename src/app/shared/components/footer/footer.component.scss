@@ -184,18 +184,29 @@ $color-ppal:#fff;
     }
     .copy{
         background-color: black;
-        height: 30px;
+        height: 55px;
         position: relative;
+        display: flex;
+        flex-direction:row;
+        justify-content: center;
+        align-items: center;
+        padding-top: 5px;
         a{
             text-decoration: none;
-            color: white;
-            text-align: center;
-            font-size: 13px;
-            position: absolute;
-            bottom: 3px;
-            right: 35px;
-            
+            margin-top: -11px;
+            margin-left: 2px;
+            img{
+                width: 85px;
+                height: 29px;
+                               
+            }    
         }
+        p{
+            font-family: $fte-sec;
+            color: white;
+            font-size: 16px;
+        }
+        
     }
 }
 

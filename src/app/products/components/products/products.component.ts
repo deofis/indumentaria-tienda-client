@@ -30,7 +30,31 @@ export class ProductsComponent implements OnInit {
     {
       img:'../../../../assets/imagenes/prod6.jpg',
     }
-    
+  ];
+  categories:any[]=[
+    {
+      img:'../../../../assets/imagenes/categoria1.jpg'
+    },
+    {
+      img:'../../../../assets/imagenes/categoria2.jpg ',
+    },
+    {
+      img:'../../../../assets/imagenes/categoria3.jpg'},
+    {
+      img:'../../../../assets/imagenes/categoria4a.jpg',
+    },
+    {
+      img:'../../../../assets/imagenes/categoria5a.jpg',
+    },
+    {
+      img:'../../../../assets/imagenes/categoria6.jpg',
+    },
+    {
+      img:'../../../../assets/imagenes/categoria7b.jpg',
+    },
+    {
+      img:'../../../../assets/imagenes/categoria8a.jpg',
+    }
   ]
   
 
@@ -40,9 +64,6 @@ cantidadPaginas= Math.ceil(this.tarjeta.length /5);
 
   }
   ngOnInit(): void {
-    
-
-    console.log(this.images);
     /// ****  *** CARUSEL PRODUCTOS DESTACADOS *** ****  ///
     const fila=document.getElementById("contenedor-carouselDestacados");
     const flecha1= document.getElementById("flecha-izquierda-fila1");
@@ -66,8 +87,6 @@ const fila2=document.getElementById("contenedor-carouselOfertas");
 
     /// EFECTO CATEGORIAS
     
-
-  
     this.getProductosDestacados();
    
      this.getListaCategorias();
@@ -112,7 +131,7 @@ showCategoriesEffect() {
       for (let index = 0; index < this.productosDestacados.length; index++) {
         this.productosDestacados[index].foto = this.images[index]?.img;       
       }
-    console.log(this.productosDestacados);
+    // console.log(this.productosDestacados);
     });
 
   }
@@ -123,8 +142,11 @@ showCategoriesEffect() {
     getListaCategorias():void{
       this.catalogoService.getListaCategorias().subscribe( response =>{
        this.categorias=response;
-       console.log(response) }
-       )
+       for (let index = 0; index < this.categorias.length; index++) {
+        this.categorias[index].foto = this.categories[index]?.img;       
+      }
+      console.log(this.categorias)
+      })
     }
 
   /**** Hidde/ show functions ****/

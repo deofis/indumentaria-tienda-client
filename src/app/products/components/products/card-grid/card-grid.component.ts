@@ -12,11 +12,12 @@ import { CatalogoService } from 'src/app/products/services/catalogo.service';
 })
 
 export class CardGridComponent implements OnInit {
-  @Input() producto:Producto
-  constructor(private catalogoservice:CatalogoService,private _cartService:MockCartService) { }
+  @Input() producto:Producto;
   infoProducto:Producto;
   oferta:boolean=true;
   destacado:boolean=true;
+  constructor(private catalogoservice:CatalogoService,private _cartService:MockCartService) { }
+ 
 
   ngOnInit(): void {
     this.infoProducto=new Producto();

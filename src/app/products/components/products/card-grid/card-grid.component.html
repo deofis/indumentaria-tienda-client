@@ -8,8 +8,8 @@
         </div>
         <h3 [routerLink]="['/viewmore',producto.id]" >{{producto.nombre}}</h3>
         <div class="cont-precios" [routerLink]="['/viewmore',producto.id]" >
-        <span *ngIf="oferta">${{producto.precio + 600}}</span> 
-        <p class="precio">${{producto.precio}}</p>
+        <span *ngIf="oferta">€{{producto.precio + 95}}</span> 
+        <p class="precio">€{{producto.precio}}</p>
       </div>
         <!-- <button class="botones" (click)="addCart(producto)">Ver Más</button> -->
       <a [routerLink]="['/viewmore',producto.id]" ><button class="botones"  >Ver más</button> </a>

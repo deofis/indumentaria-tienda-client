@@ -5,13 +5,15 @@ $color-ppal:#fff;
  $color-sec: rgb(87, 83, 83);
  $color-ter: rgb(172, 165, 165);
  $color-menues: rgb(243, 236, 236);
+ $color-wf1:#223e66;
+ $color-wf2:#1f4e84;
  input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button{
     appearance: none;
     margin: 0;
 }
 
 %prop-items-ppales {
-    background-color: $color-sec;
+    background-color: $color-wf1;
     color:$color-ppal;
 	display: block;
     padding: 15px 20px;
@@ -129,7 +131,9 @@ ul {
 #filtros{
     @extend %prop-items-ppales;
 }
-
+.fa-chevron-circle-right{
+    color: $color-wf1;
+}
 
 
 @media  screen and (max-width: 900px)  {
