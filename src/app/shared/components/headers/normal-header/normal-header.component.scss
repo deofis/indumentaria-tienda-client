@@ -314,6 +314,11 @@ header {
     }
 }
 
+//// *** **** MENU HAMBURGUESA **** *** ///
+#notuser-hamburgerM{
+    display: none;
+}
+
 @media screen and (max-width: 700px) {
    header{
        width: 100%;
@@ -389,6 +394,38 @@ header {
            }
        }
    }
+   .hamburgerM{
+    display: block;
+    position: absolute;
+    z-index: 16;
+    background-color: $color-wf1;
+    opacity: 0.95;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    a{
+        text-decoration: none;
+       }
+    li{
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+     
+        font-family: $fte-ppal;
+        font-size: 18px;
+        padding: 7px 20px 7px 20px;
+    }
+    #separation{
+        margin-top: 15px;
+        display: block;
+        border-top: 1px solid rgba(255, 255, 255, 0.541);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+     
+    }
+}
 }
  @media screen and  (min-width: 701px) and (max-width: 1020px) {
     header{
