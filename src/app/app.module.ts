@@ -36,6 +36,7 @@ import { BenefitsRowComponent } from './benefits-row/benefits-row/benefits-row.c
 import { FormLogInComponent } from './log-in/user/form-log-in/form-log-in.component';
 import { MisComprasComponent } from './user-options/mis-compras/mis-compras.component';
 import { NewPasswordComponent } from './log-in/user/new-password/new-password.component';
+import { FavoritesComponent } from './user-options/favorites/favorites.component';
 
 
 
@@ -67,6 +68,7 @@ import { NewPasswordComponent } from './log-in/user/new-password/new-password.co
     FormLogInComponent,
     MisComprasComponent,
     NewPasswordComponent,
+    FavoritesComponent,
   ],
   imports: [
     BrowserModule,

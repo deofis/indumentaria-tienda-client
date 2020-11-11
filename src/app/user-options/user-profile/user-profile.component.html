@@ -1,13 +1,13 @@
 <section>
-    <div id="lateralMenu" (mouseover)="showLateralMenu()" (mouseout)="hiddeLateralMenu()">
+    <div id="lateralMenu" >
        <div id="botonMenu" class="boton" > 
            <i  class="fas fa-angle-right " id="open-menu" (click)="showLateralMenu()" ></i> 
            <i  class="fas fa-close " id="close-menu" (click)="hiddeLateralMenu()"></i>
         </div>
         <div class="lateral-container" id="lateral-container" >
             <ul class="userOptions" >
-                <li [routerLink]="['/user-mis-compras']"><i class="fas fa-shopping-bag"></i>Compras</li>
-                <li><i class="fas fa-heart"></i> Favoritos </li>
+                <li [routerLink]="['/user-my-purchases']"><i class="fas fa-shopping-bag"></i>Compras</li>
+                <li [routerLink]="['/user-favorites']" ><i class="fas fa-heart"></i> Favoritos </li>
                 <li [routerLink]="['/user-profile']"> <i class="fas fa-file-invoice" ></i> Mis Datos </li>
                 <li (click)="logout()"><i class="fas fa-sign-out-alt"></i>Cerrar Sesión </li>
             </ul>

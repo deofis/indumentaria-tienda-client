@@ -88,10 +88,7 @@ $color-wf4:#70b8f3;
             }
         }
         .newsletter{
-            
-            background-color: $color-sec;
-            // background: linear-gradient(to bottom, $color-menues , black);
-            background: linear-gradient(to top, $color-ppal 5%, $color-menues 15%,$color-sec 60%, black 92%);
+             background: linear-gradient(to bottom, $color-menues , black);
             align-self: center;
             display: flex;
             flex-direction: column;
@@ -188,7 +185,6 @@ $color-wf4:#70b8f3;
   
     }
     .copy{
-        // background: linear-gradient(to top , $color-menues 20%, $color-ter 60% , black 95%);
         background-color: $color-ppal;
         height: 55px;
         position: relative;
@@ -203,13 +199,11 @@ $color-wf4:#70b8f3;
             margin-left: 2px;
             img{
                 width: 105px;
-                height: 36px;
-                               
+                height: 36px;               
             }    
         }
         p{
             font-family: $fte-sec;
-            color: $color-wf1;
             font-size: 18px;
         }
         
@@ -242,7 +236,7 @@ $color-wf4:#70b8f3;
                display: none;
            }
            .Contacto{
-            width:100%;
+            width:95%;
             display:flex;
             flex-direction: column;
             align-items: center;

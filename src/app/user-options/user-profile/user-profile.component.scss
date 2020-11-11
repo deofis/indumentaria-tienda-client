@@ -1,7 +1,5 @@
-$fte-ppal: 'Poppins',
-sans-serif;
-$fte-sec: 'Open Sans',
-sans-serif;
+$fte-ppal: 'Poppins',sans-serif;
+$fte-sec: 'Open Sans',sans-serif;
 $color-ppal:#fff;
 $color-sec: rgb(87, 83, 83);
 $color-ter: rgb(172, 165, 165);
@@ -13,24 +11,20 @@ section{
     width: 100%;
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns:20px auto ;
+    grid-template-columns:200px auto ;
     
     #lateralMenu{
         background-color: $color-wf1;
-        width: 30px;
-        padding-bottom: 450px;
+        width: 200px;
+        padding-bottom: 250px;
         position: relative;
         z-index: 4;
         box-shadow: 1px 2px 2px $color-ter;
         .boton{
-            position: sticky;
-            left:45px;
-            margin-left: 10px;
-            top: 145px;
+            display: none;
             width: 35px;
             height: 55px;
             border-radius: 0 30px 30px 0;
-            font-size: 2.5em;
             background-color:$color-wf1;
             color: white;
             i{
@@ -43,10 +37,10 @@ section{
             }
         }
         .lateral-container{
+            margin-top: 20px;
             position: sticky;
-            top: 20vh;
+            top: 40px;
             bottom:80vh;
-            display: none;
             .userOptions{ 
                 list-style: none;
                 cursor: pointer;
@@ -87,7 +81,7 @@ section{
         justify-content: center;
         background: linear-gradient(to bottom,$color-menues, white);
         .frame{
-            width:75% ;
+            width:85% ;
             margin-top: 30px;
             margin-left: 50px;
             .title{
@@ -210,7 +204,7 @@ section{
 }
 
 
-@media  screen and (max-width: 650px)  {
+@media  screen and (max-width: 800px)  {
     section{
         display: flex;
         flex-direction: column;
@@ -222,7 +216,7 @@ section{
             position: -webkit-sticky;
             position: sticky;
             left:0px;
-            top: 180px;
+            top: 5px;
             opacity: 0.8;
             .boton{
                 position: -webkit-sticky;
@@ -233,6 +227,7 @@ section{
                 height: 30px;
                 font-size: 1.5em;
                 z-index: 4;
+                display: block;
                 i{
                   transform: translateY(2px);
                   margin-left: 5px;
@@ -243,10 +238,10 @@ section{
             }
             .lateral-container{
                 position: relative;
-                top: -30px;
+                top: -60px;
                 display: none;
                 .userOptions{ 
-                    background-color: $color-wf1;
+                    background-color:$color-wf1;
                    display: block;
                     padding-top: 40px;
                    
@@ -263,6 +258,7 @@ section{
                     margin-bottom: 8px;
                     h2{
                         font-size: 18px;
+                        margin-left: 4px;;
                     }
                 }
                 .personalInformation{

@@ -15,6 +15,7 @@ import { AuthGuard } from './log-in/guards/auth.guard';
 import { RoleGuard } from './log-in/guards/role.guard';
 import { MisComprasComponent } from './user-options/mis-compras/mis-compras.component';
 import {  NewPasswordComponent} from "./log-in/user/new-password/new-password.component";
+import { FavoritesComponent } from './user-options/favorites/favorites.component';
 
 const routes: Routes = [
 {path:"home",component:HomeComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
 {path:'oauth2/redirect', component: Oauth2RedirectHandlerComponent},
 {path:"search/:termino", component:BuscadorComponent},
 {path:"user-profile",component:UserProfileComponent},
-{path:"user-mis-compras",component:MisComprasComponent},
+{path:"user-my-purchases",component:MisComprasComponent},
+{path:"user-favorites", component:FavoritesComponent},
 {path:"user-sign-up",component:UserSignUpComponent},
 {path:"shopping-cart",component:ShoppingCartComponent},
 {path:"checkout",component:CheckoutComponent},
