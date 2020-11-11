@@ -87,8 +87,12 @@
     <a [routerLink]="['/user-profile']">
         <li>Mis Datos <i class="fas fa-file-invoice"></i></li>
     </a>
+    <a [routerLink]="['/user-mis-compras']">
     <li>Compras<i class="fas fa-shopping-bag"></i></li>
+    </a>
+    <a [routerLink]="['/user-favorites']">
     <li>Favoritos <i class="fas fa-heart"></i></li>
+    </a>
     <li (click)="logout()">Salir <i class="fas fa-sign-out-alt"></i></li>
 </ul>
 <!-- Admin user -->
@@ -97,6 +101,7 @@
     <a [routerLink]="['/user-profile']">
         <li>Mis Datos <i class="fas fa-file-invoice"></i></li>
     </a>
+    
     <li>Productos </li>
     <li>Administración <i class="fas fa-cog"></i></li>
     <li (click)="logout()">Salir <i class="fas fa-sign-out-alt"></i></li>
@@ -143,10 +148,10 @@
     <a [routerLink]="['/user-mis-compras']">
         <li> <i class="fas fa-shopping-bag"></i> Compras</li>
     </a>
-    <a [routerLink]="['/user-mis-compras']">
+    <a [routerLink]="['/user-favorites']">
         <li><i class="fas fa-heart"></i> Favoritos</li>
     </a>
-    <a [routerLink]="['/user-mis-compras']">
+    <a >
         <li> <i class="fas fa-bell opciones"></i> Notificaciones</li>
     </a>
 
@@ -161,16 +166,16 @@
 <!-- Admin user -->
 <ul *ngIf="estaLogueado && hasRole('ROLE_ADMIN')"  class="hamburgerM" id="hamburgerM" >
     (mouseout)="hiddeUserMenu()">
-    <a [routerLink]="['/user-profile']">
+    <a >
         <li> <i class="fas fa-file-invoice"></i>Mis Datos </li>
     </a>
-    <a [routerLink]="['/user-profile']">
+    <a >
         <li><i class="fas fa-cubes"></i>Productos </li>
     </a>
-    <a [routerLink]="['/user-profile']">
+    <a >
         <li> <i class="fas fa-cog"></i>Administración</li>
     </a>
-    <a [routerLink]="['/user-mis-compras']">
+    <a >
         <li> <i class="fas fa-bell opciones"></i> Notificaciones</li>
     </a>
 
