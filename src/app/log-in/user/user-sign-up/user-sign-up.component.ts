@@ -5,7 +5,7 @@ import { SignupRequest } from '../../clases/signup.request';
 import { ValidadoresService } from '../../services/validadores.service';
 import { AuthService } from '../../services/auth.service';
 import { throwError } from 'rxjs';
-
+import Swal from "sweetalert2";
 @Component({
   selector: 'app-user-sign-up',
   templateUrl: './user-sign-up.component.html',
@@ -70,7 +70,7 @@ export class UserSignUpComponent implements OnInit {
     msj.style.display = "block";
     msj.style.width = "70%";
     let contBlanco = document.getElementById("cont-form");
-    contBlanco.style.marginTop = "-380px";
+    contBlanco.style.marginTop = "-420px";
   }
 
   /**
@@ -137,15 +137,20 @@ export class UserSignUpComponent implements OnInit {
   registrarse(): void {
 
 
+    /*
     if (this.formRegistro.invalid) {
       return Object.values(this.formRegistro.controls)
         .forEach(control => control.markAsTouched());
+    }*/
+
+    if (this.formRegistro.invalid) {
+      return this.formRegistro.markAllAsTouched();
     }
 
     this.signupRequest.email = this.formRegistro.controls.email.value;
     this.signupRequest.password = this.formRegistro.controls.password.value;
     this.signupRequest.cliente = this.formRegistro.controls.cliente.value;
-
+    
     console.log(this.signupRequest);
     
     this.authService.signup(this.signupRequest).subscribe(response => {
@@ -153,8 +158,15 @@ export class UserSignUpComponent implements OnInit {
       
       this.showMessage();
     }, err => {
-      console.log(err.error);
-      throwError(err);
+      Swal.fire({
+        icon:'warning',
+        title:'Usuario existente',
+        text:"Ya existe el usuario con el email: luandrada12@live.com.Por favor,ingrese con su cuenta.",
+        showCloseButton:true,
+        confirmButtonText:"Iniciar Sesión",
+      }).then(() => {
+        this.router.navigate(['/userLogIn']);
+      });
     });
   }
 

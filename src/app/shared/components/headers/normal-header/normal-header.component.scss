@@ -201,6 +201,9 @@ header {
             .menu {
                 display: none;
             }
+            .notificaciones{
+                margin-left: -45px;
+            }
         }
     }
 }
@@ -315,7 +318,7 @@ header {
 }
 
 //// *** **** MENU HAMBURGUESA **** *** ///
-#notuser-hamburgerM{
+.hamburgerM{
     display: none;
 }
 
@@ -331,20 +334,12 @@ header {
            flex-direction: column;
            align-items: center;
            justify-content: center;
-           .logo{
-               margin-left:-16px;
-               align-self: flex-start;
-               margin-bottom: -40px;
-               img{
-                width: 130px;
-                height: 23px;
-               }
-           }
+         
            #fila-header{
                display: flex;
                align-items: center;
                justify-content: center;
-               margin-top: 35px;
+               margin-top: 0px;
                position: relative;
                width: 100%;
             nav{
@@ -355,6 +350,10 @@ header {
                 position: absolute;
                 left: 4.68vw;
                 top: 20px;
+                #closeM{
+                    display: none;
+                    margin-top: 4px;
+                }
             }
             form{
                 position: absolute;
@@ -382,6 +381,9 @@ header {
                         font-size: 1.1em
                     }
                 }
+                .notificaciones{
+                   display: none;
+                }
                 .miperfil{
                 display: none;
                 }
@@ -394,8 +396,14 @@ header {
            }
        }
    }
+   #logo_header{
+       width: 160px;
+       height: 40px;
+       margin-left: -40vw;
+       margin-top: 10px;
+   }
    .hamburgerM{
-    display: block;
+    display: none;
     position: absolute;
     z-index: 16;
     background-color: $color-wf1;
@@ -415,6 +423,9 @@ header {
         font-family: $fte-ppal;
         font-size: 18px;
         padding: 7px 20px 7px 20px;
+        i{
+            font-size: 0.9em;
+        }
     }
     #separation{
         margin-top: 15px;

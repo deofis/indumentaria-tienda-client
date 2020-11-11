@@ -124,7 +124,22 @@ hiddeBgMenu(){
   let bgCategories= document.getElementById("bg-menu");
   bgCategories.style.display="none";
 }
+/******* Menu mobile */
+showMenu(){
+  let menu = document.getElementById("hamburgerM");
+  menu.style.display="block";
 
+   document.getElementById("openM").style.display="none";
+   document.getElementById("closeM").style.display="block";
+}
+hiddeMenu(){
+  let menu = document.getElementById("hamburgerM");
+  menu.style.display="none";
+
+   document.getElementById("openM").style.display="block";
+   document.getElementById("openM").style.marginTop="5px"
+   document.getElementById("closeM").style.display="none";
+}
 
           /**** Search bar  ****/
   buscarProducto(termino:string):void {

@@ -81,25 +81,40 @@ section {
                     outline: none;
                 }
             }
-       
-            .nombre-apellido{
+            #formName{
                 width: 100%;
-                align-items: center;
-                display: flex;
-                justify-content: space-between;               
-                .name  {
-                    width: 45%;
-                    #name{
-                      @extend %campos;
+                .nombre-apellido{
+                    width: 100%;
+                    display: grid;
+                    grid-template-areas: "nombre apellido "
+                                    "alert1  alert2";
+                    align-items: center;
+                    justify-content: space-between;
+                         
+                    .name  {
+                        grid-area: nombre;
+                        width: 100%;
+                        #name{
+                          @extend %campos;
+                        }
                     }
-                }
-                .lastname{
-                    width: 45%;
-                    #lastname{
-                        @extend %campos;
+                    .lastname{
+                        grid-area: apellido;
+                        width: 100%;
+                        #lastname{
+                            @extend %campos;
+                        }
                     }
+                    #alert1{
+                        grid-area: alert1;
+                    }
+                    #alert2{
+                        grid-area: alert2;
+                    }
+
                 }
             }
+           
             .location{
                 width: 100%;
                 align-items: center;
@@ -157,12 +172,12 @@ section {
             }
             .passwords{
                 width: 100%;
-                display: flex;
-                flex-direction: row;
+                display: grid;
+                grid-template-areas: "campo1  campo2 "
+                                    "msj1  msj2";
                 align-items: center;
                 justify-content: space-between;
-                .cont-psw1, .cont-psw2{
-                width: 100%;
+            
                 .campo{
                     width: 95%;
                     display: flex;
@@ -189,15 +204,35 @@ section {
                     visibility: hidden;
                 }
                 }
-            }
+                #campo1{
+                    grid-area: campo1;
+                }
+                #campo2{
+                    grid-area: campo2;
+                }
+                #msj1{
+                    grid-area: msj1;
+                    width: 190px;
+                }
+                #msj2{
+                    grid-area: msj2;
+                   transform: translateY(-17px);
+                }
+            
         }
+            .msje{
+                color: grey;
+                font-family: $fte-sec;
+                font-size: 13px;
+                display: block;
+                margin-top: 5px;
+            }
         }
         #msje-registro {
             font-family: $fte-sec;
             color: rgb(34, 33, 33);
             text-align: center;
             display: none;
-            margin-top: auto;
             margin-bottom: auto;
             span {
                 font-size: 16px;
@@ -234,6 +269,7 @@ section {
     text-transform: uppercase;
     font-size: 16px;
     border: none;
+    margin-top: 10px;
     &:hover {
         box-shadow: 1px 2px 2px gray;
         background-color: $color-wf2;
@@ -243,115 +279,262 @@ section {
 .text-rojo{
     font-family: $fte-sec;
     color: red;
+    line-height: 13px;
     display: block;
-   transform: translate(7vw,-6px);
+  transform: translateY(-15px);
    }
-
 .is-invalid{
     border: 1px solid rgb(252, 62, 62);
 }
 @media screen and (max-width: 550px) {
     section {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .fondo {
+             img {
+                width: 140px;
+                height: 40px;
+                 position: unset;
+                top: 10px;
+                }
+            }
         .contenedor-form {
-            padding-top: 10px;
-            padding-bottom: 20px;
-            margin-top: -430px;
-          min-width: 300px;
+            padding-top: 20px;
+            padding-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: -500px;
+            width: 80vw;
+            min-width: 280px;
             #contenedor-registrarse {
-                width: 90%;
+                width: 85%;
                 h2 {
-                    font-size: 21px;
+                    font-size: 18px;
+                    padding-bottom: 3px;
                 }
-                .nombre-apellido{
+                #formName{
                     width: 100%;
-                    align-items: center;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: unset;               
-                    .name  {
+                    .nombre-apellido{
                         width: 100%;
-                        #name{
-                          @extend %campos;
+                        display: flex;
+                        grid-template-areas: none;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: space-between;
+                             
+                        .name  {
+                            grid-area: nombre;
+                            width: 100%;
+                            #name{
+                                margin-top: 7px;
+                                margin-bottom: 10px;
+                                height: 27px;
+                               width: 100%;
+
+                               ///******************************//
+                                font-family: $fte-sec;
+                                font-size: 15px;
+                                padding-left: 5px;
+                                box-sizing: border-box;
+                                &:focus {
+                                    outline: none;
+                                    border: 1px solid rgb(180, 170, 170);
+                                }
+                            }
                         }
-                    }
-                    .lastname{
-                        width: 100%;
-                        #lastname{
-                            @extend %campos;
+                        .lastname{
+                            grid-area: apellido;
+                            width: 100%;
+                            #lastname{
+                                margin-top: 7px;
+                                margin-bottom: 15px;
+                                height: 35px;
+                               width: 100%;
+                                font-family: $fte-sec;
+                                font-size: 15px;
+                                padding-left: 5px;
+                                box-sizing: border-box;
+                                &:focus {
+                                    outline: none;
+                                    border: 1px solid rgb(180, 170, 170);
+                                }
+                            }
                         }
+                        #alert1{
+                            grid-area: alert1;
+                        }
+                        #alert2{
+                            grid-area: alert2;
+                        }
+    
                     }
                 }
+               
                 .location{
                     width: 100%;
                     align-items: center;
-                    justify-content: unset;
+                    justify-content: space-between;
                     display: flex;
-                    flex-direction: column;
+                    flex-direction: row;
                     .country{
-                       width: 1000%;
-                       @extend %campos;
+                       width: 30%;
+                       margin-top: 7px;
+                       margin-bottom: 15px;
+                       height: 35px;
+                      width: 100%;
+                       font-family: $fte-sec;
+                       font-size: 15px;
+                       padding-left: 5px;
+                       box-sizing: border-box;
+                       &:focus {
+                           outline: none;
+                           border: 1px solid rgb(180, 170, 170);
+                       }
                     }
                     .state{
-                        width: 100%;
-                        @extend %campos;
+                        width: 30%;
+                        margin-top: 7px;
+                        margin-bottom: 15px;
+                        height: 35px;
+                       width: 100%;
+                        font-family: $fte-sec;
+                        font-size: 15px;
+                        padding-left: 5px;
+                        box-sizing: border-box;
+                        &:focus {
+                            outline: none;
+                            border: 1px solid rgb(180, 170, 170);
+                        }
                      }
                      .city{
-                        width: 100%;
-                        @extend %campos;
+                        width: 30%;
+                        margin-top: 7px;
+                        margin-bottom: 15px;
+                        height: 35px;
+                       width: 100%;
+                        font-family: $fte-sec;
+                        font-size: 15px;
+                        padding-left: 5px;
+                        box-sizing: border-box;
+                        &:focus {
+                            outline: none;
+                            border: 1px solid rgb(180, 170, 170);
+                        }
                      }
                 }
                 .calle-nro{
                     width: 100%;
-                    display: grid;
-                    grid-template-areas: "calle calle"
-                                        "nro" "cp";
+                    align-items: center;
+                    justify-content: space-between;
+                    display: flex;
+                    flex-direction: row;
                     .calle {
-                        width: 40%;
-                        grid-area: calle;
+                        width: 55%;
                         #calle{
-                            @extend %campos;
+                            margin-top: 7px;
+                            margin-bottom: 15px;
+                            height: 35px;
+                           width: 100%;
+                            font-family: $fte-sec;
+                            font-size: 15px;
+                            padding-left: 5px;
+                            box-sizing: border-box;
+                            &:focus {
+                                outline: none;
+                                border: 1px solid rgb(180, 170, 170);
+                            }
                         }
                     }
                     .nro{
                         width: 15%;
-                        grid-area: numero;
                         #nro{
-                            @extend %campos;
+                            margin-top: 7px;
+                            margin-bottom: 15px;
+                            height: 35px;
+                           width: 100%;
+                            font-family: $fte-sec;
+                            font-size: 15px;
+                            padding-left: 5px;
+                            box-sizing: border-box;
+                            &:focus {
+                                outline: none;
+                                border: 1px solid rgb(180, 170, 170);
+                            }
                         }
                     }
                     .cp{
                         width: 18%;
-                        grid-area: cp;
                         #cp{
-                            @extend %campos;
+                            margin-top: 7px;
+                            margin-bottom: 15px;
+                            height: 35px;
+                           width: 100%;
+                            font-family: $fte-sec;
+                            font-size: 15px;
+                            padding-left: 5px;
+                            box-sizing: border-box;
+                            &:focus {
+                                outline: none;
+                                border: 1px solid rgb(180, 170, 170);
+                            }
                         }
                     }
+    
                 }
                 .cont-email{
                     width: 100%;
                     .email{
                         width: 55%;
                         #email{
-                            @extend %campos;
+                            margin-top: 7px;
+                            margin-bottom: 15px;
+                            height: 35px;
+                           width: 100%;
+                            font-family: $fte-sec;
+                            font-size: 15px;
+                            padding-left: 5px;
+                            box-sizing: border-box;
+                            &:focus {
+                                outline: none;
+                                border: 1px solid rgb(180, 170, 170);
+                            }
                         }
     
                     }
                 }
                 .passwords{
                     width: 100%;
-                    display: flex;
-                    flex-direction: row;
+                    display: grid;
+                    grid-template-areas: "campo1  campo2 "
+                                        "msj1  msj2";
                     align-items: center;
                     justify-content: space-between;
-                    .cont-psw1, .cont-psw2{
-                    width: 100%;
+                
                     .campo{
                         width: 95%;
                         display: flex;
                         align-items: center;
                         position: relative;
                         #new-pasw, #new-pasw-repeat{
-                            @extend %campos
+                            margin-top: 7px;
+                            margin-bottom: 15px;
+                            height: 35px;
+                            width: 100%;
+                            font-family: $fte-sec;
+                            font-size: 15px;
+                            padding-left: 5px;
+                            box-sizing: border-box;
+                            &:focus {
+                                outline: none;
+                                border: 1px solid rgb(180, 170, 170);
+                            }
+                            &.is-invalid~i{
+                             color:rgb(150, 9, 9);
+                        }
                         }
                         i {
                          position: absolute;
@@ -368,8 +551,29 @@ section {
                         visibility: hidden;
                     }
                     }
-                }
+                    #campo1{
+                        grid-area: campo1;
+                    }
+                    #campo2{
+                        grid-area: campo2;
+                    }
+                    #msj1{
+                        grid-area: msj1;
+                        width: 190px;
+                    }
+                    #msj2{
+                        grid-area: msj2;
+                       transform: translateY(-17px);
+                    }
+                
             }
+                .msje{
+                    color: grey;
+                    font-family: $fte-sec;
+                    font-size: 13px;
+                    display: block;
+                    margin-top: 5px;
+                }
             }
             #msje-registro {
                 font-family: $fte-sec;
@@ -401,22 +605,7 @@ section {
                 }
             }
         }
-        .footer-is {
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
-            position: absolute;
-            bottom: 0px;
-            background-color: black;
-            a {
-                padding-top: 2px;
-                padding-bottom: 3px;
-                padding-right: 40px;
-                text-decoration: none;
-                color: $color-ppal;
-                font-family: $fte-sec;
-                font-size: 13px;
-            }
-        }
+       
     }
-}
+    }
+    

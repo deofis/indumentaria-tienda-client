@@ -16,6 +16,7 @@ import { RoleGuard } from './log-in/guards/role.guard';
 import { MisComprasComponent } from './user-options/mis-compras/mis-compras.component';
 import {  NewPasswordComponent} from "./log-in/user/new-password/new-password.component";
 import { FavoritesComponent } from './user-options/favorites/favorites.component';
+import { ActivatedMssgComponent } from './log-in/user/activated-mssg/activated-mssg.component';
 
 const routes: Routes = [
 {path:"home",component:HomeComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
 {path:"user-my-purchases",component:MisComprasComponent},
 {path:"user-favorites", component:FavoritesComponent},
 {path:"user-sign-up",component:UserSignUpComponent},
+{path:"verify/redirect",component:ActivatedMssgComponent},
 {path:"shopping-cart",component:ShoppingCartComponent},
 {path:"checkout",component:CheckoutComponent},
 {path:"pre-checkout", component:PreCheckoutComponent},

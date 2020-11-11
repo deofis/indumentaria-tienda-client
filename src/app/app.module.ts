@@ -37,6 +37,7 @@ import { FormLogInComponent } from './log-in/user/form-log-in/form-log-in.compon
 import { MisComprasComponent } from './user-options/mis-compras/mis-compras.component';
 import { NewPasswordComponent } from './log-in/user/new-password/new-password.component';
 import { FavoritesComponent } from './user-options/favorites/favorites.component';
+import { ActivatedMssgComponent } from './log-in/user/activated-mssg/activated-mssg.component';
 
 
 
@@ -69,6 +70,7 @@ import { FavoritesComponent } from './user-options/favorites/favorites.component
     MisComprasComponent,
     NewPasswordComponent,
     FavoritesComponent,
+    ActivatedMssgComponent,
   ],
   imports: [
     BrowserModule,
