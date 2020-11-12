@@ -1,10 +1,10 @@
 
      <div class="items">  
-        <div class="i-fondo"><i id="fav" class=" iconos far fa-heart fav" (click)=saveToFav()></i></div>
+        <div class="i-fondo"><i id="fav" class=" iconos far fa-heart fav" (click)="saveToFav()"></i></div>
         <div class="img-fondo" [routerLink]="['/viewmore',producto.id]" >
           <p class="off etiqueta" *ngIf="oferta" >20% 0FF</p>
           <p class="destacado etiqueta" *ngIf="destacado">DESTACADO</p>
-          <img src="../../../../../assets/imagenes/celu.jpg" alt="." >
+          <img src="../../../../../assets/imagenes/celu.jpg" alt="." > 
         </div>
         <h3 [routerLink]="['/viewmore',producto.id]" >{{producto.nombre}}</h3>
         <div class="cont-precios" [routerLink]="['/viewmore',producto.id]" >

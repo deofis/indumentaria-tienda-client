@@ -20,7 +20,7 @@ import { BuscadorComponent } from './home/components/buscador/buscador.component
 import { NormalHeaderComponent } from './shared/components/headers/normal-header/normal-header.component';
 import { RouterModule } from '@angular/router';
 import { UserProfileComponent } from './user-options/user-profile/user-profile.component';
-import { AdminProfileComponent } from './profile/admin-profile/admin-profile.component';
+import { AdminProfileComponent } from './admin-options/admin-profile/admin-profile.component';
 import { ViewMoreComponent } from './products/components/products/view-more/view-more.component';
 import { CardCarouselComponent } from './products/components/products/card-carousel/card-carousel.component';
 import { CardGridComponent } from './products/components/products/card-grid/card-grid.component';

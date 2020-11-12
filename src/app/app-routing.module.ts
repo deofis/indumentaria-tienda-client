@@ -17,6 +17,7 @@ import { MisComprasComponent } from './user-options/mis-compras/mis-compras.comp
 import {  NewPasswordComponent} from "./log-in/user/new-password/new-password.component";
 import { FavoritesComponent } from './user-options/favorites/favorites.component';
 import { ActivatedMssgComponent } from './log-in/user/activated-mssg/activated-mssg.component';
+import { AdminProfileComponent } from './admin-options/admin-profile/admin-profile.component';
 
 const routes: Routes = [
 {path:"home",component:HomeComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
 {path:"user-profile",component:UserProfileComponent},
 {path:"user-my-purchases",component:MisComprasComponent},
 {path:"user-favorites", component:FavoritesComponent},
+{path:"admin-profile", component:AdminProfileComponent},
 {path:"user-sign-up",component:UserSignUpComponent},
 {path:"verify/redirect",component:ActivatedMssgComponent},
 {path:"shopping-cart",component:ShoppingCartComponent},

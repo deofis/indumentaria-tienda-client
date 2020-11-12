@@ -28,7 +28,8 @@ div {
         .campos-inicio-s {
             width: 80%;
             margin-bottom: 10px;
-            height: 300px;
+            height: fit-content;
+            min-height: 300px;
             h2 {
                 font-family: $fte-ppal;
                 text-transform: uppercase;

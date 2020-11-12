@@ -31,7 +31,9 @@ export class CardGridComponent implements OnInit {
         }
   }
 
-saveToFav(){
+saveToFav() {
+  // let productoId = id.toString();
+  console.log(event);
   let corazon=document.getElementById("fav");
   corazon.style.color="red";
   corazon.classList.add("fas");
