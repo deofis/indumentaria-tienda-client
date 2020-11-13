@@ -15,7 +15,7 @@ export class RoleGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
       if (!this.authService.isLoggedIn()) {
-        this.router.navigate(['/userLogIn']);
+        this.router.navigate(['/login']);
         return false;
       }
 

@@ -165,7 +165,7 @@ export class UserSignUpComponent implements OnInit {
         showCloseButton:true,
         confirmButtonText:"Iniciar Sesión",
       }).then(() => {
-        this.router.navigate(['/userLogIn']);
+        this.router.navigate(['/login']);
       });
     });
   }

@@ -59,18 +59,22 @@ export class AuthService {
    * Servicio que cierra sesión. Elimina los datos del local storage del navegador, y llama a la API que completa el
    * cierre de sesión (elimina el refresh token).
    */
-  logout(): void {
+  logout() {
     const refreshTokenPayload = {
       refreshToken: this.getRefreshToken(),
       userEmail: this.getEmailUser()
     };
 
-    this.http.post(`${this.urlEndpoint}/logout`, refreshTokenPayload, {responseType: 'text'})
-                .subscribe(response => console.log(response));
+    return this.http.post(`${this.urlEndpoint}/logout`, refreshTokenPayload, {responseType: 'text'}).pipe(
+      tap(response => {
+        this.loggedIn.emit(false);
+        this.useremail.emit('');
+        localStorage.clear();
+        
+        return response;
+      }));
 
-    this.loggedIn.emit(false);
-    this.useremail.emit('');
-    localStorage.clear();
+    
   }
 
   /**

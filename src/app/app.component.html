@@ -1,13 +1,11 @@
-
-
-<app-normal-header *ngIf="router.url !== '/userLogIn'
+<app-normal-header *ngIf="router.url !== '/login'
                         && router.url !== '/user-sign-up'
                         && router.url !== '/verify/redirect'">
 </app-normal-header>
 
 <router-outlet (activate)="onActivate($event)"></router-outlet>
 
-<app-footer *ngIf="router.url !== '/userLogIn'
+<app-footer *ngIf="router.url !== '/login'
     && router.url !== '/user-sign-up'
     && router.url !== '/verify/redirect'">
 </app-footer>

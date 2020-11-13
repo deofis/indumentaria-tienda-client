@@ -73,8 +73,6 @@ export class FormLogInComponent implements OnInit {
     this.usuario.password = this.formLogin.controls.password.value;
 
     this.authService.login(this.usuario).subscribe(response => {
-      console.log(response);
-      alert('¡Sesión Iniciada!')
       this.router.navigate(['home'])
     }, err => {
       alert('Bad Credentials');

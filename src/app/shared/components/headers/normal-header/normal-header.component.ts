@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { CatalogoService } from 'src/app/products/services/catalogo.service';
 import { Categoria } from 'src/app/products/clases/categoria';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { ItemCarrito } from 'src/app/cart/clases/item-carrito';
 import { MockCarrito } from 'src/app/cart/clases/cart';
 import { MockCartService } from 'src/app/cart/services/mock-cart.service';
@@ -34,8 +35,8 @@ export class NormalHeaderComponent implements OnInit {
               private carritoService: CarritoService) { }
 
   ngOnInit(): void {
-    this.totalQuantity = this.carritoService.getTotalItems();
-    this.carritoService.totalItemsEmmiter.subscribe(resp => this.totalQuantity = resp)
+    //this.totalQuantity = this.carritoService.getTotalItems();
+    //this.carritoService.totalItemsEmmiter.subscribe(resp => this.totalQuantity = resp)
 
     this.verificarSesion();
 
@@ -46,9 +47,9 @@ export class NormalHeaderComponent implements OnInit {
     this.getListaCategorias();
 
     //cart counter
-    this.carritoService.getCarrito().subscribe(response => {
-      this.totalQuantity = response.carrito.items.length;
-    });
+    //this.carritoService.getCarrito().subscribe(response => {
+    //  this.totalQuantity = response.carrito.items.length;
+    //});
   //  this._cartService.currentDataCart$.subscribe(x=>{
   //   if(x) {
   //     this.items = x;
@@ -146,6 +147,14 @@ hiddeMenu(){
     this.router.navigate(['/search',termino]);
    }
 
+   perfilClick(): void {
+     if (this.estaLogueado) {
+       this.router.navigate(['user-profile']);
+     } else {
+       this.router.navigate(['login']);
+     }
+   }
+
   //   /// HEADER SCROLL EFFECT 
   // headerEffect(){
   //   let scrollTop= document.documentElement.scrollTop;
@@ -191,8 +200,16 @@ hiddeMenu(){
    * Cerrar sesión y eliminar datos de la misma.
    */
   logout(): void {
-    this.authService.logout();
-    
-    this.router.navigate(['/home']);
+    this.authService.logout().subscribe(response => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Sesión Cerrada',
+        text: response,
+        width: '350px'
+      }).then(() => {
+        this.router.navigate(['/home']);
+        // refresh
+      });
+    });
   }
 }

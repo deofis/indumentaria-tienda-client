@@ -22,7 +22,7 @@ import { AdminProfileComponent } from './admin-options/admin-profile/admin-profi
 const routes: Routes = [
 {path:"home",component:HomeComponent},
 {path:"viewmore/:id", component:ViewMoreComponent},
-{path:"userLogIn", component:UserLoginComponent},
+{path:"login", component:UserLoginComponent},
 {path:"new-password",component:NewPasswordComponent},
 {path:'oauth2/redirect', component: Oauth2RedirectHandlerComponent},
 {path:"search/:termino", component:BuscadorComponent},
