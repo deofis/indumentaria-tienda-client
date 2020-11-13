@@ -17,7 +17,7 @@ import { AngularFireStorageModule } from "@angular/fire/storage";
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { BuscadorComponent } from './home/components/buscador/buscador.component';
-import { NormalHeaderComponent } from './shared/components/headers/normal-header/normal-header.component';
+import { NormalHeaderComponent } from './shared/components/header/normal-header.component';
 import { RouterModule } from '@angular/router';
 import { UserProfileComponent } from './user-options/user-profile/user-profile.component';
 import { AdminProfileComponent } from './admin-options/admin-profile/admin-profile.component';
