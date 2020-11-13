@@ -46,8 +46,45 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
             display: flex;
             justify-content: center;
             align-items: center;
-            .container-form{
-                margin-top: 215px;
+       
+        }
+    }
+}
+@media screen and (max-width: 800px) {
+    .container-precheckout{
+        height: unset;
+        min-height: unset;
+       .subcontainer{
+           width: 100%;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+           padding-bottom:50px ;
+            .left{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .msj{
+                    width: 95%;
+                    max-width: 550px;
+                    margin-top: 10px;
+                    border-bottom:none;
+                    margin-bottom: -20px;;
+                    p{
+                        text-align: center;
+                        font-family: $fte-sec;
+                        color: white;
+                        font-weight: normal;
+                        font-size: 14px;
+                    }
+                }
+            }
+            .right{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+           
             }
         }
     }
