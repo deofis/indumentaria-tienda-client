@@ -38,6 +38,8 @@ import { MisComprasComponent } from './user-options/mis-compras/mis-compras.comp
 import { NewPasswordComponent } from './log-in/user/new-password/new-password.component';
 import { FavoritesComponent } from './user-options/favorites/favorites.component';
 import { ActivatedMssgComponent } from './log-in/user/activated-mssg/activated-mssg.component';
+import { ConfirmDataComponent } from './cart/components/confirm-data/confirm-data.component';
+import { FinalMessageComponent } from './cart/components/final-message/final-message.component';
 
 
 
@@ -71,6 +73,8 @@ import { ActivatedMssgComponent } from './log-in/user/activated-mssg/activated-m
     NewPasswordComponent,
     FavoritesComponent,
     ActivatedMssgComponent,
+    ConfirmDataComponent,
+    FinalMessageComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import { UserSignUpComponent } from './log-in/user/user-sign-up/user-sign-up.com
 import { ShoppingCartComponent } from './cart/components/shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './cart/components/checkout/checkout/checkout.component';
 import { PreCheckoutComponent } from './cart/components/checkout/pre-checkout/pre-checkout.component';
+import {ConfirmDataComponent} from './cart/components/confirm-data/confirm-data.component';
 import { Oauth2RedirectHandlerComponent } from './log-in/oauth2/oauth2-redirect-handler/oauth2-redirect-handler.component';
 import { PruebaComponent } from './prueba/prueba/prueba.component';
 import { AuthGuard } from './log-in/guards/auth.guard';
@@ -18,6 +19,7 @@ import {  NewPasswordComponent} from "./log-in/user/new-password/new-password.co
 import { FavoritesComponent } from './user-options/favorites/favorites.component';
 import { ActivatedMssgComponent } from './log-in/user/activated-mssg/activated-mssg.component';
 import { AdminProfileComponent } from './admin-options/admin-profile/admin-profile.component';
+import { FinalMessageComponent } from './cart/components/final-message/final-message.component';
 
 const routes: Routes = [
 {path:"home",component:HomeComponent},
@@ -35,6 +37,8 @@ const routes: Routes = [
 {path:"shopping-cart",component:ShoppingCartComponent},
 {path:"checkout",component:CheckoutComponent},
 {path:"pre-checkout", component:PreCheckoutComponent},
+{path:"confirm-data", component:ConfirmDataComponent},
+{path:"successful-purchase" , component:FinalMessageComponent},
 {path:'test', component: PruebaComponent, canActivate: [AuthGuard]},
 {path:"**", pathMatch:"full", redirectTo:"home"}
 ];
