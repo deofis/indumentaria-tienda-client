@@ -34,8 +34,8 @@ export class NormalHeaderComponent implements OnInit {
               private carritoService: CarritoService) { }
 
   ngOnInit(): void {
-    this.totalQuantity = this.carritoService.getTotalItems();
-    this.carritoService.totalItemsEmmiter.subscribe(resp => this.totalQuantity = resp)
+    //this.totalQuantity = this.carritoService.getTotalItems();
+    //this.carritoService.totalItemsEmmiter.subscribe(resp => this.totalQuantity = resp)
 
     this.verificarSesion();
 
@@ -46,9 +46,9 @@ export class NormalHeaderComponent implements OnInit {
     this.getListaCategorias();
 
     //cart counter
-    this.carritoService.getCarrito().subscribe(response => {
-      this.totalQuantity = response.carrito.items.length;
-    });
+    //this.carritoService.getCarrito().subscribe(response => {
+    //  this.totalQuantity = response.carrito.items.length;
+    //});
   //  this._cartService.currentDataCart$.subscribe(x=>{
   //   if(x) {
   //     this.items = x;

@@ -42,7 +42,7 @@ export class CardCarouselComponent implements OnInit {
     let item:ItemCarrito=new ItemCarrito();
     item.cantidad=1;
     item.producto=infoProducto;
-    this._cartService.changeCart(item);
+    //this._cartService.changeCart(item);
  }
 
 

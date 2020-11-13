@@ -20,6 +20,7 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
 
+    /*
     this._cartService.currentDataCart$.subscribe(x=>{
       if(x)
       {
@@ -28,7 +29,9 @@ export class CheckoutComponent implements OnInit {
          this.totalPrice = x.reduce((sum, current) => sum + (current.producto.precio * current.cantidad), 0);
         
       }
+      
     })
+    */
   }
   showInputAdress(){
     let newAdress= document.getElementById("newAdress12");

@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { MockCartService } from '../../services/mock-cart.service';
 import { ItemCarrito } from '../../clases/item-carrito';
 import { Carrito } from '../../clases/carrito';
 import { CarritoService } from '../../services/carrito.service';
-import { map } from 'rxjs/operators';
 import { DetalleCarrito } from '../../clases/detalle-carrito';
+import { AuthService } from '../../../log-in/services/auth.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -21,7 +20,7 @@ export class ShoppingCartComponent implements OnInit {
   //  totalQuantity:number;
   // carrito:MockCarrito;
 
-  constructor(private carritoService: CarritoService, private _cartService:MockCartService) {
+  constructor(private carritoService: CarritoService, private _cartService:MockCartService, private authService: AuthService) {
     this.carrito = new Carrito();
     this.totalProductos = 0;
     // this.carrito=new MockCarrito();
@@ -47,10 +46,16 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   getCarrito(): void {
-    this.carritoService.getCarrito().subscribe((response: any) => {
-      this.carrito = response.carrito;
-      this.totalProductos = this.carrito.items.length;
-    });
+    if (this.authService.isLoggedIn()) {
+      this.carritoService.getCarrito().subscribe((response: any) => {
+        this.carrito = response.carrito;
+        this.totalProductos = this.carrito.items.length;
+      });
+    }
+
+    this.carrito = this._cartService.getCarrito();
+    this.totalProductos = this.carrito.items.length;
+    console.log(this.carrito);
   }
 
   eliminarItem(id: number): void {
@@ -87,6 +92,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
 
+  /*
   ///inicio carrito de compras eliminar , sumar 
   public remove(item:ItemCarrito){
     this._cartService.removeElementCart(item);
@@ -105,4 +111,5 @@ export class ShoppingCartComponent implements OnInit {
   let icono=document.getElementById("close");
   icono.style.color="red"
  }
+ */
 }

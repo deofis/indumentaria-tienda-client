@@ -32,6 +32,7 @@ export class UserHeaderComponent implements OnInit {
         this.getListaCategorias();
     
         //cart counter
+        /*
        this._cartService.currentDataCart$.subscribe(x=>{
         if(x) {
           this.items = x;
@@ -39,6 +40,7 @@ export class UserHeaderComponent implements OnInit {
            this.totalPrice = x.reduce((sum, current) => sum + (current.producto.precio * current.cantidad), 0); 
         }
           })
+          */
   }
 
   

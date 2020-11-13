@@ -3,11 +3,52 @@ import { BehaviorSubject } from 'rxjs';
 import { MockCarrito } from 'src/app/cart/clases/cart';
 import { ItemCarrito } from '../clases/item-carrito';
 import { Producto } from 'src/app/products/clases/producto';
+import { Carrito } from '../clases/carrito';
+import { DetalleCarrito } from '../clases/detalle-carrito';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MockCartService {
+
+  carrito: Carrito;
+
+  constructor() {
+    this.carrito = new Carrito();
+  }
+
+  agregarItem(producto: Producto) {
+    let existeProducto: boolean;
+    if (localStorage.getItem('carrito')) {
+      this.carrito = JSON.parse(localStorage.getItem('carrito'));
+    } else {
+      this.carrito = new Carrito();
+    }
+
+    this.carrito.items.forEach(item => {
+      if (item.producto.id === producto.id) {
+        existeProducto = true;
+        ++item.cantidad;
+      } else {
+        existeProducto = false;
+      }
+    });
+
+    if (!existeProducto) {
+      let item: DetalleCarrito = new DetalleCarrito();
+      item.producto = producto;
+      item.cantidad = 1;
+      this.carrito.items.push(item);
+    }
+
+    localStorage.setItem('carrito', JSON.stringify(this.carrito));
+    console.log(this.carrito);
+  }
+
+  getCarrito() {
+    return JSON.parse(localStorage.getItem('carrito'));
+  }
+  /*
   private cart = new BehaviorSubject<Array<ItemCarrito>>(null); 
   public currentDataCart$ = this.cart.asObservable();
   carrito:MockCarrito;
@@ -93,6 +134,5 @@ export class MockCartService {
     this.cart.next(listCart); //Enviamos el valor a todos los Observers que estan escuchando nuestro Observable
     
   }
- 
-
+ */
 }

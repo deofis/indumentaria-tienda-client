@@ -5,6 +5,11 @@ export class Carrito {
     items: DetalleCarrito[];
     total: number;
 
+    constructor() {
+        this.fechaCreacion = new Date().toString();
+        this.items = [];
+    }
+
     public calcularTotal(): number {
         let total = 0;
         this.items.forEach(item => {

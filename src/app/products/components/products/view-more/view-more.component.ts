@@ -5,6 +5,8 @@ import { MockCartService } from 'src/app/cart/services/mock-cart.service';
 import { Producto } from 'src/app/products/clases/producto';
 import { CatalogoService } from 'src/app/products/services/catalogo.service';
 import { CarritoService } from '../../../../cart/services/carrito.service';
+import { AuthService } from '../../../../log-in/services/auth.service';
+import { Carrito } from '../../../../cart/clases/carrito';
 
 
 @Component({
@@ -20,7 +22,8 @@ export class ViewMoreComponent implements OnInit {
   constructor(private catalogoservice:CatalogoService,
               private activatedroute:ActivatedRoute,
               private _cartService:MockCartService,
-              private carritoService: CarritoService) { 
+              private carritoService: CarritoService,
+              private authService: AuthService) { 
     this.stock = true;
     this.infoProducto=new Producto();
   }
@@ -98,11 +101,17 @@ export class ViewMoreComponent implements OnInit {
     });
   }
 
-  agregarCarrito(productoId: number): void {
-    this.carritoService.agregarProducto(productoId.toString()).subscribe(response => {
-      alert('Producto agregado al carrito');
-    });
+  agregarCarrito(producto: Producto): void {
+    if (this.authService.isLoggedIn()) {
+      this.carritoService.agregarProducto(producto.id.toString()).subscribe(response => {
+        alert('Producto agregado al carrito');
+      });
+    }
+    
+    this._cartService.agregarItem(producto);
+
   }
+  /*
 ///// CANTIDAD////
 public  removeOne(item:ItemCarrito){
   this._cartService.removeOneElementCart(item)
@@ -110,6 +119,7 @@ public  removeOne(item:ItemCarrito){
 public addOne(item:ItemCarrito){
   this._cartService.addOneElementCart(item)
 }
+*/
 
 ///////// Agregar al carrito /////////
 //   addCart(producto:Producto){

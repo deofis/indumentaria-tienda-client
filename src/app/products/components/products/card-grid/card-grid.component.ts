@@ -40,7 +40,7 @@ addCart(producto:Producto){
   item.cantidad=1;
   item.producto=producto;
   console.log(item.producto);
-  this._cartService.changeCart(item);
+  //this._cartService.changeCart(item);
 
 }
 
