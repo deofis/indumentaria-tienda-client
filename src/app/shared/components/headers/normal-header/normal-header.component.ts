@@ -9,6 +9,7 @@ import { MockCartService } from 'src/app/cart/services/mock-cart.service';
 import { AuthService } from '../../../../log-in/services/auth.service';
 import { CarritoService } from '../../../../cart/services/carrito.service';
 import { Carrito } from '../../../../cart/clases/carrito';
+import { Subcategoria } from 'src/app/products/clases/subcategoria';
 
 @Component({
   selector: 'app-normal-header',
@@ -18,6 +19,7 @@ import { Carrito } from '../../../../cart/clases/carrito';
 export class NormalHeaderComponent implements OnInit {
 
   categorias:Categoria[];
+  subcategorias: Subcategoria[];
 
   //para el numero del carrito
   items: Array<ItemCarrito>;
@@ -79,23 +81,29 @@ export class NormalHeaderComponent implements OnInit {
   }
  
 showsubcategories(index:number){
+  let categories =document.getElementById("categoriesList");
+  categories.style.borderRadius=" 0px 0px 0px 10px"
  let container = document.getElementById("container-sub");
  container.style.display="initial";
-//  console.log(this.categorias[index].subcategorias);
- let categoriaActual=this.categorias[index];
- 
+ let categoriaActual=this.categorias[index]; 
  let subcatActuales=categoriaActual.subcategorias;
- console.log(subcatActuales);
 
  for (let x = 0; x < subcatActuales.length ; x++) {
   let itemSubcategoria= document.createElement("p")
-  itemSubcategoria.classList.add("borrar")
+  itemSubcategoria.classList.add("borrar");
+  itemSubcategoria.style.fontFamily="'Open Sans'";
+  itemSubcategoria.style.color="#1f4e84";
+  itemSubcategoria.style.cursor="pointer";
   itemSubcategoria.innerText=subcatActuales[x].nombre;
   document.getElementById("container-sub").appendChild(itemSubcategoria);
-   
+  
  }
-let borrar = document.querySelectorAll(".borrar") ;
-
+}
+hiddesubcategories(){
+  let subcategorias= document.getElementsByClassName("borrar") as HTMLCollectionOf<HTMLElement>;
+  for (let x = 0; x < subcategorias.length; x++) {
+  subcategorias[x].style.display="none"
+  }
 }
 hiddeSubAndCategories(){
   let containerSubcategories = document.getElementById("container-sub");
@@ -103,6 +111,12 @@ hiddeSubAndCategories(){
  let categoriesList= document.getElementById("categoriesList");
  categoriesList.style.display="none";
   this.hiddeBgMenu();
+}
+showCategoriesAndSubcategories(){
+  let containerSubcategories = document.getElementById("container-sub");
+  containerSubcategories.style.display="block";
+  let categoriesList= document.getElementById("categoriesList");
+  categoriesList.style.display="block";
 }
 ///****User options */
 showUserMenu(){

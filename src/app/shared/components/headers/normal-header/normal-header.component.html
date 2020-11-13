@@ -43,7 +43,8 @@
                     <p>Notificaciones</p>
                 </div>
 
-                <div *ngIf="hasRole('ROLE_USER') || !estaLogueado" class="iconos carrito" [routerLink]="['/shopping-cart']">
+                <div *ngIf="hasRole('ROLE_USER') || !estaLogueado" class="iconos carrito"
+                    [routerLink]="['/shopping-cart']">
                     <i class="fas fa-shopping-cart opciones"></i>
                     <p>Carrito </p>
 
@@ -53,12 +54,14 @@
                     </div>
                 </div>
 
-                <div *ngIf="estaLogueado && hasRole('ROLE_ADMIN')" class="iconos carrito" [routerLink]="['/shopping-cart']">
+                <div *ngIf="estaLogueado && hasRole('ROLE_ADMIN')" class="iconos carrito"
+                    [routerLink]="['/shopping-cart']">
                     <i class="fas fa-window-restore"></i>
                     <p>Ventas</p>
                 </div>
 
-                <div class="iconos miperfil" (mouseover)="showUserMenu()" (mouseout)="hiddeUserMenu()" (click)="perfilClick()">
+                <div class="iconos miperfil" (mouseover)="showUserMenu()" (mouseout)="hiddeUserMenu()"
+                    (click)="perfilClick()">
                     <i class="fas fa-user-circle opciones"></i>
                     <p>Mi Perfil</p>
                 </div>
@@ -78,7 +81,8 @@
     </a>
 </ul>
 <!-- Normal user -->
-<ul *ngIf="estaLogueado && hasRole('ROLE_USER')" id="userOptions" (mouseover)="showUserMenu()" (mouseout)="hiddeUserMenu()">
+<ul *ngIf="estaLogueado && hasRole('ROLE_USER')" id="userOptions" (mouseover)="showUserMenu()"
+    (mouseout)="hiddeUserMenu()">
     <a [routerLink]="['/user-profile']">
         <li>Mis Datos <i class="fas fa-file-invoice"></i></li>
     </a>
@@ -91,7 +95,8 @@
     <li (click)="logout()">Salir <i class="fas fa-sign-out-alt"></i></li>
 </ul>
 <!-- Admin user -->
-<ul *ngIf="estaLogueado && hasRole('ROLE_ADMIN')" id="userOptions" (mouseover)="showUserMenu()" (mouseout)="hiddeUserMenu()">
+<ul *ngIf="estaLogueado && hasRole('ROLE_ADMIN')" id="userOptions" (mouseover)="showUserMenu()"
+    (mouseout)="hiddeUserMenu()">
     <a [routerLink]="['/user-profile']">
         <li>Mis Datos <i class="fas fa-file-invoice"></i></li>
     </a>
@@ -103,13 +108,17 @@
 <!-- FIN Admin user -->
 <!-- categorias y subcategorias -->
 <div class="bg-menu" id="bg-menu"></div>
-<div class="contenedor-categorias" (mouseover)="showCategories()" (mouseout)="hiddeSubAndCategories()" id="container-subcategories">
-    <ul class="submenu " id="categoriesList">
-        <li class="items-categories" *ngFor="let categoria of categorias; let i=index" (mouseover)="showsubcategories(i)">{{categoria.nombre}}<i class="fas fa-angle-down"></i>
+<div class="contenedor-categorias" (mouseover)="showCategories()"
+ (mouseout)="hiddeSubAndCategories()"
+    id="container-subcategories">
+    <div class="submenu " id="categoriesList">
+        <li class="items-categories" *ngFor="let categoria of categorias; let i=index"
+            (mouseover)="showsubcategories(i)" (mouseout)="hiddesubcategories()">{{categoria.nombre}}<i
+                class="fas fa-angle-down"></i>
 
         </li>
-    </ul>
-    <div id="container-sub">
+    </div>
+    <div id="container-sub"  (mouseover)="showCategoriesAndSubcategories()" >
     </div>
 </div>
 <!--FIN categorias y subcategorias -->

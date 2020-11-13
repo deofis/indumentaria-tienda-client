@@ -274,6 +274,7 @@ header {
         position: absolute;
         left: 10vw;
         z-index: 4;
+        border-right: 1px solid rgba(187, 184, 184, 0.5);
         //    top: 115px;        
         li {
             background-color: $color-menues;
@@ -300,22 +301,19 @@ header {
     }
     #container-sub {
         background: $color-menues;
-        width: 30vw;
+        width: 16vw;
         height: fit-content;
+        min-height: 401px;
         position: absolute;
         // top: 115px;
-        left: 24vw;
+        left: 25vw;
         z-index: 3;
         border-radius: 0px 0px 10px 0px;
-        height: 200px;
         display: none;
-        li {
-            color: $color-sec;
-            font-family: $fte-sec;
-            list-style: none;
-        }
+        padding: 20px 15px 20px 25px;
     }
 }
+
 
 //// *** **** MENU HAMBURGUESA **** *** ///
 .hamburgerM{
