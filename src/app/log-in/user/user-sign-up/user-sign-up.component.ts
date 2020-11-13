@@ -161,7 +161,7 @@ export class UserSignUpComponent implements OnInit {
       Swal.fire({
         icon:'warning',
         title:'Usuario existente',
-        text:"Ya existe el usuario con el email: luandrada12@live.com.Por favor,ingrese con su cuenta.",
+        text:"¡Ya existe el usuario!. Por favor,ingrese con su cuenta ó verifique su cuenta con su email.",
         showCloseButton:true,
         confirmButtonText:"Iniciar Sesión",
       }).then(() => {
