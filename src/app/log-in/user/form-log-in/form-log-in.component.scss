@@ -1,0 +1,462 @@
+$fte-ppal: 'Poppins',
+sans-serif;
+$fte-sec: 'Open Sans',
+sans-serif;
+$color-ppal:#fff;
+$color-sec: rgb(87, 83, 83);
+$color-ter: rgb(172, 165, 165);
+$color-menues: rgb(243, 236, 236);
+$color-wf1:#223e66;
+$color-wf2:#1f4e84;
+div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .contenedor-form {
+        padding-top: 20px;
+        padding-bottom: 30px;
+        background-color:rgb(246, 242, 242);
+        display: flex;
+        border-radius: 15px;
+        flex-direction: column;
+        align-items: center;
+        width: 30vw;
+        min-width:290px;
+        box-shadow: 2px 4px 10px grey;
+        .campos-inicio-s {
+            width: 80%;
+            margin-bottom: 10px;
+            height: fit-content;
+            min-height: 300px;
+            h2 {
+                font-family: $fte-ppal;
+                text-transform: uppercase;
+                color: $color-sec;
+                align-self: flex-start;
+                display: block;
+                border-bottom: 1px solid grey;
+                width: 100%;
+                padding-bottom: 5px;
+            }
+            .campo {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                position: relative;
+                i {
+                    position: absolute;
+                    padding: 13px;
+                    font-size: 1.1em;
+                    color: $color-ter;
+                }
+                .fa-user {
+                    top: 7.1px;
+                    position: absolute;
+                    left: 0;
+                
+                }
+                .fa-eye,
+                .fa-eye-slash {
+                    margin-left: 86%;
+                }
+                .fa-eye-slash {
+                    visibility: hidden;
+                }
+                #username {
+                    margin-top: 7px;
+                    height: 44px;
+                    width: 100%;
+                    font-family: $fte-sec;
+                    font-size: 15px;
+                    padding-left: 40px;
+                    box-sizing: border-box;
+                    &:focus {
+                        outline: none;
+                        border: 1px solid rgb(180, 170, 170);
+                    }
+                    
+                    &:focus~i {
+                        color: rgb(34, 33, 33);
+                    }
+                    &.is-invalid{
+                        border: 1px solid rgb(252, 62, 62);
+                      }
+                     &.is-invalid~i{
+                        color:rgb(150, 9, 9);
+                      }
+                }
+                #password {
+                    height: 44px;
+                    width: 100%;
+                    font-family: $fte-sec;
+                    font-size: 15px;
+                    padding-left: 40px;
+                    box-sizing: border-box;
+                    &:focus {
+                        outline: none;
+                        border: 1px solid rgb(180, 170, 170);
+                    }
+                    &:focus~.fa-lock {
+                        color: rgb(34, 33, 33);
+                    
+                    }
+                    &.is-invalid{
+                        border: 1px solid rgb(252, 62, 62);
+                      }
+                     &.is-invalid~i{
+                        color:rgb(150, 9, 9);
+                      }
+                }
+                .fa-lock{
+                    position: absolute;
+                    left: 0;
+                    &.is-invalid{
+                        border: 1px solid red;
+                      }
+                }
+            }
+            #btn-entrar {
+                margin-top: 0px;
+                margin-bottom: 2px;
+            }
+            p {
+                align-self: flex-start;
+                font-family: $fte-sec;
+                color: rgb(34, 33, 33);
+                font-size: 12px;
+                margin-top: -5px;
+                margin-bottom: 5px;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+        .separacion {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            align-items: center;
+            width: 80%;
+            p {
+                margin-bottom: 0px;
+                display: block;
+                color: rgb(34, 33, 33);
+                font-size: 17px;
+            }
+            span {
+                display: block;
+                border-bottom: 1px solid $color-sec;
+                width: 42%;
+            }
+        }
+        .social-media {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 95px;
+            margin-top: 15px;
+            button {
+                width: 100%;
+                height: 40px;
+                // border-radius: 30px;
+                border: none;
+                outline: none;
+                &:hover {
+                    box-shadow: 1px 2px 2px gray;
+                }
+                a {
+                    text-decoration: none;
+                    color: white;
+                    font-family: $fte-sec;
+                    font-size: 15px;
+                    display: block;
+                    width: 100%;
+                    i {
+                        margin-right: 10px;
+                    }
+                }
+            }
+            .btn1 {
+                background-color: #3b5998;
+                margin-bottom: 5px;
+            }
+            .btn2 {
+                background-color: #db4a39;
+            }
+        }
+        #contenedor-forgot-psw {
+            width: 80%;
+            margin-bottom: 10px;
+            display: none;
+            height: 230px;
+            h2 {
+                font-family: $fte-ppal;
+                text-transform: uppercase;
+                color: $color-sec;
+                align-self: flex-start;
+                display: block;
+                border-bottom: 1px solid grey;
+                width: 100%;
+                padding-bottom: 5px;
+                font-size: 23px;
+                display: flex;
+                align-items: center;
+                i {
+                    font-size: 0.7em;
+                    color: rgb(34, 33, 33);
+                    margin-right: 8px;
+                }
+            }
+            p {
+                font-family: $fte-sec;
+                color: rgb(34, 33, 33);
+                margin-bottom: -15px;
+            }
+            .campo {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                position: relative;
+                margin-top: 18px;
+                i {
+                    position: absolute;
+                    padding: 13px;
+                    font-size: 1.1em;
+                    color: $color-ter;
+                    left: 0;
+                    top: 15px;
+                }
+                .fa-user {
+                    top: 7.1px;
+                }
+                #emailPsw {
+                    margin-top: 16px;
+                    height: 44px;
+                    width: 100%;
+                    font-family: $fte-sec;
+                    font-size: 15px;
+                    padding-left: 40px;
+                    box-sizing: border-box;
+                    &:focus {
+                        outline: none;
+                        border: 1px solid rgb(180, 170, 170);
+                    }
+                    &:focus~i {
+                        color: rgb(34, 33, 33);
+                    }
+                }
+            }
+        }
+    }
+  
+}
+
+.text-rojo{
+    font-family: $fte-sec;
+    color: red;
+    display: block;
+   transform: translate(7vw,-6px);
+   }
+   .uno{
+    transform: translate(8vw,-4px);
+   }
+   .msj-recup{
+    transform: translate(100px,-50px);
+   }
+.boton {
+    width: 100%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+     background-color: $color-wf1;;
+    color: white;
+    font-family: $fte-ppal;
+    text-transform: uppercase;
+    font-size: 16px;
+    border: none;
+    &:hover {
+        box-shadow: 1px 2px 2px gray;
+        background-color: $color-wf2;
+    }
+    outline: none;
+}
+#recuperar{
+    transform: translateY(-25px);
+}
+.primer {
+    margin-top: 15px;
+}
+
+@media screen and (max-width: 1100px) {
+div{
+        .contenedor-form {
+            padding-top: 15px;
+            padding-bottom: 20px;
+            border-radius: 10px;
+            margin-top:10px;
+            .campos-inicio-s {
+                width: 90%;
+                margin-bottom: 10px;
+                height: 240px;
+                h2 {
+                    font-size: 20px;
+                    padding-bottom: 5px;
+                }
+                div{
+                .campo {
+                    i {
+                        font-size: 1em;
+                    }
+                    #username {
+                        margin-top: -12px;
+                        height: 35px;
+                        font-size: 14px;
+                    }
+                    #password {
+                        margin-top: -43px;
+                        height: 35px;
+                        font-size: 14px;
+                        padding-left: 40px;
+                     
+                    }
+                    .fa-lock{
+                        top: -47px;
+                    }
+                    .fa-user {
+                        top: -17px;                    
+                    }
+                    .fa-eye,
+                    .fa-eye-slash {
+                        margin-left: 85%;
+                        position: absolute;
+                        top: -47px;
+                    }
+                
+                }
+                #recuperar {
+                    font-size: 12px;
+                    margin-top: -86px;
+                    margin-bottom: 5px;
+                }
+                 }
+                #btn-entrar {
+                    margin-top: -70px;
+                    margin-bottom: 5px;
+                }
+              
+            }
+            
+            .social-media {
+                width: 90%;
+                height: 80px;
+                margin-top: 10px;
+                button {
+                    height: 37px;
+                }
+            }
+            #contenedor-forgot-psw {
+                width: 80%;
+                margin-bottom: 10px;
+                display: none;
+                height: 230px;
+                h2 {
+                    font-family: $fte-ppal;
+                    text-transform: uppercase;
+                    color: $color-sec;
+                    align-self: flex-start;
+                    display: block;
+                    border-bottom: 1px solid grey;
+                    width: 100%;
+                    padding-bottom: 5px;
+                    font-size: 23px;
+                    display: flex;
+                    align-items: center;
+                    i {
+                        font-size: 0.7em;
+                        color: rgb(34, 33, 33);
+                        margin-right: 8px;
+                    }
+                }
+                p {
+                    font-family: $fte-sec;
+                    color: rgb(34, 33, 33);
+                    margin-bottom: -15px;
+                }
+                .campo {
+                    width: 100%;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    position: relative;
+                    margin-top: 18px;
+                    i {
+                        position: absolute;
+                        padding: 13px;
+                        font-size: 1.1em;
+                        color: $color-ter;
+                        left: 0;
+                        top: 15px;
+                    }
+                    .fa-user {
+                        top: 7.1px;
+                    }
+                    #emailPsw {
+                        margin-top: 16px;
+                        height: 44px;
+                        width: 100%;
+                        font-family: $fte-sec;
+                        font-size: 15px;
+                        padding-left: 40px;
+                        box-sizing: border-box;
+                        &:focus {
+                            outline: none;
+                            border: 1px solid rgb(180, 170, 170);
+                        }
+                        &:focus~i {
+                            color: rgb(34, 33, 33);
+                        }
+                    }
+                }
+            }
+        }
+    }   
+    .boton {
+        font-size: 15px;
+       
+    }
+    .text-rojo{
+       
+       transform: translate(20vw,-119px);
+       }
+       .uno{
+        transform: translate(25vw,-51px);
+       }
+       .msj-recup{
+        transform: translate(100px,-50px);
+       }
+
+}
+@media screen and (min-width: 700px)and (max-width: 900px){
+    div{
+        .contenedor-form {
+           
+            margin-top:50px;
+        }
+    }
+}
+@media screen and (min-width: 330px)and (max-width: 1100px) {
+    .text-rojo{
+       
+        transform: translate(66px,-117px);
+        }
+        .uno{
+         transform: translate(80px,-49px);
+        }
+      
+    
+}

@@ -11,7 +11,6 @@
                         <app-card-carousel [producto]="destacado"></app-card-carousel>
                     </div>
                 </div>
-                <!-- <button class=" button featured next" id="next">></button> -->
             </div>
 
             <button role="button" id="flecha-derecha-fila1" class="flecha flecha-derecha"><i class="fas fa-angle-right"></i></button>
@@ -21,16 +20,8 @@
         </div>
     </article>
 
-    <!-- <article class="cont-ofertas">
-        <h2 id="section-ofertas">Ofertas</h2>
-        <div class="contenedor-principal">
-            <button role="button" id="flecha-izquierda-fila2" class="flecha flecha-izquierda"><i class="fas fa-angle-left"></i></button>
-
-        </div>
-    </article> -->
-
     <article class="cont-ofertas">
-        <h2>Ofertas</h2>
+        <h2 id="section-ofertas">Ofertas</h2>
         <div class="contenedor-principal">
             <button role="button" id="flecha-izquierda-fila2" class="flecha flecha-izquierda"><i class="fas fa-angle-left"></i></button>
 
@@ -40,7 +31,6 @@
                         <app-card-carousel [producto]="destacado"></app-card-carousel>
                     </div>
                 </div>
-                <!-- <button class=" button ofertas next" id="nextOfertas">></button> -->
             </div>
 
             <button role="button" id="flecha-derecha-fila2" class="flecha flecha-derecha"><i class="fas fa-angle-right"></i></button>
@@ -54,17 +44,18 @@
     <!--FIN banner beneficios-->
 
     <!-- Categorias-->
+    <article class="section-categories">
     <h2 id="section-categories" class="titulo-categoria" style="text-align: center;margin-top: 60px; margin: 40px;">Elegí por categoria</h2>
     <div class="container-categories">
 
         <div class="card-c" id="card-c" *ngFor="let categoria of categorias">
-            <img src="https://limpiezademalaga.es/wp-content/uploads/2020/07/GettyImages-513631128-compressed.jpg" alt="">
+            <img src="{{categoria.foto}}" alt="">
 
             <h3>{{categoria.nombre}}</h3>
         </div>
     </div>
 
-
+</article>
 
 
 </section>

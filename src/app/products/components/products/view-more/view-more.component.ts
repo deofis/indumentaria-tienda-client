@@ -33,12 +33,14 @@ export class ViewMoreComponent implements OnInit {
     let img2= document.getElementById("img-dos");
     let img3= document.getElementById("img-tres");
     let img4= document.getElementById("img-cuatro");
-    
+    let img5= document.getElementById("img-cinco");
+    let img6= document.getElementById("img-seis");
     img1.addEventListener("click",this.changeImg1);
     img2.addEventListener("click",this.changeImg2);
     img3.addEventListener("click",this.changeImg3);
     img4.addEventListener("click",this.changeImg4);
-
+    img5.addEventListener("click",this.changeImg5);
+    img6.addEventListener("click",this.changeImg6);
     //// boton enviar pregunta
     let btnSend = document.getElementById("enviarMsg")
     btnSend.addEventListener("click",this.deleteMessage);
@@ -53,23 +55,33 @@ export class ViewMoreComponent implements OnInit {
   ////////// INICIO CAMBIOS DE IMAGENES ////////////
   changeImg1(){
     let imgPpal= document.getElementById("img-ppal");
-    let url1="url(https://d26lpennugtm8s.cloudfront.net/stores/086/894/products/img-20200518-wa00101-9587272a3a2cc19c4715898271067988-1024-1024.jpg)";
+    let url1="url(https://www.mgmstore.com.ar/339-large_default/Samsung-Galaxy-S10-Plus-128GB.jpg)";
    imgPpal.style.backgroundImage=url1;
   }
   changeImg2(){
     let imgPpal= document.getElementById("img-ppal");
-    let url2="url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQrVkIGh9jsHdgQi8RYojCJmVbWcvktrY4wWA&usqp=CAU)";
+    let url2="url(https://img.global.news.samsung.com/cl/wp-content/uploads/2020/01/lite.jpeg)";
    imgPpal.style.backgroundImage=url2;
   }
   changeImg3(){
     let imgPpal= document.getElementById("img-ppal");
-    let url3="url(https://www.aquadelta.com.ar/img/articulos/termo_stanley_classic_750_ml_polar_blanco_1_imagen2.jpg)";
+    let url3="url(https://doto.vteximg.com.br/arquivos/ids/156984-1200-1200/samsung-galaxy-s20-rosa-1-doto-bothview.jpg?v=637236891053970000)";
    imgPpal.style.backgroundImage=url3;
   }
   changeImg4(){
     let imgPpal= document.getElementById("img-ppal");
-    let url4="url(https://d2ye0ltusw47tz.cloudfront.net/196572-large_default/termo-stanley-clasico-14-lts-plegable-rojo-10-08999-007.jpg)";
+    let url4="url(https://www.maxmovil.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/_/0/_0002_samsung-galaxy-s20-plus-8-128gb-cosmic-black-libre.jpg)";
    imgPpal.style.backgroundImage=url4;
+  }
+  changeImg5(){
+    let imgPpal= document.getElementById("img-ppal");
+    let url5="url(https://www.muycomputer.com/wp-content/uploads/2019/01/Samsung-Galaxy-S10.jpg)";
+   imgPpal.style.backgroundImage=url5;
+  }
+  changeImg6(){
+    let imgPpal= document.getElementById("img-ppal");
+    let url6="url(https://as01.epimg.net/meristation/imagenes/2020/02/11/betech/1581450045_842534_1581450104_noticia_normal_recorte1.jpg)";
+   imgPpal.style.backgroundImage=url6;
   }
 //////// FIN CAMBIO DE IMAGENES //////////
 

@@ -1,0 +1,54 @@
+<section>
+    <div id="lateralMenu" >
+       <div id="botonMenu" class="boton" > 
+           <i  class="fas fa-angle-right " id="open-menu" (click)="showLateralMenu()" ></i> 
+           <i  class="fas fa-close " id="close-menu" (click)="hiddeLateralMenu()"></i>
+        </div>
+        <div class="lateral-container" id="lateral-container" >
+            <ul class="userOptions" >
+                <li [routerLink]="['/user-my-purchases']"><i class="fas fa-shopping-bag"></i>Compras</li>
+                <li [routerLink]="['/user-favorites']" ><i class="fas fa-heart"></i> Favoritos </li>
+                <li [routerLink]="['/admin-profile']"> <i class="fas fa-file-invoice" ></i> Mis Datos </li>
+                <li (click)="logout()"><i class="fas fa-sign-out-alt"></i>Cerrar Sesión </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-myprofile">
+        <div class="frame">
+            <div class="title">
+                <h2>Mis Datos</h2>
+                <button id="save">Guardar</button>
+            </div>
+            <article class="personalInformation">
+                <div class="item-information">
+                    <p>Nombre: </p> <span> Juan</span> <i class="far fa-edit"></i>
+                </div>
+                <div class="item-information">
+                    <p> Apellido:</p> <span>Perez</span> <i class="far fa-edit"></i>
+                </div>
+                <div class="item-information">
+                    <p>E-mail: </p> <span>juanperez@hotmail.com</span> <i class="far fa-edit"></i>
+                </div>
+                <div class="item-information">
+                    <p> Fecha de Nacimiento:</p> <span> 02/12/1996</span> <i class="far fa-edit"></i>
+                </div>
+                <div class="item-information">
+                    <p> DNI:</p> <span>37569824</span> <i class="far fa-edit"></i>
+                </div>
+                <div class="item-information">
+                    <p> Dirección:</p> <span>Av. Calle XXXX, Barcelona,Cataluña.</span> <i class="far fa-edit"></i>
+                </div>
+                <div class="item-information">
+                    <p> Teléfono:</p> <span>(+34) 93 78945612</span> <i class="far fa-edit"></i>
+                </div>
+                <div class="item-information">
+                    <p> Contraseña:</p> <span>*********</span> <i class="far fa-edit"></i>
+                </div>
+            </article>
+
+      </div>
+    </div>
+
+
+
+</section>

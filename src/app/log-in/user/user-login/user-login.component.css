@@ -1,68 +1,5 @@
-section .contenedor-form .campos-inicio-s h2, section .contenedor-form #contenedor-forgot-psw h2 {
-  font-family: "Poppins", sans-serif;
-  color: #103d77;
-  -ms-flex-item-align: start;
-      align-self: flex-start;
-  display: block;
-  border-bottom: 1px solid grey;
-  width: 100%;
-  padding-bottom: 5px;
-}
-
-section .contenedor-form .campos-inicio-s .campo, section .contenedor-form #contenedor-forgot-psw .campo {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: relative;
-}
-
-section .contenedor-form .campos-inicio-s .campo i, section .contenedor-form #contenedor-forgot-psw .campo i {
-  position: absolute;
-  padding: 13px;
-  font-size: 1.1em;
-  color: grey;
-}
-
-section .contenedor-form .campos-inicio-s .campo #username, section .contenedor-form #contenedor-forgot-psw .campo #emailPsw {
-  margin-top: 7px;
-  height: 44px;
-  width: 100%;
-  font-family: "Poppins", sans-serif;
-  font-size: 15px;
-  padding-left: 40px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-section .contenedor-form .campos-inicio-s .campo #username:focus, section .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus {
-  outline: none;
-  border: 1px solid #b4aaaa;
-}
-
-section .contenedor-form .campos-inicio-s .campo #password {
-  height: 44px;
-  width: 100%;
-  font-family: "Poppins", sans-serif;
-  font-size: 15px;
-  padding-left: 40px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-section .contenedor-form .campos-inicio-s .campo #password:focus {
-  outline: none;
-  border: 1px solid #b4aaaa;
-}
-
 section {
-  height: 100%;
+  height: 100vh;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -74,15 +11,11 @@ section {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(1%, #1f4e84), color-stop(55%, #f3ecec));
+  background: linear-gradient(to top, #1f4e84 1%, #f3ecec 55%);
 }
 
-section .fondo {
-  background-color: #2d7be0;
-  height: 40vh;
-  width: 100%;
-}
-
-section .fondo img {
+section a img {
   width: 200px;
   height: 60px;
   position: absolute;
@@ -90,205 +23,18 @@ section .fondo img {
   top: 20px;
 }
 
-section .contenedor-form {
-  padding-top: 20px;
-  padding-bottom: 40px;
-  background-color: white;
-  border-radius: 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-top: -190px;
-  width: 30vw;
-}
-
-section .contenedor-form .campos-inicio-s {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 80%;
-  margin-bottom: 10px;
-  height: 300px;
-}
-
-section .contenedor-form .campos-inicio-s .campo .fa-user {
-  top: 7.1px;
-}
-
-section .contenedor-form .campos-inicio-s .campo .fa-eye {
-  margin-left: 86%;
-}
-
-section .contenedor-form .campos-inicio-s #btn-entrar {
-  margin-top: 5px;
-  margin-bottom: 2px;
-}
-
-section .contenedor-form .campos-inicio-s p {
-  -ms-flex-item-align: start;
-      align-self: flex-start;
-  font-family: "Poppins", sans-serif;
-  color: #2d7be0;
-  font-size: 12px;
-  margin-top: -5px;
-  margin-bottom: 5px;
-}
-
-section .contenedor-form .campos-inicio-s p:hover {
-  cursor: pointer;
-}
-
-section .contenedor-form .separacion {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 80%;
-}
-
-section .contenedor-form .separacion p {
-  color: grey;
-  font-size: 17px;
-}
-
-section .contenedor-form .separacion span {
-  display: block;
-  border-bottom: 1px solid grey;
-  width: 42%;
-}
-
-section .contenedor-form .social-media {
-  width: 80%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 90px;
-  margin-top: 15px;
-}
-
-section .contenedor-form .social-media button {
-  width: 100%;
-  height: 40px;
-  border-radius: 30px;
-  border: none;
-  outline: none;
-}
-
-section .contenedor-form .social-media button:hover {
-  -webkit-box-shadow: 1px 2px 2px gray;
-          box-shadow: 1px 2px 2px gray;
-}
-
-section .contenedor-form .social-media button a {
-  text-decoration: none;
-  color: white;
-  font-family: "Poppins", sans-serif;
-  font-size: 15px;
-  display: block;
-  width: 100%;
-}
-
-section .contenedor-form .social-media button a i {
-  margin-right: 10px;
-}
-
-section .contenedor-form .social-media .btn1 {
-  background-color: #3b5998;
-}
-
-section .contenedor-form .social-media .btn2 {
-  background-color: #db4a39;
-}
-
-section .contenedor-form #contenedor-forgot-psw {
-  width: 80%;
-  margin-bottom: 10px;
-  display: none;
-  height: 230px;
-}
-
-section .contenedor-form #contenedor-forgot-psw h2 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-section .contenedor-form #contenedor-forgot-psw h2 i {
-  font-size: 0.7em;
-  color: grey;
-  margin-right: 8px;
-}
-
-section .contenedor-form #contenedor-forgot-psw p {
-  font-family: "Poppins", sans-serif;
-  color: gray;
-}
-
-section .contenedor-form #contenedor-forgot-psw .campo .fa-user {
-  top: 7.1px;
-}
-
-section .footer-is {
-  width: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  position: absolute;
-  bottom: 8px;
-}
-
-section .footer-is a {
-  text-decoration: none;
-  color: #103d77;
-  font-family: "Poppins", sans-serif;
-  font-size: 12px;
+section app-form-log-in {
+  margin-top: 5vw;
 }
 
 .boton {
   width: 100%;
   height: 40px;
-  background-color: #103d77;
+  background-color: #222121;
   color: white;
   font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
   font-size: 16px;
-  border-radius: 30px;
   border: none;
   outline: none;
 }
@@ -296,9 +42,22 @@ section .footer-is a {
 .boton:hover {
   -webkit-box-shadow: 1px 2px 2px gray;
           box-shadow: 1px 2px 2px gray;
+  background-color: #575353;
 }
 
 .primer {
   margin-top: 15px;
+}
+
+@media screen and (max-width: 700px) {
+  section a img {
+    width: 160px;
+    height: 50px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 /*# sourceMappingURL=user-login.component.css.map */

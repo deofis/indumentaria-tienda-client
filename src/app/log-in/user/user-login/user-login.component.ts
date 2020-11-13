@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IniciarSesionRequest } from '../../clases/login-request';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL } from '../../../config/config';
 
 @Component({
@@ -73,8 +74,9 @@ export class UserLoginComponent implements OnInit {
     this.usuario.password = this.formLogin.controls.password.value;
 
     this.authService.login(this.usuario).subscribe(response => {
-      console.log(response);
-      alert('¡Sesión Iniciada!')
+      console.log(response.authToken);
+      console.log('sad')
+      //alert('¡Sesión Iniciada!')
       this.router.navigate(['home'])
     }, err => {
       alert('Bad Credentials');
@@ -152,17 +154,5 @@ return(){
 }
  ///FIN metodo para ir atras 
 
-
- 
- //////metodo mostarr psw
-
-//  mostrarPsw(){
-//   let campoPsw = document.getElementById("password");
-//   if(campoPsw.type == "password"){
-//       campoPsw.type = "text";
-//   }else{
-//       campoPsw.type = "password";
-//   }
-//  }
 
 }

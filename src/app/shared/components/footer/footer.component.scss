@@ -5,6 +5,10 @@ $color-ppal:#fff;
  $color-sec: rgb(87, 83, 83);
  $color-ter: rgb(172, 165, 165);
  $color-menues: rgb(243, 236, 236);
+ $color-wf1:#223e66;
+$color-wf2:#1f4e84;
+$color-wf3:#2779cd;
+$color-wf4:#70b8f3;
 
 .footer{
     background-color: $color-menues;
@@ -84,9 +88,7 @@ $color-ppal:#fff;
             }
         }
         .newsletter{
-            
-            background-color: $color-sec;
-            background: linear-gradient(to bottom, $color-menues , black);
+             background: linear-gradient(to bottom, $color-menues , black);
             align-self: center;
             display: flex;
             flex-direction: column;
@@ -95,7 +97,7 @@ $color-ppal:#fff;
             padding: 20px 5px;
             box-shadow: 3px 4px 3px grey;
             margin-left: -90px;
-            width: 340px;
+            width: 23vw;
             position: absolute;
             right: 0;
             height: 100%;
@@ -175,7 +177,7 @@ $color-ppal:#fff;
                margin-right: 40px;
            }
            img{
-               width: 44px;
+               width: 46px;
                height:28px;
                margin-right: 20px;
            }
@@ -183,26 +185,36 @@ $color-ppal:#fff;
   
     }
     .copy{
-        background-color: black;
-        height: 30px;
+        background-color: $color-ppal;
+        height: 55px;
         position: relative;
+        display: flex;
+        flex-direction:row;
+        justify-content: center;
+        align-items: center;
+        padding-top: 15px;
         a{
             text-decoration: none;
-            color: white;
-            text-align: center;
-            font-size: 13px;
-            position: absolute;
-            bottom: 3px;
-            right: 35px;
-            
+            margin-top: -13px;
+            margin-left: 2px;
+            img{
+                width: 105px;
+                height: 36px;               
+            }    
         }
+        p{
+            font-family: $fte-sec;
+            font-size: 18px;
+        }
+        
     }
 }
 
-@media  screen and (max-width: 500px)  {
+@media  screen and (max-width: 600px)  {
     .footer{
     width: 100%;
     margin-top: 25px;
+    overflow: hidden;
     article{
         display: flex;
         flex-direction: column;
@@ -224,7 +236,7 @@ $color-ppal:#fff;
                display: none;
            }
            .Contacto{
-            width:100%;
+            width:95%;
             display:flex;
             flex-direction: column;
             align-items: center;
@@ -351,3 +363,110 @@ $color-ppal:#fff;
    
 }
 }
+@media  screen and (min-width: 601px) and (max-width: 900px) {
+    .footer{
+        overflow: hidden;
+    article{
+        
+        .row1{
+            position: relative;
+           .newsletter{
+               display: none;
+           }
+           .Contacto{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 0px;
+            margin-left: 80px;
+            p{
+                line-height: 0px;
+                margin-bottom: 0px;
+            font-size: 14px;
+            }
+            h4{
+                align-self: flex-start;
+            }
+            .campo{
+                display: flex;
+                align-items:center;
+                justify-content: flex-start;
+                margin-bottom: 16px;
+                width: 100%;
+                i{
+                    margin-right: 10px;
+                }
+                .direccion{
+                    line-height: 20px;
+                    width: 70%;          
+                    
+                }
+                p{
+                    line-height: 0px;
+                }
+         
+            }
+            
+           }
+           .Nosotros{
+               position: absolute;
+               right: 0px;
+               top: 260px;
+               
+               .marca{
+                   display: none;
+               }
+           }
+            
+        }
+       
+    }
+   
+}
+}
+
+@media  screen and (min-width: 901px) and (max-width: 1250px) {
+    .footer{
+        overflow: hidden;
+    article{
+        
+        .row1{
+            position: relative;
+           .newsletter{
+               display: none;
+           }
+           .Contacto{
+           .campo{
+               width: 80%;
+           }
+           
+           }
+           .Nosotros{
+             margin-left: -20px;
+               .marca{
+                   display: block;
+                   margin-top: 40px;
+               }
+           }
+            
+        }
+       
+    }
+}
+}
+@media  screen and (min-width: 12511px) and (max-width: 1250px) {
+    .footer{
+        overflow: hidden;
+    article{
+        .row1{
+           .newsletter{
+               display: none;
+           }
+                    
+            
+        }
+       
+    }
+}
+}
+

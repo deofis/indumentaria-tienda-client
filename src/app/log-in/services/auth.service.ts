@@ -34,7 +34,8 @@ export class AuthService {
   }
 
   /**
-   * Servicio que se encarga de iniciar sesión en la App, y guardar los datos de inicio de sesión en local storage.
+   * Servicio que se encarga de iniciar sesión en la App, y guardar los datos de autenticacion
+   * que recibe del backend de sesión en local storage.
    * @param usuario IniciarSesionRequest con los datos credenciales del usuario para iniciar sesión.
    */
   login(usuario: IniciarSesionRequest): Observable<any> {

@@ -11,11 +11,11 @@ export class BannerComponent implements OnInit {
   images:any[]=[
     {
       name:'imagen 1',
-      img:'../../../../assets/imagenes/publi1.jpg',
+      img:'../../../../assets/imagenes/publi1.png',
     },
     {
       name:'imagen 2',
-      img:'../../../../assets/imagenes/publi2.jpg',
+      img:'../../../../assets/imagenes/publi2.png',
     },
     {
       name:'imagen 3',
@@ -23,11 +23,11 @@ export class BannerComponent implements OnInit {
     },
     {
       name:'imagen 3',
-      img:'../../../../assets/imagenes/publi3.jpg',
+      img:'../../../../assets/imagenes/publi1.png',
     },
     {
       name:'imagen 3',
-      img:'../../../../assets/imagenes/publi3.jpg',
+      img:'../../../../assets/imagenes/publi2.png',
     }
   ]
   constructor(private _caruselconfig:NgbCarouselConfig) {
