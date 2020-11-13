@@ -6,9 +6,10 @@
         </div>
         <div class="lateral-container" id="lateral-container" >
             <ul class="userOptions" >
-                <li [routerLink]="['/user-my-purchases']"><i class="fas fa-shopping-bag"></i>Compras</li>
-                <li [routerLink]="['/user-favorites']" ><i class="fas fa-heart"></i> Favoritos </li>
-                <li [routerLink]="['/admin-profile']"> <i class="fas fa-file-invoice" ></i> Mis Datos </li>
+                <li [routerLink]="['/user-my-purchases']">  Productos <i  class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/user-my-purchases']">   Operaciones  <i  class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/user-favorites']" >Administración <i  class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/admin-profile']" > Mis Datos  </li>
                 <li (click)="logout()"><i class="fas fa-sign-out-alt"></i>Cerrar Sesión </li>
             </ul>
         </div>
@@ -21,16 +22,16 @@
             </div>
             <article class="personalInformation">
                 <div class="item-information">
-                    <p>Nombre: </p> <span> Juan</span> <i class="far fa-edit"></i>
+                    <p>Nombre: </p> <span> Antonio</span> <i class="far fa-edit"></i>
                 </div>
                 <div class="item-information">
-                    <p> Apellido:</p> <span>Perez</span> <i class="far fa-edit"></i>
+                    <p> Apellido:</p> <span>Sosa</span> <i class="far fa-edit"></i>
                 </div>
                 <div class="item-information">
-                    <p>E-mail: </p> <span>juanperez@hotmail.com</span> <i class="far fa-edit"></i>
+                    <p>E-mail: </p> <span>a.sosa89@hotmail.com</span> <i class="far fa-edit"></i>
                 </div>
                 <div class="item-information">
-                    <p> Fecha de Nacimiento:</p> <span> 02/12/1996</span> <i class="far fa-edit"></i>
+                    <p> Fecha de Nacimiento:</p> <span> 02/12/1989</span> <i class="far fa-edit"></i>
                 </div>
                 <div class="item-information">
                     <p> DNI:</p> <span>37569824</span> <i class="far fa-edit"></i>
@@ -43,6 +44,9 @@
                 </div>
                 <div class="item-information">
                     <p> Contraseña:</p> <span>*********</span> <i class="far fa-edit"></i>
+                </div>
+                <div class="item-information">
+                    <p> Rol:</p> <span>Administrador</span>
                 </div>
             </article>
 

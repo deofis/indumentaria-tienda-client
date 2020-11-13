@@ -10,6 +10,7 @@ import { ShoppingCartComponent } from './cart/components/shopping-cart/shopping-
 import { CheckoutComponent } from './cart/components/checkout/checkout/checkout.component';
 import { PreCheckoutComponent } from './cart/components/checkout/pre-checkout/pre-checkout.component';
 import {ConfirmDataComponent} from './cart/components/confirm-data/confirm-data.component';
+import { FinalMessageComponent } from './cart/components/final-message/final-message.component';
 import { Oauth2RedirectHandlerComponent } from './log-in/oauth2/oauth2-redirect-handler/oauth2-redirect-handler.component';
 import { PruebaComponent } from './prueba/prueba/prueba.component';
 import { AuthGuard } from './log-in/guards/auth.guard';
@@ -19,8 +20,7 @@ import {  NewPasswordComponent} from "./log-in/user/new-password/new-password.co
 import { FavoritesComponent } from './user-options/favorites/favorites.component';
 import { ActivatedMssgComponent } from './log-in/user/activated-mssg/activated-mssg.component';
 import { AdminProfileComponent } from './admin-options/admin-profile/admin-profile.component';
-import { FinalMessageComponent } from './cart/components/final-message/final-message.component';
-
+import {BrandsPanelComponent} from './admin-options/brands-panel/brands-panel.component'
 const routes: Routes = [
 {path:"home",component:HomeComponent},
 {path:"viewmore/:id", component:ViewMoreComponent},
@@ -32,6 +32,7 @@ const routes: Routes = [
 {path:"user-my-purchases",component:MisComprasComponent},
 {path:"user-favorites", component:FavoritesComponent},
 {path:"admin-profile", component:AdminProfileComponent},
+{path:"brands-panel" , component:BrandsPanelComponent},
 {path:"user-sign-up",component:UserSignUpComponent},
 {path:"verify/redirect",component:ActivatedMssgComponent},
 {path:"shopping-cart",component:ShoppingCartComponent},

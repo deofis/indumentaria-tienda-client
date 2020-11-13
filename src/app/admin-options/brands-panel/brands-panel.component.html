@@ -1,0 +1,43 @@
+<section>
+    <div id="lateralMenu" >
+       <div id="botonMenu" class="boton" > 
+           <i  class="fas fa-angle-right " id="open-menu" (click)="showLateralMenu()" ></i> 
+           <i  class="fas fa-close " id="close-menu" (click)="hiddeLateralMenu()"></i>
+        </div>
+        <div class="lateral-container" id="lateral-container" >
+            <ul class="userOptions" >
+                <li [routerLink]="['/user-my-purchases']">  Productos <i  class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/user-my-purchases']">   Operaciones  <i  class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/user-favorites']" >Administración <i  class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/admin-profile']" > Mis Datos  </li>
+                <li (click)="logout()"><i class="fas fa-sign-out-alt"></i>Cerrar Sesión </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-brands">
+        <div class="frame">
+            <div class="title">
+                <h2>Marcas</h2>
+                <button id="save">Guardar</button>
+            </div>
+            <div class="add-brand">
+              <div id="newBrand">
+                   <input class="input" type="text"  placeholder="Ingrese una nueva marca" (onclick)="addBrand()">
+                    <i class="far fa-plus-square" id="plus"></i>
+             </div>
+                <p id="add" (click)="showInput()"><i class="far fa-plus-square"></i> Agregar marca</p>
+            </div>
+            <article class="list">
+                <div class="item-brand" *ngFor="let brand of brands">
+                    <p>{{brand.name}}</p><i class="far fa-edit"></i>
+                </div>
+                
+                
+            </article>
+
+      </div>
+    </div>
+
+
+
+</section>
