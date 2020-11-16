@@ -22,7 +22,7 @@ import { ActivatedMssgComponent } from './log-in/user/activated-mssg/activated-m
 import { AdminProfileComponent } from './admin-options/admin-profile/admin-profile.component';
 import {BrandsPanelComponent} from './admin-options/brands-panel/brands-panel.component'
 import {ProductsListComponent  } from "./admin-options/products-list/products-list.component";
-
+import {  AddProductComponent} from "./admin-options/add-product/add-product.component";
 const routes: Routes = [
 {path:"home",component:HomeComponent},
 {path:"viewmore/:id", component:ViewMoreComponent},
@@ -35,6 +35,7 @@ const routes: Routes = [
 {path:"user-favorites", component:FavoritesComponent},
 {path:"admin-profile", component:AdminProfileComponent},
 {path:"brands-panel" , component:BrandsPanelComponent},
+{path:"add-product",component:AddProductComponent},
 {path:"products-list" , component:ProductsListComponent},
 {path:"user-sign-up",component:UserSignUpComponent},
 {path:"verify/redirect",component:ActivatedMssgComponent},

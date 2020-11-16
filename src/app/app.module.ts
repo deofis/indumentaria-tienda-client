@@ -42,6 +42,7 @@ import { ConfirmDataComponent } from './cart/components/confirm-data/confirm-dat
 import { FinalMessageComponent } from './cart/components/final-message/final-message.component';
 import { BrandsPanelComponent } from './admin-options/brands-panel/brands-panel.component';
 import { ProductsListComponent } from './admin-options/products-list/products-list.component';
+import { AddProductComponent } from './admin-options/add-product/add-product.component';
 
 
 
@@ -79,6 +80,7 @@ import { ProductsListComponent } from './admin-options/products-list/products-li
     FinalMessageComponent,
     BrandsPanelComponent,
     ProductsListComponent,
+    AddProductComponent,
   ],
   imports: [
     BrowserModule,

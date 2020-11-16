@@ -1,0 +1,75 @@
+<section>
+    <div id="lateralMenu" >
+       <div id="botonMenu" class="boton" > 
+           <i  class="fas fa-angle-right " id="open-menu" (click)="showLateralMenu()" ></i> 
+           <i  class="fas fa-close " id="close-menu" (click)="hiddeLateralMenu()"></i>
+        </div>
+        <div class="lateral-container" id="lateral-container" >
+            <ul class="userOptions" >
+                <li [routerLink]="['/user-my-purchases']">  Productos <i  class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/user-my-purchases']">   Operaciones  <i  class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/user-favorites']" >Administración <i  class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/admin-profile']" > Mis Datos  </li>
+                <li (click)="logout()"><i class="fas fa-sign-out-alt"></i>Cerrar Sesión </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-step1">
+        <h2>Añadir Producto</h2>
+        <div class="frame">
+            <div class="title">
+                <h3> <img src="../../../assets/imagenes/nro-uno.png" alt=""> Información general</h3>
+                <button id="save">Guardar</button>
+            </div>
+            <article class="container-form">
+            <form action="" class="form">
+                <div class="row">
+                    <div class="name">
+                        <label for="name"> Nombre:</label>
+                        <input type="text" id="name" placeholder="Samsung Galaxy s20">
+                    </div>
+                    <div class="brand">
+                        <label for="brand"> Marca:</label>
+                        <input type="text" id="brand" placeholder="Samsung">
+                    </div>
+                </div>
+                <div class="row">
+                   <div class="add-img">
+                       <p>Añade fotografías sobre tu producto.
+                           <br>
+                           <span>-Hasta 6 fotografías permitidas-</span>
+                       </p>
+                    <input type="file" id="add-files">
+                   </div> 
+                   <div class="images">
+
+                   </div>
+                </div>
+                <div class="row">
+                    <select name="category" id="categories">
+                        <option value="" >-Categoría-</option>
+                    </select>
+                    <select name="subcategory" id="subcategories">
+                        <option value="" >-Subcategoría-</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <label for="price"> Precio de Lista:</label>
+                    <p id="euro">€</p>
+                    <input type="number" id="price">
+                </div>
+                <div class="row">
+                    <input type="checkbox" id="combinations">
+                    <label for="combinations"> Mi producto posee diversos atributos que pueden ser combinables entre ellos.</label>
+                </div>
+              
+            </form>
+            </article>
+
+      </div>
+   
+    </div>
+
+
+
+</section>
