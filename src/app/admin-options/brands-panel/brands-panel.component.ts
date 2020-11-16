@@ -8,26 +8,16 @@ import { AuthService } from 'src/app/log-in/services/auth.service';
   styleUrls: ['./brands-panel.component.scss']
 })
 export class BrandsPanelComponent implements OnInit {
- brands:any[]=[
-  {name: "Samsung"},
-  {name: "Iphone"},
-  {name: "Motorola"},
-  {name: "Nokia"},
-  {name: "Lenovo"},
-
-]
+ brands:any[]=[ "Samsung","Iphone","Motorola","Nokia","Lenovo"]
 constructor( private router:Router,
   private authService: AuthService,) {
 
 }
 
   ngOnInit(): void {
-    let input=  document.getElementById("newBrand");
-    // input.addEventListener("keyup", )
-    let icon = document.getElementById("plus");
-    input.addEventListener("click", this.addBrand)
+  
   }
-
+/// *** **** NEW BRAND **** **** ///
     showInput(){
     let input =   document.getElementById("newBrand")
     input.style.display="flex";
@@ -37,10 +27,15 @@ constructor( private router:Router,
     option.style.display="none"
   }
 
-  addBrand(){
-    let input =   document.getElementById("newBrand")  as HTMLInputElement;
-    let newbrand=input.value;
-    console.log(input.value)
+  addBrand(brand:string):void {
+    brand=brand.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+      return letter.toUpperCase();
+      });
+      
+   this.brands.push(brand);
+   let input = document.getElementById("input") as HTMLInputElement ;
+   input.value=" ";
+   
   }
     //// **** *** LATERAL MENU *** **** /////
     showLateralMenu(){

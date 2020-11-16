@@ -211,7 +211,7 @@ header {
 //////////// user Options //////
 #userOptions {
     position: absolute;
-    z-index: 4;
+    z-index: 50;
     right: 10px;
     background-color: $color-menues;
     width: 200px;
@@ -273,7 +273,7 @@ header {
         border-radius: 0px 0px 10px 10px;
         position: absolute;
         left: 10vw;
-        z-index: 4;
+        z-index: 50;
         border-right: 1px solid rgba(187, 184, 184, 0.5);
         //    top: 115px;        
         li {
@@ -307,7 +307,7 @@ header {
         position: absolute;
         // top: 115px;
         left: 25vw;
-        z-index: 3;
+        z-index: 49;
         border-radius: 0px 0px 10px 0px;
         display: none;
         padding: 20px 15px 20px 25px;

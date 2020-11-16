@@ -118,35 +118,43 @@ section{
                 }
             }
             .add-brand{
-                #newBrand{
-                    display: none;
-                    margin-bottom:8px ;
-                    width: 280px;
-                   .input{
-                       width: 250px;
-                    box-shadow: 1px 1px 1px $color-ter;
-                    padding-left:8px ;
-                    font-family: $fte-sec;
-                    border: 1px solid $color-wf2;
-                    font-size: 14px;
-                    padding-top:4px ;
-                    padding-bottom: 4px;
-                    &:focus{
-                        outline: none;
-                        border: 2px solid $color-wf2;
-                    }
-                   }
-                   .fa-plus-square{
-                    color: $color-wf3;
-                    margin-right: 4px;
-                    font-size: 1.3em;
-                    &:hover {
-                        transform: scale(1.1);
-                        color: $color-wf2;
+                .formBrand{
+                    #newBrand{
+                        display: none;
+                        margin-bottom:8px ;
+                        width: 280px;
+                       .input{
+                           width: 250px;
+                        box-shadow: 1px 1px 1px $color-ter;
+                        padding-left:8px ;
+                        font-family: $fte-sec;
+                        border: 1px solid $color-wf2;
+                        font-size: 14px;
+                        padding-top:4px ;
+                        padding-bottom: 4px;
+                        &:focus{
+                            outline: none;
+                            border: 2px solid $color-wf2;
+                        }
+                       }
+                       .btn-plus{
+                           border: none;
+                           outline: none;
+                        .fa-plus-square{
+                            color: $color-wf3;
+                            margin-right: 4px;
+                            font-size: 1.3em;
+                            &:hover {
+                                transform: scale(1.1);
+                                color: $color-wf2;
+                            }
+                        }
+                       }
+                     
+                       
                     }
                 }
-                   
-                }
+                
                 #add{
                     margin-left: 2px;
                     font-family: $fte-sec;

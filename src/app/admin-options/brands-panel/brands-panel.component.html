@@ -21,15 +21,18 @@
                 <button id="save">Guardar</button>
             </div>
             <div class="add-brand">
+             <form class="formBrand" (submit)=addBrand(txtBrand.value)>
               <div id="newBrand">
-                   <input class="input" type="text"  placeholder="Ingrese una nueva marca" (onclick)="addBrand()">
-                    <i class="far fa-plus-square" id="plus"></i>
+                   <input class="input" type="text"  placeholder="Ingrese una nueva marca" #txtBrand id="input">
+                   <button type="submit" class="btn-plus"> <i class="far fa-plus-square" id="plus"></i></button>
+    
              </div>
+            </form>
                 <p id="add" (click)="showInput()"><i class="far fa-plus-square"></i> Agregar marca</p>
             </div>
             <article class="list">
                 <div class="item-brand" *ngFor="let brand of brands">
-                    <p>{{brand.name}}</p><i class="far fa-edit"></i>
+                    <p>{{brand}}</p><i class="far fa-edit"></i>
                 </div>
                 
                 
