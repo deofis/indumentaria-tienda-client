@@ -41,6 +41,7 @@ import { ActivatedMssgComponent } from './log-in/user/activated-mssg/activated-m
 import { ConfirmDataComponent } from './cart/components/confirm-data/confirm-data.component';
 import { FinalMessageComponent } from './cart/components/final-message/final-message.component';
 import { BrandsPanelComponent } from './admin-options/brands-panel/brands-panel.component';
+import { ProductsListComponent } from './admin-options/products-list/products-list.component';
 
 
 
@@ -77,6 +78,7 @@ import { BrandsPanelComponent } from './admin-options/brands-panel/brands-panel.
     ConfirmDataComponent,
     FinalMessageComponent,
     BrandsPanelComponent,
+    ProductsListComponent,
   ],
   imports: [
     BrowserModule,

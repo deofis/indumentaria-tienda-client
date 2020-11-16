@@ -21,6 +21,8 @@ import { FavoritesComponent } from './user-options/favorites/favorites.component
 import { ActivatedMssgComponent } from './log-in/user/activated-mssg/activated-mssg.component';
 import { AdminProfileComponent } from './admin-options/admin-profile/admin-profile.component';
 import {BrandsPanelComponent} from './admin-options/brands-panel/brands-panel.component'
+import {ProductsListComponent  } from "./admin-options/products-list/products-list.component";
+
 const routes: Routes = [
 {path:"home",component:HomeComponent},
 {path:"viewmore/:id", component:ViewMoreComponent},
@@ -33,6 +35,7 @@ const routes: Routes = [
 {path:"user-favorites", component:FavoritesComponent},
 {path:"admin-profile", component:AdminProfileComponent},
 {path:"brands-panel" , component:BrandsPanelComponent},
+{path:"products-list" , component:ProductsListComponent},
 {path:"user-sign-up",component:UserSignUpComponent},
 {path:"verify/redirect",component:ActivatedMssgComponent},
 {path:"shopping-cart",component:ShoppingCartComponent},

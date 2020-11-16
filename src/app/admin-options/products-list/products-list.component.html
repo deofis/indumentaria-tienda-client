@@ -1,0 +1,118 @@
+<section>
+    <div id="lateralMenu" >
+       <div id="botonMenu" class="boton" > 
+           <i  class="fas fa-angle-right " id="open-menu" (click)="showLateralMenu()" ></i> 
+           <i  class="fas fa-close " id="close-menu" (click)="hiddeLateralMenu()"></i>
+        </div>
+        <div class="lateral-container" id="lateral-container" >
+            <ul class="userOptions" >
+                <li [routerLink]="['/user-my-purchases']">  Productos <i  class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/user-my-purchases']">   Operaciones  <i  class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/user-favorites']" >Administración <i  class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/admin-profile']" > Mis Datos  </li>
+                <li (click)="logout()"><i class="fas fa-sign-out-alt"></i>Cerrar Sesión </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-products">
+        <div class="frame">
+            <div class="title">
+                <h2>Productos</h2>
+                <div class="filtros">
+                    <ul>
+                        <li class="ordenar">
+                            <div> Ordenar<i class="fas fa-caret-down"></i></div>
+                            <ul>
+                                <li class="opciones">Alfabéticamente</li>
+                                <!-- <li class="opciones">Más antiguos</li> -->
+                            </ul>
+                        </li>
+                        <li class="ordenar">
+                           <div> Mostrar <i class="fas fa-caret-down"></i></div>
+                            <ul>
+                                <li class="opciones">Activos</li>
+                                <li class="opciones"> Inactvos</li>
+                                <li class="opciones">Fuera de Stock</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <article class="detalleCompras">
+                <div class="row-product">
+                    <div class="row1"  id="cont-compra1">
+                        <div  class="arrow">
+                            <i class="fas fa-angle-down"id="down1"(click)="showDetail1()"></i>
+                            <i class="fas fa-angle-up" id="up1" (click)="hideDetail1()"></i>
+                        </div>
+                        <div class="img-prod">
+                            <img src="../../../assets/imagenes/prod1.jpg" alt="">
+                        </div>
+                        <div class=" campo name">
+                            <span id="name"> Samsung Galaxy s20 </span>
+                        </div>
+                        <div class="campo id">
+                            <span>ID: 5a4569b</span>
+                        </div>
+                        <div class=" campo state">
+                            <span >Estado: Activo</span>
+                        </div>
+                        <div class="menu">
+                        <i class="fas fa-ellipsis-v"></i>
+                        <ul>
+                            <li class="opciones-menu">Desactivar</li>
+                            <li class="opciones-menu">Editar </li>
+                            <li class="opciones-menu">opcion 3 </li>
+                        </ul>
+                    </div>
+                    </div>
+                    <div class="row2" id="compra1">
+                        <div class="conceptos">
+                            <p>Color:</p>
+                            <p>Memoria:</p>
+                            <p>Resolución:</p>
+                            <p>Disponibilidad:</p>
+                            <p>Precio de Lista:</p>
+                        </div>
+                        <div class="lista-combinaciones">
+                            <div class="combinacion" >
+                                    <p> Negro</p>
+                                    <p>32GB</p>
+                                    <p class="resol">-</p>
+                                    <p class="disponibilidad">4u</p>
+                                    <p class="pcio"> €800</p>
+                                    <i class="far fa-edit"></i>
+                            </div>
+                            <div class="combinacion" >
+                                <p> Negro</p>
+                                <p>64GB</p>
+                                <p class="resol">-</p>
+                                <p class="disponibilidad">1u</p>
+                                <p class="pcio"> €880</p>
+                                <i class="far fa-edit"></i>
+                        </div>
+                        <div class="combinacion" >
+                            <p>Blanco</p>
+                            <p>64GB</p>
+                            <p class="resol">-</p>
+                            <p class="disponibilidad">7u</p>
+                            <p class="pcio"> €880</p>
+                            <i class="far fa-edit"></i>
+                    </div>
+                    <div class="combinacion" >
+                        <p>Dorado</p>
+                        <p>32GB</p>
+                        <p class="resol">-</p>
+                        <p class="disponibilidad">4u</p>
+                        <p class="pcio"> €800</p>
+                        <i class="far fa-edit"></i>
+                </div>
+                        </div>
+                    </div>
+                </div>       
+                
+
+            </article>
+        </div>
+    </div>
+</section>
