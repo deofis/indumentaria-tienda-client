@@ -8,7 +8,7 @@
 <section class="contenedorProductos">
     <h2 id="titulo"> Resultados para  "<span id="termino-busqueda"></span>"</h2>
     <div class="contenedor-grid">
-        <div class="tarjetas" *ngFor="let resultado of rdosBusqueda">
+        <div class="rdos" *ngFor="let resultado of rdosBusqueda">
             <app-card-grid [producto]="resultado"></app-card-grid>
 
         </div>
