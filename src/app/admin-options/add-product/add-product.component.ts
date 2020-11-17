@@ -1,20 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-
+import { CatalogoService } from 'src/app/products/services/catalogo.service';
+import { Categoria } from 'src/app/products/clases/categoria';
 import { AuthService } from '../../log-in/services/auth.service';
 import { Router } from '@angular/router';
+import { Subcategoria } from 'src/app/products/clases/subcategoria';
+
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
-showForm2:boolean = false
+showForm2:boolean = false;
+categorias:Categoria[];
+subcategorias: Subcategoria[];
+
   constructor( private router:Router,
-    private authService: AuthService,) { 
+               private authService: AuthService,
+               private catalogoservice:CatalogoService,) { 
      
 }
 
   ngOnInit(): void {
+       // get category list 
+       this.getListaCategorias();
+
   }
   showLateralMenu(){
     if (screen.width>650) {
@@ -60,11 +70,12 @@ showForm2:boolean = false
   }
 
 
+  ///// *** *** STEP 2****** ///
+
   addProperty(){
     alert("agregando atributo")
   }
 
-  ///// *** *** Show step 2 ****** ///7
   showStep2(){
     let step2= document.getElementById("step2");
     if(this.showForm2 == false){
@@ -74,6 +85,20 @@ showForm2:boolean = false
       step2.style.display="none";
       this.showForm2=false;
     }
-  
   }
+
+     /***** GET CATEGORIES *****/
+     getListaCategorias():void{
+      this.catalogoservice.getListaCategorias().subscribe( response =>{
+       this.categorias=response;
+      }
+       )
+    }
+
+
+    showSubcategories(){
+     let comboBoxSubcateories= document.getElementById("subcategories");
+     comboBoxSubcateories.style.display="block"
+     
+    }
 }

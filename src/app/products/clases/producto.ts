@@ -7,6 +7,7 @@ export class Producto {
     nombre: string;
     descripcion: string;
     precio: number;
+    precioOferta:number;
     marca: Marca;
     subcategoria: Subcategoria;
     unidadMedida: UnidadMedida;
@@ -14,9 +15,5 @@ export class Producto {
     foto: string;
     destacado: boolean;
     activo: boolean;
-    stock: number;
-    color: string;
-    talle: string;
-    peso: string;
-   
+    disponibilidad: number;
 }

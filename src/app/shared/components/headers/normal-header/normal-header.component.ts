@@ -92,7 +92,7 @@ showsubcategories(index:number){
   let itemSubcategoria= document.createElement("p")
   itemSubcategoria.classList.add("borrar");
   itemSubcategoria.style.fontFamily="'Open Sans'";
-  itemSubcategoria.style.color="#1f4e84";
+  itemSubcategoria.style.color="rgb(87, 83, 83)";
   itemSubcategoria.style.cursor="pointer";
   itemSubcategoria.innerText=subcatActuales[x].nombre;
   document.getElementById("container-sub").appendChild(itemSubcategoria);

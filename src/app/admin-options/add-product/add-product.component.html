@@ -46,11 +46,13 @@
                    </div>
                 </div>
                 <div class="row">
-                    <select name="category" id="categories">
-                        <option value="" >-Categoría-</option>
+                    <select name="category" id="categories"  (change)="showSubcategories()">
+                        <option value=""  >-Categoría-</option>
+                        <option value=""  *ngFor="let categoria of categorias; let i=index">{{categoria.nombre}}</option>
                     </select>
                     <select name="subcategory" id="subcategories">
                         <option value="" >-Subcategoría-</option>
+                       
                     </select>
                 </div>
                 <div class="row">
@@ -67,7 +69,7 @@
                     </div>
                 <div class="row">
                     <input type="checkbox" id="combinations" (input)="showStep2()">
-                    <label for="combinations"> Mi producto posee diversos atributos que pueden ser combinables entre ellos.</label>
+                    <label for="combinations"> Mi producto posee diversas propiedades que pueden ser combinables entre ellas.</label>
                 </div>
               
             </form>
@@ -84,7 +86,7 @@
             <div class="row">
                 <p>Elaboramos una lista de propiedades en base a la categoría y subcategoría elegida, puedes combinarlas para generar productos o añadir nuevas. </p>
             </div>
-            <p id="add" (click)="addProperty()"><i class="far fa-plus-square"></i> Agregar atributo</p>
+            <p id="add" (click)="addProperty()"><i class="far fa-plus-square"></i> Agregar propiedades</p>
             <div class="row properties">
                 <select name="property" id="property">
                     <option value="" >-Color-</option>
