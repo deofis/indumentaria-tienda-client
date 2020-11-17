@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
-
+showForm2:boolean = false
   constructor( private router:Router,
     private authService: AuthService,) { 
      
@@ -57,5 +57,23 @@ export class AddProductComponent implements OnInit {
     this.authService.logout();
     
     this.router.navigate(['/home']);
+  }
+
+
+  addProperty(){
+    alert("agregando atributo")
+  }
+
+  ///// *** *** Show step 2 ****** ///7
+  showStep2(){
+    let step2= document.getElementById("step2");
+    if(this.showForm2 == false){
+      step2.style.display="block";
+      this.showForm2=true;
+    }else {
+      step2.style.display="none";
+      this.showForm2=false;
+    }
+  
   }
 }
