@@ -138,18 +138,23 @@ section{
                         box-shadow: 1px 2px 1px grey;
                     }
                 }
-            }
-            .container-form{
-                background-color: white;
-                padding: 30px 60px 15px 60px;
-                box-shadow: 1px 2px 3px $color-sec;
-               margin-bottom: 60px;
-                .form{
+            }       
+                .form1{
                     width: 100%;
                     font-family:$fte-sec;
+                    margin-bottom: 60px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                   .container-white{
+                       width: 100%;
+                    background-color: white;
+                    padding: 30px 60px 15px 60px;
+                    box-shadow: 1px 2px 3px $color-sec;
                     .row{
                         display: flex;
-                        margin-bottom: 30px;
+                        margin-bottom: 45px;
                         align-items: baseline;
                         .name{
                             #name{
@@ -205,7 +210,7 @@ section{
                             }
                             
                         }
-                        #categories, #subcategories{
+                        #categories, #subcategories, #marca{
                             font-size: 15px;
                             border: none;
                             outline: none;
@@ -216,11 +221,25 @@ section{
                                 border-bottom: 2px solid $color-wf3;
                             }
                         }
-                        #subcategories{
+                        #subcategories {
                             margin-left: 90px;
                             display: none;
                         }
-                       
+                        #marca{
+                            
+                            margin-left: 90px;
+                        }
+                       #unidadMedida{
+                        font-size: 15px;
+                        border: none;
+                        outline: none;
+                        width: 160px;
+                        padding-left: 5px;
+                        border-bottom: 1px solid grey;
+                        &:focus{
+                            border-bottom: 2px solid $color-wf3;
+                        }
+                       }
                         #combinations{
                             margin-right: 10px;
                             margin-top: -5px;
@@ -242,7 +261,6 @@ section{
                        .price-container{
                         display: flex;
                         align-items: baseline;
-                        margin-left: 50px;
                         #euro{
                             font-weight: bold;
                             font-size: 14px;
@@ -262,8 +280,46 @@ section{
                             }
                         }
                        }
+                       .precioOferta{
+                        margin-left: 50px;
+                        display: flex;
+                        align-items: center;
+                           .pcioOfertaInput{
+                            display: none;
+                            align-items: baseline;
+                            
+                            #euro{
+                                font-weight: bold;
+                                font-size: 14px;
+                                display: block;
+                                margin-left: 10px;
+                            }
+                            #precioOferta{
+                                border: none;
+                                outline: none;
+                                font-size: 14px;
+                                padding-right: 3px;
+                                padding-left: 3px;
+                                width: 90px;
+                                border-bottom: 1px solid grey;
+                                &:focus{
+                                    border-bottom: 2px solid $color-wf3;
+                                }
+                            }
+                           }
+                           .check-oferta{
+                               margin-left: 20px;
+                           #checkbox-oferta{
+                            margin-right: 10px;
+                            margin-top: -5px;
+                            margin-bottom: -20px;
+                           
+                           }
+                           
+                           }
+                       }
                        .availability-container{
-                       
+                        margin-left: 60px;
                         #availability{
                             border: none;
                             outline: none;
@@ -278,8 +334,40 @@ section{
                             }
                         } 
                        }
+                       .destacado{
+                        margin-left: 60px;
+                        #destacado{
+                            margin-right: 10px;
+                            margin-top: -5px;
+                            margin-bottom: -20px;
+                           
+                        }
+                       }
 
                     }
+                   
+                   }
+                   .btn-end{
+                    background-color: $color-wf1;
+                    color: white;
+                    margin-top: 20px;
+                    font-family: $fte-ppal;
+                    text-transform: uppercase;
+                    font-size: 18px;
+                    border: 0px ;
+                    padding: 7px 13px;
+                    align-self: center;
+                    box-sizing: border-box;
+                    width: 35%;
+                    border-radius: 0px;     
+                    margin-left: auto;
+                    margin-right: auto; 
+                    margin-bottom: 50px;                
+                    &:hover{
+                        transform: scale(1.03);
+                    }
+                }
+                }
                     #add{
                         position: absolute;
                         font-size: 14px;
@@ -361,39 +449,21 @@ section{
                         }
                     }
                
-            }
+            
             .form2{
                 padding-bottom: 30px;
                 position: relative;
             }
                
            
-        }
+        
 
              }
         .step2{
          margin-top:-30px ;
          display: none;
          }
-         .btn-end{
-            background-color: $color-wf1;
-            color: white;
-            font-family: $fte-ppal;
-            text-transform: uppercase;
-            font-size: 18px;
-            border: 0px ;
-            margin-top:-25px;
-            padding: 7px 13px;
-            align-self: center;
-            box-sizing: border-box;
-            width: 35%;
-            border-radius: 0px;     
-            margin-left: -5vw;   
-            margin-bottom: 50px;                
-            &:hover{
-                transform: scale(1.03);
-            }
-        }
+        
         #btn-two{
             display: none;
         }

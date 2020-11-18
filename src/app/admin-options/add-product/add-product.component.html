@@ -1,15 +1,15 @@
 <section>
-    <div id="lateralMenu" >
-       <div id="botonMenu" class="boton" > 
-           <i  class="fas fa-angle-right " id="open-menu" (click)="showLateralMenu()" ></i> 
-           <i  class="fas fa-close " id="close-menu" (click)="hiddeLateralMenu()"></i>
+    <div id="lateralMenu">
+        <div id="botonMenu" class="boton">
+            <i class="fas fa-angle-right " id="open-menu" (click)="showLateralMenu()"></i>
+            <i class="fas fa-close " id="close-menu" (click)="hiddeLateralMenu()"></i>
         </div>
-        <div class="lateral-container" id="lateral-container" >
-            <ul class="userOptions" >
-                <li [routerLink]="['/user-my-purchases']">  Productos <i  class="fas fa-angle-down "></i> </li>
-                <li [routerLink]="['/user-my-purchases']">   Operaciones  <i  class="fas fa-angle-down "></i> </li>
-                <li [routerLink]="['/user-favorites']" >Administración <i  class="fas fa-angle-down "></i> </li>
-                <li [routerLink]="['/admin-profile']" > Mis Datos  </li>
+        <div class="lateral-container" id="lateral-container">
+            <ul class="userOptions">
+                <li [routerLink]="['/user-my-purchases']"> Productos <i class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/user-my-purchases']"> Operaciones <i class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/user-favorites']">Administración <i class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/admin-profile']"> Mis Datos </li>
                 <li (click)="logout()"><i class="fas fa-sign-out-alt"></i>Cerrar Sesión </li>
             </ul>
         </div>
@@ -21,119 +21,151 @@
                 <h3> <img src="../../../assets/imagenes/nro-uno.png" alt=""> Información general</h3>
                 <button id="save">Guardar</button>
             </div>
-            <article class="container-form" aria-disabled="true">
-            <form action="" class="form" id="form1">
-                <div class="row">
-                    <div class="name">
-                        <label for="name"> Nombre:</label>
-                        <input type="text" id="name" placeholder="Samsung Galaxy s20">
-                    </div>
-                    <div class="brand">
+
+            <form autocomplete="off" class="form1" id="form1" [formGroup]="form" (ngSubmit)="crearProducto()">
+                <div class="container-white">
+                    <div class="row">
+                        <div class="name">
+                            <label for="name"> Nombre:</label>
+                            <input type="text" id="name" placeholder="Samsung Galaxy s20" formControlName="nombre">
+                        </div>
+                        <!-- <div class="brand">
                         <label for="brand"> Marca:</label>
                         <input type="text" id="brand" placeholder="Samsung">
                         <i class="far fa-plus-square" id="plus-brand"></i>
+                    </div> -->
+                        <select name="marca" id="marca" formControlName="marca">
+                            <option>-Marca-</option>
+                            <option *ngFor="let marca of marcas" [ngValue]="marca">{{marca.nombre}}</option>
+                        </select>
                     </div>
-                </div>
-                <div class="row">
-                   <div class="add-img">
-                       <p>Añade fotografías sobre tu producto.
-                           <br>
-                           <span>-Hasta 6 fotografías permitidas-</span>
-                       </p>
-                    <input type="file" id="add-files">
-                   </div> 
-                   <div class="images">
+                    <div class="row">
+                        <div class="add-img">
+                            <p>Añade una fotografía principal de tu producto.
+                                <br>
+                                <!-- <span>-Hasta 6 fotografías permitidas-</span> -->
+                            </p>
+                            <input type="file" id="add-files">
+                        </div>
+                        <div class="images">
 
-                   </div>
-                </div>
-                <div class="row">
-                    <select name="category" id="categories"  (change)="showSubcategories()">
-                        <option value=""  >-Categoría-</option>
-                        <option value=""  *ngFor="let categoria of categorias; let i=index">{{categoria.nombre}}</option>
-                    </select>
-                    <select name="subcategory" id="subcategories">
-                        <option value="" >-Subcategoría-</option>
-                       
-                    </select>
-                </div>
-                <div class="row">
-               
-                    <div class="availability-container">
-                        <label for="availability"> Disponibilidad General:</label>
-                        <input type="number" id="availability" >
+                        </div>
                     </div>
-                    <div class="price-container">
-                        <label for="price"> Precio:</label>
-                        <p id="euro">€</p>
-                        <input type="number" id="price">
+                    <div class="row">
+                        <select name="category" id="categories" (change)="showSubcategories()"
+                            formControlName="categoria">
+                            <option>-Categoría-</option>
+                            <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{categoria.nombre}}
+                            </option>
+                        </select>
+                        <select name="subcategory" id="subcategories" formControlName="subcategoria">
+                            <option >-Subcategoría-</option>
+                            <option *ngFor="let subcategoria of subcategorias" [ngValue]="subcategoria">{{subcategoria.nombre}}</option>
+                        </select>
                     </div>
+                    <div class="row">
+                        <select name="unidadMedida" id="unidadMedida" formControlName="unidadMedida">
+                            <option >-Unidad de Medida-</option>
+                            <option *ngFor="let unidad of unidadesMedida" [ngValue]="unidad" >{{unidad.nombre}}</option>
+                        </select>
+
+                        <div class="availability-container">
+                            <label for="availability"> Disponibilidad General:</label>
+                            <input type="number" id="availability">
+                        </div>
+                        <div class="destacado">
+                            <input type="checkbox" id="destacado">
+                            <label for="destacado"> Producto destacado</label>
+                        </div>
                     </div>
-                <div class="row">
-                    <input type="checkbox" id="combinations" (input)="hasCombinations()">
-                    <label for="combinations"> Mi producto posee diversas propiedades que pueden ser combinables entre ellas.</label>
+                    <div class="row">
+                        <div class="price-container">
+                            <label for="price"> Precio:</label>
+                            <p id="euro">€</p>
+                            <input type="number" id="price">
+                        </div>
+                        <div class="precioOferta">
+                            <div class="pcioOfertaInput" id=inputOferta>
+                                <label for="price"> Precio de Oferta:</label>
+                                <p id="euro">€</p>
+                                <input type="number" id="precioOferta">
+                            </div>
+                            <div class="check-oferta">
+                                <input type="checkbox" id="checkbox-oferta" (input)="precioOferta()">
+                                <label for="combinations"> Este producto está en oferta</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="checkbox" id="combinations" (input)="hasCombinations()">
+                        <label for="combinations"> Mi producto posee diversas propiedades que pueden ser combinables
+                            entre ellas.</label>
+                    </div>
                 </div>
-              
+                <button class="btn-end" id="btn-one" (click)="showStep2()">Guardar y finalizar</button>
             </form>
+
+
+        </div>
+     
+        <div class="frame step2" id="step2">
+            <div class="title">
+                <h3> <img src="../../../assets/imagenes/nro-dos.png" alt=""> Combinaciones posibles</h3>
+                <button id="save">Guardar</button>
+            </div>
+            <article class="container-form ">
+                <form action="" class="form form2 ">
+                    <div class="row">
+                        <p>Elaboramos una lista de propiedades en base a la categoría y subcategoría elegida, puedes
+                            combinarlas para generar productos o añadir nuevas. </p>
+                    </div>
+                    <p id="add" (click)="addProperty()"><i class="far fa-plus-square"></i> Agregar propiedades</p>
+                    <div class="row properties">
+                        <select name="property" id="property">
+                            <option value="">-Color-</option>
+                        </select>
+                        <select name="property" id="property">
+                            <option value="">-Memoria-</option>
+                        </select>
+                        <select name="property" id="property">
+                            <option value="">-Resolución-</option>
+                        </select>
+
+                    </div>
+                    <div class="row">
+
+                        <div class="availability-container">
+                            <label for="availability"> Disponibles:</label>
+                            <input type="number" id="availability">
+                        </div>
+                        <div class="price-container">
+                            <label for="price"> Precio:</label>
+                            <p id="euro">€</p>
+                            <input type="number" id="price">
+                        </div>
+                    </div>
+
+                    <button class="btn">Crear Producto</button>
+                    <span class="line"></span>
+                    <p class="leyenda">-Los productos listados a continuación no se guardarán hasta que no presiones
+                        "Finalizar"-</p>
+                    <div class="new-products">
+                        <div class="product">
+                            <p class="description"> Samsung Galaxy S20 - Negro - 64GB - 4u - €850 </p>
+                            <i class="far fa-edit"></i>
+                        </div>
+                        <div class="product">
+                            <p class="description"> Samsung Galaxy S20 - Negro - 32GB - 7u - €820</p>
+                            <i class="far fa-edit"></i>
+                        </div>
+                    </div>
+                </form>
             </article>
 
-      </div>
-      <button class="btn-end" id="btn-one" (click)="showStep2()">Guardar y finalizar</button>
-      <div class="frame step2" id="step2"> 
-        <div class="title">
-            <h3> <img src="../../../assets/imagenes/nro-dos.png" alt=""> Combinaciones posibles</h3>
-            <button id="save">Guardar</button>
         </div>
-        <article class="container-form ">
-        <form action="" class="form form2 ">
-            <div class="row">
-                <p>Elaboramos una lista de propiedades en base a la categoría y subcategoría elegida, puedes combinarlas para generar productos o añadir nuevas. </p>
-            </div>
-            <p id="add" (click)="addProperty()"><i class="far fa-plus-square"></i> Agregar propiedades</p>
-            <div class="row properties">
-                <select name="property" id="property">
-                    <option value="" >-Color-</option>
-                </select>
-                <select name="property" id="property">
-                    <option value="" >-Memoria-</option>
-                </select>
-                <select name="property" id="property">
-                    <option value="" >-Resolución-</option>
-                </select>
-             
-            </div>
-            <div class="row">
-               
-            <div class="availability-container">
-                <label for="availability"> Disponibles:</label>
-                <input type="number" id="availability" >
-            </div>
-            <div class="price-container">
-                <label for="price"> Precio:</label>
-                <p id="euro">€</p>
-                <input type="number" id="price">
-            </div>
-            </div>
 
-           <button class="btn">Crear Producto</button>
-            <span class="line"></span>
-            <p class="leyenda">-Los productos listados a continuación no se guardarán hasta que no presiones "Finalizar"-</p>
-            <div class="new-products">
-                <div class="product"> 
-                    <p class="description"> Samsung Galaxy S20 - Negro - 64GB - 4u - €850 </p>
-                    <i class="far fa-edit"></i>
-                </div>
-                <div class="product"> 
-                    <p class="description"> Samsung Galaxy S20 - Negro - 32GB  - 7u - €820</p>
-                    <i class="far fa-edit"></i>
-                </div>
-            </div>
-        </form>
-        </article>
+        <button class="btn-end" id="btn-two">Guardar y finalizar</button>
 
-  </div>
-
-  <button class="btn-end" id="btn-two" >Guardar y finalizar</button>
-   
     </div>
 
 

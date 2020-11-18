@@ -1,6 +1,8 @@
 import { Marca } from './marca';
 import { UnidadMedida } from './unidad-medida';
 import { Subcategoria } from './subcategoria';
+import { PropiedadProducto } from './propiedad-producto';
+import { Sku } from './sku';
 
 export class Producto {
     id: number;
@@ -13,7 +15,12 @@ export class Producto {
     unidadMedida: UnidadMedida;
     fechaCreacion: number;
     foto: string;
+    imagenes: string[];
     destacado: boolean;
     activo: boolean;
-    disponibilidad: number;
+    disponibilidadGeneral: number;
+    propiedades:PropiedadProducto[];
+    defaultSku:Sku;
+    skus:Sku[];
+
 }

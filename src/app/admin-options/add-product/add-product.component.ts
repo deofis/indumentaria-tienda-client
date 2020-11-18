@@ -4,6 +4,9 @@ import { Categoria } from 'src/app/products/clases/categoria';
 import { AuthService } from '../../log-in/services/auth.service';
 import { Router } from '@angular/router';
 import { Subcategoria } from 'src/app/products/clases/subcategoria';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { Marca } from 'src/app/products/clases/marca';
+import { UnidadMedida } from 'src/app/products/clases/unidad-medida';
 
 @Component({
   selector: 'app-add-product',
@@ -14,18 +17,52 @@ export class AddProductComponent implements OnInit {
 showForm2:boolean = false;
 categorias:Categoria[];
 subcategorias: Subcategoria[];
-
+marcas:Marca[];
+categoriaSeleccionada: Categoria;
+form:FormGroup;
+oferta:boolean=false;
+unidadesMedida:UnidadMedida[];
   constructor( private router:Router,
                private authService: AuthService,
-               private catalogoservice:CatalogoService,) { 
+               private catalogoservice:CatalogoService,
+               private fb:FormBuilder,
+               ) { 
      
 }
 
   ngOnInit(): void {
+    ///inicializar el fomulario
+    this.crearForm();
+    this.getUnidades();
        // get category list 
        this.getListaCategorias();
 
+
   }
+/// *** ***  Formularios
+crearProducto(){
+
+}
+crearForm(){
+  this.form=this.fb.group({
+    id:[""],
+    nombre:["", Validators.required],
+    descripcion:["", Validators.required],
+    precio:["", Validators.required],
+    precioOferta:[""],
+    disponibilidadGeneral:["", Validators.required],
+    foto:[""],
+    imagenes:[""],
+    destacado:[""],
+    subcategoria:["", Validators.required],
+    categoria:["",Validators.required],
+    marca:["", Validators.required],
+    unidadMedida:["", Validators.required],
+    
+  })
+}
+
+
   showLateralMenu(){
     if (screen.width>650) {
     let lateralmenu=document.getElementById("lateralMenu");
@@ -81,25 +118,25 @@ subcategorias: Subcategoria[];
       step2.style.display="none";
     }
     /// dehabilitar campos step1 ////
-    let inputName=document.getElementById("name") as HTMLInputElement;
-    let inputMarca = document.getElementById("brand") as HTMLInputElement;
-    let inputFiles= document.getElementById("add-files") as HTMLInputElement;
-    let categories=document.getElementById("categories") as HTMLInputElement;
-    let subcategories = document.getElementById("subcategories") as HTMLInputElement;
-    let availability= document.getElementById("availability") as HTMLInputElement;
-    let inputPrice= document.getElementById("price")as HTMLInputElement;
-    let checkbox=document.getElementById("combinations") as HTMLInputElement;
+    // let inputName=document.getElementById("name") as HTMLInputElement;
+    // let inputMarca = document.getElementById("brand") as HTMLInputElement;
+    // let inputFiles= document.getElementById("add-files") as HTMLInputElement;
+    // let categories=document.getElementById("categories") as HTMLInputElement;
+    // let subcategories = document.getElementById("subcategories") as HTMLInputElement;
+    // let availability= document.getElementById("availability") as HTMLInputElement;
+    // let inputPrice= document.getElementById("price")as HTMLInputElement;
+    // let checkbox=document.getElementById("combinations") as HTMLInputElement;
 
-    if(inputName.disabled !== true && inputMarca.disabled !== true &&
-        inputFiles.disabled !== true && categories.disabled !== true &&
-        subcategories.disabled !== true && availability.disabled !== true &&
-        inputPrice.disabled !==true && checkbox.disabled!== true ){
+    // if(inputName.disabled !== true && inputMarca.disabled !== true &&
+    //     inputFiles.disabled !== true && categories.disabled !== true &&
+    //     subcategories.disabled !== true && availability.disabled !== true &&
+    //     inputPrice.disabled !==true && checkbox.disabled!== true ){
 
-      inputName.disabled=true; inputMarca.disabled=true; inputFiles.disabled=true;
-      categories.disabled=true;subcategories.disabled=true; availability.disabled=true;
-      inputPrice.disabled=true;checkbox.disabled=true;
-    };
-    document.getElementById("plus-brand").style.visibility="hidden"
+    //   inputName.disabled=true; inputMarca.disabled=true; inputFiles.disabled=true;
+    //   categories.disabled=true;subcategories.disabled=true; availability.disabled=true;
+    //   inputPrice.disabled=true;checkbox.disabled=true;
+    // };
+    // document.getElementById("plus-brand").style.visibility="hidden"
   }
   hasCombinations(){
     let button= document.getElementById("btn-one");
@@ -109,6 +146,16 @@ subcategorias: Subcategoria[];
     }else {
       button.innerText="Guardar y Finalizar"
       this.showForm2=false;
+    }
+  }
+  precioOferta(){
+    let ofertaInput= document.getElementById("inputOferta");
+    if(this.oferta == false){
+      ofertaInput.style.display="flex"
+      this.oferta=true;
+    }else {
+      ofertaInput.style.display="none"
+      this.oferta=false;
     }
   }
 
@@ -128,10 +175,24 @@ subcategorias: Subcategoria[];
        )
     }
 
+    getUnidades(){
+      this.catalogoservice.getUnidades()
+      .subscribe(response => {
+        this.unidadesMedida=response;
+        console.log(response)
+      })
+    }
 
     showSubcategories(){
-     let comboBoxSubcateories= document.getElementById("subcategories");
-     comboBoxSubcateories.style.display="block"
-     
+      this.categoriaSeleccionada = this.form.controls.categoria.value;
+      console.log(this.categoriaSeleccionada);
+
+      this.catalogoservice.getSubcategoriasPorCategoria(this.categoriaSeleccionada.id)
+      .subscribe(response => {
+        this.subcategorias=response.subcategorias;
+      })
+
+      let comboBoxSubcateories= document.getElementById("subcategories");
+      comboBoxSubcateories.style.display="block";
     }
 }
