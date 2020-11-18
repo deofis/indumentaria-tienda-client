@@ -9,7 +9,26 @@ import { CatalogoService } from 'src/app/products/services/catalogo.service';
   styleUrls: ['./buscador.component.scss']
 })
 export class BuscadorComponent implements OnInit {
-  rdosBusqueda:Producto[]
+  rdosBusqueda:Producto[];
+  images:any[]=[
+    {
+      img:'../../../../assets/imagenes/prod1.jpg'
+    },
+    {
+      img:'../../../../assets/imagenes/prod2.png ',
+    },
+    {
+      img:'../../../../assets/imagenes/prod3.jpg'},
+    {
+      img:'../../../../assets/imagenes/prod4.jpg',
+    },
+    {
+      img:'../../../../assets/imagenes/prod5.jpg',
+    },
+    {
+      img:'../../../../assets/imagenes/prod6.jpg',
+    }
+  ];
   constructor(private catalogoservice:CatalogoService, private activatedRoute:ActivatedRoute) {
 
    }
@@ -22,8 +41,12 @@ export class BuscadorComponent implements OnInit {
     this.activatedRoute.params.subscribe(params=>{
       let termino=params.termino;
       if (termino!==null && termino!==undefined) {
-        this.catalogoservice.getRdoBusqueda(termino).subscribe(response=>
-          this.rdosBusqueda=response);
+        this.catalogoservice.getRdoBusqueda(termino).subscribe(response=>{
+          this.rdosBusqueda=response;
+          for (let index = 0; index < this.rdosBusqueda.length; index++) {
+            this.rdosBusqueda[index].foto = this.images[index]?.img;       
+          }
+        });
         let mostrarTermino= document.getElementById("termino-busqueda");
         mostrarTermino.innerText=termino;
        let mostrarTerminoRuta= document.getElementById("nombre-busqueda");

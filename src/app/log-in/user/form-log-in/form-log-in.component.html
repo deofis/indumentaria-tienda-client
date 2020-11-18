@@ -51,13 +51,14 @@
         <form id="contenedor-forgot-psw" [formGroup]="formOlvidePass" (ngSubmit)="enviarRecuperarPassword()">
             <h2> <i class="fas fa-arrow-circle-left" id="back"></i>Recuperar contraseña</h2>
             <p>Te enviaremos un mail a tu cuenta .</p>
+            <div class="caja">
             <div class="campo">
                 <input [class.is-invalid]="emailInvalidoPass" type="email" id="emailPsw"
                     placeholder="Correo electrónico" formControlName="email">
                 <i class="fas fa-envelope" id="icono-env-psw"></i>
             </div>
             <span *ngIf="emailInvalidoPass" class="text-rojo  msj-recup"><small>Ingrese su email</small></span>
-
+         </div>
             <button type="submit" id="btn-recover-psw" class="boton">Enviar</button>
 
         </form>
