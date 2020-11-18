@@ -178,6 +178,15 @@ section{
                                     border-bottom: 2px solid $color-wf3;
                                 }
                             }
+                            .fa-plus-square{
+                                color: $color-wf3;
+                                margin-left: 10px;
+                                font-size: 17px;
+                                cursor: pointer;
+                                &:hover{
+                                    transform: scale(1.1);
+                                }
+                            }
                         }
                         .add-img{
                             outline: none;
@@ -384,5 +393,8 @@ section{
             &:hover{
                 transform: scale(1.03);
             }
+        }
+        #btn-two{
+            display: none;
         }
 }}

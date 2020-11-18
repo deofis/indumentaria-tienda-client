@@ -28,8 +28,7 @@ div {
         .campos-inicio-s {
             width: 80%;
             margin-bottom: 10px;
-            height: fit-content;
-            min-height: 300px;
+        
             h2 {
                 font-family: $fte-ppal;
                 text-transform: uppercase;
@@ -40,31 +39,18 @@ div {
                 width: 100%;
                 padding-bottom: 5px;
             }
-            .campo {
-                width: 100%;
+            .row1{
+                height: 50px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                margin-bottom: 20px;
+                .campo1{
+                    width: 100%;
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
                 position: relative;
-                i {
-                    position: absolute;
-                    padding: 13px;
-                    font-size: 1.1em;
-                    color: $color-ter;
-                }
-                .fa-user {
-                    top: 7.1px;
-                    position: absolute;
-                    left: 0;
-                
-                }
-                .fa-eye,
-                .fa-eye-slash {
-                    margin-left: 86%;
-                }
-                .fa-eye-slash {
-                    visibility: hidden;
-                }
                 #username {
                     margin-top: 7px;
                     height: 44px;
@@ -88,6 +74,36 @@ div {
                         color:rgb(150, 9, 9);
                       }
                 }
+                #icono-user{
+                    position: absolute;
+                    padding: 13px;
+                    font-size: 1.1em;
+                    color: $color-ter;
+                    top: 7.1px;
+                    left: 0;
+                }
+                }
+                .text-rojo-uno{
+                    font-family: $fte-sec;
+                    color: red;
+                    text-align: right;
+                    display: block;
+                    font-size: 12px;
+                  
+                   }
+            }
+            .row2{
+                height: 60px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                margin-bottom: 20px;
+                .campo2{
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                position: relative;
                 #password {
                     height: 44px;
                     width: 100%;
@@ -110,29 +126,58 @@ div {
                         color:rgb(150, 9, 9);
                       }
                 }
-                .fa-lock{
+                i {
                     position: absolute;
+                    padding: 13px;
+                    font-size: 1.1em;
+                    color: $color-ter;
+                }
+                .fa-eye,
+                .fa-eye-slash {
+                    margin-left: 86%;
+                }
+                .fa-eye-slash {
+                    visibility: hidden;
+                }
+                .fa-lock{
                     left: 0;
                     &.is-invalid{
                         border: 1px solid red;
                       }
                 }
+                }
+                .row-mssg{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    width: 100%;
+                    height: 20px;
+                    border: 1px solid green;
+                    .recuperar {
+                        text-align: left;
+                        font-family: $fte-sec;
+                        color: rgb(34, 33, 33);
+                        font-size: 12px;
+                        margin-bottom: 0;
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                    .text-rojo-two{
+                        font-family: $fte-sec;
+                        color: red;
+                        text-align: right;
+                        margin-bottom: 0;
+                        font-size: 12px;
+                       }
+                }
             }
+           
             #btn-entrar {
                 margin-top: 0px;
                 margin-bottom: 2px;
             }
-            p {
-                align-self: flex-start;
-                font-family: $fte-sec;
-                color: rgb(34, 33, 33);
-                font-size: 12px;
-                margin-top: -5px;
-                margin-bottom: 5px;
-                &:hover {
-                    cursor: pointer;
-                }
-            }
+           
+            
         }
         .separacion {
             display: flex;
@@ -257,18 +302,7 @@ div {
   
 }
 
-.text-rojo{
-    font-family: $fte-sec;
-    color: red;
-    display: block;
-   transform: translate(7vw,-6px);
-   }
-   .uno{
-    transform: translate(8vw,-4px);
-   }
-   .msj-recup{
-    transform: translate(100px,-50px);
-   }
+
 .boton {
     width: 100%;
     padding-top: 3px;

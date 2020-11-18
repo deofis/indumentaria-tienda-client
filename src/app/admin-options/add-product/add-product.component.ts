@@ -69,6 +69,48 @@ subcategorias: Subcategoria[];
     this.router.navigate(['/home']);
   }
 
+  ///// *** *** STEP 1 **** *** ///
+  showStep2(){
+    let step2= document.getElementById("step2");
+    if(this.showForm2 == true){
+      step2.style.display="block";
+      document.getElementById("btn-one").style.display="none";
+      document.getElementById("btn-two").style.display="block";
+      this.showForm2=false;
+    }else {
+      step2.style.display="none";
+    }
+    /// dehabilitar campos step1 ////
+    let inputName=document.getElementById("name") as HTMLInputElement;
+    let inputMarca = document.getElementById("brand") as HTMLInputElement;
+    let inputFiles= document.getElementById("add-files") as HTMLInputElement;
+    let categories=document.getElementById("categories") as HTMLInputElement;
+    let subcategories = document.getElementById("subcategories") as HTMLInputElement;
+    let availability= document.getElementById("availability") as HTMLInputElement;
+    let inputPrice= document.getElementById("price")as HTMLInputElement;
+    let checkbox=document.getElementById("combinations") as HTMLInputElement;
+
+    if(inputName.disabled !== true && inputMarca.disabled !== true &&
+        inputFiles.disabled !== true && categories.disabled !== true &&
+        subcategories.disabled !== true && availability.disabled !== true &&
+        inputPrice.disabled !==true && checkbox.disabled!== true ){
+
+      inputName.disabled=true; inputMarca.disabled=true; inputFiles.disabled=true;
+      categories.disabled=true;subcategories.disabled=true; availability.disabled=true;
+      inputPrice.disabled=true;checkbox.disabled=true;
+    };
+    document.getElementById("plus-brand").style.visibility="hidden"
+  }
+  hasCombinations(){
+    let button= document.getElementById("btn-one");
+    if(this.showForm2 == false){
+      button.innerText="Guardar y Continuar"
+      this.showForm2=true;
+    }else {
+      button.innerText="Guardar y Finalizar"
+      this.showForm2=false;
+    }
+  }
 
   ///// *** *** STEP 2****** ///
 
@@ -76,16 +118,7 @@ subcategorias: Subcategoria[];
     alert("agregando atributo")
   }
 
-  showStep2(){
-    let step2= document.getElementById("step2");
-    if(this.showForm2 == false){
-      step2.style.display="block";
-      this.showForm2=true;
-    }else {
-      step2.style.display="none";
-      this.showForm2=false;
-    }
-  }
+  
 
      /***** GET CATEGORIES *****/
      getListaCategorias():void{
