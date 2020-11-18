@@ -250,31 +250,37 @@ div {
             width: 80%;
             margin-bottom: 10px;
             display: none;
-            height: 230px;
-            h2 {
-                font-family: $fte-ppal;
-                text-transform: uppercase;
-                color: $color-sec;
-                align-self: flex-start;
-                display: block;
-                border-bottom: 1px solid grey;
-                width: 100%;
-                padding-bottom: 5px;
-                font-size: 23px;
-                display: flex;
-                align-items: center;
-                i {
-                    font-size: 0.7em;
-                    color: rgb(34, 33, 33);
+            position: relative;
+            .titulo{
+                h2 {
+                    font-family: $fte-ppal;
+                    text-transform: uppercase;
+                    font-size: 23px;
+                    color: $color-sec;
+                    display: block;
+                    border-bottom: 1px solid grey;
+                    width: 100%;
+                    padding-bottom: 5px;
+                  
+                }
+                .fa-arrow-circle-left {
+                    font-size: 1.3em;
+                    color:rgb(34, 33, 33);
                     margin-right: 8px;
+                    outline: none;
+                    position: absolute;
+                    top: 4px;
+                    left: -30px;
                 }
             }
+           
             p {
                 font-family: $fte-sec;
                 color: rgb(34, 33, 33);
                 margin-bottom: -15px;
             }
             .caja{
+                margin-bottom: 15px;
                 .campo {
                     width: 100%;
                     display: flex;
@@ -440,6 +446,64 @@ div {
                             background-color: #db4a39;
                         }
                     }
+                    #contenedor-forgot-psw {
+                        width: 80%;
+                        margin-bottom: 10px;
+                        display: none;
+                        .titulo{
+                            border-bottom: 1px solid grey;
+                            padding-bottom:2px ;
+                            h2 {
+                                font-family: $fte-ppal;
+                                text-transform: uppercase;
+                                font-size: 20px;
+                                color: $color-sec;
+                                display: block;
+                                border-bottom: none;
+                                width: 100%;
+                                padding-bottom: 0px;
+                                position: relative;
+                                top: 0px;
+                                left: 35px;
+                             margin-bottom: -8px;
+                              
+                            }
+                            .fa-arrow-circle-left {
+                                font-size: 1.3em;
+                                color:rgb(34, 33, 33);
+                                margin-right: 8px;
+                                outline: none;
+                                position: absolute;
+                                top: 6px;
+                                left: 0px;
+                            }
+                        }
+                        p {
+                            display: block;
+                            transform: translateY(10px);
+                            font-size: 14px;
+                        }
+                        .caja{
+                            margin-bottom: 15px;
+                            .campo {
+                                width: 100%;
+                                display: flex;
+                                justify-content: flex-start;
+                                align-items: center;
+                                position: relative;
+                                margin-top: 18px;
+                                height: 60px;
+                                i {
+                                    top: 13px;
+                                }
+                                #emailPsw {
+                                    margin-top: 16px;
+                                    height: 37px;
+                                    
+                                }
+                            }
+                        }
+                    }
                 }
             }            
 }
@@ -454,6 +518,64 @@ div {
             h2 {
             font-size: 22px;
             }
+            }
+        }
+        #contenedor-forgot-psw {
+            width: 80%;
+            margin-bottom: 10px;
+            display: none;
+            .titulo{
+                border-bottom: 1px solid grey;
+                padding-bottom:2px ;
+                h2 {
+                    font-family: $fte-ppal;
+                    text-transform: uppercase;
+                    font-size: 20px;
+                    color: $color-sec;
+                    display: block;
+                    border-bottom: none;
+                    width: 100%;
+                    padding-bottom: 0px;
+                    position: relative;
+                    top: 0px;
+                    left: 35px;
+                 margin-bottom: -8px;
+                  
+                }
+                .fa-arrow-circle-left {
+                    font-size: 1.3em;
+                    color:rgb(34, 33, 33);
+                    margin-right: 8px;
+                    outline: none;
+                    position: absolute;
+                    top: 6px;
+                    left: 0px;
+                }
+            }
+            p {
+                display: block;
+                transform: translateY(10px);
+                font-size: 16px;
+            }
+            .caja{
+                margin-bottom: 15px;
+                .campo {
+                    width: 100%;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    position: relative;
+                    margin-top: 18px;
+                    height: 60px;
+                    i {
+                        top: 13px;
+                    }
+                    #emailPsw {
+                        margin-top: 16px;
+                        height: 37px;
+                        
+                    }
+                }
             }
         }
     }

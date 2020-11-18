@@ -65,6 +65,7 @@ section {
             align-items: center;
             flex-direction: column;
             position: relative;
+            .titulo{
                 h2 {
                     font-family: $fte-ppal;
                     text-transform: uppercase;
@@ -85,7 +86,8 @@ section {
                     top: 4px;
                     left: -35px;
                 }
-          
+            }
+                       
          
             #formName{
                 width: 100%;
