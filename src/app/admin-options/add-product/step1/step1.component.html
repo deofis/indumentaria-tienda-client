@@ -1,0 +1,93 @@
+<div class="frame step1">
+    <div class="title">
+        <h3> <img src="../../../assets/imagenes/nro-uno.png" alt=""> Información general</h3>
+        <button id="save">Guardar</button>
+    </div>
+
+    <form autocomplete="off" class="form1" id="form1" [formGroup]="form" (ngSubmit)="crearProducto()">
+        <div class="container-white">
+            <div class="row">
+                <div class="name">
+                    <label for="name"> Nombre:</label>
+                    <input type="text" id="name" placeholder="Samsung Galaxy s20" formControlName="nombre">
+                </div>
+                <!-- <div class="brand">
+                <label for="brand"> Marca:</label>
+                <input type="text" id="brand" placeholder="Samsung">
+                <i class="far fa-plus-square" id="plus-brand"></i>
+            </div> -->
+                <select name="marca" id="marca" formControlName="marca" [(ngModel)]="marca">
+                    <option  >{{marca}}</option>
+                    <option *ngFor="let marca of marcas" [ngValue]="marca">{{marca.nombre}}</option>
+                </select>
+            </div>
+            <div class="row">
+                <div class="add-img">
+                    <p>Añade una fotografía principal de tu producto.
+                        <br>
+                        <!-- <span>-Hasta 6 fotografías permitidas-</span> -->
+                    </p>
+                    <input type="file" id="add-files">
+                </div>
+                <div class="images">
+
+                </div>
+            </div>
+            <div class="row">
+                <select name="category" id="categories" (change)="showSubcategories()"
+                    formControlName="categoria"  [(ngModel)]="categoria">
+                    <option >{{categoria}}</option>
+                    <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{categoria.nombre}}
+                    </option>
+                    
+                </select>
+                <select name="subcategory" id="subcategories" formControlName="subcategoria" [(ngModel)]="subcategoria">
+                    <option >{{subcategoria}}</option>
+                    <option *ngFor="let subcategoria of subcategorias" [ngValue]="subcategoria">{{subcategoria.nombre}}</option>
+                </select>
+            </div>
+            <div class="row">
+                <select name="unidadMedida" id="unidadMedida" (change)="showUnit()" formControlName="unidadMedida" [(ngModel)]="unidad">
+                    <option >{{unidad}}</option>
+                    <option *ngFor="let unidad of unidadesMedida" [ngValue]="unidad" >{{unidad.nombre}}</option>
+                </select>
+
+                <div class="availability-container">
+                    <label for="availability"> Disponibilidad General:</label>
+                    <input type="number" id="availability"  (input)="changeUnit()">
+                    <span id="unidadElegida"></span>
+                </div>
+                <div class="destacado">
+                    <input type="checkbox" id="destacado">
+                    <label for="destacado"> Producto destacado</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="price-container">
+                    <label for="price"> Precio:</label>
+                    <p id="euro">€</p>
+                    <input type="number" id="price">
+                </div>
+                <div class="precioOferta">
+                    <div class="pcioOfertaInput" id=inputOferta>
+                        <label for="price"> Precio de Oferta:</label>
+                        <p id="euro">€</p>
+                        <input type="number" id="precioOferta">
+                    </div>
+                    <div class="check-oferta">
+                        <input type="checkbox" id="checkbox-oferta" (input)="precioOferta()">
+                        <label for="combinations"> Este producto está en oferta</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <input type="checkbox" id="combinations" (input)="hasCombinations()">
+                <label for="combinations"> Mi producto posee diversas propiedades que pueden ser combinables
+                    entre ellas.</label>
+            </div>
+        </div>
+        <button class="btn-end" id="btn-one" (click)="showStep2()">Guardar y finalizar</button>
+    </form>
+
+
+</div>

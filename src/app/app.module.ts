@@ -43,6 +43,8 @@ import { FinalMessageComponent } from './cart/components/final-message/final-mes
 import { BrandsPanelComponent } from './admin-options/brands-panel/brands-panel.component';
 import { ProductsListComponent } from './admin-options/products-list/products-list.component';
 import { AddProductComponent } from './admin-options/add-product/add-product.component';
+import { Step1Component } from './admin-options/add-product/step1/step1.component';
+import { Step2Component } from './admin-options/add-product/step2/step2.component';
 
 
 
@@ -81,6 +83,8 @@ import { AddProductComponent } from './admin-options/add-product/add-product.com
     BrandsPanelComponent,
     ProductsListComponent,
     AddProductComponent,
+    Step1Component,
+    Step2Component,
   ],
   imports: [
     BrowserModule,

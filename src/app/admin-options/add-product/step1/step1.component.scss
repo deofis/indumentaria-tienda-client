@@ -1,0 +1,286 @@
+$fte-ppal: 'Poppins', sans-serif;
+$fte-sec: 'Open Sans', sans-serif;
+$color-ppal:#fff;
+ $color-sec: rgb(87, 83, 83);
+ $color-ter: rgb(172, 165, 165);
+ $color-menues: rgb(243, 236, 236);
+ $color-wf1:#223e66;
+ $color-wf2:#1f4e84;
+ $color-wf3:#2779cd;
+ $color-wf4:#70b8f3;
+ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button{
+    appearance: none;
+    margin: 0;
+}
+
+.frame{
+       width:85% ;
+            margin-top: 30px;
+            margin-left: 50px;     
+            .title{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+                h3{
+                    font-family: $fte-ppal;
+                    text-transform: uppercase;
+                    font-size: 21px;
+                    color: $color-sec;
+                    img{
+                        width: 25px;
+                        height: 25px;
+                        margin-top: -3px;
+                        margin-left: -40px;
+                        margin-right: 10px;
+                    }
+                }
+                #save{
+                    display: none;
+                    background-color: rgb(34, 33, 33);
+                    color: white;
+                    font-family: $fte-ppal;
+                    text-transform: uppercase;
+                    width: 140px;
+                    height: 35px;
+                    border-radius: 30px;
+                    font-size: 15px;
+                    border: none;
+                    &:hover{
+                        background-color: $color-sec;
+                        transform: scale(1.03);
+                        box-shadow: 1px 2px 1px grey;
+                    }
+                }
+            }       
+                .form1{
+                    width: 100%;
+                    font-family:$fte-sec;
+                    margin-bottom: 60px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                   .container-white{
+                       width: 100%;
+                    background-color: white;
+                    padding: 30px 60px 15px 60px;
+                    box-shadow: 1px 2px 3px $color-sec;
+                    .row{
+                        display: flex;
+                        margin-bottom: 45px;
+                        align-items: baseline;
+                        .name{
+                            #name{
+                                margin-left: 10px;
+                                border: none;
+                                outline: none;
+                                border-bottom: 1px solid grey;
+                                font-size: 14px;
+                                width: 400px;
+                                padding-right: 3px;
+                                &:focus{
+                                    border-bottom: 2px solid $color-wf3;
+                                }
+                             }
+                        }
+                        .brand{
+                            margin-left: 60px;
+                            #brand{
+                                margin-left: 10px;
+                                border: none;
+                                outline: none;
+                                font-size: 14px;
+                                padding-right: 3px;
+                                border-bottom: 1px solid grey;
+                                &:focus{
+                                    border-bottom: 2px solid $color-wf3;
+                                }
+                            }
+                            .fa-plus-square{
+                                color: $color-wf3;
+                                margin-left: 10px;
+                                font-size: 17px;
+                                cursor: pointer;
+                                &:hover{
+                                    transform: scale(1.1);
+                                }
+                            }
+                        }
+                        .add-img{
+                            outline: none;
+                            p{
+                            font-size: 15px;
+                            span{
+                                color: grey;
+                                font-size: 13px;
+                            }
+                            }
+                            #add-files{
+                                font-size: 13px;
+                                display: block;
+                                margin-top: -10px;
+                                outline: none;
+                            }
+                            
+                        }
+                        #categories, #subcategories, #marca{
+                            font-size: 15px;
+                            border: none;
+                            outline: none;
+                            width: 140px;
+                            padding-left: 5px;
+                            border-bottom: 1px solid grey;
+                            &:focus{
+                                border-bottom: 2px solid $color-wf3;
+                            }
+                        }
+                        #subcategories {
+                            margin-left: 90px;
+                            display: none;
+                        }
+                        #marca{
+                            
+                            margin-left: 90px;
+                        }
+                       #unidadMedida{
+                        font-size: 15px;
+                        border: none;
+                        outline: none;
+                        width: 160px;
+                        padding-left: 5px;
+                        border-bottom: 1px solid grey;
+                        &:focus{
+                            border-bottom: 2px solid $color-wf3;
+                        }
+                       }
+                        #combinations{
+                            margin-right: 10px;
+                            margin-top: -5px;
+                            margin-bottom: -20px;
+                           
+                        }
+                        //// step 2 
+                        #property{
+                            font-size: 15px;
+                            border: none;
+                            outline: none;
+                            width: 110px;
+                            padding-left: 5px;
+                            border-bottom: 1px solid grey;
+                            &:focus{
+                                border-bottom: 2px solid $color-wf3;
+                            }
+                        }
+                       .price-container{
+                        display: flex;
+                        align-items: baseline;
+                        #euro{
+                            font-weight: bold;
+                            font-size: 14px;
+                            display: block;
+                            margin-left: 10px;
+                        }
+                        #price{
+                            border: none;
+                            outline: none;
+                            font-size: 14px;
+                            padding-right: 3px;
+                            padding-left: 3px;
+                            width: 90px;
+                            border-bottom: 1px solid grey;
+                            &:focus{
+                                border-bottom: 2px solid $color-wf3;
+                            }
+                        }
+                       }
+                       .precioOferta{
+                        margin-left: 50px;
+                        display: flex;
+                        align-items: center;
+                           .pcioOfertaInput{
+                            display: none;
+                            align-items: baseline;
+                            
+                            #euro{
+                                font-weight: bold;
+                                font-size: 14px;
+                                display: block;
+                                margin-left: 10px;
+                            }
+                            #precioOferta{
+                                border: none;
+                                outline: none;
+                                font-size: 14px;
+                                padding-right: 3px;
+                                padding-left: 3px;
+                                width: 90px;
+                                border-bottom: 1px solid grey;
+                                &:focus{
+                                    border-bottom: 2px solid $color-wf3;
+                                }
+                            }
+                           }
+                           .check-oferta{
+                               margin-left: 20px;
+                           #checkbox-oferta{
+                            margin-right: 10px;
+                            margin-top: -5px;
+                            margin-bottom: -20px;
+                           
+                           }
+                           
+                           }
+                       }
+                       .availability-container{
+                        margin-left: 60px;
+                        #availability{
+                            border: none;
+                            outline: none;
+                            margin-left: 8px;
+                            font-size: 14px;
+                            padding-right: 3px;
+                            padding-left: 3px;
+                            width: 60px;
+                            border-bottom: 1px solid grey;
+                            &:focus{
+                                border-bottom: 2px solid $color-wf3;
+                            }
+                        } 
+                       }
+                       .destacado{
+                        margin-left: 60px;
+                        #destacado{
+                            margin-right: 10px;
+                            margin-top: -5px;
+                            margin-bottom: -20px;
+                           
+                        }
+                       }
+
+                    }
+                   
+                   }
+                   .btn-end{
+                    background-color: $color-wf1;
+                    color: white;
+                    margin-top: 20px;
+                    font-family: $fte-ppal;
+                    text-transform: uppercase;
+                    font-size: 18px;
+                    border: 0px ;
+                    padding: 7px 13px;
+                    align-self: center;
+                    box-sizing: border-box;
+                    width: 35%;
+                    border-radius: 0px;     
+                    margin-left: auto;
+                    margin-right: auto; 
+                    margin-bottom: 50px;                
+                    &:hover{
+                        transform: scale(1.03);
+                    }
+                }
+                }
+            }
+        
