@@ -167,7 +167,7 @@
 <!-- Admin user -->
 <ul *ngIf="estaLogueado && hasRole('ROLE_ADMIN')" class="hamburgerM" id="hamburgerM">
     (mouseout)="hiddeUserMenu()">
-    <a>
+    <a [routerLink]="['/admin-profile']">
         <li> <i class="fas fa-file-invoice"></i>Mis Datos </li>
     </a>
     <a>
