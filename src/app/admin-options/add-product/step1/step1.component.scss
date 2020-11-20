@@ -66,51 +66,68 @@ $color-ppal:#fff;
                     background-color: white;
                     padding: 30px 60px 15px 60px;
                     box-shadow: 1px 2px 3px $color-sec;
+                   
                     .row{
                         display: flex;
                         margin-bottom: 45px;
                         align-items: baseline;
-                        .name{
-                            #name{
-                                margin-left: 10px;
-                                border: none;
-                                outline: none;
-                                border-bottom: 1px solid grey;
-                                font-size: 14px;
-                                width: 400px;
-                                padding-right: 3px;
-                                &:focus{
-                                    border-bottom: 2px solid $color-wf3;
+                       
+             
+                            .name{
+                                #name{
+                                    margin-left: 10px;
+                                    border: none;
+                                    outline: none;
+                                    border-bottom: 1px solid grey;
+                                    font-size: 14px;
+                                    width: 400px;
+                                    padding-right: 3px;
+                                    &:focus{
+                                        border-bottom: 2px solid $color-wf3;
+                                    }
+                                    &.is-invalid{
+                                        border-bottom: 1px solid red;
+                                      }
+                                 }
+                            }
+                            .brand{
+                                margin-left: 60px;
+                                .inputBrand{
+                                    margin-left: 10px;
+                                    padding: 0;
                                 }
-                             }
-                        }
-                        .brand{
-                            margin-left: 60px;
-                            .inputBrand{
-                                margin-left: 10px;
-                                padding: 0;
-                            }
-                            #brand{
-                              
-                                border: none;
-                                outline: none;
-                                font-size: 14px;
-                                padding-right: 3px;
-                                padding-left:0 ;
-                                // &:focus{
-                                //     border-bottom: 2px solid $color-wf3;
-                                // }
-                            }
-                            .fa-plus-square{
-                                color: $color-wf3;
-                                margin-left: 10px;
-                                font-size: 17px;
-                                cursor: pointer;
-                                &:hover{
-                                    transform: scale(1.1);
+                                #brand{
+                                  
+                                    border: none;
+                                    outline: none;
+                                    font-size: 14px;
+                                    padding-right: 3px;
+                                    padding-left:0 ;
+                                    // &:focus{
+                                    //     border-bottom: 2px solid $color-wf3;
+                                    // }
+                                   
+                                }
+                                .fa-plus-square{
+                                    color: $color-wf3;
+                                    margin-left: 10px;
+                                    font-size: 17px;
+                                    cursor: pointer;
+                                    &:hover{
+                                        transform: scale(1.1);
+                                    }
                                 }
                             }
-                        }
+                            .text-rojo{
+                                font-family: $fte-sec;
+                                color: red;
+                                text-align: right;
+                                margin-bottom: 0;
+                                font-size: 12px;
+                               }
+                        
+                      
+                       
                         .add-img{
                             outline: none;
                             p{
@@ -128,25 +145,31 @@ $color-ppal:#fff;
                             }
                             
                         }
-                        #categories, #subcategories, #marca{
-                            font-size: 15px;
-                            border: none;
-                            outline: none;
-                            width: 140px;
-                            padding-left: 5px;
-                            border-bottom: 1px solid grey;
-                            &:focus{
-                                border-bottom: 2px solid $color-wf3;
+                        .input-msj{
+                            #categories, #subcategories, #marca{
+                                font-size: 15px;
+                                border: none;
+                                outline: none;
+                                width: 140px;
+                                padding-left: 5px;
+                                border-bottom: 1px solid grey;
+                                &:focus{
+                                    border-bottom: 2px solid $color-wf3;
+                                }
+                                &.is-invalid{
+                                    border-bottom: 1px solid red;
+                                  }
+                            }
+                            #subcategories {
+                                margin-left: 90px;
+                                display: none;
+                            }
+                            #marca{
+                                
+                                margin-left: 90px;
                             }
                         }
-                        #subcategories {
-                            margin-left: 90px;
-                            display: none;
-                        }
-                        #marca{
-                            
-                            margin-left: 90px;
-                        }
+                     
                        #unidadMedida{
                         font-size: 15px;
                         border: none;
@@ -157,6 +180,9 @@ $color-ppal:#fff;
                         &:focus{
                             border-bottom: 2px solid $color-wf3;
                         }
+                        &.is-invalid{
+                            border-bottom: 1px solid red;
+                          }
                        }
                         #combinations{
                             margin-right: 10px;
@@ -195,7 +221,9 @@ $color-ppal:#fff;
                             border-bottom: 1px solid grey;
                             &:focus{
                                 border-bottom: 2px solid $color-wf3;
-                            }
+                            } &.is-invalid{
+                                border-bottom: 1px solid red;
+                              }
                         }
                        }
                        .precioOferta{
@@ -263,6 +291,30 @@ $color-ppal:#fff;
                        }
 
                     }
+                    .text-rojo{
+                        font-family: $fte-sec;
+                        color: red;
+                        text-align:left;
+                        margin-bottom: 0;
+                        font-size: 14px;
+                      
+                       
+                    }
+                    .subandcat{
+                        margin-top: -20px;
+                    }
+                    .textarea{
+                        width: 103%;
+                        font-family: $fte-sec;
+                        margin-left: -1vw;
+                        margin-bottom: 25px;
+                        #descripcion{
+                            resize: none;
+                            outline: none;
+                            width: 100%;
+                            padding: 5px 10px;
+                        }
+                    }
                    
                    }
                    .btn-end{
@@ -287,4 +339,3 @@ $color-ppal:#fff;
                 }
                 }
             }
-        

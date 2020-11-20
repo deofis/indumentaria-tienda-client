@@ -24,7 +24,7 @@ id:number;
   }
 
   getListaCategorias():Observable<Categoria[]>{
-    return this.http.get(`${this.url}/catalogo/categorias`).pipe( map( response => response as Categoria[]));
+    return this.http.get(`${this.url}/categorias`).pipe( map( (response:any) => response.categorias as Categoria[]));
   }
   getSubcategoriasPorCategoria(categoriaId:number):Observable<any>{
     return this.http.get(`${this.url}/categorias/${categoriaId}/subcategorias`)

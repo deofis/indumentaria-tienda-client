@@ -6,9 +6,9 @@
         </div>
         <div class="lateral-container" id="lateral-container">
             <ul class="userOptions">
-                <li [routerLink]="['/user-my-purchases']"> Productos <i class="fas fa-angle-down "></i> </li>
-                <li [routerLink]="['/user-my-purchases']"> Operaciones <i class="fas fa-angle-down "></i> </li>
-                <li [routerLink]="['/user-favorites']">Administración <i class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/add-product']"> Añadir Producto <i class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/products-list']"> Productos <i class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/brands-panel']"> Marcas<i class="fas fa-angle-down "></i> </li>
                 <li [routerLink]="['/admin-profile']"> Mis Datos </li>
                 <li (click)="logout()"><i class="fas fa-sign-out-alt"></i>Cerrar Sesión </li>
             </ul>
@@ -18,7 +18,7 @@
         <h2>Añadir Producto</h2>
         <app-step1></app-step1>
      
-       <app-step2></app-step2>
+       <app-step2 ></app-step2>
 
         
 
