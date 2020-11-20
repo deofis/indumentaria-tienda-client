@@ -9,17 +9,23 @@
             <div class="row">
                 <div class="name">
                     <label for="name"> Nombre:</label>
-                    <input type="text" id="name" placeholder="Samsung Galaxy s20" formControlName="nombre">
+                    <input type="text" id="name" formControlName="nombre">
                 </div>
-                <!-- <div class="brand">
-                <label for="brand"> Marca:</label>
-                <input type="text" id="brand" placeholder="Samsung">
-                <i class="far fa-plus-square" id="plus-brand"></i>
-            </div> -->
-                <select name="marca" id="marca" formControlName="marca" [(ngModel)]="marca">
-                    <option  >{{marca}}</option>
-                    <option *ngFor="let marca of marcas" [ngValue]="marca">{{marca.nombre}}</option>
-                </select>
+
+                <div class="brand">
+                    <label for="brand">Marca: </label>
+                    <mat-form-field class="example-full-width inputBrand">
+
+                        <input type="text" id="brand" aria-label="Number" matInput [formControl]="autoControl"
+                            [matAutocomplete]="auto">
+                        <mat-autocomplete [displayWith]="mostrarNombre" #auto="matAutocomplete">
+                            <mat-option *ngFor="let marca of filteredBrands | async" [value]="marca">
+                                {{marca.nombre}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                    <i class="far fa-plus-square" id="plus-brand"></i>
+                </div>
             </div>
             <div class="row">
                 <div class="add-img">
@@ -34,27 +40,29 @@
                 </div>
             </div>
             <div class="row">
-                <select name="category" id="categories" (change)="showSubcategories()"
-                    formControlName="categoria"  [(ngModel)]="categoria">
-                    <option >{{categoria}}</option>
+                <select name="category" id="categories" (change)="showSubcategories()" formControlName="categoria"
+                    [ngModel]="categoria">
+                    <option>{{categoria}}</option>
                     <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{categoria.nombre}}
                     </option>
-                    
+
                 </select>
-                <select name="subcategory" id="subcategories" formControlName="subcategoria" [(ngModel)]="subcategoria">
-                    <option >{{subcategoria}}</option>
-                    <option *ngFor="let subcategoria of subcategorias" [ngValue]="subcategoria">{{subcategoria.nombre}}</option>
+                <select name="subcategory" id="subcategories" formControlName="subcategoria" [ngModel]="subcategoria">
+                    <option>{{subcategoria}}</option>
+                    <option *ngFor="let subcategoria of subcategorias" [ngValue]="subcategoria">{{subcategoria.nombre}}
+                    </option>
                 </select>
             </div>
             <div class="row">
-                <select name="unidadMedida" id="unidadMedida" (change)="showUnit()" formControlName="unidadMedida" [(ngModel)]="unidad">
-                    <option >{{unidad}}</option>
-                    <option *ngFor="let unidad of unidadesMedida" [ngValue]="unidad" >{{unidad.nombre}}</option>
+                <select name="unidadMedida" id="unidadMedida" (change)="showUnit()" formControlName="unidadMedida"
+                    [ngModel]="unidad">
+                    <option>{{unidad}}</option>
+                    <option *ngFor="let unidad of unidadesMedida" [ngValue]="unidad">{{unidad.nombre}}</option>
                 </select>
 
                 <div class="availability-container">
                     <label for="availability"> Disponibilidad General:</label>
-                    <input type="number" id="availability"  (input)="changeUnit()">
+                    <input type="number" id="availability" (input)="changeUnit()">
                     <span id="unidadElegida"></span>
                 </div>
                 <div class="destacado">

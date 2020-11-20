@@ -86,16 +86,20 @@ $color-ppal:#fff;
                         }
                         .brand{
                             margin-left: 60px;
-                            #brand{
+                            .inputBrand{
                                 margin-left: 10px;
+                                padding: 0;
+                            }
+                            #brand{
+                              
                                 border: none;
                                 outline: none;
                                 font-size: 14px;
                                 padding-right: 3px;
-                                border-bottom: 1px solid grey;
-                                &:focus{
-                                    border-bottom: 2px solid $color-wf3;
-                                }
+                                padding-left:0 ;
+                                // &:focus{
+                                //     border-bottom: 2px solid $color-wf3;
+                                // }
                             }
                             .fa-plus-square{
                                 color: $color-wf3;

@@ -23,4 +23,7 @@ export class Step2Component implements OnInit {
       this.oferta=false;
     }
   }
+  addProperty(){
+    
+  }
 }

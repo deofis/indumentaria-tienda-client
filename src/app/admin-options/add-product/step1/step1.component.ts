@@ -6,8 +6,9 @@ import { Subcategoria } from 'src/app/products/clases/subcategoria';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Marca } from 'src/app/products/clases/marca';
 import { UnidadMedida } from 'src/app/products/clases/unidad-medida';
-import { HammerModule } from '@angular/platform-browser';
-
+import {FormControl} from '@angular/forms';
+import { Observable } from 'rxjs';
+import { flatMap, map, startWith } from 'rxjs/operators';
 @Component({
   selector: 'app-step1',
   templateUrl: './step1.component.html',
@@ -17,7 +18,6 @@ export class Step1Component implements OnInit {
   showForm2:boolean = false;
   categorias:Categoria[];
   subcategorias: Subcategoria[];
-  marcas:Marca[];
   categoriaSeleccionada: Categoria;
   unidadSeleccionada:UnidadMedida;
   form:FormGroup;
@@ -28,26 +28,48 @@ export class Step1Component implements OnInit {
   categoria:string="-Categoría-";
   subcategoria:string="-Subcategoría-";
   unidad:string="-Unidad de Medida-";
+
+  // autocomplete
+  autoControl = new FormControl();
+  marcas:Marca[];
+  filteredBrands:Observable<Marca[]>;
+  marcaSeleccionada: Marca;
   constructor( private router:Router,
                 private catalogoservice:CatalogoService,
-                 private fb:FormBuilder,
-    ) { 
-
-}
+                private fb:FormBuilder,) { 
+                  this.marcas = [];
+                  this.marcaSeleccionada = new Marca();
+                }
 
   ngOnInit(): void {
-
-     ///inicializar el fomulario
-     this.crearForm();
-     this.getUnidades();
-        // get category list 
+         ///inicializar el fomulario
+         this.crearForm();
+         this.getUnidades();
+         // get category list 
         this.getListaCategorias();
- 
+        // get brands
+        this.getBrands();
+
+        this.filteredBrands = this.autoControl.valueChanges.pipe(
+          // map(value => typeof value === 'string'? value: value.nombre),
+          // flatMap(value => value? this._filter(value): [])
+        startWith(''),
+         map(value => {
+           this.marcaSeleccionada = value;
+           return this._filter(value)
+          })
+        );
+      
   }
 
+  mostrarNombre(marca?: Marca): string | undefined {
+    return marca? marca.nombre: undefined;
+  }
 /// *** ***  Formularios
 crearProducto(){
-
+  console.log(this.marcaSeleccionada);
+  console.log(this.form.value);
+  
 }
 crearForm(){
   this.form=this.fb.group({
@@ -62,10 +84,8 @@ crearForm(){
     destacado:[""],
     subcategoria:["", Validators.required],
     categoria:["",Validators.required],
-    marca:["", Validators.required],
     unidadMedida:["", Validators.required],
-    
-  })
+  });
 }
 
   ///// *** *** STEP 1 **** *** ///
@@ -121,6 +141,12 @@ crearForm(){
     }
   }
   
+  private _filter(value:any) {
+    console.log(value);
+    //const filterValue = value.toLowerCase();
+    return this.marcas.filter(marca => marca.nombre.toLowerCase().indexOf(value) === 0);
+  }
+  
      /***** GET CATEGORIES *****/
      getListaCategorias():void{
       this.catalogoservice.getListaCategorias().subscribe( response =>{
@@ -130,10 +156,13 @@ crearForm(){
     }
 
     getUnidades(){
-      this.catalogoservice.getUnidades()
-      .subscribe(response => {
+      this.catalogoservice.getUnidades().subscribe(response => {
         this.unidadesMedida=response;
-        console.log(response)
+      })
+    }
+    getBrands(){
+      this.catalogoservice.getBrands().subscribe((response: any) => {
+        this.marcas=response.marcas;
       })
     }
 

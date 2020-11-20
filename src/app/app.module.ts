@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TokenInterceptor } from './token-interceptor';
@@ -45,8 +43,10 @@ import { ProductsListComponent } from './admin-options/products-list/products-li
 import { AddProductComponent } from './admin-options/add-product/add-product.component';
 import { Step1Component } from './admin-options/add-product/step1/step1.component';
 import { Step2Component } from './admin-options/add-product/step2/step2.component';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import{MatFormFieldModule}from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 
@@ -96,6 +96,10 @@ import { Step2Component } from './admin-options/add-product/step2/step2.componen
     HttpClientModule,
     RouterModule,
     NgbModule,
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    MatFormFieldModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true

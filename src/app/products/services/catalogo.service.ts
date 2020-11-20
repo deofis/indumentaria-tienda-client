@@ -41,6 +41,9 @@ id:number;
   getUnidades():Observable<any>{
     return this.http.get(`${this.url}/productos/unidades-medida`);
   }
+  getBrands():Observable<any>{
+    return this.http.get(`${this.url}/productos/marcas`);
+  }
   getInfoProducto(id:number):Observable<Producto>{
     
     return this.http.get(`${this.url}/catalogo/productos/ver/${id}`).pipe( map( (response:any) => response.producto as Producto));
