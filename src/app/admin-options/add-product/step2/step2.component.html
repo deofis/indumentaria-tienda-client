@@ -1,0 +1,69 @@
+<div class="frame step2" id="step2">
+    <div class="title">
+        <h3> <img src="../../../assets/imagenes/nro-dos.png" alt=""> Combinaciones posibles</h3>
+        <button id="save">Guardar</button>
+    </div>
+
+    <form action="" class="form form2 ">
+        <div class="container-white">
+            <div class="row">
+                <p>Elaboramos una lista de propiedades en base a la categoría y subcategoría elegida, puedes
+                    combinarlas para generar productos o añadir nuevas. </p>
+            </div>
+            <p id="add" (click)="addProperty()"><i class="far fa-plus-square"></i> Agregar propiedades</p>
+            <div class="row properties">
+                <select name="property" id="property">
+                    <option value="">-Color-</option>
+                </select>
+                <select name="property" id="property">
+                    <option value="">-Memoria-</option>
+                </select>
+                <select name="property" id="property">
+                    <option value="">-Resolución-</option>
+                </select>
+
+            </div>
+            <div class="row">
+
+                <div class="availability-container">
+                    <label for="availability"> Disponibles:</label>
+                    <input type="number" id="availability">
+                </div>
+                <div class="price-container">
+                    <label for="price"> Precio:</label>
+                    <p id="euro">€</p>
+                    <input type="number" id="price">
+                </div>
+                <div class="precioOferta">
+                    <div class="pcioOfertaInput" id=inputOfertaSku>
+                        <label for="price"> Precio de Oferta:</label>
+                        <p id="euro">€</p>
+                        <input type="number" id="precioOferta">
+                    </div>
+                    <div class="check-oferta">
+                        <input type="checkbox" id="checkbox-oferta" (input)="precioOferta()">
+                        <label for="checkbox-oferta" id="textoferta"> Este producto está en oferta</label>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn">Crear Producto</button>
+            <span class="line"></span>
+            <p class="leyenda">-Los productos listados a continuación no se guardarán hasta que no presiones
+                "Finalizar"-</p>
+            <div class="new-products">
+                <div class="product">
+                    <p class="description"> Samsung Galaxy S20 - Negro - 64GB - 4u - €850 </p>
+                    <i class="far fa-edit"></i>
+                </div>
+                <div class="product">
+                    <p class="description"> Samsung Galaxy S20 - Negro - 32GB - 7u - €820</p>
+                    <i class="far fa-edit"></i>
+                </div>
+            </div>
+        </div>
+        <button class="btn-end" id="btn-two">Guardar y finalizar</button>
+    </form>
+
+
+</div>

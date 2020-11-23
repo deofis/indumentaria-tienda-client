@@ -1,0 +1,196 @@
+<section>
+    <div id="lateralMenu" >
+        <div id="botonMenu" class="boton">
+            <i class="fas fa-angle-right " id="open-menu" (click)="showLateralMenu()"></i>
+            <i class="fas fa-close " id="close-menu" (click)="hiddeLateralMenu()"></i>
+        </div>
+        <div class="lateral-container" id="lateral-container">
+            <ul class="userOptions">
+                <li [routerLink]="['/user-my-purchases']"><i class="fas fa-shopping-bag"></i>Compras</li>
+                <li [routerLink]="['/user-favorites']"><i class="fas fa-heart"></i> Favoritos </li>
+                <li [routerLink]="['/user-profile']"> <i class="fas fa-file-invoice"></i> Mis Datos </li>
+                <li (click)="logout()"><i class="fas fa-sign-out-alt"></i>Cerrar Sesión </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-favorites">
+        <div class="frame">
+            <div class="title">
+                <h2>Mis Favoritos</h2>
+            </div>
+            <div class="favorites-list">
+                <ul>
+                    <li>
+                        <img src="../../../../../assets/imagenes/prod2.png" alt="item compra" />
+                        <div class="info">
+                            <span class="item-name">Samsung Galaxy S20</span>
+                            <div class="price-discount">
+                                <span>€699</span>
+                                <p>15% 0FF</p>
+                            </div>
+                            <div class="price-quatity">
+                                <span class="item-price">€650</span>
+                                <div class="modify-quantity">
+                                    <!-- <i class="fas fa-minus-circle" (click)="removeOne(items.cantidad"></i>
+                                <span class="item-quantity">  {{items.cantidad}}</span>
+                                <i class="fas fa-plus-circle" (click)="addOne(item.cantidad)"></i> -->
+                                    <i class="fas fa-minus-circle"></i>
+                                    <span class="item-quantity"> 1</span>
+                                    <i class="fas fa-plus-circle"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="properties">
+                            <select id="color">
+                                <option>-Color-</option>
+                                <!-- <option value="negro">{{infoProducto.color}}</option>
+                                 -->
+                                <option value="negro">Rosa</option>
+                                <option value="negro">Negro</option>
+                                <option value="negro">Gris</option>
+                            </select>
+                            <select id="color">
+                                <option>-Memoria-</option>
+                                <option value="negro">32GB</option>
+                                <option value="negro">64GB</option>
+                            </select>
+                        </div>
+
+                        <div class="buttons">
+                            <button class="btn cart">Agregar al carrito</button>
+                            <button class="btn">Comprar ahora</button>
+                        </div>
+                        <i id="close" class="fas fa-times"></i>
+                    </li>
+
+                    <li>
+                        <img src="../../../../../assets/imagenes/prod2.png" alt="item compra" />
+                        <div class="info">
+                            <span class="item-name">Samsung Galaxy S20</span>
+                            <div class="price-discount">
+                                <span>€699</span>
+                                <p>15% 0FF</p>
+                            </div>
+                            <div class="price-quatity">
+                                <span class="item-price">€650</span>
+                                <div class="modify-quantity">
+                                    <!-- <i class="fas fa-minus-circle" (click)="removeOne(items.cantidad"></i>
+                                <span class="item-quantity">  {{items.cantidad}}</span>
+                                <i class="fas fa-plus-circle" (click)="addOne(item.cantidad)"></i> -->
+                                    <i class="fas fa-minus-circle"></i>
+                                    <span class="item-quantity"> 1</span>
+                                    <i class="fas fa-plus-circle"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="properties">
+                            <select id="color">
+                                <option>-Color-</option>
+                                <!-- <option value="negro">{{infoProducto.color}}</option>
+                                 -->
+                                <option value="negro">Rosa</option>
+                                <option value="negro">Negro</option>
+                                <option value="negro">Gris</option>
+                            </select>
+                            <select id="color">
+                                <option>-Memoria-</option>
+                                <option value="negro">32GB</option>
+                                <option value="negro">64GB</option>
+                            </select>
+                        </div>
+
+                        <div class="buttons">
+                            <button class="btn cart">Agregar al carrito</button>
+                            <button class="btn">Comprar ahora</button>
+                        </div>
+                        <i id="close" class="fas fa-times"></i>
+                    </li>
+                    <li>
+                        <img src="../../../../../assets/imagenes/prod2.png" alt="item compra" />
+                        <div class="info">
+                            <span class="item-name">Samsung Galaxy S20</span>
+                            <div class="price-discount">
+                                <span>€699</span>
+                                <p>15% 0FF</p>
+                            </div>
+                            <div class="price-quatity">
+                                <span class="item-price">€650</span>
+                                <div class="modify-quantity">
+                                    <!-- <i class="fas fa-minus-circle" (click)="removeOne(items.cantidad"></i>
+                                <span class="item-quantity">  {{items.cantidad}}</span>
+                                <i class="fas fa-plus-circle" (click)="addOne(item.cantidad)"></i> -->
+                                    <i class="fas fa-minus-circle"></i>
+                                    <span class="item-quantity"> 1</span>
+                                    <i class="fas fa-plus-circle"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="properties">
+                            <select id="color">
+                                <option>-Color-</option>
+                                <!-- <option value="negro">{{infoProducto.color}}</option>
+                                 -->
+                                <option value="negro">Rosa</option>
+                                <option value="negro">Negro</option>
+                                <option value="negro">Gris</option>
+                            </select>
+                            <select id="color">
+                                <option>-Memoria-</option>
+                                <option value="negro">32GB</option>
+                                <option value="negro">64GB</option>
+                            </select>
+                        </div>
+
+                        <div class="buttons">
+                            <button class="btn cart">Agregar al carrito</button>
+                            <button class="btn">Comprar ahora</button>
+                        </div>
+                        <i id="close" class="fas fa-times"></i>
+                    </li>
+                    <li>
+                        <img src="../../../../../assets/imagenes/prod2.png" alt="item compra" />
+                        <div class="info">
+                            <span class="item-name">Samsung Galaxy S20</span>
+                            <div class="price-discount">
+                                <span>€699</span>
+                                <p>15% 0FF</p>
+                            </div>
+                            <div class="price-quatity">
+                                <span class="item-price">€650</span>
+                                <div class="modify-quantity">
+                                    <!-- <i class="fas fa-minus-circle" (click)="removeOne(items.cantidad"></i>
+                                <span class="item-quantity">  {{items.cantidad}}</span>
+                                <i class="fas fa-plus-circle" (click)="addOne(item.cantidad)"></i> -->
+                                    <i class="fas fa-minus-circle"></i>
+                                    <span class="item-quantity"> 1</span>
+                                    <i class="fas fa-plus-circle"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="properties">
+                            <select id="color">
+                                <option>-Color-</option>
+                                <!-- <option value="negro">{{infoProducto.color}}</option>
+                                 -->
+                                <option value="negro">Rosa</option>
+                                <option value="negro">Negro</option>
+                                <option value="negro">Gris</option>
+                            </select>
+                            <select id="color">
+                                <option>-Memoria-</option>
+                                <option value="negro">32GB</option>
+                                <option value="negro">64GB</option>
+                            </select>
+                        </div>
+
+                        <div class="buttons">
+                            <button class="btn cart">Agregar al carrito</button>
+                            <button class="btn">Comprar ahora</button>
+                        </div>
+                        <i id="close" class="fas fa-times"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

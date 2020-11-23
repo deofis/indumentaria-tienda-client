@@ -11,11 +11,11 @@ import { CatalogoService } from 'src/app/products/services/catalogo.service';
   styleUrls: ['./card-carousel.component.scss']
 })
 export class CardCarouselComponent implements OnInit {
-  @Input() producto:Producto
-  constructor(private catalogoservice:CatalogoService,private _cartService:MockCartService) { }
+  @Input() producto:Producto;
   infoProducto:Producto;
   oferta:boolean=true;
   destacado:boolean=true;
+  constructor(private catalogoservice:CatalogoService,private _cartService:MockCartService) { }
 
   ngOnInit(): void {
     this.infoProducto=new Producto();
@@ -24,7 +24,7 @@ export class CardCarouselComponent implements OnInit {
     if (this.oferta && this.destacado) {
       let oferta = document.getElementsByClassName("off")  as HTMLCollectionOf<HTMLElement>;
       for (let i = 0; i < oferta.length; i++) {
-        oferta[i].style.top="20px"       
+        oferta[i].style.top="20px"      
       } 
       }
 

@@ -32,11 +32,9 @@ export class Oauth2RedirectHandlerComponent implements OnInit {
         this.authService.loggedIn.emit(true);
         this.authService.useremail.emit(userEmail);
 
-        alert(`¡Bienvenido ${userEmail}!`);
-
         this.router.navigate(['home']);
       } else {
-        this.router.navigate(['userLogIn']);
+        this.router.navigate(['login']);
         alert(error);
       }
     });

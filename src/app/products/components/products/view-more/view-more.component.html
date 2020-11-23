@@ -4,8 +4,8 @@
     </div>
     <section>
         <article class="contenedor-uno">
-            <div id="izquierda">
-                <div id="img-sec">
+            <div id="izquierda" class="izquierda">
+                <div id="img-sec" class="img-sec">
                     <div id="img-uno"></div>
                     <div id="img-dos"></div>
                     <div id="img-tres"></div>
@@ -13,7 +13,7 @@
                     <div id="img-cinco"></div>
                     <div id="img-seis"></div>
                 </div>
-                <div id="img-ppal">
+                <div id="img-ppal" class="img-ppal">
 
                 </div>
             </div>
@@ -27,10 +27,10 @@
 
                 </div>
                 <div id="caja-precio">
-                    <h3>${{infoProducto.precio}}</h3>
+                    <h3>€{{infoProducto.precio}}</h3>
                     <div class="oferta">
-                        <span>${{infoProducto.precio + 1900}}</span>
-                        <p>20% 0FF</p>
+                        <span>€{{infoProducto.precio + 95}}</span>
+                        <p>15% 0FF</p>
                     </div>
                 </div>
                 <div id="caja-carrito">
@@ -45,16 +45,16 @@
                         </div>
                         <select id="color">
                             <option >-Color-</option>
-                            <option value="negro">{{infoProducto?.color}}</option>
+                           
                             
                         </select>
-                        <select id="color">
+                        <!-- <select id="color">
                             <option >-Otro-</option>
                             <option value="negro">{{infoProducto?.color}}</option>
                             
-                        </select>
+                        </select> -->
                     </div>
-                    <div class="talles">
+                    <!-- <div class="talles">
                         <div class="xs">
                             <input type="radio" name="size" id="xs">
                             <label for="xs">XS</label>
@@ -79,7 +79,7 @@
                             <input type="radio" name="size" id="xxl">
                             <label for="xxl">XXL</label>
                         </div>
-                    </div>
+                    </div> -->
                     <hr>
                     <p>Costo de envío se informará al realizar la operación.</p>
                     <button (click)="agregarCarrito(infoProducto)" class="btn" id="btn-carrito">Agregar al Carrito</button>
@@ -99,7 +99,20 @@
             </div>
             <div id="descripcion-producto">
                 <h3>Descripción </h3>
-                <p>{{infoProducto.descripcion}}</p>
+                <!-- <p>{{infoProducto.descripcion}}</p> -->
+                <p>Pensado para vos, Samsung S20 posee el novedoso sistema operativo Android 10 que incorpora respuestas inteligentes y acciones sugeridas para todas tus aplicaciones. Entre sus diversas funcionalidades encontrarás el tema oscuro, navegación
+                    por gestos y modo sin distracciones, para que completes tus tareas mientras disfrutás al máximo tu dispositivo.
+                    <br>
+                    <br> Fotografía profesional en tu bolsillo Descubrí infinitas posibilidades para tus fotos con las 3 cámaras principales de tu equipo. Poné a prueba tu creatividad y jugá con la iluminación, diferentes planos y efectos para obtener
+                    grandes resultados. Su zoom híbrido es perfecto para los amantes del plano detalle, ya que integra lo mejor del zoom óptico y digital para que consigas acercamientos sin pérdida de calidad.
+                    <br>
+                    <br> Experiencia visual increíble Mirá tus series y películas favoritas con la mejor definición a través de su pantalla Dynamic AMOLED 2X de 6.2 ". Disfrutá de colores brillantes y detalles precisos en todos tus contenidos.
+                    <br>
+                    <br> Desbloqueo facial y dactilar Máxima seguridad para que solo vos puedas acceder al equipo. Podrás elegir entre el sensor de huella dactilar para habilitar el teléfono en un toque, o el reconocimiento facial que permite un desbloqueo
+                    hasta un 30% más rápido.
+                    <br> Batería superior ¡Desenchufate! Con la súper batería de 4000 mAh tendrás energía por mucho más tiempo para jugar, ver series o trabajar sin necesidad de recargar tu teléfono.
+
+                </p>
             </div>
         </article>
 

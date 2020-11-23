@@ -10,18 +10,12 @@ exports.ShoppingCartComponent = void 0;
 var core_1 = require("@angular/core");
 var carrito_1 = require("../../clases/carrito");
 var ShoppingCartComponent = /** @class */ (function () {
-    //  items: Array<ItemCarrito>;
-    //  totalPrice:number ;
-    //  totalQuantity:number;
-    // carrito:MockCarrito;
     function ShoppingCartComponent(carritoService, _cartService, authService) {
         this.carritoService = carritoService;
         this._cartService = _cartService;
         this.authService = authService;
         this.carrito = new carrito_1.Carrito();
         this.totalProductos = 0;
-        // this.carrito=new MockCarrito();
-        // this.items=[]
     }
     ShoppingCartComponent.prototype.ngOnInit = function () {
         this.getCarrito();
@@ -75,6 +69,19 @@ var ShoppingCartComponent = /** @class */ (function () {
         });
     };
     ShoppingCartComponent.prototype.incrementarCantidad = function (item) {
+        var _this = this;
+        var productoId = item.producto.id;
+        this.carrito.items = this.carrito.items.map(function (item) {
+            if (productoId == item.producto.id) {
+                ++item.cantidad;
+            }
+            ;
+            return item;
+        });
+        console.log(item.cantidad);
+        this.carritoService.actualizarCantidad(item.cantidad.toString(), productoId.toString()).subscribe(function (response) {
+            _this.carrito = response.carritoActualizado;
+        });
     };
     ShoppingCartComponent = __decorate([
         core_1.Component({

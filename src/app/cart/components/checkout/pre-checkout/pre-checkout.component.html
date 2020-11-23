@@ -1,34 +1,21 @@
-<section>
-    <div class="container">
-        <p class="title">Con el fin de poder enviarle actualizaciones con respecto a su compra, y para finalizar la operación, debe
-            completar los siguientes datos:</p>
-        
-       <div class="row1">
-            <div class="name">
-            <label for="name">Nombre</label>
-            <input type="text" class="form-newuser" id="name" placeholder="Juan" required>
-        </div>
-        <div class="lastname">
-            <label for="lastname">Apellido</label>
-            <input type="text" class="form-newuser" placeholder="Perez" value="" required id="lastname">
-        </div>
-    </div>
-    <div class="row2">
-        <div class="email">
-            <label for="email">E-mail</label>
-            <input type="email" class="form-newuser" placeholder="alguien@example.com" required id="email">
-        </div>
-        <div class="cellphone"> 
-            <label for="cellphone">Teléfono</label>
-            <input type="number" class="form-newuser" placeholder="3517732658" required id="cellphone">
-        </div>
-    </div>
-        <div class="dni">
-            <label for="dni">DNI</label>
-            <input type="number" class="form-newuser" placeholder="DNI" required id="dni">
-        </div>
-        <p class="leyenda">*Todos los campos son obligatorios.</p>
-        <button type="submit"   [routerLink]="['/checkout']" (click)="saveOnlocalStorage()">CONTINUAR</button>
-    </div>
-</section>
 
+
+<section class="container-precheckout">
+    <article class="subcontainer">
+    <div class="left">
+        <div class="msj">
+            <p>Estimado/a usuario/a, necesitamos que inicie sesión o se registre antes de continuar con el proceso de compra.
+            <br>
+            ¡Muchas gracias!
+            </p>
+        </div>
+    </div>
+    <div class="right">
+        <div class="container-form">
+            <app-form-log-in></app-form-log-in>
+    </div>
+    </div>
+</article>
+
+
+</section>

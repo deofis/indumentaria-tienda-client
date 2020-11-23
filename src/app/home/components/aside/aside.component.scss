@@ -5,13 +5,15 @@ $color-ppal:#fff;
  $color-sec: rgb(87, 83, 83);
  $color-ter: rgb(172, 165, 165);
  $color-menues: rgb(243, 236, 236);
+ $color-wf1:#223e66;
+ $color-wf2:#1f4e84;
  input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button{
     appearance: none;
     margin: 0;
 }
 
 %prop-items-ppales {
-    background-color: $color-sec;
+    background-color: $color-wf1;
     color:$color-ppal;
 	display: block;
     padding: 15px 20px;
@@ -26,13 +28,16 @@ a {
 }
 .contenedor{
     width: 22vw;
+    max-width: 310px;
+    min-width:270px ;
     float: left;
     margin-left: 30px;
     margin-top: 30px;
     margin-bottom: 30px;
     .contenedor-menu {
         width: 22vw;
-        min-width: 300px;
+        min-width: 270px;
+        max-width: 310px;
         font-family: $fte-sec;
         line-height: 20px;
         .menu{
@@ -86,18 +91,20 @@ a {
     display: flex;
     align-items: baseline;
     padding-left: 70px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     input{
         margin-right: 7px;
     }
     .pcio{
-        width: 30%;
+        width: 35%;
         font-size: 13px;
         padding-top: 2px;
         padding-bottom: 2px;
         padding-left: 10px;
     }
     i{
-        font-size: 1.1em;
+        font-size: 1.2em;
         &:hover{
            transform:scale(1.1);
            background-color: $color-menues;
@@ -107,6 +114,9 @@ a {
 }
 .pcio-min-max{
     display: flex;
+    padding-left: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 ul {
@@ -121,35 +131,15 @@ ul {
 #filtros{
     @extend %prop-items-ppales;
 }
+.fa-chevron-circle-right{
+    color: $color-wf1;
+}
 
 
-
-@media  screen and (max-width: 500px)  {
+@media  screen and (max-width: 900px)  {
 .contenedor{
     display: none;
 }
 
 }
 
-
-// @media screen and (max-width: 450px) {
-// 	body {
-// 		padding-top: 80px;
-// 	}
-
-// 	.contenedor-menu {
-// 		margin: 0;
-// 		width: 100%;
-// 		position: fixed;
-// 		top:0;
-// 		z-index: 1000;
-// 	}
-
-// 	.btn-menu {
-// 		display: block;
-// 	}
-
-// 	.contenedor-menu .menu {
-// 		display: none;
-// 	}
-// }

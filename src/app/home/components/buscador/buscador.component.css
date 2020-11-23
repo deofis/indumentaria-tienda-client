@@ -1,9 +1,31 @@
+.routes {
+  margin-left: 30px;
+  margin-top: 5px;
+}
+
+.routes p a {
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  color: #70b8f3;
+}
+
+.routes p a:hover {
+  color: #2779cd;
+}
+
+.routes .cantidad-rdos {
+  display: block;
+  margin-top: -20px;
+  font-family: "Open Sans", sans-serif;
+  color: #aca5a5;
+  font-size: 16px;
+}
+
 .contenedorProductos {
   width: 70vw;
-  background-color: #ffffff;
-  font-family: "Poppins", sans-serif;
   margin-right: 2vw;
-  margin-top: 6vh;
+  margin-top: -30px;
   margin-bottom: 70px;
   border-radius: 7px;
   float: right;
@@ -11,12 +33,14 @@
 }
 
 .contenedorProductos h2 {
-  font-family: "Poppins", sans-serif;
-  color: #103d77;
+  font-family: "Open Sans", sans-serif;
+  color: #575353;
   display: block;
-  margin: 25px 0px 10px 17px;
+  margin: 25px 0px 0px 17px;
+  padding-bottom: 10px;
   text-align: left;
-  font-size: 25px;
+  font-size: 23px;
+  border-bottom: 1px solid #aca5a5;
 }
 
 .contenedorProductos .contenedor-grid {
@@ -30,12 +54,10 @@
 
 @media screen and (max-width: 500px) {
   .contenedorProductos {
-    width: 90vw;
-    margin-right: 0px;
-    margin-left: 0px;
-    margin-bottom: 10px;
+    width: 95vw;
+    margin-top: 0px;
+    float: none;
     padding-bottom: 25px;
-    margin-top: 2vh;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -49,17 +71,33 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    position: relative;
+    margin-right: auto;
+    margin-left: auto;
   }
   .contenedorProductos h2 {
-    margin: 0px;
-    margin-top: 20px;
-    margin-bottom: 7px;
-    font-size: 25px;
-    text-align: center;
+    font-size: 18px;
+    width: 96%;
   }
   .contenedorProductos .contenedor-grid {
-    width: 85%;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    font-size: 15px;
+    width: 100%;
+  }
+  .contenedorProductos .contenedor-grid .tarjetas {
+    width: 70%;
+    max-width: 230px;
+  }
+}
+
+@media screen and (min-width: 401px) and (max-width: 700px) {
+  .contenedorProductos {
+    width: 95vw;
+    margin-top: 0px;
+    float: none;
+    padding-bottom: 25px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -70,7 +108,91 @@
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    text-align: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .contenedorProductos h2 {
+    font-size: 19px;
+    width: 96%;
+  }
+  .contenedorProductos .contenedor-grid {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    font-size: 15px;
+    width: 100%;
+  }
+  .contenedorProductos .contenedor-grid .tarjetas {
+    width: 80%;
+    max-width: 215px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (min-width: 701px) and (max-width: 900px) {
+  .contenedorProductos {
+    width: 95vw;
+    margin-top: 0px;
+    float: none;
+    padding-bottom: 25px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .contenedorProductos h2 {
+    font-size: 19px;
+    width: 96%;
+  }
+  .contenedorProductos .contenedor-grid {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    font-size: 15px;
+    width: 100%;
+  }
+  .contenedorProductos .contenedor-grid .tarjetas {
+    width: 80%;
+    max-width: 215px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (min-width: 901px) and (max-width: 1200px) {
+  .contenedorProductos {
+    width: 64vw;
+  }
+  .contenedorProductos .contenedor-grid {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    font-size: 16px;
+  }
+  .contenedorProductos .contenedor-grid .tarjetas {
+    width: 80%;
+    max-width: 270px;
+    margin-bottom: 10px;
+    margin-top: 10px;
   }
 }
 /*# sourceMappingURL=buscador.component.css.map */

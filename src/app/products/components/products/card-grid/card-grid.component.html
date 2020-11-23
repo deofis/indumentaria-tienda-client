@@ -1,16 +1,26 @@
+<div class="items">
 
-     <div class="items">  
-        <div class="i-fondo"><i id="fav" class=" iconos far fa-heart fav" (click)=saveToFav()></i></div>
-        <div class="img-fondo" [routerLink]="['/viewmore',producto.id]" >
-          <p class="off etiqueta" *ngIf="oferta" >20% 0FF</p>
-          <p class="destacado etiqueta" *ngIf="destacado">DESTACADO</p>
-          <img src="../../../../../assets/imagenes/celu.jpg" alt="." >
-        </div>
-        <h3 [routerLink]="['/viewmore',producto.id]" >{{producto.nombre}}</h3>
-        <div class="cont-precios" [routerLink]="['/viewmore',producto.id]" >
-        <span *ngIf="oferta">${{producto.precio + 600}}</span> 
-        <p class="precio">${{producto.precio}}</p>
-      </div>
-        <!-- <button class="botones" (click)="addCart(producto)">Ver Más</button> -->
-      <a [routerLink]="['/viewmore',producto.id]" ><button class="botones"  >Ver más</button> </a>
+  <div class="img-fondo" [routerLink]="['/viewmore',producto.id]">
+   
+    <img src="{{producto.foto}}" alt=".">
+  </div>
+  <div class="title-props">
+    <h3 [routerLink]="['/viewmore',producto.id]">{{producto.nombre}}</h3>
+    <div class="etiquetas">
+      <p class="off etiqueta" *ngIf="oferta">20% 0FF</p>
+      <p class="destacado etiqueta" *ngIf="destacado">DESTACADO</p>
     </div>
+    <div class="props">
+      <p>Color: Negro, Blanco, <span>Dorado</span> </p>
+      <p>Memoria: 32GB , 64GB</p>
+    </div>
+  
+  </div>
+
+  <div class="cont-precios">
+    <span *ngIf="oferta">€{{producto.precio + 95}}</span>
+    <p class="precio">€{{producto.precio}}</p>
+  </div>
+  
+  <div class="i-fondo"><i id="fav" class=" iconos far fa-heart fav" (click)="saveToFav()"></i></div>
+</div>

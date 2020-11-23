@@ -1,0 +1,29 @@
+<section>
+    <div id="lateralMenu">
+        <div id="botonMenu" class="boton">
+            <i class="fas fa-angle-right " id="open-menu" (click)="showLateralMenu()"></i>
+            <i class="fas fa-close " id="close-menu" (click)="hiddeLateralMenu()"></i>
+        </div>
+        <div class="lateral-container" id="lateral-container">
+            <ul class="userOptions">
+                <li [routerLink]="['/add-product']"> Añadir Producto <i class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/products-list']"> Productos <i class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/brands-panel']"> Marcas<i class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/admin-profile']"> Mis Datos </li>
+                <li (click)="logout()"><i class="fas fa-sign-out-alt"></i>Cerrar Sesión </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-steps">
+        <h2>Añadir Producto</h2>
+        <app-step1></app-step1>
+     
+       <app-step2 ></app-step2>
+
+        
+
+    </div>
+
+
+
+</section>

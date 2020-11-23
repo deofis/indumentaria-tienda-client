@@ -1,26 +1,11 @@
-<!--header-->
-
-<app-normal-header *ngIf="router.url !== '/userLogIn'
-                        && router.url !== '/user-sign-up'">
+<app-normal-header *ngIf="router.url !== '/login'
+                        && router.url !== '/user-sign-up'
+                        && router.url !== '/verify/redirect'">
 </app-normal-header>
 
-<!-- <app-user-header *ngIf="user 
-        && !admin 
-        && router.url !== '/userLogIn' 
-        && router.url !== '/user-sign-up'">
-</app-user-header>
-
-<app-admin-header *ngIf="admin 
-        && router.url !== '/userLogIn' 
-        && router.url !== '/user-sign-up'">
-</app-admin-header> -->
-
-<!-------------->
 <router-outlet (activate)="onActivate($event)"></router-outlet>
 
-<app-footer *ngIf="router.url !== '/userLogIn'
-    && router.url !== '/user-sign-up'">
+<app-footer *ngIf="router.url !== '/login'
+    && router.url !== '/user-sign-up'
+    && router.url !== '/verify/redirect'">
 </app-footer>
-
-<!-- *ngIf= "!user"
-*ngIf="router.url !== '/inicio-sesion'" -->

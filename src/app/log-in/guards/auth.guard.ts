@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
         return true;
       }
 
-      this.router.navigate(['/userLogIn']);
+      this.router.navigate(['/login']);
       alert("Debes estar autenticado para acceder a este recurso. Inicia sesión porfavor.");
   }
 

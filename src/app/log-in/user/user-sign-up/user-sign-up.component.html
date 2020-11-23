@@ -1,46 +1,90 @@
 <section>
-    <div class="fondo">
-        <a [routerLink]="['/home']" title="Home">
-            <img src="../../assets/imagenes/logo-blanco.png" alt="logo">
-        </a>
-    </div>
+
+    <a [routerLink]="['/home']" title="Home">
+        <img src="../../assets/imagenes/wf.png" alt="logo">
+    </a>
     <form class="contenedor-form" id="cont-form" autocomplete="off" [formGroup]="formRegistro" (ngSubmit)="registrarse()">
         <div id="contenedor-registrarse">
-            <h2><i class="fas fa-arrow-circle-left" id="back1" [routerLink]="['/userLogIn']"></i>Crear cuenta</h2>
-            <div class="campo">
 
-                <input [ngClass]="{'is-invalid': emailInvalido}" type="email" id="email" placeholder="Correo electrónico" formControlName="email">
-                <i class="fas  fa-envelope" id="icono-envelope"></i>
+            <i class="fas fa-arrow-circle-left" id="back1" [routerLink]="['/login']"></i>
+            <h2>Crear cuenta</h2>
+
+            <div formGroupName="cliente" id="formName">
+                <div class="nombre-apellido">
+                    <div class="name ">
+                        <input [class.is-invalid]="nombreInvalido" type="text" id="name" placeholder="*Nombre" formControlName="nombre">
+                    </div>
+                    <span class="text-rojo" id="alert1" *ngIf="nombreInvalido"><small>Este campo es
+                            obligatorio.</small></span>
+                    <div class="lastname ">
+                        <input [class.is-invalid]="apellidoInvalido" type="text" placeholder="*Apellido" id="lastname" formControlName="apellido">
+                    </div>
+                    <span class="text-rojo" id="alert2" *ngIf="apellidoInvalido"><small>Este campo es
+                            obligatorio.</small></span>
+                </div>
             </div>
-            <span class="text-rojo" *ngIf="emailInvalido"><small>El email es obligatorio</small></span>
-            <div class="campo">
-                <input [ngClass]="{'is-invalid': passwordInvalida}" type="password" id="new-pasw" placeholder="Contraseña" formControlName="password">
-                <i class="fas fa-lock" id="lock1"></i>
-                <i class="far fa-eye" id="show1" (click)="mostrarPsw1()"></i>
-                <i class="far fa-eye-slash" id="hide1" (click)="mostrarPsw1()"></i>
+            <div class="location">
+                <select class="country">
+                    <option disabled selected>-Pais-</option>
+                    <option value="value1">opciones</option>
+                </select>
+                <select class="state" disabled>
+                    <option disabled selected>-Estado-</option>
+                    <option value="value1">opciones</option>
+                </select>
+                <select class="city" disabled>
+                    <option disabled selected>-Ciudad-</option>
+                    <option value="value1">opciones</option>
+                </select>
             </div>
-            <span class="text-rojo" *ngIf="passwordInvalida"><small>Las contraseña deben coincidir</small></span>
-            <div class="campo">
-                <input [ngClass]="{'is-invalid': passwordNoIguales}" type="password" id="new-pasw-repeat" placeholder="Repetir contraseña" formControlName="passwordRepeat">
-                <i class="fas fa-lock" id="lock2"></i>
-                <i class="far fa-eye" id="show2" (click)="mostrarPsw2()"></i>
-                <i class="far fa-eye-slash" id="hide2" (click)="mostrarPsw2()"></i>
+            <div class="calle-nro">
+
+                <div class="calle">
+                    <input type="text" placeholder="Calle" value="" id="calle">
+                </div>
+                <div class="nro">
+                    <input type="number" id="nro" placeholder="nro" value="">
+                </div>
+                <div class=" cp">
+
+                    <input type="number" id="cp" placeholder="CP">
+                </div>
             </div>
-            <span class="text-rojo" *ngIf="passwordNoIguales"><small>Las contraseña deben coincidir</small></span>
+            <div class="cont-email">
+                <div class="email">
+
+                    <input [ngClass]="{'is-invalid': emailInvalido}" type="email" id="email" placeholder="*Correo electrónico" formControlName="email">
+                </div>
+                <span class="text-rojo" *ngIf="emailInvalido"><small>El email es obligatorio</small></span>
+            </div>
+            <div class="passwords">
+
+                <div class="campo" id="campo1">
+                    <input [ngClass]="{'is-invalid': passwordInvalida}" type="password" id="new-pasw" placeholder="*Contraseña" formControlName="password">
+                    <i class="far fa-eye" id="show1" (click)="mostrarPsw1()"></i>
+                    <i class="far fa-eye-slash" id="hide1" (click)="mostrarPsw1()"></i>
+                </div>
+                <span class="text-rojo" id="msj1" *ngIf="passwordInvalida"><small>La contraseña debe contener al menos 9
+                        caracteres </small></span>
+
+
+                <div class="campo" id="campo2">
+                    <input [ngClass]="{'is-invalid': passwordNoIguales}" type="password" id="new-pasw-repeat" placeholder="Repetir contraseña" formControlName="passwordRepeat">
+
+                    <i class="far fa-eye" id="show2" (click)="mostrarPsw2()"></i>
+                    <i class="far fa-eye-slash" id="hide2" (click)="mostrarPsw2()"></i>
+                </div>
+                <span class="text-rojo" id="msj2" *ngIf="passwordNoIguales"><small>Las contraseñas deben
+                        coincidir</small></span>
+
+            </div>
             <button type="submit" id="btn-sign-up" class="boton">Registrarme</button>
-
+            <span class="msje">(*)Campos obligatorios.</span>
         </div>
         <!--inicio mensaje cta creada-->
         <div id="msje-registro">
             <p>Gracias! Te hemos enviado un correo para realizar una breve verificación de identidad.</p>
-            <!-- <span>Empecemos por configurar tu perfil:</span>
-        <input type="text" id="name" placeholder="Nombre">
-        <input type="text" id="lastname" placeholder="Apellido">
-        <input type="submit" value="Continuar" id="btn-sign-up" class="boton"> -->
         </div>
         <!--FIN mensaje cta creada-->
     </form>
-    <div class="footer-is">
-
-        <a href="https://www.wantfrom.es/"> Powered by Wantfrom</a>
-    </div>
+</section>

@@ -2,12 +2,14 @@ import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { CatalogoService } from 'src/app/products/services/catalogo.service';
 import { Categoria } from 'src/app/products/clases/categoria';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { ItemCarrito } from 'src/app/cart/clases/item-carrito';
 import { MockCarrito } from 'src/app/cart/clases/cart';
 import { MockCartService } from 'src/app/cart/services/mock-cart.service';
 import { AuthService } from '../../../../log-in/services/auth.service';
 import { CarritoService } from '../../../../cart/services/carrito.service';
 import { Carrito } from '../../../../cart/clases/carrito';
+import { Subcategoria } from 'src/app/products/clases/subcategoria';
 
 @Component({
   selector: 'app-normal-header',
@@ -17,6 +19,7 @@ import { Carrito } from '../../../../cart/clases/carrito';
 export class NormalHeaderComponent implements OnInit {
 
   categorias:Categoria[];
+  subcategorias: Subcategoria[];
 
   //para el numero del carrito
   items: Array<ItemCarrito>;
@@ -78,23 +81,29 @@ export class NormalHeaderComponent implements OnInit {
   }
  
 showsubcategories(index:number){
+  let categories =document.getElementById("categoriesList");
+  categories.style.borderRadius=" 0px 0px 0px 10px"
  let container = document.getElementById("container-sub");
  container.style.display="initial";
-//  console.log(this.categorias[index].subcategorias);
- let categoriaActual=this.categorias[index];
- 
+ let categoriaActual=this.categorias[index]; 
  let subcatActuales=categoriaActual.subcategorias;
- console.log(subcatActuales);
 
  for (let x = 0; x < subcatActuales.length ; x++) {
   let itemSubcategoria= document.createElement("p")
-  itemSubcategoria.classList.add("borrar")
+  itemSubcategoria.classList.add("borrar");
+  itemSubcategoria.style.fontFamily="'Open Sans'";
+  itemSubcategoria.style.color="rgb(87, 83, 83)";
+  itemSubcategoria.style.cursor="pointer";
   itemSubcategoria.innerText=subcatActuales[x].nombre;
   document.getElementById("container-sub").appendChild(itemSubcategoria);
-   
+  
  }
-let borrar = document.querySelectorAll(".borrar") ;
-
+}
+hiddesubcategories(){
+  let subcategorias= document.getElementsByClassName("borrar") as HTMLCollectionOf<HTMLElement>;
+  for (let x = 0; x < subcategorias.length; x++) {
+  subcategorias[x].style.display="none"
+  }
 }
 hiddeSubAndCategories(){
   let containerSubcategories = document.getElementById("container-sub");
@@ -102,6 +111,12 @@ hiddeSubAndCategories(){
  let categoriesList= document.getElementById("categoriesList");
  categoriesList.style.display="none";
   this.hiddeBgMenu();
+}
+showCategoriesAndSubcategories(){
+  let containerSubcategories = document.getElementById("container-sub");
+  containerSubcategories.style.display="block";
+  let categoriesList= document.getElementById("categoriesList");
+  categoriesList.style.display="block";
 }
 ///****User options */
 showUserMenu(){
@@ -124,11 +139,34 @@ hiddeBgMenu(){
   let bgCategories= document.getElementById("bg-menu");
   bgCategories.style.display="none";
 }
+/******* Menu mobile */
+showMenu(){
+  let menu = document.getElementById("hamburgerM");
+  menu.style.display="block";
 
+   document.getElementById("openM").style.display="none";
+   document.getElementById("closeM").style.display="block";
+}
+hiddeMenu(){
+  let menu = document.getElementById("hamburgerM");
+  menu.style.display="none";
+
+   document.getElementById("openM").style.display="block";
+   document.getElementById("openM").style.marginTop="5px"
+   document.getElementById("closeM").style.display="none";
+}
 
           /**** Search bar  ****/
   buscarProducto(termino:string):void {
     this.router.navigate(['/search',termino]);
+   }
+
+   perfilClick(): void {
+     if (this.estaLogueado) {
+       this.router.navigate(['user-profile']);
+     } else {
+       this.router.navigate(['login']);
+     }
    }
 
   //   /// HEADER SCROLL EFFECT 
@@ -176,8 +214,16 @@ hiddeBgMenu(){
    * Cerrar sesión y eliminar datos de la misma.
    */
   logout(): void {
-    this.authService.logout();
-    
-    this.router.navigate(['/home']);
+    this.authService.logout().subscribe(response => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Sesión Cerrada',
+        text: response,
+        width: '350px'
+      }).then(() => {
+        this.router.navigate(['/home']);
+        // refresh
+      });
+    });
   }
 }

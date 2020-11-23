@@ -12,11 +12,12 @@ import { CatalogoService } from 'src/app/products/services/catalogo.service';
 })
 
 export class CardGridComponent implements OnInit {
-  @Input() producto:Producto
-  constructor(private catalogoservice:CatalogoService,private _cartService:MockCartService) { }
+  @Input() producto:Producto;
   infoProducto:Producto;
   oferta:boolean=true;
   destacado:boolean=true;
+  constructor(private catalogoservice:CatalogoService,private _cartService:MockCartService) { }
+ 
 
   ngOnInit(): void {
     this.infoProducto=new Producto();
@@ -30,7 +31,9 @@ export class CardGridComponent implements OnInit {
         }
   }
 
-saveToFav(){
+saveToFav() {
+  // let productoId = id.toString();
+  console.log(event);
   let corazon=document.getElementById("fav");
   corazon.style.color="red";
   corazon.classList.add("fas");

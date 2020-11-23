@@ -25,17 +25,18 @@ section {
   border-radius: 20px;
   width: 65%;
   padding: 30px 30px 60px 30px;
-  margin-top: 40px;
 }
 
 .container-left #userInfo {
-  border-radius: 0px 60px 60px 0px;
-  background-color: rgba(45, 123, 224, 0.192);
+  -webkit-box-shadow: 2px 4px 4px #575353;
+          box-shadow: 2px 4px 4px #575353;
+  background-color: #f3ecec;
   padding: 25px 20px;
 }
 
 .container-left #userInfo h2 {
   font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
   font-size: 20px;
   font-weight: normal;
 }
@@ -51,26 +52,30 @@ section {
 }
 
 .container-left #userInfo .rowData p {
-  font-family: "Poppins", sans-serif;
-  color: #2d7be0;
+  font-family: "Open Sans", sans-serif;
+  color: #575353;
   font-size: 13px;
 }
 
 .container-left #userInfo .rowData p span {
-  color: grey;
+  color: #aca5a5;
+}
+
+.container-left form {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #f3ecec;
+  -webkit-box-shadow: 2px 4px 5px #575353;
+          box-shadow: 2px 4px 5px #575353;
 }
 
 .container-left form .deliveryMethod {
   margin-top: 30px;
-}
-
-.container-left form .deliveryMethod fieldset {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 15px;
 }
 
 .container-left form .deliveryMethod fieldset legend {
-  font-family: "Poppins", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 20px;
   padding-left: 20px;
   padding-right: 20px;
@@ -89,17 +94,17 @@ section {
 }
 
 .container-left form .deliveryMethod fieldset .deliver {
-  width: 18%;
+  width: 28%;
   padding-left: 40px;
 }
 
 .container-left form .deliveryMethod fieldset .deliver label {
   font-size: 16px;
-  font-family: "Poppins", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .container-left form .deliveryMethod fieldset .deliver i {
-  color: #103d77;
+  color: #575353;
   font-size: 2em;
   margin-right: -20px;
 }
@@ -108,7 +113,7 @@ section {
   border-top: 1px solid grey;
   padding-top: 10px;
   margin-top: 20px;
-  font-family: "Poppins", sans-serif;
+  font-family: "Open Sans", sans-serif;
   width: 90%;
   margin-left: auto;
   margin-right: auto;
@@ -137,38 +142,42 @@ section {
 }
 
 .container-left form .deliveryMethod fieldset .deliveryAdress .inputAdress #number {
-  width: 7%;
+  width: 9%;
 }
 
 .container-left form .deliveryMethod fieldset .deliveryAdress .inputAdress #dto {
-  width: 6%;
+  width: 9%;
 }
 
 .container-left form .deliveryMethod fieldset .deliveryAdress .inputAdress #CP {
-  width: 7%;
+  width: 10%;
 }
 
 .container-left form .deliveryMethod fieldset .deliveryAdress .inputAdress input {
-  border: 2px solid #103d77;
-  border-radius: 7px 7px 7px 0;
-  font-family: "Poppins", sans-serif;
+  border: 1px solid #575353;
+  font-family: "Open Sans", sans-serif;
   padding: 2px 10px;
   width: 60%;
+  outline: none;
+}
+
+.container-left form .deliveryMethod fieldset .deliveryAdress .inputAdress input:focus {
+  border: 2px solid #575353;
 }
 
 .container-left form .deliveryMethod fieldset .pick-up {
-  width: 37%;
+  width: 47%;
   margin-top: 30px;
   padding-left: 40px;
 }
 
 .container-left form .deliveryMethod fieldset .pick-up label {
   font-size: 16px;
-  font-family: "Poppins", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .container-left form .deliveryMethod fieldset .pick-up i {
-  color: #103d77;
+  color: #575353;
   font-size: 2em;
   margin-right: -20px;
 }
@@ -186,7 +195,7 @@ section {
 .container-left form .deliveryMethod fieldset .adress1 span {
   color: grey;
   display: block;
-  font-family: "Poppins", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 13px;
   padding-left: 50px;
 }
@@ -201,7 +210,7 @@ section {
 }
 
 .container-left form .paymentMethod fieldset legend {
-  font-family: "Poppins", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 20px;
   padding-left: 20px;
   padding-right: 20px;
@@ -217,7 +226,7 @@ section {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 18.5%;
+  width: 25%;
   margin-bottom: 10px;
   padding-left: 40px;
 }
@@ -240,7 +249,7 @@ section {
   margin-top: 20px;
   margin-bottom: 10px;
   padding-left: 40px;
-  width: 53%;
+  width: 58%;
   display: none;
 }
 
@@ -263,14 +272,14 @@ section {
 }
 
 .container-left form .paymentMethod fieldset .cash-box p {
-  font-family: "Poppins", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 13px;
   color: grey;
 }
 
 .container-right {
   background-color: white;
-  border-radius: 20px;
+  border-radius: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -282,13 +291,13 @@ section {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  margin-top: 40px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  margin-top: 45px;
+  -webkit-box-shadow: 2px 4px 4px #575353;
+          box-shadow: 2px 4px 4px #575353;
 }
 
 .container-right .summary {
-  font-family: "Poppins", sans-serif;
+  font-family: "Open Sans", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -299,7 +308,9 @@ section {
 }
 
 .container-right .summary h2 {
-  color: #103d77;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  color: #575353;
   font-size: 20px;
   border-bottom: 1px solid #bebbbb;
   margin-bottom: 5px;
@@ -330,28 +341,77 @@ section {
 }
 
 .container-right .summary #subtotal-summary {
-  color: grey;
-  font-size: 15px;
+  color: #aca5a5;
+  font-size: 16px;
 }
 
 .container-right .summary #total-summary {
   font-weight: bolder;
   font-size: 19px;
-  background-color: rgba(221, 210, 210, 0.692);
+  background-color: #f3ecec;
+}
+
+.container-right .summary .coupon {
+  border: 2px solid #575353;
+  border-radius: 10px;
+  width: 85%;
+  -ms-flex-item-align: center;
+      align-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 5px 10px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.container-right .summary .coupon i {
+  color: #575353;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.container-right .summary .coupon span {
+  font-size: 13px;
+  font-weight: bolder;
+  color: #575353;
+}
+
+.container-right .summary .coupon:hover {
+  cursor: pointer;
+  background-color: #575353;
+}
+
+.container-right .summary .coupon:hover > i {
+  color: white;
+}
+
+.container-right .summary .coupon:hover > span {
+  color: white;
+  font-weight: normal;
 }
 
 .container-right button {
-  background-color: #103d77;
-  font-size: 15px;
+  background-color: #223e66;
+  font-size: 16px;
   color: white;
   font-family: "Poppins", sans-serif;
-  border-radius: 0px 0px 20px 20px;
+  border-radius: 0px 0px 15px 15px;
   border: 0px;
   margin-top: 5px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 100%;
-  padding: 3px 25px;
+  padding: 4px 25px;
   -ms-flex-item-align: end;
       align-self: flex-end;
   outline: none;
@@ -360,5 +420,6 @@ section {
 .container-right button:hover {
   font-size: 16px;
   cursor: pointer;
+  background-color: #1f4e84;
 }
 /*# sourceMappingURL=checkout.component.css.map */

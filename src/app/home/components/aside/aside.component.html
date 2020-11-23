@@ -2,13 +2,16 @@
 <div class="contenedor-menu">
 		
     <ul class="menu">
-<!-- 
-        <li><a href="#"><i class="icono izquierda fas fa-swatchbook"></i>Categorias<i class="icono derecha fa fa-chevron-down"></i></a>
-            <ul class="submenu_lateral" id="submenu_categorias">
-                <li *ngFor="let categoria of categorias">{{categoria.nombre}}</li>
-              
-            </ul>
-        </li> -->
+        <li id="filtros"><i class="icono izquierda fas fa-dollar-sign"></i>Filtrar por precio</li>
+          
+            <!-- Filtro por precio -->
+            <div class="filtro pcio-min-max">
+                <input class="pcio" type="number" placeholder="Minimo">
+                <input class="pcio" type="number" placeholder="Máximo">
+                <i class="fas fa-chevron-circle-right"></i>
+            </div>
+            <!-- FIN Filtro por precio -->
+        
         <li><a href="#"><i class="icono izquierda fas fa-sort-amount-down-alt"></i>Ordenar</a>
             <ul class="submenu_lateral">
                 <li id="masVendidos">A-Z</li>
@@ -16,7 +19,7 @@
                 <li id="mayorPrecio">Mayor Precio</li>
             </ul>
         </li>
-        <li id="filtros"><i class="icono izquierda fas fa-sliders-h"></i>Filtros</li>
+        <li id="filtros"><i class="icono izquierda fas fa-sliders-h"></i>Otros filtros</li>
  
             <!-- Filtro por marcas  -->
             <li class="filtros" > Marcas</li>
@@ -69,17 +72,7 @@
                 <label for="PVC"> PVC</label>
             </div>
             <!-- FIN filtro material  -->
-            
-            
-            <!-- Filtro por precio -->
-            <li class="filtros" > Filtrar por precio</li>
-            <div class="filtro pcio-min-max">
-                <input class="pcio" type="number" placeholder="Minimo">
-                <input class="pcio" type="number" placeholder="Máximo">
-                <i class="fas fa-chevron-circle-right"></i>
-            </div>
-            <!-- FIN Filtro por precio -->
-        
+          
 </ul>
 </div>
 </section>

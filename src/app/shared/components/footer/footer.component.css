@@ -40,16 +40,17 @@
 .footer article .row1 .caja p {
   font-size: 15px;
   color: #666464;
-  line-height: 27px;
+  line-height: 20px;
+  font-family: "Open Sans", sans-serif;
 }
 
 .footer article .row1 .caja .campo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
   margin-bottom: 7px;
 }
 
@@ -139,7 +140,7 @@
   -webkit-box-shadow: 3px 4px 3px grey;
           box-shadow: 3px 4px 3px grey;
   margin-left: -90px;
-  width: 340px;
+  width: 23vw;
   position: absolute;
   right: 0;
   height: 100%;
@@ -169,6 +170,7 @@
   color: #c0b8b8;
   margin-bottom: 30px;
   margin-top: 15px;
+  font-family: "Open Sans", sans-serif;
 }
 
 .footer article .row1 .newsletter .form {
@@ -231,7 +233,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 30vw;
+  width: 40vw;
   margin-left: 50px;
   padding-bottom: 40px;
 }
@@ -246,6 +248,7 @@
 .footer article .row2 img {
   width: 44px;
   height: 28px;
+  margin-right: 20px;
 }
 
 .footer .copy {
@@ -264,10 +267,11 @@
   right: 35px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .footer {
     width: 100%;
     margin-top: 25px;
+    overflow: hidden;
   }
   .footer article {
     display: -webkit-box;
@@ -312,7 +316,8 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    margin-top: 20px;
+    margin-top: 15px;
+    margin-left: 15px;
   }
   .footer article .row1 .Contacto h4 {
     display: none;
@@ -320,6 +325,7 @@
   .footer article .row1 .Contacto p {
     line-height: 0px;
     margin-bottom: 0px;
+    font-size: 14px;
   }
   .footer article .row1 .Contacto .campo {
     display: -webkit-box;
@@ -331,7 +337,7 @@
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
-    margin-bottom: 12px;
+    margin-bottom: 7px;
     width: 100%;
     padding-left: 15px;
   }
@@ -349,9 +355,13 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -362,14 +372,27 @@
     padding-bottom: 7px;
   }
   .footer article .row2 h4 {
-    font-size: 18px;
-    margin-left: 10px;
-    width: 100px;
+    font-size: 16px;
+    text-align: center;
+    margin-left: 0px;
+    width: 100%;
     margin-right: 0px;
+    margin-top: 10px;
   }
   .footer article .row2 img {
     width: 35px;
     height: 23px;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+  .footer article .row2 .img-pagos {
+    margin-left: auto;
+    margin-right: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
   }
   .footer article .footer-mobile {
     display: initial;
@@ -380,8 +403,13 @@
     border-top: 1px solid grey;
     padding-top: 15px;
     padding-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .footer article .footer-mobile .redes .iconos {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     width: 100%;
     -webkit-box-pack: space-evenly;
         -ms-flex-pack: space-evenly;
@@ -418,17 +446,102 @@
     margin-right: 13px;
     line-height: 15px;
   }
-  .footer .copy {
-    height: 40px;
+}
+
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  .footer {
+    overflow: hidden;
   }
-  .footer .copy p {
-    color: white;
-    text-align: center;
-    font-size: 13px;
-    position: initial;
-    bottom: initial;
-    right: initial;
-    margin-top: 2px;
+  .footer article .row1 {
+    position: relative;
+  }
+  .footer article .row1 .newsletter {
+    display: none;
+  }
+  .footer article .row1 .Contacto {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-top: 0px;
+    margin-left: 80px;
+  }
+  .footer article .row1 .Contacto p {
+    line-height: 0px;
+    margin-bottom: 0px;
+    font-size: 14px;
+  }
+  .footer article .row1 .Contacto h4 {
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+  }
+  .footer article .row1 .Contacto .campo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    margin-bottom: 16px;
+    width: 100%;
+  }
+  .footer article .row1 .Contacto .campo i {
+    margin-right: 10px;
+  }
+  .footer article .row1 .Contacto .campo .direccion {
+    line-height: 20px;
+    width: 70%;
+  }
+  .footer article .row1 .Contacto .campo p {
+    line-height: 0px;
+  }
+  .footer article .row1 .Nosotros {
+    position: absolute;
+    right: 0px;
+    top: 260px;
+  }
+  .footer article .row1 .Nosotros .marca {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 901px) and (max-width: 1250px) {
+  .footer {
+    overflow: hidden;
+  }
+  .footer article .row1 {
+    position: relative;
+  }
+  .footer article .row1 .newsletter {
+    display: none;
+  }
+  .footer article .row1 .Contacto .campo {
+    width: 80%;
+  }
+  .footer article .row1 .Nosotros {
+    margin-left: -20px;
+  }
+  .footer article .row1 .Nosotros .marca {
+    display: block;
+    margin-top: 40px;
+  }
+}
+
+@media screen and (min-width: 12511px) and (max-width: 1250px) {
+  .footer {
+    overflow: hidden;
+  }
+  .footer article .row1 .newsletter {
+    display: none;
   }
 }
 /*# sourceMappingURL=footer.component.css.map */

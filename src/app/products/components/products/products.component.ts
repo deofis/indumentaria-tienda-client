@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Categoria } from 'src/app/products/clases/categoria';
 import { Producto } from '../../clases/producto';
 import { CatalogoService } from '../../services/catalogo.service';
-//  import * as M from '../../../../assets/materialize/js/materialize.min.js'
 
 @Component({
   selector: 'app-products',
@@ -13,6 +12,50 @@ export class ProductsComponent implements OnInit {
   productosDestacados: Producto[];
   target: HTMLInputElement;
    categorias:Categoria[];
+   images:any[]=[
+    {
+      img:'../../../../assets/imagenes/prod1.jpg'
+    },
+    {
+      img:'../../../../assets/imagenes/prod2.png ',
+    },
+    {
+      img:'../../../../assets/imagenes/prod3.jpg'},
+    {
+      img:'../../../../assets/imagenes/prod4.jpg',
+    },
+    {
+      img:'../../../../assets/imagenes/prod5.jpg',
+    },
+    {
+      img:'../../../../assets/imagenes/prod6.jpg',
+    }
+  ];
+  categories:any[]=[
+    {
+      img:'../../../../assets/imagenes/categoria1.jpg'
+    },
+    {
+      img:'../../../../assets/imagenes/categoria2.jpg ',
+    },
+    {
+      img:'../../../../assets/imagenes/categoria3.jpg'},
+    {
+      img:'../../../../assets/imagenes/categoria4a.jpg',
+    },
+    {
+      img:'../../../../assets/imagenes/categoria5a.jpg',
+    },
+    {
+      img:'../../../../assets/imagenes/categoria6.jpg',
+    },
+    {
+      img:'../../../../assets/imagenes/categoria7b.jpg',
+    },
+    {
+      img:'../../../../assets/imagenes/categoria8a.jpg',
+    }
+  ]
   
 
 tarjeta= document.querySelectorAll(".tarjetas")
@@ -44,8 +87,6 @@ const fila2=document.getElementById("contenedor-carouselOfertas");
 
     /// EFECTO CATEGORIAS
     
-
-  
     this.getProductosDestacados();
    
      this.getListaCategorias();
@@ -86,8 +127,13 @@ showCategoriesEffect() {
   getProductosDestacados():void{
     this.catalogoService.getProductosDestacados().subscribe(response => {
       this.productosDestacados=response;
-      console.log(this.productosDestacados)}
-      );
+
+      for (let index = 0; index < this.productosDestacados.length; index++) {
+        this.productosDestacados[index].foto = this.images[index]?.img;       
+      }
+    // console.log(this.productosDestacados);
+    });
+
   }
 
 
@@ -96,8 +142,11 @@ showCategoriesEffect() {
     getListaCategorias():void{
       this.catalogoService.getListaCategorias().subscribe( response =>{
        this.categorias=response;
-       console.log(response) }
-       )
+       for (let index = 0; index < this.categorias.length; index++) {
+        this.categorias[index].foto = this.categories[index]?.img;       
+      }
+      console.log(this.categorias)
+      })
     }
 
   /**** Hidde/ show functions ****/

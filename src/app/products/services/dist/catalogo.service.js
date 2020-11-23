@@ -20,12 +20,21 @@ var CatalogoService = /** @class */ (function () {
         return this.http.get(this.url + "/catalogo/destacados").pipe(operators_1.map(function (response) { return response; }));
     };
     CatalogoService.prototype.getListaCategorias = function () {
-        return this.http.get(this.url + "/catalogo/categorias").pipe(operators_1.map(function (response) { return response; }));
+        return this.http.get(this.url + "/categorias").pipe(operators_1.map(function (response) { return response.categorias; }));
+    };
+    CatalogoService.prototype.getSubcategoriasPorCategoria = function (categoriaId) {
+        return this.http.get(this.url + "/categorias/" + categoriaId + "/subcategorias");
     };
     CatalogoService.prototype.getRdoBusqueda = function (termino) {
         var parametros = new http_1.HttpParams();
         parametros = parametros.append("termino", termino);
         return this.http.get(this.url + "/catalogo/buscar", { params: parametros }).pipe(operators_1.map(function (response) { return response; }));
+    };
+    CatalogoService.prototype.getUnidades = function () {
+        return this.http.get(this.url + "/productos/unidades-medida");
+    };
+    CatalogoService.prototype.getBrands = function () {
+        return this.http.get(this.url + "/productos/marcas");
     };
     CatalogoService.prototype.getInfoProducto = function (id) {
         return this.http.get(this.url + "/catalogo/productos/ver/" + id).pipe(operators_1.map(function (response) { return response.producto; }));

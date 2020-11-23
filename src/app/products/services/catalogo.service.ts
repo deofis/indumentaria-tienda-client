@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { API_BASE_URL } from 'src/app/config/config';
 import { Categoria } from '../clases/categoria';
 import { Producto } from '../clases/producto';
+import { Subcategoria } from '../clases/subcategoria';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,10 @@ id:number;
   }
 
   getListaCategorias():Observable<Categoria[]>{
-    return this.http.get(`${this.url}/catalogo/categorias`).pipe( map( response => response as Categoria[]));
+    return this.http.get(`${this.url}/categorias`).pipe( map( (response:any) => response.categorias as Categoria[]));
+  }
+  getSubcategoriasPorCategoria(categoriaId:number):Observable<any>{
+    return this.http.get(`${this.url}/categorias/${categoriaId}/subcategorias`)
   }
 
   getRdoBusqueda(termino:string):Observable<Producto[]>{
@@ -31,6 +35,12 @@ id:number;
       map(response=> response as Producto[])
     )
     
+  }
+  getUnidades():Observable<any>{
+    return this.http.get(`${this.url}/productos/unidades-medida`);
+  }
+  getBrands():Observable<any>{
+    return this.http.get(`${this.url}/productos/marcas`);
   }
   getInfoProducto(id:number):Observable<Producto>{
     
