@@ -4,6 +4,8 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { API_BASE_URL } from '../config/config';
 import { Producto } from '../products/clases/producto';
+import { PropiedadProducto } from '../products/clases/propiedad-producto';
+import { ValorPropiedadProducto } from '../products/clases/valor-propiedad-producto';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +20,14 @@ url:string=API_BASE_URL+"/api";
       map((response:any) =>response.producto as Producto)
     )
   }
+  getAllProperties():Observable<PropiedadProducto[]>{
+    return this.http.get(`${this.url}/productos/propiedades`).pipe( map( response => response as PropiedadProducto[]));
+  
+  }
+  getPropertiesOfSubcategory(subcategoriaId:number):Observable<PropiedadProducto[]>{
+    return this.http.get(`${this.url}/subcategorias/${subcategoriaId}/propiedades`).pipe( map( (response:any)=> response.propiedades as PropiedadProducto[]));
+  
+  }
+
 }
  

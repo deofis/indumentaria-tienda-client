@@ -4,7 +4,7 @@
         <button id="save">Guardar</button>
     </div>
 
-    <form action="" class="form form2 ">
+    <form action="" class="form form2 " autocomplete="off" [formGroup]="formSkus" (ngSubmit)="crearSku()">
         <div class="container-white">
             <div class="row">
                 <p>Elaboramos una lista de propiedades en base a la categoría y subcategoría elegida, puedes
@@ -12,33 +12,28 @@
             </div>
             <p id="add" (click)="addProperty()"><i class="far fa-plus-square"></i> Agregar propiedades</p>
             <div class="row properties">
-                <select name="property" id="property">
-                    <option value="">-Color-</option>
-                </select>
-                <select name="property" id="property">
-                    <option value="">-Memoria-</option>
-                </select>
-                <select name="property" id="property">
-                    <option value="">-Resolución-</option>
-                </select>
+                <select name="property" id="property"  *ngFor="let property of properties" formControlName="valores" [ngModel]="valores">
+                    <option hide selected value="" >-{{property.nombre}}-</option>
+                    <option [ngValue]="value" *ngFor="let value of property?.valores">{{value.valor}}</option>
+                </select>            
 
             </div>
             <div class="row">
 
                 <div class="availability-container">
                     <label for="availability"> Disponibles:</label>
-                    <input type="number" id="availability">
+                    <input type="number" id="availability" formControlName="disponibilidad" [ngModel]="disponibilidad">
                 </div>
                 <div class="price-container">
                     <label for="price"> Precio:</label>
                     <p id="euro">€</p>
-                    <input type="number" id="price">
+                    <input type="number" id="price" formControlName="precio" [ngModel]="precio">
                 </div>
                 <div class="precioOferta">
                     <div class="pcioOfertaInput" id=inputOfertaSku>
                         <label for="price"> Precio de Oferta:</label>
                         <p id="euro">€</p>
-                        <input type="number" id="precioOferta">
+                        <input type="number" id="precioOferta" formControlName="precioOferta" [ngModel]="precioOferta">
                     </div>
                     <div class="check-oferta">
                         <input type="checkbox" id="checkbox-oferta" (input)="precioOferta()">
@@ -47,7 +42,7 @@
                 </div>
             </div>
 
-            <button class="btn">Crear Producto</button>
+            <div class="btn">Crear Producto</div>
             <span class="line"></span>
             <p class="leyenda">-Los productos listados a continuación no se guardarán hasta que no presiones
                 "Finalizar"-</p>
