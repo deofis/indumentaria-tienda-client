@@ -13,9 +13,10 @@
 
 .cont-destacados h2 {
   font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
   color: #575353;
   margin-top: 30px;
+  font-size: 22px;
+  margin-bottom: 0px;
 }
 
 .cont-destacados .contenedor-principal {
@@ -146,9 +147,10 @@
 
 .cont-ofertas h2 {
   font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
   color: #575353;
   margin-top: 30px;
+  font-size: 22px;
+  margin-bottom: 0px;
 }
 
 .cont-ofertas .contenedor-principal {
@@ -279,8 +281,9 @@
 
 .section-categories h2 {
   font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
   color: #575353;
+  font-size: 22px;
+  margin-bottom: 0px;
 }
 
 .section-categories .container-categories {

@@ -17,9 +17,10 @@ $color-ppal:#fff;
   margin-right: auto;
   h2{
      font-family: $fte-ppal;
-     text-transform: uppercase;
     color: $color-sec;
     margin-top: 30px;
+    font-size: 22px;
+    margin-bottom: 0px;
   }
   .contenedor-principal{
     display: flex;
@@ -114,9 +115,10 @@ $color-ppal:#fff;
   margin-right: auto;
   h2{
     font-family: $fte-ppal;
-     text-transform: uppercase;
     color: $color-sec;
     margin-top: 30px;
+    font-size: 22px;
+    margin-bottom: 0px;
   }
   .contenedor-principal{
     display: flex;
@@ -215,9 +217,9 @@ $color-ppal:#fff;
   align-items: center;
   h2{
     font-family: $fte-ppal;
-     text-transform: uppercase;
     color: $color-sec;
-    
+    font-size: 22px;
+    margin-bottom: 0px;
   }
   .container-categories{
   margin-left: auto;
@@ -270,7 +272,6 @@ $color-ppal:#fff;
     h3{
      background-color: $color-wf2;
      color: $color-menues;
-    //  font-weight: bold;
      width: 100%;
      padding: 10px 10px;
      font-size: 15px;
