@@ -118,7 +118,6 @@
 }
 
 .footer article .row1 .newsletter {
-  background-color: #575353;
   background: -webkit-gradient(linear, left top, left bottom, from(#f3ecec), to(black));
   background: linear-gradient(to bottom, #f3ecec, black);
   -ms-flex-item-align: center;
@@ -246,25 +245,45 @@
 }
 
 .footer article .row2 img {
-  width: 44px;
+  width: 46px;
   height: 28px;
   margin-right: 20px;
 }
 
 .footer .copy {
-  background-color: black;
-  height: 30px;
+  background-color: #fff;
+  height: 55px;
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 15px;
 }
 
 .footer .copy a {
   text-decoration: none;
-  color: white;
-  text-align: center;
-  font-size: 13px;
-  position: absolute;
-  bottom: 3px;
-  right: 35px;
+  margin-top: -13px;
+  margin-left: 2px;
+}
+
+.footer .copy a img {
+  width: 105px;
+  height: 36px;
+}
+
+.footer .copy p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
 }
 
 @media screen and (max-width: 600px) {
@@ -305,7 +324,7 @@
     display: none;
   }
   .footer article .row1 .Contacto {
-    width: 100%;
+    width: 95%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

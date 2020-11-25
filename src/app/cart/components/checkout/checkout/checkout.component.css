@@ -12,7 +12,7 @@ section {
   width: 85%;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 40px;
+  padding-top: 20px;
   padding-bottom: 30px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -24,17 +24,28 @@ section {
   background-color: #fff;
   border-radius: 20px;
   width: 65%;
-  padding: 30px 30px 60px 30px;
+  padding: 30px 30px 60px 0px;
+}
+
+.container-left h2 {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  margin-top: 0px;
+  display: block;
+  font-size: 2rem;
+  border-bottom: 1px solid #bebbbb;
 }
 
 .container-left #userInfo {
-  -webkit-box-shadow: 2px 4px 4px #575353;
-          box-shadow: 2px 4px 4px #575353;
-  background-color: #f3ecec;
+  -webkit-box-shadow: 1px 3px 5px #aaa8a8;
+          box-shadow: 1px 3px 5px #aaa8a8;
+  background-color: #fff;
   padding: 25px 20px;
+  margin-top: 25px;
 }
 
-.container-left #userInfo h2 {
+.container-left #userInfo p {
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   font-size: 20px;
@@ -64,9 +75,9 @@ section {
 .container-left form {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-color: #f3ecec;
-  -webkit-box-shadow: 2px 4px 5px #575353;
-          box-shadow: 2px 4px 5px #575353;
+  background-color: #fff;
+  -webkit-box-shadow: 1px 3px 5px #aaa8a8;
+          box-shadow: 1px 3px 5px #aaa8a8;
 }
 
 .container-left form .deliveryMethod {
@@ -291,7 +302,7 @@ section {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  margin-top: 45px;
+  margin-top: 65px;
   -webkit-box-shadow: 2px 4px 4px #575353;
           box-shadow: 2px 4px 4px #575353;
 }

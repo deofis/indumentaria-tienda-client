@@ -73,7 +73,63 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
           align-items: center;
 }
 
-.container-precheckout .subcontainer .right .container-form {
-  margin-top: 415px;
+@media screen and (max-width: 800px) {
+  .container-precheckout {
+    height: unset;
+    min-height: unset;
+  }
+  .container-precheckout .subcontainer {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding-bottom: 50px;
+  }
+  .container-precheckout .subcontainer .left {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .container-precheckout .subcontainer .left .msj {
+    width: 95%;
+    max-width: 550px;
+    margin-top: 10px;
+    border-bottom: none;
+    margin-bottom: -20px;
+  }
+  .container-precheckout .subcontainer .left .msj p {
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+    color: white;
+    font-weight: normal;
+    font-size: 14px;
+  }
+  .container-precheckout .subcontainer .right {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
 }
 /*# sourceMappingURL=pre-checkout.component.css.map */

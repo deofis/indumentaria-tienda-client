@@ -51,13 +51,19 @@ section app-form-log-in {
 
 @media screen and (max-width: 700px) {
   section a img {
-    width: 160px;
+    width: 140px;
+    height: 40px;
+    position: unset;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (min-width: 700px) and (max-width: 900px) {
+  section a img {
+    width: 170px;
     height: 50px;
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    margin-left: auto;
-    margin-right: auto;
+    right: 20px;
+    top: 20px;
   }
 }
 /*# sourceMappingURL=user-login.component.css.map */
