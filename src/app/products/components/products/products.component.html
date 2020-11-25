@@ -3,7 +3,8 @@
     <article class="cont-destacados">
         <h2>Productos Destacados</h2>
         <div class="contenedor-principal">
-            <button role="button" id="flecha-izquierda-fila1" class="flecha flecha-izquierda"><i class="fas fa-angle-left"></i></button>
+            <button role="button" id="flecha-izquierda-fila1" class="flecha flecha-izquierda"><i
+                    class="fas fa-angle-left"></i></button>
 
             <div class="contenedor-carousel" id="contenedor-carouselDestacados">
                 <div class="carousel">
@@ -13,7 +14,8 @@
                 </div>
             </div>
 
-            <button role="button" id="flecha-derecha-fila1" class="flecha flecha-derecha"><i class="fas fa-angle-right"></i></button>
+            <button role="button" id="flecha-derecha-fila1" class="flecha flecha-derecha"><i
+                    class="fas fa-angle-right"></i></button>
         </div>
         <div class="indicadores">
 
@@ -23,7 +25,8 @@
     <article class="cont-ofertas">
         <h2 id="section-ofertas">Ofertas</h2>
         <div class="contenedor-principal">
-            <button role="button" id="flecha-izquierda-fila2" class="flecha flecha-izquierda"><i class="fas fa-angle-left"></i></button>
+            <button role="button" id="flecha-izquierda-fila2" class="flecha flecha-izquierda"><i
+                    class="fas fa-angle-left"></i></button>
 
             <div class="contenedor-carousel" id="contenedor-carouselOfertas">
                 <div class="carousel">
@@ -33,7 +36,8 @@
                 </div>
             </div>
 
-            <button role="button" id="flecha-derecha-fila2" class="flecha flecha-derecha"><i class="fas fa-angle-right"></i></button>
+            <button role="button" id="flecha-derecha-fila2" class="flecha flecha-derecha"><i
+                    class="fas fa-angle-right"></i></button>
         </div>
         <div class="indicadores-ofertas">
 
@@ -45,17 +49,20 @@
 
     <!-- Categorias-->
     <article class="section-categories">
-    <h2 id="section-categories" class="titulo-categoria" style="text-align: center;margin-top: 60px; margin: 40px;">Elegí por categoria</h2>
-    <div class="container-categories">
+        <h2 id="section-categories" class="titulo-categoria" style="text-align: center;margin-top: 60px; margin: 40px;">
+            Elegí por categoria</h2>
+        <div class="container-categories">
 
-        <div class="card-c" id="card-c" *ngFor="let categoria of categorias">
-            <img src="{{categoria.foto}}" alt="">
+            <div class="card-c" id="card-c" *ngFor="let categoria of categorias">
+                <div class="cat">
+                    <img src="{{categoria.foto}}" alt="">
 
-            <h3>{{categoria.nombre}}</h3>
+                    <h3>{{categoria.nombre}}</h3>
+                </div>
+            </div>
         </div>
-    </div>
 
-</article>
+    </article>
 
 
 </section>

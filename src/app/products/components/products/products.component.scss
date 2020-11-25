@@ -249,37 +249,39 @@ $color-ppal:#fff;
     padding-right: 20px;
     box-sizing: border-box;
     outline: none;
-
-   // box-shadow: 2px 2px 2px grey;
-    &:hover>img{
-      opacity: 0.7;
+    .cat{
+     //border: 1px solid $color-menues;
+      width: fit-content;
+      height: fit-content;
+      overflow: hidden;
+      border-radius: 15px;
+      &:hover>img{
+        opacity: 0.7;
+        transform: scale(1.1);
+      }
+      &:hover>h3{
+        color: $color-wf1;
+      }
+     &:hover{
+      box-shadow: 2px 3px 4px rgba(182, 179, 179, 0.514);
+     }
+      img{
+        width: 100%;
+        height: 70%;
+       border-radius: 15px 15px 0px 0px;
+      }
+  
+      h3{
+       color: $color-sec;
+       width: 100%;
+       padding: 10px 10px 3px 10px;
+       font-size: 18px;
+       text-align: center;
+       font-family: $fte-ppal;
+       margin-bottom: 0px;
+      }
     }
-    &:hover>h3{
-      background-color: $color-wf1;
-      color: $color-ppal;
-      font-weight: normal;
-      font-weight: bold;
-    }
-    &:hover{
-      transform: scale(1.1);
-    }
-    img{
-      width: 100%;
-      height: 70%px;
-      border-radius: 15px 15px 0px 0px;
-    }
-
-    h3{
-     background-color: $color-wf2;
-     color: $color-menues;
-     width: 100%;
-     padding: 10px 10px;
-     font-size: 15px;
-     text-align: center;
-     border-radius: 0px 0px 15px 15px;
-     font-family: $fte-ppal;
-     text-transform: uppercase;
-    }
+   
   }
 }
 }
