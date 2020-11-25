@@ -83,7 +83,6 @@ crearProducto(){
   this.newProduct.unidadMedida=this.form.controls.unidadMedida.value;
 
  
- 
   this.productoService.createNewProduct(this.newProduct).subscribe( response => {
     console.log(response);
     let dataProductoNuevo = response;
