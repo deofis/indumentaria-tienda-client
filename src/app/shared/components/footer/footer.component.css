@@ -33,8 +33,9 @@
 
 .footer article .row1 .caja h4 {
   margin-bottom: 10px;
-  color: #575353;
-  text-transform: uppercase;
+  color: #4e4b4b;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .footer article .row1 .caja p {
@@ -93,21 +94,11 @@
 
 .footer article .row1 .caja .redes .iconos a i {
   color: #444242;
-  font-size: 2.5em;
+  font-size: 1.5em;
 }
 
-.footer article .row1 .caja .redes .iconos a .fa-facebook {
-  color: blue;
-}
-
-.footer article .row1 .caja .redes .iconos a .fa-linkedin {
-  color: #2e9cf7;
-}
-
-.footer article .row1 .caja .redes .iconos a img {
-  width: 37px;
-  height: 37px;
-  display: block;
+.footer article .row1 .caja .redes .iconos a:focus {
+  outline: none;
 }
 
 .footer article .row1 .caja .marca {
@@ -232,22 +223,23 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 40vw;
+  width: 24vw;
   margin-left: 50px;
   padding-bottom: 40px;
 }
 
 .footer article .row2 h4 {
-  color: #575353;
-  font-family: "Poppins", sans-serif;
+  font-family: "Open Sans", sans-serif;
   display: block;
   margin-right: 40px;
+  color: #4e4b4b;
+  font-weight: bold;
+  font-size: 16px;
 }
 
-.footer article .row2 img {
-  width: 46px;
-  height: 28px;
-  margin-right: 20px;
+.footer article .row2 .img-pagos i {
+  margin-right: 10px;
+  font-size: 2em;
 }
 
 .footer .copy {
@@ -279,6 +271,10 @@
 .footer .copy a img {
   width: 105px;
   height: 36px;
+}
+
+.footer .copy a:focus {
+  outline: none;
 }
 
 .footer .copy p {
