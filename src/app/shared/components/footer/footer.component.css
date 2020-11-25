@@ -223,7 +223,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 24vw;
+  width: 16vw;
   margin-left: 50px;
   padding-bottom: 40px;
 }
@@ -239,7 +239,7 @@
 
 .footer article .row2 .img-pagos i {
   margin-right: 10px;
-  font-size: 2em;
+  font-size: 2.4em;
 }
 
 .footer .copy {
