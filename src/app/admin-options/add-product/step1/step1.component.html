@@ -48,7 +48,7 @@
                     <span *ngIf="categoriaInvalida" class="text-rojo"><strong>(*)</strong></span>
                     <select name="category" id="categories" (change)="showSubcategories()" formControlName="categoria"
                         [ngModel]="categoria" [class.is-invalid]="categoriaInvalida">
-                        <option disabled>{{categoria}}</option>
+                        <option hidden selected value="">-Categoría-</option>
                         <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{categoria.nombre}}
                         </option>
 
@@ -58,8 +58,8 @@
                 <div class="input-msj">
                     <span *ngIf="subcategoriaInvalida" class="text-rojo"><strong>(*)</strong></span>
                     <select name="subcategory" id="subcategories" formControlName="subcategoria"
-                        [class.is-invalid]="subcategoriaInvalida" [ngModel]="subcategoria">
-                        <option>{{subcategoria}}</option>
+                        [class.is-invalid]="subcategoriaInvalida" >
+                        <option hidden selected value="">-Subcategoría-</option>
                         <option *ngFor="let subcategoria of subcategorias" [ngValue]="subcategoria">
                             {{subcategoria.nombre}}
                         </option>
@@ -71,8 +71,8 @@
                 <div class="input-msj">
                     <span *ngIf="unidadInvalida" class="text-rojo"><strong>(*)</strong></span>
                 <select name="unidadMedida" id="unidadMedida" (change)="showUnit()" formControlName="unidadMedida"
-                    [ngModel]="unidad" [class.is-invalid]="unidadInvalida">
-                    <option>{{unidad}}</option>
+                    [class.is-invalid]="unidadInvalida">
+                    <option hidden selected value="">-Unidad-</option>
                     <option *ngFor="let unidad of unidadesMedida" [ngValue]="unidad">{{unidad.nombre}}</option>
                 </select>
                 

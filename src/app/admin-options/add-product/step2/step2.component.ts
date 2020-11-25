@@ -18,6 +18,7 @@ export class Step2Component implements OnInit {
   propertyID:number;
   formSkus:FormGroup;
   newSku:Sku;
+  propiedades:string="propiedad";
   constructor(private productoService:ProductoService,
               private fb:FormBuilder,
               private activatedroute:ActivatedRoute,) {
@@ -31,10 +32,13 @@ export class Step2Component implements OnInit {
  
   crearSku(){
     this.newSku.precio=this.formSkus.controls.precio.value;
-    // this.newSku.precioOferta=this.formSkus.controls.precioOFerta.value;
-     this.newSku.disponibilidad=this.formSkus.controls.disponbilidad.value;
-    // this.newSku.valores=this.formSkus.controls.valores.value;
+   this.newSku.precioOferta=this.formSkus.controls.precioOferta.value;
+   this.newSku.disponibilidad=this.formSkus.controls.disponibilidad.value;
+   this.newSku.valores=this.formSkus.controls.valores.value;
    console.log(this.newSku);
+
+   this.productoService.createNewSku(this.newSku,1).subscribe( response => 
+    console.log(response))
   }
   crearForm(){
     this.formSkus=this.fb.group({
@@ -44,7 +48,7 @@ export class Step2Component implements OnInit {
        precio:[""],
        precioOferta:[""],
        disponibilidad:[""],
-       valoresDate:[""],
+       valoresData:[""],
        valores:[""],
        defaultProducto:[""],
        producto:[""],  

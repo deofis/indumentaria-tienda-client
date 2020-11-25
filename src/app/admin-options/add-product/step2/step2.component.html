@@ -12,53 +12,52 @@
             </div>
             <p id="add" (click)="addProperty()"><i class="far fa-plus-square"></i> Agregar propiedades</p>
             <div class="row properties">
-                <select name="property" id="property"  *ngFor="let property of properties" formControlName="valores" [ngModel]="valores">
-                    <option hide selected value="" >-{{property.nombre}}-</option>
+                <select name="property" class="property" *ngFor="let property of properties" formControlName="valores"
+                    >
+                    <option hidden selected value="">-{{property.nombre}}-</option>
                     <option [ngValue]="value" *ngFor="let value of property?.valores">{{value.valor}}</option>
-                </select>            
-
+                </select>
             </div>
             <div class="row">
-
                 <div class="availability-container">
-                    <label for="availability"> Disponibles:</label>
-                    <input type="number" id="availability" formControlName="disponibilidad" [ngModel]="disponibilidad">
+                    <label for="availabilitySku"> Disponibles:</label>
+                    <input type="number" id="availabilitySku" formControlName="disponibilidad">
                 </div>
                 <div class="price-container">
-                    <label for="price"> Precio:</label>
-                    <p id="euro">€</p>
-                    <input type="number" id="price" formControlName="precio" [ngModel]="precio">
+                    <label for="precio"> Precio:</label>
+                    <p id="euro-signo">€</p>
+                    <input type="number" id="precio" formControlName="precio">
                 </div>
                 <div class="precioOferta">
                     <div class="pcioOfertaInput" id=inputOfertaSku>
-                        <label for="price"> Precio de Oferta:</label>
+                        <label for="oferta"> Precio de Oferta:</label>
                         <p id="euro">€</p>
-                        <input type="number" id="precioOferta" formControlName="precioOferta" [ngModel]="precioOferta">
+                        <input type="number" id="oferta" formControlName="precioOferta">
                     </div>
                     <div class="check-oferta">
-                        <input type="checkbox" id="checkbox-oferta" (input)="precioOferta()">
-                        <label for="checkbox-oferta" id="textoferta"> Este producto está en oferta</label>
+                        <input type="checkbox" id="check" (input)="precioOferta()">
+                        <label for="check" id="textoferta"> Este producto está en oferta</label>
                     </div>
                 </div>
             </div>
-
-            <div class="btn">Crear Producto</div>
-            <span class="line"></span>
-            <p class="leyenda">-Los productos listados a continuación no se guardarán hasta que no presiones
-                "Finalizar"-</p>
-            <div class="new-products">
-                <div class="product">
-                    <p class="description"> Samsung Galaxy S20 - Negro - 64GB - 4u - €850 </p>
-                    <i class="far fa-edit"></i>
-                </div>
-                <div class="product">
-                    <p class="description"> Samsung Galaxy S20 - Negro - 32GB - 7u - €820</p>
-                    <i class="far fa-edit"></i>
+            <button class="btn-end" id="btn-two">Guardar y finalizar</button>
+            <div class="container-skus">
+                <span class="line"></span>
+            
+                <div class="new-products">
+                    <div class="product">
+                        <p class="description"> Samsung Galaxy S20 - Negro - 64GB - 4u - €850 </p>
+                        <i class="far fa-edit"></i>
+                    </div>
+                    <div class="product">
+                        <p class="description"> Samsung Galaxy S20 - Negro - 32GB - 7u - €820</p>
+                        <i class="far fa-edit"></i>
+                    </div>
                 </div>
             </div>
         </div>
-        <button class="btn-end" id="btn-two">Guardar y finalizar</button>
-    </form>
+        </form>
 
 
 </div>
+

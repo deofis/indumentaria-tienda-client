@@ -81,11 +81,12 @@ crearProducto(){
   this.newProduct.marca=this.form.controls.marca.value;
   this.newProduct.subcategoria=this.form.controls.subcategoria.value;
   this.newProduct.unidadMedida=this.form.controls.unidadMedida.value;
-  console.log(this.newProduct);
+
  
  
   this.productoService.createNewProduct(this.newProduct).subscribe( response => {
     console.log(response);
+    let dataProductoNuevo = response;
     Swal.fire({
       icon:"success",
       title:"Producto creado",
@@ -172,8 +173,6 @@ crearForm(){
   }
   
   private _filter(value:any) {
-    console.log(value);
-    //const filterValue = value.toLowerCase();
     return this.marcas.filter(marca => marca.nombre.toLowerCase().indexOf(value) === 0);
   }
   
@@ -198,8 +197,7 @@ crearForm(){
 
     showSubcategories(){
       this.categoriaSeleccionada = this.form.controls.categoria.value;
-      console.log(this.categoriaSeleccionada);
-
+     
       this.catalogoservice.getSubcategoriasPorCategoria(this.categoriaSeleccionada.id)
       .subscribe(response => {
         this.subcategorias=response.subcategorias;
@@ -210,7 +208,7 @@ crearForm(){
     }
     showUnit(){
        this.unidadSeleccionada = this.form.controls.unidadMedida.value;
-      // console.log(this.unidadSeleccionada);
+     
       let unidad = document.getElementById("unidadElegida");
       
       if(this.unidadSeleccionada.nombre=="Unidad"){

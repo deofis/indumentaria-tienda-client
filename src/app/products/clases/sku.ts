@@ -1,5 +1,6 @@
 import { NumberFormatStyle } from '@angular/common';
 import { Producto } from './producto';
+import { ValorPropiedadProducto } from './valor-propiedad-producto';
 
 export class Sku{
     id:number;
@@ -9,7 +10,7 @@ export class Sku{
     precioOferta:number;
     disponibilidad:number;
     valoresData:string;
-    valores:string;
+    valores:ValorPropiedadProducto [];
     defaultProducto:Producto;
     producto:Producto;
 }

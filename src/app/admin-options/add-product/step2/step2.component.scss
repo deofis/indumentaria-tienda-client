@@ -75,7 +75,7 @@ $color-ppal:#fff;
                 margin-bottom: 50px;
                 align-items: baseline;
                 
-                #property{
+                .property{
                     font-size: 15px;
                     border: none;
                     outline: none;
@@ -91,13 +91,13 @@ $color-ppal:#fff;
                 display: flex;
                 margin-left: 60px;
                 align-items: baseline;
-                #euro{
+                #euro-signo{
                     font-weight: bold;
                     font-size: 14px;
                     display: block;
                     margin-left: 10px;
                 }
-                #price{
+                #precio{
                     border: none;
                     outline: none;
                     font-size: 14px;
@@ -125,7 +125,7 @@ $color-ppal:#fff;
                         display: block;
                         margin-left: 10px;
                     }
-                    #precioOferta{
+                    #oferta{
                         border: none;
                         outline: none;
                         font-size: 14px;
@@ -140,7 +140,7 @@ $color-ppal:#fff;
                    }
                    .check-oferta{
                        margin-left: 20px;
-                   #checkbox-oferta{
+                   #check{
                     margin-right: 10px;
                     margin-top: -5px;
                     margin-bottom: -20px;
@@ -151,7 +151,7 @@ $color-ppal:#fff;
                }
                .availability-container{
             
-                #availability{
+                #availabilitySku{
                     border: none;
                     outline: none;
                     margin-left: 8px;
