@@ -14,8 +14,8 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   outline: none;
-  margin-left: 15px;
-  margin-right: 25px;
+  margin-left: -7px;
+  margin-right: 20px;
   background-color: #fff;
 }
 
@@ -57,24 +57,34 @@
           align-items: center;
 }
 
-.items .img-fondo .etiqueta {
-  display: block;
-  font-family: "Open Sans", sans-serif;
-  text-align: center;
-  position: absolute;
-  z-index: 1;
-  left: 9px;
-  top: -12px;
-  color: #70b8f3;
-  font-size: 13px;
-}
-
-.items .img-fondo img {
+.items .img-fondo .producto {
   width: 160px;
   height: 160px;
   display: block;
   position: absolute;
   top: 0;
+}
+
+.items .img-fondo .medalla {
+  position: absolute;
+  z-index: 4;
+  top: -9px;
+  left: 5px;
+  width: 35px;
+  height: 35px;
+  -webkit-transform: rotate(15deg);
+          transform: rotate(15deg);
+}
+
+.items .img-fondo .fa-medal {
+  position: absolute;
+  z-index: 4;
+  top: -9px;
+  left: 8px;
+  color: #2779cd;
+  font-size: 1.6em;
+  -webkit-transform: rotate(-170deg);
+          transform: rotate(-170deg);
 }
 
 .items .i-fondo {

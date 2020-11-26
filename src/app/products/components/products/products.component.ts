@@ -56,7 +56,8 @@ export class ProductsComponent implements OnInit {
       img:'../../../../assets/imagenes/categoria8a.jpg',
     }
   ]
-  
+  back1:boolean=false;
+  back2:boolean=false;
 
 tarjeta= document.querySelectorAll(".tarjetas")
 cantidadPaginas= Math.ceil(this.tarjeta.length /5);
@@ -70,9 +71,13 @@ cantidadPaginas= Math.ceil(this.tarjeta.length /5);
      const flecha2= document.getElementById("flecha-derecha-fila1");
      flecha2.addEventListener("click",()=>{
        fila.scrollLeft += fila.offsetWidth;
+       this.back1=true;
+       this.backButton1();
      })
      flecha1.addEventListener("click",()=>{
       fila.scrollLeft -= fila.offsetWidth;
+      this.back1=false;
+      this.backButton1();
     })
 /// ****  *** CARUSEL OFERTAS *** ****  ///
 const fila2=document.getElementById("contenedor-carouselOfertas");
@@ -80,9 +85,13 @@ const fila2=document.getElementById("contenedor-carouselOfertas");
      const flecha4= document.getElementById("flecha-derecha-fila2");
      flecha4.addEventListener("click",()=>{
        fila2.scrollLeft += fila2.offsetWidth;
+       this.back2=true;
+       this.backButton2();
      })
      flecha3.addEventListener("click",()=>{
       fila2.scrollLeft -= fila2.offsetWidth;
+      this.back2=false;
+      this.backButton2();
     })
 
     /// EFECTO CATEGORIAS
@@ -92,6 +101,29 @@ const fila2=document.getElementById("contenedor-carouselOfertas");
      this.getListaCategorias();
      this.paginacion();
     window.addEventListener("scroll",this.showCategoriesEffect);
+
+    /// ocultar boton izquierdo
+  this.backButton1();
+  this.backButton2();
+  
+  }
+
+  backButton1(){
+    const flecha1= document.getElementById("flecha-izquierda-fila1");
+    if(this.back1==false){
+      flecha1.style.display="none";
+    }else{
+      flecha1.style.display="initial";
+    }
+  }
+  
+  backButton2(){
+    const flecha3= document.getElementById("flecha-izquierda-fila2");
+    if(this.back2==false){
+      flecha3.style.display="none";
+    }else{
+      flecha3.style.display="initial";
+    }
   }
 //// mostar categorias
 showCategoriesEffect() {
@@ -131,7 +163,6 @@ showCategoriesEffect() {
       for (let index = 0; index < this.productosDestacados.length; index++) {
         this.productosDestacados[index].foto = this.images[index]?.img;       
       }
-    // console.log(this.productosDestacados);
     });
 
   }
@@ -149,41 +180,7 @@ showCategoriesEffect() {
       })
     }
 
-  /**** Hidde/ show functions ****/
-  hiddeButtonsO(){
-    const carouselButtons = document.querySelectorAll('.ofertas');
-    carouselButtons[0].classList.add("mostrar");
-    carouselButtons[1].classList.add("mostrar");
-  
-  }
-  showButtonsO(){
-    const carouselButtons = document.querySelectorAll('.ofertas');
-    carouselButtons[0].classList.remove("mostrar");
-    carouselButtons[1].classList.remove("mostrar");
-  } 
-  hiddeButtonsF(){
-    const carouselButtons = document.querySelectorAll('.featured');
-    carouselButtons[0].classList.add("mostrar");
-    carouselButtons[1].classList.add("mostrar");
-  }
-  showButtonsF(){
-    const carouselButtons = document.querySelectorAll('.featured');
-    carouselButtons[0].classList.remove("mostrar");
-    carouselButtons[1].classList.remove("mostrar");
-  }
-  hiddeButtonsC(){
-    const carouselButton1 = document.getElementById('previousCategories');
-    carouselButton1.classList.add("mostrar");
-    const carouselButton2 = document.getElementById('nextCategories');
-    carouselButton2.classList.add("mostrar");
-  }
-  showButtonsC(){
-    const carouselButton1 = document.getElementById('previousCategories');
-    carouselButton1.classList.remove("mostrar");
-    const carouselButton2 = document.getElementById('nextCategories');
-    carouselButton2.classList.remove("mostrar");
-  }
-  /**** End of hidde/ show functions ****/
+
   
 
 

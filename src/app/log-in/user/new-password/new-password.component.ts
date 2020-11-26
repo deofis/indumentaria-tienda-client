@@ -28,7 +28,22 @@ export class NewPasswordComponent implements OnInit {
         let iconHide=document.getElementById("hide");
         iconHide.style.visibility="hidden"
     }
-
- 
+  }
+   
+  mostrarPsw2(){
+    let input = document.getElementById("password2")as HTMLInputElement ;   
+    if(input.type == "password"){
+        input.type = "text";
+      let icon= document.getElementById("show2")
+      icon.style.visibility="hidden";
+      let iconHide=document.getElementById("hide2");
+      iconHide.style.visibility="visible"
+    }else{
+        input.type = "password";
+        let icon= document.getElementById("show2")
+        icon.style.visibility="visible";
+        let iconHide=document.getElementById("hide2");
+        iconHide.style.visibility="hidden"
+    }
   }
 }

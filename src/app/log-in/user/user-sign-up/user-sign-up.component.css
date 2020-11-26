@@ -14,11 +14,14 @@ section .contenedor-form #contenedor-registrarse #formName .nombre-apellido .nam
   padding-left: 5px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  border: none;
+  background-color: #f6f2f2;
+  border-bottom: 1px solid grey;
 }
 
 section .contenedor-form #contenedor-registrarse #formName .nombre-apellido .name #name:focus, section .contenedor-form #contenedor-registrarse #formName .nombre-apellido .lastname #lastname:focus, section .contenedor-form #contenedor-registrarse .location .country:focus, section .contenedor-form #contenedor-registrarse .location .state:focus, section .contenedor-form #contenedor-registrarse .location .city:focus, section .contenedor-form #contenedor-registrarse .calle-nro .calle #calle:focus, section .contenedor-form #contenedor-registrarse .calle-nro .nro #nro:focus, section .contenedor-form #contenedor-registrarse .calle-nro .cp #cp:focus, section .contenedor-form #contenedor-registrarse .cont-email .email #email:focus, section .contenedor-form #contenedor-registrarse .passwords .campo #new-pasw:focus, section .contenedor-form #contenedor-registrarse .passwords .campo #new-pasw-repeat:focus {
   outline: none;
-  border: 1px solid #b4aaaa;
+  border-bottom: 2px solid #2779cd;
 }
 
 section {
@@ -34,16 +37,12 @@ section {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(1%, #1f4e84), color-stop(55%, #f3ecec));
-  background: linear-gradient(to top, #1f4e84 1%, #f3ecec 55%);
 }
 
 section a img {
   width: 200px;
   height: 60px;
-  position: absolute;
-  right: 50px;
-  top: 20px;
+  margin-top: 35px;
 }
 
 section .contenedor-form {
@@ -61,7 +60,8 @@ section .contenedor-form {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 100px;
+  margin-top: 35px;
+  margin-bottom: 50px;
   width: 40vw;
   min-width: 500px;
   -webkit-box-shadow: 2px 4px 10px grey;
@@ -86,13 +86,24 @@ section .contenedor-form #contenedor-registrarse {
   position: relative;
 }
 
+section .contenedor-form #contenedor-registrarse .titulo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-bottom: 0;
+  width: 100%;
+}
+
 section .contenedor-form #contenedor-registrarse .titulo h2 {
-  font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
-  font-size: 23px;
+  border-bottom: 1px solid grey;
+  font-family: "Open Sans", sans-serif;
+  font-size: 22px;
   color: #575353;
   display: block;
-  border-bottom: 1px solid grey;
   width: 100%;
   padding-bottom: 5px;
 }
@@ -103,8 +114,8 @@ section .contenedor-form #contenedor-registrarse .titulo .fa-arrow-circle-left {
   margin-right: 8px;
   outline: none;
   position: absolute;
-  top: 4px;
-  left: -35px;
+  top: 8px;
+  left: -2.5vw;
 }
 
 section .contenedor-form #contenedor-registrarse #formName {
@@ -336,9 +347,8 @@ section .contenedor-form #msje-registro #lastname {
   height: 40px;
   background-color: #223e66;
   color: white;
-  font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
-  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 17px;
   border: none;
   margin-top: 10px;
   outline: none;

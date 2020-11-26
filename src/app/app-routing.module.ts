@@ -38,6 +38,7 @@ const routes: Routes = [
 {path:"add-product",component:AddProductComponent},
 {path:"products-list" , component:ProductsListComponent},
 {path:"user-sign-up",component:UserSignUpComponent},
+{path:"new-password",component:NewPasswordComponent},
 {path:"verify/redirect",component:ActivatedMssgComponent},
 {path:"shopping-cart",component:ShoppingCartComponent},
 {path:"checkout",component:CheckoutComponent},

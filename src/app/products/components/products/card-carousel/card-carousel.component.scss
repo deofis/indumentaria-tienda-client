@@ -10,21 +10,6 @@ $color-ppal:#fff;
  $color-wf3:#2779cd;
  $color-wf4:#70b8f3;
 
-// %prop-botones-prod {
-//    background-color:$color-wf2;
-//    font-size: 14px;
-//    color: white;
-//    font-family: $fte-ppal;
-//    text-transform: uppercase;
-//    border-radius: 0px 0px 15px 15px;
-//    border: 0px ;
-//    margin-top:5px ;
-//    padding: 3px 10px;
-//     width: 100%;
-//     box-sizing: border-box;
-//     outline: none;
-    
-// }
 
 .items{
     width: 17vw;
@@ -38,10 +23,8 @@ $color-ppal:#fff;
     justify-items: center;
     box-sizing: border-box;
     outline: none;
-    margin-left: 15px;
-    margin-right: 25px;
-   
-    // background-image: linear-gradient(0deg, rgb(243, 236, 236) 20%,  white 35%, );
+    margin-left: -7px;
+    margin-right: 20px;
     background-color: #fff;
     &:hover{
         transform: scale(1.06);
@@ -67,23 +50,30 @@ $color-ppal:#fff;
        display: flex;
        flex-direction: column;
        align-items: center;
-       .etiqueta{
-            display: block;
-            font-family: $fte-sec;
-            text-align: center;
-            position: absolute;
-            z-index: 1;
-            left: 9px;
-            top: -12px;
-            color: $color-wf4;
-            font-size: 13px;
-       }
-        img{
+        .producto{
             width: 160px ;
             height: 160px;
             display: block;
             position: absolute;
             top: 0;
+        }
+        .medalla{
+              position: absolute;
+              z-index:4;
+            top: -9px;
+            left:5px;
+            width:35px;
+            height:35px;
+            transform:rotate(15deg);
+        }
+        .fa-medal{
+            position: absolute;
+            z-index:4;
+            top: -9px;
+            left:8px;
+            color:$color-wf3;
+            font-size:1.6em;
+              transform:rotate(-170deg);
         }
     }
     .i-fondo{

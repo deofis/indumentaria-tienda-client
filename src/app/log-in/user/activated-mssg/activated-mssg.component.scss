@@ -16,22 +16,19 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(to top,$color-wf2 1%, $color-menues 55%);
     a{
         img {
             width: 200px;
             height: 60px;
-            position: absolute;
-            right: 50px;
-            top: 20px;
+           margin-top: 35px;
         }
     }
     #mssg {
-        background-color:$color-ppal;
+        background-color:rgb(246, 242, 242);
         font-family: $fte-sec;
         text-align: center;
         width: 40vw;
-        margin-top: 230px;
+        margin-top: 100px;
         border-radius: 20px;
         padding: 30px 70px 20px 70px;
         box-shadow: 1px 2px 3px grey;
