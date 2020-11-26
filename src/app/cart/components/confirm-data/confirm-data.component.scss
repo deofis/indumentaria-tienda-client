@@ -24,29 +24,27 @@ section{
 }
 .container-left{
     box-sizing: border-box;
-    background-color:$color-ppal;
-    border-radius: 20px;
     width: 100%;
     padding: 30px 30px 60px 0px;
     h2{
         font-family: $fte-ppal;
-        text-transform: uppercase;
         margin-bottom: 5px;
         margin-top: 0px;
         display: block;
-        font-size: 2rem;
+        font-size: 22px;
         border-bottom: 1px solid rgb(190, 187, 187);
     }
     #userInfo{
-        box-shadow: 1px 3px 5px rgb(170, 168, 168);
+        box-shadow: 1px 2px 4px rgba(170, 168, 168, 0.513);
         background-color: $color-ppal;
+        border-radius: 15px;
         padding:25px 30px;
         margin-top: 25px;
         .titulo{
             font-family: $fte-ppal;
             font-size: 18px;
             font-weight: normal;
-            margin-bottom: 25px;
+            margin-bottom: 45px;
         }
         .rowData{
             margin-top: 15px;
@@ -96,9 +94,8 @@ section{
     .btn{
         background-color: $color-wf1;
         color: white;
-        font-family: $fte-ppal;
-        text-transform: uppercase;
-        font-size: 18px;
+        font-family: $fte-sec;
+        font-size: 17px;
         border: 0px ;
         padding: 8px 15px;
         align-self: center;
@@ -106,7 +103,8 @@ section{
         width: 40%;
         border-radius: 0px;                        
         &:hover{
-            transform: scale(1.03);
+            background-color: $color-wf2;
+            cursor: pointer;
         }
     }
 }

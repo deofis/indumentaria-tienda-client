@@ -15,9 +15,10 @@ section {
 }
 
 section .container-mssg {
-  -webkit-box-shadow: 1px 3px 5px #aaa8a8;
-          box-shadow: 1px 3px 5px #aaa8a8;
+  -webkit-box-shadow: 1px 2px 4px rgba(170, 168, 168, 0.513);
+          box-shadow: 1px 2px 4px rgba(170, 168, 168, 0.513);
   background-color: #fff;
+  border-radius: 15px;
   margin-top: -80px;
   padding: 25px 30px;
   display: -webkit-box;
@@ -46,6 +47,6 @@ section .container-mssg p {
   text-align: center;
   width: 70%;
   font-family: "Open Sans", sans-serif;
-  font-size: 16px;
+  font-size: 15px;
 }
 /*# sourceMappingURL=final-message.component.css.map */
