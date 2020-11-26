@@ -213,6 +213,10 @@ header .menu-header #contenedor_iconos .iconos i:focus {
   outline: none;
 }
 
+header .menu-header #contenedor_iconos .iconos:focus {
+  outline: none;
+}
+
 header .menu-header #contenedor_iconos .iconos .fa-user-circle {
   font-size: 1.9em;
 }
@@ -220,6 +224,10 @@ header .menu-header #contenedor_iconos .iconos .fa-user-circle {
 header .menu-header #contenedor_iconos .iconos img {
   width: 22px;
   height: 22px;
+}
+
+header .menu-header #contenedor_iconos .iconos img:focus {
+  outline: none;
 }
 
 header .menu-header #contenedor_iconos .iconos .circulo {

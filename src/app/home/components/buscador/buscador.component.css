@@ -3,6 +3,15 @@
   margin-top: 5px;
 }
 
+.routes p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+
 .routes p a {
   text-decoration: none;
   font-family: "Open Sans", sans-serif;
@@ -14,9 +23,17 @@
   color: #2779cd;
 }
 
+.routes p i {
+  font-size: 0.7em;
+  color: #a19e9e;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-top: -10px;
+}
+
 .routes .cantidad-rdos {
   display: block;
-  margin-top: -20px;
+  margin-top: -16px;
   font-family: "Open Sans", sans-serif;
   color: #aca5a5;
   font-size: 16px;
@@ -39,7 +56,7 @@
   margin: 25px 0px 0px 17px;
   padding-bottom: 10px;
   text-align: left;
-  font-size: 23px;
+  font-size: 22px;
   border-bottom: 1px solid #aca5a5;
 }
 
@@ -47,6 +64,8 @@
   margin-top: 18px;
   font-size: 16px;
   width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 500px) {

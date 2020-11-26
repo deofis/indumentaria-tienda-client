@@ -166,12 +166,18 @@ header {
                         outline: none;
                     }
                 }
+                &:focus{
+                    outline: none;
+                }
                 .fa-user-circle {
                     font-size: 1.9em;
                 }
                 img{
                     width: 22px;
                     height: 22px;
+                    &:focus{
+                        outline: none;
+                    }
                 }
                 .circulo {
                     background-color: rgb(187, 24, 24);
