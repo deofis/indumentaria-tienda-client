@@ -86,16 +86,14 @@ section{
         .frame{
             width:85% ;
             margin-top: 30px;
-            margin-left: 50px;
             .title{
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                margin-bottom: 20px;
+                margin-bottom: 5px;
                 h2{
                     font-family: $fte-ppal;
-                    text-transform: uppercase;
-                    font-size: 24px;
+                    font-size: 22px;
                     color: $color-sec;
                 }
                 .filtros-miscompras{
@@ -132,7 +130,7 @@ section{
                                 position: absolute;
                                 right: -1px;
                                 width: 105px;
-                                background: linear-gradient(to top,$color-ter , $color-menues);
+                                background:$color-menues;
                                box-sizing: border-box;
                                 cursor: pointer;
                                 padding-bottom: 3px;
@@ -211,10 +209,11 @@ section{
                             display: none;
                             list-style: none;
                             position: absolute;
+                            z-index:3;
                             top: 25px;
-                            right: -3px;
+                            right: -100px;
                             width: 105px;
-                            background: linear-gradient(to top,$color-menues , white);
+                            background: $color-menues;
                            box-sizing: border-box;
                            box-shadow: 1px 2px 2px $color-ter;
                             cursor: pointer;
