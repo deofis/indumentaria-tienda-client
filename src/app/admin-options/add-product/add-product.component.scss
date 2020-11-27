@@ -92,8 +92,7 @@ section{
         background: linear-gradient(to bottom,$color-menues, white);
         h2{
             font-family: $fte-ppal;
-            text-transform: uppercase;
-            font-size: 24px;
+            font-size: 22px;
             color: $color-sec;
             border-bottom: 1px solid rgb(190, 187, 187);
             padding-bottom: 5px;
@@ -364,7 +363,7 @@ section{
                     margin-right: auto; 
                     margin-bottom: 50px;                
                     &:hover{
-                        transform: scale(1.03);
+                        background-color: $color-wf2;
                     }
                 }
                 }
@@ -391,9 +390,8 @@ section{
                     .btn{
                         background-color: $color-wf1;
                         color: white;
-                        font-family: $fte-ppal;
-                        text-transform: uppercase;
-                        font-size: 16px;
+                        font-family: $fte-sec;
+                        font-size: 17px;
                         border: 0px ;
                         margin-left: -12px;
                         margin-top:-25px;
