@@ -15,27 +15,14 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-bottom: 8vh;
-}
-
-#contenedor-vermas .routes {
-  margin-left: 30px;
-  margin-top: 5px;
-}
-
-#contenedor-vermas .routes p a {
-  text-decoration: none;
-  font-family: "Open Sans", sans-serif;
-  font-size: 14px;
-  color: #70b8f3;
-}
-
-#contenedor-vermas .routes p a:hover {
-  color: #2779cd;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 3vh;
 }
 
 #contenedor-vermas section {
-  margin-top: 0px;
+  margin-top: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -46,6 +33,78 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-color: #fff;
+  padding: 5px 20px 20px 20px;
+  border-radius: 15px;
+  width: 94%;
+}
+
+#contenedor-vermas section .superior {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+#contenedor-vermas section .superior .routes {
+  margin-left: 7px;
+  margin-top: 5px;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+#contenedor-vermas section .superior .routes p a {
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  color: #70b8f3;
+}
+
+#contenedor-vermas section .superior .routes p a:hover {
+  color: #2779cd;
+}
+
+#contenedor-vermas section .superior .routes p i {
+  font-size: 0.7em;
+  color: #a19e9e;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-top: -10px;
+}
+
+#contenedor-vermas section .superior .iconos-detalle-producto {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 5vw;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 7px;
+}
+
+#contenedor-vermas section .superior .iconos-detalle-producto a {
+  text-decoration: none;
+}
+
+#contenedor-vermas section .superior .iconos-detalle-producto a i {
+  font-size: 1.4em;
+  color: #575353;
+}
+
+#contenedor-vermas section .superior .iconos-detalle-producto a i:hover {
+  font-size: 1.6em;
 }
 
 #contenedor-vermas section .contenedor-uno {
@@ -126,8 +185,8 @@
 #contenedor-vermas section .contenedor-uno #derecha {
   border: none;
   border-radius: 15px;
-  margin-left: 3vw;
-  width: 33%;
+  margin-left: 4vw;
+  width: 36%;
   position: relative;
 }
 
@@ -150,36 +209,9 @@
 #contenedor-vermas section .contenedor-uno #derecha #caja-titulo h2 {
   font-size: 33px;
   font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
-  width: 20vw;
-  font-weight: bolder;
+  line-height: 36px;
   color: #575353;
-}
-
-#contenedor-vermas section .contenedor-uno #derecha #caja-titulo div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: 5vw;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-#contenedor-vermas section .contenedor-uno #derecha #caja-titulo div a {
-  text-decoration: none;
-}
-
-#contenedor-vermas section .contenedor-uno #derecha #caja-titulo div a i {
-  font-size: 1.4em;
-  color: #575353;
-}
-
-#contenedor-vermas section .contenedor-uno #derecha #caja-titulo div a i:hover {
-  font-size: 1.6em;
+  width: 100%;
 }
 
 #contenedor-vermas section .contenedor-uno #derecha #caja-precio {
@@ -191,35 +223,42 @@
 #contenedor-vermas section .contenedor-uno #derecha #caja-precio h3 {
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
-  font-size: 44px;
+  font-size: 38px;
   margin-bottom: 25px;
   color: #2779cd;
 }
 
-#contenedor-vermas section .contenedor-uno #derecha #caja-precio .oferta {
-  margin-left: 10px;
+#contenedor-vermas section .contenedor-uno #derecha #caja-precio .row-oferta {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: -5px;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
 }
 
-#contenedor-vermas section .contenedor-uno #derecha #caja-precio .oferta span {
-  font-family: "Open Sans", sans-serif;
+#contenedor-vermas section .contenedor-uno #derecha #caja-precio .row-oferta span {
   text-decoration: line-through;
-  color: #575353;
-  color: #bb1818;
-  margin-left: auto;
-  margin-right: auto;
+  font-size: 13px;
+  color: grey;
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: -4px;
+  outline: none;
+  display: block;
 }
 
-#contenedor-vermas section .contenedor-uno #derecha #caja-precio .oferta p {
-  display: block;
-  background-color: #bb1818;
-  color: white;
-  font-family: "Open Sans", sans-serif;
-  padding: 1px 6px;
+#contenedor-vermas section .contenedor-uno #derecha #caja-precio .row-oferta .off {
   font-size: 14px;
-  text-align: center;
-  margin-left: auto;
-  -webkit-box-shadow: 2px 4px 3px rgba(0, 0, 0, 0.719);
-          box-shadow: 2px 4px 3px rgba(0, 0, 0, 0.719);
+  font-family: "Open Sans", sans-serif;
+  display: block;
+  margin-left: 5px;
+  margin-bottom: 0px;
+  color: orangered;
 }
 
 #contenedor-vermas section .contenedor-uno #derecha #caja-carrito {
@@ -329,9 +368,8 @@
 #contenedor-vermas section .contenedor-uno #derecha #caja-carrito .btn {
   background-color: #223e66;
   color: white;
-  font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
-  font-size: 18px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 17px;
   border: 0px;
   padding: 8px 15px;
   -ms-flex-item-align: center;
@@ -344,8 +382,7 @@
 }
 
 #contenedor-vermas section .contenedor-uno #derecha #caja-carrito .btn:hover {
-  -webkit-transform: scale(1.03);
-          transform: scale(1.03);
+  background-color: #1f4e84;
 }
 
 #contenedor-vermas section .contenedor-uno #derecha #caja-carrito #btn-carrito {
@@ -396,7 +433,6 @@
 
 #contenedor-vermas section .contenedor-dos #descripcion-producto h3 {
   font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
   font-size: 21px;
   margin-bottom: 15px;
   color: #575353;
@@ -426,7 +462,7 @@
 
 #contenedor-vermas section .contenedor-tres #titulo-a {
   opacity: 0;
-  font-size: 22px;
+  font-size: 21px;
   padding-bottom: 20px;
   -ms-grid-row: 1;
   -ms-grid-column: 1;
@@ -443,7 +479,7 @@
   grid-area: mensaje;
   width: 93%;
   outline: none;
-  border: 1px solid #575353;
+  border: none;
   border-radius: 30px 30px 0 30px;
   padding: 15px 10px;
   font-family: "Open Sans", sans-serif;

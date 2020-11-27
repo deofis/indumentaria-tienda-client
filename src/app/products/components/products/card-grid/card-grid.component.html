@@ -11,8 +11,8 @@
 
     <div class="cont-precios">
       <div class="row-oferta">
-        <span >€{{producto.precio + 95}}</span>
-        <p class="off " >20% 0FF</p>
+        <span *ngIf="oferta">€{{producto.precio + 95}}</span>
+        <p class="off " *ngIf="oferta">20% 0FF</p>
      </div> 
      <p class="precio">€{{producto.precio}}</p>
     </div>
@@ -21,7 +21,7 @@
   </div>
 
   <div class="props">
-    <p><span>Color:</span> Negro, Blanco,Dorado </p>
+    <p><span>Color:</span> Negro, Blanco, <span>Dorado</span> </p>
     <p> <span>Memoria:</span> 32GB , 64GB</p>
   </div>
   <div class="i-fondo"><i id="fav" class=" iconos far fa-heart fav" (click)="saveToFav()"></i></div>

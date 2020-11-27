@@ -98,6 +98,7 @@ export class ViewMoreComponent implements OnInit {
     // cabio de cartel 
     let cartel=document.getElementById("cartel");
     cartel.innerHTML="Gracias! Te responderemos a la brevedad.";
+    cartel.style.color="#2779cd"
     let contenedor=document.getElementById("contenedorCartel");
    
     
