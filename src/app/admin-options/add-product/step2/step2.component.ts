@@ -6,6 +6,7 @@ import { ProductoService } from '../../producto.service';
 import { ActivatedRoute } from '@angular/router';
 import { Sku } from 'src/app/products/clases/sku';
 import {FormControl} from '@angular/forms';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-step2',
   templateUrl: './step2.component.html',
@@ -21,7 +22,8 @@ export class Step2Component implements OnInit {
   propiedades:string="propiedad";
   constructor(private productoService:ProductoService,
               private fb:FormBuilder,
-              private activatedroute:ActivatedRoute,) {
+              private activatedroute:ActivatedRoute,
+              public modal: NgbModal,) {
      this.newSku=new Sku();
    }
 
@@ -37,8 +39,8 @@ export class Step2Component implements OnInit {
    this.newSku.valores=this.formSkus.controls.valores.value;
    console.log(this.newSku);
 
-   this.productoService.createNewSku(this.newSku,1).subscribe( response => 
-    console.log(response))
+  //  this.productoService.createNewSku(this.newSku,1).subscribe( response => 
+  //   console.log(response))
   }
   crearForm(){
     this.formSkus=this.fb.group({
@@ -88,4 +90,9 @@ export class Step2Component implements OnInit {
     })
   }
 
+
+  ///// MODAL ////
+  openCentrado(contenido){
+    this.modal.open(contenido,{centered:true})
+  }
 }
