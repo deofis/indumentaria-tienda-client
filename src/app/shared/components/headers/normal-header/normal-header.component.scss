@@ -212,7 +212,12 @@ header {
     }
 }
 
-
+#salir{
+    border-top: 1px solid $color-ter;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 //////////// user Options //////
 #userOptions {
     position: absolute;
@@ -237,9 +242,7 @@ header {
         padding: 7px 23px;
         box-sizing: border-box;
         font-family: $fte-ppal;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+     text-align: right;
         &:hover {
             background-color: $color-wf1;
             color: $color-ppal;

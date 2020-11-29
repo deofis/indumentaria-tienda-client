@@ -52,9 +52,6 @@ section{
                     padding:10px 18px ;
                     box-sizing: border-box;
                     font-family: $fte-ppal;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
                     &:last-child{
                         border-top: 0.2px solid rgb(204, 193, 193);
                     }
@@ -72,6 +69,7 @@ section{
                     }
                 
                 }
+               
             }
           }
     }
