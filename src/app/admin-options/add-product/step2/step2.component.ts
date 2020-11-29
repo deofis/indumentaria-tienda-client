@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { PropiedadProducto } from 'src/app/products/clases/propiedad-producto';
 import { ValorPropiedadProducto } from 'src/app/products/clases/valor-propiedad-producto';
 import { ProductoService } from '../../producto.service';
@@ -20,6 +20,7 @@ export class Step2Component implements OnInit {
   formSkus:FormGroup;
   newSku:Sku;
   propiedades:string="propiedad";
+  seleccionados:Array<ValorPropiedadProducto>;
   constructor(private productoService:ProductoService,
               private fb:FormBuilder,
               private activatedroute:ActivatedRoute,
@@ -55,6 +56,9 @@ export class Step2Component implements OnInit {
        defaultProducto:[""],
        producto:[""],  
     });
+  //  const elegido=this.fb.array([
+  //    valores:[""],
+  //   ])
   }
   get valores(){
     return this.formSkus.get('valores')

@@ -20,7 +20,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="" class="form-add-brand">
+                    <form action="" class="form-add-property">
                     <div class="propiedad-campo">
                         <label for="propiedad"  class="propiedad" >Propiedad:</label>
                         <input type="text" placeholder="Ej: Color,Talle,Tamaño" id="propiedad">
@@ -44,7 +44,7 @@
                             <input type="text" class="valor" id="valor4">
                         </div>
                     </div>
-                    <button class="btn"> Agregar</button>
+                    <button class="btn" (click)="modal.close()"> Agregar</button>
                 </form>
                 </div>
                 <!-- <div class="modal-footer">
@@ -52,15 +52,15 @@
                 </div> -->
             </ng-template>
 
-            <button type="button" class="btn-add-brand " (click)="openCentrado(contenido)">
+            <button type="button" class="btn-add-property " (click)="openCentrado(contenido)">
                 <p id="add"><i class="far fa-plus-square"></i> Agregar propiedades</p>
 
             </button>
 
             <div class="row properties">
-                <select name="property" class="property" *ngFor="let property of properties" formControlName="valores">
+                <select name="property" class="property" *ngFor="let property of properties" formControlName="valores" >
                     <option hidden selected value="">-{{property.nombre}}-</option>
-                    <option [ngValue]="value" *ngFor="let value of property?.valores">{{value.valor}}</option>
+                    <option [ngValue]="value"  *ngFor="let value of property?.valores">{{value.valor}}</option>
                 </select>
             </div>
             <div class="row">

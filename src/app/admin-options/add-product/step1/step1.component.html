@@ -27,8 +27,31 @@
                             </mat-autocomplete>
                         </mat-form-field>
                         <span *ngIf="marcaInvalida" class="text-rojo"><strong>(*)</strong></span>
-                        <i class="far fa-plus-square" id="plus-brand"></i>
-                 
+
+                        <ng-template #contenido let-modal>
+                            <div class="modal-header">
+                                <h4 class="modalTitle">
+                                    Agregar nueva marca</h4>
+                                <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" class="form-add-brand">
+                                <div class="marca-campo">
+                                    <label for="marca"  class="marca" >Marca:</label>
+                                    <input type="text" id="marca">
+                                </div>
+                              
+                                <button class="btn"  (click)="modal.close()"> Agregar</button>
+                            </form>
+                            </div>
+                        </ng-template>
+                        
+            <button type="button" class="btn-add-brand " (click)="openCentrado(contenido)">
+                <i class="far fa-plus-square" id="plus-brand"></i>
+            </button>
+
                 </div>
             </div>
             <!-- <div class="row">

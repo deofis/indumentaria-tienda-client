@@ -12,6 +12,7 @@ import { flatMap, map, startWith } from 'rxjs/operators';
 import { Producto } from 'src/app/products/clases/producto';
 import { ProductoService } from '../../producto.service';
 import Swal from "sweetalert2";
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-step1',
   templateUrl: './step1.component.html',
@@ -40,6 +41,7 @@ export class Step1Component implements OnInit {
   constructor( private router:Router,
                 private catalogoservice:CatalogoService,
                 private fb:FormBuilder,
+                public modal: NgbModal,
                 private productoService:ProductoService) { 
                   this.marcas = [];
                   this.newProduct= new Producto();
@@ -234,4 +236,9 @@ crearForm(){
         this.showUnit();
       }
     }
+
+      ///// MODAL ////
+  openCentrado(contenido){
+    this.modal.open(contenido,{centered:true})
+  }
 }

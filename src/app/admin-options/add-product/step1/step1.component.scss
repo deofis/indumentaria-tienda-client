@@ -339,3 +339,68 @@ $color-ppal:#fff;
                 }
                 }
             }
+            .form-add-brand{
+                margin-left: auto;
+                margin-right: auto;
+                 width: 90%;
+                 .marca-campo{
+                     display: flex;
+                     font-family: $fte-sec;
+                     .marca{
+                         font-size: 15px;
+                     }
+                     #marca{
+                         margin-top: -10px;
+                         margin-left: 15px;
+                         border: none;
+                         outline: none;
+                         border-bottom: 1px solid grey;
+                         font-size: 13px;
+                         width: 200px;
+                         padding-right: 3px;
+                         &:focus{
+                             border-bottom: 2px solid $color-wf3;
+                         }
+                     }
+                     }
+                     .btn{
+                         margin-left: 70%;
+                         background-color: $color-wf1;
+                         color: white;
+                         font-family: $fte-sec;
+                         font-size: 16px;
+                         border: 0px ;
+                         padding: 3px 8px;
+                         box-sizing: border-box;
+                         width: 30%;
+                         border-radius: 0px;                        
+                         &:hover{
+                             background-color: $color-wf2;
+                         }
+                     }
+             }
+             .modalTitle{
+                 font-family: $fte-ppal;
+                 font-size: 20px;
+                 margin-bottom: -20px;
+             }
+             .close{
+                 &:focus{
+             outline: none;
+                 }
+             }
+             .btn-add-brand{
+                border: none;
+              background-color: #fff;
+                    .fa-plus-square{
+                        color: $color-wf3;
+                        margin-right: 4px;
+                        font-size: 17px;
+                    }
+                    &:hover > i{
+                        transform: scale(1.1);
+                    }
+                    &:focus{
+                        outline: none;
+                    }
+            } 
