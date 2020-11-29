@@ -47,6 +47,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{MatFormFieldModule}from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatButtonModule} from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort'; 
+import { AdminPromosComponent } from './admin-options/admin-promos/admin-promos.component';
+import { PaginatePipe } from './pipes/paginate.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 
 
@@ -85,6 +92,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     AddProductComponent,
     Step1Component,
     Step2Component,
+    AdminPromosComponent,
+    PaginatePipe,
+    SortPipe,
   ],
   imports: [
     BrowserModule,
@@ -100,6 +110,10 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatAutocompleteModule,
     MatInputModule,
     MatFormFieldModule,
+    MatPaginatorModule,
+    MatButtonModule,
+    MatTableModule,
+    MatSortModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true

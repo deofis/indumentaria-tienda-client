@@ -50,6 +50,10 @@ export class ShoppingCartComponent implements OnInit {
     this.carrito = this._cartService.getCarrito();
     this.totalProductos = this.carrito.items.length;
     console.log(this.carrito);
+    console.log(this.totalProductos);
+    
+    
+    
   }
 
   eliminarItem(id: number): void {
@@ -78,6 +82,7 @@ export class ShoppingCartComponent implements OnInit {
 
     this.carritoService.actualizarCantidad(item.cantidad.toString(), productoId.toString()).subscribe(response => {
       this.carrito = response.carritoActualizado;
+      
     });
   }
 
@@ -95,7 +100,9 @@ export class ShoppingCartComponent implements OnInit {
 
     this.carritoService.actualizarCantidad(item.cantidad.toString(), productoId.toString()).subscribe(response => {
       this.carrito = response.carritoActualizado;
+      
     });
+    
   }
 
 

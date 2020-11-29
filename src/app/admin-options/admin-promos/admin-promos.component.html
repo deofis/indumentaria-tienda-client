@@ -1,0 +1,146 @@
+
+<section>
+    <div id="lateralMenu" >
+        <div id="botonMenu" class="boton" > 
+            <i  class="fas fa-angle-right " id="open-menu" (click)="showLateralMenu()" ></i> 
+            <i  class="fas fa-close " id="close-menu" (click)="hiddeLateralMenu()"></i>
+         </div>
+        <div class="lateral-container" id="lateral-container">
+            <ul class="userOptions">
+                <li [routerLink]="['/add-product']"> Añadir Producto <i class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/products-list']"> Productos <i class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/admin-promo']"> Promociones <i class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/brands-panel']"> Marcas<i class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/admin-profile']"> Mis Datos </li>
+                <!-- <li (click)="logout()"><i class="fas fa-sign-out-alt"></i>Cerrar Sesión </li> -->
+            </ul>
+        </div>
+    </div>
+    <div class="container-miscompras">
+        <div class="frame">
+            <div class="title">
+                <h2>Promociones</h2>
+            </div>
+             
+            
+            
+
+            <div class="container">
+               
+                <a href="#" class="btn-flotante d-block d-sm-none rounded-circle">+</a>
+
+                <div class="row mb-md-1 mb-2">
+                    <div class="col-md-3 col-xs-3 form-group">
+                        <input type="text" class="form-control" placeholder="Buscar" name="filterPromos" [(ngModel)]="filterPromos">
+                    </div>
+                    <div class="col-md-3 col-xs-3">
+                        <select class="custom-select">
+                            <option value="" hidden selected>Ordene por:</option>
+                            <option value="">Producto</option>
+                            <option value="">Subcategoría</option>
+                        </select>
+                    </div>
+                    <div class="col-md col-xs-12 text-right d-none d-sm-block">
+                        <button class="btn btn-primary" style="background-color: #1f4e84; border: none;">Nueva promoción</button>
+                    </div>
+                </div>
+
+                <div class="accordion"  id="accordionExample">
+                    <div class="card" *ngFor="let producto of productosEnProm | sort:filterPromos | paginate:page_size:page_number ; let i=index;" >
+                      <div class="card-header" id="headingOne" style="background-color:white ; border-style: solid; border-color: #1f4e84; border-radius: 3px; border-width: 1px;">
+            
+                        <div class="row">
+                            <div class="col-md-2 text-center col-xs-12">
+                                <i *ngIf="arrow" class="fas fa-angle-down fa-lg" data-toggle="collapse" [attr.data-target]="'#collapse'+i" aria-expanded="true" aria-controls="collapseOne" (click)="arrow = false" style="cursor: pointer;"></i>
+                                <i *ngIf="!arrow" class="fas fa-angle-up fa-lg" data-toggle="collapse" [attr.data-target]="'#collapse'+i" aria-expanded="true" aria-controls="collapseOne" (click)="arrow = true" style="cursor: pointer;"></i>
+                                <img src="../../../assets/imagenes/prod1.jpg" class="img-prod" alt="...">
+                            </div>
+
+                            <div class="col-md-3 col-xs-12 ">
+                                <h4 class="ml-xs-5 my-xs-4">{{producto.nombre}}</h4>
+                                <h3><strong>Id: </strong>{{producto.id}}</h3>
+                            </div>
+
+                            <div class="col-md-3">
+                                <h3><strong>Precio: </strong>{{producto.precio | currency}}</h3>
+                                <h3><strong>Precio oferta: </strong>{{producto.precioOferta | currency}}</h3>
+                            </div>
+
+                            <div class="col-md-3">
+                                <h3><strong>Subcategoría: </strong>{{producto.subcategoria.nombre}}</h3>
+                            </div>
+                            <div class="col-md-1 d-none d-sm-block">
+                                <h3><i class="far fa-edit fa-lg"></i></h3>
+                                <h3><i class="far fa-trash-alt fa-lg"></i></h3>
+                            </div>
+                            
+                            <div class="col d-block d-sm-none ml-10 text-center">
+                                <i class="far fa-edit fa-lg mr-5"></i>
+                                <i class="far fa-trash-alt fa-lg "></i>
+                            </div>
+                                
+                            
+                            
+                                
+                                                       
+                            
+                        </div>
+            
+                      </div>                 
+                      <div [attr.id]="'collapse'+i" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body" style="background-color: rgb(245, 245, 245); border: solid; border-color: #1f4e84; border-width: 1px; border-top: none;">
+                          <p *ngFor="let propiedad of producto.propiedades">
+                              {{propiedad.nombre}}: <small *ngFor="let valor of propiedad.valores">{{valor.valor}}, </small>
+                          </p>
+                        </div>
+                      </div>
+                    
+                    </div>
+                </div>
+    
+                <div class="paginator">
+                    <mat-paginator style="background:none;" [length]="productosEnProm.length"
+                   [pageSize]="page_size"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="handlePage($event)">
+                    </mat-paginator>
+                </div>
+
+
+            </div>
+             
+        
+
+            
+
+
+
+            
+        </div>
+    </div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
