@@ -70,7 +70,7 @@ export class UserSignUpComponent implements OnInit {
     msj.style.display = "block";
     msj.style.width = "70%";
     let contBlanco = document.getElementById("cont-form");
-    contBlanco.style.marginTop = "-420px";
+    contBlanco.style.marginTop = "200px";
   }
 
   /**
