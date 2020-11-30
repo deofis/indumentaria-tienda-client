@@ -58,9 +58,10 @@
             </button>
 
             <div class="row properties">
-                <select name="property" class="property" *ngFor="let property of properties" formControlName="valores" >
-                    <option hidden selected value="">-{{property.nombre}}-</option>
-                    <option [ngValue]="value"  *ngFor="let value of property?.valores">{{value.valor}}</option>
+                <select  class="property" *ngFor="let property of properties ; let i=index" formArrayName="valores"  >
+                    <option hidden selected value="" >-{{property.nombre}} -</option>
+
+                    <option [ngValue]="value"  *ngFor="let value of property?.valores" [formControlName]="i">{{value.valor}}</option>
                 </select>
             </div>
             <div class="row">

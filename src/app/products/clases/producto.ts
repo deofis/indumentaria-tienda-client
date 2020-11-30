@@ -14,7 +14,7 @@ export class Producto {
     subcategoria: Subcategoria;
     unidadMedida: UnidadMedida;
     fechaCreacion: number;
-    foto: string;
+    foto: File;
     imagenes: string[];
     destacado: boolean;
     activo: boolean;

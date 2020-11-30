@@ -7,13 +7,13 @@
     <form autocomplete="off" class="form1" id="form1" [formGroup]="form" (ngSubmit)="crearProducto()">
         <div class="container-white">
             <div class="row">
-               
+
                     <div class="name">
                         <label for="name"> Nombre:</label>
                         <input type="text" id="name" formControlName="nombre" [class.is-invalid]="nombreInvalido">
                         <span *ngIf="nombreInvalido" class="text-rojo"><strong>(*)</strong></span>
                     </div>
-            
+
                     <div class="brand">
                         <label for="brand">Marca: </label>
                         <mat-form-field class="example-full-width inputBrand">
@@ -42,30 +42,33 @@
                                     <label for="marca"  class="marca" >Marca:</label>
                                     <input type="text" id="marca">
                                 </div>
-                              
+
                                 <button class="btn"  (click)="modal.close()"> Agregar</button>
                             </form>
                             </div>
                         </ng-template>
-                        
+
             <button type="button" class="btn-add-brand " (click)="openCentrado(contenido)">
                 <i class="far fa-plus-square" id="plus-brand"></i>
             </button>
 
                 </div>
             </div>
-            <!-- <div class="row">
+            <div class="row box-img">
                 <div class="add-img">
                     <p>Añada una fotografía principal de su producto.
-                        <br>
-                       <span>-Hasta 6 fotografías permitidas-</span>
+                     <br>
+                       <!-- <span>-Hasta 6 fotografías permitidas-</span> -->
                     </p>
-                    <input type="file" id="add-files" formControlName="foto">
+                    <input type="file" id="add-files" (change)="readUrl($event)" formControlName="foto" accept="image/*">
+                    
                 </div>
                 <div class="images">
-
+                      <img id="img-ppal"  [src]="url">
                 </div>
-            </div> -->
+
+
+            </div>
             <div class="row subandcat">
                 <div class="input-msj">
                     <span *ngIf="categoriaInvalida" class="text-rojo"><strong>(*)</strong></span>
@@ -76,7 +79,7 @@
                         </option>
 
                     </select>
-                   
+
                 </div>
                 <div class="input-msj">
                     <span *ngIf="subcategoriaInvalida" class="text-rojo"><strong>(*)</strong></span>
@@ -87,7 +90,7 @@
                             {{subcategoria.nombre}}
                         </option>
                     </select>
-                   
+
                 </div>
             </div>
             <div class="row">
@@ -98,7 +101,7 @@
                     <option>{{unidad}}</option>
                     <option *ngFor="let unidad of unidadesMedida" [ngValue]="unidad">{{unidad.nombre}}</option>
                 </select>
-                
+
                 </div>
                 <div class="availability-container">
                     <label for="availability"> Disponibilidad General:</label>
@@ -142,7 +145,7 @@
             <span *ngIf="precioInvalido || categoriaInvalida || subcategoriaInvalida || unidadInvalida || nombreInvalido" class="text-rojo"><strong>(*)Los campos señalados son obligatorios.</strong></span>
         </div>
 
-     
+
         <button class="btn-end" id="btn-one" (click)="showStep2()">Guardar y finalizar</button>
     </form>
 

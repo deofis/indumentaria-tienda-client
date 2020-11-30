@@ -38,6 +38,7 @@ export class Step2Component implements OnInit {
    this.newSku.precioOferta=this.formSkus.controls.precioOferta.value;
    this.newSku.disponibilidad=this.formSkus.controls.disponibilidad.value;
    this.newSku.valores=this.formSkus.controls.valores.value;
+     
    console.log(this.newSku);
 
   //  this.productoService.createNewSku(this.newSku,1).subscribe( response => 
@@ -52,16 +53,14 @@ export class Step2Component implements OnInit {
        precioOferta:[""],
        disponibilidad:[""],
        valoresData:[""],
-       valores:[""],
+       valores:this.fb.array([]),
        defaultProducto:[""],
        producto:[""],  
     });
-  //  const elegido=this.fb.array([
-  //    valores:[""],
-  //   ])
+   
   }
-  get valores(){
-    return this.formSkus.get('valores')
+  get valores(): FormArray{
+    return this.formSkus.get('valores') as FormArray
   }
   get precio(){
     return this.formSkus.get('precio')

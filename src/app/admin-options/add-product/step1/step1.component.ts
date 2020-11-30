@@ -12,6 +12,7 @@ import { flatMap, map, startWith } from 'rxjs/operators';
 import { Producto } from 'src/app/products/clases/producto';
 import { ProductoService } from '../../producto.service';
 import Swal from "sweetalert2";
+import {HttpClient} from '@angular/common/http';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-step1',
@@ -32,13 +33,16 @@ export class Step1Component implements OnInit {
   categoria:string="-Categoría-";
   subcategoria:string="-Subcategoría-";
   unidad:string="-Unidad de Medida-";
-
-  // autocomplete
+  // file
+url:string="https://i.pinimg.com/originals/28/03/4e/28034e601b054650d3a70e382db80b44.jpg";
+ selectedFile:File=null; 
+// autocomplete
   autoControl = new FormControl();
   marcas:Marca[];
   filteredBrands:Observable<Marca[]>;
   newProduct:Producto;
   constructor( private router:Router,
+                private http:HttpClient,
                 private catalogoservice:CatalogoService,
                 private fb:FormBuilder,
                 public modal: NgbModal,
@@ -83,16 +87,17 @@ crearProducto(){
   this.newProduct.marca=this.form.controls.marca.value;
   this.newProduct.subcategoria=this.form.controls.subcategoria.value;
   this.newProduct.unidadMedida=this.form.controls.unidadMedida.value;
+ 
   console.log(this.newProduct);
  
  
   this.productoService.createNewProduct(this.newProduct).subscribe( response => {
     console.log(response);
-    Swal.fire({
-      icon:"success",
-      title:"Producto creado",
-      text: `El producto ${response.nombre} ha sido creado con éxito!`
-    });
+    // Swal.fire({
+    //   icon:"success",
+    //   title:"Producto creado",
+    //   text: `El producto ${response.nombre} ha sido creado con éxito!`
+    // });
     this.form.disable();
   }, err => {
     console.log(err);
@@ -113,6 +118,7 @@ crearForm(){
     unidadMedida:["", Validators.required],
     combinations:[false],
     checkoferta:[false],
+    // foto:null,
 
   });
 }
@@ -136,6 +142,9 @@ crearForm(){
     get precioInvalido() {
       return this.form.get('precio').invalid && this.form.get('precio').touched;
     }
+    // get foto(){
+    //   return this.form.get('foto')
+    // }
 
   ///// *** *** STEP 1 **** *** ///
   showStep2(){
@@ -151,6 +160,8 @@ crearForm(){
       step2.style.display="none";
       step1.style.display="block";
     }
+
+    
   }
   hasCombinations(){
     let button= document.getElementById("btn-one");
@@ -241,4 +252,25 @@ crearForm(){
   openCentrado(contenido){
     this.modal.open(contenido,{centered:true})
   }
+
+
+  //// Upload imgs///////
+
+  readUrl(event:any) {
+    console.log(event);
+    this.selectedFile=event.target.files[0];
+    console.log(this.selectedFile)
+    this.newProduct.foto=this.selectedFile;
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = (event:any) => {
+        this.url = event.target.result;
+      }
+
+      reader.readAsDataURL(event.target.files[0]);
+    }
+}
+
+
 }
