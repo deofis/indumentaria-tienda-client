@@ -53,4 +53,10 @@ id:number;
     return this.http.get(`${this.url}/catalogo/productos/ver/${id}`).pipe( map( (response:any) => response.producto as Producto));
   }
 
+  getSubcategorias(){
+    return this.http.get(`${this.url}/subcategorias`).pipe(map((resp:any) => {
+      return resp.subcategorias
+    }));
+  }
+
 }

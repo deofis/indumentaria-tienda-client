@@ -26,8 +26,109 @@
             
 
             <div class="container">
-               
-                <a href="#" class="btn-flotante d-block d-sm-none rounded-circle">+</a>
+
+
+                <!-- MODAL NUEVA PROMOCIÓN -->
+                <ng-template #contenido let-modal>
+                    <div class="modal-header">
+                        <h3 class="">Nueva promoción</h3>
+                        <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Subcategoría</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Producto</a>
+                            </li>
+                            
+                          </ul>
+                          <div class="tab-content" id="myTabContent">
+
+                            <!-- Pestaña subcategoria -->
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="row mt-4">
+                                    <div class="col-md-3 col-xs-12 overflow-auto">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead class="thead-dark">
+                                                  <tr>
+                                                    <th scope="col">Nombre</th>
+                                                    <th scope="col">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr *ngFor="let producto of productosEnProm">
+                                                    <td>{{producto.nombre}}</td>
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
+                                        </div>
+                                        <hr class="d-block d-sm-none">
+                                    </div>
+                                    <div class="col-md-9 col-xs-12">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h3>Seleccione la o las subcategorías a la que quiere aplicar la promoción.</h3>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3 offset-md-8 text-right form-group">
+                                                <input type="text" class="form-control" placeholder="Buscar" name="filterSubcategorias" [(ngModel)]="filterSubcategorias">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-8 offset-md-2">
+                                                <ul class="list-group table-responsive">
+                                                    <li class="list-group-item" *ngFor="let sub of subcategorias | sort:filterSubcategorias">
+                                                        <div class="row">
+                                                            <div class="col-md-10">{{sub.nombre}}</div>
+                                                            <div class="col-md-2 text-right form-check">
+                                                                <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pestaña prducto -->
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                Pantalla en proceso
+                            </div>
+
+                          </div>
+                        
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn-modal" (click)="modal.close()"> Agregar</button>
+                    </div> -->
+                </ng-template>
+
+
+                <!-- CONTENIDO PRINCIPAL -->
+                <a class="btn-flotante d-block d-sm-none rounded-circle" (click)="open(contenido)">+</a>
 
                 <div class="row mb-md-1 mb-2">
                     <div class="col-md-3 col-xs-3 form-group">
@@ -41,7 +142,7 @@
                         </select>
                     </div>
                     <div class="col-md col-xs-12 text-right d-none d-sm-block">
-                        <button class="btn btn-primary" style="background-color: #1f4e84; border: none;">Nueva promoción</button>
+                        <button class="btn btn-primary" style="background-color: #1f4e84; border: none;" (click)="open(contenido)">Nueva promoción</button>
                     </div>
                 </div>
 
@@ -50,7 +151,7 @@
                       <div class="card-header" id="headingOne" style="background-color:white ; border-style: solid; border-color: #1f4e84; border-radius: 3px; border-width: 1px;">
             
                         <div class="row">
-                            <div class="col-md-2 text-center col-xs-12">
+                            <div class="col-md-2 text-center col-xs-12 mb-2">
                                 <i *ngIf="arrow" class="fas fa-angle-down fa-lg" data-toggle="collapse" [attr.data-target]="'#collapse'+i" aria-expanded="true" aria-controls="collapseOne" (click)="arrow = false" style="cursor: pointer;"></i>
                                 <i *ngIf="!arrow" class="fas fa-angle-up fa-lg" data-toggle="collapse" [attr.data-target]="'#collapse'+i" aria-expanded="true" aria-controls="collapseOne" (click)="arrow = true" style="cursor: pointer;"></i>
                                 <img src="../../../assets/imagenes/prod1.jpg" class="img-prod" alt="...">
@@ -58,20 +159,20 @@
 
                             <div class="col-md-3 col-xs-12 ">
                                 <h4 class="ml-xs-5 my-xs-4">{{producto.nombre}}</h4>
-                                <h3><strong>Id: </strong>{{producto.id}}</h3>
+                                <h4>Id: {{producto.id}}</h4>
                             </div>
 
                             <div class="col-md-3">
-                                <h3><strong>Precio: </strong>{{producto.precio | currency}}</h3>
-                                <h3><strong>Precio oferta: </strong>{{producto.precioOferta | currency}}</h3>
+                                <h4>Precio: {{producto.precio | currency}}</h4>
+                                <h4>Precio oferta: {{producto.precioOferta | currency}}</h4>
                             </div>
 
                             <div class="col-md-3">
-                                <h3><strong>Subcategoría: </strong>{{producto.subcategoria.nombre}}</h3>
+                                <h4>Subcategoría: {{producto.subcategoria.nombre}}</h4>
                             </div>
                             <div class="col-md-1 d-none d-sm-block">
-                                <h3><i class="far fa-edit fa-lg"></i></h3>
-                                <h3><i class="far fa-trash-alt fa-lg"></i></h3>
+                                <h4><i class="far fa-edit fa-lg"></i></h4>
+                                <h4><i class="far fa-check-square fa-lg"></i></h4>
                             </div>
                             
                             <div class="col d-block d-sm-none ml-10 text-center">
@@ -89,6 +190,7 @@
                       </div>                 
                       <div [attr.id]="'collapse'+i" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div class="card-body" style="background-color: rgb(245, 245, 245); border: solid; border-color: #1f4e84; border-width: 1px; border-top: none;">
+                            <h3>Propiedades: </h3>
                           <p *ngFor="let propiedad of producto.propiedades">
                               {{propiedad.nombre}}: <small *ngFor="let valor of propiedad.valores">{{valor.valor}}, </small>
                           </p>

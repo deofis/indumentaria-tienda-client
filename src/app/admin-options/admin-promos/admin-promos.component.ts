@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent, MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 import { Router } from '@angular/router';
 import { Producto } from 'src/app/products/clases/producto';
 import { CatalogoService } from '../../products/services/catalogo.service';
+import { Subcategoria } from 'src/app/products/clases/subcategoria';
 
 /**
  * @title Data table with sorting, pagination, and filtering.
@@ -21,23 +24,30 @@ import { CatalogoService } from '../../products/services/catalogo.service';
 export class AdminPromosComponent implements OnInit {
 
   productosEnProm:Producto[] = [];
-  page_size: number = 5;
+  page_size: number = 10;
   page_number:number = 1;
-  pageSizeOptions = [5, 10, 20 , 50]
+  pageSizeOptions = [10, 20, 50]
   value = 'Ejemplo: Galaxy';
   arrow:boolean;
   filterPromos ='';
+  filterSubcategorias="";
+
+  subcategorias:Subcategoria[] = [];
 
 
 
 
 
-  constructor( private catalogoService: CatalogoService ) { }
+  constructor( private catalogoService: CatalogoService,
+               private modalService: NgbModal ) { }
 
   ngOnInit(): void {
 
     this.arrow = true;
     this.obtenerProductosEnPromo();
+    this.obetenerSubcategorias();
+    
+
     //this.dataSource = new MatTableDataSource(this.productosEnProm);
     
     
@@ -46,30 +56,20 @@ export class AdminPromosComponent implements OnInit {
   
 
 
-  /* applyFilter(event: Event){
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-
-  } */
-
-
   obtenerProductosEnPromo(){
     this.catalogoService.getProductos().subscribe((resp:any) => {
       this.productosEnProm = resp;
-      /* this.dataSource = new MatTableDataSource(resp);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-      console.log(this.dataSource); */
-      
-
-      /* console.log(this.productosEnProm); */
       
     });
   };
+
+  obetenerSubcategorias(){
+    this.catalogoService.getSubcategorias().subscribe((resp:any) =>{
+      this.subcategorias = resp;
+      
+      
+    })
+  }
 
   handlePage(e: PageEvent){
     this.page_size = e.pageSize;
@@ -112,6 +112,15 @@ export class AdminPromosComponent implements OnInit {
     close.style.display="none";
     let arrow = document.getElementById("open-menu");
     arrow.style.display="block"
+  }
+
+
+  //Modal nueva promoción
+
+  open(contenido){
+
+    this.modalService.open(contenido, { size: 'xl' });
+
   }
 
 

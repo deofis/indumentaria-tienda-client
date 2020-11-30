@@ -54,6 +54,7 @@ import {MatSortModule} from '@angular/material/sort';
 import { AdminPromosComponent } from './admin-options/admin-promos/admin-promos.component';
 import { PaginatePipe } from './pipes/paginate.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import {MatListModule} from '@angular/material/list';
 
 
 
@@ -113,7 +114,8 @@ import { SortPipe } from './pipes/sort.pipe';
     MatPaginatorModule,
     MatButtonModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatListModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true
