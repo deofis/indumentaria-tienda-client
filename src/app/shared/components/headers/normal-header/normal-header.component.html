@@ -61,10 +61,10 @@
 <!-- User not authenticated -->
 <ul *ngIf="!estaLogueado" id="userOptions" (mouseover)="showUserMenu()" (mouseout)="hiddeUserMenu()">
     <a [routerLink]="['/login']">
-        <li><i class="fas fa-sign-in-alt"></i>Iniciar Sesión </li>
+        <li>Iniciar Sesión </li>
     </a>
     <a [routerLink]="['user-sign-up']">
-        <li><i class="fas fa-user-plus"></i>Registrarse</li>
+        <li>Registrarse</li>
     </a>
 </ul>
 <!-- Normal user -->
