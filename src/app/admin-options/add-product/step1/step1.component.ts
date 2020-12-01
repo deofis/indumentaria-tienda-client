@@ -206,8 +206,7 @@ crearForm(){
       comboBoxSubcateories.style.display="block";
     }
     showUnit(){
-       this.unidadSeleccionada = this.form.controls.unidadMedida.value;
-     
+      this.unidadSeleccionada = this.form.controls.unidadMedida.value;
       let unidad = document.getElementById("unidadElegida");
       
       if(this.unidadSeleccionada.nombre=="Unidad"){
