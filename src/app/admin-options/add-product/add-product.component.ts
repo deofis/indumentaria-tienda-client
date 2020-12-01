@@ -36,7 +36,6 @@ unidadesMedida:UnidadMedida[];
 
   }
 
-
   showLateralMenu(){
     if (screen.width>650) {
     let lateralmenu=document.getElementById("lateralMenu");

@@ -34,11 +34,13 @@ export class Step1Component implements OnInit {
   subcategoria:string="-Subcategoría-";
   unidad:string="-Unidad de Medida-";
   // file
-url:string="https://i.pinimg.com/originals/28/03/4e/28034e601b054650d3a70e382db80b44.jpg";
+  url:string;
  selectedFile:File=null; 
+ fotosubir:File=null;
 // autocomplete
   autoControl = new FormControl();
   marcas:Marca[];
+  newBrand:Marca;
   filteredBrands:Observable<Marca[]>;
   newProduct:Producto;
   constructor( private router:Router,
@@ -49,7 +51,7 @@ url:string="https://i.pinimg.com/originals/28/03/4e/28034e601b054650d3a70e382db8
                 private productoService:ProductoService) { 
                   this.marcas = [];
                   this.newProduct= new Producto();
-                
+                this.newBrand=new Marca();
                 }
 
   ngOnInit(): void {
@@ -73,7 +75,7 @@ url:string="https://i.pinimg.com/originals/28/03/4e/28034e601b054650d3a70e382db8
   mostrarNombre(marca?: Marca): string | undefined {
     return marca? marca.nombre: undefined;
   }
-/// *** ***  Formularios
+/// *** ***  Formulario 1
 crearProducto(){
   if (this.form.invalid){
     return this.form.markAllAsTouched();
@@ -88,17 +90,19 @@ crearProducto(){
   this.newProduct.subcategoria=this.form.controls.subcategoria.value;
   this.newProduct.unidadMedida=this.form.controls.unidadMedida.value;
  
-  console.log(this.newProduct);
- 
- 
   this.productoService.createNewProduct(this.newProduct).subscribe( response => {
     console.log(response);
+    this.newProduct.id=response.id;
     // Swal.fire({
     //   icon:"success",
     //   title:"Producto creado",
     //   text: `El producto ${response.nombre} ha sido creado con éxito!`
     // });
     this.form.disable();
+    let button = document.getElementById("btn-one");
+    button.style.display="none";
+    let formImg=document.getElementById("form-img");
+    formImg.style.display="flex";
   }, err => {
     console.log(err);
   });
@@ -116,10 +120,7 @@ crearForm(){
     subcategoria:["", Validators.required],
     categoria:["",Validators.required],
     unidadMedida:["", Validators.required],
-    combinations:[false],
     checkoferta:[false],
-    // foto:null,
-
   });
 }
 
@@ -142,34 +143,49 @@ crearForm(){
     get precioInvalido() {
       return this.form.get('precio').invalid && this.form.get('precio').touched;
     }
-    // get foto(){
-    //   return this.form.get('foto')
-    // }
+
+
+
+  //// Upload imgs///////
+  readUrl(event:any) {
+    // console.log(event);
+    this.selectedFile=event.target.files[0];
+    // console.log(this.selectedFile)
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = (event:any) => {
+        this.url = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+      document.getElementById("img-ppal").style.display="block"
+    }
+}
+cargarImagen(){
+ 
+  this.productoService.uploadPhoto(this.selectedFile, this.newProduct.id)
+    .subscribe( response => {
+      console.log(response)})
+}
 
   ///// *** *** STEP 1 **** *** ///
   showStep2(){
     let step2= document.getElementById("step2");
     let step1=document.getElementById("step1");
-    if(this.showForm2 == true && this.form.valid){
-      step2.style.display="block";
-      step1.style.display="none";
-      document.getElementById("btn-one").style.display="none";
-      document.getElementById("btn-two").style.display="block";
-      this.showForm2=false;
-    }else {
-      step2.style.display="none";
-      step1.style.display="block";
-    }
-
-    
+    step2.style.display="block";
+    step1.style.display="none";   
   }
+
   hasCombinations(){
-    let button= document.getElementById("btn-one");
+    let btn= document.getElementById("btn-end1");
+    let btn2= document.getElementById("btn-end2");
     if(this.showForm2 == false){
-      button.innerText="Guardar y Continuar"
+      btn.style.display="none";
+      btn2.style.display="block"
       this.showForm2=true;
     }else {
-      button.innerText="Guardar y Finalizar"
+      btn.style.display="block";
+      btn2.style.display="none";
       this.showForm2=false;
     }
   }
@@ -185,7 +201,6 @@ crearForm(){
   }
   
   private _filter(value:any) {
-    console.log(value);
     //const filterValue = value.toLowerCase();
     return this.marcas.filter(marca => marca.nombre.toLowerCase().indexOf(value) === 0);
   }
@@ -211,7 +226,6 @@ crearForm(){
 
     showSubcategories(){
       this.categoriaSeleccionada = this.form.controls.categoria.value;
-      console.log(this.categoriaSeleccionada);
 
       this.catalogoservice.getSubcategoriasPorCategoria(this.categoriaSeleccionada.id)
       .subscribe(response => {
@@ -223,7 +237,7 @@ crearForm(){
     }
     showUnit(){
        this.unidadSeleccionada = this.form.controls.unidadMedida.value;
-      // console.log(this.unidadSeleccionada);
+     
       let unidad = document.getElementById("unidadElegida");
       
       if(this.unidadSeleccionada.nombre=="Unidad"){
@@ -248,29 +262,37 @@ crearForm(){
       }
     }
 
-      ///// MODAL ////
+      ///// MODAL  NUEVA MARCA////
   openCentrado(contenido){
     this.modal.open(contenido,{centered:true})
   }
+  addBrand(){
+   let input = document.getElementById("marca")as HTMLInputElement;
+    //lleno el objeto marca
+    if(input.value !== ""){
+   this.newBrand.id=1;
+   this.newBrand.nombre=input.value;
+   //lo envio
+   this.catalogoservice.addBrand(this.newBrand)
+   .subscribe( response => {
+     console.log(response)})
+  
+     //msj listo 
+  let modal = document.getElementById("listo");
+  modal.style.display="block";
+  let form =document.getElementById("form-add-brand");
+  form.style.display="none"
+  let btn =document.getElementById("btn-brand");
+  btn.style.display="none"
+
+  //escribo el input con la nueva marca
+   }else{
+     console.log("escribi algo lqdtm")
+   }
+  }
 
 
-  //// Upload imgs///////
 
-  readUrl(event:any) {
-    console.log(event);
-    this.selectedFile=event.target.files[0];
-    console.log(this.selectedFile)
-    this.newProduct.foto=this.selectedFile;
-    if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-
-      reader.onload = (event:any) => {
-        this.url = event.target.result;
-      }
-
-      reader.readAsDataURL(event.target.files[0]);
-    }
-}
 
 
 }

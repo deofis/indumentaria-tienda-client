@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpParams, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -36,7 +36,16 @@ url:string=API_BASE_URL+"/api";
   //     map((response:any) =>response )
   //   )
   // }
+ 
 
+  uploadPhoto(archivo: File, id: any){
+    let formData = new FormData();
+    formData.append("foto", archivo);
+    formData.append("id", id);
+    return this.http.post(`${this.url}/productos/${id}/fotos/principal`,formData).pipe(
+      map((response:any) =>response)
+    )
+  }
 }
 
  
