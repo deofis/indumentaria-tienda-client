@@ -14,12 +14,14 @@ import { ProductoService } from '../../producto.service';
 import Swal from "sweetalert2";
 import {HttpClient} from '@angular/common/http';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { Output,EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-step1',
   templateUrl: './step1.component.html',
   styleUrls: ['./step1.component.scss']
 })
 export class Step1Component implements OnInit {
+  @Output() enviar= new EventEmitter();
   showForm2:boolean = false;
   categorias:Categoria[];
   subcategorias: Subcategoria[];
@@ -83,7 +85,7 @@ crearProducto(){
   this.newProduct.nombre=this.form.controls.nombre.value;
   this.newProduct.descripcion=this.form.controls.descripcion.value;
   this.newProduct.precio=this.form.controls.precio.value;
-  this.newProduct.precioOferta=this.form.controls.precioOferta.value;
+  //this.newProduct.precioOferta=this.form.controls.precioOferta.value;
   this.newProduct.disponibilidadGeneral=this.form.controls.disponibilidadGeneral.value;
   this.newProduct.destacado=this.form.controls.destacado.value;
   this.newProduct.marca=this.form.controls.marca.value;

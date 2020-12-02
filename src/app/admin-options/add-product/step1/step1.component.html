@@ -154,7 +154,9 @@
                 entre ellas.</label>
         </div>
         <button class="btn" id="btn-end1" >Guardar y Finalizar</button>
-        <button class="btn" id="btn-end2" (click)="showStep2()">Guardar y Continuar </button>
+        <button class="btn" id="btn-end2"(click)="showStep2()" >Guardar y Continuar </button>
     </form>
 </div>
 </div>
+
+ <app-step2 [newProduct]="newProduct"></app-step2>
