@@ -30,6 +30,7 @@ export class Step1Component implements OnInit {
   form:FormGroup;
   oferta:boolean=false;
   unidadesMedida:UnidadMedida[];
+  step2:boolean=false;
   //nombres para los select
   marca:string="-Marca-";
   categoria:string="-Categoría-";
@@ -172,10 +173,9 @@ cargarImagen(){
 
   ///// *** *** STEP 1 **** *** ///
   showStep2(){
-    let step2= document.getElementById("step2");
     let step1=document.getElementById("step1");
-    step2.style.display="block";
     step1.style.display="none";   
+    this.step2=true;
   }
 
   hasCombinations(){

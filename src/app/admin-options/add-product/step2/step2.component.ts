@@ -37,8 +37,9 @@ export class Step2Component implements OnInit {
 
   ngOnInit(): void {
      
-   
+   this.getPropertiesOfSubcategory();
     this.crearForm();
+    console.log(this.newProduct)
   }
  
   showLateralMenu(){
@@ -150,8 +151,5 @@ export class Step2Component implements OnInit {
     this.modal.open(contenido,{centered:true})
   }
 
-  cargar(){
-    console.log(this.newProduct)
-    this.getPropertiesOfSubcategory();
-  }
+
 }
