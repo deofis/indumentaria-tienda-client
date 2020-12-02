@@ -3,6 +3,7 @@ import { PageEvent, MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -30,22 +31,32 @@ export class AdminPromosComponent implements OnInit {
   value = 'Ejemplo: Galaxy';
   arrow:boolean;
   filterPromos ='';
-  filterSubcategorias="";
 
+
+  filterSubcategorias="";
   subcategorias:Subcategoria[] = [];
+  subASeleccionar:Subcategoria[] = [];
+  subSeleccionadas:Subcategoria[] = [];
+  infoFechaInicio = "Si no selecciona una fecha de inicio, por defecto será la actual."
+
+  modelInicio: NgbDateStruct;
+  modelFin: NgbDateStruct;
+  
 
 
 
 
 
   constructor( private catalogoService: CatalogoService,
-               private modalService: NgbModal ) { }
+               private modalService: NgbModal,
+               private calendar: NgbCalendar ) { }
 
   ngOnInit(): void {
 
     this.arrow = true;
     this.obtenerProductosEnPromo();
     this.obetenerSubcategorias();
+    
     
 
     //this.dataSource = new MatTableDataSource(this.productosEnProm);
@@ -66,10 +77,46 @@ export class AdminPromosComponent implements OnInit {
   obetenerSubcategorias(){
     this.catalogoService.getSubcategorias().subscribe((resp:any) =>{
       this.subcategorias = resp;
-      
+      this.subASeleccionar = resp;    
       
     })
   }
+
+  anadir(i:number){
+
+    this.subSeleccionadas.push(this.subASeleccionar[i]);
+    this.subASeleccionar.splice(i, 1);
+    /* this.filterSubcategorias=""; */
+
+    /* console.log(this.subASeleccionar);
+    console.log(this.subSeleccionadas);   */ 
+    
+  }
+
+  eliminar(j:number){
+    this.subASeleccionar.push(this.subSeleccionadas[j]);
+    this.subSeleccionadas.splice(j, 1);
+  }
+
+  reiniciar(){
+    this.catalogoService.getSubcategorias().subscribe((resp:any) =>{
+      this.subcategorias = resp;
+      this.subASeleccionar = resp;    
+      
+    })
+    this.subSeleccionadas = [];
+  }
+
+  selectToday() {
+    this.modelInicio = this.calendar.getToday();
+  }
+
+
+
+
+
+
+
 
   handlePage(e: PageEvent){
     this.page_size = e.pageSize;
@@ -119,7 +166,7 @@ export class AdminPromosComponent implements OnInit {
 
   open(contenido){
 
-    this.modalService.open(contenido, { size: 'xl' });
+    this.modalService.open(contenido, { size: 'xl', scrollable: true});
 
   }
 
