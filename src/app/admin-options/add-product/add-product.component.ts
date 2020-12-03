@@ -7,6 +7,7 @@ import { Subcategoria } from 'src/app/products/clases/subcategoria';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Marca } from 'src/app/products/clases/marca';
 import { UnidadMedida } from 'src/app/products/clases/unidad-medida';
+import { Producto } from 'src/app/products/clases/producto';
 
 @Component({
   selector: 'app-add-product',
@@ -27,15 +28,12 @@ unidadesMedida:UnidadMedida[];
                private catalogoservice:CatalogoService,
                private fb:FormBuilder,
                ) { 
-     
 }
 
   ngOnInit(): void {
     
 
-
   }
-
 
   showLateralMenu(){
     if (screen.width>650) {
@@ -80,12 +78,7 @@ unidadesMedida:UnidadMedida[];
     this.router.navigate(['/home']);
   }
 
-
-  ///// *** *** STEP 2****** ///
-
-  addProperty(){
-    alert("agregando atributo")
-  }
+///////
 
 
 }

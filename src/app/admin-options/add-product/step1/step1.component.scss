@@ -53,6 +53,12 @@ $color-ppal:#fff;
                     }
                 }
             }       
+            .contenedor{
+                width: 100%;
+                background-color: white;
+                padding: 30px 60px 15px 60px;
+                box-shadow: 1px 2px 3px $color-sec;
+               margin-bottom: 50px;
                 .form1{
                     width: 100%;
                     font-family:$fte-sec;
@@ -62,17 +68,12 @@ $color-ppal:#fff;
                     align-items: center;
                     flex-direction: column;
                    .container-white{
-                       width: 100%;
-                    background-color: white;
-                    padding: 30px 60px 15px 60px;
-                    box-shadow: 1px 2px 3px $color-sec;
-                   
+                    
                     .row{
                         display: flex;
                         margin-bottom: 45px;
                         align-items: baseline;
                        
-             
                             .name{
                                 #name{
                                     margin-left: 10px;
@@ -125,26 +126,7 @@ $color-ppal:#fff;
                                 margin-bottom: 0;
                                 font-size: 12px;
                                }
-                        
-                      
                        
-                        .add-img{
-                            outline: none;
-                            p{
-                            font-size: 15px;
-                            span{
-                                color: grey;
-                                font-size: 13px;
-                            }
-                            }
-                            #add-files{
-                                font-size: 13px;
-                                display: block;
-                                margin-top: -10px;
-                                outline: none;
-                            }
-                            
-                        }
                         .input-msj{
                             #categories, #subcategories, #marca{
                                 font-size: 15px;
@@ -184,13 +166,7 @@ $color-ppal:#fff;
                             border-bottom: 1px solid red;
                           }
                        }
-                        #combinations{
-                            margin-right: 10px;
-                            margin-top: -5px;
-                            margin-bottom: -20px;
-                           
-                        }
-                        //// step 2 
+                        
                         #property{
                             font-size: 15px;
                             border: none;
@@ -296,9 +272,7 @@ $color-ppal:#fff;
                         color: red;
                         text-align:left;
                         margin-bottom: 0;
-                        font-size: 14px;
-                      
-                       
+                        font-size: 14px;  
                     }
                     .subandcat{
                         margin-top: -20px;
@@ -317,25 +291,177 @@ $color-ppal:#fff;
                     }
                    
                    }
-                   .btn-end{
+                   .btn{
                     background-color: $color-wf1;
                     color: white;
-                    margin-top: 20px;
+                    margin-top: 0px;
                     font-family: $fte-ppal;
                     text-transform: uppercase;
                     font-size: 18px;
                     border: 0px ;
                     padding: 7px 13px;
-                    align-self: center;
                     box-sizing: border-box;
-                    width: 35%;
                     border-radius: 0px;     
                     margin-left: auto;
-                    margin-right: auto; 
-                    margin-bottom: 50px;                
+                    margin-right: auto;               
                     &:hover{
                         transform: scale(1.03);
                     }
+                  }
+                .chico{
+                   margin-right: 20px;
+                    width: 20%;
                 }
+                }
+                .form-img{
+                   display: none;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: center;
+                    width: 100%;
+                    .row{
+                        display: flex;
+                        margin-bottom: 45px;
+                        justify-content: space-between;
+                        align-items: flex-start;
+                        width: 85%;
+                        margin-top: -13px;
+                        .add-img{
+                         
+                            outline: none;
+                            p{
+                            font-size: 15px;
+                            margin-bottom: 25px;
+                            span{
+                                color: grey;
+                                font-size: 13px;
+                            }
+                            }
+                            #add-files{
+                                font-size: 13px;
+                                display: block;
+                                margin-top: -10px;
+                                outline: none;
+                                width: 350px;
+                                overflow: hidden;
+                            }
+                            
+                        }
+                        .images{
+                            margin-top:-10px;
+                            #img-ppal{
+                               width: 100px;
+                               height: 100px; 
+                               display: none;
+                            }
+                        }
+                    }
+                    .check-sku{
+                        display: flex;
+                        margin-bottom: 45px;
+                        align-items: baseline;
+                        #combinations{
+                            margin-right: 10px;
+                            margin-top: -5px;
+                            margin-bottom: -20px;
+                           
+                        }
+                    }
+                    .btn{
+                        background-color: $color-wf1;
+                        color: white;
+                        margin-top: 0px;
+                        font-family: $fte-ppal;
+                        text-transform: uppercase;
+                        font-size: 18px;
+                        border: 0px ;
+                        padding: 7px 13px;
+                        align-self: center;
+                        box-sizing: border-box;
+                        width: 35%;
+                        border-radius: 0px;     
+                        margin-left: auto;
+                        margin-right: auto; 
+                        margin-bottom: 50px;                
+                        &:hover{
+                            transform: scale(1.03);
+                        }
+                    }
+                    #btn-end2{
+                        display: none;
+                    }
                 }
             }
+           
+            }
+            .form-add-brand{
+                margin-left: auto;
+                margin-right: auto;
+                 width: 90%;
+                 .marca-campo{
+                     display: flex;
+                     font-family: $fte-sec;
+                     .marca{
+                         font-size: 15px;
+                     }
+                     #marca{
+                         margin-top: -10px;
+                         margin-left: 15px;
+                         border: none;
+                         outline: none;
+                         border-bottom: 1px solid grey;
+                         font-size: 13px;
+                         width: 200px;
+                         padding-right: 3px;
+                         &:focus{
+                             border-bottom: 2px solid $color-wf3;
+                         }
+                     }
+                     }
+                     .btn{
+                         margin-left: 70%;
+                         background-color: $color-wf1;
+                         color: white;
+                         font-family: $fte-sec;
+                         font-size: 16px;
+                         border: 0px ;
+                         padding: 3px 8px;
+                         box-sizing: border-box;
+                         width: 30%;
+                         border-radius: 0px;                        
+                         &:hover{
+                             background-color: $color-wf2;
+                         }
+                     }
+             }
+             #listo{
+                font-family: $fte-sec;
+                font-size: 20px;
+                color: $color-sec;
+                display: none;
+             }
+             .modalTitle{
+                 font-family: $fte-ppal;
+                 font-size: 20px;
+                 margin-bottom: -20px;
+             }
+             .close{
+                 &:focus{
+             outline: none;
+                 }
+             }
+             .btn-add-brand{
+                border: none;
+              background-color: #fff;
+                    .fa-plus-square{
+                        color: $color-wf3;
+                        margin-right: 4px;
+                        font-size: 17px;
+                    }
+                    &:hover > i{
+                        transform: scale(1.1);
+                    }
+                    &:focus{
+                        outline: none;
+                    }
+            } 
