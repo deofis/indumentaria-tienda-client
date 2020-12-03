@@ -30,8 +30,8 @@ div {
             margin-bottom: 10px;
         
             h2 {
-                font-family: $fte-ppal;
-                text-transform: uppercase;
+                font-family: $fte-sec;
+                font-size: 23px;
                 color: $color-sec;
                 align-self: flex-start;
                 display: block;
@@ -173,16 +173,18 @@ div {
            .buttons{
             .boton {
                 width: 100%;
+                height: 40px;
                 padding-top: 3px;
                 padding-bottom: 3px;
-                 background-color: $color-wf1;;
+                 background-color: $color-wf1;
                 color: white;
-                font-family: $fte-ppal;
-                text-transform: uppercase;
-                font-size: 16px;
+                font-family: $fte-sec;
+               // text-transform: uppercase;
+                font-size: 17px;
                 border: none;
-                margin-bottom: 5px;
-                margin-top: 5px;
+                margin-bottom: 2px;
+                margin-top: 3px;
+                box-sizing: border-box;
                 &:hover {
                     box-shadow: 1px 2px 2px gray;
                     background-color: $color-wf2;

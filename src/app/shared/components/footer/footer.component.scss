@@ -29,8 +29,9 @@ $color-wf4:#70b8f3;
             width: 340px;
             h4{
                 margin-bottom: 10px;
-                color: $color-sec;
-                text-transform: uppercase;
+                color: rgb(78, 75, 75);
+                font-weight: bold;
+                font-size: 16px;
             }
             p{
                 font-size: 15px;
@@ -66,19 +67,11 @@ $color-wf4:#70b8f3;
                     
                         i{
                             color: rgb(68, 66, 66);
-                            font-size: 2.5em;
+                            font-size: 1.5em;
                         }
-                        .fa-facebook{
-                            color: blue;
-                        }
-                        .fa-linkedin{
-                            color: rgb(46, 156, 247);
-                        }
-                        img{
-                            width:37px ;
-                            height: 37px;
-                            display: block;
-                        }
+                        &:focus{
+                            outline: none;
+                        }  
                     }
                 }
             }
@@ -167,19 +160,22 @@ $color-wf4:#70b8f3;
            display: flex;
            justify-content: space-between;
            align-items: center;
-           width: 40vw;
+           width: 16vw;
            margin-left: 50px;
            padding-bottom: 40px;
            h4{
-               color: $color-sec;
-               font-family: $fte-ppal;
+               font-family: $fte-sec;
                display: block;
                margin-right: 40px;
+               color: rgb(78, 75, 75);
+               font-weight: bold;
+               font-size: 16px;
            }
-           img{
-               width: 46px;
-               height:28px;
-               margin-right: 20px;
+           .img-pagos{
+               i{
+                   margin-right: 10px;
+                   font-size: 2.4em;
+               }
            }
        }
   
@@ -199,8 +195,11 @@ $color-wf4:#70b8f3;
             margin-left: 2px;
             img{
                 width: 105px;
-                height: 36px;               
+                height: 36px;             
             }    
+            &:focus{
+                outline: none;
+            }  
         }
         p{
             font-family: $fte-sec;

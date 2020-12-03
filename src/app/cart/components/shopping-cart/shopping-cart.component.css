@@ -13,7 +13,7 @@ section {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  min-height: 82vh;
+  min-height: 90vh;
 }
 
 .container-left {
@@ -22,15 +22,14 @@ section {
 
 .container-left h2 {
   font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
   border-bottom: 1px solid #bebbbb;
   margin-bottom: 5px;
   margin-top: 10px;
   display: block;
+  font-size: 21px;
 }
 
 .container-left .msg-empty-cart {
-  background-color: rgba(255, 255, 255, 0.335);
   padding: 20px 30px;
   margin-top: 40px;
   border-radius: 20px;
@@ -55,17 +54,17 @@ section {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  border-radius: 10px;
   background-color: white;
   padding: 10px 10px;
   margin-top: 20px;
   margin-bottom: 5px;
-  -webkit-box-shadow: 1px 3px 5px #aaa8a8;
-          box-shadow: 1px 3px 5px #aaa8a8;
 }
 
 .container-left .products-list ul li:hover {
-  -webkit-box-shadow: 2px 4px 6px #575353;
-          box-shadow: 2px 4px 6px #575353;
+  border: 1px solid #f3ecec;
+  -webkit-box-shadow: 2px 3px 4px rgba(182, 179, 179, 0.514);
+          box-shadow: 2px 3px 4px rgba(182, 179, 179, 0.514);
   cursor: default;
 }
 
@@ -75,7 +74,7 @@ section {
 }
 
 .container-left .products-list ul li .info {
-  font-family: "Poppins", sans-serif;
+  font-family: "Open Sans", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -84,6 +83,14 @@ section {
       -ms-flex-direction: column;
           flex-direction: column;
   margin-left: 20px;
+}
+
+.container-left .products-list ul li .info .item-name {
+  font-size: 18px;
+}
+
+.container-left .products-list ul li .info .item-name:hover {
+  cursor: pointer;
 }
 
 .container-left .products-list ul li .info .row-info span {
@@ -102,8 +109,8 @@ section {
 }
 
 .container-left .products-list ul li .price-u span, .container-left .products-list ul li .quantity span, .container-left .products-list ul li .subtotal span {
-  font-family: "Poppins", sans-serif;
-  font-size: 11px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
 }
 
 .container-left .products-list ul li .price-u .item-price {
@@ -176,8 +183,6 @@ section {
   height: -moz-fit-content;
   height: fit-content;
   margin-top: 45px;
-  -webkit-box-shadow: 2px 4px 4px #575353;
-          box-shadow: 2px 4px 4px #575353;
 }
 
 .container-right .summary {
@@ -193,7 +198,6 @@ section {
 
 .container-right .summary h2 {
   font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
   color: #575353;
   font-size: 20px;
   border-bottom: 1px solid #bebbbb;
@@ -286,7 +290,7 @@ section {
 
 .container-right button {
   background-color: #223e66;
-  font-size: 16px;
+  font-size: 17px;
   color: white;
   font-family: "Poppins", sans-serif;
   border-radius: 0px 0px 15px 15px;
@@ -299,10 +303,10 @@ section {
   -ms-flex-item-align: end;
       align-self: flex-end;
   outline: none;
+  height: 37px;
 }
 
 .container-right button:hover {
-  font-size: 16px;
   cursor: pointer;
   background-color: #1f4e84;
 }

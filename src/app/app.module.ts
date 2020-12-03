@@ -25,7 +25,6 @@ import { CardGridComponent } from './products/components/products/card-grid/card
 import { UserLoginComponent } from './log-in/user/user-login/user-login.component';
 import { UserSignUpComponent } from './log-in/user/user-sign-up/user-sign-up.component';
 import { Oauth2RedirectHandlerComponent } from './log-in/oauth2/oauth2-redirect-handler/oauth2-redirect-handler.component';
-import { PruebaComponent } from './prueba/prueba.component';
 import { ShoppingCartComponent } from './cart/components/shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './cart/components/checkout/checkout/checkout.component';
 import { PreCheckoutComponent } from './cart/components/checkout/pre-checkout/pre-checkout.component';
@@ -76,7 +75,6 @@ import {MatListModule} from '@angular/material/list';
     UserLoginComponent,
     UserSignUpComponent,
     Oauth2RedirectHandlerComponent,
-    PruebaComponent,
     BenefitsRowComponent,
     PreCheckoutComponent,
     CheckoutComponent,

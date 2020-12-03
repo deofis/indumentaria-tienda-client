@@ -18,8 +18,8 @@ import { Router } from '@angular/router';
 })
 export class Step2Component implements OnInit {
   @Input() newProduct:Producto;
- properties:PropiedadProducto[];
- values:ValorPropiedadProducto [];
+  properties:PropiedadProducto[];
+  values:ValorPropiedadProducto [];
   oferta:boolean=false;
   propertyID:number;
   formSkus:FormGroup;
@@ -29,7 +29,7 @@ export class Step2Component implements OnInit {
   constructor(private productoService:ProductoService,
               private fb:FormBuilder,
               private router:Router,
-               private authService: AuthService,
+              private authService: AuthService,
               private activatedroute:ActivatedRoute,
               public modal: NgbModal,) {
      this.newSku=new Sku();
@@ -38,8 +38,8 @@ export class Step2Component implements OnInit {
   ngOnInit(): void {
      
    this.getPropertiesOfSubcategory();
-    this.crearForm();
-    console.log(this.newProduct)
+   this.crearForm();
+   console.log(this.newProduct);
   }
  
   showLateralMenu(){
@@ -89,7 +89,6 @@ export class Step2Component implements OnInit {
    this.newSku.precioOferta=this.formSkus.controls.precioOferta.value;
    this.newSku.disponibilidad=this.formSkus.controls.disponibilidad.value;
    this.newSku.valores=this.formSkus.controls.valores.value;
-     
    console.log(this.newSku);
 
   //  this.productoService.createNewSku(this.newSku,1).subscribe( response => 
@@ -144,12 +143,9 @@ export class Step2Component implements OnInit {
       this.properties=response;
     })
   }
-
-
+  
   ///// MODAL ////
   openCentrado(contenido){
     this.modal.open(contenido,{centered:true})
   }
-
-
 }

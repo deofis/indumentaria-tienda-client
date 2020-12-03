@@ -11,40 +11,16 @@ $color-wf2:#1f4e84;
 $color-wf3:#2779cd;
 $color-wf4:#70b8f3;
 header {
-    display: flex;
-    flex-direction: column;
+    display: flex;;
     align-items: center;
+    justify-content: center;
     background-color: $color-ppal;
-    height: 115px;
+    height: 75px;
     box-shadow: 0px 3px 5px rgb(128, 126, 126);
     width: 100%;
-    // position: sticky;
-    // top:0;
     position: relative;
     z-index: 5;
-    text-transform: uppercase;
     letter-spacing: 1px;
-    .contacto {
-        display: flex;
-        justify-content: flex-end;
-        width: 97%;
-        border-bottom: 1px solid rgba(221, 212, 212, 0.623);
-        padding-top: 10px;
-        padding-bottom: 5px;
-        a {
-            text-decoration: none;
-            i {
-                color: $color-ter;
-                // color: $color-wf1;
-                // opacity: 0.5;
-                font-size: 1.2em;
-                margin-left: 20px;
-                &:hover {
-                    color: $color-sec;
-                }
-            }
-        }
-    }
     .menu-header {
         display: flex;
         justify-content: space-between;
@@ -57,8 +33,15 @@ header {
                     width: 200px;
                     height:55px;
                     margin-left: 15px;
+                    &:focus{
+                        outline: none;
+                    }
+                }
+                &:focus{
+                    outline: none;
                 }
             }
+        
         }
         #fila-header {
             display: flex;
@@ -74,18 +57,18 @@ header {
                     // para todos los ul menu y submenu
                     list-style: none;
                     font-family: $fte-ppal;
-                    font-size: 16px;
+                    font-size: 17px;
                     margin-bottom: 0;
                 }
                 .menu {
                     display: flex;
                     justify-content: space-around;
-                    width: 18vw;
+                    width: 20vw;
+                    margin-left: 40px;
                     li {
                         a {
                             text-decoration: none;
                             background-image: linear-gradient($color-wf2, $color-wf4);
-                            // background-image: linear-gradient(currentColor, currentColor);
                             background-position: 0% 100%;
                             background-repeat: no-repeat;
                             background-size: 0% 2px;
@@ -99,6 +82,7 @@ header {
                             }
                             &:focus {
                                 background-size: 100% 2px;
+                                outline: none;
                             }
                         }
                     }
@@ -114,24 +98,34 @@ header {
             .barraDeBusqueda {
                 width: 36vw;
                 box-sizing: content-box;
-                height: 40px;
-                border-radius: 30px 4px 4px 30px;
-                border: 1px solid rgb(199, 195, 195);
+                height: 35px;
+                font-size: 17px;
+                border:none;
+                 border-bottom: 1px solid grey;
+                background-image: linear-gradient($color-wf2, $color-wf4);
+                background-position: 0% 100%;
+                background-repeat: no-repeat;
+                background-size: 0% 2px;
+                transition: background-size .3s;
+                // border-radius: 30px 4px 4px 30px;
+                // border: 1px solid rgb(199, 195, 195);
+                // background-color: $color-menues;
                 color: black;
                 font-family: $fte-ppal;
                 font-size: 16px;
                 padding-left: 15px;
                 padding-right: 30px;
-                margin-left: -20px;
-                background-color: $color-menues;
+                margin-top: -7px;
+               margin-left: -30px;
                 &:focus {
                     outline: none;
-                    border: 1px solid rgba(43, 41, 41, 0.582);
-                    box-shadow: 3px 2px 3px rgba(255, 255, 255, 0.466);
+                    background-size: 100% 2px;
+                  border-bottom: none
                 }
                 &:hover {
                     cursor: text;
                 }
+             
             }
             .btn-lupa {
                 background-color: " ";
@@ -140,42 +134,50 @@ header {
                     margin-left: -2.5vw;
                     color: rgb(95, 93, 93);
                 }
+                &:focus{
+                    outline: none;
+                }
+                &:focus>i{
+                    color: $color-wf3;
+                }
             }
         }
         ////iconos////
         #contenedor_iconos {
             display: flex;
             justify-content: space-between;
-            width: 15vw;
+            width: 10.5vw;
             align-items: baseline;
+            margin-right: 20px ;
             .iconos {
                 display: flex;
-                flex-direction: column;
-                width: 12.5vw;
-                margin-right: 20px;
+                width: 10vw;
                 align-items: center;
-                align-self: baseline;
-                margin-top: 13px;
+                justify-content: center;
                 position: relative;
                 i {
                     color: $color-sec;
-                    font-size: 1.4em;
-                    margin-bottom: 5px;
+                    font-size: 1.5em;
                     &:hover {
                         transform: scale(1.1);
                         cursor: pointer;
                     }
+                    &:focus{
+                        outline: none;
+                    }
+                }
+                &:focus{
+                    outline: none;
                 }
                 .fa-user-circle {
                     font-size: 1.9em;
                 }
-                p {
-                    font-family: $fte-ppal;
-                    font-size: 10px;
-                    color: $color-sec;
-                    cursor: pointer;
-                    text-align: center;
-                    line-height: 10px
+                img{
+                    width: 22px;
+                    height: 22px;
+                    &:focus{
+                        outline: none;
+                    }
                 }
                 .circulo {
                     background-color: rgb(187, 24, 24);
@@ -193,13 +195,15 @@ header {
                         display: block;
                         color: $color-ppal;
                         text-align: center;
-                        font-size: 12px;
-                        margin-top: -2px;
+                        font-size: 11px;
+                        margin-top: 1px;
+                        margin-left: 1px;
                     }
                 }
             }
             .menu {
                 display: none;
+
             }
             .notificaciones{
                 margin-left: -45px;
@@ -208,6 +212,12 @@ header {
     }
 }
 
+#salir{
+    border-top: 1px solid $color-ter;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 //////////// user Options //////
 #userOptions {
     position: absolute;
@@ -232,10 +242,7 @@ header {
         padding: 7px 23px;
         box-sizing: border-box;
         font-family: $fte-ppal;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        text-transform: uppercase;
+     text-align: right;
         &:hover {
             background-color: $color-wf1;
             color: $color-ppal;
@@ -253,11 +260,12 @@ header {
 
 .bg-menu {
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    min-height:100vh;
     background-color: rgba(31, 27, 27, 0.26);
     position: absolute;
     z-index: 3;
-    top: 115px;
+    top: 80px;
     left: 0px;
     display: none;
 }
@@ -286,7 +294,6 @@ header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            text-transform: uppercase;
             &:hover {
                 color: $color-ppal;
                 background-color: $color-wf1;

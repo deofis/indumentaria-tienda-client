@@ -18,6 +18,8 @@ $color-ppal:#fff;
     margin-left: 30px;
     margin-top: 5px;
     p{
+        display: flex;
+        align-items: baseline;
         a{
             text-decoration: none;
             font-family: $fte-sec;
@@ -27,10 +29,17 @@ $color-ppal:#fff;
                 color: $color-wf3;
             }
         } 
+        i{
+            font-size: 0.7em;
+            color: rgb(161, 158, 158);
+            margin-left: 4px;
+            margin-right: 4px;
+            margin-top:-10px
+        }
     }
     .cantidad-rdos{
         display: block;
-        margin-top: -20px;
+        margin-top: -16px;
         font-family: $fte-sec;
         color: $color-ter;
         font-size: 16px;
@@ -46,19 +55,21 @@ $color-ppal:#fff;
         float: right;
         padding-bottom:25px ;
           h2{ 
-              font-family: $fte-sec;
+              font-family: $fte-ppal;
               color: $color-sec;
               display: block;
               margin: 25px 0px 0px 17px;
               padding-bottom: 10px;
               text-align: left;
-              font-size: 23px;
+              font-size: 20px;
               border-bottom: 1px solid $color-ter;
           }
           .contenedor-grid{
              margin-top: 18px;
               font-size:16px;
               width: 100%;
+              border-radius: 15px;
+              overflow: hidden;
           }
       }
   

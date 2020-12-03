@@ -24,9 +24,12 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     font-size: 15px;
     padding-left: 5px;
     box-sizing: border-box;
+    border: none;
+    background-color:rgb(246, 242, 242) ;
+    border-bottom: 1px solid grey;
     &:focus {
         outline: none;
-        border: 1px solid rgb(180, 170, 170);
+        border-bottom: 2px solid $color-wf3;
     }
 }
 
@@ -36,14 +39,11 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(to top,$color-wf2 1%, $color-menues 55%);
     a{
         img {
             width: 200px;
             height: 60px;
-            position: absolute;
-            right: 50px;
-            top: 20px;
+           margin-top: 35px;
         }
     }
     .contenedor-form {
@@ -54,7 +54,8 @@ section {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 100px;
+        margin-top: 35px;
+        margin-bottom: 50px;
         width: 40vw;
         min-width: 500px;
         box-shadow: 2px 4px 10px grey;
@@ -66,13 +67,17 @@ section {
             flex-direction: column;
             position: relative;
             .titulo{
+               
+                display: flex;
+                flex-direction: row;
+                padding-bottom: 0;
+                width: 100%;
                 h2 {
-                    font-family: $fte-ppal;
-                    text-transform: uppercase;
-                    font-size: 23px;
+                    border-bottom: 1px solid grey;
+                    font-family: $fte-sec;
+                    font-size: 22px;
                     color: $color-sec;
                     display: block;
-                    border-bottom: 1px solid grey;
                     width: 100%;
                     padding-bottom: 5px;
                   
@@ -83,8 +88,9 @@ section {
                     margin-right: 8px;
                     outline: none;
                     position: absolute;
-                    top: 4px;
-                    left: -35px;
+                    top:8px;
+                    left: -2.5vw;
+               
                 }
             }
                        
@@ -273,9 +279,8 @@ section {
     height: 40px;
     background-color: $color-wf1;
     color: white;
-    font-family: $fte-ppal;
-    text-transform: uppercase;
-    font-size: 16px;
+    font-family: $fte-sec;
+    font-size: 17px;
     border: none;
     margin-top: 10px;
     &:hover {

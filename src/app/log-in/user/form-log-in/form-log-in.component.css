@@ -37,12 +37,11 @@ div .contenedor-form {
 div .contenedor-form .campos-inicio-s {
   width: 80%;
   margin-bottom: 10px;
-  height: 300px;
 }
 
 div .contenedor-form .campos-inicio-s h2 {
-  font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
+  font-family: "Open Sans", sans-serif;
+  font-size: 23px;
   color: #575353;
   -ms-flex-item-align: start;
       align-self: flex-start;
@@ -52,7 +51,22 @@ div .contenedor-form .campos-inicio-s h2 {
   padding-bottom: 5px;
 }
 
-div .contenedor-form .campos-inicio-s .campo {
+div .contenedor-form .campos-inicio-s .row1 {
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+div .contenedor-form .campos-inicio-s .row1 .campo1 {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -66,29 +80,7 @@ div .contenedor-form .campos-inicio-s .campo {
   position: relative;
 }
 
-div .contenedor-form .campos-inicio-s .campo i {
-  position: absolute;
-  padding: 13px;
-  font-size: 1.1em;
-  color: #aca5a5;
-}
-
-div .contenedor-form .campos-inicio-s .campo .fa-user {
-  top: 7.1px;
-  position: absolute;
-  left: 0;
-}
-
-div .contenedor-form .campos-inicio-s .campo .fa-eye,
-div .contenedor-form .campos-inicio-s .campo .fa-eye-slash {
-  margin-left: 86%;
-}
-
-div .contenedor-form .campos-inicio-s .campo .fa-eye-slash {
-  visibility: hidden;
-}
-
-div .contenedor-form .campos-inicio-s .campo #username {
+div .contenedor-form .campos-inicio-s .row1 .campo1 #username {
   margin-top: 7px;
   height: 44px;
   width: 100%;
@@ -99,24 +91,70 @@ div .contenedor-form .campos-inicio-s .campo #username {
           box-sizing: border-box;
 }
 
-div .contenedor-form .campos-inicio-s .campo #username:focus {
+div .contenedor-form .campos-inicio-s .row1 .campo1 #username:focus {
   outline: none;
   border: 1px solid #b4aaaa;
 }
 
-div .contenedor-form .campos-inicio-s .campo #username:focus ~ i {
+div .contenedor-form .campos-inicio-s .row1 .campo1 #username:focus ~ i {
   color: #222121;
 }
 
-div .contenedor-form .campos-inicio-s .campo #username.is-invalid {
+div .contenedor-form .campos-inicio-s .row1 .campo1 #username.is-invalid {
   border: 1px solid #fc3e3e;
 }
 
-div .contenedor-form .campos-inicio-s .campo #username.is-invalid ~ i {
+div .contenedor-form .campos-inicio-s .row1 .campo1 #username.is-invalid ~ i {
   color: #960909;
 }
 
-div .contenedor-form .campos-inicio-s .campo #password {
+div .contenedor-form .campos-inicio-s .row1 .campo1 #icono-user {
+  position: absolute;
+  padding: 13px;
+  font-size: 1.1em;
+  color: #aca5a5;
+  top: 7.1px;
+  left: 0;
+}
+
+div .contenedor-form .campos-inicio-s .row1 .text-rojo-uno {
+  font-family: "Open Sans", sans-serif;
+  color: red;
+  text-align: right;
+  display: block;
+  font-size: 12px;
+}
+
+div .contenedor-form .campos-inicio-s .row2 {
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+div .contenedor-form .campos-inicio-s .row2 .campo2 {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+div .contenedor-form .campos-inicio-s .row2 .campo2 #password {
   height: 44px;
   width: 100%;
   font-family: "Open Sans", sans-serif;
@@ -126,49 +164,97 @@ div .contenedor-form .campos-inicio-s .campo #password {
           box-sizing: border-box;
 }
 
-div .contenedor-form .campos-inicio-s .campo #password:focus {
+div .contenedor-form .campos-inicio-s .row2 .campo2 #password:focus {
   outline: none;
   border: 1px solid #b4aaaa;
 }
 
-div .contenedor-form .campos-inicio-s .campo #password:focus ~ .fa-lock {
+div .contenedor-form .campos-inicio-s .row2 .campo2 #password:focus ~ .fa-lock {
   color: #222121;
 }
 
-div .contenedor-form .campos-inicio-s .campo #password.is-invalid {
+div .contenedor-form .campos-inicio-s .row2 .campo2 #password.is-invalid {
   border: 1px solid #fc3e3e;
 }
 
-div .contenedor-form .campos-inicio-s .campo #password.is-invalid ~ i {
+div .contenedor-form .campos-inicio-s .row2 .campo2 #password.is-invalid ~ i {
   color: #960909;
 }
 
-div .contenedor-form .campos-inicio-s .campo .fa-lock {
+div .contenedor-form .campos-inicio-s .row2 .campo2 i {
   position: absolute;
+  padding: 13px;
+  font-size: 1.1em;
+  color: #aca5a5;
+}
+
+div .contenedor-form .campos-inicio-s .row2 .campo2 .fa-eye,
+div .contenedor-form .campos-inicio-s .row2 .campo2 .fa-eye-slash {
+  margin-left: 86%;
+}
+
+div .contenedor-form .campos-inicio-s .row2 .campo2 .fa-eye-slash {
+  visibility: hidden;
+}
+
+div .contenedor-form .campos-inicio-s .row2 .campo2 .fa-lock {
   left: 0;
 }
 
-div .contenedor-form .campos-inicio-s .campo .fa-lock.is-invalid {
+div .contenedor-form .campos-inicio-s .row2 .campo2 .fa-lock.is-invalid {
   border: 1px solid red;
 }
 
-div .contenedor-form .campos-inicio-s #btn-entrar {
-  margin-top: 0px;
-  margin-bottom: 2px;
+div .contenedor-form .campos-inicio-s .row2 .row-mssg {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: 20px;
 }
 
-div .contenedor-form .campos-inicio-s p {
-  -ms-flex-item-align: start;
-      align-self: flex-start;
+div .contenedor-form .campos-inicio-s .row2 .row-mssg .recuperar {
+  text-align: left;
   font-family: "Open Sans", sans-serif;
   color: #222121;
   font-size: 12px;
-  margin-top: -5px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
 }
 
-div .contenedor-form .campos-inicio-s p:hover {
+div .contenedor-form .campos-inicio-s .row2 .row-mssg .recuperar:hover {
   cursor: pointer;
+}
+
+div .contenedor-form .campos-inicio-s .row2 .row-mssg .text-rojo-two {
+  font-family: "Open Sans", sans-serif;
+  color: red;
+  text-align: right;
+  margin-bottom: 0;
+  font-size: 12px;
+}
+
+div .contenedor-form .campos-inicio-s .buttons .boton {
+  width: 100%;
+  height: 40px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  background-color: #223e66;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  font-size: 17px;
+  border: none;
+  margin-bottom: 2px;
+  margin-top: 3px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  outline: none;
+}
+
+div .contenedor-form .campos-inicio-s .buttons .boton:hover {
+  -webkit-box-shadow: 1px 2px 2px gray;
+          box-shadow: 1px 2px 2px gray;
+  background-color: #1f4e84;
 }
 
 div .contenedor-form .separacion {
@@ -258,32 +344,28 @@ div .contenedor-form #contenedor-forgot-psw {
   width: 80%;
   margin-bottom: 10px;
   display: none;
-  height: 230px;
+  position: relative;
 }
 
-div .contenedor-form #contenedor-forgot-psw h2 {
+div .contenedor-form #contenedor-forgot-psw .titulo h2 {
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
+  font-size: 23px;
   color: #575353;
-  -ms-flex-item-align: start;
-      align-self: flex-start;
   display: block;
   border-bottom: 1px solid grey;
   width: 100%;
   padding-bottom: 5px;
-  font-size: 23px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
-div .contenedor-form #contenedor-forgot-psw h2 i {
-  font-size: 0.7em;
+div .contenedor-form #contenedor-forgot-psw .titulo .fa-arrow-circle-left {
+  font-size: 1.3em;
   color: #222121;
   margin-right: 8px;
+  outline: none;
+  position: absolute;
+  top: 4px;
+  left: -3vw;
 }
 
 div .contenedor-form #contenedor-forgot-psw p {
@@ -292,7 +374,11 @@ div .contenedor-form #contenedor-forgot-psw p {
   margin-bottom: -15px;
 }
 
-div .contenedor-form #contenedor-forgot-psw .campo {
+div .contenedor-form #contenedor-forgot-psw .caja {
+  margin-bottom: 15px;
+}
+
+div .contenedor-form #contenedor-forgot-psw .caja .campo {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -305,9 +391,10 @@ div .contenedor-form #contenedor-forgot-psw .campo {
           align-items: center;
   position: relative;
   margin-top: 18px;
+  height: 60px;
 }
 
-div .contenedor-form #contenedor-forgot-psw .campo i {
+div .contenedor-form #contenedor-forgot-psw .caja .campo i {
   position: absolute;
   padding: 13px;
   font-size: 1.1em;
@@ -316,11 +403,11 @@ div .contenedor-form #contenedor-forgot-psw .campo i {
   top: 15px;
 }
 
-div .contenedor-form #contenedor-forgot-psw .campo .fa-user {
+div .contenedor-form #contenedor-forgot-psw .caja .campo .fa-user {
   top: 7.1px;
 }
 
-div .contenedor-form #contenedor-forgot-psw .campo #emailPsw {
+div .contenedor-form #contenedor-forgot-psw .caja .campo #emailPsw {
   margin-top: 16px;
   height: 44px;
   width: 100%;
@@ -331,34 +418,38 @@ div .contenedor-form #contenedor-forgot-psw .campo #emailPsw {
           box-sizing: border-box;
 }
 
-div .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus {
+div .contenedor-form #contenedor-forgot-psw .caja .campo #emailPsw:focus {
   outline: none;
   border: 1px solid #b4aaaa;
 }
 
-div .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus ~ i {
+div .contenedor-form #contenedor-forgot-psw .caja .campo #emailPsw:focus ~ i {
   color: #222121;
 }
 
-.text-rojo {
+div .contenedor-form #contenedor-forgot-psw .caja .campo #emailPsw:focus ~ .fa-lock {
+  color: #222121;
+}
+
+div .contenedor-form #contenedor-forgot-psw .caja .campo #emailPsw.is-invalid {
+  border: 1px solid #fc3e3e;
+}
+
+div .contenedor-form #contenedor-forgot-psw .caja .campo #emailPsw.is-invalid ~ i {
+  color: #960909;
+}
+
+div .contenedor-form #contenedor-forgot-psw .caja .text-rojo {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
   font-family: "Open Sans", sans-serif;
   color: red;
-  display: block;
-  -webkit-transform: translate(7vw, -6px);
-          transform: translate(7vw, -6px);
+  text-align: right;
+  margin-bottom: 0;
+  font-size: 16px;
 }
 
-.uno {
-  -webkit-transform: translate(8vw, -4px);
-          transform: translate(8vw, -4px);
-}
-
-.msj-recup {
-  -webkit-transform: translate(100px, -50px);
-          transform: translate(100px, -50px);
-}
-
-.boton {
+div .contenedor-form #contenedor-forgot-psw .boton {
   width: 100%;
   padding-top: 3px;
   padding-bottom: 3px;
@@ -368,118 +459,150 @@ div .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus ~ i {
   text-transform: uppercase;
   font-size: 16px;
   border: none;
+  margin-bottom: 5px;
+  margin-top: 5px;
   outline: none;
 }
 
-.boton:hover {
+div .contenedor-form #contenedor-forgot-psw .boton:hover {
   -webkit-box-shadow: 1px 2px 2px gray;
           box-shadow: 1px 2px 2px gray;
   background-color: #1f4e84;
 }
 
-#recuperar {
-  -webkit-transform: translateY(-25px);
-          transform: translateY(-25px);
-}
-
-.primer {
-  margin-top: 15px;
-}
-
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 900px) {
   div .contenedor-form {
     padding-top: 15px;
     padding-bottom: 20px;
     border-radius: 10px;
-    margin-top: 60px;
-  }
-  div .contenedor-form .campos-inicio-s {
-    width: 90%;
-    margin-bottom: 10px;
-    height: 240px;
-  }
-  div .contenedor-form .campos-inicio-s h2 {
-    font-size: 20px;
-    padding-bottom: 5px;
-  }
-  div .contenedor-form .campos-inicio-s div .campo i {
-    font-size: 1em;
-  }
-  div .contenedor-form .campos-inicio-s div .campo #username {
-    margin-top: -12px;
-    height: 35px;
-    font-size: 14px;
-  }
-  div .contenedor-form .campos-inicio-s div .campo #password {
-    margin-top: -43px;
-    height: 35px;
-    font-size: 14px;
-    padding-left: 40px;
-  }
-  div .contenedor-form .campos-inicio-s div .campo .fa-lock {
-    top: -47px;
-  }
-  div .contenedor-form .campos-inicio-s div .campo .fa-user {
-    top: -17px;
-  }
-  div .contenedor-form .campos-inicio-s div .campo .fa-eye,
-  div .contenedor-form .campos-inicio-s div .campo .fa-eye-slash {
-    margin-left: 85%;
-    position: absolute;
-    top: -47px;
-  }
-  div .contenedor-form .campos-inicio-s div #recuperar {
-    font-size: 12px;
-    margin-top: -86px;
-    margin-bottom: 5px;
-  }
-  div .contenedor-form .campos-inicio-s #btn-entrar {
-    margin-top: -70px;
-    margin-bottom: 5px;
-  }
-  div .contenedor-form .social-media {
-    width: 90%;
-    height: 80px;
     margin-top: 10px;
   }
+  div .contenedor-form .campos-inicio-s {
+    width: 85%;
+    margin-bottom: 10px;
+  }
+  div .contenedor-form .campos-inicio-s .row1 {
+    height: 50px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    margin-bottom: 7px;
+  }
+  div .contenedor-form .campos-inicio-s .row1 .campo1 #username {
+    margin-top: 3px;
+    height: 36px;
+  }
+  div .contenedor-form .campos-inicio-s .row1 .campo1 #icono-user {
+    position: absolute;
+    padding: 13px;
+    font-size: 1.1em;
+    color: #aca5a5;
+    top: 0px;
+    left: 0;
+  }
+  div .contenedor-form .campos-inicio-s .row2 {
+    height: 60px;
+    margin-bottom: 14px;
+  }
+  div .contenedor-form .campos-inicio-s .row2 .campo2 #password {
+    height: 36px;
+  }
+  div .contenedor-form .campos-inicio-s .row2 .campo2 .fa-eye,
+  div .contenedor-form .campos-inicio-s .row2 .campo2 .fa-eye-slash {
+    margin-left: 86%;
+    margin-top: -3px;
+  }
+  div .contenedor-form .campos-inicio-s .row2 .campo2 .fa-lock {
+    top: -3px;
+  }
+  div .contenedor-form .campos-inicio-s .buttons .boton {
+    font-size: 15px;
+    margin-top: 0px;
+  }
+  div .contenedor-form .separacion {
+    margin-top: -15px;
+    margin-bottom: -10px;
+  }
+  div .contenedor-form .social-media {
+    width: 80%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 95px;
+    margin-top: 15px;
+  }
   div .contenedor-form .social-media button {
-    height: 37px;
+    height: 34px;
+  }
+  div .contenedor-form .social-media button a {
+    font-size: 14px;
+  }
+  div .contenedor-form .social-media .btn1 {
+    background-color: #3b5998;
+    margin-bottom: 5px;
+  }
+  div .contenedor-form .social-media .btn2 {
+    background-color: #db4a39;
   }
   div .contenedor-form #contenedor-forgot-psw {
     width: 80%;
     margin-bottom: 10px;
     display: none;
-    height: 230px;
   }
-  div .contenedor-form #contenedor-forgot-psw h2 {
+  div .contenedor-form #contenedor-forgot-psw .titulo {
+    border-bottom: 1px solid grey;
+    padding-bottom: 2px;
+  }
+  div .contenedor-form #contenedor-forgot-psw .titulo h2 {
     font-family: "Poppins", sans-serif;
     text-transform: uppercase;
+    font-size: 20px;
     color: #575353;
-    -ms-flex-item-align: start;
-        align-self: flex-start;
     display: block;
-    border-bottom: 1px solid grey;
+    border-bottom: none;
     width: 100%;
-    padding-bottom: 5px;
-    font-size: 23px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    padding-bottom: 0px;
+    position: relative;
+    top: 0px;
+    left: 35px;
+    margin-bottom: -8px;
   }
-  div .contenedor-form #contenedor-forgot-psw h2 i {
-    font-size: 0.7em;
+  div .contenedor-form #contenedor-forgot-psw .titulo .fa-arrow-circle-left {
+    font-size: 1.3em;
     color: #222121;
     margin-right: 8px;
+    outline: none;
+    position: absolute;
+    top: 6px;
+    left: 0px;
   }
   div .contenedor-form #contenedor-forgot-psw p {
-    font-family: "Open Sans", sans-serif;
-    color: #222121;
-    margin-bottom: -15px;
+    display: block;
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+    font-size: 14px;
   }
-  div .contenedor-form #contenedor-forgot-psw .campo {
+  div .contenedor-form #contenedor-forgot-psw .caja {
+    margin-bottom: 15px;
+  }
+  div .contenedor-form #contenedor-forgot-psw .caja .campo {
     width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -492,60 +615,82 @@ div .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus ~ i {
             align-items: center;
     position: relative;
     margin-top: 18px;
+    height: 60px;
   }
-  div .contenedor-form #contenedor-forgot-psw .campo i {
-    position: absolute;
-    padding: 13px;
-    font-size: 1.1em;
-    color: #aca5a5;
-    left: 0;
-    top: 15px;
+  div .contenedor-form #contenedor-forgot-psw .caja .campo i {
+    top: 13px;
   }
-  div .contenedor-form #contenedor-forgot-psw .campo .fa-user {
-    top: 7.1px;
-  }
-  div .contenedor-form #contenedor-forgot-psw .campo #emailPsw {
+  div .contenedor-form #contenedor-forgot-psw .caja .campo #emailPsw {
     margin-top: 16px;
-    height: 44px;
-    width: 100%;
-    font-family: "Open Sans", sans-serif;
-    font-size: 15px;
-    padding-left: 40px;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-  }
-  div .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus {
-    outline: none;
-    border: 1px solid #b4aaaa;
-  }
-  div .contenedor-form #contenedor-forgot-psw .campo #emailPsw:focus ~ i {
-    color: #222121;
-  }
-  .boton {
-    font-size: 15px;
-  }
-  .text-rojo {
-    -webkit-transform: translate(20vw, -119px);
-            transform: translate(20vw, -119px);
-  }
-  .uno {
-    -webkit-transform: translate(25vw, -51px);
-            transform: translate(25vw, -51px);
-  }
-  .msj-recup {
-    -webkit-transform: translate(100px, -50px);
-            transform: translate(100px, -50px);
+    height: 37px;
   }
 }
 
-@media screen and (min-width: 330px) and (max-width: 1100px) {
-  .text-rojo {
-    -webkit-transform: translate(66px, -117px);
-            transform: translate(66px, -117px);
+@media screen and (max-width: 1100px) {
+  div .contenedor-form .campos-inicio-s {
+    width: 85%;
+    margin-bottom: 10px;
   }
-  .uno {
-    -webkit-transform: translate(80px, -49px);
-            transform: translate(80px, -49px);
+  div .contenedor-form .campos-inicio-s h2 {
+    font-size: 18px;
+  }
+  div #contenedor-forgot-psw {
+    width: 80%;
+    margin-bottom: 10px;
+    display: none;
+  }
+  div #contenedor-forgot-psw h2 {
+    font-size: 21px;
+    -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
+  }
+  div #contenedor-forgot-psw p {
+    font-size: 16px;
+  }
+  div #contenedor-forgot-psw .caja {
+    margin-bottom: 15px;
+  }
+  div #contenedor-forgot-psw .caja .campo {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: relative;
+    margin-top: 18px;
+    height: 60px;
+  }
+  div #contenedor-forgot-psw .caja .campo i {
+    top: 13px;
+  }
+  div #contenedor-forgot-psw .caja .campo #emailPsw {
+    margin-top: 16px;
+    height: 37px;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  div .contenedor-form .campos-inicio-s .row2 .row-mssg {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    -ms-grid-columns: unset;
+        grid-template-columns: unset;
+    width: 100%;
+    height: 40px;
   }
 }
 /*# sourceMappingURL=form-log-in.component.css.map */

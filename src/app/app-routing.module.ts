@@ -12,7 +12,6 @@ import { PreCheckoutComponent } from './cart/components/checkout/pre-checkout/pr
 import {ConfirmDataComponent} from './cart/components/confirm-data/confirm-data.component';
 import { FinalMessageComponent } from './cart/components/final-message/final-message.component';
 import { Oauth2RedirectHandlerComponent } from './log-in/oauth2/oauth2-redirect-handler/oauth2-redirect-handler.component';
-import { PruebaComponent } from './prueba/prueba.component';
 import { AuthGuard } from './log-in/guards/auth.guard';
 import { RoleGuard } from './log-in/guards/role.guard';
 import { MisComprasComponent } from './user-options/mis-compras/mis-compras.component';
@@ -40,13 +39,13 @@ const routes: Routes = [
 {path:"products-list" , component:ProductsListComponent},
 {path:"admin-promo", component:AdminPromosComponent},
 {path:"user-sign-up",component:UserSignUpComponent},
+{path:"new-password",component:NewPasswordComponent},
 {path:"verify/redirect",component:ActivatedMssgComponent},
 {path:"shopping-cart",component:ShoppingCartComponent},
 {path:"checkout",component:CheckoutComponent},
 {path:"pre-checkout", component:PreCheckoutComponent},
 {path:"confirm-data", component:ConfirmDataComponent},
 {path:"successful-purchase" , component:FinalMessageComponent},
-{path:'test', component: PruebaComponent, canActivate: [AuthGuard]},
 {path:"**", pathMatch:"full", redirectTo:"home"}
 ];
 

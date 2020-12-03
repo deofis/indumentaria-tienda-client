@@ -4,8 +4,8 @@ section {
   display: grid;
   -ms-grid-rows: 1fr;
       grid-template-rows: 1fr;
-  -ms-grid-columns: 20px auto;
-      grid-template-columns: 20px auto;
+  -ms-grid-columns: 200px auto;
+      grid-template-columns: 200px auto;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -14,7 +14,8 @@ section {
 
 section #lateralMenu {
   background-color: #223e66;
-  width: 30px;
+  width: 200px;
+  padding-bottom: 250px;
   position: relative;
   z-index: 4;
   -webkit-box-shadow: 1px 2px 2px #aca5a5;
@@ -22,15 +23,10 @@ section #lateralMenu {
 }
 
 section #lateralMenu .boton {
-  position: -webkit-sticky;
-  position: sticky;
-  left: 45px;
-  margin-left: 10px;
-  top: 145px;
+  display: none;
   width: 35px;
   height: 55px;
   border-radius: 0 30px 30px 0;
-  font-size: 2.5em;
   background-color: #223e66;
   color: white;
 }
@@ -47,11 +43,11 @@ section #lateralMenu .boton .fa-close {
 }
 
 section #lateralMenu .lateral-container {
+  margin-top: 20px;
   position: -webkit-sticky;
   position: sticky;
-  top: 20vh;
+  top: 40px;
   bottom: 80vh;
-  display: none;
 }
 
 section #lateralMenu .lateral-container .userOptions {
@@ -91,7 +87,6 @@ section #lateralMenu .lateral-container .userOptions li:hover {
 
 section #lateralMenu .lateral-container .userOptions li:hover > i {
   font-size: 1em;
-  color: #223e66;
 }
 
 section #lateralMenu .lateral-container .userOptions li i {
@@ -111,7 +106,7 @@ section .container-miscompras {
 }
 
 section .container-miscompras .frame {
-  width: 75%;
+  width: 85%;
   margin-top: 30px;
   margin-left: 50px;
 }
@@ -378,7 +373,7 @@ section .container-miscompras .frame .detalleCompras .row-information .row2 .lis
     position: -webkit-sticky;
     position: sticky;
     left: 0px;
-    top: 180px;
+    top: 5px;
     opacity: 0.8;
   }
   section #lateralMenu .boton {
@@ -390,6 +385,7 @@ section .container-miscompras .frame .detalleCompras .row-information .row2 .lis
     height: 30px;
     font-size: 1.5em;
     z-index: 4;
+    display: block;
   }
   section #lateralMenu .boton i {
     -webkit-transform: translateY(2px);
@@ -399,7 +395,7 @@ section .container-miscompras .frame .detalleCompras .row-information .row2 .lis
   }
   section #lateralMenu .lateral-container {
     position: relative;
-    top: -30px;
+    top: -60px;
     display: none;
   }
   section #lateralMenu .lateral-container .userOptions {
@@ -428,6 +424,7 @@ section .container-miscompras .frame .detalleCompras .row-information .row2 .lis
   }
   section .container-miscompras .frame .title h2 {
     font-size: 18px;
+    margin-left: 4px;
   }
   section .container-miscompras .frame .title .filtros-miscompras {
     margin-bottom: -10px;

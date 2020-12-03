@@ -1,15 +1,4 @@
 <header id="header">
-    <div class="contacto" id="redes-header">
-        <a href="#" title="Facebook" target="_blank">
-            <i class="fab fa-facebook"></i>
-        </a>
-        <a href="#" title="Instagram" target="_blank">
-            <i class="fab fa-instagram"></i>
-        </a>
-        <a href="#" title="Linkedin">
-            <i class="fab fa-linkedin"></i>
-        </a>
-    </div>
     <div class="menu-header">
         <div class="logo">
             <a [routerLink]="['/home']" title="Home">
@@ -20,7 +9,7 @@
             <nav>
                 <ul class="menu">
                     <li (mouseover)="showCategories()"><a href="#section-categories">Categorías</a></li>
-                    <li><a href="#section-ofertas">Ofertas</a></li>
+                    <li ><a href="#section-ofertas">Ofertas</a></li>
                 </ul>
             </nav>
 
@@ -29,7 +18,7 @@
                 <i class="fas fa-times" id="closeM" (click)="hiddeMenu()"></i>
             </div>
 
-            <form (submit)=buscarProducto(txtProducto.value)>
+            <form (submit)=buscarProducto(txtProducto.value) autocomplete="off">
                 <div class="buscador">
                     <input class=barraDeBusqueda type="text" placeholder=" Buscar" id="buscador" #txtProducto>
                     <button type="submit" class="btn-lupa"> <i class="fas fa-search" id="lupa"></i></button>
@@ -39,30 +28,31 @@
 
             <section id="contenedor_iconos">
                 <div *ngIf="estaLogueado" class="iconos notificaciones">
-                    <i class="fas fa-bell opciones"></i>
-                    <p>Notificaciones</p>
+                    <!-- <i class="fas fa-bell opciones"></i> -->
+                    <img src="../../../../../assets/imagenes/icon-notif.png" alt="">
                 </div>
 
-                <div *ngIf="hasRole('ROLE_USER') || !estaLogueado" class="iconos carrito" [routerLink]="['/shopping-cart']">
-                    <i class="fas fa-shopping-cart opciones"></i>
-                    <p>Carrito </p>
-
+                <div *ngIf="hasRole('ROLE_USER') || !estaLogueado" class="iconos carrito"
+                    [routerLink]="['/shopping-cart']">
+                    <!-- <i class="fas fa-shopping-cart opciones"></i> -->
+                    <img src="../../../../../assets/imagenes/icon-cart.png" alt="">
                     <div class="circulo">
                         <!-- <span>{{totalQuantity}}</span> -->
                         <span>1</span>
                     </div>
                 </div>
 
-                <div *ngIf="estaLogueado && hasRole('ROLE_ADMIN')" class="iconos carrito" [routerLink]="['/shopping-cart']">
-                    <i class="fas fa-window-restore"></i>
-                    <p>Ventas</p>
+                <div *ngIf="estaLogueado && hasRole('ROLE_ADMIN')" class="iconos carrito"
+                    [routerLink]="['/shopping-cart']">
+                    <!-- <i class="fas fa-window-restore" ></i> -->
+                    <img src="../../../../../assets/imagenes/icon-ventas.png" alt="">
                 </div>
 
-                <div class="iconos miperfil" (mouseover)="showUserMenu()" (mouseout)="hiddeUserMenu()" (click)="perfilClick()">
-                    <i class="fas fa-user-circle opciones"></i>
-                    <p>Mi Perfil</p>
+                <div class="iconos miperfil" (mouseover)="showUserMenu()" (mouseout)="hiddeUserMenu()"
+                    (click)="perfilClick()">
+                    <!-- <i class="fas fa-user-circle opciones"></i> -->
+                    <img src="../../../../../assets/imagenes/icon-user.png" alt="">
                 </div>
-
             </section>
         </div>
     </div>
@@ -71,41 +61,46 @@
 <!-- User not authenticated -->
 <ul *ngIf="!estaLogueado" id="userOptions" (mouseover)="showUserMenu()" (mouseout)="hiddeUserMenu()">
     <a [routerLink]="['/login']">
-        <li><i class="fas fa-sign-in-alt"></i>Iniciar Sesión </li>
+        <li>Iniciar Sesión </li>
     </a>
     <a [routerLink]="['user-sign-up']">
-        <li><i class="fas fa-user-plus"></i>Registrarse</li>
+        <li>Registrarse</li>
     </a>
 </ul>
 <!-- Normal user -->
-<ul *ngIf="estaLogueado && hasRole('ROLE_USER')" id="userOptions" (mouseover)="showUserMenu()" (mouseout)="hiddeUserMenu()">
+<ul *ngIf="estaLogueado && hasRole('ROLE_USER')" id="userOptions" (mouseover)="showUserMenu()"
+    (mouseout)="hiddeUserMenu()">
     <a [routerLink]="['/user-profile']">
-        <li>Mis Datos <i class="fas fa-file-invoice"></i></li>
+        <li>Mis Datos </li>
     </a>
     <a [routerLink]="['/user-mis-compras']">
-        <li>Compras<i class="fas fa-shopping-bag"></i></li>
+        <li>Compras</li>
     </a>
     <a [routerLink]="['/user-favorites']">
-        <li>Favoritos <i class="fas fa-heart"></i></li>
+        <li>Favoritos </li>
     </a>
-    <li (click)="logout()">Salir <i class="fas fa-sign-out-alt"></i></li>
+    <li (click)="logout()" id="salir">Salir <i class="fas fa-sign-out-alt"></i></li>
 </ul>
 <!-- Admin user -->
-<ul *ngIf="estaLogueado && hasRole('ROLE_ADMIN')" id="userOptions" (mouseover)="showUserMenu()" (mouseout)="hiddeUserMenu()">
+<ul *ngIf="estaLogueado && hasRole('ROLE_ADMIN')" id="userOptions" (mouseover)="showUserMenu()"
+    (mouseout)="hiddeUserMenu()">
     <a [routerLink]="['/user-profile']">
-        <li>Mis Datos <i class="fas fa-file-invoice"></i></li>
+        <li>Mis Datos </li>
     </a>
 
     <li [routerLink]="['products-list']">Productos </li>
-    <li>Administración <i class="fas fa-cog"></i></li>
-    <li (click)="logout()">Salir <i class="fas fa-sign-out-alt"></i></li>
+    <li>Administración </li>
+    <li (click)="logout()" id="salir">Salir <i class="fas fa-sign-out-alt"></i></li>
 </ul>
 <!-- FIN Admin user -->
 <!-- categorias y subcategorias -->
 <div class="bg-menu" id="bg-menu"></div>
-<div class="contenedor-categorias" (mouseover)="showCategories()" (mouseout)="hiddeSubAndCategories()" id="container-subcategories">
+<div class="contenedor-categorias" (mouseover)="showCategories()" (mouseout)="hiddeSubAndCategories()"
+    id="container-subcategories">
     <div class="submenu " id="categoriesList">
-        <li class="items-categories" *ngFor="let categoria of categorias; let i=index" (mouseover)="showsubcategories(i)" (mouseout)="hiddesubcategories()">{{categoria.nombre}}<i class="fas fa-angle-down"></i>
+        <li class="items-categories" *ngFor="let categoria of categorias; let i=index"
+            (mouseover)="showsubcategories(i)" (mouseout)="hiddesubcategories()">{{categoria.nombre}}<i
+                class="fas fa-angle-down"></i>
 
         </li>
     </div>

@@ -1,18 +1,18 @@
 <section>
     <div id="lateralMenu" >
-        <div id="botonMenu" class="boton">
-            <i class="fas fa-angle-right " id="open-menu" (click)="showLateralMenu()"></i>
-            <i class="fas fa-close " id="close-menu" (click)="hiddeLateralMenu()"></i>
-        </div>
-        <div class="lateral-container" id="lateral-container">
-            <ul class="userOptions">
-                <li [routerLink]="['/user-my-purchases']"><i class="fas fa-shopping-bag"></i>Compras</li>
-                <li [routerLink]="['/user-favorites']"><i class="fas fa-heart"></i> Favoritos </li>
-                <li [routerLink]="['/user-profile']"> <i class="fas fa-file-invoice"></i> Mis Datos </li>
-                <li (click)="logout()"><i class="fas fa-sign-out-alt"></i>Cerrar Sesión </li>
-            </ul>
-        </div>
-    </div>
+        <div id="botonMenu" class="boton" > 
+            <i  class="fas fa-angle-right " id="open-menu" (click)="showLateralMenu()" ></i> 
+            <i  class="fas fa-close " id="close-menu" (click)="hiddeLateralMenu()"></i>
+         </div>
+         <div class="lateral-container" id="lateral-container" >
+             <ul class="userOptions" >
+                 <li [routerLink]="['/user-my-purchases']">Compras</li>
+                 <li [routerLink]="['/user-favorites']" > Favoritos </li>
+                 <li [routerLink]="['/user-profile']">  Mis Datos </li>
+                 <li (click)="logout()" >Cerrar Sesión</li>
+             </ul>
+         </div>
+     </div>
     <div class="container-favorites">
         <div class="frame">
             <div class="title">
@@ -24,9 +24,9 @@
                         <img src="../../../../../assets/imagenes/prod2.png" alt="item compra" />
                         <div class="info">
                             <span class="item-name">Samsung Galaxy S20</span>
-                            <div class="price-discount">
+                            <div class="row-oferta">
                                 <span>€699</span>
-                                <p>15% 0FF</p>
+                                <p class="off">15% 0FF</p>
                             </div>
                             <div class="price-quatity">
                                 <span class="item-price">€650</span>
@@ -63,14 +63,13 @@
                         </div>
                         <i id="close" class="fas fa-times"></i>
                     </li>
-
                     <li>
                         <img src="../../../../../assets/imagenes/prod2.png" alt="item compra" />
                         <div class="info">
                             <span class="item-name">Samsung Galaxy S20</span>
-                            <div class="price-discount">
+                            <div class="row-oferta">
                                 <span>€699</span>
-                                <p>15% 0FF</p>
+                                <p class="off">15% 0FF</p>
                             </div>
                             <div class="price-quatity">
                                 <span class="item-price">€650</span>
@@ -110,9 +109,9 @@
                         <img src="../../../../../assets/imagenes/prod2.png" alt="item compra" />
                         <div class="info">
                             <span class="item-name">Samsung Galaxy S20</span>
-                            <div class="price-discount">
+                            <div class="row-oferta">
                                 <span>€699</span>
-                                <p>15% 0FF</p>
+                                <p class="off">15% 0FF</p>
                             </div>
                             <div class="price-quatity">
                                 <span class="item-price">€650</span>
@@ -152,9 +151,9 @@
                         <img src="../../../../../assets/imagenes/prod2.png" alt="item compra" />
                         <div class="info">
                             <span class="item-name">Samsung Galaxy S20</span>
-                            <div class="price-discount">
+                            <div class="row-oferta">
                                 <span>€699</span>
-                                <p>15% 0FF</p>
+                                <p class="off">15% 0FF</p>
                             </div>
                             <div class="price-quatity">
                                 <span class="item-price">€650</span>
@@ -190,6 +189,7 @@
                         </div>
                         <i id="close" class="fas fa-times"></i>
                     </li>
+                
                 </ul>
             </div>
         </div>
