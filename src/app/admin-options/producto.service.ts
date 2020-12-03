@@ -7,6 +7,7 @@ import { Producto } from '../products/clases/producto';
 import { PropiedadProducto } from '../products/clases/propiedad-producto';
 import { ValorPropiedadProducto } from '../products/clases/valor-propiedad-producto';
 import { Sku } from '../products/clases/sku';
+import { Promocion } from './admin-promos/clases/promocion';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +47,16 @@ url:string=API_BASE_URL+"/api";
       map((response:any) =>response)
     )
   }
+  crearNewPromotionSub(promocion:Promocion, id:number){
+    return this.http.post(`${this.url}/subcategorias/${id}/promociones`, promocion);
+  };
+
+  createNewPromotionProducto(promocion: Promocion, id:number){
+    return this.http.post(`${this.url}/productos/${id}/promociones`, promocion);
+  };
+
+
+
 }
 
  
