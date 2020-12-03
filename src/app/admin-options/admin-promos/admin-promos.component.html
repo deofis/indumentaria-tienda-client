@@ -1,0 +1,275 @@
+
+<section>
+    <div id="lateralMenu" >
+        <div id="botonMenu" class="boton" > 
+            <i  class="fas fa-angle-right " id="open-menu" (click)="showLateralMenu()" ></i> 
+            <i  class="fas fa-close " id="close-menu" (click)="hiddeLateralMenu()"></i>
+         </div>
+        <div class="lateral-container" id="lateral-container">
+            <ul class="userOptions">
+                <li [routerLink]="['/add-product']"> Añadir Producto <i class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/products-list']"> Productos <i class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/admin-promo']"> Promociones <i class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/brands-panel']"> Marcas<i class="fas fa-angle-down "></i> </li>
+                <li [routerLink]="['/admin-profile']"> Mis Datos </li>
+                <!-- <li (click)="logout()"><i class="fas fa-sign-out-alt"></i>Cerrar Sesión </li> -->
+            </ul>
+        </div>
+    </div>
+    <div class="container-miscompras">
+        <div class="frame">
+            <div class="title">
+                <h2>Promociones</h2>
+            </div>
+             
+            
+            
+
+            <div class="container">
+
+
+                <!-- MODAL NUEVA PROMOCIÓN -->
+                <ng-template #contenido let-modal>
+                    <div class="modal-header">
+                        <h1 class="mt-4">Nueva promoción</h1>
+                        <button class="close" aria-label="close" type="button" (click)="reiniciar(); modal.dismiss()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Subcategoría</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Producto</a>
+                            </li>
+                            
+                          </ul>
+                          <div class="tab-content" id="myTabContent">
+
+                            <!-- Pestaña subcategoria -->
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="row mt-4">
+                                    <div class="col-md-4 col-xs-12 overflow-auto">
+                                        <h4>Elija la o las subcategorías que desea añadirles una promocíon.</h4>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead class="thead-dark" >
+                                                  <tr>
+                                                    <th scope="col"><input type="text" class="form-control form-control-sm" placeholder="Buscar" name="filterPromos" [(ngModel)]="filterSubcategorias"></th>
+                                                    <th scope="col"><i class="far fa-question-circle fa-lg mb-2" placement="bottom" ngbTooltip="Tooltip on bottom"></i></th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr *ngFor="let sub of subASeleccionar; let i=index">
+                                                    <td>{{sub.nombre}}</td>
+                                                    <td>
+                                                        <i class="fas fa-plus" style="cursor: pointer;" (click)="anadir(i)"></i>
+                                                    </td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
+                                        </div>
+                                        <hr class="d-block d-sm-none">
+                                    </div>
+                                    <div class="col-md-8 col-xs-12">
+                                        <div class="row mt-5">
+                                            <div class="col-md-4 ml-3">
+                                                <h3>Subcategorías seleccionadas: </h3>
+                                            </div>
+                                            <div class="col">
+                                                <h3><span *ngFor="let sub of subSeleccionadas; let j=index" style="background-color: #1f4e84; cursor: pointer;" 
+                                                    class="badge badge-pill badge-primary mr-1" (click)="eliminar(j)">{{sub.nombre}} x</span></h3>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h3 class="ml-1"><i class="far fa-question-circle fa-md mb-2" placement="bottom" ngbTooltip="{{infoFechaInicio}}"></i> Fecha de incio.</h3>
+                                                <form class="form-inline">
+                                                    <div class="form-group">
+                                                      <div class="input-group">
+                                                          
+                                                        <input class="form-control" placeholder="yyyy-mm-dd"
+                                                               name="fi" [(ngModel)]="modelInicio" ngbDatepicker #fi="ngbDatepicker" style="width: 240px;">
+                                                        <div class="input-group-append">
+                                                          <button class="btn btn-outline-secondary calendar" (click)="fi.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                </form>
+                                                
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h3 class="ml-1"> Fecha fin.</h3>
+                                                <form class="form-inline">
+                                                    <div class="form-group">
+                                                      <div class="input-group">
+                                                          
+                                                        <input class="form-control" placeholder="yyyy-mm-dd"
+                                                               name="ff" [(ngModel)]="modelFin" ngbDatepicker #ff="ngbDatepicker" style="width: 240px;">
+                                                        <div class="input-group-append">
+                                                          <button class="btn btn-outline-secondary calendar" (click)="ff.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <h3 class="ml-1 mt-3">Ingrese porcentaje de la promoción.</h3>
+                                                <div class="input-group">                                    
+                                                    <input type="text" class="form-control" placeholder="Porcentaje" aria-label="Porcentaje" aria-describedby="basic-addon1">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text" id="basic-addon1" style="background-color: white;">%</span>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="row mt-5">
+                                            <div class="col-md-6 mt-md-3 offset-md-6 col-xs-12 text-center">
+                                                <!-- <button class="btn btn-danger mt-5" style="border: none;">Cancelar</button> -->
+                                                <button class="btn btn-secondary mt-5 mr-3" style="border: none;">Cancelar</button>
+                                                <button class="btn btn-primary mt-5" style="background-color: #1f4e84; border: none;">Siguiente</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pestaña prducto -->
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                Pantalla en proceso
+                            </div>
+
+                          </div>
+                        
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" (click)="modal.close()"> Cancelar</button>
+                    </div> -->
+                </ng-template>
+
+
+                <!-- CONTENIDO PRINCIPAL -->
+                <a class="btn-flotante d-block d-sm-none rounded-circle" (click)="open(contenido)">+</a>
+
+                <div class="row mb-md-1 mb-2">
+                    <div class="col-md-3 col-xs-3 form-group">
+                        <input type="text" class="form-control" placeholder="Buscar" name="filterPromos" [(ngModel)]="filterPromos">
+                    </div>
+                    <div class="col-md-3 col-xs-3">
+                        <select class="custom-select">
+                            <option value="" hidden selected>Ordene por:</option>
+                            <option value="">Producto</option>
+                            <option value="">Subcategoría</option>
+                        </select>
+                    </div>
+                    <div class="col-md col-xs-12 text-right d-none d-sm-block">
+                        <button class="btn btn-primary" style="background-color: #1f4e84; border: none;" (click)="open(contenido)">Nueva promoción</button>
+                    </div>
+                </div>
+
+                <div class="accordion"  id="accordionExample">
+                    <div class="card" *ngFor="let producto of productosEnProm | sort:filterPromos | paginate:page_size:page_number ; let i=index;" >
+                      <div class="card-header" id="headingOne" style="background-color:white ; border-style: solid; border-color: #1f4e84; border-radius: 3px; border-width: 1px;">
+            
+                        <div class="row">
+                            <div class="col-md-2 text-center col-xs-12 mb-2">
+                                <i *ngIf="arrow" class="fas fa-angle-down fa-lg" data-toggle="collapse" [attr.data-target]="'#collapse'+i" aria-expanded="true" aria-controls="collapseOne" (click)="arrow = false" style="cursor: pointer;"></i>
+                                <i *ngIf="!arrow" class="fas fa-angle-up fa-lg" data-toggle="collapse" [attr.data-target]="'#collapse'+i" aria-expanded="true" aria-controls="collapseOne" (click)="arrow = true" style="cursor: pointer;"></i>
+                                <img src="../../../assets/imagenes/prod1.jpg" class="img-prod" alt="...">
+                            </div>
+
+                            <div class="col-md-3 col-xs-12 ">
+                                <h4 class="ml-xs-5 my-xs-4">{{producto.nombre}}</h4>
+                                <h4>Id: {{producto.id}}</h4>
+                            </div>
+
+                            <div class="col-md-3">
+                                <h4>Precio: {{producto.precio | currency}}</h4>
+                                <h4>Precio oferta: {{producto.precioOferta | currency}}</h4>
+                            </div>
+
+                            <div class="col-md-3">
+                                <h4>Subcategoría: {{producto.subcategoria.nombre}}</h4>
+                            </div>
+                            <div class="col-md-1 d-none d-sm-block">
+                                <h4><i class="far fa-edit fa-lg"></i></h4>
+                                <h4><i class="far fa-check-square fa-lg"></i></h4>
+                            </div>
+                            
+                            <div class="col d-block d-sm-none ml-10 text-center">
+                                <i class="far fa-edit fa-lg mr-5"></i>
+                                <i class="far fa-trash-alt fa-lg "></i>
+                            </div>
+                                
+                            
+                            
+                                
+                                                       
+                            
+                        </div>
+            
+                      </div>                 
+                      <div [attr.id]="'collapse'+i" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body" style="background-color: rgb(245, 245, 245); border: solid; border-color: #1f4e84; border-width: 1px; border-top: none;">
+                            <h3>Propiedades: </h3>
+                          <p *ngFor="let propiedad of producto.propiedades">
+                              {{propiedad.nombre}}: <small *ngFor="let valor of propiedad.valores">{{valor.valor}}, </small>
+                          </p>
+                        </div>
+                      </div>
+                    
+                    </div>
+                </div>
+    
+                <div class="paginator">
+                    <mat-paginator style="background:none;" [length]="productosEnProm.length"
+                   [pageSize]="page_size"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="handlePage($event)">
+                    </mat-paginator>
+                </div>
+
+
+            </div>
+             
+        
+
+            
+
+
+
+            
+        </div>
+    </div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

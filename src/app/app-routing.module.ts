@@ -23,6 +23,7 @@ import { AdminProfileComponent } from './admin-options/admin-profile/admin-profi
 import {BrandsPanelComponent} from './admin-options/brands-panel/brands-panel.component'
 import {ProductsListComponent  } from "./admin-options/products-list/products-list.component";
 import {  AddProductComponent} from "./admin-options/add-product/add-product.component";
+import { AdminPromosComponent } from './admin-options/admin-promos/admin-promos.component';
 const routes: Routes = [
 {path:"home",component:HomeComponent},
 {path:"viewmore/:id", component:ViewMoreComponent},
@@ -37,6 +38,7 @@ const routes: Routes = [
 {path:"brands-panel" , component:BrandsPanelComponent},
 {path:"add-product",component:AddProductComponent},
 {path:"products-list" , component:ProductsListComponent},
+{path:"admin-promo", component:AdminPromosComponent},
 {path:"user-sign-up",component:UserSignUpComponent},
 {path:"verify/redirect",component:ActivatedMssgComponent},
 {path:"shopping-cart",component:ShoppingCartComponent},
