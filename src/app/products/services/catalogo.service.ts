@@ -29,12 +29,12 @@ id:number;
     return this.http.get(`${this.url}/categorias/${categoriaId}/subcategorias`)
   }
 
-  getRdoBusqueda(termino:string):Observable<Producto[]>{
+  getRdoBusqueda(termino:string):Observable<any>{
     let parametros=new HttpParams();
     parametros=parametros.append("termino",termino);
-    return this.http.get(`${this.url}/catalogo/buscar`,{params:parametros}).pipe(
-      map(response=> response as Producto[])
-    )
+    return this.http.get(`${this.url}/catalogo/buscar`,{params:parametros}).pipe( 
+      map( (response:any) => response)) 
+    
     
   }
   getUnidades():Observable<any>{
