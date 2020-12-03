@@ -62,7 +62,7 @@ id:number;
 
   getInfoProducto(id:number):Observable<Producto>{
     
-    return this.http.get(`${this.url}/catalogo/productos/ver/${id}`).pipe( map( (response:any) => response.producto as Producto));
+    return this.http.get(`${this.url}/catalogo/productos/${id}`).pipe( map( (response:any) => response.producto as Producto));
   }
 
   getSubcategorias(){
