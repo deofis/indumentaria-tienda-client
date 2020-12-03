@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +19,6 @@ export class ValidadoresService {
         pass2Control.setErrors({ noIgual: true })};
       }
     }
+
 
 }
