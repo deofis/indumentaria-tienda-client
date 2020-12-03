@@ -1,12 +1,66 @@
 <div class="routes">
-    <p><a  [routerLink]="['/home']" title="Home">Inicio </a> > <a href=""> Categoría</a> > <a href=""> Subcategoria </a> > <a href="" id="nombre-busqueda"> </a></p>
-    <span class="cantidad-rdos"><span id="nro-rdos">179</span> resultados</span>
-</div> 
+    <p><a [routerLink]="['/home']" title="Home">Inicio </a> > <a href=""> Categoría</a> > <a href=""> Subcategoria </a>
+        > <a href="" id="nombre-busqueda"> </a></p>
+    <span class="cantidad-rdos"><span id="nro-rdos">{{cantidadRdos}}</span> resultados</span>
+</div>
 
-<app-aside></app-aside>
+
+<section class="contenedor">
+    <div class="contenedor-menu">
+
+        <ul class="menu">
+            <li class="ordenar" (click)="mostrarOrdenar()">Ordenar <i class="fas fa-chevron-down" id="arrow"></i><i class="fas fa-chevron-up" id="arrow2"></i> </li>
+            <ul class="submenu_lateral" id="submenu">
+                <li id="masVendidos" (click)="ordenarAZ()">A-Z</li>
+                <li id="masVendidos" (click)="ordenarZA()">Z-A</li>
+                <li id="menorPrecio" (click)="aMenorPrecio()">Menor Precio</li>
+                <li id="mayorPrecio" (click)="aMayorPrecio()">Mayor Precio</li>
+            </ul>
+
+            <li id="filtros"><i class="icono izquierda fas fa-sliders-h"></i>Filtros</li>
+            <div class="subcategorias" *ngFor="let subcategoria of subcategorias" (click)="filtrarSubcategorias()">
+                <input type="radio" id="{{subcategoria.nombre}}" name="subcategoria">
+                <label for="{{subcategoria.nombre}}"> {{subcategoria.nombre}}</label>
+            </div>
+            <br>
+            <br>
+
+            <div class="marcas" *ngFor="let marca of marcas" (click)="filtrarMarcas()">
+                <input type="radio" id="{{marca.nombre}}" name="marca">
+                <label for="{{marca.nombre}}" > {{marca.nombre}}</label>
+            </div>
+            <br>
+            <br>
+
+
+            <div *ngFor="let propiedad of propiedades" class="propiedades" >
+                <p> {{propiedad.nombre}}</p>
+                <ul class="valores">
+                    <li class="valor" *ngFor="let valor of propiedad?.valores ; let i=index " (click)="filtrarPropiedades()">
+                        <input type="radio" id="{{valor.valor}}" name={{propiedad.nombre}}>
+                        <label for="{{valor.valor}}"> {{valor.valor}}</label>
+                    </li>
+                </ul>
+            </div>
+            <p></p>
+
+            <!-- Filtro por precio -->
+            <li id="filtros"><i class="icono izquierda fas fa-dollar-sign"></i>Filtrar por precio</li>
+
+            <div class="filtro pcio-min-max">
+                <input class="pcio" type="number" placeholder="Minimo">
+                <input class="pcio" type="number" placeholder="Máximo">
+                <i class="fas fa-chevron-circle-right"></i>
+            </div>
+            <!-- FIN Filtro por precio -->
+
+        </ul>
+    </div>
+</section>
+
 
 <section class="contenedorProductos">
-    <h2 id="titulo"> Resultados para  "<span id="termino-busqueda"></span>"</h2>
+    <h2 id="titulo"> Resultados para "<span id="termino-busqueda"></span>"</h2>
     <div class="contenedor-grid">
         <div class="rdos" *ngFor="let resultado of rdosBusqueda">
             <app-card-grid [producto]="resultado"></app-card-grid>
