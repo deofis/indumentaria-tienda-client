@@ -23,30 +23,34 @@ import {BrandsPanelComponent} from './admin-options/brands-panel/brands-panel.co
 import {ProductsListComponent  } from "./admin-options/products-list/products-list.component";
 import {  AddProductComponent} from "./admin-options/add-product/add-product.component";
 import { AdminPromosComponent } from './admin-options/admin-promos/admin-promos.component';
+
+const admin = 'ROLE_ADMIN';
+const user  = 'ROLE_USER';
+
 const routes: Routes = [
-{path:"home",component:HomeComponent},
-{path:"viewmore/:id", component:ViewMoreComponent},
-{path:"login", component:UserLoginComponent},
-{path:"new-password",component:NewPasswordComponent},
-{path:'oauth2/redirect', component: Oauth2RedirectHandlerComponent},
-{path:"search/:termino", component:BuscadorComponent},
-{path:"user-profile",component:UserProfileComponent},
-{path:"user-my-purchases",component:MisComprasComponent},
-{path:"user-favorites", component:FavoritesComponent},
-{path:"admin-profile", component:AdminProfileComponent},
-{path:"brands-panel" , component:BrandsPanelComponent},
-{path:"add-product",component:AddProductComponent},
-{path:"products-list" , component:ProductsListComponent},
-{path:"admin-promo", component:AdminPromosComponent},
-{path:"user-sign-up",component:UserSignUpComponent},
-{path:"new-password",component:NewPasswordComponent},
-{path:"verify/redirect",component:ActivatedMssgComponent},
-{path:"shopping-cart",component:ShoppingCartComponent},
-{path:"checkout",component:CheckoutComponent},
-{path:"pre-checkout", component:PreCheckoutComponent},
-{path:"confirm-data", component:ConfirmDataComponent},
-{path:"successful-purchase" , component:FinalMessageComponent},
-{path:"**", pathMatch:"full", redirectTo:"home"}
+  { path:"home",component:HomeComponent },
+  { path:"viewmore/:id", component:ViewMoreComponent },
+  { path:"login", component:UserLoginComponent },
+  { path:"new-password",component:NewPasswordComponent},
+  { path:'oauth2/redirect', component: Oauth2RedirectHandlerComponent },
+  { path:"search/:termino", component:BuscadorComponent },
+  { path:"user-profile",component:UserProfileComponent, canActivate: [AuthGuard, RoleGuard], data: {role: user} },
+  { path:"user-my-purchases",component:MisComprasComponent, canActivate: [AuthGuard, RoleGuard], data: {role: user} },
+  { path:"user-favorites", component:FavoritesComponent, canActivate: [AuthGuard, RoleGuard], data: {role: user} },
+  { path:"admin-profile", component:AdminProfileComponent, canActivate: [AuthGuard, RoleGuard], data: {role: admin} },
+  { path:"brands-panel" , component:BrandsPanelComponent, canActivate: [AuthGuard, RoleGuard], data: {role: admin} },
+  { path:"add-product",component:AddProductComponent, canActivate: [AuthGuard, RoleGuard], data: {role: admin} },
+  { path:"products-list" , component:ProductsListComponent, canActivate: [AuthGuard, RoleGuard], data: {role: admin} },
+  { path:"admin-promo", component:AdminPromosComponent, canActivate: [AuthGuard, RoleGuard], data: {role: admin} },
+  { path:"user-sign-up",component:UserSignUpComponent },
+  { path:"new-password",component:NewPasswordComponent },
+  { path:"verify/redirect",component:ActivatedMssgComponent },
+  { path:"shopping-cart",component:ShoppingCartComponent, canActivate: [AuthGuard, RoleGuard], data: {role: user} },
+  { path:"checkout",component:CheckoutComponent },
+  { path:"pre-checkout", component:PreCheckoutComponent },
+  { path:"confirm-data", component:ConfirmDataComponent },
+  { path:"successful-purchase" , component:FinalMessageComponent },
+  { path:"**", pathMatch:"full", redirectTo:"home" }
 ];
 
 @NgModule({

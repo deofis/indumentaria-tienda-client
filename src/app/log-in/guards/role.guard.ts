@@ -20,9 +20,16 @@ export class RoleGuard implements CanActivate {
       }
 
       let role = route.data['role'] as string;
+      let admin = 'ROLE_ADMIN';
 
       if (this.authService.hasRole(role)) {
         return true;
+      }
+
+      // Si el admin intenta acceder a un recurso de usuario, lo redirige a admin profile (Para evitar errores).
+      if(this.authService.hasRole(admin) && role !== admin) {
+        this.router.navigate(['/admin-profile']);
+        return false;
       }
 
       alert('No tenés acceso a este recurso');
