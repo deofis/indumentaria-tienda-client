@@ -50,7 +50,7 @@ var routes = [
     { path: "products-list", component: products_list_component_1.ProductsListComponent, canActivate: [auth_guard_1.AuthGuard, role_guard_1.RoleGuard], data: { role: admin } },
     { path: "admin-promo", component: admin_promos_component_1.AdminPromosComponent, canActivate: [auth_guard_1.AuthGuard, role_guard_1.RoleGuard], data: { role: admin } },
     { path: "user-sign-up", component: user_sign_up_component_1.UserSignUpComponent },
-    { path: "new-password", component: new_password_component_1.NewPasswordComponent },
+    { path: "recuperar-password", component: new_password_component_1.NewPasswordComponent },
     { path: "verify/redirect", component: activated_mssg_component_1.ActivatedMssgComponent },
     { path: "shopping-cart", component: shopping_cart_component_1.ShoppingCartComponent, canActivate: [auth_guard_1.AuthGuard, role_guard_1.RoleGuard], data: { role: user } },
     { path: "checkout", component: checkout_component_1.CheckoutComponent },

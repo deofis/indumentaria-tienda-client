@@ -43,7 +43,7 @@ const routes: Routes = [
   { path:"products-list" , component:ProductsListComponent, canActivate: [AuthGuard, RoleGuard], data: {role: admin} },
   { path:"admin-promo", component:AdminPromosComponent, canActivate: [AuthGuard, RoleGuard], data: {role: admin} },
   { path:"user-sign-up",component:UserSignUpComponent },
-  { path:"new-password",component:NewPasswordComponent },
+  { path:"recuperar-password",component:NewPasswordComponent },
   { path:"verify/redirect",component:ActivatedMssgComponent },
   { path:"shopping-cart",component:ShoppingCartComponent, canActivate: [AuthGuard, RoleGuard], data: {role: user} },
   { path:"checkout",component:CheckoutComponent },
