@@ -205,8 +205,8 @@ cargarImagen(){
   }
   
   private _filter(value:any) {
-    //const filterValue = value.toLowerCase();
-    return this.marcas.filter(marca => marca.nombre.toLowerCase().indexOf(value) === 0);
+    const filterValue = value.toLowerCase();
+    return this.marcas.filter(marca => marca.nombre.toLowerCase().indexOf(filterValue) === 0);
   }
   
      /***** GET CATEGORIES *****/
