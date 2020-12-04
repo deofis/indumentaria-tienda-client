@@ -1,9 +1,11 @@
+
+
 <section>
-    <div id="lateralMenu">
-        <div id="botonMenu" class="boton">
-            <i class="fas fa-angle-right " id="open-menu" (click)="showLateralMenu()"></i>
-            <i class="fas fa-close " id="close-menu" (click)="hiddeLateralMenu()"></i>
-        </div>
+    <div id="lateralMenu" >
+        <div id="botonMenu" class="boton" > 
+            <i  class="fas fa-angle-right " id="open-menu" (click)="showLateralMenu()" ></i> 
+            <i  class="fas fa-close " id="close-menu" (click)="hiddeLateralMenu()"></i>
+         </div>
         <div class="lateral-container" id="lateral-container">
             <ul class="userOptions">
                 <li [routerLink]="['/admin-ventas']"> Ventas <i class="fas fa-angle-down "></i> </li>
@@ -12,15 +14,25 @@
                 <li [routerLink]="['/admin-promo']"> Promociones <i class="fas fa-angle-down "></i> </li>
                 <li [routerLink]="['/brands-panel']"> Marcas<i class="fas fa-angle-down "></i> </li>
                 <li [routerLink]="['/admin-profile']"> Mis Datos </li>
+
                 <li (click)="logout()"><i class="fas fa-sign-out-alt"></i>Cerrar Sesión </li>
             </ul>
         </div>
     </div>
-    <div class="container-steps">
-        <h2>Añadir Producto</h2>
-        <app-step1 ></app-step1>
-     
+    <div class="container-miscompras">
+        <div class="frame">
+            <div class="title">
+                <h2></h2>
+            </div>
 
+
+            <div class="container text-center">
+                <img src="../../../assets/imagenes/wf.png" class="img-logo">
+                <h3>Estamos trabajando para brindarte la mejor experiencia.</h3>
+            </div>
+
+
+
+        </div>
     </div>
-
 </section>

@@ -272,6 +272,7 @@ header {
 
 // categorias y subcategorias
 .contenedor-categorias {
+
     .submenu {
         display: none;
         width: 210px;
@@ -280,7 +281,7 @@ header {
         padding-bottom: 15px;
         border-radius: 0px 0px 10px 10px;
         position: absolute;
-        left: 10vw;
+        left: 18vw;
         z-index: 50;
         border-right: 1px solid rgba(187, 184, 184, 0.5);
         //    top: 115px;        
@@ -313,7 +314,7 @@ header {
         min-height: 401px;
         position: absolute;
         // top: 115px;
-        left: 25vw;
+        left: 31.6vw;
         z-index: 49;
         border-radius: 0px 0px 10px 0px;
         display: none;
@@ -321,6 +322,23 @@ header {
     }
 }
 
+
+@media screen and  (min-width: 1201px) and (max-width: 1300px) {
+    
+    .contenedor-categorias {
+
+        .submenu {
+            
+            left: 17vw;
+            
+        }
+        #container-sub {
+            
+            left: 34vw;
+        }
+    }
+    
+}
 
 //// *** **** MENU HAMBURGUESA **** *** ///
 .hamburgerM{
@@ -527,6 +545,20 @@ header {
     } 
  }
  @media screen and  (min-width: 1021px) and (max-width: 1200px) {
+
+    .contenedor-categorias {
+
+        .submenu {
+            
+            left: 20vw;
+            
+        }
+        #container-sub {
+            
+            left: 40vw;
+        }
+    }
+
      header{
         box-shadow: 0px 3px 5px rgb(128, 126, 126);
          .menu-header{
@@ -595,3 +627,7 @@ header{
 
 }
 
+
+.dropdown-toggle::after {
+    display:none
+}

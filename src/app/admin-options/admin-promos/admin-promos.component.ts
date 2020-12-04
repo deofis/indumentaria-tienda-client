@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 import { Router } from '@angular/router';
+import { AuthService } from '../../log-in/services/auth.service';
 import { Producto } from 'src/app/products/clases/producto';
 import { CatalogoService } from '../../products/services/catalogo.service';
 import { Subcategoria } from 'src/app/products/clases/subcategoria';
@@ -63,7 +64,9 @@ export class AdminPromosComponent implements OnInit {
                private calendar: NgbCalendar,
                private fb:FormBuilder,
                private productoService: ProductoService,
-               private validadores: ValidadoresService) { }
+               private validadores: ValidadoresService,
+               private router:Router,
+               private authService: AuthService) { }
 
   ngOnInit(): void {
 
@@ -268,6 +271,15 @@ export class AdminPromosComponent implements OnInit {
     close.style.display="none";
     let arrow = document.getElementById("open-menu");
     arrow.style.display="block"
+  }
+
+  /**
+   * Cerrar sesión y eliminar datos de la misma.
+   */
+  logout(): void {
+    this.authService.logout();
+    
+    this.router.navigate(['/home']);
   }
 
 
