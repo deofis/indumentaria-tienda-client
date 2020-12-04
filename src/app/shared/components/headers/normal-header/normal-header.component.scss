@@ -311,7 +311,7 @@ header {
         background: $color-menues;
         width: 16vw;
         height: fit-content;
-        min-height: 401px;
+        min-height: 317px;
         position: absolute;
         // top: 115px;
         left: 31.6vw;
@@ -621,9 +621,4 @@ header{
     }
 }
 
-}
-
-
-.dropdown-toggle::after {
-    display:none
 }
