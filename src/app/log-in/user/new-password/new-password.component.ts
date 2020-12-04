@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ValidadoresService } from '../../services/validadores.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { throwError } from 'rxjs';
 @Component({
   selector: 'app-new-password',
   templateUrl: './new-password.component.html',
@@ -9,13 +12,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class NewPasswordComponent implements OnInit {
 formNewPassword: FormGroup;
   constructor(private fb: FormBuilder,
-    private validadores: ValidadoresService,) { }
+              private validadores: ValidadoresService,
+              private authService: AuthService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit(): void {
-    
     this.crearFormulario();
   }
-
   
   mostrarPsw(){
     let input = document.getElementById("password")as HTMLInputElement ;   
@@ -62,6 +66,21 @@ formNewPassword: FormGroup;
     )
   }
 
+  cambiarPassword(): void {
+    let newPassword: string;
+    newPassword = this.formNewPassword.controls.password.value;
+
+    this.activatedRoute.params.subscribe(param => {
+      let token = param.token;
+      this.authService.cambiarContraseña(newPassword, token).subscribe(response => {
+        alert(response);
+        this.router.navigate(['login']);
+      }, err => {
+        alert(err.error);
+        throwError(err);
+      });
+    });
+  }
 
   get passwordInvalida() {
     return this.formNewPassword.get('password').invalid && this.formNewPassword.get('password').touched;

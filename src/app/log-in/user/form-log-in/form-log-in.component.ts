@@ -81,7 +81,20 @@ export class FormLogInComponent implements OnInit {
   }
 
   enviarRecuperarPassword(): void {
-    console.log(this.formOlvidePass.value);
+    if (this.formOlvidePass.invalid) {
+      return Object.values(this.formOlvidePass.controls)
+      .forEach(control => control.markAsTouched());
+    }
+
+    let userEmail: string;
+    userEmail = this.formOlvidePass.controls.email.value;
+
+    this.authService.recuperarContraseña(userEmail).subscribe(response => {
+      alert(response);
+      window.location.reload();
+    }, err => {
+      alert(err.error);
+    });
   }
 
   // Getters para campos invalidos formulario login

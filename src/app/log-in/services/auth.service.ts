@@ -1,7 +1,7 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { API_BASE_URL } from 'src/app/config/config';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { SignupRequest } from '../clases/signup.request';
 import { IniciarSesionRequest } from '../clases/login-request';
 import { map, tap } from 'rxjs/operators';
@@ -97,6 +97,35 @@ export class AuthService {
         localStorage.setItem('expiraEn', response.expiraEn);  
       })
     );
+  }
+
+  /**
+   * Servicio que se encarga de hacer una petición al servidor para recuperar la contraseña en caso
+   * de haberla olvidado.
+   * <br>
+   * Inicia el flujo de recuperación de contraseña, para el email requerido.
+   * @param email string email requerido a recuperar contraseña. 
+   */
+  recuperarContraseña(email: string): Observable<string> {
+    let params = new HttpParams();
+    params = params.append("email", email);
+    return this.http.get(`${this.urlEndpoint}/recuperar-password`, {params: params, responseType: 'text'});
+  }
+
+  /**
+   * Servicio que se encarga de enviar petición al servidor con la nueva contraseña del usuario, y el token
+   * para validar que es el mismo usuario quien hace la petición (token generado y enviado al mail).
+   * <br>
+   * Completa el flujo de recuperación de contraseña.
+   * @param password string nueva contraseña.
+   * @param token string token de validación.
+   */
+  cambiarContraseña(password: string, token: string): Observable<string> {
+    const cambiarPassRequest = {
+      password: password
+    };
+
+    return this.http.post(`${this.urlEndpoint}/cambiar-password/${token}`, cambiarPassRequest,{responseType: 'text'});
   }
 
   /**
