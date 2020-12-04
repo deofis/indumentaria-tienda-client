@@ -56,6 +56,7 @@ import { SortPipe } from './pipes/sort.pipe';
 import {MatListModule} from '@angular/material/list';
 import { AdminVentasComponent } from './admin-options/admin-ventas/admin-ventas.component';
 import { AdminSidebarComponent } from './admin-options/admin-sidebar/admin-sidebar.component';
+import { UserSidebarComponent } from './user-options/user-sidebar/user-sidebar.component';
 
 
 
@@ -98,6 +99,7 @@ import { AdminSidebarComponent } from './admin-options/admin-sidebar/admin-sideb
     SortPipe,
     AdminVentasComponent,
     AdminSidebarComponent,
+    UserSidebarComponent,
   ],
   imports: [
     BrowserModule,

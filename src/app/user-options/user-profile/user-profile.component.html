@@ -1,18 +1,5 @@
 <section>
-    <div id="lateralMenu" >
-       <div id="botonMenu" class="boton" > 
-           <i  class="fas fa-angle-right " id="open-menu" (click)="showLateralMenu()" ></i> 
-           <i  class="fas fa-close " id="close-menu" (click)="hiddeLateralMenu()"></i>
-        </div>
-        <div class="lateral-container" id="lateral-container" >
-            <ul class="userOptions" >
-                <li [routerLink]="['/user-my-purchases']">Compras</li>
-                <li [routerLink]="['/user-favorites']" > Favoritos </li>
-                <li [routerLink]="['/user-profile']">  Mis Datos </li>
-                <li (click)="logout()" >Cerrar Sesión</li>
-            </ul>
-        </div>
-    </div>
+    <app-user-sidebar></app-user-sidebar>
     <div class="container-myprofile">
         <div class="frame">
             <div class="title">
@@ -77,11 +64,11 @@
                     </div>
                     <p id="delete">Eliminar</p>
                 </div>
-        </article>
-      </div>
+            </article>
+        </div>
     </div>
 
 
 
 </section>
-<div class="bg-menu" id="bg-menu" ></div>
+<div class="bg-menu" id="bg-menu"></div>
