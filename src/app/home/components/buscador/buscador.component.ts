@@ -129,27 +129,28 @@ filtrarSubcategorias(){
     }
   }
 }
-filtrarPropiedades(){
-
+filtrarPropiedades(index:number){
   //inicializo los rdos para q si cambio de opcion me haga el filter sobre todo el rdo y no sobre el filter anterior
   this.rdosBusqueda=this.rdosOriginales
-  for (var i=0; i<this.propiedades.length; i++){
-  
-   let  radioButPropiedad = document.getElementsByName(this.propiedades[i].nombre) as unknown as HTMLCollectionOf<HTMLInputElement>;
-    for (var x=0; x<radioButPropiedad.length; x++){
-    if (radioButPropiedad[x].checked == true) { 
-          let valorSeleccionado= this.propiedades[i].valores[x].valor;
-           console.log(valorSeleccionado)
 
+   var propiedadSeleccionada=this.propiedades[index]
+   var  radioButPropiedad = document.getElementsByName(propiedadSeleccionada.nombre) as unknown as HTMLCollectionOf<HTMLInputElement>;
+
+  for (var x=0; x<radioButPropiedad.length; x++){
+    if (radioButPropiedad[x].checked == true) { 
+          let propSeleccionada= this.propiedades[index].nombre;
           for (let z = 0; z < this.rdosBusqueda.length; z++) {
-            console.log(this.rdosBusqueda[z].propiedades[i].valores[x].valor)
-           if(this.rdosBusqueda[z].propiedades[i].valores[x].valor == valorSeleccionado){
-            this.rdosBusqueda= this.rdosBusqueda.filter(rdo => rdo.propiedades[i]?.valores[x].valor==valorSeleccionado);
-           }          
+           if(this.rdosBusqueda[z].propiedades[index].nombre == propSeleccionada){
+            this.rdosBusqueda= this.rdosBusqueda.filter(rdo => {
+              for(let i=0; i<this.rdosBusqueda.length; i++){
+                // this.rdosBusqueda[i].propiedades.nombre==propSeleccionada
+              }})
+        console.log(this.rdosBusqueda)
+          }          
           }
         }
-      }
-  }
+      
+    }
 }
 aMenorPrecio(){
    ///////////////mas barato a mas caro /////

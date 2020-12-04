@@ -96,7 +96,6 @@ showsubcategories(index:number){
   itemSubcategoria.style.cursor="pointer";
   itemSubcategoria.innerText=subcatActuales[x].nombre;
   document.getElementById("container-sub").appendChild(itemSubcategoria);
-  
  }
 }
 hiddesubcategories(){
