@@ -12,6 +12,8 @@ formNewPassword: FormGroup;
     private validadores: ValidadoresService,) { }
 
   ngOnInit(): void {
+    
+    this.crearFormulario();
   }
 
   
