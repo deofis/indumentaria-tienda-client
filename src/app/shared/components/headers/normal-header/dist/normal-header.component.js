@@ -1,15 +1,19 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    else
+        for (var i = decorators.length - 1; i >= 0; i--)
+            if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 exports.__esModule = true;
 exports.NormalHeaderComponent = void 0;
 var core_1 = require("@angular/core");
 var sweetalert2_1 = require("sweetalert2");
-var NormalHeaderComponent = /** @class */ (function () {
+var NormalHeaderComponent = /** @class */ (function() {
     function NormalHeaderComponent(catalogoservice, router, _cartService, authService, carritoService) {
         this.catalogoservice = catalogoservice;
         this.router = router;
@@ -19,7 +23,7 @@ var NormalHeaderComponent = /** @class */ (function () {
         this.totalPrice = 0;
         this.totalQuantity = 0;
     }
-    NormalHeaderComponent.prototype.ngOnInit = function () {
+    NormalHeaderComponent.prototype.ngOnInit = function() {
         //this.totalQuantity = this.carritoService.getTotalItems();
         //this.carritoService.totalItemsEmmiter.subscribe(resp => this.totalQuantity = resp)
         this.verificarSesion();
@@ -40,21 +44,21 @@ var NormalHeaderComponent = /** @class */ (function () {
         //     })
     };
     /***** GET CATEGORIES *****/
-    NormalHeaderComponent.prototype.getListaCategorias = function () {
+    NormalHeaderComponent.prototype.getListaCategorias = function() {
         var _this = this;
-        this.catalogoservice.getListaCategorias().subscribe(function (response) {
+        this.catalogoservice.getListaCategorias().subscribe(function(response) {
             _this.categorias = response;
             console.log(response);
         });
     };
     /********DROP DOWN MENUS */
     //***categories */
-    NormalHeaderComponent.prototype.showCategories = function () {
+    NormalHeaderComponent.prototype.showCategories = function() {
         var categoriesList = document.getElementById("categoriesList");
         categoriesList.style.display = "block";
         this.bgOpenMenu();
     };
-    NormalHeaderComponent.prototype.showsubcategories = function (index) {
+    NormalHeaderComponent.prototype.showsubcategories = function(index) {
         var categories = document.getElementById("categoriesList");
         categories.style.borderRadius = " 0px 0px 0px 10px";
         var container = document.getElementById("container-sub");
@@ -71,53 +75,53 @@ var NormalHeaderComponent = /** @class */ (function () {
             document.getElementById("container-sub").appendChild(itemSubcategoria);
         }
     };
-    NormalHeaderComponent.prototype.hiddesubcategories = function () {
+    NormalHeaderComponent.prototype.hiddesubcategories = function() {
         var subcategorias = document.getElementsByClassName("borrar");
         for (var x = 0; x < subcategorias.length; x++) {
             subcategorias[x].style.display = "none";
         }
     };
-    NormalHeaderComponent.prototype.hiddeSubAndCategories = function () {
+    NormalHeaderComponent.prototype.hiddeSubAndCategories = function() {
         var containerSubcategories = document.getElementById("container-sub");
         containerSubcategories.style.display = "none";
         var categoriesList = document.getElementById("categoriesList");
         categoriesList.style.display = "none";
         this.hiddeBgMenu();
     };
-    NormalHeaderComponent.prototype.showCategoriesAndSubcategories = function () {
+    NormalHeaderComponent.prototype.showCategoriesAndSubcategories = function() {
         var containerSubcategories = document.getElementById("container-sub");
         containerSubcategories.style.display = "block";
         var categoriesList = document.getElementById("categoriesList");
         categoriesList.style.display = "block";
     };
     ///****User options */
-    NormalHeaderComponent.prototype.showUserMenu = function () {
+    NormalHeaderComponent.prototype.showUserMenu = function() {
         var userOptions = document.getElementById("userOptions");
         userOptions.style.display = "block";
-        this.bgOpenMenu();
+        /* this.bgOpenMenu(); */
     };
-    NormalHeaderComponent.prototype.hiddeUserMenu = function () {
+    NormalHeaderComponent.prototype.hiddeUserMenu = function() {
         var userOptions = document.getElementById("userOptions");
         userOptions.style.display = "none";
         this.hiddeBgMenu();
     };
     /******* Background Menu */
-    NormalHeaderComponent.prototype.bgOpenMenu = function () {
+    NormalHeaderComponent.prototype.bgOpenMenu = function() {
         var bgCategories = document.getElementById("bg-menu");
         bgCategories.style.display = "block";
     };
-    NormalHeaderComponent.prototype.hiddeBgMenu = function () {
+    NormalHeaderComponent.prototype.hiddeBgMenu = function() {
         var bgCategories = document.getElementById("bg-menu");
         bgCategories.style.display = "none";
     };
     /******* Menu mobile */
-    NormalHeaderComponent.prototype.showMenu = function () {
+    NormalHeaderComponent.prototype.showMenu = function() {
         var menu = document.getElementById("hamburgerM");
         menu.style.display = "block";
         document.getElementById("openM").style.display = "none";
         document.getElementById("closeM").style.display = "block";
     };
-    NormalHeaderComponent.prototype.hiddeMenu = function () {
+    NormalHeaderComponent.prototype.hiddeMenu = function() {
         var menu = document.getElementById("hamburgerM");
         menu.style.display = "none";
         document.getElementById("openM").style.display = "block";
@@ -125,14 +129,13 @@ var NormalHeaderComponent = /** @class */ (function () {
         document.getElementById("closeM").style.display = "none";
     };
     /**** Search bar  ****/
-    NormalHeaderComponent.prototype.buscarProducto = function (termino) {
+    NormalHeaderComponent.prototype.buscarProducto = function(termino) {
         this.router.navigate(['/search', termino]);
     };
-    NormalHeaderComponent.prototype.irPerfil = function () {
+    NormalHeaderComponent.prototype.irPerfil = function() {
         if (this.estaLogueado) {
             this.router.navigate(['user-profile']);
-        }
-        else {
+        } else {
             this.router.navigate(['login']);
         }
     };
@@ -162,30 +165,30 @@ var NormalHeaderComponent = /** @class */ (function () {
      * a todos los subscriptores cada vez que se realiza un cambio de estado en la sesión del
      * usuario.
      */
-    NormalHeaderComponent.prototype.verificarSesion = function () {
+    NormalHeaderComponent.prototype.verificarSesion = function() {
         var _this = this;
-        this.authService.loggedIn.subscribe(function (resp) { return _this.estaLogueado = resp; });
+        this.authService.loggedIn.subscribe(function(resp) { return _this.estaLogueado = resp; });
         this.estaLogueado = this.authService.isLoggedIn();
     };
     /**
      * Valida que el usuario posea el rol para poder visualizar el recurso solicitado.
      * @param role string rol requerido para mostrar el recurso.
      */
-    NormalHeaderComponent.prototype.hasRole = function (role) {
+    NormalHeaderComponent.prototype.hasRole = function(role) {
         return this.authService.hasRole(role);
     };
     /**
      * Cerrar sesión y eliminar datos de la misma.
      */
-    NormalHeaderComponent.prototype.logout = function () {
+    NormalHeaderComponent.prototype.logout = function() {
         var _this = this;
-        this.authService.logout().subscribe(function (response) {
+        this.authService.logout().subscribe(function(response) {
             sweetalert2_1["default"].fire({
                 icon: 'success',
                 title: 'Sesión Cerrada',
                 text: response,
                 width: '350px'
-            }).then(function () {
+            }).then(function() {
                 _this.router.navigate(['/home']);
                 // refresh
             });
