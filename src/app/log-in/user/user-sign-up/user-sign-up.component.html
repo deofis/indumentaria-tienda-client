@@ -3,21 +3,24 @@
     <a [routerLink]="['/home']" title="Home">
         <img src="../../assets/imagenes/wf.png" alt="logo">
     </a>
-    <form class="contenedor-form" id="cont-form" autocomplete="off" [formGroup]="formRegistro" (ngSubmit)="registrarse()">
+    <form class="contenedor-form" id="cont-form" autocomplete="off" [formGroup]="formRegistro"
+        (ngSubmit)="registrarse()">
         <div id="contenedor-registrarse">
-<div class="titulo">
-            <i class="fas fa-arrow-circle-left" id="back1" [routerLink]="['/login']"></i>
-            <h2>Crear cuenta</h2>
-        </div>
+            <div class="titulo">
+                <i class="fas fa-arrow-circle-left" id="back1" [routerLink]="['/login']"></i>
+                <h2>Crear cuenta</h2>
+            </div>
             <div formGroupName="cliente" id="formName">
                 <div class="nombre-apellido">
                     <div class="name ">
-                        <input [class.is-invalid]="nombreInvalido" type="text" id="name" placeholder="*Nombre" formControlName="nombre">
+                        <input [class.is-invalid]="nombreInvalido" type="text" id="name" placeholder="*Nombre"
+                            formControlName="nombre">
                     </div>
                     <span class="text-rojo" id="alert1" *ngIf="nombreInvalido"><small>Este campo es
                             obligatorio.</small></span>
                     <div class="lastname ">
-                        <input [class.is-invalid]="apellidoInvalido" type="text" placeholder="*Apellido" id="lastname" formControlName="apellido">
+                        <input [class.is-invalid]="apellidoInvalido" type="text" placeholder="*Apellido" id="lastname"
+                            formControlName="apellido">
                     </div>
                     <span class="text-rojo" id="alert2" *ngIf="apellidoInvalido"><small>Este campo es
                             obligatorio.</small></span>
@@ -53,14 +56,16 @@
             <div class="cont-email">
                 <div class="email">
 
-                    <input [ngClass]="{'is-invalid': emailInvalido}" type="email" id="email" placeholder="*Correo electrónico" formControlName="email">
+                    <input [ngClass]="{'is-invalid': emailInvalido}" type="email" id="email"
+                        placeholder="*Correo electrónico" formControlName="email">
                 </div>
                 <span class="text-rojo" *ngIf="emailInvalido"><small>El email es obligatorio</small></span>
             </div>
             <div class="passwords">
 
                 <div class="campo" id="campo1">
-                    <input [ngClass]="{'is-invalid': passwordInvalida}" type="password" id="new-pasw" placeholder="*Contraseña" formControlName="password">
+                    <input [ngClass]="{'is-invalid': passwordInvalida}" type="password" id="new-pasw"
+                        placeholder="*Contraseña" formControlName="password">
                     <i class="far fa-eye" id="show1" (click)="mostrarPsw1()"></i>
                     <i class="far fa-eye-slash" id="hide1" (click)="mostrarPsw1()"></i>
                 </div>
@@ -69,7 +74,8 @@
 
 
                 <div class="campo" id="campo2">
-                    <input [ngClass]="{'is-invalid': passwordNoIguales}" type="password" id="new-pasw-repeat" placeholder="Repetir contraseña" formControlName="passwordRepeat">
+                    <input [ngClass]="{'is-invalid': passwordNoIguales}" type="password" id="new-pasw-repeat"
+                        placeholder="Repetir contraseña" formControlName="passwordRepeat">
 
                     <i class="far fa-eye" id="show2" (click)="mostrarPsw2()"></i>
                     <i class="far fa-eye-slash" id="hide2" (click)="mostrarPsw2()"></i>

@@ -32,7 +32,7 @@ export class FormLogInComponent implements OnInit {
      recuperar.addEventListener("click",()=> {
        // ocultar form inicio de sesion
        this.hiddeForm();
-       //mostrar contenedors recuperar contrasena
+       //mostrar contenedor recuperar contrasena
        let uno=document.getElementById("contenedor-forgot-psw");
        uno.style.display="flex";
        uno.style.flexDirection="column";
