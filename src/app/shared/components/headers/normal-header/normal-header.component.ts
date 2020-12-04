@@ -122,7 +122,7 @@ showCategoriesAndSubcategories(){
 showUserMenu(){
   let userOptions = document.getElementById("userOptions");
   userOptions.style.display="block";
-  this.bgOpenMenu();
+  /* this.bgOpenMenu(); */
 }
 hiddeUserMenu(){
   let userOptions = document.getElementById("userOptions");

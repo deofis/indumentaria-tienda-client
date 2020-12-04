@@ -54,6 +54,7 @@ import { AdminPromosComponent } from './admin-options/admin-promos/admin-promos.
 import { PaginatePipe } from './pipes/paginate.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import {MatListModule} from '@angular/material/list';
+import { AdminVentasComponent } from './admin-options/admin-ventas/admin-ventas.component';
 
 
 
@@ -94,6 +95,7 @@ import {MatListModule} from '@angular/material/list';
     AdminPromosComponent,
     PaginatePipe,
     SortPipe,
+    AdminVentasComponent,
   ],
   imports: [
     BrowserModule,

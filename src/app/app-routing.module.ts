@@ -23,6 +23,9 @@ import {BrandsPanelComponent} from './admin-options/brands-panel/brands-panel.co
 import {ProductsListComponent  } from "./admin-options/products-list/products-list.component";
 import {  AddProductComponent} from "./admin-options/add-product/add-product.component";
 import { AdminPromosComponent } from './admin-options/admin-promos/admin-promos.component';
+import { AdminVentasComponent } from './admin-options/admin-ventas/admin-ventas.component';
+
+
 const routes: Routes = [
 {path:"home",component:HomeComponent},
 {path:"viewmore/:id", component:ViewMoreComponent},
@@ -38,6 +41,7 @@ const routes: Routes = [
 {path:"add-product",component:AddProductComponent},
 {path:"products-list" , component:ProductsListComponent},
 {path:"admin-promo", component:AdminPromosComponent},
+{path:"admin-ventas", component:AdminVentasComponent},
 {path:"user-sign-up",component:UserSignUpComponent},
 {path:"new-password",component:NewPasswordComponent},
 {path:"verify/redirect",component:ActivatedMssgComponent},

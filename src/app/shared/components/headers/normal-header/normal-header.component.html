@@ -48,7 +48,7 @@
                     <img src="../../../../../assets/imagenes/icon-ventas.png" alt="">
                 </div>
 
-                <div class="iconos miperfil" (mouseover)="showUserMenu()" (mouseout)="hiddeUserMenu()"
+                <div class="iconos miperfil" (mouseover)="showUserMenu()" 
                     (click)="perfilClick()">
                     <!-- <i class="fas fa-user-circle opciones"></i> -->
                     <img src="../../../../../assets/imagenes/icon-user.png" alt="">
@@ -63,9 +63,9 @@
     <a [routerLink]="['/login']">
         <li>Iniciar Sesión </li>
     </a>
-    <a [routerLink]="['user-sign-up']">
+    <!-- <a [routerLink]="['user-sign-up']">
         <li>Registrarse</li>
-    </a>
+    </a> -->
 </ul>
 <!-- Normal user -->
 <ul *ngIf="estaLogueado && hasRole('ROLE_USER')" id="userOptions" (mouseover)="showUserMenu()"
