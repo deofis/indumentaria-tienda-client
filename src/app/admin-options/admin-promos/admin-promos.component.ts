@@ -6,9 +6,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-
-
-
 import { Router } from '@angular/router';
 import { AuthService } from '../../log-in/services/auth.service';
 import { Producto } from 'src/app/products/clases/producto';
@@ -17,9 +14,6 @@ import { Subcategoria } from 'src/app/products/clases/subcategoria';
 import { Promocion } from '../admin-promos/clases/promocion';
 import { ProductoService } from '../producto.service';
 import { ValidadoresService } from 'src/app/log-in/services/validadores.service';
-
-
-
 
 /**
  * @title Data table with sorting, pagination, and filtering.
@@ -50,14 +44,11 @@ export class AdminPromosComponent implements OnInit {
   subSeleccionadas:Subcategoria[] = [];
   infoFechaInicio = "Si no selecciona una fecha de inicio, por defecto será la actual."
   
-  
+
   promociones: Promocion;
   formSubcategoria: FormGroup;
 
   date = new Date().toISOString().substring(0, 16)/* split(':')[0]; */
-
-
-
 
   constructor( private catalogoService: CatalogoService,
                private modalService: NgbModal,
@@ -225,63 +216,10 @@ export class AdminPromosComponent implements OnInit {
     this.productosSeleccionados.splice(j, 1);
   }
 
-
-
-
-
-
   handlePage(e: PageEvent){
     this.page_size = e.pageSize;
     this.page_number = e.pageIndex + 1 ;
   }
-
-
-  //Funcionalidad menú lateral.
-  showLateralMenu(){
-    if (screen.width>800) {
-    let lateralmenu=document.getElementById("lateralMenu");
-    lateralmenu.style.width="200px";
-    let menu = document.getElementById("lateral-container");
-    menu.style.display="block";
-    let arrow= document.getElementById("botonMenu");
-    arrow.style.display="none"
-    } else{
-     let lateralmenu=document.getElementById("lateralMenu");
-     lateralmenu.style.opacity="0.9"
-     lateralmenu.style.width="100%"
-      let menu = document.getElementById("lateral-container");
-       menu.style.display="block";
-      let close = document.getElementById("close-menu");
-      close.style.display="block";
-      close.style.marginLeft="15px";
-      close.style.fontSize="0.8em";
-      let arrow = document.getElementById("open-menu");
-      arrow.style.display="none"
-    }
-  }
-
-  hiddeLateralMenu(){
-    let lateralmenu=document.getElementById("lateralMenu");
-    lateralmenu.style.width="30px";
-    let menu = document.getElementById("lateral-container");
-    menu.style.display="none";
-    let boton = document.getElementById("botonMenu");
-    boton.style.display="block";
-    let close = document.getElementById("close-menu");
-    close.style.display="none";
-    let arrow = document.getElementById("open-menu");
-    arrow.style.display="block"
-  }
-
-  /**
-   * Cerrar sesión y eliminar datos de la misma.
-   */
-  logout(): void {
-    this.authService.logout();
-    
-    this.router.navigate(['/home']);
-  }
-
 
   //Modal nueva promoción
 

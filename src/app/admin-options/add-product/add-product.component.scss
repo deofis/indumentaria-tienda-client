@@ -1,96 +1,36 @@
-
-$fte-ppal: 'Poppins', sans-serif;
-$fte-sec: 'Open Sans', sans-serif;
+$fte-ppal: 'Poppins',
+sans-serif;
+$fte-sec: 'Open Sans',
+sans-serif;
 $color-ppal:#fff;
- $color-sec: rgb(87, 83, 83);
- $color-ter: rgb(172, 165, 165);
- $color-menues: rgb(243, 236, 236);
- $color-wf1:#223e66;
- $color-wf2:#1f4e84;
- $color-wf3:#2779cd;
- $color-wf4:#70b8f3;
- input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button{
+$color-sec: rgb(87, 83, 83);
+$color-ter: rgb(172, 165, 165);
+$color-menues: rgb(243, 236, 236);
+$color-wf1:#223e66;
+$color-wf2:#1f4e84;
+$color-wf3:#2779cd;
+$color-wf4:#70b8f3;
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
     appearance: none;
     margin: 0;
 }
-section{
+
+section {
     width: 100%;
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns:200px auto ;
+    grid-template-columns: 200px auto;
     height: fit-content;
     min-height: 100vh;
-    #lateralMenu{
-        background-color: $color-wf1;
-        width: 200px;
-        padding-bottom: 250px;
-        position: relative;
-        z-index: 4;
-        box-shadow: 1px 2px 2px $color-ter;
-        .boton{
-            display: none;
-            width: 35px;
-            height: 55px;
-            border-radius: 0 30px 30px 0;
-            background-color:$color-wf1;
-            color: white;
-            i{
-              transform: translateY(6px);
-              margin-left: 5px;
-                display: block;
-            }
-            .fa-close {
-                display: none;
-            }
-        }
-        .lateral-container{
-            margin-top: 20px;
-            position: sticky;
-            top: 40px;
-            bottom:80vh;
-            .userOptions{ 
-                list-style: none;
-                cursor: pointer;
-                li{
-                    outline: none;
-                    font-size: 16px;
-                    color:$color-ppal;
-                    width: 100%;
-                    padding:10px 18px ;
-                    box-sizing: border-box;
-                    font-family: $fte-ppal;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    &:last-child{
-                        border-top: 0.2px solid rgb(204, 193, 193);
-                    }
-                    &:hover{
-                        background-color: $color-ppal;
-                        cursor: pointer;
-                        color:$color-sec;
-                    }
-                    &:hover >i{
-                        font-size: 1em;
-                    }
-                    i{
-                        font-size: 0.8em;
-                        margin-bottom: 3px;
-                    }
-                
-                }
-               
-            }
-          }
-    }
-    .container-steps{
-        padding-left:40px ;
+    .container-steps {
+        padding-left: 40px;
         padding-top: 20px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        background: linear-gradient(to bottom,$color-menues, white);
-        h2{
+        background: linear-gradient(to bottom, $color-menues, white);
+        h2 {
             font-family: $fte-ppal;
             font-size: 22px;
             color: $color-sec;
@@ -98,21 +38,21 @@ section{
             padding-bottom: 5px;
             width: 96%;
         }
-        .frame{
-            width:85% ;
+        .frame {
+            width: 85%;
             margin-top: 30px;
             margin-left: 50px;
-            .title{
+            .title {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 margin-bottom: 20px;
-                h3{
+                h3 {
                     font-family: $fte-ppal;
                     text-transform: uppercase;
                     font-size: 21px;
                     color: $color-sec;
-                    img{
+                    img {
                         width: 25px;
                         height: 25px;
                         margin-top: -3px;
@@ -120,7 +60,7 @@ section{
                         margin-right: 10px;
                     }
                 }
-                #save{
+                #save {
                     display: none;
                     background-color: rgb(34, 33, 33);
                     color: white;
@@ -131,32 +71,32 @@ section{
                     border-radius: 30px;
                     font-size: 15px;
                     border: none;
-                    &:hover{
+                    &:hover {
                         background-color: $color-sec;
                         transform: scale(1.03);
                         box-shadow: 1px 2px 1px grey;
                     }
                 }
-            }       
-                .form1{
+            }
+            .form1 {
+                width: 100%;
+                font-family: $fte-sec;
+                margin-bottom: 60px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                .container-white {
                     width: 100%;
-                    font-family:$fte-sec;
-                    margin-bottom: 60px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    flex-direction: column;
-                   .container-white{
-                       width: 100%;
                     background-color: white;
                     padding: 30px 60px 15px 60px;
                     box-shadow: 1px 2px 3px $color-sec;
-                    .row{
+                    .row {
                         display: flex;
                         margin-bottom: 45px;
                         align-items: baseline;
-                        .name{
-                            #name{
+                        .name {
+                            #name {
                                 margin-left: 10px;
                                 border: none;
                                 outline: none;
@@ -164,59 +104,60 @@ section{
                                 font-size: 14px;
                                 width: 400px;
                                 padding-right: 3px;
-                                &:focus{
+                                &:focus {
                                     border-bottom: 2px solid $color-wf3;
                                 }
-                             }
+                            }
                         }
-                        .brand{
+                        .brand {
                             margin-left: 60px;
-                            #brand{
+                            #brand {
                                 margin-left: 10px;
                                 border: none;
                                 outline: none;
                                 font-size: 14px;
                                 padding-right: 3px;
                                 border-bottom: 1px solid grey;
-                                &:focus{
+                                &:focus {
                                     border-bottom: 2px solid $color-wf3;
                                 }
                             }
-                            .fa-plus-square{
+                            .fa-plus-square {
                                 color: $color-wf3;
                                 margin-left: 10px;
                                 font-size: 17px;
                                 cursor: pointer;
-                                &:hover{
+                                &:hover {
                                     transform: scale(1.1);
                                 }
                             }
                         }
-                        .add-img{
+                        .add-img {
                             outline: none;
-                            p{
-                            font-size: 15px;
-                            span{
-                                color: grey;
-                                font-size: 13px;
+                            p {
+                                font-size: 15px;
+                                span {
+                                    color: grey;
+                                    font-size: 13px;
+                                }
                             }
-                            }
-                            #add-files{
+                            #add-files {
                                 font-size: 13px;
                                 display: block;
                                 margin-top: -10px;
                                 outline: none;
                             }
-                            
                         }
-                        #categories, #subcategories, #marca{
+                        #categories,
+                        #subcategories,
+                        #marca {
                             font-size: 15px;
                             border: none;
                             outline: none;
                             width: 140px;
                             padding-left: 5px;
                             border-bottom: 1px solid grey;
-                            &:focus{
+                            &:focus {
                                 border-bottom: 2px solid $color-wf3;
                             }
                         }
@@ -224,76 +165,47 @@ section{
                             margin-left: 90px;
                             display: none;
                         }
-                        #marca{
-                            
+                        #marca {
                             margin-left: 90px;
                         }
-                       #unidadMedida{
-                        font-size: 15px;
-                        border: none;
-                        outline: none;
-                        width: 160px;
-                        padding-left: 5px;
-                        border-bottom: 1px solid grey;
-                        &:focus{
-                            border-bottom: 2px solid $color-wf3;
+                        #unidadMedida {
+                            font-size: 15px;
+                            border: none;
+                            outline: none;
+                            width: 160px;
+                            padding-left: 5px;
+                            border-bottom: 1px solid grey;
+                            &:focus {
+                                border-bottom: 2px solid $color-wf3;
+                            }
                         }
-                       }
-                        #combinations{
+                        #combinations {
                             margin-right: 10px;
                             margin-top: -5px;
                             margin-bottom: -20px;
-                           
                         }
                         //// step 2 
-                        #property{
+                        #property {
                             font-size: 15px;
                             border: none;
                             outline: none;
                             width: 110px;
                             padding-left: 5px;
                             border-bottom: 1px solid grey;
-                            &:focus{
+                            &:focus {
                                 border-bottom: 2px solid $color-wf3;
                             }
                         }
-                       .price-container{
-                        display: flex;
-                        align-items: baseline;
-                        #euro{
-                            font-weight: bold;
-                            font-size: 14px;
-                            display: block;
-                            margin-left: 10px;
-                        }
-                        #price{
-                            border: none;
-                            outline: none;
-                            font-size: 14px;
-                            padding-right: 3px;
-                            padding-left: 3px;
-                            width: 90px;
-                            border-bottom: 1px solid grey;
-                            &:focus{
-                                border-bottom: 2px solid $color-wf3;
-                            }
-                        }
-                       }
-                       .precioOferta{
-                        margin-left: 50px;
-                        display: flex;
-                        align-items: center;
-                           .pcioOfertaInput{
-                            display: none;
+                        .price-container {
+                            display: flex;
                             align-items: baseline;
-                            
-                            #euro{
+                            #euro {
                                 font-weight: bold;
                                 font-size: 14px;
                                 display: block;
                                 margin-left: 10px;
                             }
-                            #precioOferta{
+                            #price {
                                 border: none;
                                 outline: none;
                                 font-size: 14px;
@@ -301,168 +213,181 @@ section{
                                 padding-left: 3px;
                                 width: 90px;
                                 border-bottom: 1px solid grey;
-                                &:focus{
+                                &:focus {
                                     border-bottom: 2px solid $color-wf3;
                                 }
                             }
-                           }
-                           .check-oferta{
-                               margin-left: 20px;
-                           #checkbox-oferta{
-                            margin-right: 10px;
-                            margin-top: -5px;
-                            margin-bottom: -20px;
-                           
-                           }
-                           
-                           }
-                       }
-                       .availability-container{
-                        margin-left: 60px;
-                        #availability{
-                            border: none;
-                            outline: none;
-                            margin-left: 8px;
-                            font-size: 14px;
-                            padding-right: 3px;
-                            padding-left: 3px;
-                            width: 60px;
-                            border-bottom: 1px solid grey;
-                            &:focus{
-                                border-bottom: 2px solid $color-wf3;
-                            }
-                        } 
-                       }
-                       .destacado{
-                        margin-left: 60px;
-                        #destacado{
-                            margin-right: 10px;
-                            margin-top: -5px;
-                            margin-bottom: -20px;
-                           
                         }
-                       }
-
+                        .precioOferta {
+                            margin-left: 50px;
+                            display: flex;
+                            align-items: center;
+                            .pcioOfertaInput {
+                                display: none;
+                                align-items: baseline;
+                                #euro {
+                                    font-weight: bold;
+                                    font-size: 14px;
+                                    display: block;
+                                    margin-left: 10px;
+                                }
+                                #precioOferta {
+                                    border: none;
+                                    outline: none;
+                                    font-size: 14px;
+                                    padding-right: 3px;
+                                    padding-left: 3px;
+                                    width: 90px;
+                                    border-bottom: 1px solid grey;
+                                    &:focus {
+                                        border-bottom: 2px solid $color-wf3;
+                                    }
+                                }
+                            }
+                            .check-oferta {
+                                margin-left: 20px;
+                                #checkbox-oferta {
+                                    margin-right: 10px;
+                                    margin-top: -5px;
+                                    margin-bottom: -20px;
+                                }
+                            }
+                        }
+                        .availability-container {
+                            margin-left: 60px;
+                            #availability {
+                                border: none;
+                                outline: none;
+                                margin-left: 8px;
+                                font-size: 14px;
+                                padding-right: 3px;
+                                padding-left: 3px;
+                                width: 60px;
+                                border-bottom: 1px solid grey;
+                                &:focus {
+                                    border-bottom: 2px solid $color-wf3;
+                                }
+                            }
+                        }
+                        .destacado {
+                            margin-left: 60px;
+                            #destacado {
+                                margin-right: 10px;
+                                margin-top: -5px;
+                                margin-bottom: -20px;
+                            }
+                        }
                     }
-                   
-                   }
-                   .btn-end{
+                }
+                .btn-end {
                     background-color: $color-wf1;
                     color: white;
                     margin-top: 20px;
                     font-family: $fte-ppal;
                     text-transform: uppercase;
                     font-size: 18px;
-                    border: 0px ;
+                    border: 0px;
                     padding: 7px 13px;
                     align-self: center;
                     box-sizing: border-box;
                     width: 35%;
-                    border-radius: 0px;     
+                    border-radius: 0px;
                     margin-left: auto;
-                    margin-right: auto; 
-                    margin-bottom: 50px;                
-                    &:hover{
+                    margin-right: auto;
+                    margin-bottom: 50px;
+                    &:hover {
                         background-color: $color-wf2;
                     }
                 }
+            }
+            #add {
+                position: absolute;
+                font-size: 14px;
+                right: 10px;
+                top: 50px;
+                font-family: $fte-sec;
+                cursor: pointer;
+                .fa-plus-square {
+                    color: $color-wf3;
+                    margin-right: 4px;
+                    font-size: 17px;
                 }
-                    #add{
-                        position: absolute;
+                &:hover>i {
+                    transform: scale(1.1);
+                }
+            }
+            .properties {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            }
+            .btn {
+                background-color: $color-wf1;
+                color: white;
+                font-family: $fte-sec;
+                font-size: 17px;
+                border: 0px;
+                margin-left: -12px;
+                margin-top: -25px;
+                padding: 4px 8px;
+                align-self: center;
+                box-sizing: border-box;
+                width: 20%;
+                border-radius: 0px;
+                &:hover {
+                    transform: scale(1.03);
+                }
+            }
+            .line {
+                display: block;
+                height: 1px;
+                margin-left: -20px;
+                margin-top: 15px;
+                width: 104%;
+                margin-bottom: 5px;
+                background-color: rgba(128, 128, 128, 0.295);
+            }
+            .leyenda {
+                color: $color-sec;
+                font-size: 14px;
+                font-style: italic;
+            }
+            .new-products {
+                width: 100%;
+                .product {
+                    display: grid;
+                    grid-template-columns: 90% 10%;
+                    grid-template-rows: 1fr;
+                    font-family: $fte-sec;
+                    padding-top: 5px;
+                    font-size: 15px;
+                    margin-bottom: -8px;
+                    .description {
+                        cursor: default;
                         font-size: 14px;
-                        right: 10px;
-                        top: 50px;
-                        font-family: $fte-sec;
-                        cursor: pointer;
-                        .fa-plus-square{
-                            color: $color-wf3;
-                            margin-right: 4px;
-                            font-size: 17px;
-                        }
-                        &:hover > i{
-                            transform: scale(1.1);
-                        }
+                        color: $color-wf2;
                     }
-                    .properties{
-                        display: grid;
-                        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-                    }
-                    .btn{
-                        background-color: $color-wf1;
-                        color: white;
-                        font-family: $fte-sec;
-                        font-size: 17px;
-                        border: 0px ;
-                        margin-left: -12px;
-                        margin-top:-25px;
-                        padding: 4px 8px;
-                        align-self: center;
-                        box-sizing: border-box;
-                        width: 20%;
-                        border-radius: 0px;                        
-                        &:hover{
-                            transform: scale(1.03);
-                        }
-                    }
-                    .line{
-                        display: block;
-                        height: 1px;
-                        margin-left: -20px;
-                        margin-top: 15px;
-                        width: 104%;
-                        margin-bottom: 5px;
-                        background-color: rgba(128, 128, 128, 0.295);
-                    }
-                    .leyenda{
+                    i {
+                        text-align: right;
                         color: $color-sec;
-                        font-size: 14px;
-                        font-style: italic;
-                    }
-                    .new-products{
-                        width: 100%;
-                        .product{
-                            display: grid;
-                            grid-template-columns: 90% 10%;
-                            grid-template-rows: 1fr;
-                            font-family: $fte-sec;
-                            padding-top: 5px;
-                            font-size: 15px;
-                            margin-bottom: -8px;
-                           
-                            .description{
-                                cursor: default;
-                                font-size: 14px;
-                                color: $color-wf2;
-                            }
-                           
-                            i{
-                                text-align: right;
-                            color: $color-sec;
-                            cursor: pointer;
-                            &:hover{
+                        cursor: pointer;
+                        &:hover {
                             font-size: 1.1em;
                             color: $color-wf3;
                         }
-                            }
-                        }
                     }
-               
-            
-            .form2{
+                }
+            }
+            .form2 {
                 padding-bottom: 30px;
                 position: relative;
             }
-               
-           
-        
-
-             }
-        .step2{
-         margin-top:-30px ;
-         display: none;
-         }
-        
-        #btn-two{
+        }
+        .step2 {
+            margin-top: -30px;
             display: none;
         }
-}}
+        #btn-two {
+            display: none;
+        }
+    }
+}
