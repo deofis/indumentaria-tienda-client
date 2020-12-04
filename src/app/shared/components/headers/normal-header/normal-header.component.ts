@@ -161,7 +161,7 @@ hiddeMenu(){
     this.router.navigate(['/search',termino]);
    }
 
-   perfilClick(): void {
+   irPerfil(): void {
      if (this.estaLogueado) {
        this.router.navigate(['user-profile']);
      } else {

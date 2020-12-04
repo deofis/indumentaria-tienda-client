@@ -9,19 +9,19 @@ import { UserSignUpComponent } from './log-in/user/user-sign-up/user-sign-up.com
 import { ShoppingCartComponent } from './cart/components/shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './cart/components/checkout/checkout/checkout.component';
 import { PreCheckoutComponent } from './cart/components/checkout/pre-checkout/pre-checkout.component';
-import {ConfirmDataComponent} from './cart/components/confirm-data/confirm-data.component';
+import { ConfirmDataComponent } from './cart/components/confirm-data/confirm-data.component';
 import { FinalMessageComponent } from './cart/components/final-message/final-message.component';
 import { Oauth2RedirectHandlerComponent } from './log-in/oauth2/oauth2-redirect-handler/oauth2-redirect-handler.component';
 import { AuthGuard } from './log-in/guards/auth.guard';
 import { RoleGuard } from './log-in/guards/role.guard';
 import { MisComprasComponent } from './user-options/mis-compras/mis-compras.component';
-import {  NewPasswordComponent} from "./log-in/user/new-password/new-password.component";
+import { NewPasswordComponent} from "./log-in/user/new-password/new-password.component";
 import { FavoritesComponent } from './user-options/favorites/favorites.component';
 import { ActivatedMssgComponent } from './log-in/user/activated-mssg/activated-mssg.component';
 import { AdminProfileComponent } from './admin-options/admin-profile/admin-profile.component';
-import {BrandsPanelComponent} from './admin-options/brands-panel/brands-panel.component'
-import {ProductsListComponent  } from "./admin-options/products-list/products-list.component";
-import {  AddProductComponent} from "./admin-options/add-product/add-product.component";
+import { BrandsPanelComponent } from './admin-options/brands-panel/brands-panel.component'
+import { ProductsListComponent } from "./admin-options/products-list/products-list.component";
+import { AddProductComponent } from "./admin-options/add-product/add-product.component";
 import { AdminPromosComponent } from './admin-options/admin-promos/admin-promos.component';
 
 const admin = 'ROLE_ADMIN';
