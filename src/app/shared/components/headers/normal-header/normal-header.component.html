@@ -9,7 +9,7 @@
             <nav>
                 <ul class="menu">
                     <li (mouseover)="showCategories()"><a href="#section-categories">Categorías</a></li>
-                    <li ><a href="#section-ofertas">Ofertas</a></li>
+                    <li><a href="#section-ofertas">Ofertas</a></li>
                 </ul>
             </nav>
 
@@ -32,8 +32,7 @@
                     <img src="../../../../../assets/imagenes/icon-notif.png" alt="">
                 </div>
 
-                <div *ngIf="hasRole('ROLE_USER') || !estaLogueado" class="iconos carrito"
-                    [routerLink]="['/shopping-cart']">
+                <div *ngIf="hasRole('ROLE_USER') || !estaLogueado" class="iconos carrito" [routerLink]="['/shopping-cart']">
                     <!-- <i class="fas fa-shopping-cart opciones"></i> -->
                     <img src="../../../../../assets/imagenes/icon-cart.png" alt="">
                     <div class="circulo">
@@ -42,14 +41,12 @@
                     </div>
                 </div>
 
-                <div *ngIf="estaLogueado && hasRole('ROLE_ADMIN')" class="iconos carrito"
-                    [routerLink]="['/shopping-cart']">
+                <div *ngIf="estaLogueado && hasRole('ROLE_ADMIN')" class="iconos carrito" [routerLink]="['/shopping-cart']">
                     <!-- <i class="fas fa-window-restore" ></i> -->
                     <img src="../../../../../assets/imagenes/icon-ventas.png" alt="">
                 </div>
 
-                <div class="iconos miperfil" (mouseover)="showUserMenu()" 
-                    (click)="perfilClick()">
+                <div class="iconos miperfil" (mouseover)="showUserMenu()" (click)="irPerfil()">
                     <!-- <i class="fas fa-user-circle opciones"></i> -->
                     <img src="../../../../../assets/imagenes/icon-user.png" alt="">
                 </div>
@@ -68,8 +65,7 @@
     </a> -->
 </ul>
 <!-- Normal user -->
-<ul *ngIf="estaLogueado && hasRole('ROLE_USER')" id="userOptions" (mouseover)="showUserMenu()"
-    (mouseout)="hiddeUserMenu()">
+<ul *ngIf="estaLogueado && hasRole('ROLE_USER')" id="userOptions" (mouseover)="showUserMenu()" (mouseout)="hiddeUserMenu()">
     <a [routerLink]="['/user-profile']">
         <li>Mis Datos </li>
     </a>
@@ -82,8 +78,7 @@
     <li (click)="logout()" id="salir">Salir <i class="fas fa-sign-out-alt"></i></li>
 </ul>
 <!-- Admin user -->
-<ul *ngIf="estaLogueado && hasRole('ROLE_ADMIN')" id="userOptions" (mouseover)="showUserMenu()"
-    (mouseout)="hiddeUserMenu()">
+<ul *ngIf="estaLogueado && hasRole('ROLE_ADMIN')" id="userOptions" (mouseover)="showUserMenu()" (mouseout)="hiddeUserMenu()">
     <a [routerLink]="['/user-profile']">
         <li>Mis Datos </li>
     </a>
@@ -95,12 +90,9 @@
 <!-- FIN Admin user -->
 <!-- categorias y subcategorias -->
 <div class="bg-menu" id="bg-menu"></div>
-<div class="contenedor-categorias" (mouseover)="showCategories()" (mouseout)="hiddeSubAndCategories()"
-    id="container-subcategories">
+<div class="contenedor-categorias" (mouseover)="showCategories()" (mouseout)="hiddeSubAndCategories()" id="container-subcategories">
     <div class="submenu " id="categoriesList">
-        <li class="items-categories" *ngFor="let categoria of categorias; let i=index"
-            (mouseover)="showsubcategories(i)" (mouseout)="hiddesubcategories()">{{categoria.nombre}}<i
-                class="fas fa-angle-down"></i>
+        <li class="items-categories" *ngFor="let categoria of categorias; let i=index" (mouseover)="showsubcategories(i)" (mouseout)="hiddesubcategories()">{{categoria.nombre}}<i class="fas fa-angle-down"></i>
 
         </li>
     </div>
