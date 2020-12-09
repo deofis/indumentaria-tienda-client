@@ -48,9 +48,9 @@
             <li id="filtros"><i class="icono izquierda fas fa-dollar-sign"></i>Filtrar por precio</li>
 
             <div class="filtro pcio-min-max">
-                <input class="pcio" type="number" placeholder="Minimo">
-                <input class="pcio" type="number" placeholder="Máximo">
-                <i class="fas fa-chevron-circle-right"></i>
+                <input class="pcio" type="number" id="pcio-min" placeholder="Minimo">
+                <input class="pcio" type="number" id="pcio-max" placeholder="Máximo">
+                <i class="fas fa-chevron-circle-right" (click)="pcioMinMax()"></i>
             </div>
             <!-- FIN Filtro por precio -->
 

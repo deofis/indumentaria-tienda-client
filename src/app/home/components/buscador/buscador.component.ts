@@ -159,6 +159,45 @@ filtrarPropiedades(index:number){
     }
     // cambiar la cantidad de rdos en base al filtro
     this.cantidadRdos=this.rdosBusqueda.length
+}
+pcioMinMax(){
+   //inicializo los rdos para q si cambio de opcion me haga el filter sobre todo el rdo y no sobre el filter anterior
+   this.rdosBusqueda=this.rdosOriginales
+   
+    let inputMin =document.getElementById("pcio-min") as HTMLInputElement;
+    let inputMax =document.getElementById("pcio-max") as HTMLInputElement;
+    // tomo el valor min 
+    let  pcioMin
+    if(inputMin.value != ""){
+      pcioMin = inputMin.value;
+    
+    }else {
+      pcioMin=0
+    }
+    // tomo el valor max
+    let pcioMax 
+    let pciosProductos=[];
+    for (let z = 0; z < this.rdosBusqueda.length; z++) {
+      pciosProductos.push(this.rdosBusqueda[z].precio)
+    }
+    let pcioMasAlto=Math.max(...pciosProductos)
+    if(inputMax.value != ""){
+      pcioMax = inputMax.value;
+    }else {
+        pcioMax=pcioMasAlto;
+    }
+  /// ahora cumpliendo la condicione pcio min y max lo agrego al array de rdos para mostrar
+    let rdosFiltradosPcio=[]
+    for (let z = 0; z < this.rdosBusqueda.length; z++) {
+      if(this.rdosBusqueda[z].precio <= pcioMax && this.rdosBusqueda[z].precio >= pcioMin){
+        rdosFiltradosPcio.push(this.rdosBusqueda[z])
+      }
+    }
+    this.rdosBusqueda=rdosFiltradosPcio;
+     // cambiar la cantidad de rdos en base al filtro
+     this.cantidadRdos=this.rdosBusqueda.length
+
+
 } 
 aMenorPrecio(){
    ///////////////mas barato a mas caro /////
