@@ -7,436 +7,359 @@ $color-sec: rgb(87, 83, 83);
 $color-ter: rgb(172, 165, 165);
 $color-menues: rgb(243, 236, 236);
 $color-wf1:#223e66;
-
-
-section{
+section {
     width: 100%;
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns:200px auto ;
+    grid-template-columns: 200px auto;
     height: fit-content;
     min-height: 83vh;
-    #lateralMenu{
-        background-color: $color-wf1;
-        width: 200px;
-        padding-bottom: 250px;
-        position: relative;
-        z-index: 4;
-        box-shadow: 1px 2px 2px $color-ter;
-        .boton{
-            display: none;
-            width: 35px;
-            height: 55px;
-            border-radius: 0 30px 30px 0;
-            background-color:$color-wf1;
-            color: white;
-            i{
-              transform: translateY(6px);
-              margin-left: 5px;
-                display: block;
-            }
-            .fa-close {
-                display: none;
-            }
-        }
-        .lateral-container{
-            margin-top: 20px;
-            position: sticky;
-            top: 40px;
-            bottom:80vh;
-            .userOptions{ 
-                list-style: none;
-                cursor: pointer;
-                li{
-                    outline: none;
-                    font-size: 16px;
-                    color:$color-ppal;
-                    width: 100%;
-                    padding:10px 18px ;
-                    box-sizing: border-box;
-                    font-family: $fte-ppal;
-                    &:last-child{
-                        border-top: 0.2px solid rgb(204, 193, 193);
-                    }
-                    &:hover{
-                        background-color: $color-ppal;
-                        cursor: pointer;
-                        color:$color-sec;
-                    }
-                    &:hover >i{
-                        font-size: 1em;
-                    }
-                    i{
-                        font-size: 0.8em;
-                        margin-bottom: 3px;
-                    }
-                
-                }
-               
-            }
-          }
-    }
-    .container-miscompras{
-        
+    .container-miscompras {
         display: flex;
         justify-content: center;
-        background: linear-gradient(to bottom,$color-menues, white);
-        .frame{
-            width:85% ;
+        background: linear-gradient(to bottom, $color-menues, white);
+        .frame {
+            width: 85%;
             margin-top: 30px;
-            .title{
+            .title {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 margin-bottom: 5px;
-                h2{
+                h2 {
                     font-family: $fte-ppal;
                     font-size: 22px;
                     color: $color-sec;
                 }
-                .filtros-miscompras{
+                .filtros-miscompras {
                     width: 26%;
-                    ul{
+                    ul {
                         width: 100%;
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
-                        .ordenar{position: relative;
+                        .ordenar {
+                            position: relative;
                             padding-right: 5px;
                             padding-left: 5px;
                             z-index: 2;
                             list-style: none;
                             cursor: pointer;
-                            &:hover >ul{
+                            &:hover>ul {
                                 display: block;
                             }
-                            div{
-                            display: flex;
-                            justify-items: center;
-                            align-items: center;
-                            font-family: $fte-sec;
-                            font-size: 13px;
-                            margin-left: 5px;
-                            .fa-caret-down{
-                                color: $color-sec;
+                            div {
+                                display: flex;
+                                justify-items: center;
+                                align-items: center;
+                                font-family: $fte-sec;
+                                font-size: 13px;
                                 margin-left: 5px;
+                                .fa-caret-down {
+                                    color: $color-sec;
+                                    margin-left: 5px;
+                                }
                             }
-                             }
-                            ul{
+                            ul {
                                 display: none;
                                 list-style: none;
                                 position: absolute;
                                 right: -1px;
                                 width: 105px;
-                                background:$color-menues;
-                               box-sizing: border-box;
+                                background: $color-menues;
+                                box-sizing: border-box;
                                 cursor: pointer;
                                 padding-bottom: 3px;
                                 border-radius: 3px 0 3px 3px;
-                             
-                              .opciones{
-                                 width: 100%;
-                                  color: rgb(34, 33, 33);
-                                 text-align: right;
-                                  font-size: 13px;
-                                  font-family: $fte-sec;
-                                  margin-right: 0px;
-                                  padding: 5px 5px;
-                                  display: block;
-                                  &:hover{
-                                      background-color: rgb(219, 216, 216);
-                                  }
-                              }
+                                .opciones {
+                                    width: 100%;
+                                    color: rgb(34, 33, 33);
+                                    text-align: right;
+                                    font-size: 13px;
+                                    font-family: $fte-sec;
+                                    margin-right: 0px;
+                                    padding: 5px 5px;
+                                    display: block;
+                                    &:hover {
+                                        background-color: rgb(219, 216, 216);
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
-            .detalleCompras{
+            .detalleCompras {
                 margin-bottom: 150px;
-                .row-information{
+                .row-information {
                     background-color: white;
                     padding: 30px 10px;
                     box-shadow: 1px 2px 3px $color-sec;
-                   margin-bottom: 10px;
+                    margin-bottom: 10px;
                     width: 100%;
-                    
                     font-family: $fte-sec;
                     font-size: 15px;
-                    .row1{
+                    .row1 {
                         width: 100%;
                         display: grid;
-                    grid-template-columns: 7% 20% 43% 23% 7%;
-                    grid-template-rows: 1fr;
-                    justify-items: center;
-                    align-items: center;
-                    padding-bottom: 8px;
-                    
-                        .campo{
-                            span{
+                        grid-template-columns: 7% 20% 43% 23% 7%;
+                        grid-template-rows: 1fr;
+                        justify-items: center;
+                        align-items: center;
+                        padding-bottom: 8px;
+                        .campo {
+                            span {
                                 color: $color-sec;
                                 text-align: center;
                                 cursor: default;
                                 text-align: center;
                             }
-                            .total-price{
+                            .total-price {
                                 font-weight: bold;
                                 font-size: 17px;
                             }
-                        }                 
-                       div{
-                           position: relative;
-                           
-                           &:hover>ul{
-                            display: block;
-                           }
-                        i{
-                            text-align: right;
-                            color: $color-sec;
-                            cursor: pointer;
-                            font-size: 1.2em;
-                            &:hover{
-                                font-size: 1.3em;
+                        }
+                        div {
+                            position: relative;
+                            &:hover>ul {
+                                display: block;
+                            }
+                            i {
+                                text-align: right;
+                                color: $color-sec;
+                                cursor: pointer;
+                                font-size: 1.2em;
+                                &:hover {
+                                    font-size: 1.3em;
+                                }
+                            }
+                            .fa-angle-up {
+                                display: none;
+                            }
+                            ul {
+                                display: none;
+                                list-style: none;
+                                position: absolute;
+                                z-index: 3;
+                                top: 25px;
+                                right: -100px;
+                                width: 105px;
+                                background: $color-menues;
+                                box-sizing: border-box;
+                                box-shadow: 1px 2px 2px $color-ter;
+                                cursor: pointer;
+                                padding-bottom: 3px;
+                                border-radius: 3px 0 3px 3px;
+                                .opciones-menu {
+                                    width: 100%;
+                                    color: rgb(34, 33, 33);
+                                    text-align: right;
+                                    font-size: 13px;
+                                    font-family: $fte-sec;
+                                    margin-right: 0px;
+                                    padding: 5px 5px;
+                                    display: block;
+                                    &:hover {
+                                        background-color: rgb(219, 216, 216);
+                                    }
+                                }
                             }
                         }
-                        .fa-angle-up{
-                            display: none;
-                        }
-                        
-                        ul{
-                            display: none;
-                            list-style: none;
-                            position: absolute;
-                            z-index:3;
-                            top: 25px;
-                            right: -100px;
-                            width: 105px;
-                            background: $color-menues;
-                           box-sizing: border-box;
-                           box-shadow: 1px 2px 2px $color-ter;
-                            cursor: pointer;
-                            padding-bottom: 3px;
-                            border-radius: 3px 0 3px 3px;
-                         
-                          .opciones-menu{
-                             width: 100%;
-                              color: rgb(34, 33, 33);
-                             text-align: right;
-                              font-size: 13px;
-                              font-family: $fte-sec;
-                              margin-right: 0px;
-                              padding: 5px 5px;
-                              display: block;
-                              &:hover{
-                                  background-color: rgb(219, 216, 216);
-                              }
-                          }
-                        }
                     }
-                    }
-                    .row2{
+                    .row2 {
                         display: none;
                         padding-top: 20px;
-                       width: 90%;
-                       margin-left: auto;
-                       margin-right: auto;
-                        .conceptos{
-                        display: grid;
-                        grid-template-rows: 1fr;
-                        grid-template-columns: 20% 20% 20% 20% 20%;
-                        font-family: $fte-sec;
-                        font-weight: bold;
-                        font-size: 13px;
-                        color: rgb(34, 33, 33);
-                        p{
-                            margin-left: 20px;
-                            
-                        }
-                    }
-                        .lista-productos{
-                            margin-top: -9px;
-                            .producto{
-                             display: grid;
+                        width: 90%;
+                        margin-left: auto;
+                        margin-right: auto;
+                        .conceptos {
+                            display: grid;
                             grid-template-rows: 1fr;
                             grid-template-columns: 20% 20% 20% 20% 20%;
-                                p{
+                            font-family: $fte-sec;
+                            font-weight: bold;
+                            font-size: 13px;
+                            color: rgb(34, 33, 33);
+                            p {
+                                margin-left: 20px;
+                            }
+                        }
+                        .lista-productos {
+                            margin-top: -9px;
+                            .producto {
+                                display: grid;
+                                grid-template-rows: 1fr;
+                                grid-template-columns: 20% 20% 20% 20% 20%;
+                                p {
                                     font-size: 13px;
                                     color: $color-sec;
                                     margin-left: 20px;
-                                    span{
+                                    span {
                                         display: none;
                                     }
                                 }
-                        }
+                            }
                         }
                     }
-                 
                 }
             }
         }
     }
-
 }
+
 @media screen and (max-width:510px) {
     section {
         display: flex;
         flex-direction: column;
-        #lateralMenu{
+        #lateralMenu {
             padding-bottom: 0px;
             z-index: 4;
             height: 0;
             width: 100%;
             position: -webkit-sticky;
             position: sticky;
-            left:0px;
+            left: 0px;
             top: 5px;
             opacity: 0.8;
-            .boton{
+            .boton {
                 position: -webkit-sticky;
                 position: sticky;
-                left:0px;
+                left: 0px;
                 margin-left: 0px;
                 width: 25px;
                 height: 30px;
                 font-size: 1.5em;
                 z-index: 4;
                 display: block;
-                i{
-                  transform: translateY(2px);
-                  margin-left: 5px;
+                i {
+                    transform: translateY(2px);
+                    margin-left: 5px;
                     display: block;
                 }
-               
-
             }
-            .lateral-container{
+            .lateral-container {
                 position: relative;
                 top: -60px;
                 display: none;
-                .userOptions{ 
-                    background-color:$color-wf1;
-                   display: block;
+                .userOptions {
+                    background-color: $color-wf1;
+                    display: block;
                     padding-top: 40px;
-                   
                 }
-              }
+            }
         }
-        .container-miscompras{
-            .frame{
+        .container-miscompras {
+            .frame {
                 width: 90%;
                 margin-left: 0;
                 margin-top: 25px;
-                .title{
+                .title {
                     padding-bottom: 0px;
                     margin-bottom: 8px;
                     display: flex;
                     flex-direction: column;
                     align-items: flex-start;
-
-                    h2{
+                    h2 {
                         font-size: 18px;
                         margin-left: 4px;
                     }
-                    .filtros-miscompras{
+                    .filtros-miscompras {
                         margin-bottom: -10px;
                         width: 45%;
-                        .fa-caret-down{
+                        .fa-caret-down {
                             margin-left: 9px;
                         }
                     }
                 }
-                .detalleCompras{
+                .detalleCompras {
                     margin-bottom: 100px;
-                    .row-information{
+                    .row-information {
                         padding: 3px 10px 10px 10px;
                         font-size: 14px;
-                        .row1{
+                        .row1 {
                             width: 100%;
                             display: grid;
-                             grid-template-areas: "id  id menu"
-                                             "arrow date price";
+                            grid-template-areas: "id  id menu" "arrow date price";
                             grid-template-columns: none;
                             grid-template-rows: none;
-                            justify-items:center;
-                             align-items: center;
+                            justify-items: center;
+                            align-items: center;
                             padding-bottom: 8px;
-                          
-                            .campo{
-                                span{
+                            .campo {
+                                span {
                                     color: $color-sec;
                                     text-align: center;
                                     cursor: default;
                                     text-align: center;
                                 }
-                                .total-price{
+                                .total-price {
                                     font-weight: bold;
                                     font-size: 17px;
                                 }
-                            }                 
-                          .arrow{
-                               grid-area: arrow;
-                               margin-left: -45px;
-                               margin-top: 10px;
                             }
-                            .menu{
+                            .arrow {
+                                grid-area: arrow;
+                                margin-left: -45px;
+                                margin-top: 10px;
+                            }
+                            .menu {
                                 grid-area: menu;
                                 right: -47px;
                             }
-                          .total{
-                            grid-area: price;
-                            margin-top: 15px;
-                            span{
-                                font-size: 22px;
+                            .total {
+                                grid-area: price;
+                                margin-top: 15px;
+                                span {
+                                    font-size: 22px;
+                                }
                             }
-                          }
-                          .id-compra{
-                            grid-area: id;
-                            justify-self: unset;
-                            margin-left: -20px;
-                            span{
-                                color: rgb(160, 156, 156);
+                            .id-compra {
+                                grid-area: id;
+                                justify-self: unset;
+                                margin-left: -20px;
+                                span {
+                                    color: rgb(160, 156, 156);
+                                }
                             }
-                          }
-                          .date{
-                            grid-area: date;
-                            margin-top: 15px;
-                            margin-left: -75px;
-                            span{
-                                color: rgb(34, 33, 33);
-                                background-color: $color-menues;
-                                padding: 2px 7px;
-                                display: block;
+                            .date {
+                                grid-area: date;
+                                margin-top: 15px;
+                                margin-left: -75px;
+                                span {
+                                    color: rgb(34, 33, 33);
+                                    background-color: $color-menues;
+                                    padding: 2px 7px;
+                                    display: block;
+                                }
                             }
-                          }
                         }
-                        .row2{
+                        .row2 {
                             display: none;
                             padding-top: 20px;
-                           width: 90%;
-                           margin-left: auto;
-                           margin-right: auto;
-                            .conceptos{
-                            display: none;
+                            width: 90%;
+                            margin-left: auto;
+                            margin-right: auto;
+                            .conceptos {
+                                display: none;
                             }
-                            .lista-productos{
+                            .lista-productos {
                                 margin-top: -9px;
-                                .producto{
+                                .producto {
                                     display: flex;
                                     flex-direction: column;
                                     margin-bottom: 15px;
-                                    p{
+                                    p {
                                         font-size: 13px;
                                         line-height: 12px;
                                         margin-left: 5px;
-                                        span{
+                                        span {
                                             font-weight: bold;
                                             display: initial;
                                         }
                                     }
-                            }
+                                }
                             }
                         }
-                     
                     }
                 }
             }
@@ -448,67 +371,62 @@ section{
     section {
         display: flex;
         flex-direction: column;
-        #lateralMenu{
+        #lateralMenu {
             padding-bottom: 0px;
             z-index: 4;
             height: 0;
             width: 100%;
             position: -webkit-sticky;
             position: sticky;
-            left:0px;
+            left: 0px;
             top: 180px;
             opacity: 0.8;
-            .boton{
+            .boton {
                 position: -webkit-sticky;
                 position: sticky;
-                left:0px;
+                left: 0px;
                 margin-left: 0px;
                 width: 25px;
                 height: 30px;
                 font-size: 1.5em;
                 z-index: 4;
-                i{
-                  transform: translateY(2px);
-                  margin-left: 5px;
+                i {
+                    transform: translateY(2px);
+                    margin-left: 5px;
                     display: block;
                 }
-               
-
             }
-            .lateral-container{
+            .lateral-container {
                 position: relative;
                 top: -30px;
                 display: none;
-                .userOptions{ 
+                .userOptions {
                     background-color: rgb(34, 33, 33);
-                   display: block;
+                    display: block;
                     padding-top: 40px;
-                   
                 }
-              }
+            }
         }
-        .container-miscompras{
-            .frame{
+        .container-miscompras {
+            .frame {
                 width: 90%;
                 margin-left: 0;
                 margin-top: 25px;
-                .title{
-                    h2{
+                .title {
+                    h2 {
                         font-size: 18px;
                     }
-                   
                 }
-                .detalleCompras{
+                .detalleCompras {
                     margin-bottom: 150px;
-                    .row-information{
-                        .row2{
+                    .row-information {
+                        .row2 {
                             display: none;
                             padding-top: 20px;
-                           width: 100%;
-                           margin-left: auto;
-                           margin-right: auto;
-                                                  }
-                     
+                            width: 100%;
+                            margin-left: auto;
+                            margin-right: auto;
+                        }
                     }
                 }
             }

@@ -56,6 +56,8 @@ import { SortPipe } from './pipes/sort.pipe';
 import {MatListModule} from '@angular/material/list';
 import { AdminVentasComponent } from './admin-options/admin-ventas/admin-ventas.component';
 import { PromoSubcategoriaComponent } from './admin-options/admin-promos/promo-subcategoria/promo-subcategoria.component';
+import { AdminSidebarComponent } from './admin-options/admin-sidebar/admin-sidebar.component';
+import { UserSidebarComponent } from './user-options/user-sidebar/user-sidebar.component';
 
 
 
@@ -98,6 +100,8 @@ import { PromoSubcategoriaComponent } from './admin-options/admin-promos/promo-s
     SortPipe,
     AdminVentasComponent,
     PromoSubcategoriaComponent,
+    AdminSidebarComponent,
+    UserSidebarComponent,
   ],
   imports: [
     BrowserModule,

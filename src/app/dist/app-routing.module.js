@@ -32,6 +32,7 @@ var brands_panel_component_1 = require("./admin-options/brands-panel/brands-pane
 var products_list_component_1 = require("./admin-options/products-list/products-list.component");
 var add_product_component_1 = require("./admin-options/add-product/add-product.component");
 var admin_promos_component_1 = require("./admin-options/admin-promos/admin-promos.component");
+var admin_ventas_component_1 = require("./admin-options/admin-ventas/admin-ventas.component");
 var admin = 'ROLE_ADMIN';
 var user = 'ROLE_USER';
 var routes = [
@@ -45,6 +46,7 @@ var routes = [
     { path: "user-favorites", component: favorites_component_1.FavoritesComponent, canActivate: [auth_guard_1.AuthGuard, role_guard_1.RoleGuard], data: { role: user } },
     { path: "admin-profile", component: admin_profile_component_1.AdminProfileComponent, canActivate: [auth_guard_1.AuthGuard, role_guard_1.RoleGuard], data: { role: admin } },
     { path: "brands-panel", component: brands_panel_component_1.BrandsPanelComponent, canActivate: [auth_guard_1.AuthGuard, role_guard_1.RoleGuard], data: { role: admin } },
+    { path: "sales", component: admin_ventas_component_1.AdminVentasComponent, canActivate: [auth_guard_1.AuthGuard, role_guard_1.RoleGuard], data: { role: admin } },
     { path: "add-product", component: add_product_component_1.AddProductComponent, canActivate: [auth_guard_1.AuthGuard, role_guard_1.RoleGuard], data: { role: admin } },
     { path: "products-list", component: products_list_component_1.ProductsListComponent, canActivate: [auth_guard_1.AuthGuard, role_guard_1.RoleGuard], data: { role: admin } },
     { path: "admin-promo", component: admin_promos_component_1.AdminPromosComponent, canActivate: [auth_guard_1.AuthGuard, role_guard_1.RoleGuard], data: { role: admin } },

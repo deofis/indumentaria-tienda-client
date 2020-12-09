@@ -1,18 +1,5 @@
 <section>
-    <div id="lateralMenu" >
-        <div id="botonMenu" class="boton" > 
-            <i  class="fas fa-angle-right " id="open-menu" (click)="showLateralMenu()" ></i> 
-            <i  class="fas fa-close " id="close-menu" (click)="hiddeLateralMenu()"></i>
-         </div>
-         <div class="lateral-container" id="lateral-container" >
-             <ul class="userOptions" >
-                 <li [routerLink]="['/user-my-purchases']">Compras</li>
-                 <li [routerLink]="['/user-favorites']" > Favoritos </li>
-                 <li [routerLink]="['/user-profile']">  Mis Datos </li>
-                 <li (click)="logout()" >Cerrar Sesión</li>
-             </ul>
-         </div>
-     </div>
+    <app-user-sidebar></app-user-sidebar>
     <div class="container-miscompras">
         <div class="frame">
             <div class="title">
@@ -27,7 +14,7 @@
                             </ul>
                         </li>
                         <li class="ordenar">
-                           <div> Mostrar <i class="fas fa-caret-down"></i></div>
+                            <div> Mostrar <i class="fas fa-caret-down"></i></div>
                             <ul>
                                 <li class="opciones">Pendientes</li>
                                 <li class="opciones"> Recibidos</li>
@@ -38,9 +25,9 @@
             </div>
             <article class="detalleCompras">
                 <div class="row-information">
-                    <div class="row1"  id="cont-compra1">
-                        <div  class="arrow">
-                            <i class="fas fa-angle-down"id="down1"(click)="showDetail1()"></i>
+                    <div class="row1" id="cont-compra1">
+                        <div class="arrow">
+                            <i class="fas fa-angle-down" id="down1" (click)="showDetail1()"></i>
                             <i class="fas fa-angle-up" id="up1" (click)="hideDetail1()"></i>
                         </div>
                         <div class=" campo date">
@@ -53,13 +40,13 @@
                             <span class="total-price">$560000</span>
                         </div>
                         <div class="menu">
-                        <i class="fas fa-ellipsis-v"></i>
-                        <ul>
-                            <li class="opciones-menu">opcion 1</li>
-                            <li class="opciones-menu">opcion 2 </li>
-                            <li class="opciones-menu">opcion 3 </li>
-                        </ul>
-                    </div>
+                            <i class="fas fa-ellipsis-v"></i>
+                            <ul>
+                                <li class="opciones-menu">opcion 1</li>
+                                <li class="opciones-menu">opcion 2 </li>
+                                <li class="opciones-menu">opcion 3 </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="row2" id="compra1">
                         <div class="conceptos">
@@ -70,14 +57,14 @@
                             <p>Total:</p>
                         </div>
                         <div class="lista-productos">
-                            <div class="producto" >
+                            <div class="producto">
                                 <p> <span class="ver-mobile">Producto: </span>Samsung Galaxy J2</p>
                                 <p> <span class="ver-mobile">Descripción: </span>Negro</p>
                                 <p><span class="ver-mobile">Pcio Unitario: </span>$22000</p>
                                 <p> <span class="ver-mobile">Cantidad: </span>1</p>
                                 <p><span class="ver-mobile">Total: </span> $22000</p>
                             </div>
-                            <div class="producto" >
+                            <div class="producto">
                                 <p> <span class="ver-mobile">Producto: </span>Iphone 11</p>
                                 <p> <span class="ver-mobile">Descripción: </span>Plateado</p>
                                 <p><span class="ver-mobile">Pcio Unitario: </span>$170000</p>
@@ -86,14 +73,14 @@
                             </div>
                         </div>
                     </div>
-                </div>       
-                
+                </div>
+
                 <div class="row-information">
                     <div class="row1" id="cont-compra2">
-                        <div  class="arrow" >
-                            <i class="fas fa-angle-down"id="down2" (click)="showDetail2()"></i>
+                        <div class="arrow">
+                            <i class="fas fa-angle-down" id="down2" (click)="showDetail2()"></i>
                             <i class="fas fa-angle-up" id="up2" (click)="hideDetail2()"></i>
-                            </div>
+                        </div>
                         <div class=" campo date">
                             <span id="date"> 04/02/18 </span>
                         </div>
@@ -112,7 +99,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="row2"  id="compra2" >
+                    <div class="row2" id="compra2">
                         <div class="conceptos">
                             <p>Producto:</p>
                             <p>Descripción:</p>
@@ -121,7 +108,7 @@
                             <p>Total:</p>
                         </div>
                         <div class="lista-productos">
-                            <div class="producto" >
+                            <div class="producto">
                                 <p> <span class="ver-mobile">Producto: </span>Samsung Galaxy J7</p>
                                 <p> <span class="ver-mobile">Descripción: </span>Dorado</p>
                                 <p><span class="ver-mobile">Pcio Unitario: </span>$15000</p>
@@ -130,7 +117,7 @@
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
 
 
 

@@ -1,18 +1,5 @@
 <section>
-    <div id="lateralMenu" >
-        <div id="botonMenu" class="boton" > 
-            <i  class="fas fa-angle-right " id="open-menu" (click)="showLateralMenu()" ></i> 
-            <i  class="fas fa-close " id="close-menu" (click)="hiddeLateralMenu()"></i>
-         </div>
-         <div class="lateral-container" id="lateral-container" >
-             <ul class="userOptions" >
-                 <li [routerLink]="['/user-my-purchases']">Compras</li>
-                 <li [routerLink]="['/user-favorites']" > Favoritos </li>
-                 <li [routerLink]="['/user-profile']">  Mis Datos </li>
-                 <li (click)="logout()" >Cerrar Sesión</li>
-             </ul>
-         </div>
-     </div>
+    <app-user-sidebar></app-user-sidebar>
     <div class="container-favorites">
         <div class="frame">
             <div class="title">
@@ -54,7 +41,7 @@
                                 <option value="negro">32GB</option>
                                 <option value="negro">64GB</option>
                             </select>
-                            
+
                         </div>
 
                         <div class="buttons">
@@ -189,7 +176,7 @@
                         </div>
                         <i id="close" class="fas fa-times"></i>
                     </li>
-                
+
                 </ul>
             </div>
         </div>
