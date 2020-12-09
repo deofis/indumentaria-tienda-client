@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PropiedadProducto } from 'src/app/products/clases/propiedad-producto';
 import { CatalogoService } from 'src/app/products/services/catalogo.service';
+import { zipAll } from 'rxjs-compat/operator/zipAll';
 
 @Component({
   selector: 'app-buscador',
@@ -139,15 +140,14 @@ filtrarPropiedades(index:number){
   for (var x=0; x<radioButPropiedad.length; x++){
     if (radioButPropiedad[x].checked == true) { 
           let propSeleccionada= this.propiedades[index].nombre;
-          for (let z = 0; z < this.rdosBusqueda.length; z++) {
-           if(this.rdosBusqueda[z].propiedades[index].nombre == propSeleccionada){
-            this.rdosBusqueda= this.rdosBusqueda.filter(rdo => {
-              for(let i=0; i<this.rdosBusqueda.length; i++){
-                // this.rdosBusqueda[i].propiedades.nombre==propSeleccionada
-              }})
+          //console.log(propSeleccionada)
+          // for (let z = 0; z < this.rdosBusqueda.length; z++) {
+          //  if(this.rdosBusqueda[z].propiedades[index].nombre == propSeleccionada){
+            this.rdosBusqueda= this.rdosBusqueda.filter(rdo =>  rdo.propiedades[index].nombre == propSeleccionada)
+           
         console.log(this.rdosBusqueda)
-          }          
-          }
+          // }          
+          // }
         }
       
     }
