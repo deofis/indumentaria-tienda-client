@@ -163,20 +163,9 @@ aMayorPrecio(){
    console.table(this.rdosBusqueda);
 }
   ordenarAZ(){
-    let nombresProductos:string[]=[];
-    for (var i=0; i<this.rdosBusqueda?.length; i++){
-      nombresProductos.push(this.rdosBusqueda[i].nombre)
-    }
-   
-    console.table( this.rdosBusqueda.sort((a, b) => nombresProductos[a.nombre] -nombresProductos[b.nombre]));
+    this.rdosBusqueda.sort((a,b)=>a.nombre.localeCompare(b.nombre))
   }
   ordenarZA(){
-    let nombresProductos:string[]=[];
-    for (var i=0; i<this.rdosBusqueda?.length; i++){
-      nombresProductos.push(this.rdosBusqueda[i].nombre)
-    }
-    this.rdosBusqueda.sort((a, b) => nombresProductos[b.nombre] -nombresProductos[a.nombre]);
-    console.table(this.rdosBusqueda);
-    console.log(this.rdosBusqueda);
+    this.rdosBusqueda.sort((a,b)=>-1 * a.nombre.localeCompare(b.nombre))
   }
 }
