@@ -56,7 +56,8 @@ export class BuscadorComponent implements OnInit {
           this.rdosBusqueda=response.productos;
           this.rdosOriginales=response.productos;
           //mostrar cantidad de rdos
-          this.cantidadRdos=response.totalProductos;
+          // this.cantidadRdos=response.totalProductos;
+          this.cantidadRdos=this.rdosBusqueda.length
           //mostrar propiedades 
           this.propiedades=response.propiedades;
           //mostrar marcas
@@ -113,6 +114,8 @@ export class BuscadorComponent implements OnInit {
         }
       }
     }
+    // cambiar la cantidad de rdos en base al filtro
+    this.cantidadRdos=this.rdosBusqueda.length
 }
 filtrarSubcategorias(){
   //inicializo los rdos para q si cambio de opcion me haga el filter sobre todo el rdo y no sobre el filter anterior
@@ -129,6 +132,8 @@ filtrarSubcategorias(){
      }
     }
   }
+      // cambiar la cantidad de rdos en base al filtro
+      this.cantidadRdos=this.rdosBusqueda.length
 }
 filtrarPropiedades(index:number){
   //inicializo los rdos para q si cambio de opcion me haga el filter sobre todo el rdo y no sobre el filter anterior
@@ -151,9 +156,9 @@ filtrarPropiedades(index:number){
           }
           this.rdosBusqueda=rdosFiltrados
         }
-      
     }
-
+    // cambiar la cantidad de rdos en base al filtro
+    this.cantidadRdos=this.rdosBusqueda.length
 } 
 aMenorPrecio(){
    ///////////////mas barato a mas caro /////
