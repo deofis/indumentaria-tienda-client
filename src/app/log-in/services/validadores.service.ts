@@ -20,5 +20,22 @@ export class ValidadoresService {
       }
     }
 
+  validarFechas(fechaUno: string, fechaDos:string) {
+
+    return (formGroup: FormGroup) => {
+
+      const fechaDesde = formGroup.controls[fechaUno];
+      const fechaHasta = formGroup.controls[fechaDos];
+
+      if (new Date(fechaDesde.value).getTime() < new Date(fechaHasta.value).getTime()) {
+        fechaHasta.setErrors(null);
+      } else {
+        fechaHasta.setErrors({noEsMayor:true});
+      }
+
+    }
+
+  }
+  
 
 }

@@ -40,7 +40,7 @@ const routes: Routes = [
   { path:"brands-panel" , component:BrandsPanelComponent, canActivate: [AuthGuard, RoleGuard], data: {role: admin} },
   { path:"add-product",component:AddProductComponent, canActivate: [AuthGuard, RoleGuard], data: {role: admin} },
   { path:"products-list" , component:ProductsListComponent, canActivate: [AuthGuard, RoleGuard], data: {role: admin} },
-  { path:"admin-promo", component:AdminPromosComponent, canActivate: [AuthGuard, RoleGuard], data: {role: admin} },
+  { path:"admin-promo", component:AdminPromosComponent/* , canActivate: [AuthGuard, RoleGuard], data: {role: admin} */ },
   { path:"user-sign-up",component:UserSignUpComponent },
   { path:"new-password", component:NewPasswordComponent},
   { path:"recuperar-password/:token",component:NewPasswordComponent },
