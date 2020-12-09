@@ -33,10 +33,10 @@
             <br>
 
 
-            <div *ngFor="let propiedad of propiedades" class="propiedades" >
+            <div *ngFor="let propiedad of propiedades; let i=index" class="propiedades" >
                 <p> {{propiedad.nombre}}</p>
                 <ul class="valores">
-                    <li class="valor" *ngFor="let valor of propiedad?.valores ; let i=index " (click)="filtrarPropiedades()">
+                    <li class="valor" *ngFor="let valor of propiedad?.valores " (click)="filtrarPropiedades(i)">
                         <input type="radio" id="{{valor.valor}}" name={{propiedad.nombre}}>
                         <label for="{{valor.valor}}"> {{valor.valor}}</label>
                     </li>
@@ -64,7 +64,6 @@
     <div class="contenedor-grid">
         <div class="rdos" *ngFor="let resultado of rdosBusqueda">
             <app-card-grid [producto]="resultado"></app-card-grid>
-
         </div>
     </div>
 </section>

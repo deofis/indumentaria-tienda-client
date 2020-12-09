@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PropiedadProducto } from 'src/app/products/clases/propiedad-producto';
 import { CatalogoService } from 'src/app/products/services/catalogo.service';
+import { zipAll } from 'rxjs-compat/operator/zipAll';
 
 @Component({
   selector: 'app-buscador',
@@ -129,27 +130,27 @@ filtrarSubcategorias(){
     }
   }
 }
-filtrarPropiedades(){
-
+filtrarPropiedades(index:number){
   //inicializo los rdos para q si cambio de opcion me haga el filter sobre todo el rdo y no sobre el filter anterior
   this.rdosBusqueda=this.rdosOriginales
-  for (var i=0; i<this.propiedades.length; i++){
-  
-   let  radioButPropiedad = document.getElementsByName(this.propiedades[i].nombre) as unknown as HTMLCollectionOf<HTMLInputElement>;
-    for (var x=0; x<radioButPropiedad.length; x++){
-    if (radioButPropiedad[x].checked == true) { 
-          let valorSeleccionado= this.propiedades[i].valores[x].valor;
-           console.log(valorSeleccionado)
 
-          for (let z = 0; z < this.rdosBusqueda.length; z++) {
-            console.log(this.rdosBusqueda[z].propiedades[i].valores[x].valor)
-           if(this.rdosBusqueda[z].propiedades[i].valores[x].valor == valorSeleccionado){
-            this.rdosBusqueda= this.rdosBusqueda.filter(rdo => rdo.propiedades[i]?.valores[x].valor==valorSeleccionado);
-           }          
-          }
+   var propiedadSeleccionada=this.propiedades[index]
+   var  radioButPropiedad = document.getElementsByName(propiedadSeleccionada.nombre) as unknown as HTMLCollectionOf<HTMLInputElement>;
+
+  for (var x=0; x<radioButPropiedad.length; x++){
+    if (radioButPropiedad[x].checked == true) { 
+          let propSeleccionada= this.propiedades[index].nombre;
+          //console.log(propSeleccionada)
+          // for (let z = 0; z < this.rdosBusqueda.length; z++) {
+          //  if(this.rdosBusqueda[z].propiedades[index].nombre == propSeleccionada){
+            this.rdosBusqueda= this.rdosBusqueda.filter(rdo =>  rdo.propiedades[index].nombre == propSeleccionada)
+           
+        console.log(this.rdosBusqueda)
+          // }          
+          // }
         }
-      }
-  }
+      
+    }
 }
 aMenorPrecio(){
    ///////////////mas barato a mas caro /////
