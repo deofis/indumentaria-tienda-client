@@ -32,7 +32,7 @@ export class FormLogInComponent implements OnInit {
      recuperar.addEventListener("click",()=> {
        // ocultar form inicio de sesion
        this.hiddeForm();
-       //mostrar contenedors recuperar contrasena
+       //mostrar contenedor recuperar contrasena
        let uno=document.getElementById("contenedor-forgot-psw");
        uno.style.display="flex";
        uno.style.flexDirection="column";
@@ -81,7 +81,20 @@ export class FormLogInComponent implements OnInit {
   }
 
   enviarRecuperarPassword(): void {
-    console.log(this.formOlvidePass.value);
+    if (this.formOlvidePass.invalid) {
+      return Object.values(this.formOlvidePass.controls)
+      .forEach(control => control.markAsTouched());
+    }
+
+    let userEmail: string;
+    userEmail = this.formOlvidePass.controls.email.value;
+
+    this.authService.recuperarContraseña(userEmail).subscribe(response => {
+      alert(response);
+      window.location.reload();
+    }, err => {
+      alert(err.error);
+    });
   }
 
   // Getters para campos invalidos formulario login

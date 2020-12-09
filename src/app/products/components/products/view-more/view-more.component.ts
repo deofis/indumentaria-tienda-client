@@ -47,11 +47,6 @@ export class ViewMoreComponent implements OnInit {
     //// boton enviar pregunta
     let btnSend = document.getElementById("enviarMsg")
     btnSend.addEventListener("click",this.deleteMessage);
-  
-    /////EFECTO TITULO 
-    window.addEventListener("scroll",this.showTitleEffect)
-
-
   }
 
   
@@ -98,6 +93,7 @@ export class ViewMoreComponent implements OnInit {
     // cabio de cartel 
     let cartel=document.getElementById("cartel");
     cartel.innerHTML="Gracias! Te responderemos a la brevedad.";
+    cartel.style.color="#2779cd"
     let contenedor=document.getElementById("contenedorCartel");
    
     
@@ -141,18 +137,5 @@ public addOne(item:ItemCarrito){
 //     console.log(item.producto);
 //     this._cartService.changeCart(item);
 //  }
-
-
- /////EFECTO TITULO 
- showTitleEffect() {
-  let animado= document.getElementById("titulo-a");
-  let scrollTop= document.documentElement.scrollTop;
-  let alturaAnimado= animado.offsetTop;
-    if(alturaAnimado-550<scrollTop){
-      animado.style.opacity="1";
-      animado.classList.add("animacion-titulo")
-    }
-  
-}
 
 }

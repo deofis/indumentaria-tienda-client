@@ -8,11 +8,11 @@ section {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  min-height: 75vh;
+  min-height: 90vh;
   width: 85%;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 40px;
+  padding-top: 20px;
   padding-bottom: 30px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -21,52 +21,27 @@ section {
 .container-left {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-color: #fff;
   border-radius: 20px;
   width: 65%;
-  padding: 30px 30px 60px 30px;
+  padding: 30px 30px 60px 0px;
 }
 
-.container-left #userInfo {
-  -webkit-box-shadow: 2px 4px 4px #575353;
-          box-shadow: 2px 4px 4px #575353;
-  background-color: #f3ecec;
-  padding: 25px 20px;
-}
-
-.container-left #userInfo h2 {
+.container-left h2 {
   font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
-  font-size: 20px;
-  font-weight: normal;
-}
-
-.container-left #userInfo .rowData {
-  margin-top: 15px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.container-left #userInfo .rowData p {
-  font-family: "Open Sans", sans-serif;
-  color: #575353;
-  font-size: 13px;
-}
-
-.container-left #userInfo .rowData p span {
-  color: #aca5a5;
+  margin-top: 0px;
+  display: block;
+  font-size: 21px;
+  border-bottom: 1px solid #bebbbb;
 }
 
 .container-left form {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-color: #f3ecec;
-  -webkit-box-shadow: 2px 4px 5px #575353;
-          box-shadow: 2px 4px 5px #575353;
+  border-radius: 15px;
+  background-color: #fff;
+  margin-top: -10px;
+  -webkit-box-shadow: 1px 2px 4px rgba(170, 168, 168, 0.513);
+          box-shadow: 1px 2px 4px rgba(170, 168, 168, 0.513);
 }
 
 .container-left form .deliveryMethod {
@@ -76,7 +51,7 @@ section {
 
 .container-left form .deliveryMethod fieldset legend {
   font-family: "Open Sans", sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -96,6 +71,7 @@ section {
 .container-left form .deliveryMethod fieldset .deliver {
   width: 28%;
   padding-left: 40px;
+  margin-top: 20px;
 }
 
 .container-left form .deliveryMethod fieldset .deliver label {
@@ -107,6 +83,10 @@ section {
   color: #575353;
   font-size: 2em;
   margin-right: -20px;
+}
+
+.container-left form .deliveryMethod fieldset .deliver .options {
+  font-size: 15px;
 }
 
 .container-left form .deliveryMethod fieldset .deliveryAdress {
@@ -159,10 +139,12 @@ section {
   padding: 2px 10px;
   width: 60%;
   outline: none;
+  border: none;
+  border-bottom: 1px solid grey;
 }
 
 .container-left form .deliveryMethod fieldset .deliveryAdress .inputAdress input:focus {
-  border: 2px solid #575353;
+  border-bottom: 2px solid #2779cd;
 }
 
 .container-left form .deliveryMethod fieldset .pick-up {
@@ -211,7 +193,7 @@ section {
 
 .container-left form .paymentMethod fieldset legend {
   font-family: "Open Sans", sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -271,6 +253,10 @@ section {
   height: 60px;
 }
 
+.container-left form .paymentMethod fieldset .cash-box div .options {
+  font-size: 15px;
+}
+
 .container-left form .paymentMethod fieldset .cash-box p {
   font-family: "Open Sans", sans-serif;
   font-size: 13px;
@@ -291,9 +277,7 @@ section {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  margin-top: 45px;
-  -webkit-box-shadow: 2px 4px 4px #575353;
-          box-shadow: 2px 4px 4px #575353;
+  margin-top: 60px;
 }
 
 .container-right .summary {
@@ -309,7 +293,6 @@ section {
 
 .container-right .summary h2 {
   font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
   color: #575353;
   font-size: 20px;
   border-bottom: 1px solid #bebbbb;
@@ -402,7 +385,7 @@ section {
 
 .container-right button {
   background-color: #223e66;
-  font-size: 16px;
+  font-size: 17px;
   color: white;
   font-family: "Poppins", sans-serif;
   border-radius: 0px 0px 15px 15px;
@@ -415,10 +398,10 @@ section {
   -ms-flex-item-align: end;
       align-self: flex-end;
   outline: none;
+  height: 37px;
 }
 
 .container-right button:hover {
-  font-size: 16px;
   cursor: pointer;
   background-color: #1f4e84;
 }

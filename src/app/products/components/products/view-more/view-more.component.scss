@@ -19,28 +19,70 @@ $color-ppal:#fff;
     display: flex;
     flex-direction: column;
         justify-content: center;
-        margin-bottom: 8vh;
-        .routes{
-            margin-left: 30px;
-            margin-top: 5px;
-            p{
-                a{
-                    text-decoration: none;
-                    font-family: $fte-sec;
-                    font-size: 14px;
-                    color: $color-wf4;
-                    &:hover{
-                     color: $color-wf3;
-                        }
-                } 
-            }
-        }       
+        align-items: center;
+        
+        margin-bottom: 3vh;
+            
        
     section{
-        margin-top: 0px;
+        margin-top: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        background-color: #fff;
+        padding:5px 20px 20px 20px;
+        border-radius: 15px;
+        width: 94%;
+        .superior{
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            width: 100%;
+            margin-bottom: 40px;
+            .routes{
+                margin-left: 7px;
+                margin-top: 5px;
+                align-self:flex-start;
+                p{
+                    a{
+                        text-decoration: none;
+                        font-family: $fte-sec;
+                        font-size: 14px;
+                        color: $color-wf4;
+                        &:hover{
+                         color: $color-wf3;
+                            }
+                    } 
+                    i{
+                        font-size: 0.7em;
+                        color: rgb(161, 158, 158);
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top:-10px
+                    }
+                }
+            }  
+            .iconos-detalle-producto{
+                display: flex;
+                justify-content: space-between;
+                width:5vw ;
+                align-items: center;
+                margin-right: 7px;
+                a{
+                 text-decoration: none;
+                    
+                    i{
+                        font-size: 1.4em;
+                        color: $color-sec;
+                        &:hover{
+                            font-size: 1.6em;
+                        }
+                    }
+                }
+                
+            }
+        }
+     
         .contenedor-uno{
             display: flex;
             justify-content: space-between;
@@ -98,8 +140,8 @@ $color-ppal:#fff;
             #derecha{
                 border: none;
                 border-radius: 15px;
-                margin-left: 3vw;
-                width: 33%;
+                margin-left: 4vw;
+                width: 36%;
                 position: relative;
                 #caja-titulo{
                     display: flex;
@@ -112,61 +154,49 @@ $color-ppal:#fff;
                     h2{
                         font-size: 33px;
                         font-family: $fte-ppal;
-                        text-transform: uppercase;
-                        width: 20vw;
-                        font-weight: bolder;
+                        line-height: 36px;
                         color: $color-sec;
+                        width: 100%;
                     }
-                    div{
-                        display: flex;
-                        justify-content: space-between;
-                        width:5vw ;
-                        align-items: center;
-                        a{
-                         text-decoration: none;
-                            
-                            i{
-                                font-size: 1.4em;
-                                color: $color-sec;
-                                &:hover{
-                                    font-size: 1.6em;
-                                }
-                            }
-                        }
-                        
-                    }
+                
                 }
                 #caja-precio{
                     display: flex;                   
                     h3{
                         font-family: $fte-sec;
                         font-weight: normal;
-                        font-size: 44px;
+                        font-size: 38px;
                         margin-bottom: 25px;
                         color: $color-wf3;
                     }
-                    .oferta{
-                        margin-left: 10px;
-                        span{
-                            font-family: $fte-sec;
-                            text-decoration: line-through;
-                            color: $color-sec;
-                            color: rgb(187, 24, 24);
-                            margin-left: auto;
-                            margin-right: auto;
+             
+                        .row-oferta{
+                            display: flex;
+                            flex-direction: column;
+                          margin-top:-5px;
+                            align-items: baseline;
+                          
+                            span{
+                                text-decoration: line-through;
+                                 font-size: 13px;
+                                 color:grey;
+                                 font-family: $fte-sec;
+                                 margin-bottom: -4px;
+                                 outline: none;
+                                 display: block;
+                            }
+                            .off{
+                                font-size: 14px;
+                                font-family: $fte-sec;
+                                display: block;
+                                margin-left: 5px;
+                                margin-bottom: 0px;
+                                color: orangered;
+                            }
                         }
-                        p{
-                            display: block;
-                            background-color: rgb(187, 24, 24);
-                            color: white;
-                            font-family: $fte-sec;
-                            padding: 1px 6px;
-                            font-size: 14px;
-                            text-align: center;
-                            margin-left: auto;
-                            box-shadow: 2px 4px 3px rgba(0, 0, 0, 0.719);
-                        }
-                    }
+                   
+                   
+                    
                 }
                 #caja-carrito{
                     margin-top: 25px;
@@ -253,9 +283,8 @@ $color-ppal:#fff;
                     .btn{
                         background-color: $color-wf1;
                         color: white;
-                        font-family: $fte-ppal;
-                        text-transform: uppercase;
-                        font-size: 18px;
+                        font-family: $fte-sec;
+                        font-size: 17px;
                         border: 0px ;
                         padding: 8px 15px;
                         align-self: center;
@@ -263,7 +292,7 @@ $color-ppal:#fff;
                         width: 100%;
                         border-radius: 0px;                        
                         &:hover{
-                            transform: scale(1.03);
+                            background-color: $color-wf2;
                         }
                     }
                     #btn-carrito{
@@ -303,7 +332,6 @@ $color-ppal:#fff;
                 padding-bottom: 80px;
                 h3{
                     font-family: $fte-ppal;
-                    text-transform: uppercase;
                     font-size:21px ;
                     margin-bottom: 15px;
                     color: $color-sec;
@@ -319,19 +347,16 @@ $color-ppal:#fff;
         }
         .contenedor-tres{
             font-family: $fte-ppal;
-            display: grid;
-                grid-template-columns: 80% 20%;
-                grid-template-rows: 1fr 3fr 1fr;
-                grid-template-areas: "titulo titulo"
-                                    "mensaje cartel"
-                                    "mensaje enviar";
+            margin-left: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
                 height: 270px;
                 margin-bottom: 50px;
-                width: 65%;
+                width: 70vw;
                 margin-top: 25px;
             #titulo-a{
-                opacity: 0;
-                font-size: 22px;
+                font-size: 21px;
                 padding-bottom: 20px;
                 grid-area: titulo;
                 color: $color-sec;
@@ -340,51 +365,54 @@ $color-ppal:#fff;
 
             #pregunta{
                 grid-area: mensaje;
-                width: 93%;
+                width: 100%;
                 outline: none;
-                border: 1px solid $color-sec;
-                border-radius: 30px 30px 0 30px;
+               border: none;
+                border-radius: 15px;
                 padding: 15px 10px;
+                border: 1px solid $color-ter;
                 font-family: $fte-sec;
                 font-size: 16px;
+                resize: none;
                 &:focus{
-                    border: 2px solid $color-sec;
+                    border: 1px solid $color-sec;
                 }
             }
-            div{
-                grid-area: cartel;
-                background: linear-gradient(to bottom,white,$color-menues);
-                height: fit-content;
-                padding: 10px 15px;
-                border-radius: 10px;
+            #contenedorCartel{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
                 #cartel{
-                    font-size: 16px;
-                    text-align: center;
+                    font-size: 14px;
                     padding-bottom: 0;
-                   color: $color-sec;
+                   color: grey;
                     font-family: $fte-sec;
+                    margin-top:18px;   
                 }
+                #enviarMsg{
+                    background-color: $color-wf1;
+                    color: white;
+                    font-family: $fte-sec;
+                    font-size: 17px;
+                    border: 0px ;
+                    height: 40px;
+                    padding: 8px 15px;
+                    align-self: center;
+                    box-sizing: border-box;
+                    width: 26%;
+                    border-radius: 0px;  
+                    margin-top:18px;                    
+                    &:hover{
+                        background-color: $color-wf2;
+                    }
+                    &:focus{
+                        outline: none;
+                    }
                 }
-            button{
-                grid-area: enviar;
-                background-color: white;
-                outline: none;
-                border: 2px solid $color-sec;
-                border-radius: 8px 8px 8px 0;
-                box-shadow: 1px 1px 1px grey;
-                &:hover{
-                    transform: scale(1.05);
-                    box-shadow: 1px 2px 1px grey;
-                    cursor: pointer;
+                                 
+             
                 }
-                
-                i{
-                    color: $color-wf1;
-                    font-size: 1.6em;
-                    
-                }
-                }                    
-        
+            
 
         }
     }

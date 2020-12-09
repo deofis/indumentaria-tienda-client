@@ -10,21 +10,6 @@ $color-ppal:#fff;
  $color-wf3:#2779cd;
  $color-wf4:#70b8f3;
 
-%prop-botones-prod {
-   background-color:$color-wf2;
-   font-size: 14px;
-   color: white;
-   font-family: $fte-ppal;
-   text-transform: uppercase;
-   border-radius: 0px 0px 15px 15px;
-   border: 0px ;
-   margin-top:5px ;
-   padding: 3px 10px;
-    width: 100%;
-    box-sizing: border-box;
-    outline: none;
-    
-}
 
 .items{
     width: 17vw;
@@ -34,18 +19,18 @@ $color-ppal:#fff;
     margin-bottom:15px ;
     display:grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 20px 140px 55px  30px 45px;
+    grid-template-rows: 20px 160px 65px  45px ;
     justify-items: center;
     box-sizing: border-box;
     outline: none;
-    box-shadow: 2px 2px 2px grey;
-    margin-left: 15px;
-    margin-right: 25px;
-    background-image: linear-gradient(0deg, rgb(243, 236, 236) 20%,  white 45%, );
+    margin-left: -7px;
+    margin-right: 20px;
+    background-color: #fff;
     &:hover{
         transform: scale(1.06);
         cursor: pointer;
-        box-shadow: 2px 3px 4px grey;
+        border: 1px solid $color-menues;
+        box-shadow: 2px 3px 4px rgba(182, 179, 179, 0.514);
     }
     &:hover > h3{
        color: $color-sec;  
@@ -65,34 +50,30 @@ $color-ppal:#fff;
        display: flex;
        flex-direction: column;
        align-items: center;
-       .etiqueta{
-            display: block;
-            color: white;
-            font-family: $fte-sec;
-            padding: 1px 6px;
-            text-align: center;
-            box-shadow: 2px 4px 3px rgba(0, 0, 0, 0.719);
-            position: absolute;
-            z-index: 1;
-            left: 0;
-            top: -7px;
-       }
-       .off{
-        background-color: rgb(187, 24, 24);
-        font-size: 14px;
-
-       }
-       .destacado{
-        background-color: rgb(255, 238, 0);
-        color: black;
-        font-size: 12px;
-       }
-        img{
-            width: 140px ;
-            height: 140px;
+        .producto{
+            width: 160px ;
+            height: 160px;
             display: block;
             position: absolute;
             top: 0;
+        }
+        .medalla{
+              position: absolute;
+              z-index:4;
+            top: -9px;
+            left:5px;
+            width:35px;
+            height:35px;
+            transform:rotate(15deg);
+        }
+        .fa-medal{
+            position: absolute;
+            z-index:4;
+            top: -9px;
+            left:8px;
+            color:$color-wf3;
+            font-size:1.6em;
+              transform:rotate(-170deg);
         }
     }
     .i-fondo{
@@ -107,34 +88,60 @@ $color-ppal:#fff;
             right: 20px;
             top: 10px;
             z-index: 1;
+            color: $color-sec;
         }
     }
     h3{ outline: none;
         text-align: center;
         font-size: 18px;
-        font-weight: bold;
+        font-weight: normal;
         padding-left: 5px;
         padding-right: 5px;
         font-family: $fte-sec;
+        line-height: 19px;
         margin-top: 12px;
         &::first-letter{
             text-transform: uppercase;
         }
     }
-    a{
-     @extend %prop-botones-prod;
+    // a{
+    //  @extend %prop-botones-prod;
 
-    .botones{
-     @extend %prop-botones-prod;
+    // .botones{
+    //  @extend %prop-botones-prod;
      
-    }}
+    // }}
     .cont-precios{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: -10px;
+        margin-top: -33px;
         outline: none;
+        .row-oferta{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: baseline;
+            width: 100%;
+            span{
+                text-decoration: line-through;
+                 font-size: 13px;
+                 color:grey;
+                 font-family: $fte-sec;
+                 margin-bottom: -3px;
+                 outline: none;
+                 display: block;
+            }
+            .off{
+                font-size: 14px;
+                font-family: $fte-sec;
+                display: block;
+                margin-left: 5px;
+                margin-bottom: 0px;
+                color: orangered;
+            }
+        }
     .precio{
         font-weight: bold;
         font-size: 22px;
@@ -142,14 +149,7 @@ $color-ppal:#fff;
         outline: none;
         color: $color-wf3;
     }
-    span{
-        text-decoration: line-through;
-         font-size: 13px;
-        //  color: rgb(187, 24, 24);
-         font-family: $fte-sec;
-         margin-bottom: -3px;
-         outline: none;
-    }
+   
     }
    
 }

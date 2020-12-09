@@ -8,12 +8,14 @@ $color-ppal:#fff;
 
  $color-wf1:#223e66;
  $color-wf2:#1f4e84;
+ $color-wf3:#2779cd;
+ $color-wf4:#70b8f3;
 
 section{
     display: flex;
     justify-content: space-between;
     height: fit-content;
-    min-height: 75vh;
+    min-height: 90vh;
     width: 85%;
     margin-left: auto;
     margin-right: auto;
@@ -23,49 +25,23 @@ section{
 }
 .container-left{
     box-sizing: border-box;
-    background-color:$color-ppal;
     border-radius: 20px;
     width: 65%;
     padding: 30px 30px 60px 0px;
     h2{
         font-family: $fte-ppal;
-        text-transform: uppercase;
-        margin-bottom: 5px;
         margin-top: 0px;
         display: block;
-        font-size: 2rem;
+        font-size: 21px;
         border-bottom: 1px solid rgb(190, 187, 187);
     }
-    #userInfo{
-        box-shadow: 1px 3px 5px rgb(170, 168, 168);
-        background-color: $color-ppal;
-        padding:25px 20px;
-        margin-top: 25px;
-        p{
-            font-family: $fte-ppal;
-            text-transform: uppercase;
-            font-size: 20px;
-            font-weight: normal;
-        }
-        .rowData{
-            margin-top: 15px;
-            display: flex;
-            justify-content: space-between;
-        p{
-            font-family: $fte-sec;
-            color: $color-sec;
-            font-size:13px ;
-            span{
-                color: $color-ter;
-            }
-        }
-    }
-    }
+  
     form{
         box-sizing: border-box;
-      
+      border-radius: 15px;
         background-color: $color-ppal;
-         box-shadow: 1px 3px 5px rgb(170, 168, 168);
+        margin-top: -10px;
+     box-shadow: 1px 2px 4px rgba(170, 168, 168, 0.513);
         .deliveryMethod{
             margin-top: 30px;
             padding-top: 15px;
@@ -75,7 +51,7 @@ section{
             
             legend{
                 font-family: $fte-sec;
-                font-size: 20px;
+                font-size: 18px;
                 padding-left: 20px;
                 padding-right: 20px;
             }
@@ -87,6 +63,7 @@ section{
             .deliver{
                 width: 28%;
                 padding-left: 40px;
+                margin-top: 20px;
                 label{
                     font-size: 16px;
                     font-family: $fte-sec;
@@ -95,7 +72,10 @@ section{
                  color: $color-sec;
                  font-size: 2em;
                  margin-right: -20px;
-                }   
+                }  
+                .options{
+                    font-size: 15px;
+                } 
             }
             .deliveryAdress{
                 border-top: 1px solid grey;
@@ -126,6 +106,7 @@ section{
                     }
                     #CP{
                         width: 10%;
+                       
                     }
                     input{
                         border: 1px solid $color-sec;
@@ -133,8 +114,10 @@ section{
                         padding: 2px 10px;
                         width: 60%;
                         outline: none;
+                        border: none;
+                         border-bottom: 1px solid grey;
                         &:focus{
-                            border: 2px solid $color-sec;
+                            border-bottom: 2px solid $color-wf3;
                         }
                     }
                 }
@@ -180,10 +163,11 @@ section{
                 padding-bottom: 20px;
                 legend{
                     font-family: $fte-sec;
-                    font-size: 20px;
+                    font-size: 18px;
                     padding-left: 20px;
                     padding-right: 20px;
                 }
+
                 .paypal-box{
                     display: flex;
                     justify-content: space-between;
@@ -216,6 +200,9 @@ section{
                         height: 60px;
                      }
                     }
+                    .options{
+                        font-size: 15px;
+                    }
                     }
                     p{
                         font-family: $fte-sec;
@@ -235,15 +222,13 @@ section{
     flex-direction: column;
     width: 28%;
     height: fit-content;
-    margin-top: 65px;
-    box-shadow: 2px 4px 4px $color-sec;
+    margin-top: 60px;
     .summary{
         font-family: $fte-sec;
         display: flex;
         flex-direction: column;
         h2{
             font-family: $fte-ppal;
-            text-transform: uppercase;
             color: $color-sec;
             font-size: 20px;
             border-bottom: 1px solid rgb(190, 187, 187);
@@ -314,9 +299,8 @@ section{
 
     }
     button{
-        // background-color:rgb(34, 33, 33);
         background-color: $color-wf1;
-        font-size: 16px;
+        font-size: 17px;
         color: white;
         font-family: $fte-ppal;
         border-radius: 0px 0px 15px 15px;
@@ -327,10 +311,10 @@ section{
         padding: 4px 25px;
         align-self: flex-end;
         outline: none;
+        height: 37px;
         &:hover{
-            font-size: 16px;
             cursor: pointer;
-            background-color:$color-wf2;
+            background-color: $color-wf2;
         }
     }
 }

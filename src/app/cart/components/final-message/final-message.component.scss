@@ -15,8 +15,9 @@ section{
     height: fit-content;
     min-height: 90vh;
     .container-mssg{
-        box-shadow: 1px 3px 5px rgb(170, 168, 168);
+        box-shadow: 1px 2px 4px rgba(170, 168, 168, 0.513);
         background-color: $color-ppal;
+        border-radius: 15px;
         margin-top: -80px;
         padding:25px 30px;
         display: flex;
@@ -33,7 +34,7 @@ section{
             text-align: center;
             width: 70%;
             font-family: $fte-sec;
-            font-size: 16px;
+            font-size: 15px;
         }
     }
 }

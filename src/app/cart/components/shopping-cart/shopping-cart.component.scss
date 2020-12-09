@@ -19,21 +19,20 @@ section{
     padding-top: 40px;
     padding-bottom: 30px;
     height: fit-content;
-    min-height: 82vh;
+    min-height: 90vh;
 }
 
 .container-left{
     width: 65%;
     h2{
         font-family: $fte-ppal;
-        text-transform: uppercase;
         border-bottom: 1px solid rgb(190, 187, 187);
         margin-bottom: 5px;
         margin-top: 10px;
         display: block;
+        font-size: 21px;
     }
     .msg-empty-cart{
-        background-color: rgba(255, 255, 255, 0.335);
         padding: 20px 30px;
         margin-top: 40px;
         border-radius: 20px;
@@ -50,13 +49,15 @@ section{
                 display: grid;
                 grid-template-columns: 8% 50% 13% 13% 13% 3%;
                 align-items: center;
+                border-radius: 10px;
                 background-color: white;
                 padding: 10px 10px;
                 margin-top: 20px;
                 margin-bottom: 5px;
-                box-shadow: 1px 3px 5px rgb(170, 168, 168);
+            
                &:hover{
-                box-shadow: 2px 4px 6px $color-sec;
+                border: 1px solid $color-menues;
+        box-shadow: 2px 3px 4px rgba(182, 179, 179, 0.514);
                cursor: default;
             }
                 img{
@@ -64,10 +65,16 @@ section{
                     height: 56px;
                 }
                 .info{
-                font-family: $fte-ppal;
+                font-family: $fte-sec;
                 display: flex;
                 flex-direction: column;
                 margin-left: 20px;
+                .item-name{
+                    font-size:18px;
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
                 .row-info{
                     span{
                         color: $color-sec;
@@ -79,8 +86,9 @@ section{
                     display: flex;
                     flex-direction: column;
                     span{
-                        font-family: $fte-ppal;
-                        font-size: 11px;
+                        font-family: $fte-sec;
+                        font-size: 12px;
+                        
                     }
                 }
                 .price-u{
@@ -146,14 +154,12 @@ section{
     width: 28%;
     height: fit-content;
     margin-top: 45px;
-    box-shadow: 2px 4px 4px $color-sec;
     .summary{
         font-family: $fte-sec;
         display: flex;
         flex-direction: column;
         h2{
             font-family: $fte-ppal;
-            text-transform: uppercase;
             color: $color-sec;
             font-size: 20px;
             border-bottom: 1px solid rgb(190, 187, 187);
@@ -224,9 +230,8 @@ section{
 
     }
     button{
-        // background-color:rgb(34, 33, 33);
         background-color: $color-wf1;
-        font-size: 16px;
+        font-size: 17px;
         color: white;
         font-family: $fte-ppal;
         border-radius: 0px 0px 15px 15px;
@@ -237,10 +242,9 @@ section{
         padding: 4px 25px;
         align-self: flex-end;
         outline: none;
+        height: 37px;
         &:hover{
-            font-size: 16px;
             cursor: pointer;
-            // background-color:$color-sec;
             background-color: $color-wf2;
         }
     }

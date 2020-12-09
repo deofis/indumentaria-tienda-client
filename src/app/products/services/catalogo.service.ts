@@ -22,6 +22,12 @@ id:number;
     return this.http.get(`${this.url}/catalogo/destacados`).pipe( map( response => response as Producto[]));
   }
 
+  getProductos(){
+    return this.http.get(`${this.url}/productos`).pipe(map((resp:any) => {
+      return resp.productos
+    }))
+  }
+
   getListaCategorias():Observable<Categoria[]>{
     return this.http.get(`${this.url}/categorias`).pipe( map( (response:any) => response.categorias as Categoria[]));
   }
@@ -56,7 +62,13 @@ id:number;
 
   getInfoProducto(id:number):Observable<Producto>{
     
-    return this.http.get(`${this.url}/catalogo/productos/ver/${id}`).pipe( map( (response:any) => response.producto as Producto));
+    return this.http.get(`${this.url}/catalogo/productos/${id}`).pipe( map( (response:any) => response.producto as Producto));
+  }
+
+  getSubcategorias(){
+    return this.http.get(`${this.url}/subcategorias`).pipe(map((resp:any) => {
+      return resp.subcategorias
+    }));
   }
 
 }

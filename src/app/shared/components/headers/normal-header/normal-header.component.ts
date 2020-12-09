@@ -121,7 +121,7 @@ showCategoriesAndSubcategories(){
 showUserMenu(){
   let userOptions = document.getElementById("userOptions");
   userOptions.style.display="block";
-  this.bgOpenMenu();
+  /* this.bgOpenMenu(); */
 }
 hiddeUserMenu(){
   let userOptions = document.getElementById("userOptions");
@@ -160,7 +160,7 @@ hiddeMenu(){
     this.router.navigate(['/search',termino]);
    }
 
-   perfilClick(): void {
+   irPerfil(): void {
      if (this.estaLogueado) {
        this.router.navigate(['user-profile']);
      } else {

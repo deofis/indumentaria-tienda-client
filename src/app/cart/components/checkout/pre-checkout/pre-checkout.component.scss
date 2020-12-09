@@ -19,7 +19,6 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to bottom, $color-ter, $color-menues, white);
    .subcontainer{
        width: 80%;
        display: flex;
@@ -31,14 +30,14 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
             align-items: center;
             .msj{
                 width: 25vw;
-                margin-top: -25px;
+                margin-top: -120px;
                 border-bottom: 1px solid $color-sec;
                 padding: 10px 15px;
                 p{
                     text-align: center;
                     font-family: $fte-sec;
                     color:rgb(87, 83, 83);
-                    font-weight: bold;
+                    font-size: 16px;
                 }
             }
         }

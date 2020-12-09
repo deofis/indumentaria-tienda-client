@@ -10,7 +10,7 @@ export class Sku{
     precioOferta:number;
     disponibilidad:number;
     valoresData:string;
- valores: ValorPropiedadProducto[];
+    valores:ValorPropiedadProducto [];
     defaultProducto:Producto;
     producto:Producto;
 }

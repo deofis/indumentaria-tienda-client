@@ -17,51 +17,51 @@ $color-ppal:#fff;
   margin-right: auto;
   h2{
      font-family: $fte-ppal;
-     text-transform: uppercase;
     color: $color-sec;
     margin-top: 30px;
+    font-size: 22px;
+    margin-bottom: 0px;
   }
   .contenedor-principal{
     display: flex;
     align-items: center;
     position: relative;
+    
     .flecha{
       display: flex;
       justify-content: center;
       align-items: center;
       position:absolute;
       border: none;
-      font-size: 40px;
-      height: 12%;
-      top: calc(50%-6%);
+      font-size: 30px;
+      height: 36px;
+      top: calc(50%-4%);
       line-height: 40px;
-      width: 50px;
-      color: $color-ter;
+      width: 36px;
+      color: $color-ppal;
       cursor: pointer;
       z-index: 2;
       transition: .2s ease all;
       outline: none;
+      background-color: rgba(175, 166, 166, 0.281);
+      border-radius: 50%;
       &:hover{
         transform: scale(1.1);
-        // background: linear-gradient(to left,$color-ter);
+        background-color: #70b8f3a2;
       }
     }
     .flecha-derecha{
       right: -15px;
-      border-radius: 40px 0px 0px 40px;
-      background: linear-gradient(to left,white 1%,$color-menues);
       i{
-        margin-right: -8px;
+        margin-right: -3px;
         margin-top: -1px;
       }
 
     }
     .flecha-izquierda{
       left: -15px;
-      border-radius: 0px 40px 40px 0px;
-      background: linear-gradient(to right,white 1%,$color-menues);
       i{
-        margin-left: -8px;
+        margin-left: -3px;
         margin-top: -1px;
       }
 
@@ -114,9 +114,10 @@ $color-ppal:#fff;
   margin-right: auto;
   h2{
     font-family: $fte-ppal;
-     text-transform: uppercase;
     color: $color-sec;
     margin-top: 30px;
+    font-size: 22px;
+    margin-bottom: 0px;
   }
   .contenedor-principal{
     display: flex;
@@ -128,39 +129,35 @@ $color-ppal:#fff;
       align-items: center;
       position:absolute;
       border: none;
-      // background-color: $color-menues;
-      font-size: 40px;
-      height: 12%;
-
-      top: calc(50%-6%);
       line-height: 40px;
-      width: 50px;
-      color: $color-ter;
+      width: 36px;
+      color: $color-ppal;
+       font-size: 30px;
+      height: 36px;
+      top: calc(50%-4%);
       cursor: pointer;
       z-index: 2;
       transition: .2s ease all;
       outline: none;
+    background-color: rgba(175, 166, 166, 0.281);
+      border-radius: 50%;
       &:hover{
         transform: scale(1.1);
-        // background: linear-gradient(to left,$color-ter);
+        background-color: #70b8f3a2;
       }
     }
-    .flecha-derecha{
+     .flecha-derecha{
       right: -15px;
-      border-radius: 40px 0px 0px 40px;
-      background: linear-gradient(to left,white 1%,$color-menues);
       i{
-        margin-right: -8px;
+        margin-right: -3px;
         margin-top: -1px;
       }
 
     }
     .flecha-izquierda{
       left: -15px;
-      border-radius: 0px 40px 40px 0px;
-      background: linear-gradient(to right,white 1%,$color-menues);
       i{
-        margin-left: -8px;
+        margin-left: -3px;
         margin-top: -1px;
       }
 
@@ -215,9 +212,9 @@ $color-ppal:#fff;
   align-items: center;
   h2{
     font-family: $fte-ppal;
-     text-transform: uppercase;
     color: $color-sec;
-    
+    font-size: 22px;
+    margin-bottom: 0px;
   }
   .container-categories{
   margin-left: auto;
@@ -247,38 +244,39 @@ $color-ppal:#fff;
     padding-right: 20px;
     box-sizing: border-box;
     outline: none;
-
-   // box-shadow: 2px 2px 2px grey;
-    &:hover>img{
-      opacity: 0.7;
+    .cat{
+     //border: 1px solid $color-menues;
+      width: fit-content;
+      height: fit-content;
+      overflow: hidden;
+      border-radius: 15px;
+      &:hover>img{
+        opacity: 0.7;
+        transform: scale(1.1);
+      }
+      &:hover>h3{
+        color: $color-wf1;
+      }
+     &:hover{
+      box-shadow: 2px 3px 4px rgba(182, 179, 179, 0.514);
+     }
+      img{
+        width: 100%;
+        height: 70%;
+       border-radius: 15px 15px 0px 0px;
+      }
+  
+      h3{
+       color: $color-sec;
+       width: 100%;
+       padding: 10px 10px 3px 10px;
+       font-size: 18px;
+       text-align: center;
+       font-family: $fte-ppal;
+       margin-bottom: 0px;
+      }
     }
-    &:hover>h3{
-      background-color: $color-wf1;
-      color: $color-ppal;
-      font-weight: normal;
-      font-weight: bold;
-    }
-    &:hover{
-      transform: scale(1.1);
-    }
-    img{
-      width: 100%;
-      height: 70%px;
-      border-radius: 15px 15px 0px 0px;
-    }
-
-    h3{
-     background-color: $color-wf2;
-     color: $color-menues;
-    //  font-weight: bold;
-     width: 100%;
-     padding: 10px 10px;
-     font-size: 15px;
-     text-align: center;
-     border-radius: 0px 0px 15px 15px;
-     font-family: $fte-ppal;
-     text-transform: uppercase;
-    }
+   
   }
 }
 }

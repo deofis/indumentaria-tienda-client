@@ -26,9 +26,10 @@
                 </div>
             </div>
             <div class="buttons">
-            <button type="submit" id="btn-entrar" class="boton">Entrar</button>
-            <button type="button" id="btn-registrar" class="boton" [routerLink]="['/user-sign-up']">Registrarme</button>
-        </div>
+                <button type="submit" id="btn-entrar" class="boton">Entrar</button>
+                <button type="button" id="btn-registrar" class="boton"
+                    [routerLink]="['/user-sign-up']">Registrarme</button>
+            </div>
         </div>
         <div class="separacion" id="is-dos">
             <span class="raya"></span>
@@ -50,18 +51,20 @@
         <!--inicio form Olvide contrasena-->
         <form id="contenedor-forgot-psw" [formGroup]="formOlvidePass" (ngSubmit)="enviarRecuperarPassword()">
             <div class="titulo">
-            <i class="fas fa-arrow-circle-left" id="back"></i> <h2> Recuperar contraseña</h2>
+                <i class="fas fa-arrow-circle-left" id="back"></i>
+                <h2> Recuperar contraseña</h2>
+               
+            </div>
             <p>Te enviaremos un mail a tu cuenta.</p>
-            </div>
             <div class="caja">
-            <div class="campo">
-                <input [class.is-invalid]="emailInvalidoPass" type="email" id="emailPsw"
-                    placeholder="Correo electrónico" formControlName="email">
-                <i class="fas fa-envelope" id="icono-env-psw"></i>
+                <div class="campo">
+                    <input [class.is-invalid]="emailInvalidoPass" type="email" id="emailPsw"
+                        placeholder="Correo electrónico" formControlName="email">
+                    <i class="fas fa-envelope" id="icono-env-psw"></i>
+                </div>
+                <span *ngIf="emailInvalidoPass" class="text-rojo  msj-recup"><small>Ingrese su email</small></span>
             </div>
-            <span *ngIf="emailInvalidoPass" class="text-rojo  msj-recup"><small>Ingrese su email</small></span>
-         </div>
-            <button type="submit" id="btn-recover-psw" class="boton">Enviar</button>
+            <button type="submit" id="btn-recover-psw" >Enviar</button>
 
         </form>
         <!--FIN form Olvide contrasena-->

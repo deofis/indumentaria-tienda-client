@@ -1,8 +1,15 @@
 <div id="contenedor-vermas">
-    <div class="routes">
-        <p><a [routerLink]="['/home']" title="Home">Inicio </a> > <a href=""> Categoría </a> > <a href=""> {{infoProducto.subcategoria?.nombre}} </a> > <a href="">{{infoProducto?.nombre}} </a></p>
-    </div>
+   
     <section>
+        <div class="superior">
+        <div class="routes">
+            <p><a [routerLink]="['/home']" title="Home">Inicio </a> <i class="fas fa-chevron-right"></i><a href=""> Categoría </a> <i class="fas fa-chevron-right"></i> <a href=""> {{infoProducto.subcategoria?.nombre}} </a> <i class="fas fa-chevron-right"></i> <a href="">{{infoProducto?.nombre}} </a></p>
+        </div>
+        <div class="iconos-detalle-producto">
+            <a title="Agregar a Favoritos"> <i class=" iconos far fa-heart"></i></a>
+            <a title="Copiá este link!"> <i class="iconos fas fa-link"></i></a>
+        </div>
+        </div>
         <article class="contenedor-uno">
             <div id="izquierda" class="izquierda">
                 <div id="img-sec" class="img-sec">
@@ -20,18 +27,15 @@
             <div id="derecha">
                 <div id="caja-titulo">
                     <h2>{{infoProducto?.nombre}}</h2>
-                    <div class="iconos-detalle-producto">
-                        <a title="Agregar a Favoritos"> <i class=" iconos far fa-heart"></i></a>
-                        <a title="Copiá este link!"> <i class="iconos fas fa-link"></i></a>
-                    </div>
+                   
 
                 </div>
                 <div id="caja-precio">
                     <h3>€{{infoProducto.precio}}</h3>
-                    <div class="oferta">
-                        <span>€{{infoProducto.precio + 95}}</span>
-                        <p>15% 0FF</p>
-                    </div>
+                    <div class="row-oferta">
+                        <span >€{{infoProducto.precio + 95}}</span>
+                        <p class="off " >20% 0FF</p>
+                     </div> 
                 </div>
                 <div id="caja-carrito">
                     <div class="color-quantity">
@@ -122,10 +126,11 @@
             <textarea name="pregunta" id="pregunta" cols="30" rows="10" placeholder="Escribe tu mensaje aquí..."></textarea>
             <div id="contenedorCartel">
                 <p id="cartel">Estamos para despejar todas tus dudas, dejános tu consulta</p>
+                <button type="submit" id="enviarMsg">
+                   Enviar
+                </button>
             </div>
-            <button type="submit" id="enviarMsg">
-                <i class="fas fa-paper-plane"></i>
-            </button>
+     
 
         </article>
     </section>

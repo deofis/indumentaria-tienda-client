@@ -1,14 +1,7 @@
 <section>
     <div class="container-left">
         <h2>Forma de entrega y pago</h2>
-        <!-- <div id="userInfo">
-            <p>Mis Datos</p>
-            <div class="rowData">
-            <p> Nombre : <span id="nameData"> </span></p>
-            <p> E-mail : <span id="emailData"> </span></p>
-            <p> Teléfono : <span id="cellphoneData"> </span></p>
-        </div>
-        </div> -->
+   
         <form action="">
             <div class="deliveryMethod">
                 <fieldset>
@@ -16,7 +9,7 @@
                     <div class="deliver box">
                         <input type="radio" name="deliver" id="deliver" (change)="showInputAdress()">
                         <span><i class="fas fa-truck"></i> </span>
-                        <label for="deliver">Envío </label>
+                        <label for="deliver" class="options">Envío </label>
                     </div>
                     <div class="deliveryAdress " id="newAdress12">
                         <p>Ingrese su dirección de entrega</p>
@@ -37,7 +30,7 @@
                         <input type="radio" name="deliver" id="entrega" (change)="showAdress()">
                         
                             <i class="fas fa-store"></i>
-                            <label for="entrega">Retirá en nuestro local</label>
+                            <label for="entrega" class="options">Retirá en nuestro local</label>
                     </div>
                     <div class="adress1" id="ourAdress">
                         <span>Av Emilio Olmos 20 - local 53, CP5000. Córdoba, Argentina</span>

@@ -1,26 +1,28 @@
-<div class="items">
 
+<div class="items">
+   <!-- <img class="medalla" src="../../../../../assets/imagenes/medalla.png" alt="hdj">  -->
+  <i class="fas fa-medal"></i>
   <div class="img-fondo" [routerLink]="['/viewmore',producto.id]">
    
     <img src="{{producto.foto}}" alt=".">
   </div>
-  <div class="title-props">
+  <div class="title-pcio">
     <h3 [routerLink]="['/viewmore',producto.id]">{{producto.nombre}}</h3>
-    <div class="etiquetas">
-      <p class="off etiqueta" *ngIf="oferta">20% 0FF</p>
-      <p class="destacado etiqueta" *ngIf="destacado">DESTACADO</p>
+
+    <div class="cont-precios">
+      <div class="row-oferta">
+        <span *ngIf="oferta">€{{producto.precio + 95}}</span>
+        <p class="off " *ngIf="oferta">20% 0FF</p>
+     </div> 
+     <p class="precio">€{{producto.precio}}</p>
     </div>
-    <div class="props">
-      <p>Color: Negro, Blanco, <span>Dorado</span> </p>
-      <p>Memoria: 32GB , 64GB</p>
-    </div>
+   
   
   </div>
 
-  <div class="cont-precios">
-    <span *ngIf="oferta">€{{producto.precio + 95}}</span>
-    <p class="precio">€{{producto.precio}}</p>
+  <div class="props">
+    <p><span>Color:</span> Negro, Blanco, <span>Dorado</span> </p>
+    <p> <span>Memoria:</span> 32GB , 64GB</p>
   </div>
-  
   <div class="i-fondo"><i id="fav" class=" iconos far fa-heart fav" (click)="saveToFav()"></i></div>
 </div>

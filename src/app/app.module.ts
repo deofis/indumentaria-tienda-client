@@ -25,7 +25,6 @@ import { CardGridComponent } from './products/components/products/card-grid/card
 import { UserLoginComponent } from './log-in/user/user-login/user-login.component';
 import { UserSignUpComponent } from './log-in/user/user-sign-up/user-sign-up.component';
 import { Oauth2RedirectHandlerComponent } from './log-in/oauth2/oauth2-redirect-handler/oauth2-redirect-handler.component';
-import { PruebaComponent } from './prueba/prueba.component';
 import { ShoppingCartComponent } from './cart/components/shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './cart/components/checkout/checkout/checkout.component';
 import { PreCheckoutComponent } from './cart/components/checkout/pre-checkout/pre-checkout.component';
@@ -47,6 +46,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{MatFormFieldModule}from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatButtonModule} from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort'; 
+import { AdminPromosComponent } from './admin-options/admin-promos/admin-promos.component';
+import { PaginatePipe } from './pipes/paginate.pipe';
+import { SortPipe } from './pipes/sort.pipe';
+import {MatListModule} from '@angular/material/list';
+import { AdminVentasComponent } from './admin-options/admin-ventas/admin-ventas.component';
+import { AdminSidebarComponent } from './admin-options/admin-sidebar/admin-sidebar.component';
+import { UserSidebarComponent } from './user-options/user-sidebar/user-sidebar.component';
 
 
 
@@ -68,7 +78,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     UserLoginComponent,
     UserSignUpComponent,
     Oauth2RedirectHandlerComponent,
-    PruebaComponent,
     BenefitsRowComponent,
     PreCheckoutComponent,
     CheckoutComponent,
@@ -85,6 +94,12 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     AddProductComponent,
     Step1Component,
     Step2Component,
+    AdminPromosComponent,
+    PaginatePipe,
+    SortPipe,
+    AdminVentasComponent,
+    AdminSidebarComponent,
+    UserSidebarComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,6 +115,11 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatAutocompleteModule,
     MatInputModule,
     MatFormFieldModule,
+    MatPaginatorModule,
+    MatButtonModule,
+    MatTableModule,
+    MatSortModule,
+    MatListModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true

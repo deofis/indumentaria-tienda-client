@@ -1,5 +1,6 @@
 <app-normal-header *ngIf="router.url !== '/login'
                         && router.url !== '/user-sign-up'
+                        && router.url !== '/new-password'
                         && router.url !== '/verify/redirect'">
 </app-normal-header>
 
@@ -7,5 +8,6 @@
 
 <app-footer *ngIf="router.url !== '/login'
     && router.url !== '/user-sign-up'
+    && router.url !== '/new-password'
     && router.url !== '/verify/redirect'">
 </app-footer>
