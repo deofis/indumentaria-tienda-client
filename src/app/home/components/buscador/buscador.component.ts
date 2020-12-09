@@ -140,27 +140,28 @@ filtrarPropiedades(index:number){
   for (var x=0; x<radioButPropiedad.length; x++){
     if (radioButPropiedad[x].checked == true) { 
           let propSeleccionada= this.propiedades[index].nombre;
-          //console.log(propSeleccionada)
-          // for (let z = 0; z < this.rdosBusqueda.length; z++) {
-          //  if(this.rdosBusqueda[z].propiedades[index].nombre == propSeleccionada){
-            this.rdosBusqueda= this.rdosBusqueda.filter(rdo =>  rdo.propiedades[index].nombre == propSeleccionada)
-           
-        console.log(this.rdosBusqueda)
-          // }          
-          // }
+          let rdosFiltrados=[];
+           for (let z = 0; z < this.rdosBusqueda.length; z++) {
+             for (let i = 0; i < this.rdosBusqueda[z].propiedades.length; i++){
+              if(this.rdosBusqueda[z].propiedades[i].nombre == propSeleccionada){
+                rdosFiltrados.push(this.rdosBusqueda[z])
+                
+              }          
+           }
+          }
+          this.rdosBusqueda=rdosFiltrados
         }
       
     }
-}
+
+} 
 aMenorPrecio(){
    ///////////////mas barato a mas caro /////
     this.rdosBusqueda.sort((a, b) => a.precio - b.precio);
-    console.table(this.rdosBusqueda);
 }
 aMayorPrecio(){
   ///////////////mas barato a mas caro /////
    this.rdosBusqueda.sort((a, b) => b.precio - a.precio);
-   console.table(this.rdosBusqueda);
 }
   ordenarAZ(){
     this.rdosBusqueda.sort((a,b)=>a.nombre.localeCompare(b.nombre))
