@@ -1,74 +1,87 @@
-<div>
-    <form class="contenedor-form" id="cont-form" autocomplete="off" [formGroup]="formLogin"
-        (ngSubmit)="iniciarSesion()">
-        <!--inicio form iniciar sesion-->
-        <div class="campos-inicio-s" id="is-uno">
-            <h2>Inicio de Sesión</h2>
-            <div class="row1">
-                <div class="campo1">
-                    <input type="text" id="username" placeholder="Email" formControlName="email"
-                        [class.is-invalid]="emailInvalido">
-                    <i class="fas fa-user" id="icono-user" [class.is-invalid]="emailInvalido"></i>
+<div class="container">
+    <div class="row">
+        <div class="col-12 contenedor-form">
+            <form id="cont-form" autocomplete="off" [formGroup]="formLogin" (ngSubmit)="iniciarSesion()">
+                <!--inicio form iniciar sesion-->
+                <div class="campos-inicio-s row " id="is-uno">
+                    <div class="col-12">
+                        <h2>Inicio de Sesión</h2>
+                        <div class="row1 ">
+                            <div class="campo1 ">
+                                <input type="text" id="username" placeholder="Email" formControlName="email"
+                                    [class.is-invalid]="emailInvalido">
+                                <i class="fas fa-user" id="icono-user" [class.is-invalid]="emailInvalido"></i>
+                            </div>
+                            <span *ngIf="emailInvalido" class="text-rojo-uno">Ingrese su email</span>
+                        </div>
+                        <div class="row2">
+                            <div class="campo2">
+                                <input type="password" id="password" placeholder="Contraseña" formControlName="password"
+                                    [class.is-invalid]="passwordInvalida">
+                                <i class="fas fa-lock" id="icono-lock"></i>
+                                <i class="far fa-eye" id="show" (click)="mostrarPsw()"></i>
+                                <i class="far fa-eye-slash" id="hide" (click)="mostrarPsw()"></i>
+                            </div>
+                            <div class="row-mssg">
+                                <p id="recuperar" class="recuperar">¿Olvidaste tu contraseña?</p>
+                                <span *ngIf="passwordInvalida" class="text-rojo-two">Ingrese su contraseña</span>
+                            </div>
+                        </div>
+                        <div class="buttons row">
+                            <button type="submit" id="btn-entrar" class="boton">Entrar</button>
+                            <button type="button" id="btn-registrar" class="boton"
+                                [routerLink]="['/user-sign-up']">Registrarme</button>
+
+                        </div>
+                    </div>
+
+
                 </div>
-                <span *ngIf="emailInvalido" class="text-rojo-uno">Ingrese su email</span>
-            </div>
-            <div class="row2">
-                <div class="campo2">
-                    <input type="password" id="password" placeholder="Contraseña" formControlName="password"
-                        [class.is-invalid]="passwordInvalida">
-                    <i class="fas fa-lock" id="icono-lock"></i>
-                    <i class="far fa-eye" id="show" (click)="mostrarPsw()"></i>
-                    <i class="far fa-eye-slash" id="hide" (click)="mostrarPsw()"></i>
+                <div class="separacion row" id="is-dos">
+                    <span class="raya"></span>
+                    <p>o</p>
+                    <span class="raya"></span>
                 </div>
-                <div class="row-mssg">
-                    <p id="recuperar" class="recuperar">¿Olvidaste tu contraseña?</p>
-                    <span *ngIf="passwordInvalida" class="text-rojo-two">Ingrese su contraseña</span>
+                <div class="social-media row" id="is-tres">
+                    <button class="btn1 ">
+                        <a [href]="FACEBOOK_AUTH_URL"><i class="fab fa-facebook-f"></i> Iniciá sesión con Facebook</a>
+                    </button>
+
+                    <button class="btn2 ">
+                        <a [href]="GOOGLE_AUTH_URL"><i class="fab fa-google"></i> Iniciá sesión con Google</a>
+                    </button>
                 </div>
-            </div>
-            <div class="buttons">
-                <button type="submit" id="btn-entrar" class="boton">Entrar</button>
-                <button type="button" id="btn-registrar" class="boton"
-                    [routerLink]="['/user-sign-up']">Registrarme</button>
-            </div>
+                <!--FIN form iniciar sesion-->
+
+
+                <!--inicio form Olvide contrasena-->
+                <div class="row"  id="contenedor-forgot-psw">
+                    <form  [formGroup]="formOlvidePass"
+                        (ngSubmit)="enviarRecuperarPassword()">
+                        <div class="titulo">
+                            <i class="fas fa-arrow-circle-left" id="back"></i>
+                            <h2> Recuperar contraseña</h2>
+
+                        </div>
+                        <p>Te enviaremos un mail a tu cuenta.</p>
+                        <div class="caja row">
+                            <div class="campo">
+                                <input [class.is-invalid]="emailInvalidoPass" type="email" id="emailPsw"
+                                    placeholder="Correo electrónico" formControlName="email">
+                                <i class="fas fa-envelope" id="icono-env-psw"></i>
+                            </div>
+                            <span *ngIf="emailInvalidoPass" class="text-rojo  msj-recup"><small>Ingrese su
+                                    email</small></span>
+                        </div>
+                        <div class="row btn-enviar">
+                            <button  type="submit" id="btn-recover-psw">Enviar</button>
+                        </div>
+                       
+
+                    </form>
+                </div>
+                <!--FIN form Olvide contrasena-->
+            </form>
         </div>
-        <div class="separacion" id="is-dos">
-            <span class="raya"></span>
-            <p>o</p>
-            <span class="raya"></span>
-        </div>
-        <div class="social-media" id="is-tres">
-            <button class="btn1">
-                <a [href]="FACEBOOK_AUTH_URL"><i class="fab fa-facebook-f"></i> Iniciá sesión con Facebook</a>
-            </button>
-
-            <button class="btn2">
-                <a [href]="GOOGLE_AUTH_URL"><i class="fab fa-google"></i> Iniciá sesión con Google</a>
-            </button>
-        </div>
-        <!--FIN form iniciar sesion-->
-
-
-        <!--inicio form Olvide contrasena-->
-        <form id="contenedor-forgot-psw" [formGroup]="formOlvidePass" (ngSubmit)="enviarRecuperarPassword()">
-            <div class="titulo">
-                <i class="fas fa-arrow-circle-left" id="back"></i>
-                <h2> Recuperar contraseña</h2>
-               
-            </div>
-            <p>Te enviaremos un mail a tu cuenta.</p>
-            <div class="caja">
-                <div class="campo">
-                    <input [class.is-invalid]="emailInvalidoPass" type="email" id="emailPsw"
-                        placeholder="Correo electrónico" formControlName="email">
-                    <i class="fas fa-envelope" id="icono-env-psw"></i>
-                </div>
-                <span *ngIf="emailInvalidoPass" class="text-rojo  msj-recup"><small>Ingrese su email</small></span>
-            </div>
-            <button type="submit" id="btn-recover-psw" >Enviar</button>
-
-        </form>
-        <!--FIN form Olvide contrasena-->
-
-
-    </form>
+    </div>
 </div>
