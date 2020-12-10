@@ -88,3 +88,32 @@ section {
         }
     }
 }
+
+
+
+/* .container{
+    font-family: 'Open Sans';
+    background-color: white;
+    box-shadow: 1px 2px 3px $color-sec;
+    margin-bottom: 60px;
+} */
+
+span {
+    color: grey;
+    text-align: center;
+    cursor: default;
+    font-size: 15px;
+}
+
+/* .shadow{
+    box-shadow: 1px 2px 3px $color-sec;
+} */
+
+i {
+    color: $color-sec;
+    cursor: pointer;
+    &:hover {
+        font-size: 1.1em;
+        color: $color-wf3;
+    }
+}

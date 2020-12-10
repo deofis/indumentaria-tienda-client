@@ -136,3 +136,10 @@ section {
         }
     }
 }
+
+.hoverRow{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.295);
+    &:hover{
+        border-bottom: 1.5px solid rgba(32, 32, 32, 0.295);
+    }
+}
