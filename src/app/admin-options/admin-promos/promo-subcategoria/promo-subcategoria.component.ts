@@ -75,7 +75,7 @@ export class PromoSubcategoriaComponent implements OnInit {
 
   cargarFechaDesde(){
     this.formSubcategoria.setValue({
-      fechaDesde: this.date + "-03:00",
+      fechaDesde: this.date,
       fechaHasta: "",
       porcentaje: ""
     })
@@ -99,7 +99,7 @@ export class PromoSubcategoriaComponent implements OnInit {
    }
     
     
-    /* this.promocion.fechaDesde = this.formSubcategoria.controls.fechaDesde.value + "-03:00";
+    this.promocion.fechaDesde = this.formSubcategoria.controls.fechaDesde.value + "-03:00";
     this.promocion.fechaHasta = this.formSubcategoria.controls.fechaHasta.value + "-03:00";
     this.promocion.porcentaje = ( this.formSubcategoria.controls.porcentaje.value / 100 );
 
@@ -123,14 +123,11 @@ export class PromoSubcategoriaComponent implements OnInit {
     }
 
     
-    this.catalogoService.getSubcategorias().subscribe((resp:any) =>{
-      this.subcategorias = resp;
-      this.subASeleccionar = resp;    
-      
-    })
+    this.obetenerSubcategorias();
     this.subSeleccionadas = [];
 
-    this.formSubcategoria.reset(); */       
+    this.formSubcategoria.reset();       
+    this.cargarFechaDesde();
     
   }
 

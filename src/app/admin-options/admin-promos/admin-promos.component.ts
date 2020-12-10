@@ -7,9 +7,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../log-in/services/auth.service';
 import { Producto } from 'src/app/products/clases/producto';
 import { CatalogoService } from '../../products/services/catalogo.service';
-import { Subcategoria } from 'src/app/products/clases/subcategoria';
-import { Promocion } from '../admin-promos/clases/promocion';
-import { ProductoService } from '../producto.service';
 
 /**
  * @title Data table with sorting, pagination, and filtering.
@@ -36,9 +33,7 @@ export class AdminPromosComponent implements OnInit {
 
   constructor( private catalogoService: CatalogoService,
                private modalService: NgbModal,
-               private fb:FormBuilder,
-               private router:Router,
-               private authService: AuthService) { }
+               private router:Router) { }
 
   ngOnInit(): void {
 
@@ -47,20 +42,6 @@ export class AdminPromosComponent implements OnInit {
 
   }
 
-  
-
-  
-// Funcionalidades para crear una nueva promocion segun producto -- INICIO -- //
-
-/* crearFormularioPromProducto(){
-
-  this.formSubcategoria = this.fb.group({
-    fechaDesde: [''],
-    fechaHasta: ['', [Validators.required] ],
-    precioOferta: [''],
-    porcentaje: ['', [Validators.required, Validators.max(90), Validators.min(5) ] ]
-  })
-}; */
 
   obtenerProductos(){
     this.catalogoService.getProductos().subscribe((resp:any) => {
@@ -69,17 +50,7 @@ export class AdminPromosComponent implements OnInit {
     });
   };
 
-  anadirProducto(i:number){
-
-    this.productosSeleccionados.push(this.productosASeleccionar[i]);
-    this.productosASeleccionar.splice(i, 1); 
-    
-  }
-
-  eliminarProducto(j:number){
-    this.productosASeleccionar.push(this.productosSeleccionados[j]);
-    this.productosSeleccionados.splice(j, 1);
-  }
+  
 
   handlePage(e: PageEvent){
     this.page_size = e.pageSize;
