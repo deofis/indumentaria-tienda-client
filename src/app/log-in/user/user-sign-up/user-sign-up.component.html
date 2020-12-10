@@ -25,34 +25,40 @@
                     <span class="text-rojo" id="alert2" *ngIf="apellidoInvalido"><small>Este campo es
                             obligatorio.</small></span>
                 </div>
-            </div>
-            <div class="location">
-                <select class="country">
-                    <option disabled selected>-Pais-</option>
-                    <option value="value1">opciones</option>
-                </select>
-                <select class="state" disabled>
-                    <option disabled selected>-Estado-</option>
-                    <option value="value1">opciones</option>
-                </select>
-                <select class="city" disabled>
-                    <option disabled selected>-Ciudad-</option>
-                    <option value="value1">opciones</option>
-                </select>
-            </div>
-            <div class="calle-nro">
-
-                <div class="calle">
-                    <input type="text" placeholder="Calle" value="" id="calle">
+           
+            <div formGroupName="direccion" >
+                <div class="location" >
+                 <select class="country" (change)="showEstados()" formControlName="pais" >
+                        <option  hidden selected value="" >-Pais-</option>
+                        <option [ngValue]="pais" *ngFor="let pais of paises"> {{pais.nombre}}</option>
+                    </select>
+                     <select class="state" (change)="showCiudades()" id="combobox-estados" formControlName="estado" >
+                        <option  hidden selected value="">-Estado-</option>
+                        <option  [ngValue]="estado" *ngFor="let estado of estados">{{estado.nombre}}</option>
+                    </select>
+                    <select class="city" id="combobox-ciudades" [class.is-invalid]="ciudadInvalida" formControlName="ciudad">
+                        <option  hidden selected value="">-Ciudad-</option>
+                        <option *ngFor="let ciudad of ciudades"  [ngValue]="ciudad">{{ciudad.nombre}}</option>
+                    </select>
                 </div>
-                <div class="nro">
-                    <input type="number" id="nro" placeholder="nro" value="">
-                </div>
-                <div class=" cp">
-
-                    <input type="number" id="cp" placeholder="CP">
+                <div class="calle-nro">
+    
+                    <div class="calle">
+                        <input type="text" [class.is-invalid]="calleInvalida" placeholder="*Calle"  id="calle" formControlName="calle">
+                    </div>
+                    <div class="nro">
+                        <input type="number" [class.is-invalid]="nroInvalido" id="nro" placeholder="*Nro"  formControlName="nro">
+                    </div>
+                    <div class="piso">
+                        <input type="number" id="piso" placeholder="Piso" formControlName="piso">
+                    </div>
+                    <div class=" cp">
+    
+                        <input type="number" [class.is-invalid]="cpInvalido" id="cp" placeholder="*CP" formControlName="cp">
+                    </div>
                 </div>
             </div>
+        </div>
             <div class="cont-email">
                 <div class="email">
 
@@ -75,13 +81,18 @@
 
                 <div class="campo" id="campo2">
                     <input [ngClass]="{'is-invalid': passwordNoIguales}" type="password" id="new-pasw-repeat"
-                        placeholder="Repetir contraseña" formControlName="passwordRepeat">
+                        placeholder="*Repetir contraseña" formControlName="passwordRepeat">
 
                     <i class="far fa-eye" id="show2" (click)="mostrarPsw2()"></i>
                     <i class="far fa-eye-slash" id="hide2" (click)="mostrarPsw2()"></i>
                 </div>
                 <span class="text-rojo" id="msj2" *ngIf="passwordNoIguales"><small>Las contraseñas deben
                         coincidir</small></span>
+
+            </div>
+            <div class="terms-checkbox">
+                <input type="checkbox" id="terms" name="terms" formControlName="checkterminos">
+                <label for="terms">*He leído y acepto los <a href="">Términos y Condiciones.</a></label>
 
             </div>
             <button type="submit" id="btn-sign-up" class="boton">Registrarme</button>

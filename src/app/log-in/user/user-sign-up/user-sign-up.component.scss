@@ -155,19 +155,25 @@ section {
                 display: flex;
                 flex-direction: row;
                 .calle {
-                    width: 55%;
+                    width: 52%;
                     #calle{
                         @extend %campos;
                     }
                 }
+                .piso{
+                    width: 11%;
+                    #piso{
+                        @extend %campos;
+                    }  
+                }
                 .nro{
-                    width: 15%;
+                    width: 11%;
                     #nro{
                         @extend %campos;
                     }
                 }
                 .cp{
-                    width: 18%;
+                    width: 15%;
                     #cp{
                         @extend %campos;
                     }
@@ -233,7 +239,15 @@ section {
                    transform: translateY(-17px);
                 }
             
-        }
+            }
+            .terms-checkbox{
+               align-self: baseline;
+                margin-bottom: -5px;
+                margin-top: 15px;
+                #terms{
+                    margin-right: 8px;
+                }
+            }
             .msje{
                 color: grey;
                 font-family: $fte-sec;
@@ -299,326 +313,8 @@ section {
 .is-invalid{
     border: 1px solid rgb(252, 62, 62);
 }
-@media screen and (max-width: 550px) {
-    section {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        .fondo {
-             img {
-                width: 140px;
-                height: 40px;
-                 position: unset;
-                top: 10px;
-                }
-            }
-        .contenedor-form {
-            padding-top: 20px;
-            padding-bottom: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: -500px;
-            width: 80vw;
-            min-width: 280px;
-            #contenedor-registrarse {
-                width: 85%;
-                h2 {
-                    font-size: 18px;
-                    padding-bottom: 3px;
-                }
-                #formName{
-                    width: 100%;
-                    .nombre-apellido{
-                        width: 100%;
-                        display: flex;
-                        grid-template-areas: none;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: space-between;
-                             
-                        .name  {
-                            grid-area: nombre;
-                            width: 100%;
-                            #name{
-                                margin-top: 7px;
-                                margin-bottom: 10px;
-                                height: 27px;
-                               width: 100%;
+#combobox-estados, #combobox-ciudades{
+    display: none;
+}
 
-                               ///******************************//
-                                font-family: $fte-sec;
-                                font-size: 15px;
-                                padding-left: 5px;
-                                box-sizing: border-box;
-                                &:focus {
-                                    outline: none;
-                                    border: 1px solid rgb(180, 170, 170);
-                                }
-                            }
-                        }
-                        .lastname{
-                            grid-area: apellido;
-                            width: 100%;
-                            #lastname{
-                                margin-top: 7px;
-                                margin-bottom: 15px;
-                                height: 35px;
-                               width: 100%;
-                                font-family: $fte-sec;
-                                font-size: 15px;
-                                padding-left: 5px;
-                                box-sizing: border-box;
-                                &:focus {
-                                    outline: none;
-                                    border: 1px solid rgb(180, 170, 170);
-                                }
-                            }
-                        }
-                        #alert1{
-                            grid-area: alert1;
-                        }
-                        #alert2{
-                            grid-area: alert2;
-                        }
-    
-                    }
-                }
-               
-                .location{
-                    width: 100%;
-                    align-items: center;
-                    justify-content: space-between;
-                    display: flex;
-                    flex-direction: row;
-                    .country{
-                       width: 30%;
-                       margin-top: 7px;
-                       margin-bottom: 15px;
-                       height: 35px;
-                      width: 100%;
-                       font-family: $fte-sec;
-                       font-size: 15px;
-                       padding-left: 5px;
-                       box-sizing: border-box;
-                       &:focus {
-                           outline: none;
-                           border: 1px solid rgb(180, 170, 170);
-                       }
-                    }
-                    .state{
-                        width: 30%;
-                        margin-top: 7px;
-                        margin-bottom: 15px;
-                        height: 35px;
-                       width: 100%;
-                        font-family: $fte-sec;
-                        font-size: 15px;
-                        padding-left: 5px;
-                        box-sizing: border-box;
-                        &:focus {
-                            outline: none;
-                            border: 1px solid rgb(180, 170, 170);
-                        }
-                     }
-                     .city{
-                        width: 30%;
-                        margin-top: 7px;
-                        margin-bottom: 15px;
-                        height: 35px;
-                       width: 100%;
-                        font-family: $fte-sec;
-                        font-size: 15px;
-                        padding-left: 5px;
-                        box-sizing: border-box;
-                        &:focus {
-                            outline: none;
-                            border: 1px solid rgb(180, 170, 170);
-                        }
-                     }
-                }
-                .calle-nro{
-                    width: 100%;
-                    align-items: center;
-                    justify-content: space-between;
-                    display: flex;
-                    flex-direction: row;
-                    .calle {
-                        width: 55%;
-                        #calle{
-                            margin-top: 7px;
-                            margin-bottom: 15px;
-                            height: 35px;
-                           width: 100%;
-                            font-family: $fte-sec;
-                            font-size: 15px;
-                            padding-left: 5px;
-                            box-sizing: border-box;
-                            &:focus {
-                                outline: none;
-                                border: 1px solid rgb(180, 170, 170);
-                            }
-                        }
-                    }
-                    .nro{
-                        width: 15%;
-                        #nro{
-                            margin-top: 7px;
-                            margin-bottom: 15px;
-                            height: 35px;
-                           width: 100%;
-                            font-family: $fte-sec;
-                            font-size: 15px;
-                            padding-left: 5px;
-                            box-sizing: border-box;
-                            &:focus {
-                                outline: none;
-                                border: 1px solid rgb(180, 170, 170);
-                            }
-                        }
-                    }
-                    .cp{
-                        width: 18%;
-                        #cp{
-                            margin-top: 7px;
-                            margin-bottom: 15px;
-                            height: 35px;
-                           width: 100%;
-                            font-family: $fte-sec;
-                            font-size: 15px;
-                            padding-left: 5px;
-                            box-sizing: border-box;
-                            &:focus {
-                                outline: none;
-                                border: 1px solid rgb(180, 170, 170);
-                            }
-                        }
-                    }
-    
-                }
-                .cont-email{
-                    width: 100%;
-                    .email{
-                        width: 55%;
-                        #email{
-                            margin-top: 7px;
-                            margin-bottom: 15px;
-                            height: 35px;
-                           width: 100%;
-                            font-family: $fte-sec;
-                            font-size: 15px;
-                            padding-left: 5px;
-                            box-sizing: border-box;
-                            &:focus {
-                                outline: none;
-                                border: 1px solid rgb(180, 170, 170);
-                            }
-                        }
-    
-                    }
-                }
-                .passwords{
-                    width: 100%;
-                    display: grid;
-                    grid-template-areas: "campo1  campo2 "
-                                        "msj1  msj2";
-                    align-items: center;
-                    justify-content: space-between;
-                
-                    .campo{
-                        width: 95%;
-                        display: flex;
-                        align-items: center;
-                        position: relative;
-                        #new-pasw, #new-pasw-repeat{
-                            margin-top: 7px;
-                            margin-bottom: 15px;
-                            height: 35px;
-                            width: 100%;
-                            font-family: $fte-sec;
-                            font-size: 15px;
-                            padding-left: 5px;
-                            box-sizing: border-box;
-                            &:focus {
-                                outline: none;
-                                border: 1px solid rgb(180, 170, 170);
-                            }
-                            &.is-invalid~i{
-                             color:rgb(150, 9, 9);
-                        }
-                        }
-                        i {
-                         position: absolute;
-                        padding: 13px;
-                        font-size: 1.1em;
-                        color: grey;
-                        }
-                        .fa-eye,
-                    .fa-eye-slash {
-                        margin-left: 78%;
-                        margin-top: -6px;
-                    }
-                    .fa-eye-slash {
-                        visibility: hidden;
-                    }
-                    }
-                    #campo1{
-                        grid-area: campo1;
-                    }
-                    #campo2{
-                        grid-area: campo2;
-                    }
-                    #msj1{
-                        grid-area: msj1;
-                        width: 190px;
-                    }
-                    #msj2{
-                        grid-area: msj2;
-                       transform: translateY(-17px);
-                    }
-                
-            }
-                .msje{
-                    color: grey;
-                    font-family: $fte-sec;
-                    font-size: 13px;
-                    display: block;
-                    margin-top: 5px;
-                }
-            }
-            #msje-registro {
-                font-family: $fte-sec;
-                color: rgb(34, 33, 33);
-                text-align: center;
-                display: none;
-                margin-top: auto;
-                margin-bottom: auto;
-                span {
-                    font-size: 16px;
-                    color: $color-sec;
-                }
-                #name,
-                #lastname {
-                    margin-top: 7px;
-                    height: 39px;
-                    width: 100%;
-                    font-family: $fte-sec;
-                    font-size: 15px;
-                    padding-left: 20px;
-                    box-sizing: border-box;
-                    &:focus {
-                        outline: none;
-                        border: 1px solid rgb(180, 170, 170);
-                    }
-                }
-                #lastname {
-                    margin-bottom: 10px;
-                }
-            }
-        }
-       
-    }
-    }
     
