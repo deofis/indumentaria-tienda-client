@@ -56,7 +56,8 @@ export class BuscadorComponent implements OnInit {
           this.rdosBusqueda=response.productos;
           this.rdosOriginales=response.productos;
           //mostrar cantidad de rdos
-          this.cantidadRdos=response.totalProductos;
+          // this.cantidadRdos=response.totalProductos;
+          this.cantidadRdos=this.rdosBusqueda.length
           //mostrar propiedades 
           this.propiedades=response.propiedades;
           //mostrar marcas
@@ -113,6 +114,8 @@ export class BuscadorComponent implements OnInit {
         }
       }
     }
+    // cambiar la cantidad de rdos en base al filtro
+    this.cantidadRdos=this.rdosBusqueda.length
 }
 filtrarSubcategorias(){
   //inicializo los rdos para q si cambio de opcion me haga el filter sobre todo el rdo y no sobre el filter anterior
@@ -129,6 +132,8 @@ filtrarSubcategorias(){
      }
     }
   }
+      // cambiar la cantidad de rdos en base al filtro
+      this.cantidadRdos=this.rdosBusqueda.length
 }
 filtrarPropiedades(index:number){
   //inicializo los rdos para q si cambio de opcion me haga el filter sobre todo el rdo y no sobre el filter anterior
@@ -140,43 +145,72 @@ filtrarPropiedades(index:number){
   for (var x=0; x<radioButPropiedad.length; x++){
     if (radioButPropiedad[x].checked == true) { 
           let propSeleccionada= this.propiedades[index].nombre;
-          //console.log(propSeleccionada)
-          // for (let z = 0; z < this.rdosBusqueda.length; z++) {
-          //  if(this.rdosBusqueda[z].propiedades[index].nombre == propSeleccionada){
-            this.rdosBusqueda= this.rdosBusqueda.filter(rdo =>  rdo.propiedades[index].nombre == propSeleccionada)
-           
-        console.log(this.rdosBusqueda)
-          // }          
-          // }
+          let rdosFiltrados=[];
+           for (let z = 0; z < this.rdosBusqueda.length; z++) {
+             for (let i = 0; i < this.rdosBusqueda[z].propiedades.length; i++){
+              if(this.rdosBusqueda[z].propiedades[i].nombre == propSeleccionada){
+                rdosFiltrados.push(this.rdosBusqueda[z])
+                
+              }          
+           }
+          }
+          this.rdosBusqueda=rdosFiltrados
         }
-      
     }
+    // cambiar la cantidad de rdos en base al filtro
+    this.cantidadRdos=this.rdosBusqueda.length
 }
+pcioMinMax(){
+   //inicializo los rdos para q si cambio de opcion me haga el filter sobre todo el rdo y no sobre el filter anterior
+   this.rdosBusqueda=this.rdosOriginales
+   
+    let inputMin =document.getElementById("pcio-min") as HTMLInputElement;
+    let inputMax =document.getElementById("pcio-max") as HTMLInputElement;
+    // tomo el valor min 
+    let  pcioMin
+    if(inputMin.value != ""){
+      pcioMin = inputMin.value;
+    
+    }else {
+      pcioMin=0
+    }
+    // tomo el valor max
+    let pcioMax 
+    let pciosProductos=[];
+    for (let z = 0; z < this.rdosBusqueda.length; z++) {
+      pciosProductos.push(this.rdosBusqueda[z].precio)
+    }
+    let pcioMasAlto=Math.max(...pciosProductos)
+    if(inputMax.value != ""){
+      pcioMax = inputMax.value;
+    }else {
+        pcioMax=pcioMasAlto;
+    }
+  /// ahora cumpliendo la condicione pcio min y max lo agrego al array de rdos para mostrar
+    let rdosFiltradosPcio=[]
+    for (let z = 0; z < this.rdosBusqueda.length; z++) {
+      if(this.rdosBusqueda[z].precio <= pcioMax && this.rdosBusqueda[z].precio >= pcioMin){
+        rdosFiltradosPcio.push(this.rdosBusqueda[z])
+      }
+    }
+    this.rdosBusqueda=rdosFiltradosPcio;
+     // cambiar la cantidad de rdos en base al filtro
+     this.cantidadRdos=this.rdosBusqueda.length
+
+
+} 
 aMenorPrecio(){
    ///////////////mas barato a mas caro /////
     this.rdosBusqueda.sort((a, b) => a.precio - b.precio);
-    console.table(this.rdosBusqueda);
 }
 aMayorPrecio(){
   ///////////////mas barato a mas caro /////
    this.rdosBusqueda.sort((a, b) => b.precio - a.precio);
-   console.table(this.rdosBusqueda);
 }
   ordenarAZ(){
-    let nombresProductos:string[]=[];
-    for (var i=0; i<this.rdosBusqueda?.length; i++){
-      nombresProductos.push(this.rdosBusqueda[i].nombre)
-    }
-   
-    console.table( this.rdosBusqueda.sort((a, b) => nombresProductos[a.nombre] -nombresProductos[b.nombre]));
+    this.rdosBusqueda.sort((a,b)=>a.nombre.localeCompare(b.nombre))
   }
   ordenarZA(){
-    let nombresProductos:string[]=[];
-    for (var i=0; i<this.rdosBusqueda?.length; i++){
-      nombresProductos.push(this.rdosBusqueda[i].nombre)
-    }
-    this.rdosBusqueda.sort((a, b) => nombresProductos[b.nombre] -nombresProductos[a.nombre]);
-    console.table(this.rdosBusqueda);
-    console.log(this.rdosBusqueda);
+    this.rdosBusqueda.sort((a,b)=>-1 * a.nombre.localeCompare(b.nombre))
   }
 }

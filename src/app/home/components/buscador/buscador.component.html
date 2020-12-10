@@ -9,7 +9,7 @@
     <div class="contenedor-menu">
 
         <ul class="menu">
-            <li class="ordenar" (click)="mostrarOrdenar()">Ordenar <i class="fas fa-chevron-down" id="arrow"></i><i class="fas fa-chevron-up" id="arrow2"></i> </li>
+            <li class="ordenar" id="filtros" id="tit-ppales" (click)="mostrarOrdenar()">Ordenar <i class="fas fa-chevron-down" id="arrow"></i><i class="fas fa-chevron-up" id="arrow2"></i> </li>
             <ul class="submenu_lateral" id="submenu">
                 <li id="masVendidos" (click)="ordenarAZ()">A-Z</li>
                 <li id="masVendidos" (click)="ordenarZA()">Z-A</li>
@@ -17,24 +17,23 @@
                 <li id="mayorPrecio" (click)="aMayorPrecio()">Mayor Precio</li>
             </ul>
 
-            <li id="filtros"><i class="icono izquierda fas fa-sliders-h"></i>Filtros</li>
+            <li id="filtros" id="tit-ppales"><i class="icono izquierda fas fa-sliders-h"></i>Filtros</li>
+            <p class="titulo-filtro">Subcategorías</p>
             <div class="subcategorias" *ngFor="let subcategoria of subcategorias" (click)="filtrarSubcategorias()">
                 <input type="radio" id="{{subcategoria.nombre}}" name="subcategoria">
                 <label for="{{subcategoria.nombre}}"> {{subcategoria.nombre}}</label>
             </div>
-            <br>
-            <br>
-
+            
+            <p class="titulo-filtro">Marcas</p>
             <div class="marcas" *ngFor="let marca of marcas" (click)="filtrarMarcas()">
                 <input type="radio" id="{{marca.nombre}}" name="marca">
                 <label for="{{marca.nombre}}" > {{marca.nombre}}</label>
             </div>
-            <br>
-            <br>
+          
 
-
+            <p class="titulo-filtro">Propiedades</p>
             <div *ngFor="let propiedad of propiedades; let i=index" class="propiedades" >
-                <p> {{propiedad.nombre}}</p>
+                <p class="prop-tit"> {{propiedad.nombre}}</p>
                 <ul class="valores">
                     <li class="valor" *ngFor="let valor of propiedad?.valores " (click)="filtrarPropiedades(i)">
                         <input type="radio" id="{{valor.valor}}" name={{propiedad.nombre}}>
@@ -45,12 +44,12 @@
             <p></p>
 
             <!-- Filtro por precio -->
-            <li id="filtros"><i class="icono izquierda fas fa-dollar-sign"></i>Filtrar por precio</li>
+            <li id="filtros" id="tit-ppales"><i class="icono izquierda fas fa-dollar-sign"></i>Filtrar por precio</li>
 
             <div class="filtro pcio-min-max">
-                <input class="pcio" type="number" placeholder="Minimo">
-                <input class="pcio" type="number" placeholder="Máximo">
-                <i class="fas fa-chevron-circle-right"></i>
+                <input class="pcio" type="number" id="pcio-min" placeholder="Minimo">
+                <input class="pcio" type="number" id="pcio-max" placeholder="Máximo">
+                <i class="fas fa-chevron-circle-right" (click)="pcioMinMax()"></i>
             </div>
             <!-- FIN Filtro por precio -->
 
