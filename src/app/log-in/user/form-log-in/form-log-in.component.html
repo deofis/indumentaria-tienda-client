@@ -34,8 +34,6 @@
 
                         </div>
                     </div>
-
-
                 </div>
                 <div class="separacion row" id="is-dos">
                     <span class="raya"></span>
@@ -47,7 +45,7 @@
                         <a [href]="FACEBOOK_AUTH_URL"><i class="fab fa-facebook-f"></i> Iniciá sesión con Facebook</a>
                     </button>
 
-                    <button class="btn2 ">
+                    <button class="btn2 " id="btn2">
                         <a [href]="GOOGLE_AUTH_URL"><i class="fab fa-google"></i> Iniciá sesión con Google</a>
                     </button>
                 </div>
@@ -55,30 +53,46 @@
 
 
                 <!--inicio form Olvide contrasena-->
-                <div class="row"  id="contenedor-forgot-psw">
-                    <form  [formGroup]="formOlvidePass"
-                        (ngSubmit)="enviarRecuperarPassword()">
-                        <div class="titulo">
-                            <i class="fas fa-arrow-circle-left" id="back"></i>
-                            <h2> Recuperar contraseña</h2>
+                <div class="row roja" id="contenedor-forgot-psw">
+                    <div class="col ">
+                        <div class="row">
+                            <form [formGroup]="formOlvidePass" class="  form-pass"
+                                (ngSubmit)="enviarRecuperarPassword()">
+                                <div class="col">
+                                    <div class=" row  titulo">
+                                        <i class="fas fa-arrow-circle-left" id="back"></i>
+                                        <h2> Recuperar contraseña</h2>
 
-                        </div>
-                        <p>Te enviaremos un mail a tu cuenta.</p>
-                        <div class="caja row">
-                            <div class="campo">
-                                <input [class.is-invalid]="emailInvalidoPass" type="email" id="emailPsw"
-                                    placeholder="Correo electrónico" formControlName="email">
-                                <i class="fas fa-envelope" id="icono-env-psw"></i>
-                            </div>
-                            <span *ngIf="emailInvalidoPass" class="text-rojo  msj-recup"><small>Ingrese su
-                                    email</small></span>
-                        </div>
-                        <div class="row btn-enviar">
-                            <button  type="submit" id="btn-recover-psw">Enviar</button>
-                        </div>
-                       
+                                    </div>
+                                    <div class="row texto">
+                                        <div class=" col-center  texto ">
+                                            <p>Te enviaremos un mail a tu cuenta.</p>
+                                        </div>
+                                       
+                                    </div>
 
-                    </form>
+                                    <div class="caja row">
+                                                <div class="campo">
+                                                    <input [class.is-invalid]="emailInvalidoPass" type="email" id="emailPsw"
+                                                        placeholder="Correo electrónico" formControlName="email">
+                                                    <i class="fas fa-envelope" id="icono-env-psw"></i>
+                                                </div>
+                                                <span *ngIf="emailInvalidoPass" class="text-rojo  msj-recup"><small>Ingrese su
+                                                        email</small></span>
+                                                                       
+                                    </div>
+                                    <div class="row btn-enviar">
+                                        <button type="submit" id="btn-recover-psw">Enviar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+
+
+
+                    </div>
+
                 </div>
                 <!--FIN form Olvide contrasena-->
             </form>

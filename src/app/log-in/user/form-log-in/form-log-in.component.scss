@@ -244,6 +244,7 @@ $color-wf2:#1f4e84;
                 background-color: #db4a39;
             }
         }
+        
         #contenedor-forgot-psw {
             margin-left: auto;
             margin-right: auto;
@@ -256,102 +257,105 @@ $color-wf2:#1f4e84;
             padding-bottom: 20px;
             form{
                 width: 90%;
-                .titulo{
-                    display: flex;
-                    flex-direction: row;
-                    padding-bottom: 0;
-                    width: 100%;
-                    margin-top: -10px;
-                    h2 {
-                        border-bottom: 1px solid grey;
-                        font-family: $fte-sec;
-                        font-size: 22px;
-                        color: $color-sec;
-                        display: block;
-                        width: 100%;
-                        padding-bottom: 5px;
-                      
-                    }
-                    .fa-arrow-circle-left {
-                        font-size: 1.3em;
-                        color:rgb(34, 33, 33);
-                        margin-right: 8px;
-                        outline: none;
-                        position: absolute;
-                        top:10px;
-                        left: -6px;
-                   
-                    }
-                }
-                p {
-                    font-size: 14px;
-                }
-                .caja{
-                    margin-bottom: 15px;
-                    margin-left: auto;
-                    margin-right: auto;
-                    width: 100%;
-                    .campo {
-                        width: 100%;
-                        display: flex;
-                        justify-content: flex-start;
-                        align-items: center;
-                        position: relative;
-                        margin-top: -8px;
-                        height: 60px;
-    
-                        i {
-                            position: absolute;
-                            padding: 13px;
-                            font-size: 1.1em;
-                            color: $color-ter;
-                            left: 0;
-                            top: 15px;
-                        }
-                        .fa-user {
-                            top: 7.1px;
-                        }
-                        #emailPsw {
-                            margin-top: 16px;
-                            height: 44px;
-                            width: 100%;
-                            font-family: $fte-sec;
-                            font-size: 15px;
-                            padding-left: 40px;
-                            box-sizing: border-box;
-                            &:focus {
-                                outline: none;
-                                border: 1px solid rgb(180, 170, 170);
-                            }
-                            &:focus~i {
-                                color: rgb(34, 33, 33);
-                            }
-                            &:focus~.fa-lock {
-                                color: rgb(34, 33, 33);
-                            
-                            }
-                            &.is-invalid{
-                                border: 1px solid rgb(252, 62, 62);
-                              }
-                             &.is-invalid~i{
-                                color:rgb(150, 9, 9);
-                              }
-                        }
-                    }
-                    .text-rojo{
-                       align-self: flex-end;
-                    font-family: $fte-sec;
-                    color: red;
-                    text-align: right;
-                    margin-bottom: 0;
-                    font-size: 16px;
-                    }
-                 }
+                margin-left: auto;
+                margin-right: auto;
+                
             }
         }
     }
   
 }
+.titulo{
+    padding-bottom: 0;
+    margin-top: -10px;
+    h2 {
+        border-bottom: 1px solid grey;
+        font-family: $fte-sec;
+        font-size: 22px;
+        color: $color-sec;
+        display: block;
+        width: 100%;
+        padding-bottom: 5px;
+      
+    }
+    .fa-arrow-circle-left {
+        font-size: 1.3em;
+        color:rgb(34, 33, 33);
+        margin-right: 8px;
+        outline: none;
+        position: absolute;
+        top:10px;
+        left: -1.7vw;
+   
+    }
+}
+.texto {
+    font-size: 14px;
+   margin-left: auto;
+   margin-right: auto;
+}
+.caja{
+    margin-bottom: 25px;
+    margin-top: -15px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    .campo {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
+        margin-top: -8px;
+        height: 60px;
+
+        i {
+            position: absolute;
+            padding: 13px;
+            font-size: 1.1em;
+            color: $color-ter;
+            left: 0;
+            top: 15px;
+        }
+        .fa-user {
+            top: 7.1px;
+        }
+        #emailPsw {
+            margin-top: 16px;
+            height: 44px;
+            width: 100%;
+            font-family: $fte-sec;
+            font-size: 15px;
+            padding-left: 40px;
+            box-sizing: border-box;
+            &:focus {
+                outline: none;
+                border: 1px solid rgb(180, 170, 170);
+            }
+            &:focus~i {
+                color: rgb(34, 33, 33);
+            }
+            &:focus~.fa-lock {
+                color: rgb(34, 33, 33);
+            
+            }
+            &.is-invalid{
+                border: 1px solid rgb(252, 62, 62);
+              }
+             &.is-invalid~i{
+                color:rgb(150, 9, 9);
+              }
+        }
+    }
+    .text-rojo{
+    font-family: $fte-sec;
+    color: red;
+    font-size: 16px;
+    position: absolute;
+    right: 0;
+    bottom: -20px;
+    }
+ }
 .btn-enviar{
     width: 100%;
     margin: 0px auto -15px auto;
@@ -489,6 +493,7 @@ $color-wf2:#1f4e84;
             }
         }
     }
+  
 }
 .btn-enviar{
     #btn-recover-psw {
@@ -496,6 +501,38 @@ $color-wf2:#1f4e84;
         height: 36px;
     }
 }
+}
+@media screen and (max-width: 1050px) {
 
+    .titulo{
+        h2 {
+            font-size: 20px;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .fa-arrow-circle-left {
+            font-size: 1.1em;
+            top:10px;
+            left: -2vw;
+       
+        }
+    }
+    .texto {
+        margin-top: -5px;
+        margin-bottom: 5px;
+        font-size: 14px;
+       margin-left: auto;
+       margin-right: auto;
+    }
+    .caja{
+        .text-rojo{
+            font-family: $fte-sec;
+            color: red;
+            position: absolute;
+            right: 0;
+            bottom: -10px;
+            }
+    }
 }
 
