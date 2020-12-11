@@ -39,8 +39,7 @@ export class UserSignUpComponent implements OnInit {
   ngOnInit(): void {
     /***** mostrar mensaje cta creada */
     this.crearFormulario();
-    this.getPaises();
-    
+    this.getPaises();   
   }
   ///////// obtener paises, estado ciudad ////
   getPaises(){
@@ -61,7 +60,7 @@ export class UserSignUpComponent implements OnInit {
   }
   showCiudades(){
     let estadoSeleccionado = this.formRegistro.controls.cliente.get('direccion.estado').value;
-    console.log(estadoSeleccionado?.id)
+    
     this.catalogoservice.getCiudades(estadoSeleccionado?.id, this.paisSeleccionado.id).subscribe( response =>{
      this.ciudades=response;
     })
@@ -105,13 +104,10 @@ export class UserSignUpComponent implements OnInit {
   }
   ///// show message
   showMessage() {
-    let contRegistr = document.getElementById("contenedor-registrarse");
-    contRegistr.style.display = "none";
+    let contRegistr = document.getElementById("ocultar") ;
+     contRegistr.style.display = "none";
     let msj = document.getElementById("msje-registro");
     msj.style.display = "block";
-    msj.style.width = "70%";
-    let contBlanco = document.getElementById("cont-form");
-    contBlanco.style.marginTop = "200px";
   }
 
   /**
@@ -125,14 +121,14 @@ export class UserSignUpComponent implements OnInit {
       email: ["", [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       password: ["", [Validators.required, Validators.minLength(8)]],
       passwordRepeat: ["", Validators.required],
-      checkterminos:[false ,Validators.required],
+      checkterminos:["" ,Validators.required],
       cliente: this.fb.group({
         //id: [""],
         nombre: ["", Validators.required],
         apellido: ["", Validators.required],
         direccion: this.fb.group({
-          ciudad:[""],
-          pais:[""],
+          ciudad:["", Validators.required],
+          pais:["", Validators.required],
           estado:[""],
           calle:["", Validators.required],
           nro:["", Validators.required],
@@ -205,6 +201,13 @@ export class UserSignUpComponent implements OnInit {
   get ciudadInvalida() {
     return this.formRegistro.get('cliente.direccion.ciudad').invalid && this.formRegistro.get('cliente.direccion.ciudad').touched;
   }
+  get paisInvalido() {
+    return this.formRegistro.get('cliente.direccion.pais').invalid && this.formRegistro.get('cliente.direccion.pais').touched;
+  }
+  get estadoInvalido() {
+    return this.formRegistro.get('cliente.direccion.estado').invalid && this.formRegistro.get('cliente.direccion.estado').touched;
+  }
+ 
 
   /**
    * Getter validador de email.

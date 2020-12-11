@@ -1,107 +1,160 @@
-<section>
+<div class="container">
+    <div class="row row-logo">
+        <a [routerLink]="['/home']" title="Home">
+            <img src="../../assets/imagenes/wf.png" alt="logo">
+        </a>
+    </div>
+    <div class="row row-body">
+        <div class="col-11 col-md-12  contenedor-form">
+            <form id="cont-form" autocomplete="off" [formGroup]="formRegistro" (ngSubmit)="registrarse()">
+                <div class="col" id="ocultar" >
+                    <div class=" row ">
+                        <div class="col">
+                            <div class=" row  titulo">
+                                <i class="fas fa-arrow-circle-left" id="back1" [routerLink]="['/login']"></i>
+                                <h2>Crear cuenta</h2>
+                            </div>
+                            <div class="row" formGroupName="cliente" id="formName">
+                                <div class="col">
+                                    <div class=" row nombre-apellido">
+                                        <div class="col-12 col-sm-6 name ">
+                                            <input [class.is-invalid]="nombreInvalido" type="text" id="name"
+                                                placeholder="*Nombre" formControlName="nombre">
+                                        </div>
+                                        <div class=" col-12  col-sm-6  lastname ">
+                                            <input [class.is-invalid]="apellidoInvalido" type="text"
+                                                placeholder="*Apellido" id="lastname" formControlName="apellido">
+                                        </div>
+                                    </div>
+                                    <div class="row campos-direccion ">
+                                        <div class="col" formGroupName="direccion">
+                                            <div class=" row location ">
+                                                <div class="col-12  col-sm-4 ">
+                                                    <select class="country" (change)="showEstados()"
+                                                        formControlName="pais" [class.is-invalid]="paisInvalido">
+                                                        <option hidden selected value="">-*Pais-</option>
+                                                        <option [ngValue]="pais" *ngFor="let pais of paises">
+                                                            {{pais.nombre}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-12  col-sm-4 ">
+                                                    <select class="state" (change)="showCiudades()"
+                                                        id="combobox-estados" formControlName="estado"
+                                                        [class.is-invalid]="estadoInvalido">
+                                                        <option hidden selected value="">-*Estado-</option>
+                                                        <option [ngValue]="estado" *ngFor="let estado of estados">
+                                                            {{estado.nombre}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-12  col-sm-4 ">
+                                                    <select class="city" id="combobox-ciudades"
+                                                        [class.is-invalid]="ciudadInvalida" formControlName="ciudad"
+                                                        [class.is-invalid]="ciudadInvalida">
+                                                        <option hidden selected value="">-*Ciudad-</option>
+                                                        <option *ngFor="let ciudad of ciudades" [ngValue]="ciudad">
+                                                            {{ciudad.nombre}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row calle-nro">
+                                                <div class=" col-12 col-sm-6 calle">
+                                                    <input type="text" [class.is-invalid]="calleInvalida"
+                                                        placeholder="*Calle" id="calle" formControlName="calle">
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="row">
+                                                        <div class=" col-4 nro">
+                                                            <input type="number" [class.is-invalid]="nroInvalido"
+                                                                id="nro" placeholder="*Nro" formControlName="nro">
+                                                        </div>
+                                                        <div class=" col-4 piso">
+                                                            <input type="number" id="piso" placeholder="Piso"
+                                                                formControlName="piso">
+                                                        </div>
+                                                        <div class="col-4 cp">
 
-    <a [routerLink]="['/home']" title="Home">
-        <img src="../../assets/imagenes/wf.png" alt="logo">
-    </a>
-    <form class="contenedor-form" id="cont-form" autocomplete="off" [formGroup]="formRegistro"
-        (ngSubmit)="registrarse()">
-        <div id="contenedor-registrarse">
-            <div class="titulo">
-                <i class="fas fa-arrow-circle-left" id="back1" [routerLink]="['/login']"></i>
-                <h2>Crear cuenta</h2>
-            </div>
-            <div formGroupName="cliente" id="formName">
-                <div class="nombre-apellido">
-                    <div class="name ">
-                        <input [class.is-invalid]="nombreInvalido" type="text" id="name" placeholder="*Nombre"
-                            formControlName="nombre">
+                                                            <input type="text" [class.is-invalid]="cpInvalido" id="cp"
+                                                                placeholder="*CP" formControlName="cp">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" row cont-email">
+                                <div class=" col-12 col-md-4 email">
+                                    <input [ngClass]="{'is-invalid': emailInvalido}" type="email" id="email"
+                                        placeholder="*Correo electrónico" formControlName="email">
+                                </div>
+                                <div class="col-12 col-md-8 passwords">
+                                    <div class="row">
+                                        <div class="col-12 col-md-6">
+                                            <div class="campo" id="campo1">
+                                                <input [ngClass]="{'is-invalid': passwordInvalida}" type="password"
+                                                    id="new-pasw" placeholder="*Contraseña" formControlName="password">
+                                                <i class="far fa-eye" id="show1" (click)="mostrarPsw1()"></i>
+                                                <i class="far fa-eye-slash" id="hide1" (click)="mostrarPsw1()"></i>
+                                            </div>
+                                            <span class="text-rojo" id="msj1" *ngIf="passwordInvalida"><small>La
+                                                    contraseña debe
+                                                    contener al menos 9
+                                                    caracteres </small></span>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="campo" id="campo2">
+                                                <input [ngClass]="{'is-invalid': passwordNoIguales}" type="password"
+                                                    id="new-pasw-repeat" placeholder="*Repetir contraseña"
+                                                    formControlName="passwordRepeat">
+
+                                                <i class="far fa-eye" id="show2" (click)="mostrarPsw2()"></i>
+                                                <i class="far fa-eye-slash" id="hide2" (click)="mostrarPsw2()"></i>
+                                            </div>
+                                            <span class="text-rojo" id="msj2" *ngIf="passwordNoIguales"><small>Las
+                                                    contraseñas
+                                                    deben
+                                                    coincidir</small></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" row terminos-button">
+                                <div class="col ">
+                                    <div class=" row terms-checkbox">
+                                        <input type="checkbox" id="terms" name="terms"
+                                            [class.is-invalid]="terminosInvalido" formControlName="checkterminos">
+                                        <label for="terms" id="aceptar-terminos">*He leído y acepto los <a
+                                                href="">Términos y Condiciones.</a> <span *ngIf="terminosInvalido"
+                                                class="text-rojo msje-teminos">Debe aceptar para continuar</span>
+                                        </label>
+                                    </div>
+                                    <div class=" row">
+                                        <button type="submit" id="btn-sign-up" class="boton">Registrarme</button>
+                                    </div>
+                                    <div class=" row">
+                                        <!-- <span class="text-rojo msje" id="alert2" > (*)Campos obligatorios.</span> -->
+                                        <span class="text-rojo" id="alert2"
+                                            *ngIf="apellidoInvalido || nombreInvalido || terminosInvalido || calleInvalida || nroInvalido ||cpInvalido ||ciudadInvalida || paisInvalido || estadoInvalido || emailInvalido || passwordInvalida || passwordNoIguales">
+                                            (*)Campos obligatorios.</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <span class="text-rojo" id="alert1" *ngIf="nombreInvalido"><small>Este campo es
-                            obligatorio.</small></span>
-                    <div class="lastname ">
-                        <input [class.is-invalid]="apellidoInvalido" type="text" placeholder="*Apellido" id="lastname"
-                            formControlName="apellido">
-                    </div>
-                    <span class="text-rojo" id="alert2" *ngIf="apellidoInvalido"><small>Este campo es
-                            obligatorio.</small></span>
                 </div>
-           
-            <div formGroupName="direccion" >
-                <div class="location" >
-                 <select class="country" (change)="showEstados()" formControlName="pais" >
-                        <option  hidden selected value="" >-Pais-</option>
-                        <option [ngValue]="pais" *ngFor="let pais of paises"> {{pais.nombre}}</option>
-                    </select>
-                     <select class="state" (change)="showCiudades()" id="combobox-estados" formControlName="estado" >
-                        <option  hidden selected value="">-Estado-</option>
-                        <option  [ngValue]="estado" *ngFor="let estado of estados">{{estado.nombre}}</option>
-                    </select>
-                    <select class="city" id="combobox-ciudades" [class.is-invalid]="ciudadInvalida" formControlName="ciudad">
-                        <option  hidden selected value="">-Ciudad-</option>
-                        <option *ngFor="let ciudad of ciudades"  [ngValue]="ciudad">{{ciudad.nombre}}</option>
-                    </select>
+                <!--inicio mensaje cta creada-->
+                <div class="row" id="msje-registro">
+                    <p>Gracias! Te hemos enviado un correo para realizar una breve verificación de identidad.</p>
                 </div>
-                <div class="calle-nro">
-    
-                    <div class="calle">
-                        <input type="text" [class.is-invalid]="calleInvalida" placeholder="*Calle"  id="calle" formControlName="calle">
-                    </div>
-                    <div class="nro">
-                        <input type="number" [class.is-invalid]="nroInvalido" id="nro" placeholder="*Nro"  formControlName="nro">
-                    </div>
-                    <div class="piso">
-                        <input type="number" id="piso" placeholder="Piso" formControlName="piso">
-                    </div>
-                    <div class=" cp">
-    
-                        <input type="number" [class.is-invalid]="cpInvalido" id="cp" placeholder="*CP" formControlName="cp">
-                    </div>
-                </div>
-            </div>
+                <!--FIN mensaje cta creada-->
+
+            </form>
         </div>
-            <div class="cont-email">
-                <div class="email">
-
-                    <input [ngClass]="{'is-invalid': emailInvalido}" type="email" id="email"
-                        placeholder="*Correo electrónico" formControlName="email">
-                </div>
-                <span class="text-rojo" *ngIf="emailInvalido"><small>El email es obligatorio</small></span>
-            </div>
-            <div class="passwords">
-
-                <div class="campo" id="campo1">
-                    <input [ngClass]="{'is-invalid': passwordInvalida}" type="password" id="new-pasw"
-                        placeholder="*Contraseña" formControlName="password">
-                    <i class="far fa-eye" id="show1" (click)="mostrarPsw1()"></i>
-                    <i class="far fa-eye-slash" id="hide1" (click)="mostrarPsw1()"></i>
-                </div>
-                <span class="text-rojo" id="msj1" *ngIf="passwordInvalida"><small>La contraseña debe contener al menos 9
-                        caracteres </small></span>
-
-
-                <div class="campo" id="campo2">
-                    <input [ngClass]="{'is-invalid': passwordNoIguales}" type="password" id="new-pasw-repeat"
-                        placeholder="*Repetir contraseña" formControlName="passwordRepeat">
-
-                    <i class="far fa-eye" id="show2" (click)="mostrarPsw2()"></i>
-                    <i class="far fa-eye-slash" id="hide2" (click)="mostrarPsw2()"></i>
-                </div>
-                <span class="text-rojo" id="msj2" *ngIf="passwordNoIguales"><small>Las contraseñas deben
-                        coincidir</small></span>
-
-            </div>
-            <div class="terms-checkbox">
-                <input type="checkbox" id="terms" name="terms" formControlName="checkterminos">
-                <label for="terms">*He leído y acepto los <a href="">Términos y Condiciones.</a></label>
-
-            </div>
-            <button type="submit" id="btn-sign-up" class="boton">Registrarme</button>
-            <span class="msje">(*)Campos obligatorios.</span>
-        </div>
-        <!--inicio mensaje cta creada-->
-        <div id="msje-registro">
-            <p>Gracias! Te hemos enviado un correo para realizar una breve verificación de identidad.</p>
-        </div>
-        <!--FIN mensaje cta creada-->
-    </form>
-</section>
+    </div>
+</div>
