@@ -316,7 +316,7 @@ $color-wf4:#70b8f3;
     display: none;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 767px) {
     #header {
         height: 95px;
         .menu-header {
@@ -327,8 +327,8 @@ $color-wf4:#70b8f3;
                     img {
                         width: 165px;
                         height:50px;
-                        margin-left: -20px;
-                        margin-top: 5px;
+                        margin-left: -12px;
+                        margin-top: 0px;
                     }
                 }
             }
@@ -337,9 +337,7 @@ $color-wf4:#70b8f3;
     #menu{
         display: block;
         position: absolute;
-       left: -5px;
-       top: 2px;
-       
+        top: 4px;
         #closeM{
             display: none;
             margin-top: 4px;
@@ -355,8 +353,9 @@ $color-wf4:#70b8f3;
      //// buscador ////
  .buscador {
     .barraDeBusqueda {
-         width: 43vw;
-        margin-left: 30px;
+         width: 44vw;
+         transform: translateX(4vw);
+        margin-left: 3vw;
         height: 27px;
         padding-left: 10px;
         padding-right: 30px;
@@ -371,7 +370,7 @@ $color-wf4:#70b8f3;
 #contenedor_iconos {
     .iconos {
          position: relative;
-       
+        
         &:focus{
             outline: none;
         }
@@ -408,6 +407,10 @@ $color-wf4:#70b8f3;
             }
         }
     }
+}
+.carrito-icono{
+    margin-left: auto;
+    margin-right: auto;
 }
 //    header{
 //        width: 100%;
@@ -509,4 +512,91 @@ $color-wf4:#70b8f3;
 //     }
 // }
 }
+///posicionamiento del buscador
+@media screen and (min-width: 375px) and (max-width:450px){
+    .buscador {
+        .barraDeBusqueda {
+             width: 50vw;
+             transform: translateX(2vw);     
+        }
+    }
+}
+@media screen and (min-width: 450px) and (max-width:630px){
+    .buscador {
+        .barraDeBusqueda {
+             width: 54vw;
+             transform: translateX(8vw);     
+        }
+    }
+}
+@media screen and (min-width: 630px) and (max-width:767px){
+    .buscador {
+        .barraDeBusqueda {
+             width: 60vw;
+             transform: translateX(8vw);     
+        }
+    }
+}
 
+
+
+@media screen and (min-width: 768px) and (max-width:991px){
+#contenedor-iconos{
+    display: flex;
+    justify-content: space-between;
+   }
+#campanita{
+    transform: translateX(20px);
+}
+#header {
+    height: 95px;
+    .menu-header {
+        width: 105%;
+        .logo {
+            width: 15vw;
+            a {
+                img {
+                    width: 180px;
+                    height:52px;
+                    margin-left: -12px;
+                    margin-top: 0px;
+                }
+            }
+        }
+    }
+}
+.fila{
+    margin-top: -3px;
+}
+.nav-options{
+    margin-left: -20px;
+    margin-top: 5px;
+}
+
+}
+@media screen and (min-width: 992px) and (max-width:1200px){
+   .nav-options{
+      margin-left: 90px;
+      margin-top: 5px;
+      #oferta-option{
+          margin-left: 25px;
+      }
+   }
+   .buscador {
+    .barraDeBusqueda {
+         width: 26vw;
+         transform: translateX(6vw);     
+        }
+        .btn-lupa {
+            background-color: white;
+            border: none;
+            position: relative;
+            z-index: 2;
+            .fa-search {
+                margin-left: 3vw;
+                color: rgb(95, 93, 93);
+            }
+          
+        }
+    }
+}

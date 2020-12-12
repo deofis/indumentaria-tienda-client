@@ -7,24 +7,21 @@
         </div>
         <div class="col-lg-10 " id="  fila-header">
             <div class="row  verde fila ">
-                <div class="col-3 d-none d-md-block ">
+                <div class="col-1 roja col-md-4 col-lg-3">
                     <!-- <div class="row"> -->
-                    <nav class="nav-options ">
+                    <nav class="nav-options d-none d-md-block ">
                         <ul class="menu">
                             <li (mouseover)="showCategories()"><a href="#section-categories">Categorías</a></li>
-                            <li><a href="#section-ofertas">Ofertas</a></li>
+                            <li id="oferta-option"><a href="#section-ofertas">Ofertas</a></li>
                         </ul>
                     </nav>
                     <!-- </div> -->
-
+                    <div id="menu">
+                        <i class="fas fa-bars opciones" id="openM" (click)="showMenu()"></i>
+                        <i class="fas fa-times" id="closeM" (click)="hiddeMenu()"></i>
+                    </div>
                 </div>
-
-                <div class="col-1  roja " id="menu">
-                    <i class="fas fa-bars opciones" id="openM" (click)="showMenu()"></i>
-                    <i class="fas fa-times" id="closeM" (click)="hiddeMenu()"></i>
-                </div>
-
-                <div class="col verde">
+                <div class="col col-md-6 col-lg-7 verde">
                     <form (submit)=buscarProducto(txtProducto.value) autocomplete="off">
                         <div class="buscador">
                             <input class=barraDeBusqueda type="text" placeholder=" Buscar" id="buscador" #txtProducto>
@@ -33,16 +30,15 @@
                         </div>
                     </form>
                 </div>
-
-                <div class="col-2 roja" id="contenedor_iconos">
+                <div class="col-2  col-md-2 " id="contenedor_iconos">
                     <div class="row">
                         <div class="col-2 d-none d-md-block">
-                            <div *ngIf="estaLogueado" class="iconos notificaciones">
+                            <div  class="iconos notificaciones" id="campanita">
                                 <!-- <i class="fas fa-bell opciones"></i> -->
                                 <img src="../../../../../assets/imagenes/icon-notif.png" alt="">
                             </div>
                         </div>
-                        <div class="col-5 azul">
+                        <div class="col-5 azul carrito-icono">
                             <div *ngIf="hasRole('ROLE_USER') || !estaLogueado" class="iconos carrito"
                                 [routerLink]="['/shopping-cart']">
                                 <!-- <i class="fas fa-shopping-cart opciones"></i> -->
@@ -59,7 +55,7 @@
                                 <img src="../../../../../assets/imagenes/icon-ventas.png" alt="">
                             </div>
                         </div>
-                        <div class="col-5 d-none d-md-block">
+                        <div class="col-3 azul d-none d-md-block">
                             <div class="iconos miperfil" (mouseover)="showUserMenu()" (click)="irPerfil()">
                                 <!-- <i class="fas fa-user-circle opciones"></i> -->
                                 <img src="../../../../../assets/imagenes/icon-user.png" alt="">
@@ -73,7 +69,6 @@
 
                 </div>
             </div>
-
         </div>
     </div>
 </div>
