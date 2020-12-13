@@ -1,11 +1,17 @@
-<section>
-    <!-- listado de productos DERECHA -->
-    <div class="container-left">
-        <h2>Mi carrito</h2>
-        <!-- <div class="msg-empty-cart" *ngIf="totalProductos===0">
+<div class="container-fluid">
+    <div class="row">
+        <!-- listado de productos DERECHA -->
+        <div class="col-12 col-md-7 col-lg-6 offset-lg-1 container-left">
+            <div class="row">
+                <div class="col">
+                    <h2>Mi carrito</h2>
+                </div>
+            </div>
+
+            <!-- <div class="msg-empty-cart" *ngIf="totalProductos===0">
             <p>Tu carrito está vacio</p>
         </div> -->
-        <!-- <div class="products-list" *ngIf="totalProductos > 0">
+            <!-- <div class="products-list" *ngIf="totalProductos > 0">
             <ul class="shopping-cart-items">
                 <li class="clearfix" *ngFor="let item of carrito.items">
                     <img src="../../../../../assets/imagenes/celu.jpg" alt="item compra" />
@@ -36,77 +42,59 @@
                 </li>
             </ul>
         </div> -->
-        <div class="products-list">
-            <ul class="shopping-cart-items">
-                <li class="clearfix" >
-                    <img src="../../../../../assets/imagenes/prod2.png" alt="item compra" />
-                    <div class="info">
-                        <span class="item-name">Samsung Galaxy S20</span>
-                        <div class="row-info">
-                            <span>Color: Negro</span>
-                            <span></span>
-                        </div>
-                    </div>
-                    <div class="price-u">
-                        <span>Precio:</span>
-                        <span class="item-price">€700</span>
-                    </div>
-                    <div class="quantity">
-                        <span>Cantidad:</span>
-                        <div class="modify-quantity">
-                            <i class="fas fa-minus-circle" ></i>
-                            <span class="item-quantity">1</span>
-                            <i class="fas fa-plus-circle" ></i>
-                        </div>
-                    </div>
-                    <div class="subtotal">
-                        <span>Subtotal:</span>
-                        <span class="item-subtotal">€700</span>
-                    </div>
-                    <i id="close" class="fas fa-times" ></i>
-                </li>
-            </ul>
+            <div class="  row products-list">
+                <div class="col ">
+                    <ul class="shopping-cart-items">
+                            <li >
+                                <div class="row ">
+                                <div class="col-12 col-lg-6  ">
+                                    <div class="row ">
+                                        <div class="col-2 col-lg-1 ">
+                                            <img src="../../../../../assets/imagenes/prod2.png" alt="item compra" />
+                                        </div>
+
+                                        <div class="col-9 col-lg-9 verde info">
+                                            <div class="row">
+                                                <span class="item-name">Samsung Galaxy S20</span>
+                                            </div>
+                                            <div class="row row-info">
+                                                <span>Color: Negro</span>
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6  ">
+                                    <div class="row ">
+                                        <div class="col-4  price-u">
+                                            <span>Precio:</span>
+                                            <span class="item-price">€700</span>
+                                        </div>
+                                        <div class=" col-4  quantity">
+                                            <span>Cantidad:</span>
+                                            <div class="modify-quantity">
+                                                <i class="fas fa-minus-circle"></i>
+                                                <span class="item-quantity">1</span>
+                                                <i class="fas fa-plus-circle"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-4  subtotal">
+                                            <span>Subtotal:</span>
+                                            <span class="item-subtotal">€700</span>
+                                        </div>
+                                        <i id="close" class="fas fa-times"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
-
-      <div class="products-list">
-            <ul class="shopping-cart-items">
-                <li class="clearfix">
-                    <img src="../../../../../assets/imagenes/celu.jpg" alt="item compra" />
-                    <div class="info">
-                        <span class="item-name">Samsung Galaxy J7</span>
-                        <div class="row-info">
-                            <span>Color: Dorado</span>
-                            <span></span>
-                        </div>
-                    </div>
-                    <div class="price-u">
-                        <span>Precio:</span>
-                        <span class="item-price">€500</span>
-                    </div>
-                    <div class="quantity">
-                        <span>Cantidad:</span>
-                        <div class="modify-quantity">
-                            <i class="fas fa-minus-circle"></i>
-                            <span class="item-quantity">1</span>
-                            <i class="fas fa-plus-circle"></i>
-                        </div>
-                    </div>
-                    <div class="subtotal">
-                        <span>Subtotal:</span>
-                        <span class="item-subtotal">€500</span>
-                    </div>
-                    <i id="close" class="fas fa-times"></i>
-                </li>
-            </ul>
-        </div> 
-
-
-    </div>
-
-    <!-- resumen de compra IZQUIERDA -->
-    <!-- <div class="container-right" *ngIf="totalProductos > 0">
-        <div class="summary">
+        <!-- resumen de compra IZQUIERDA -->
+        <div class="col-12 col-md-5 col-lg-3 offset-lg-1 container-right" >
+            <!-- <div class="summary">
             <h2>Resumen de compra</h2>
             <div id="subtotal-summary"><span>Subtotal:</span> <span> ${{carrito.total}}</span> </div>
             <div id="total-summary"><span>Total:</span> <span>${{carrito.total}} </span> </div>
@@ -114,19 +102,21 @@
                 <i class="fas fa-ticket-alt"></i> <span>¿Tenés un cupón de descuento?</span>
             </div>
         </div>
-        <button [routerLink]="['/pre-checkout']">CONTINUAR</button>
-    </div> -->
-    <div class="container-right">
-        <div class="summary">
-            <h2>Resumen de compra</h2>
-            <div id="subtotal-summary"><span>Subtotal:</span> <span>€700</span> </div>
-            <div id="total-summary"><span>Total:</span> <span>€1200</span> </div>
-            <div class="coupon"  >
-                <i class="fas fa-ticket-alt"></i> <span>¿Tenés un cupón de descuento?</span>
+        <button [routerLink]="['/pre-checkout']">CONTINUAR</button> -->
+            <div class="row  summary">
+                <h2>Resumen de compra</h2>
+                <div id="subtotal-summary"><span>Subtotal:</span> <span>€700</span> </div>
+                <div id="total-summary"><span>Total:</span> <span>€1200</span> </div>
+                <div class="coupon">
+                    <i class="fas fa-ticket-alt"></i> <span>¿Tenés un cupón de descuento?</span>
+                </div>
+                <button [routerLink]="['/pre-checkout']">Continuar</button>
             </div>
+           
         </div>
-        <button [routerLink]="['/pre-checkout']">Continuar</button>
     </div>
 
 
-</section>
+
+
+</div>
