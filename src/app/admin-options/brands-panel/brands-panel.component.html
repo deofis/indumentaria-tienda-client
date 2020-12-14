@@ -1,130 +1,128 @@
 <section>
+    
     <app-admin-sidebar></app-admin-sidebar>
+    <!-- <app-user-sidebar></app-user-sidebar> -->
     <div class="container-brands">
+        
         <div class="frame">
             <div class="title">
                 <h2>Marcas</h2>
-                <button id="save">Guardar</button>
-            </div>
-            <!-- <div class="add-brand">
-                <form class="formBrand">
-                    <div id="newBrand">
-                        <input class="input" type="text" placeholder="Ingrese una nueva marca" #txtBrand id="input">
-                        <button type="submit" class="btn-plus"> <i class="far fa-plus-square" id="plus"></i></button>
-
-                    </div>
-                </form>
-                <p id="add"><i class="far fa-plus-square"></i> Agregar marca</p>
-            </div> -->
-            <div class="row">
-                <div class="col-md-3">
-                    <input type="text" class="form-control" placeholder="Buscar">
-                </div>
-                <div class="col-md col-xs-12 text-right d-none d-sm-block">
-                    <button class="btn btn-primary" (click)="openModal(longContent)"
-                            style="background-color: #1f4e84; border: none;">Nueva marca</button>
-                </div>
+                
             </div>
 
-            <article class="list mt-3">
-                <!-- <div class="item-brand" *ngFor="let brand of brands">
-                    <p>{{brand.nombre}}</p><i class="far fa-edit"></i>
-                </div> -->
+            <div class="container">
                 
-                <div class="row pb-3 pt-3 hoverRow" *ngFor="let brand of brands" >
-                    <div class="col-2">
-                        {{brand.nombre}}
+                <a class="btn-flotante d-block d-sm-none rounded-circle" (click)="openModal(longContent)">+</a>
+
+                <div class="row">
+                    
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" placeholder="Buscar" name="filterBrands" [(ngModel)]="filterBrands">
                     </div>
-                    <div class="col text-right">
-                        <i class="far fa-edit" (click)="openModalModify(modifyMarca)"></i>
+                    <div class="col-md col-xs-12 text-right d-none d-sm-block">
+                        <button class="btn btn-primary" (click)="openModal(longContent)"
+                                style="background-color: #1f4e84; border: none;">Nueva marca</button>
                     </div>
-                    <hr>
                 </div>
+    
+                <article class="list mt-3 scroll">
+                    
+                    <div class="row pb-3 pt-3 hoverRow" *ngFor="let brand of brands | sort:filterBrands" >
+                        <div class="col-3">
+                            {{brand.nombre}}
+                        </div>
+                        <div class="col text-right">
+                            <i class="far fa-edit fa-lg point" (click)="openModalModify(modifyMarca, brand)"></i>
+                        </div>
+                        <hr>
+                    </div>
+                    
+                </article>
+    
                 
-            </article>
-
-            <!-- Modal nueva marca -->
-            <ng-template #longContent let-modal>
-                <div class="modal-header">
-                  <h2 class="modal-title mt-3">Nueva Marca</h2>
-                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <h4>Indique el nombre que tendrá la nueva marca que desea crear.</h4>
-                  <hr>
-                  <form autocomplete="off" [formGroup]="formMarca" (submit)="crearMarca(); getBrands()">
-                        <div class="form-group row mt-3 mb-0">
-                            <!-- <h4 class="col-sm-2">Nombre: </h4> -->
-                        <label for="marca" class="col-2 col-form-label">Nombre: </label>
-                        <div class="col">
-                            <input type="text" class="form-control" id="marca" formControlName="nombre"
-                                   [class.is-invalid]="nombreNoValido">
-                            <small *ngIf="nombreNoValido" class="text-danger">Ingrese un nombre válido.</small>
-                        </div>
-                        
-                        
-                        </div>
-
-                        <div class="row text-right mt-4">
+                <ng-template #longContent let-modal>
+                    <div class="modal-header">
+                      <h2 class="modal-title mt-3">Agregar nueva marca</h2>
+                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click'); this.formMarca.reset()">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <h4>Indique el nombre que tendrá la nueva marca que desea crear.</h4>
+                      <hr>
+                      <form autocomplete="off" [formGroup]="formMarca" (submit)="crearMarca();">
+                            <div class="form-group row mt-3 mb-0">
+                                
+                            <label for="marca" class="col-2 col-form-label">Nombre: </label>
                             <div class="col">
-                                <button class="btn btn-secondary" style="border: none; margin-right: 5px;" (click)="modal.dismiss('Cross click')">Cancelar</button>
-                                <button type="submit" class="btn btn-primary" style="background-color: #1f4e84; border: none;">Aceptar</button>
+                                <input type="text" class="form-control" id="marca" formControlName="nombre"
+                                       [class.is-invalid]="nombreNoValido">
+                                <small *ngIf="nombreNoValido" class="text-danger">Ingrese un nombre válido.</small>
                             </div>
                             
-                        </div>
-
-                  </form>
-                </div>
-                <!-- <div class="modal-footer">
-                  <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-                </div> -->
-              </ng-template>
-
-
-              <!-- Modal modificar marca -->
-
-              <ng-template #modifyMarca let-modal>
-                <div class="modal-header">
-                  <h2 class="modal-title mt-3">Editar Marca</h2>
-                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <h4>Indique el nombre que tendrá la marca que desea modificar.</h4>
-                  <hr>
-                  <form autocomplete="off" [formGroup]="formMarca" (submit)="getBrands()">
-                        <div class="form-group row mt-3 mb-0">
-                            <!-- <h4 class="col-sm-2">Nombre: </h4> -->
-                        <label for="marca" class="col-2 col-form-label">Nombre: </label>
-                        <div class="col">
-                            <input type="text" class="form-control" id="marca" formControlName="nombre"
-                                   [class.is-invalid]="nombreNoValido">
-                            <small *ngIf="nombreNoValido" class="text-danger">Ingrese un nombre válido.</small>
-                        </div>
-                        
-                        
-                        </div>
-
-                        <div class="row text-right mt-4">
-                            <div class="col">
-                                <button class="btn btn-secondary" style="border: none; margin-right: 5px;" (click)="modal.dismiss('Cross click')">Cancelar</button>
-                                <button class="btn btn-primary" style="background-color: #1f4e84; border: none;">Aceptar</button>
-                            </div>
                             
-                        </div>
+                            </div>
+    
+                            <div class="row text-right mt-4">
+                                <div class="col">
+                                    <button class="btn btn-secondary" style="border: none; margin-right: 5px;" (click)="modal.dismiss('Cross click'); this.formMarca.reset()">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary" style="background-color: #1f4e84; border: none;">Aceptar</button>
+                                </div>
+                                
+                            </div>
+    
+                      </form>
+                    </div>
+                    
+                </ng-template>
+    
+    
+                  
+    
+                <ng-template #modifyMarca let-modal>
+                    <div class="modal-header">
+                        <h2 class="modal-title mt-3">Modificar marca</h2>
+                        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click'); this.formMarca.reset()">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Indique el nombre que tendrá la marca que desea modificar.</h4>
+                        <hr>
+                        <form autocomplete="off" [formGroup]="formMarca" (submit)="modificarMarca();">
+                            <div class="form-group row mt-3 mb-0">
+                                
+                                <label for="marca" class="col-2 col-form-label">Nombre: </label>
+                                <div class="col">
+                                    <input type="text" class="form-control" id="marca" formControlName="nombre"
+                                            [class.is-invalid]="nombreNoValido">
+                                    <small *ngIf="nombreNoValido" class="text-danger">Ingrese un nombre válido.</small>
+                                </div>
+                            
+                            
+                            </div>
+    
+                            <div class="row text-right mt-4">
+                                <div class="col">
+                                    <button class="btn btn-secondary" style="border: none; margin-right: 5px;" (click)="modal.dismiss('Cross click'); this.formMarca.reset()">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary" style="background-color: #1f4e84; border: none;">Aceptar</button>
+                                </div>
+                                
+                            </div>
+                        </form>
+                    </div>
+                    
+                </ng-template>
+            </div>
 
-                  </form>
-                </div>
-                <!-- <div class="modal-footer">
-                  <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-                </div> -->
-              </ng-template>
+            
 
         </div>
     </div>
 
 
 </section>
+
+
+
+

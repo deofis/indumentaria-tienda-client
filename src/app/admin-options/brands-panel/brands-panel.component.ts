@@ -5,6 +5,9 @@ import { Marca } from 'src/app/products/clases/marca';
 import { MarcasService } from '../marcas.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from "sweetalert2";
+
+
 
 
 @Component({
@@ -17,6 +20,8 @@ export class BrandsPanelComponent implements OnInit {
   brands: Marca[] = [];
   formMarca: FormGroup;
   newBrand: Marca;
+  modifyBrand: Marca;
+  filterBrands = "";
 
   constructor( private router:Router,
                private authService: AuthService,
@@ -28,8 +33,8 @@ export class BrandsPanelComponent implements OnInit {
 
     this.getBrands();
     this.newBrand = new Marca();
+    this.modifyBrand = new Marca();
     this.crearFormulario();
-    
   
   }
 
@@ -41,12 +46,16 @@ export class BrandsPanelComponent implements OnInit {
 
   openModal(longContent) {
 
-    this.modalService.open(longContent, { scrollable: true, centered: true });
+    this.modalService.open(longContent, { scrollable: true, centered: true, keyboard: false, backdrop:'static' });
     
   };
 
-  openModalModify(modifyContent){
-    this.modalService.open(modifyContent, { scrollable: true, centered: true})
+  openModalModify(modifyContent, brand: Marca){
+    this.modifyBrand = brand;
+    this.formMarca.setValue({
+      nombre: this.modifyBrand.nombre
+    })
+    this.modalService.open(modifyContent, { scrollable: true, centered: true, keyboard: false, backdrop:'static'})
   }
 
   crearFormulario(){
@@ -63,16 +72,89 @@ export class BrandsPanelComponent implements OnInit {
 
   crearMarca(){
 
+    if (this.formMarca.invalid) {
+
+      return Object.values( this.formMarca.controls ).forEach(control => {
+
+       if (control instanceof FormGroup) {
+         Object.values( control.controls ).forEach(control => control.markAsTouched());
+       }else{
+         control.markAsTouched();
+       }
+     });  
+   };
+
+
     this.newBrand.nombre = this.formMarca.controls.nombre.value;
     console.log(this.newBrand);
 
     this.marcasService.createNewBrand(this.newBrand).subscribe((resp:any) => {
       console.log(resp);
+      this.getBrands();
     });
 
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+      },
+      buttonsStyling: true
+    })
+    
+    swalWithBootstrapButtons.fire({
+      text: "¡Nueva marca creada con éxito!",
+      icon: 'success',
+      confirmButtonText: 'Aceptar',
+    })
+
     this.formMarca.reset();
+    this.modalService.dismissAll();
     
     
+    
+  };
+
+  modificarMarca(){
+
+
+    if (this.formMarca.invalid) {
+
+      return Object.values( this.formMarca.controls ).forEach(control => {
+
+       if (control instanceof FormGroup) {
+         Object.values( control.controls ).forEach(control => control.markAsTouched());
+       }else{
+         control.markAsTouched();
+       }
+     });  
+   };
+
+    this.modifyBrand.nombre = this.formMarca.controls.nombre.value;
+    console.log(this.modifyBrand);
+
+    this.marcasService.modifyBrand(this.modifyBrand).subscribe((resp:any) =>{
+      console.log(resp);
+      this.getBrands();
+    });
+
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+      },
+      buttonsStyling: true
+    });
+    
+    swalWithBootstrapButtons.fire({
+      text: "¡Marca editada con éxito!",
+      icon: 'success',
+      confirmButtonText: 'Aceptar',
+    });
+
+    
+    this.formMarca.reset();
+    this.modalService.dismissAll();
+    
+
   };
 
 }

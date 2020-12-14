@@ -28,9 +28,9 @@ export class MarcasService {
 
   };
 
-  modifyBrand(brand: Marca, id: number){
+  modifyBrand(brand: Marca){
 
-    return this.http.put(`${this.url}/productos/marcas/${id}`, brand);
+    return this.http.put(`${this.url}/productos/marcas/${brand.id}`, brand);
 
   };
 

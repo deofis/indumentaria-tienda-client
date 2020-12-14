@@ -10,8 +10,8 @@ $color-wf1:#223e66;
 $color-wf3:#2779cd;
 section {
     width: 100%;
-    height: fit-content;
-    min-height: 90vh;
+    height: 100%;
+    /* min-height: 90vh; */
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 200px auto;
@@ -78,7 +78,7 @@ section {
     }
 }
 
-@media screen and (min-width: 511px) and (max-width: 800px) {
+@media screen and (max-width: 800px) {
     section {
         display: flex;
         flex-direction: column;
@@ -101,6 +101,7 @@ section {
                 height: 30px;
                 font-size: 1.5em;
                 z-index: 4;
+                display: block;
                 i {
                     transform: translateY(2px);
                     margin-left: 5px;
@@ -109,10 +110,10 @@ section {
             }
             .lateral-container {
                 position: relative;
-                top: -30px;
+                top: -60px;
                 display: none;
                 .userOptions {
-                    background-color: rgb(34, 33, 33);
+                    background-color: $color-wf1;
                     display: block;
                     padding-top: 40px;
                 }

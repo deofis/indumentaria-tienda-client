@@ -9,9 +9,9 @@ export class SortPipe implements PipeTransform {
 
     const resultado = [];
 
-    for (const producto of value) {
-      if ( (producto.id.toString().indexOf(arg.toLowerCase())  > -1) || (producto.nombre.toLowerCase().indexOf(arg.toLowerCase())  > -1) ){
-        resultado.push(producto)       
+    for (const objeto of value) {
+      if ( (objeto.id.toString().indexOf(arg.toLowerCase())  > -1) || (objeto.nombre.toLowerCase().indexOf(arg.toLowerCase())  > -1) ){
+        resultado.push(objeto)       
       };
 
     };
