@@ -15,16 +15,17 @@ $color-ppal:#fff;
 
 .frame{
        width:85% ;
-            margin-top: 10px;
+            margin-top: 30px;
             margin-left: 50px;     
             .title{
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                margin-bottom: 5px;
+                margin-bottom: 20px;
                 h3{
                     font-family: $fte-ppal;
-                    font-size: 20px;
+                    text-transform: uppercase;
+                    font-size: 21px;
                     color: $color-sec;
                     img{
                         width: 25px;
@@ -293,9 +294,10 @@ $color-ppal:#fff;
                    .btn{
                     background-color: $color-wf1;
                     color: white;
-                    margin-top: 20px;
-                    font-family: $fte-sec;
-                    font-size: 17px;
+                    margin-top: 0px;
+                    font-family: $fte-ppal;
+                    text-transform: uppercase;
+                    font-size: 18px;
                     border: 0px ;
                     padding: 7px 13px;
                     box-sizing: border-box;
@@ -303,7 +305,7 @@ $color-ppal:#fff;
                     margin-left: auto;
                     margin-right: auto;               
                     &:hover{
-                        background-color: $color-wf2;
+                        transform: scale(1.03);
                     }
                   }
                 .chico{

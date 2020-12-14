@@ -46,18 +46,16 @@ export class Step1Component implements OnInit {
   newBrand:Marca;
   filteredBrands:Observable<Marca[]>;
   newProduct:Producto;
-
-  constructor(
-    private router:Router,
-    private http:HttpClient,
-    private catalogoservice:CatalogoService,
-    private fb:FormBuilder,
-    public modal: NgbModal,
-    private productoService:ProductoService) { 
-      this.marcas = [];
-      this.newProduct= new Producto();
-      this.newBrand=new Marca();
-    }
+  constructor( private router:Router,
+                private http:HttpClient,
+                private catalogoservice:CatalogoService,
+                private fb:FormBuilder,
+                public modal: NgbModal,
+                private productoService:ProductoService) { 
+                  this.marcas = [];
+                  this.newProduct= new Producto();
+                this.newBrand=new Marca();
+                }
 
   ngOnInit(): void {
          ///inicializar el fomulario
@@ -205,8 +203,8 @@ cargarImagen(){
   }
   
   private _filter(value:any) {
-    const filterValue = value.toLowerCase();
-    return this.marcas.filter(marca => marca.nombre.toLowerCase().indexOf(filterValue) === 0);
+    //const filterValue = value.toLowerCase();
+    return this.marcas.filter(marca => marca.nombre.toLowerCase().indexOf(value) === 0);
   }
   
      /***** GET CATEGORIES *****/
@@ -230,6 +228,7 @@ cargarImagen(){
 
     showSubcategories(){
       this.categoriaSeleccionada = this.form.controls.categoria.value;
+
       this.catalogoservice.getSubcategoriasPorCategoria(this.categoriaSeleccionada.id)
       .subscribe(response => {
         this.subcategorias=response.subcategorias;
@@ -239,7 +238,8 @@ cargarImagen(){
       comboBoxSubcateories.style.display="block";
     }
     showUnit(){
-      this.unidadSeleccionada = this.form.controls.unidadMedida.value;
+       this.unidadSeleccionada = this.form.controls.unidadMedida.value;
+     
       let unidad = document.getElementById("unidadElegida");
       
       if(this.unidadSeleccionada.nombre=="Unidad"){
@@ -286,10 +286,6 @@ cargarImagen(){
   form.style.display="none"
   let btn =document.getElementById("btn-brand");
   btn.style.display="none"
-
-  //escribo el input con la nueva marca
-   }else{
-     console.log("escribi algo lqdtm")
    }
   }
 }

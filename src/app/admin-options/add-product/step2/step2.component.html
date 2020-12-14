@@ -1,13 +1,14 @@
 <div class="frame step2" id="step2">
     <div class="title">
-        <h3> <img src="../../../assets/imagenes/nro-dos.png" alt=""> Combinaciones posibles</h3>
+        <h3> <img src="../../../assets/imagenes/nro-dos.png" alt="" > Combinaciones posibles</h3>
         <button id="save">Guardar</button>
     </div>
 
     <form action="" class="form form2 " autocomplete="off" [formGroup]="formSkus" (ngSubmit)="crearSku()">
         <div class="container-white">
             <div class="row">
-                <p>Elaboramos una lista de propiedades en base a la categoría y subcategoría elegida, puedes combinarlas para generar productos o añadir nuevas. </p>
+                <p>Elaboramos una lista de propiedades en base a la categoría y subcategoría elegida, puedes
+                    combinarlas para generar productos o añadir nuevas. </p>
             </div>
 
             <ng-template #contenido let-modal>
@@ -47,8 +48,8 @@
                     </form>
                 </div>
                 <!-- <div class="modal-footer">
-                    <button type="button" class="btn-modal" (click)="modal.close()"> Agregar</button>
-                </div> -->
+            <button type="button" class="btn-modal" (click)="modal.close()"> Agregar</button>
+        </div> -->
             </ng-template>
 
             <button type="button" class="btn-add-property " (click)="openCentrado(contenido)">
@@ -56,12 +57,13 @@
 
             </button>
             <div class="row properties">
-                <select class="property" *ngFor="let property of properties ; let i=index" formControlName="valores">
-                    <option hidden selected value="">-{{property.nombre}} -</option>
+                <select class="property" [(ngModel)]="opcionSeleccionado" [ngModelOptions]="{standalone: true}" (change)="guardarValores(i)" *ngFor="let property of properties ; let i=index" >
+                    <option hidden selected [ngValue]="property.nombre" >-{{property.nombre}} -</option>
 
-                    <option [ngValue]="value" *ngFor="let value of property?.valores">
+                    <option [ngValue]="value"  *ngFor="let value of property?.valores" >
                         {{value.valor}}</option>
                 </select>
+
             </div>
             <div class="row">
                 <div class="availability-container">
@@ -101,5 +103,8 @@
                 </div>
             </div>
         </div>
+        <button class="btn" id="btn-end1" >Guardar y Finalizar</button>
     </form>
+
+
 </div>
