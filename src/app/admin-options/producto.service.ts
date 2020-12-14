@@ -48,8 +48,11 @@ url:string=API_BASE_URL+"/api";
     )
   }
   crearNewPromotionSub(promocion:Promocion, id:number){
+
     return this.http.post(`${this.url}/subcategorias/${id}/promociones`, promocion);
+
   };
+
 
   createNewPromotionProducto(promocion: Promocion, id:number){
     return this.http.post(`${this.url}/productos/${id}/promociones`, promocion);
