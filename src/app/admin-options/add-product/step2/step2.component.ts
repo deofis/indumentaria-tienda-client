@@ -104,14 +104,18 @@ export class Step2Component implements OnInit {
        precioOferta:[""],
        disponibilidad:[""],
        valoresData:[""],
-       valores:this.fb.array([]),
+      //  valores:this.fb.array([]),
+      valores:[""],
        defaultProducto:[""],
        producto:[""],  
     });
    
   }
-  get valores(): FormArray{
-    return this.formSkus.get('valores') as FormArray
+  // get valores(): FormArray{
+  //   return this.formSkus.get('valores') as FormArray
+  // }
+  get valores(){
+    return this.formSkus.get('valores')
   }
   get precio(){
     return this.formSkus.get('precio')
