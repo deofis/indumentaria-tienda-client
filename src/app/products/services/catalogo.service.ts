@@ -71,4 +71,21 @@ id:number;
     }));
   }
 
+  ///// mover a otro servicio!
+  getPaises(){
+    return this.http.get(`${this.url}/paises`).pipe(map((resp:any) => {
+      return resp.paises
+    }));
+  }
+  getEstados(paisId:number){
+    return this.http.get(`${this.url}/paises/${paisId}/estados`).pipe(map((resp:any) => {
+      return resp.estados
+    }));
+  }
+  getCiudades(estadoId:number,paisId:number){
+    return this.http.get(`${this.url}/paises/${paisId}/estados/${estadoId}/ciudades`).pipe(map((resp:any) => {
+      return resp.ciudades
+    }));
+  }
+
 }

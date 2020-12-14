@@ -1,3 +1,6 @@
+import { Estado } from './../../clases/cliente/estado';
+import { Direccion } from './../../clases/cliente/direccion';
+import { Cliente } from './../../clases/cliente/cliente';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -6,6 +9,9 @@ import { ValidadoresService } from '../../services/validadores.service';
 import { AuthService } from '../../services/auth.service';
 import { throwError } from 'rxjs';
 import Swal from "sweetalert2";
+import { CatalogoService } from 'src/app/products/services/catalogo.service';
+import { Pais } from '../../clases/cliente/pais';
+import { Ciudad } from '../../clases/cliente/ciudad';
 @Component({
   selector: 'app-user-sign-up',
   templateUrl: './user-sign-up.component.html',
@@ -14,10 +20,17 @@ import Swal from "sweetalert2";
 export class UserSignUpComponent implements OnInit {
 
   formRegistro: FormGroup;
+  // cliente:FormGroup;
+  // direccion:FormGroup;
   signupRequest: SignupRequest;
-
+  paises:Pais[];
+  estados:Estado[];
+  ciudades:Ciudad[];
+  paisSeleccionado:Pais;
+  
   constructor(private fb: FormBuilder,
     private router: Router,
+    private catalogoservice:CatalogoService,
     private validadores: ValidadoresService,
     private authService: AuthService) {
     this.signupRequest = new SignupRequest();
@@ -26,8 +39,35 @@ export class UserSignUpComponent implements OnInit {
   ngOnInit(): void {
     /***** mostrar mensaje cta creada */
     this.crearFormulario();
+    this.getPaises();   
   }
+  ///////// obtener paises, estado ciudad ////
+  getPaises(){
+    this.catalogoservice.getPaises().subscribe( response =>{
+      this.paises=response;
+     })
+  }
+  
+  
+  showEstados(){
+     this.paisSeleccionado = this.formRegistro.controls.cliente.get('direccion.pais').value;
+     this.catalogoservice.getEstados(this.paisSeleccionado?.id).subscribe( response =>{
+      this.estados=response;
+     })
 
+    let comboBoxEstados= document.getElementById("combobox-estados");
+    comboBoxEstados.style.display="block";
+  }
+  showCiudades(){
+    let estadoSeleccionado = this.formRegistro.controls.cliente.get('direccion.estado').value;
+    
+    this.catalogoservice.getCiudades(estadoSeleccionado?.id, this.paisSeleccionado.id).subscribe( response =>{
+     this.ciudades=response;
+    })
+
+   let comboBoxEstados= document.getElementById("combobox-ciudades");
+   comboBoxEstados.style.display="block";
+ }
   //// ******** show psw *********///
 
   mostrarPsw1() {
@@ -64,13 +104,10 @@ export class UserSignUpComponent implements OnInit {
   }
   ///// show message
   showMessage() {
-    let contRegistr = document.getElementById("contenedor-registrarse");
-    contRegistr.style.display = "none";
+    let contRegistr = document.getElementById("ocultar") ;
+     contRegistr.style.display = "none";
     let msj = document.getElementById("msje-registro");
     msj.style.display = "block";
-    msj.style.width = "70%";
-    let contBlanco = document.getElementById("cont-form");
-    contBlanco.style.marginTop = "200px";
   }
 
   /**
@@ -84,16 +121,66 @@ export class UserSignUpComponent implements OnInit {
       email: ["", [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       password: ["", [Validators.required, Validators.minLength(8)]],
       passwordRepeat: ["", Validators.required],
+      checkterminos:["" ,Validators.required],
       cliente: this.fb.group({
         //id: [""],
         nombre: ["", Validators.required],
         apellido: ["", Validators.required],
-        // direccion: [""]
+        direccion: this.fb.group({
+          ciudad:["", Validators.required],
+          pais:["", Validators.required],
+          estado:[""],
+          calle:["", Validators.required],
+          nro:["", Validators.required],
+          piso:[""],
+          cp:["", Validators.required],
+          })
       }),
     }, {
       validators: this.validadores.passwordIguales('password', 'passwordRepeat')
     });
   }
+
+  
+  /**
+   * Registra la nueva cuenta. Toma los datos de los campos del formulario, y si son validos, hace una peticion 
+   * POST a la API de registrar usuario para completar el registro.
+   */
+  registrarse(): void {
+    /*
+    if (this.formRegistro.invalid) {
+      return Object.values(this.formRegistro.controls)
+        .forEach(control => control.markAsTouched());
+    }*/
+
+    if (this.formRegistro.invalid) {
+      return this.formRegistro.markAllAsTouched();
+    }
+
+    this.signupRequest.email = this.formRegistro.controls.email.value;
+    this.signupRequest.password = this.formRegistro.controls.password.value;
+    this.signupRequest.cliente = this.formRegistro.controls.cliente.value;
+    
+    //console.log(this.formRegistro);
+    console.log(this.signupRequest);
+    
+    this.authService.signup(this.signupRequest).subscribe(response => {
+      console.log(response);
+      
+      this.showMessage();
+    }, err => {
+      Swal.fire({
+        icon:'warning',
+        title:'Usuario existente',
+        text:"¡Ya existe el usuario!. Por favor,ingrese con su cuenta ó verifique su cuenta con su email.",
+        showCloseButton:true,
+        confirmButtonText:"Iniciar Sesión",
+      }).then(() => {
+        this.router.navigate(['/login']);
+      });
+    });
+  }
+
 
   get nombreInvalido() {
     return this.formRegistro.get('cliente.nombre').invalid && this.formRegistro.get('cliente.nombre').touched;
@@ -102,6 +189,25 @@ export class UserSignUpComponent implements OnInit {
   get apellidoInvalido() {
     return this.formRegistro.get('cliente.apellido').invalid && this.formRegistro.get('cliente.apellido').touched;
   }
+  get calleInvalida() {
+    return this.formRegistro.controls.cliente.get('direccion.calle').invalid && this.formRegistro.controls.cliente.get('direccion.calle').touched;
+  }
+  get nroInvalido() {
+    return this.formRegistro.get('cliente.direccion.nro').invalid && this.formRegistro.get('cliente.direccion.nro').touched;
+  }
+  get cpInvalido() {
+    return this.formRegistro.get('cliente.direccion.cp').invalid && this.formRegistro.get('cliente.direccion.cp').touched;
+  }
+  get ciudadInvalida() {
+    return this.formRegistro.get('cliente.direccion.ciudad').invalid && this.formRegistro.get('cliente.direccion.ciudad').touched;
+  }
+  get paisInvalido() {
+    return this.formRegistro.get('cliente.direccion.pais').invalid && this.formRegistro.get('cliente.direccion.pais').touched;
+  }
+  get estadoInvalido() {
+    return this.formRegistro.get('cliente.direccion.estado').invalid && this.formRegistro.get('cliente.direccion.estado').touched;
+  }
+ 
 
   /**
    * Getter validador de email.
@@ -109,6 +215,9 @@ export class UserSignUpComponent implements OnInit {
    */
   get emailInvalido() {
     return this.formRegistro.get('email').invalid && this.formRegistro.get('email').touched;
+  }
+  get terminosInvalido() {
+    return this.formRegistro.get('checkterminos').invalid && this.formRegistro.get('checkterminos').touched;
   }
 
   /**
@@ -128,46 +237,6 @@ export class UserSignUpComponent implements OnInit {
     const pass2 = this.formRegistro.get('passwordRepeat').value;
 
     return (pass1 === pass2) ? false : true;
-  }
-
-  /**
-   * Registra la nueva cuenta. Toma los datos de los campos del formulario, y si son validos, hace una peticion 
-   * POST a la API de registrar usuario para completar el registro.
-   */
-  registrarse(): void {
-
-
-    /*
-    if (this.formRegistro.invalid) {
-      return Object.values(this.formRegistro.controls)
-        .forEach(control => control.markAsTouched());
-    }*/
-
-    if (this.formRegistro.invalid) {
-      return this.formRegistro.markAllAsTouched();
-    }
-
-    this.signupRequest.email = this.formRegistro.controls.email.value;
-    this.signupRequest.password = this.formRegistro.controls.password.value;
-    this.signupRequest.cliente = this.formRegistro.controls.cliente.value;
-    
-    console.log(this.signupRequest);
-    
-    this.authService.signup(this.signupRequest).subscribe(response => {
-      console.log(response);
-      
-      this.showMessage();
-    }, err => {
-      Swal.fire({
-        icon:'warning',
-        title:'Usuario existente',
-        text:"¡Ya existe el usuario!. Por favor,ingrese con su cuenta ó verifique su cuenta con su email.",
-        showCloseButton:true,
-        confirmButtonText:"Iniciar Sesión",
-      }).then(() => {
-        this.router.navigate(['/login']);
-      });
-    });
   }
 
 }

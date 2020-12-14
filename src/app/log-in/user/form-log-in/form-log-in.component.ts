@@ -146,20 +146,13 @@ return(){
   let contForgotPsw=document.getElementById("contenedor-forgot-psw");
   contForgotPsw.style.display="none";
   //mostrar inicio de sesion
-  let uno=document.getElementById("is-uno");
+  document.getElementById("is-uno").style.display="block";
   let dos=document.getElementById("is-dos");
-  let tres=document.getElementById("is-tres");
-  uno.style.display="flex";
-  uno.style.flexDirection="column";
-  uno.style.justifyContent="space-around";
-  uno.style.alignItems="center";
+  document.getElementById("is-tres").style.display="block";
+  document.getElementById("btn2").style.marginTop="7px"
   dos.style.display="flex";
   dos.style.justifyContent="space-between";
-  dos.style.alignItems="center";
-  tres.style.display="flex";
-  tres.style.flexDirection="column";
-  tres.style.justifyContent="space-between";
-  tres.style.alignItems="center";
+   dos.style.alignItems="center";
 }
  ///FIN metodo para ir atras 
 
