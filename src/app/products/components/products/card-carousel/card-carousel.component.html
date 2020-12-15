@@ -2,16 +2,17 @@
     <div class="i-fondo"><i id="fav" class=" iconos far fa-heart fav" (click)=saveToFav()></i></div>
     <div class="img-fondo" [routerLink]="['/viewmore',producto.id]">
        <!-- <img class="medalla" src="../../../../../assets/imagenes/medalla.png" alt="hdj">  -->
-      <i class="fas fa-medal"></i>
-        <img class="producto" src="{{producto.foto}}" alt=".">
+      <i class="fas fa-medal" *ngIf="destacado"></i>
+        <img *ngIf="tieneFotoPpal" class="producto" src="{{producto.foto.imageUrl}}" alt="foto-producto">
     </div>
     <h3 [routerLink]="['/viewmore',producto.id]">{{producto.nombre}}</h3>
     <div class="cont-precios" [routerLink]="['/viewmore',producto.id]">
-       <div class="row-oferta">
-           <span *ngIf="oferta">€{{producto.precio + 95}}</span>
-           <p class="off " *ngIf="oferta">20% 0FF</p>
+       <div *ngIf="oferta" class="row-oferta">
+           <span  >€ {{producto.precio}}</span>
+           <p class="off " >{{producto.promocion?.porcentaje * 100}}% 0FF</p>
         </div> 
-        <p class="precio">€{{producto.precio}}</p>
+        <p class="precio"  *ngIf="mostrarPrecio()" >€{{producto.precio}}</p>
+        <p class="precioOferta" *ngIf="oferta">€{{producto.promocion?.precioOferta}}</p>
     </div>
   
 </div>

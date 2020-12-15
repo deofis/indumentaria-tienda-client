@@ -142,11 +142,14 @@ $color-ppal:#fff;
                 color: orangered;
             }
         }
-    .precio{
+    .precio, .precioOferta{
         font-weight: bold;
         font-size: 22px;
         font-family: $fte-sec;
         outline: none;
+        color: $color-sec;
+    }
+    .precioOferta{
         color: $color-wf3;
     }
    
@@ -187,9 +190,9 @@ $color-ppal:#fff;
              font-size: 9px;
              font-weight: bold;
             }
-             img{
-                 width: 95px ;
-                 height: 95px;
+             .producto{
+                 width: 90px ;
+                 height: 90px;
                 
              }
          }
@@ -242,15 +245,15 @@ $color-ppal:#fff;
              font-size: 9px;
              font-weight: bold;
             }
-             img{
-                 width: 100px ;
-                 height: 100px;
+             .producto{
+                 width: 95px ;
+                 height: 95px;
                 
              }
          }
         h3{
             font-size: 15px;
-            margin-top: -2px;
+            margin-top: 10px;
         }
         .cont-precios{
             margin-top: 18px;
@@ -303,15 +306,15 @@ $color-ppal:#fff;
              font-size: 10px;
              font-weight: bold;
             }
-             img{
+             .producto{
                  width: 105px ;
                  height: 105px;
-                
+                margin-top: 5px;
              }
          }
         h3{
             font-size: 16px;
-            margin-top: 3px;
+            margin-top: 13px;
         }
         .cont-precios{
             margin-top: 8px;

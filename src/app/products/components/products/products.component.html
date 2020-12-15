@@ -30,8 +30,8 @@
 
             <div class="contenedor-carousel" id="contenedor-carouselOfertas">
                 <div class="carousel">
-                    <div class="tarjetas" *ngFor="let destacado of productosDestacados">
-                        <app-card-carousel [producto]="destacado"></app-card-carousel>
+                    <div class="tarjetas" *ngFor="let oferta of ofertas">
+                        <app-card-carousel [producto]="oferta"></app-card-carousel>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
 
             <div class="card-c" id="card-c" *ngFor="let categoria of categorias">
                 <div class="cat">
-                    <img src="{{categoria.foto}}" alt="">
+                    <img src="{{categoria.foto}}" alt="foto.categoria">
 
                     <h3>{{categoria.nombre}}</h3>
                 </div>

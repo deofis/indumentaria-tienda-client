@@ -123,33 +123,46 @@ margin-top: 7px;
                     color: orangered;
                 }
             }
-        .precio{
-            font-weight: bold;
-            font-size: 24px;
-            font-family: $fte-sec;
-            outline: none;
-            color: $color-wf3;
-        }
+            .precio, .precioOferta{
+                font-weight: bold;
+                font-size: 22px;
+                font-family: $fte-sec;
+                outline: none;
+                color: $color-sec;
+            }
+            .precioOferta{
+                color: $color-wf3;
+            }
        
         }
        
     }
+    
+   .cont-props{
+       margin-top: 95px;
     .props{
-        margin-top: 95px;
+        margin-top: 0px;
+        margin-bottom: 0px;
         margin-left: -80px;
+        display: flex;
+        align-items: baseline;
         p{
             color: rgb(158, 155, 155);
             font-size: 12px;
             line-height: 3px;
             font-style: italic;
+            margin-right: 4px;
         }
         span{
             font-weight: normal;
             font-style: normal;
-            color: rgb(104, 98, 98);
+            font-size: 12px;
+            margin-right: 4px;
+            color: rgba(104, 98, 98, 0.801);
         }
     }
-   
+   }
+  
 }
 .move{
     top: 20px;

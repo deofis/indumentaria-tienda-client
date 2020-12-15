@@ -3,24 +3,27 @@ import { UnidadMedida } from './unidad-medida';
 import { Subcategoria } from './subcategoria';
 import { PropiedadProducto } from './propiedad-producto';
 import { Sku } from './sku';
+import { Promocion } from 'src/app/admin-options/admin-promos/clases/promocion';
+import { Foto } from './foto';
 
 export class Producto {
     id: number;
     nombre: string;
     descripcion: string;
     precio: number;
-    precioOferta:number;
-    marca: Marca;
-    subcategoria: Subcategoria;
-    unidadMedida: UnidadMedida;
-    fechaCreacion: number;
-    foto: File;
-    imagenes: string[];
-    destacado: boolean;
-    activo: boolean;
+    promocion:Promocion;
     disponibilidadGeneral: number;
+    fechaCreacion: number;
+    foto: Foto;
+    imagenes: string[];
+    precioOferta:number;
+    activo: boolean;
+    destacado: boolean;
+    subcategoria: Subcategoria;
+    marca: Marca;
+    unidadMedida: UnidadMedida;
     propiedades:PropiedadProducto[];
     defaultSku:Sku;
     skus:Sku[];
-
+    vendibleSinPropiedades:boolean;
 }
