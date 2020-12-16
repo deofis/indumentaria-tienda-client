@@ -1,3 +1,5 @@
+import { Marca } from './../../products/clases/marca';
+import { MarcasService } from './../../admin-options/marcas.service';
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -6,7 +8,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class ValidadoresService {
 
-  constructor() { }
+  constructor( private marcasService: MarcasService) { }
 
   passwordIguales(pass1: string, pass2: string) {
     return(formGroup: FormGroup) => {
@@ -35,6 +37,18 @@ export class ValidadoresService {
 
     }
 
+  }
+
+  existeMarca(marcaControl:string ){
+    return (formGroup: FormGroup) => {
+      const marca = formGroup.controls[marcaControl];
+
+      if (marca.value.nombre !== undefined) {
+        marca.setErrors(null);
+      } else {
+        marca.setErrors({marcaNoSeleccionada: true});
+      }      
+    }
   }
   
 

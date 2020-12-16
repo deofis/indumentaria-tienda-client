@@ -89,15 +89,18 @@ export class Step2Component implements OnInit {
   }
   crearSku(){
     this.newSku.precio=this.formSkus.controls.precio.value;
-   this.newSku.precioOferta=this.formSkus.controls.precioOferta.value;
-   this.newSku.disponibilidad=this.formSkus.controls.disponibilidad.value;
-   this.newSku.valores=this.opcionSeleccionado;
-     
-   console.log(this.newSku);
+    this.newSku.precioOferta=this.formSkus.controls.precioOferta.value;
+    this.newSku.disponibilidad=this.formSkus.controls.disponibilidad.value;
+    this.newSku.valores=this.seleccionados;
+    this.newSku.producto= this.newProduct;
+    console.log(this.newSku);
 
-  //  this.productoService.createNewSku(this.newSku,1).subscribe( response => 
-  //   console.log(response))
-  }
+    this.productoService.createNewSku(this.newSku,this.newProduct.id).subscribe( response => 
+    console.log(response));
+    
+    
+    
+    }
   crearForm(){
     this.formSkus=this.fb.group({
        id:[""],
@@ -141,8 +144,6 @@ export class Step2Component implements OnInit {
     
   }
   getPropertiesOfSubcategory(){
-    // this.activatedroute.params.subscribe(param=> {
-    //   let subcategory= param.id;
    
     this.productoService.getPropertiesOfSubcategory(this.newProduct?.subcategoria.id).subscribe((response: any) => {
       this.properties=response;
