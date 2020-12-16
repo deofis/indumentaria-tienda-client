@@ -59,6 +59,8 @@ import { PromoSubcategoriaComponent } from './admin-options/admin-promos/promo-s
 import { AdminSidebarComponent } from './admin-options/admin-sidebar/admin-sidebar.component';
 import { UserSidebarComponent } from './user-options/user-sidebar/user-sidebar.component';
 import { PromoProductoComponent } from './admin-options/admin-promos/promo-producto/promo-producto.component';
+import { AdminPropiedadesComponent } from './admin-options/admin-propiedades/admin-propiedades.component';
+import { PropiedadSubcategoriaComponent } from './admin-options/admin-propiedades/propiedad-subcategoria/propiedad-subcategoria.component';
 
 
 
@@ -104,6 +106,8 @@ import { PromoProductoComponent } from './admin-options/admin-promos/promo-produ
     AdminSidebarComponent,
     UserSidebarComponent,
     PromoProductoComponent,
+    AdminPropiedadesComponent,
+    PropiedadSubcategoriaComponent,
   ],
   imports: [
     BrowserModule,
