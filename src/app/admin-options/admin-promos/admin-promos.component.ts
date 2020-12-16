@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../log-in/services/auth.service';
 import { Producto } from 'src/app/products/clases/producto';
 import { CatalogoService } from '../../products/services/catalogo.service';
+import { DataService } from './data.service';
 
 /**
  * @title Data table with sorting, pagination, and filtering.
@@ -33,12 +34,17 @@ export class AdminPromosComponent implements OnInit {
 
   constructor( private catalogoService: CatalogoService,
                private modalService: NgbModal,
-               private router:Router) { }
+               private router: Router,
+               private dataService: DataService) { }
 
   ngOnInit(): void {
 
     this.arrow = true;
     this.obtenerProductos();
+
+    this.dataService.cerrarModal$.subscribe(resp => {
+      this.modalService.dismissAll();
+    })
 
   }
 

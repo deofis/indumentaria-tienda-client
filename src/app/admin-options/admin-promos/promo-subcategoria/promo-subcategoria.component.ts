@@ -3,8 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidadoresService } from 'src/app/log-in/services/validadores.service';
 import { Subcategoria } from 'src/app/products/clases/subcategoria';
 import { CatalogoService } from 'src/app/products/services/catalogo.service';
+import Swal from 'sweetalert2';
 import { ProductoService } from '../../producto.service';
 import { Promocion } from '../clases/promocion';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-promo-subcategoria',
@@ -24,11 +26,13 @@ export class PromoSubcategoriaComponent implements OnInit {
   formSubcategoria: FormGroup;
 
   date = new Date().toISOString().substring(0, 16)/* split(':')[0]; */
+  
 
   constructor( private fb:FormBuilder,
                private catalogoService: CatalogoService,
                private productoService: ProductoService,
-               private validadores: ValidadoresService ) { }
+               private validadores: ValidadoresService,
+               private dataService: DataService ) { }
 
   ngOnInit(): void {
 
@@ -120,7 +124,22 @@ export class PromoSubcategoriaComponent implements OnInit {
         console.log(resp);
         
       })
-    }
+    };
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+      },
+      buttonsStyling: true
+    })
+    
+    swalWithBootstrapButtons.fire({
+      text: "¡Nueva promoción creada con éxito!",
+      icon: 'success',
+      confirmButtonText: 'Aceptar',
+    }).then(result => {
+      this.cerrarModal();
+    })
 
     
     this.obetenerSubcategorias();
@@ -153,5 +172,10 @@ export class PromoSubcategoriaComponent implements OnInit {
     this.subASeleccionar.push(this.subSeleccionadas[j]);
     this.subSeleccionadas.splice(j, 1);
   }
+
+
+  cerrarModal(){
+    this.dataService.cerrarModal$.emit();
+  };
 
 }

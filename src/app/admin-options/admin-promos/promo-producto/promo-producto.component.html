@@ -2,7 +2,7 @@
 
 <div class="row mt-4">
     <div class="col-md-4 col-xs-12 overflow-auto">
-        <h4>Elija el o los productos a los que desea añadirles una promocíon.</h4>
+        <!-- <h4>Elija el o los productos a los que desea añadirles una promocíon.</h4>
         <div class="table-responsive">
             <table class="table">
                 <thead class="thead-dark">
@@ -21,10 +21,14 @@
                 </tbody>
             </table>
         </div>
-        <hr class="d-block d-sm-none">
+        <hr class="d-block d-sm-none"> -->
+        <app-tabla-productos></app-tabla-productos>
     </div>
+
     <div class="col-md-8 col-xs-12">
-        <div class="row mt-5">
+
+        <app-form-promo-product></app-form-promo-product>
+        <!-- <div class="row mt-5">
             <div class="col-md-4 ml-3">
                 <h3 *ngIf="productosSeleccionados.length > 0">Productos seleccionados: </h3>
                 <h3 *ngIf="productosSeleccionados.length === 0">Seleccione productos.</h3>
@@ -79,12 +83,11 @@
             </div>
             <div class="row mt-5 form-group">
                 <div class="col-md-6 mt-md-3 offset-md-6 col-xs-12 text-center">
-                    <!-- <button class="btn btn-danger mt-5" style="border: none;">Cancelar</button> -->
-                    <!-- <button class="btn btn-secondary mt-5 mr-3" style="border: none;">Cancelar</button> -->
+                    
                     <button type="" class="btn btn-primary mt-5" [disabled]="!productosSeleccionados.length" style="background-color: #1f4e84; border: none;">Siguiente</button>
                 </div>
             </div>
-        </form>
+        </form> -->
 
     </div>
 </div>
