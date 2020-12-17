@@ -22,11 +22,10 @@ import { DataService } from './data.service';
 export class AdminPromosComponent implements OnInit {
 
   productos:Producto[] = [];
-  productosASeleccionar:Producto[] = [];
-  productosSeleccionados:Producto[] = [];
-  page_size: number = 10;
+  
+  page_size: number = 5;
   page_number:number = 1;
-  pageSizeOptions = [10, 20, 50]
+  pageSizeOptions = [5, 10, 20, 50]
   value = 'Ejemplo: Galaxy';
   arrow:boolean;
   filterPromos ='';
@@ -51,8 +50,16 @@ export class AdminPromosComponent implements OnInit {
 
   obtenerProductos(){
     this.catalogoService.getProductos().subscribe((resp:any) => {
-      this.productos = resp;
-      this.productosASeleccionar = resp;
+      let promos = []
+      for (let i = 0; i < resp.length; i++) {
+        if (resp[i].promocion ) {
+          promos.push(resp[i])
+        }
+        
+      }
+
+      this.productos = promos;
+      
     });
   };
 

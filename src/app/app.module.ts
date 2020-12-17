@@ -61,6 +61,7 @@ import { UserSidebarComponent } from './user-options/user-sidebar/user-sidebar.c
 import { PromoProductoComponent } from './admin-options/admin-promos/promo-producto/promo-producto.component';
 import { TablaProductosComponent } from './admin-options/admin-promos/promo-producto/tabla-productos/tabla-productos.component';
 import { FormPromoProductComponent } from './admin-options/admin-promos/promo-producto/form-promo-product/form-promo-product.component';
+import { NoimagePipe } from './pipes/noimage.pipe';
 
 
 
@@ -108,6 +109,7 @@ import { FormPromoProductComponent } from './admin-options/admin-promos/promo-pr
     PromoProductoComponent,
     TablaProductosComponent,
     FormPromoProductComponent,
+    NoimagePipe,
   ],
   imports: [
     BrowserModule,

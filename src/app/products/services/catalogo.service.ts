@@ -28,6 +28,21 @@ id:number;
     }))
   }
 
+  getProductsPromocionados(){
+    return this.http.get(`${this.url}/productos`).pipe(map ((resp:any) => {
+      let productosProm = []
+
+      for (let i = 0; i < resp.length; i++) {
+        if (resp[i].promocion && resp[i].promocion.estaVigente) {
+          productosProm.push(resp[i])
+        }
+        
+      }
+      
+      return productosProm;
+    }))
+  }
+
   getListaCategorias():Observable<Categoria[]>{
     return this.http.get(`${this.url}/categorias`).pipe( map( (response:any) => response.categorias as Categoria[]));
   }
