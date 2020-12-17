@@ -16,7 +16,7 @@ $color-ppal:#fff;
 
  .routes{
     margin-left: 30px;
-    margin-top: 5px;
+    margin-top: 10px;
     p{
         display: flex;
         align-items: baseline;
@@ -44,12 +44,29 @@ $color-ppal:#fff;
         color: $color-ter;
         font-size: 16px;
     }
+    .filtros-mobile{
+        .opciones-mobile{
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 2vw;
+            p{
+                font-family: $fte-sec;
+                font-size: 14px;
+                color: $color-sec;
+                margin-right: 15px;
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+        }
+       
+    }
 } 
 
       .contenedorProductos{
-        width: 65vw;
+        width: 95vw;
         margin-right:4vw;
-        margin-top: -30px;
+        margin-top: 0px;
         margin-bottom: 70px;
         border-radius: 7px;
         float: right;
@@ -76,22 +93,21 @@ $color-ppal:#fff;
     
     
     .contenedor{
-        width: 22vw;
+        width: 21vw;
         max-width: 310px;
-        min-width:270px ;
+        min-width:100px ;
         float: left;
         margin-left: 30px;
-        margin-top: 30px;
+        margin-top: 0px;
         margin-bottom: 30px;
         .contenedor-menu {
-            width: 22vw;
-            min-width: 270px;
+            width: 21vw;
+            min-width: 100px;
             max-width: 310px;
             font-family: $fte-sec;
             line-height: 20px;
             .menu{
-               padding: 30px 20px;
-               box-shadow:1px 2px 2px $color-ter ;
+               padding: 5px 20px 30px 20px;
                background-color: #f8f7f7;
                #tit-ppales{
                    font-size: 18px;
@@ -195,10 +211,19 @@ $color-ppal:#fff;
     
       
       
-      @media  screen and (max-width: 500px)  {
+      @media  screen and (max-width: 767px)  {
+        .routes{
+            .cantidad-rdos{
+                margin-left: -25px;
+                margin-top: 5px;
+               margin-bottom: -18px;
+               font-size: 15px;
+            }
+        }
+        
         .contenedorProductos{
             width: 95vw;
-            margin-top: 0px;
+            margin-top: -20px;
             float: none;
             padding-bottom:25px ;
             display: flex;
@@ -211,95 +236,20 @@ $color-ppal:#fff;
                   font-size: 18px;
                   width: 96%;
               }
-              .contenedor-grid{
-                  display: grid;
-                  grid-template-columns: 1fr ;
-                  font-size:15px;
-                  width: 100%;
-                  .tarjetas{
-                      width: 70%;
-                      max-width: 230px;
-                  }
-              }
+             
           }
          }
     @media  screen and (min-width: 401px) and (max-width: 700px)  {
             .contenedorProductos{
-                width: 95vw;
                 margin-top: 0px;
-                float: none;
-                padding-bottom:25px ;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                margin-right: auto;
-                margin-left: auto;
                   h2{ 
                       font-size: 19px;
-                      width: 96%;
                   }
-                  .contenedor-grid{
-                      display: grid;
-                      grid-template-columns: 1fr 1fr;
-                      font-size:15px;
-                      width: 100%;
-                      .tarjetas{
-                          width: 80%;
-                          max-width: 215px;
-                          margin-bottom: 10px;
-                          margin-top: 10px;
-                      }
-                  }
+                 
               }
          }
-     @media  screen and (min-width: 701px) and (max-width: 900px)  {
-                .contenedorProductos{
-                    width: 95vw;
-                    margin-top: 0px;
-                    float: none;
-                    padding-bottom:25px ;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    margin-right: auto;
-                    margin-left: auto;
-                      h2{ 
-                          font-size: 19px;
-                          width: 96%;
-                      }
-                      .contenedor-grid{
-                          display: grid;
-                          grid-template-columns: 1fr 1fr 1fr;
-                          font-size:15px;
-                          width: 100%;
-                          .tarjetas{
-                              width: 80%;
-                              max-width: 215px;
-                              margin-bottom: 10px;
-                              margin-top: 10px;
-                          }
-                      }
-                  }
-                 }
-     @media  screen and (min-width: 901px) and (max-width: 1200px){
-        .contenedorProductos{
-           width: 64vw;
-              .contenedor-grid{
-                  display: grid;
-                  grid-template-columns: 1fr 1fr ;
-                  justify-items: center;
-                  font-size:16px;
-                  .tarjetas{
-                    width: 80%;
-                    max-width: 270px;
-                    margin-bottom: 10px;
-                    margin-top: 10px;
-                }
-              }
-          }
-     }                   
+   
+               
     
       
 

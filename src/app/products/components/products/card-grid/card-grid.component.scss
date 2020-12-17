@@ -23,27 +23,21 @@ $color-ppal:#fff;
     border-bottom: 1px solid $color-menues;   
     background-color: $color-ppal;
  
-  cursor: default;
-  &:hover >.i-fondo {
-    display: block;
-  }
-  &:hover{
-      border-bottom: 1px solid rgba(161, 157, 157, 0.589);
-  }
-  .medalla{
+    cursor: default;
+    &:hover >.i-fondo {
+        display: block;
+    }
+    &:hover{
+        border-bottom: 1px solid rgba(161, 157, 157, 0.589);
+    }
+  
+    .fa-medal{
     align-self: flex-start;
     margin-top: 7px;
-  width:35px;
-  height:35px;
-  transform:rotate(15deg);
-}
-.fa-medal{
-align-self: flex-start;
-margin-top: 7px;
-  color:$color-wf3;
-  font-size:1.6em;
-    transform:rotate(-170deg);
-}
+    color:$color-wf3;
+    font-size:1.6em;
+     transform:rotate(-170deg);
+    }
    .img-fondo{
        background-color: $color-ppal;
       outline: none;
@@ -56,6 +50,7 @@ margin-top: 7px;
             height: 150px;
             display: block;
             margin-left: -5px;
+            margin-right: 10px;
         }
     }
     .i-fondo{
@@ -139,7 +134,7 @@ margin-top: 7px;
     }
     
    .cont-props{
-       margin-top: 95px;
+       margin-top: 90px;
     .props{
         margin-top: 0px;
         margin-bottom: 0px;
@@ -169,62 +164,86 @@ margin-top: 7px;
     margin-top: 20px;
     
 }
-
-@media  screen and (max-width: 400px) {
-
+@media  screen and (max-width: 767px) {
+    .cont-props{
+        display: none;
+    }
     .items{
         width: 100%;
-        max-width: 230px;
-        height: 220px;
-        grid-template-rows: 8px 100px 32px  45px 35px;
-        .i-fondo{
-            i{
-                font-size: 1em;
-                right: 10px;
-                top: 10px;
-            }
-        }                     
-        .img-fondo{
-            height: fit-content;
-            .etiqueta{
-                 padding: 1px 3px;
-            }
-            .off{
-             font-size: 10px;
-            }
-            .destacado{
-             font-size: 9px;
-             font-weight: bold;
-            }
-             img{
-                 width: 100px ;
-                 height: 100px;
-                
-             }
-         }
-        h3{
-            font-size: 17px;
-            margin-top: 0px;
-        }
-        .cont-precios{
-            margin-top: 18px;
-        .precio{
-            font-size: 20px;
-        }
-        span{
-             font-size: 14px;
-        }
-        }
-        a{
-            font-size: 14px;
-           .botones{
-            font-size: 14px;
-            padding-top: 0;
-            padding-bottom: 0;
-            margin-top: 0;
-           }}
+        height: 140px;
+        display:grid;
+        grid-template-columns: 7% 35% 45%  10%;
     }
 }
+@media  screen and (max-width: 768px)  {
+    
+    .i-fondo{
+        display: block;
+        
+    }
+    #fav{
+        right: 0px;
+    }
+    .items{
+        height: 140px;
+        .img-fondo{
+            cursor: pointer;
+             img{
+                 width: 105px ;
+                 height: 105px;
+                 display: block;
+                 margin-left: -5px;
+             }
+         }
+         .title-pcio{
+            justify-self: flex-start;
+            margin-top: 20px;
+            h3{ 
+                font-size: 16px;
+                width: 40vw;            
+            }
+            .cont-precios{
+                margin-top: 0px;
+                .precio, .precioOferta{
+                    font-size: 20px;
+                }           
+            }
+           
+        }
+        .cont-props{
+            margin-top: 60px;
+        }
+    }
+}
+
+@media  screen and (min-width: 500px) and (max-width: 768px)  {
+    .items{
+        height: 140px;
+        .img-fondo{
+            cursor: pointer;
+             img{
+                 width: 125px ;
+                 height: 125px;
+             }
+         }
+         .title-pcio{
+            h3{ 
+                font-size: 18px;          
+            }
+            .cont-precios{
+                .precio, .precioOferta{
+                    font-size: 21px;
+                }           
+            }
+           
+        }
+        }
+    #fav{
+        right: 12px;
+    }
+}
+
+
 
 
 
