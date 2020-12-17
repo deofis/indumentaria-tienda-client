@@ -108,7 +108,7 @@
 
                     </div>
                     <div class="availability-container">
-                        <label for="availability" > Disponibilidad General:</label>
+                        <label for="availability"> Disponibilidad General:</label>
                         <input type="number" min="0" pattern="^[0-9]+" id="availability" (input)="changeUnit()"
                             formControlName="disponibilidadGeneral">
                         <span id="unidadElegida"></span>
@@ -122,7 +122,8 @@
                     <div class="price-container">
                         <label for="price"> Precio:</label>
                         <p id="euro">€</p>
-                        <input type="number" min=0 pattern="^[0-9]+" id="price" formControlName="precio" [class.is-invalid]="precioInvalido">
+                        <input type="number" min=0 pattern="^[0-9]+" id="price" formControlName="precio"
+                            [class.is-invalid]="precioInvalido">
                         <span *ngIf="precioInvalido" class="text-rojo"><strong>(*)</strong></span>
                     </div>
 
@@ -136,7 +137,7 @@
                     <label for="descripcion">Añada una descripción a su producto: </label>
                     <textarea name="descripcion" id="descripcion" rows="6" formControlName="descripcion"></textarea>
                 </div>
-             
+
                 <span
                     *ngIf="precioInvalido || categoriaInvalida || subcategoriaInvalida || unidadInvalida || nombreInvalido"
                     class="text-rojo"><strong>(*)Los campos señalados son obligatorios.</strong></span>
@@ -144,19 +145,26 @@
             <button class="btn" id="btn-end1"> Guardar y Finalizar </button>
             <button class="btn" id="btn-end2"> Guardar y Continuar </button>
         </form>
-        <form  class="form-promo" id="form-promo">
-             <p> ///// componente promociones ////</p>
-                <div class="check-sku">
+        <form class="form-promo" id="form-promo">
+            <div class="row">
+                <div class="col-10 offset-1">
+                    <app-form-promo-product></app-form-promo-product>
+                </div>
+            </div>
+            <div class="row">
+                <div class="check-sku col-10 offset-1">
                     <input type="checkbox" id="combinations" (input)="changeButtons2()">
                     <label for="combinations"> Mi producto posee diversas propiedades que pueden ser combinables
                         entre ellas.</label>
                 </div>
-                <div  class="botones-contenedor">
+            </div>
+            <div class="row">
+                <div class="botones-contenedor check-sku col-10 offset-1">
                     <button class="btn" id="btn-cancel"> Cancelar</button>
                     <button class="btn" id="btn-promo1"> Guardar y Finalizar </button>
                     <button class="btn" id="btn-promo2" (click)="showStep2()"> Guardar y Continuar </button>
                 </div>
-           
+            </div>
         </form>
 
     </div>
