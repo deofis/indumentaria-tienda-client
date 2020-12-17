@@ -26,12 +26,12 @@
                     </div>
                 </div>
                 
-                <div class="row mt-3">
-                    <div class="col-12 col-md-10 offset-md-1">
+                <div class="row mt-3 ">
+                    <div class="col-12 col-md-10 offset-md-1 ">
                         
-                        <div class="accordion" id="accordionExample">
+                        <div class="accordion scroll" id="accordionExample">
                             <div class="card" *ngFor="let categoria of categorias; let i=index;">
-                                <div class="card-header" id="headingOne" style="background-color:white ; border-style: solid; border-color: #1f4e84; border-width: 1px;">
+                                <div class="card-header" id="headingOne" style="background-color:white ; border-style: solid;  border-width: 0.1px;">
         
                                     <div class="row">
                                         <div class="col-md-2 text-center col-2 mb-2">
@@ -47,18 +47,18 @@
         
                                 </div>
                                 <div [attr.id]="'collapse'+i" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                    <div class="card-body" style="background-color: rgb(245, 245, 245); border: solid; border-color: #1f4e84; border-width: 1px; border-top: none;">
+                                    <div class="card-body" style="background-color: rgb(245, 245, 245); border: solid;  border-width: 0.1px; border-top: none;">
                                         <h3>Subcategorias y propiedades: </h3>
                                         <!-- <p *ngFor="let subcategoria of categoria.subcategorias">
                                             {{subcategoria.nombre}}: <small *ngFor="let propiedad of subcategoria.propiedades"> {{propiedad.nombre}} </small>
                                         </p> -->
                                         <div class="row">
-                                            <div class="col col" *ngFor="let subcategoria of categoria.subcategorias">
+                                            <div class="col col-md-3" *ngFor="let subcategoria of categoria.subcategorias">
                                                 <h4 > {{subcategoria.nombre}} </h4>
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col">
-                                                        <h5 *ngFor="let propiedad of subcategoria.propiedades"> {{propiedad.nombre}}: <small *ngFor="let valor of propiedad.valores"> {{valor.valor}}  </small></h5>
+                                                        <h5 *ngFor="let propiedad of subcategoria.propiedades"> {{propiedad.nombre}}: <small *ngFor="let valor of propiedad.valores"> {{valor.valor}},  </small></h5>
                                                     </div>
                                                 </div>
                                             </div>
