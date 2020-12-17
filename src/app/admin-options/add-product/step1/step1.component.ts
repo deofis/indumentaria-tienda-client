@@ -31,7 +31,7 @@ export class Step1Component implements OnInit {
   form:FormGroup;
   oferta:boolean=false;
   unidadesMedida:UnidadMedida[];
-  step2:boolean=false;
+  step2:boolean=true;
   //nombres para los select
   marca:string="-Marca-";
   categoria:string="-Categoría-";
@@ -123,7 +123,7 @@ crearForm(){
     nombre:["", Validators.required],
     descripcion:[""],
     precio:["", Validators.required],
-    disponibilidadGeneral:[null],
+    disponibilidadGeneral:[null, Validators.required],
     destacado:[false],
     marca: ["", Validators.required],
     subcategoria:["", Validators.required],

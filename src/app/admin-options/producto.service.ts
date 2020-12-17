@@ -37,7 +37,17 @@ url:string=API_BASE_URL+"/api";
       map((response:any) =>response )
     )
   }
- 
+  getAllTheSkus(productoId:number):Observable<Sku>{{
+    return this.http.get(`${this.url}/productos/${productoId}/skus`).pipe(
+      map((response:any) =>response.skus as Sku )
+    )
+  }}
+
+  generateSkus(productoId:number){
+    return this.http.post(`${this.url}/productos/${productoId}/generarSkus`,null).pipe(
+      map((response:any) =>console.log(response) )
+    );
+  }
 
   uploadPhoto(archivo: File, id: any){
     let formData = new FormData();
@@ -58,6 +68,7 @@ url:string=API_BASE_URL+"/api";
     return this.http.post(`${this.url}/productos/${id}/promociones`, promocion);
   };
 
+ 
 
 
 }

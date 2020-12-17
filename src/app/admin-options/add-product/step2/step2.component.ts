@@ -1,6 +1,6 @@
 import { ValorPropiedadProducto } from './../../../products/clases/valor-propiedad-producto';
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PropiedadProducto } from 'src/app/products/clases/propiedad-producto';
 import { ProductoService } from '../../producto.service';
 import { ActivatedRoute } from '@angular/router';
@@ -28,7 +28,7 @@ export class Step2Component implements OnInit {
   seleccionados= new Array;
   opcionSeleccionado:any;
   valoresSelect:Array<any>;
-
+  skus:Sku
   constructor(private productoService:ProductoService,
               private fb:FormBuilder,
               private router:Router,
@@ -87,28 +87,40 @@ export class Step2Component implements OnInit {
     
     this.router.navigate(['/home']);
   }
+  generateAutomaticsSkus(){
+    this.productoService.generateSkus(2).subscribe( response => {
+      
+      this.productoService.getAllTheSkus(2).subscribe( response => 
+        this.skus=response)})
+    setTimeout(() => {
+      document.getElementById("advertencia").style.display="block"
+    }, 1000);
+   
+  }
   crearSku(){
     this.newSku.precio=this.formSkus.controls.precio.value;
     this.newSku.precioOferta=this.formSkus.controls.precioOferta.value;
     this.newSku.disponibilidad=this.formSkus.controls.disponibilidad.value;
-    this.newSku.valores=this.seleccionados;
     this.newSku.producto= this.newProduct;
+    this.newSku.producto.propiedades=this.seleccionados;
     console.log(this.newSku);
-
-    this.productoService.createNewSku(this.newSku,this.newProduct.id).subscribe( response => 
-    console.log(response));
+    // crear nuevo sku
+    this.productoService.createNewSku(this.newSku,this.newProduct.id).subscribe( response => {
+      console.log(response);
+      this.productoService.getAllTheSkus(this.newProduct.id).subscribe( response => 
+      this.skus=response);
+      
+    });}
+  
     
-    
-    
-    }
   crearForm(){
     this.formSkus=this.fb.group({
        id:[""],
        nombre:[""],
        descripcion:[""],
-       precio:[""],
+       precio:[null, Validators.required],
        precioOferta:[""],
-       disponibilidad:[""],
+       disponibilidad:[null, Validators.required],
        valoresData:[""],
       //  valores:this.fb.array([]),
        defaultProducto:[""],
