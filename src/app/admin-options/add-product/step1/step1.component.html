@@ -4,159 +4,162 @@
         <button id="save">Guardar</button>
     </div>
     <div class="contenedor">
-    <form autocomplete="off" class="form1" id="form1" [formGroup]="form" (ngSubmit)="crearProducto()">
-        <div class="container-white">
-            <div class="row">
+        <form autocomplete="off" class="form1" id="form1" [formGroup]="form" (ngSubmit)="crearProducto()">
+            <div class="container-white">
+                <div class="row">
 
-                <div class="name">
-                    <label for="name"> Nombre:</label>
-                    <input type="text" id="name" formControlName="nombre" [class.is-invalid]="nombreInvalido">
-                    <span *ngIf="nombreInvalido" class="text-rojo"><strong>(*)</strong></span>
-                </div>
-
-                <div class="brand">
-                    <label for="brand">Marca: </label>
-                    <mat-form-field class="example-full-width inputBrand">
-
-                        <input type="text" id="brand" aria-label="Number" matInput formControlName="marca"
-                            [matAutocomplete]="auto" [class.is-invalid]="marcaInvalida">
-                        <mat-autocomplete [displayWith]="mostrarNombre" #auto="matAutocomplete">
-                            <mat-option *ngFor="let marca of filteredBrands | async" [value]="marca">
-                                {{marca.nombre}}
-                            </mat-option>
-                        </mat-autocomplete>
-                    </mat-form-field>
-                    <span *ngIf="marcaInvalida" class="text-rojo"><strong>(*)</strong></span>
-                    
-                    <ng-template #contenido let-modal >
-                        <div class="modal-header">
-                            <h4 class="modalTitle">
-                                Agregar nueva marca</h4>
-                            <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="" class="form-add-brand" >
-                                <div class="marca-campo" id="form-add-brand">
-                                    <label for="marca" class="marca">Marca:</label>
-                                    <input type="text" id="marca">
-                                </div>
-
-                                <button class="btn" (click)="addBrand()"  id="btn-brand"> Agregar</button>
-                            </form>
-                            <p id="listo">Listo!</p>
-                        </div>
-                    </ng-template>
-
-                    <button type="button" class="btn-add-brand " (click)="openCentrado(contenido)">
-                        <i class="far fa-plus-square" id="plus-brand"></i>
-                    </button>
-
-                </div>
-            </div>
-
-            <div class="row subandcat">
-                <div class="input-msj">
-                    <span *ngIf="categoriaInvalida" class="text-rojo"><strong>(*)</strong></span>
-                    <select name="category" id="categories" (change)="showSubcategories()" formControlName="categoria"
-                        [ngModel]="categoria" [class.is-invalid]="categoriaInvalida">
-                        <option hidden selected value="">-Categoría-</option>
-                        <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{categoria.nombre}}
-                        </option>
-
-                    </select>
-
-                </div>
-                <div class="input-msj">
-                    <span *ngIf="subcategoriaInvalida" class="text-rojo"><strong>(*)</strong></span>
-                    <select name="subcategory" id="subcategories" formControlName="subcategoria"
-                        [class.is-invalid]="subcategoriaInvalida" >
-                        <option hidden selected value="">-Subcategoría-</option>
-                        <option *ngFor="let subcategoria of subcategorias" [ngValue]="subcategoria">
-                            {{subcategoria.nombre}}
-                        </option>
-                    </select>
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-msj">
-                    <span *ngIf="unidadInvalida" class="text-rojo"><strong>(*)</strong></span>
-                <select name="unidadMedida" id="unidadMedida" (change)="showUnit()" formControlName="unidadMedida"
-                    [class.is-invalid]="unidadInvalida">
-                    <option hidden selected value="">-Unidad-</option>
-                    <option *ngFor="let unidad of unidadesMedida" [ngValue]="unidad">{{unidad.nombre}}</option>
-                </select>
-                
-                </div>
-                <div class="availability-container">
-                    <label for="availability"> Disponibilidad General:</label>
-                    <input type="number" id="availability" (input)="changeUnit()"
-                        formControlName="disponibilidadGeneral">
-                    <span id="unidadElegida"></span>
-                </div>
-                <div class="destacado">
-                    <input type="checkbox" id="destacado" formControlName="destacado">
-                    <label for="destacado"> Producto destacado</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="price-container">
-                    <label for="price"> Precio:</label>
-                    <p id="euro">€</p>
-                    <input type="number" id="price" formControlName="precio" [class.is-invalid]="precioInvalido">
-                    <span *ngIf="precioInvalido" class="text-rojo"><strong>(*)</strong></span>
-                </div>
-                <div class="precioOferta">
-                    <div class="pcioOfertaInput" id=inputOferta>
-                        <label for="price"> Precio de Oferta:</label>
-                        <p id="euro">€</p>
-                        <input type="number" id="precioOferta" formControlName="precioOferta">
+                    <div class="name">
+                        <label for="name"> Nombre:</label>
+                        <input type="text" id="name" formControlName="nombre" [class.is-invalid]="nombreInvalido">
+                        <span *ngIf="nombreInvalido" class="text-rojo"><strong>(*)</strong></span>
                     </div>
+
+                    <div class="brand">
+                        <label for="brand">Marca: </label>
+                        <mat-form-field class="example-full-width inputBrand">
+
+                            <input type="text" id="brand" aria-label="Number" matInput formControlName="marca"
+                                [matAutocomplete]="auto" [class.is-invalid]="marcaInvalida">
+                            <mat-autocomplete [displayWith]="mostrarNombre" #auto="matAutocomplete">
+                                <mat-option *ngFor="let marca of filteredBrands | async" [value]="marca">
+                                    {{marca.nombre}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <span *ngIf="marcaInvalida" class="text-rojo"><strong>(*)</strong></span>
+
+                        <ng-template #contenido let-modal>
+                            <div class="modal-header">
+                                <h4 class="modalTitle">
+                                    Agregar nueva marca</h4>
+                                <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" class="form-add-brand">
+                                    <div class="marca-campo" id="form-add-brand">
+                                        <label for="marca" class="marca">Marca:</label>
+                                        <input type="text" id="marca">
+                                    </div>
+
+                                    <button class="btn" (click)="addBrand()" id="btn-brand"> Agregar</button>
+                                </form>
+                                <p id="listo">Listo!</p>
+                            </div>
+                        </ng-template>
+
+                        <button type="button" class="btn-add-brand " (click)="openCentrado(contenido)">
+                            <i class="far fa-plus-square" id="plus-brand"></i>
+                        </button>
+
+                    </div>
+                </div>
+                <form class="form-img" id="form-img" autocomplete="off">
+                    <div class="row box-img">
+                        <div class="add-img">
+                            <p>Añada una fotografía principal de su producto.
+                                <br>
+                                <!-- <span>-Hasta 6 fotografías permitidas-</span> -->
+                            </p>
+                            <input type="file" id="add-files" (change)="readUrl($event)" accept=".png, .jpg, .jpeg">
+
+                        </div>
+                        <div class="images">
+                            <img id="img-ppal" [src]="url">
+                        </div>
+                    </div>
+
+
+                </form>
+
+                <div class="row subandcat">
+                    <div class="input-msj">
+                        <span *ngIf="categoriaInvalida" class="text-rojo"><strong>(*)</strong></span>
+                        <select name="category" id="categories" (change)="showSubcategories()"
+                            formControlName="categoria" [ngModel]="categoria" [class.is-invalid]="categoriaInvalida">
+                            <option disabled>{{categoria}}</option>
+                            <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{categoria.nombre}}
+                            </option>
+
+                        </select>
+
+                    </div>
+                    <div class="input-msj">
+                        <span *ngIf="subcategoriaInvalida" class="text-rojo"><strong>(*)</strong></span>
+                        <select name="subcategory" id="subcategories" formControlName="subcategoria"
+                            [class.is-invalid]="subcategoriaInvalida" [ngModel]="subcategoria">
+                            <option>{{subcategoria}}</option>
+                            <option *ngFor="let subcategoria of subcategorias" [ngValue]="subcategoria">
+                                {{subcategoria.nombre}}
+                            </option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-msj">
+                        <span *ngIf="unidadInvalida" class="text-rojo"><strong>(*)</strong></span>
+                        <select name="unidadMedida" id="unidadMedida" (change)="showUnit()"
+                            formControlName="unidadMedida" [ngModel]="unidad" [class.is-invalid]="unidadInvalida">
+                            <option>{{unidad}}</option>
+                            <option *ngFor="let unidad of unidadesMedida" [ngValue]="unidad">{{unidad.nombre}}</option>
+                        </select>
+
+                    </div>
+                    <div class="availability-container">
+                        <label for="availability" > Disponibilidad General:</label>
+                        <input type="number" min="0" pattern="^[0-9]+" id="availability" (input)="changeUnit()"
+                            formControlName="disponibilidadGeneral">
+                        <span id="unidadElegida"></span>
+                    </div>
+                    <div class="destacado">
+                        <input type="checkbox" id="destacado" formControlName="destacado">
+                        <label for="destacado"> Producto destacado</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="price-container">
+                        <label for="price"> Precio:</label>
+                        <p id="euro">€</p>
+                        <input type="number" min=0 pattern="^[0-9]+" id="price" formControlName="precio" [class.is-invalid]="precioInvalido">
+                        <span *ngIf="precioInvalido" class="text-rojo"><strong>(*)</strong></span>
+                    </div>
+
+
                     <div class="check-oferta">
-                        <input type="checkbox" id="checkbox-oferta" (input)="precioOferta()"
-                            formControlName="checkoferta">
+                        <input type="checkbox" id="checkbox-oferta" (input)="changeButtons()">
                         <label for="checkbox-oferta"> Este producto está en oferta</label>
                     </div>
                 </div>
+                <div class="textarea">
+                    <label for="descripcion">Añada una descripción a su producto: </label>
+                    <textarea name="descripcion" id="descripcion" rows="6" formControlName="descripcion"></textarea>
+                </div>
+             
+                <span
+                    *ngIf="precioInvalido || categoriaInvalida || subcategoriaInvalida || unidadInvalida || nombreInvalido"
+                    class="text-rojo"><strong>(*)Los campos señalados son obligatorios.</strong></span>
             </div>
-            <div class="textarea">
-                <label for="descripcion">Añada una descripción a su producto: </label>
-                <textarea name="descripcion" id="descripcion" rows="6" formControlName="descripcion"></textarea>
-            </div>
-            
-            <span
-                *ngIf="precioInvalido || categoriaInvalida || subcategoriaInvalida || unidadInvalida || nombreInvalido"
-                class="text-rojo"><strong>(*)Los campos señalados son obligatorios.</strong></span>
-        </div>
+            <button class="btn" id="btn-end1"> Guardar y Finalizar </button>
+            <button class="btn" id="btn-end2"> Guardar y Continuar </button>
+        </form>
+        <form  class="form-promo" id="form-promo">
+             <p> ///// componente promociones ////</p>
+                <div class="check-sku">
+                    <input type="checkbox" id="combinations" (input)="changeButtons2()">
+                    <label for="combinations"> Mi producto posee diversas propiedades que pueden ser combinables
+                        entre ellas.</label>
+                </div>
+                <div  class="botones-contenedor">
+                    <button class="btn" id="btn-cancel"> Cancelar</button>
+                    <button class="btn" id="btn-promo1"> Guardar y Finalizar </button>
+                    <button class="btn" id="btn-promo2" (click)="showStep2()"> Guardar y Continuar </button>
+                </div>
+           
+        </form>
 
-
-        <button class="btn chico" id="btn-one">Continuar</button>
-    </form>
-    <form  class="form-img" id="form-img" autocomplete="off" (ngSubmit)="cargarImagen()">
-        <div class="row box-img">
-            <div class="add-img">
-                <p>Añada una fotografía principal de su producto.
-                    <br>
-                    <!-- <span>-Hasta 6 fotografías permitidas-</span> -->
-                </p>
-                <input type="file" id="add-files" (change)="readUrl($event)" accept="image/*">
-
-            </div>
-            <div class="images">
-                <img id="img-ppal" [src]="url">
-            </div>
-        </div>
-        <div class="check-sku">
-            <input type="checkbox" id="combinations" (input)="hasCombinations()">
-            <label for="combinations"> Mi producto posee diversas propiedades que pueden ser combinables
-                entre ellas.</label>
-        </div>
-        <button class="btn" id="btn-end1" >Guardar y Finalizar</button>
-        <button class="btn" id="btn-end2"(click)="showStep2()" >Guardar y Continuar </button>
-    </form>
-</div>
+    </div>
 </div>
 
- <app-step2 *ngIf="step2" [newProduct]="newProduct"></app-step2>
+<app-step2 *ngIf="step2" [newProduct]="newProduct"></app-step2>

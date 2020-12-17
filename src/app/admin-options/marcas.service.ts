@@ -22,6 +22,10 @@ export class MarcasService {
 
   };
 
+  getBrand(id: number): Observable<Marca> {
+    return this.http.get<Marca>(`${this.url}/productos/marcas/ver/{id}`);
+  }
+
   createNewBrand(brand: Marca){
 
     return this.http.post(`${this.url}/productos/marcas/nueva`, brand);

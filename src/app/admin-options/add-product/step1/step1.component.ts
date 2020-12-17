@@ -1,3 +1,4 @@
+import { ValidadoresService } from 'src/app/log-in/services/validadores.service';
 import { Component, OnInit } from '@angular/core';
 import { CatalogoService } from 'src/app/products/services/catalogo.service';
 import { Categoria } from 'src/app/products/clases/categoria';
@@ -30,7 +31,7 @@ export class Step1Component implements OnInit {
   form:FormGroup;
   oferta:boolean=false;
   unidadesMedida:UnidadMedida[];
-  step2:boolean=false;
+  step2:boolean=true;
   //nombres para los select
   marca:string="-Marca-";
   categoria:string="-Categoría-";
@@ -39,25 +40,24 @@ export class Step1Component implements OnInit {
   // file
   url:string;
  selectedFile:File=null; 
- fotosubir:File=null;
+ 
 // autocomplete
   autoControl = new FormControl();
   marcas:Marca[];
   newBrand:Marca;
   filteredBrands:Observable<Marca[]>;
   newProduct:Producto;
-
-  constructor(
-    private router:Router,
-    private http:HttpClient,
-    private catalogoservice:CatalogoService,
-    private fb:FormBuilder,
-    public modal: NgbModal,
-    private productoService:ProductoService) { 
-      this.marcas = [];
-      this.newProduct= new Producto();
-      this.newBrand=new Marca();
-    }
+  constructor( private router:Router,
+                private http:HttpClient,
+                private catalogoservice:CatalogoService,
+                private fb:FormBuilder,
+                public modal: NgbModal,
+                private productoService:ProductoService,
+                private validadores: ValidadoresService) { 
+                  this.marcas = [];
+                  this.newProduct= new Producto();
+                this.newBrand=new Marca();
+                }
 
   ngOnInit(): void {
          ///inicializar el fomulario
@@ -88,7 +88,6 @@ crearProducto(){
   this.newProduct.nombre=this.form.controls.nombre.value;
   this.newProduct.descripcion=this.form.controls.descripcion.value;
   this.newProduct.precio=this.form.controls.precio.value;
-  //this.newProduct.precioOferta=this.form.controls.precioOferta.value;
   this.newProduct.disponibilidadGeneral=this.form.controls.disponibilidadGeneral.value;
   this.newProduct.destacado=this.form.controls.destacado.value;
   this.newProduct.marca=this.form.controls.marca.value;
@@ -98,35 +97,42 @@ crearProducto(){
   this.productoService.createNewProduct(this.newProduct).subscribe( response => {
     console.log(response);
     this.newProduct.id=response.id;
+    this.productoService.uploadPhoto(this.selectedFile, this.newProduct?.id).subscribe(response => console.log(response));
     // Swal.fire({
     //   icon:"success",
     //   title:"Producto creado",
     //   text: `El producto ${response.nombre} ha sido creado con éxito!`
     // });
     this.form.disable();
-    let button = document.getElementById("btn-one");
-    button.style.display="none";
-    let formImg=document.getElementById("form-img");
-    formImg.style.display="flex";
+    let button1 = document.getElementById("btn-end1");
+    button1.style.display="none";
+    let button2 = document.getElementById("btn-end2");
+    button2.style.display="none";
+    let formPromocion=document.getElementById("form-promo");
+    formPromocion.style.display="flex";
+    this.deshabilitarInputFoto();
+    
   }, err => {
     console.log(err);
   });
 }
+
 crearForm(){
   this.form=this.fb.group({
     id:[""],
     nombre:["", Validators.required],
     descripcion:[""],
     precio:["", Validators.required],
-    precioOferta:[""],
-    disponibilidadGeneral:[0],
+    disponibilidadGeneral:[null, Validators.required],
     destacado:[false],
     marca: ["", Validators.required],
     subcategoria:["", Validators.required],
     categoria:["",Validators.required],
     unidadMedida:["", Validators.required],
-    checkoferta:[false],
+  }, {
+    validators: this.validadores.existeMarca('marca')
   });
+
 }
 
   // Getters para campos invalidos formulario 
@@ -166,12 +172,6 @@ crearForm(){
       document.getElementById("img-ppal").style.display="block"
     }
 }
-cargarImagen(){
- 
-  this.productoService.uploadPhoto(this.selectedFile, this.newProduct.id)
-    .subscribe( response => {
-      console.log(response)})
-}
 
   ///// *** *** STEP 1 **** *** ///
   showStep2(){
@@ -179,8 +179,16 @@ cargarImagen(){
     step1.style.display="none";   
     this.step2=true;
   }
-
-  hasCombinations(){
+  deshabilitarInputFoto(){
+    let inputFoto = document.getElementById("add-files") as HTMLInputElement;
+    if (inputFoto.disabled) {
+      
+    }else{
+      inputFoto.disabled=true
+    }
+  } 
+  // cambiar botones al cambiar el estado del checkbox de promocion
+  changeButtons(){
     let btn= document.getElementById("btn-end1");
     let btn2= document.getElementById("btn-end2");
     if(this.showForm2 == false){
@@ -193,14 +201,18 @@ cargarImagen(){
       this.showForm2=false;
     }
   }
-  precioOferta(){
-    let ofertaInput= document.getElementById("inputOferta");
-    if(this.oferta == false){
-      ofertaInput.style.display="flex"
-      this.oferta=true;
+  //cambiar botones al cambiar el estado del checkbox de tiene combinaciones
+  changeButtons2(){
+    let btn= document.getElementById("btn-promo1");
+    let btn2= document.getElementById("btn-promo2");
+    if(this.showForm2 == false){
+      btn.style.display="none";
+      btn2.style.display="block"
+      this.showForm2=true;
     }else {
-      ofertaInput.style.display="none"
-      this.oferta=false;
+      btn.style.display="block";
+      btn2.style.display="none";
+      this.showForm2=false;
     }
   }
   
@@ -225,11 +237,12 @@ cargarImagen(){
     getBrands(){
       this.catalogoservice.getBrands().subscribe((response: any) => {
         this.marcas=response.marcas;
-      })
+      });
     }
 
     showSubcategories(){
       this.categoriaSeleccionada = this.form.controls.categoria.value;
+
       this.catalogoservice.getSubcategoriasPorCategoria(this.categoriaSeleccionada.id)
       .subscribe(response => {
         this.subcategorias=response.subcategorias;
@@ -239,7 +252,8 @@ cargarImagen(){
       comboBoxSubcateories.style.display="block";
     }
     showUnit(){
-      this.unidadSeleccionada = this.form.controls.unidadMedida.value;
+       this.unidadSeleccionada = this.form.controls.unidadMedida.value;
+     
       let unidad = document.getElementById("unidadElegida");
       
       if(this.unidadSeleccionada.nombre=="Unidad"){
@@ -273,11 +287,13 @@ cargarImagen(){
     //lleno el objeto marca
     if(input.value !== ""){
    this.newBrand.id=1;
-   this.newBrand.nombre=input.value;
+   this.newBrand.nombre=input.value.toLowerCase().replace(/(?:(^.)|(\s+.))/g, function(match) {
+    return match.charAt(match.length-1).toUpperCase()});
    //lo envio
    this.catalogoservice.addBrand(this.newBrand)
    .subscribe( response => {
-     console.log(response)})
+     this.getBrands();
+     console.log(response)});
   
      //msj listo 
   let modal = document.getElementById("listo");
@@ -286,10 +302,6 @@ cargarImagen(){
   form.style.display="none"
   let btn =document.getElementById("btn-brand");
   btn.style.display="none"
-
-  //escribo el input con la nueva marca
-   }else{
-     console.log("escribi algo lqdtm")
    }
   }
 }

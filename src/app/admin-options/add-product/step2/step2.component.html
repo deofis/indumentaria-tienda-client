@@ -1,13 +1,14 @@
 <div class="frame step2" id="step2">
     <div class="title">
-        <h3> <img src="../../../assets/imagenes/nro-dos.png" alt=""> Combinaciones posibles</h3>
-        <button id="save">Guardar</button>
+        <h3> <img src="../../../assets/imagenes/nro-dos.png" alt="" > Combinaciones posibles</h3>
+       
     </div>
 
     <form action="" class="form form2 " autocomplete="off" [formGroup]="formSkus" (ngSubmit)="crearSku()">
         <div class="container-white">
             <div class="row">
-                <p>Elaboramos una lista de propiedades en base a la categoría y subcategoría elegida, puedes combinarlas para generar productos o añadir nuevas. </p>
+                <p>Elaboramos una lista de propiedades en base a la categoría y subcategoría elegida, puedes
+                    combinarlas para generar productos o añadir nuevas. </p>
             </div>
 
             <ng-template #contenido let-modal>
@@ -47,59 +48,103 @@
                     </form>
                 </div>
                 <!-- <div class="modal-footer">
-                    <button type="button" class="btn-modal" (click)="modal.close()"> Agregar</button>
-                </div> -->
+            <button type="button" class="btn-modal" (click)="modal.close()"> Agregar</button>
+        </div> -->
             </ng-template>
 
             <button type="button" class="btn-add-property " (click)="openCentrado(contenido)">
-                <p id="add"><i class="far fa-plus-square"></i> Agregar propiedades</p>
+                <p id="add"><i class="far fa-plus-square " ></i> Agregar propiedades</p>
 
             </button>
             <div class="row properties">
-                <select class="property" *ngFor="let property of properties ; let i=index" formControlName="valores">
-                    <option hidden selected value="">-{{property.nombre}} -</option>
+                <select class="property" [(ngModel)]="opcionSeleccionado" [ngModelOptions]="{standalone: true}" (change)="guardarValores(i)" *ngFor="let property of properties ; let i=index" >
+                    <option hidden selected [ngValue]="property.nombre" >-{{property.nombre}} -</option>
 
-                    <option [ngValue]="value" *ngFor="let value of property?.valores">
+                    <option [ngValue]="value"  *ngFor="let value of property?.valores" >
                         {{value.valor}}</option>
                 </select>
+
             </div>
             <div class="row">
                 <div class="availability-container">
                     <label for="availabilitySku"> Disponibles:</label>
-                    <input type="number" id="availabilitySku" formControlName="disponibilidad">
+                    <input type="number" min="0" pattern="^[0-9]+" id="availabilitySku" formControlName="disponibilidad">
                 </div>
                 <div class="price-container">
                     <label for="precio"> Precio:</label>
                     <p id="euro-signo">€</p>
-                    <input type="number" id="precio" formControlName="precio">
-                </div>
-                <div class="precioOferta">
-                    <div class="pcioOfertaInput" id=inputOfertaSku>
-                        <label for="oferta"> Precio de Oferta:</label>
-                        <p id="euro">€</p>
-                        <input type="number" id="oferta" formControlName="precioOferta">
-                    </div>
-                    <div class="check-oferta">
-                        <input type="checkbox" id="check" (input)="precioOferta()">
-                        <label for="check" id="textoferta"> Este producto está en oferta</label>
-                    </div>
+                    <input type="number" min="0" pattern="^[0-9]+" id="precio" formControlName="precio">
                 </div>
             </div>
-            <button class="btn-end" id="btn-two">Guardar y finalizar</button>
+           
+                <button class="btn-end" id="btn-two">Guardar </button>
+      
+          
             <div class="container-skus">
+                <div class="titulo">
+                    <h3 >Combinaciones para  <span> {{newProduct.nombre}} </span>   </h3>
+                    <span class="generar" (click)="generateAutomaticsSkus()"> Generar combinaciones automáticas</span>
+                </div>
+               
                 <span class="line"></span>
-
+                
                 <div class="new-products">
                     <div class="product">
-                        <p class="description"> Samsung Galaxy S20 - Negro - 64GB - 4u - €850 </p>
-                        <i class="far fa-edit"></i>
+                       <!-- <p> {{newProduct.nombre}}
+                        <span *ngFor= "let seleccionado of seleccionados"> {{seleccionado.valor}} -</span>
+                       </p> -->
                     </div>
-                    <div class="product">
-                        <p class="description"> Samsung Galaxy S20 - Negro - 32GB - 7u - €820</p>
-                        <i class="far fa-edit"></i>
+                    <div class="product" *ngFor= "let sku of skus">
+                        <p class="description"> {{newProduct.nombre}} - {{sku.valoresData}} - {{sku.disponibilidad}}u. - €{{sku.precio}}  </p>
+                        <i class="far fa-edit" (click)="openCentrado(editar)"></i>
                     </div>
+                   <span class="msje-advertencia" id="advertencia">Recordá que si las combinaciones fueron generadas de manera automática, es posible que se requiera edición de precios.</span>
+                    <ng-template class="modal-editar" #editar let-modal>
+                        <div class="modal-header">
+                            <h4 class="modalTitle">
+                                Editar combinación</h4>
+                            <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" class="form-add-property">
+                                <div class="row properties">
+                                    <select class="property" [(ngModel)]="opcionSeleccionado" [ngModelOptions]="{standalone: true}" (change)="guardarValores(i)" *ngFor="let property of properties ; let i=index" >
+                                        <option hidden selected [ngValue]="property.nombre" >-{{property.nombre}} -</option>
+                    
+                                        <option [ngValue]="value"  *ngFor="let value of property?.valores" >
+                                            {{value.valor}}</option>
+                                    </select>
+                    
+                                </div>
+                                <div class="row">
+                                    <div class="availability-container">
+                                        <label for="availabilitySku"> Disponibles:</label>
+                                        <input type="number" min="0" pattern="^[0-9]+" id="availabilitySku" >
+                                    </div>
+                                    <div class="price-container">
+                                        <label for="precio"> Precio:</label>
+                                        <p id="euro-signo">€</p>
+                                        <input type="number" min="0" pattern="^[0-9]+" id="precio" >
+                                    </div>
+                                </div>
+                                <button class="btn" (click)="modal.close()"> Guardar</button>
+                            </form>
+                        </div>
+                        
+                    </ng-template>
                 </div>
             </div>
         </div>
+        <div class="botones-final">
+            <button class="btn-final" >Cancelar </button>
+            <button class="btn-final" >Guardar y Finalizar </button>
+        </div>
+       
+
+
     </form>
+
+
 </div>
