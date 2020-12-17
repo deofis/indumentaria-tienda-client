@@ -10,13 +10,12 @@ import Swal from "sweetalert2";
 import { DataPromoSubService } from '../data-promo-sub.service';
 
 @Component({
-  selector: 'app-propiedad-subcategoria',
-  templateUrl: './propiedad-subcategoria.component.html',
-  styleUrls: ['./propiedad-subcategoria.component.scss']
+  selector: 'app-form-propiedades',
+  templateUrl: './form-propiedades.component.html',
+  styleUrls: ['./form-propiedades.component.scss']
 })
-export class PropiedadSubcategoriaComponent implements OnInit {
+export class FormPropiedadesComponent implements OnInit {
 
- /*  subcategorias:Subcategoria[] = []; */
   subSeleccionada:Subcategoria;
 
   formPropiedad: FormGroup;
@@ -30,35 +29,22 @@ export class PropiedadSubcategoriaComponent implements OnInit {
   tablaValores: boolean;
 
   constructor( private fb:FormBuilder,
-               private catalogoService: CatalogoService,
-               private propiedadesService: PropiedadesService,
-               private dataPromoSubService: DataPromoSubService ) { }
+               private dataPromoSubService: DataPromoSubService) { }
 
   ngOnInit(): void {
 
     this.dataPromoSubService.subSelect$.subscribe(sub => {
       this.subSeleccionada = sub;
     });
+
     this.subSeleccionada = new Subcategoria();
     this.propiedad = new PropiedadProducto();
-    this.valoresPropiedad = new ValorPropiedadProducto()
-    /* this.obtenerSubcategorias(); */
+    this.valoresPropiedad = new ValorPropiedadProducto();
     this.crearFormNuevaPromocion();
     this.tablaValores = false;
 
-  };
+  }
 
-  /* obtenerSubcategorias(){
-    this.catalogoService.getSubcategorias().subscribe((resp:any) => {
-      this.subcategorias = resp;
-      console.log(this.subcategorias);
-      
-    })
-  }; */
-
-  /* setSeleccion(sub: Subcategoria){
-    this.subSeleccionada = sub;
-  }; */
 
   crearFormNuevaPromocion(){
     
@@ -80,6 +66,7 @@ export class PropiedadSubcategoriaComponent implements OnInit {
   get valores(){
     return this.formPropiedad.get('valores') as FormArray;
   };
+
 
   crearPropiedad(){
 
