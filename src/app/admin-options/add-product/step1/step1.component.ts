@@ -1,3 +1,5 @@
+import { PropiedadesService } from './../../propiedades.service';
+import { PropiedadProducto } from './../../../products/clases/propiedad-producto';
 import { ValidadoresService } from 'src/app/log-in/services/validadores.service';
 import { Component, OnInit } from '@angular/core';
 import { CatalogoService } from 'src/app/products/services/catalogo.service';
@@ -16,6 +18,7 @@ import Swal from "sweetalert2";
 import {HttpClient} from '@angular/common/http';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { Output,EventEmitter } from '@angular/core';
+import { DataService } from '../../admin-promos/data.service';
 @Component({
   selector: 'app-step1',
   templateUrl: './step1.component.html',
@@ -24,6 +27,7 @@ import { Output,EventEmitter } from '@angular/core';
 export class Step1Component implements OnInit {
   @Output() enviar= new EventEmitter();
   showForm2:boolean = false;
+  showFormPromo:boolean=false;
   categorias:Categoria[];
   subcategorias: Subcategoria[];
   categoriaSeleccionada: Categoria;
@@ -31,7 +35,8 @@ export class Step1Component implements OnInit {
   form:FormGroup;
   oferta:boolean=false;
   unidadesMedida:UnidadMedida[];
-  step2:boolean=true;
+  step2:boolean=false;
+  formPromo:boolean=false;
   //nombres para los select
   marca:string="-Marca-";
   categoria:string="-Categoría-";
@@ -47,13 +52,19 @@ export class Step1Component implements OnInit {
   newBrand:Marca;
   filteredBrands:Observable<Marca[]>;
   newProduct:Producto;
+
+ 
+  propiedadesProducto:PropiedadProducto[];  
   constructor( private router:Router,
                 private http:HttpClient,
                 private catalogoservice:CatalogoService,
                 private fb:FormBuilder,
                 public modal: NgbModal,
                 private productoService:ProductoService,
-                private validadores: ValidadoresService) { 
+                private validadores: ValidadoresService,
+                private dataService:DataService,
+                private propiedadesService:PropiedadesService,
+                ) { 
                   this.marcas = [];
                   this.newProduct= new Producto();
                 this.newBrand=new Marca();
@@ -80,29 +91,38 @@ export class Step1Component implements OnInit {
   mostrarNombre(marca?: Marca): string | undefined {
     return marca? marca.nombre: undefined;
   }
+
+  enviarProducto(){
+    this.dataService.productoSelec$.emit(this.newProduct)
+  }
 /// *** ***  Formulario 1
 crearProducto(){
+
   if (this.form.invalid){
     return this.form.markAllAsTouched();
   }
-  this.newProduct.nombre=this.form.controls.nombre.value;
-  this.newProduct.descripcion=this.form.controls.descripcion.value;
-  this.newProduct.precio=this.form.controls.precio.value;
-  this.newProduct.disponibilidadGeneral=this.form.controls.disponibilidadGeneral.value;
-  this.newProduct.destacado=this.form.controls.destacado.value;
-  this.newProduct.marca=this.form.controls.marca.value;
-  this.newProduct.subcategoria=this.form.controls.subcategoria.value;
-  this.newProduct.unidadMedida=this.form.controls.unidadMedida.value;
+    this.newProduct.nombre=this.form.controls.nombre.value;
+    this.newProduct.descripcion=this.form.controls.descripcion.value;
+    this.newProduct.precio=this.form.controls.precio.value;
+    this.newProduct.disponibilidadGeneral=this.form.controls.disponibilidadGeneral.value;
+    this.newProduct.destacado=this.form.controls.destacado.value;
+    this.newProduct.marca=this.form.controls.marca.value;
+    this.newProduct.subcategoria=this.form.controls.subcategoria.value;
+    this.newProduct.unidadMedida=this.form.controls.unidadMedida.value;
+   //  this.newProduct.propiedades=this.form.controls.subcategoria.value.propiedades ;
  
-  this.productoService.createNewProduct(this.newProduct).subscribe( response => {
+   this.propiedadesProducto=this.form.controls.subcategoria.value.propiedades;
+  
+
+    this.productoService.createNewProduct(this.newProduct).subscribe( response => {
     console.log(response);
     this.newProduct.id=response.id;
     this.productoService.uploadPhoto(this.selectedFile, this.newProduct?.id).subscribe(response => console.log(response));
-    // Swal.fire({
-    //   icon:"success",
-    //   title:"Producto creado",
-    //   text: `El producto ${response.nombre} ha sido creado con éxito!`
-    // });
+  //  for (let i = 0; i < this.propiedadesProducto.length; i++) {
+  //   this.propiedadesService.crearNuevaPropiedadProducto(this.propiedadesProducto[i],this.newProduct.id).subscribe(response => console.log(response));
+     
+  //  }
+   
     this.form.disable();
     let button1 = document.getElementById("btn-end1");
     button1.style.display="none";
@@ -179,6 +199,7 @@ crearForm(){
     step1.style.display="none";   
     this.step2=true;
   }
+
   deshabilitarInputFoto(){
     let inputFoto = document.getElementById("add-files") as HTMLInputElement;
     if (inputFoto.disabled) {
@@ -191,14 +212,37 @@ crearForm(){
   changeButtons(){
     let btn= document.getElementById("btn-end1");
     let btn2= document.getElementById("btn-end2");
-    if(this.showForm2 == false){
-      btn.style.display="none";
-      btn2.style.display="block"
-      this.showForm2=true;
-    }else {
+    if ((document.getElementById("combinations")as HTMLInputElement).checked ||
+      (document.getElementById("checkbox-oferta")as HTMLInputElement).checked ) {
+        btn.style.display="none";
+        btn2.style.display="block"
+        if ((document.getElementById("combinations")as HTMLInputElement).checked) {
+          this.showForm2=true;
+          this.showFormPromo=false
+        }
+        if ((document.getElementById("checkbox-oferta")as HTMLInputElement).checked) {
+          this.showForm2=false;
+          this.showFormPromo=true
+        }
+        if ((document.getElementById("checkbox-oferta")as HTMLInputElement).checked && 
+        (document.getElementById("combinations")as HTMLInputElement).checked){
+          this.showForm2=false;
+          this.showFormPromo=true
+        }
+    }else{
+      alert("no combinacion")
       btn.style.display="block";
-      btn2.style.display="none";
-      this.showForm2=false;
+      btn2.style.display="none"
+    }
+  }
+  mostrarSiguiente(){
+    if (this.showForm2) {
+      let step1=document.getElementById("step1");
+      step1.style.display="none";   
+      this.step2=true;
+    }
+    if (this.showFormPromo){
+      this.formPromo=true;
     }
   }
   //cambiar botones al cambiar el estado del checkbox de tiene combinaciones
