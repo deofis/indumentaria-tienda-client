@@ -16,31 +16,31 @@ export class ProductsComponent implements OnInit {
   target: HTMLInputElement;
   categorias:Categoria[];
   fotoCategoria:boolean;
-  // categories:any[]=[
-  //   {
-  //     img:'../../../../assets/imagenes/categoria1.jpg'
-  //   },
-  //   {
-  //     img:'../../../../assets/imagenes/categoria2.jpg ',
-  //   },
-  //   {
-  //     img:'../../../../assets/imagenes/categoria3.jpg'},
-  //   {
-  //     img:'../../../../assets/imagenes/categoria4a.jpg',
-  //   },
-  //   {
-  //     img:'../../../../assets/imagenes/categoria5a.jpg',
-  //   },
-  //   {
-  //     img:'../../../../assets/imagenes/categoria6.jpg',
-  //   },
-  //   {
-  //     img:'../../../../assets/imagenes/categoria7b.jpg',
-  //   },
-  //   {
-  //     img:'../../../../assets/imagenes/categoria8a.jpg',
-  //   }
-  // ]
+  fotosCategorias:any[]=[
+    {
+      img:'../../../../assets/imagenes/categoria1.jpg'
+    },
+    {
+      img:'../../../../assets/imagenes/categoria2.jpg ',
+    },
+    {
+      img:'../../../../assets/imagenes/categoria3.jpg'},
+    {
+      img:'../../../../assets/imagenes/categoria4a.jpg',
+    },
+    {
+      img:'../../../../assets/imagenes/categoria5a.jpg',
+    },
+    {
+      img:'../../../../assets/imagenes/categoria6.jpg',
+    },
+    {
+      img:'../../../../assets/imagenes/categoria7b.jpg',
+    },
+    {
+      img:'../../../../assets/imagenes/categoria8a.jpg',
+    }
+  ]
   back1:boolean=false;
   back2:boolean=false;
 
@@ -91,7 +91,7 @@ const fila2=document.getElementById("contenedor-carouselOfertas");
     this.backButton1();
     this.backButton2();
   
-    this.categoriasFoto();
+    //this.categoriasFoto();
   }
 
   backButton1(){
@@ -162,23 +162,26 @@ showCategoriesEffect() {
     getListaCategorias():void{
       this.catalogoService.getListaCategorias().subscribe( response =>{
        this.categorias=response;
+
+       for (let index = 0; index < this.categorias.length; index++) {
+         this.categorias[index].foto = this.fotosCategorias[index].img;
+       }
   
       console.log(this.categorias)
       })
     }
 
-categoriasFoto(){
-  for (let i = 0; i < this.categorias.length; i++) {
-    if (this.categorias[i].foto!==null) {
-      if (this.categorias[i].foto.imageUrl!==null) {
-        this.fotoCategoria=true
-      }else{
-        this.fotoCategoria=false
-      }
-    }    
-  }
- 
-}
+// categoriasFoto(){
+//   for (let i = 0; i < this.categorias.length; i++) {
+//     if (this.categorias[i].foto!==null) {
+//       if (this.categorias[i].foto.imageUrl!==null) {
+//         this.fotoCategoria=true
+//       }else{
+//         this.fotoCategoria=false
+//       }
+//     }    
+//   }
+//}
   
 
 
