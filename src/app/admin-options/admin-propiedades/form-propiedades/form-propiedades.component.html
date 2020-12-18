@@ -1,0 +1,110 @@
+
+
+<div class="row">
+    <div class="col-md-4 ml-3">
+        <h3>Subcategoría seleccionada: </h3>
+        <!-- <h3 *ngIf="subSeleccionadas.length === 0">Seleccione subcategorías.</h3> -->
+    </div>
+    <div class="col offset-md-0 offset-4">
+        <h3><span *ngIf="subSeleccionada.nombre"  style="background-color: #1f4e84; cursor: pointer;" 
+            class="badge badge-pill badge-primary mr-1">{{subSeleccionada.nombre}}</span></h3>
+    </div>
+</div>
+
+
+<hr>
+<form autocomplete="off" [formGroup]="formPropiedad" (ngSubmit)="crearPropiedad()">
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="ml-1"><i class="far fa-question-circle fa-md mb-2" placement="bottom" ngbTooltip="{{infoNombre}}"></i> Nombre.</h3>
+            <!-- <h3 *ngIf="subSeleccionadas.length === 0">Seleccione subcategorías.</h3> -->
+            <div class="form-group">
+                <div class="input-group">
+                    
+                <input class="form-control" placeholder="Nombre"
+                        formControlName="nombre" type="text" [class.is-invalid]="nombreInvalido">
+                </div>
+                <small *ngIf="nombreInvalido" class="text-danger">Ingrese un nombre.</small>
+            </div>
+
+
+            <div class="row">
+                <div class="col col-md-4">
+                    <h3 class="ml-1"><i class="far fa-question-circle fa-md mb-2" placement="bottom" ngbTooltip="{{infoValores}}"></i> Valores:</h3>
+                </div>
+                <div class="col mt-1">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked (click)="ocultarTabla()">
+                        <label class="form-check-label" for="gridRadios1">
+                            Sin valores
+                        </label>
+                    </div>
+                </div>
+                <div class="col mt-1">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" (click)="mostrarTabla()">
+                        <label class="form-check-label" for="gridRadios2">
+                            Con valores
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+
+            
+        </div>
+        <div class="col-md-6 col">
+            
+            <div class="table-responsive-valores" *ngIf="tablaValores">
+                <table class="table table-sm">
+                    <thead class="thead-dark">
+                        <tr>
+                        <th>#</th>
+                        <th>Valor</th>
+                        <th>Borrar</th>
+                        </tr>
+                    </thead>
+                    <tbody formArrayName="valores">
+                        <tr *ngFor="let control of valores.controls; let i = index">
+                        <td>{{i+1}}</td>
+                        <td><input type="text" class="form-control" placeholder="Nuevo valor" [formControlName]="i"></td>
+                        <td><button class="btn btn-secondary btn-sm" type="button" (click)="borrarValor(i)"><i class="far fa-trash-alt"></i></button></td>
+                        </tr>
+                    </tbody>
+                    </table>
+                    
+            </div>
+            <button *ngIf="tablaValores" class="btn btn-primary btn-sm btn-block mt-3" type="button" (click)="agregarValor()" 
+                    style="background-color: #1f4e84; border: none;">Agregar valor</button>
+            
+            
+        </div>
+        <!--  <div class="col-md-6">
+            <h3 class="ml-1 mt-3">Ingrese porcentaje de la promoción.</h3>
+            <div class="input-group">                                    
+                <input type="number" class="form-control" formControlName="porcentaje" placeholder="Porcentaje" aria-label="Porcentaje" 
+                        aria-describedby="basic-addon1" [class.is-invalid]="porcentajeInvalido">
+                
+                <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon1" style="background-color: white;">%</span>
+                </div>
+                
+            </div>
+            <small *ngIf="porcentajeInvalido" class="text-danger">Ingrese un porcentaje válido.</small>
+            
+        </div> -->
+        
+    </div>
+    <!-- <div class="row">
+        <div class="col col-md-6">
+            
+        </div>
+    </div> -->
+
+
+    <div class="row form-group mt-md-4">
+        <div class="col-md-6 mt-md-3 offset-md-6 col-xs-12 text-center">
+            <button type="submit" class="btn btn-primary mt-5" style="background-color: #1f4e84; border: none;">Aceptar</button>
+        </div>
+    </div>
+</form>
