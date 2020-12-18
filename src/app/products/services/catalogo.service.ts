@@ -103,4 +103,13 @@ id:number;
     }));
   }
 
+  //Obtener propiedades según la ID del producto | obtener-productos-controller /api/productos/{productoId}/propiedades
+  getPropiedadesProducto(idProducto:number){
+    
+    return this.http.get(`${this.url}/productos/${idProducto}/propiedades`).pipe(map((resp:any) => {
+      return resp.propiedades;
+    } ));
+
+  };
+
 }
