@@ -28,7 +28,7 @@
             </div>
 
 
-            <div class="row">
+            <div class="row" *ngIf="botonesEditarProm">
                 <div class="col col-md-4">
                     <h3 class="ml-1"><i class="far fa-question-circle fa-md mb-2" placement="bottom" ngbTooltip="{{infoValores}}"></i> Valores:</h3>
                 </div>
@@ -68,14 +68,14 @@
                         <tr *ngFor="let control of valores.controls; let i = index">
                         <td>{{i+1}}</td>
                         <td><input type="text" class="form-control" placeholder="Nuevo valor" [formControlName]="i"></td>
-                        <td><button class="btn btn-secondary btn-sm" type="button" (click)="borrarValor(i)"><i class="far fa-trash-alt"></i></button></td>
+                        <td><button class="btn btn-secondary btn-sm" type="button" (click)="borrarValor(i)" [disabled]="!botonesEditarProm"><i class="far fa-trash-alt" ></i></button></td>
                         </tr>
                     </tbody>
                     </table>
                     
             </div>
             <button *ngIf="tablaValores" class="btn btn-primary btn-sm btn-block mt-3" type="button" (click)="agregarValor()" 
-                    style="background-color: #1f4e84; border: none;">Agregar valor</button>
+                    style="background-color: #1f4e84; border: none;" [disabled]="!botonesEditarProm">Agregar valor</button>
             
             
         </div>
@@ -104,7 +104,7 @@
 
     <div class="row form-group mt-md-4">
         <div class="col-md-6 mt-md-3 offset-md-6 col-xs-12 text-center">
-            <button type="submit" class="btn btn-primary mt-5" style="background-color: #1f4e84; border: none;">Aceptar</button>
+            <button [disabled]="!subSeleccionada.nombre" type="submit" class="btn btn-primary mt-5" style="background-color: #1f4e84; border: none;">Aceptar</button>
         </div>
     </div>
 </form>

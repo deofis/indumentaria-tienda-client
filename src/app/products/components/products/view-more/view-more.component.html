@@ -37,6 +37,16 @@
                         <p class="off " >20% 0FF</p>
                      </div> 
                 </div>
+
+                <br>
+                <div class="text-center">
+                    <select id="color" *ngFor="let propiedad of propiedadesProducto" class="select">
+                        <option hidden selected value="">{{propiedad.nombre}}</option>  
+                        <option [value]="valor.id" *ngFor="let valor of propiedad.valores">{{valor.valor}}</option>                         
+                    </select>
+
+                </div>
+
                 <div id="caja-carrito">
                     <div class="color-quantity">
                         <div class="modify-quantity">
@@ -47,11 +57,11 @@
                             <span class="item-quantity">  1</span>
                             <i class="fas fa-plus-circle"></i>
                         </div>
-                        <select id="color">
+                        <!-- <select id="color">
                             <option >-Color-</option>
                            
                             
-                        </select>
+                        </select> -->
                         <!-- <select id="color">
                             <option >-Otro-</option>
                             <option value="negro">{{infoProducto?.color}}</option>

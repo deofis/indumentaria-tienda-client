@@ -7,6 +7,7 @@ import { CatalogoService } from 'src/app/products/services/catalogo.service';
 import { CarritoService } from '../../../../cart/services/carrito.service';
 import { AuthService } from '../../../../log-in/services/auth.service';
 import { Carrito } from '../../../../cart/clases/carrito';
+import { PropiedadProducto } from 'src/app/products/clases/propiedad-producto';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class ViewMoreComponent implements OnInit {
 
   stock: boolean;
   infoProducto:Producto;
+  propiedadesProducto:PropiedadProducto[];
 
   constructor(private catalogoservice:CatalogoService,
               private activatedroute:ActivatedRoute,
@@ -30,6 +32,7 @@ export class ViewMoreComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProduct();
+    this.getPropiedadesProducto();
 
     // cambio de muestra de imagenes
     let img1= document.getElementById("img-uno");
@@ -107,7 +110,20 @@ export class ViewMoreComponent implements OnInit {
         console.log(this.infoProducto);
       });
     });
-  }
+  };
+
+  getPropiedadesProducto(){
+    this.activatedroute.params.subscribe(param => {
+      let id = param.id;
+      this.catalogoservice.getPropiedadesProducto(id).subscribe((resp:any) => {
+
+        this.propiedadesProducto = resp;
+        console.log(this.propiedadesProducto);
+        
+      });
+    });
+    
+  };
 
   agregarCarrito(producto: Producto): void {
     if (this.authService.isLoggedIn()) {
