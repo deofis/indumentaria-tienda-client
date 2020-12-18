@@ -18,7 +18,8 @@ export class ViewMoreComponent implements OnInit {
 
   stock: boolean;
   infoProducto:Producto;
-
+  destacado:boolean=false;
+  oferta:boolean=false;
   constructor(private catalogoservice:CatalogoService,
               private activatedroute:ActivatedRoute,
               private _cartService:MockCartService,
@@ -47,9 +48,36 @@ export class ViewMoreComponent implements OnInit {
     //// boton enviar pregunta
     let btnSend = document.getElementById("enviarMsg")
     btnSend.addEventListener("click",this.deleteMessage);
+ 
+    /// precio oferta
+    this.estaEnOferta();
+
+    // destacado 
+    this.destacadosInsignia();
   }
 
-  
+  destacadosInsignia(){
+    if (this.infoProducto.destacado) {
+      this.destacado=false
+    }else{
+      this.destacado=true
+    }
+  }
+  estaEnOferta(){
+    if (this.infoProducto.promocion!== null) {
+        this.oferta=true   
+    }else{
+      this.oferta=false
+    }
+  }
+  mostrarPrecio(){
+    if (this.oferta) {
+      return false
+    }else{
+      return true
+    }
+  }
+
   ////////// INICIO CAMBIOS DE IMAGENES ////////////
   changeImg1(){
     let imgPpal= document.getElementById("img-ppal");

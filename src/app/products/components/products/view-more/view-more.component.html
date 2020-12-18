@@ -30,13 +30,19 @@
                    
 
                 </div>
-                <div id="caja-precio">
-                    <h3>€{{infoProducto.precio}}</h3>
-                    <div class="row-oferta">
-                        <span >€{{infoProducto.precio + 95}}</span>
-                        <p class="off " >20% 0FF</p>
-                     </div> 
+               
+                <div  id="caja-precio">
+                    <div class="precio">
+                        <h3 *ngIf="mostrarPrecio()">€{{infoProducto.precio}}</h3>
+                        <h3 *ngIf="oferta" class="pcio-oferta">€{{infoProducto.promocion?.precioOferta}}</h3>
+                        <div class="row-oferta">
+                            <span >€{{infoProducto.precio }}</span>
+                            <p class="off ">{{infoProducto.promocion?.porcentaje * 100}}% 0FF</p>
+                         </div> 
+                    </div>
+                    <i class="fas fa-medal" *ngIf="destacado"></i>
                 </div>
+                
                 <div id="caja-carrito">
                     <div class="color-quantity">
                         <div class="modify-quantity">

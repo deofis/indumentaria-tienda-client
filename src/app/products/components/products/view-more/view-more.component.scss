@@ -15,6 +15,7 @@ $color-ppal:#fff;
     background-repeat: no-repeat;
     background-position: center;
 }
+
 #contenedor-vermas{
     display: flex;
     flex-direction: column;
@@ -161,38 +162,49 @@ $color-ppal:#fff;
                 
                 }
                 #caja-precio{
-                    display: flex;                   
-                    h3{
-                        font-family: $fte-sec;
-                        font-weight: normal;
-                        font-size: 38px;
-                        margin-bottom: 25px;
-                        color: $color-wf3;
-                    }
-             
-                        .row-oferta{
-                            display: flex;
-                            flex-direction: column;
-                          margin-top:-5px;
-                            align-items: baseline;
-                          
-                            span{
-                                text-decoration: line-through;
-                                 font-size: 13px;
-                                 color:grey;
-                                 font-family: $fte-sec;
-                                 margin-bottom: -4px;
-                                 outline: none;
-                                 display: block;
+                    display: flex;    
+                    .precio{
+                        display: flex;
+                        h3{
+                            font-family: $fte-sec;
+                            font-weight: normal;
+                            font-size: 38px;
+                            margin-bottom: 25px;
+                            color: $color-wf3;
+                        }
+                 
+                            .row-oferta{
+                                display: flex;
+                                flex-direction: column;
+                              margin-top:-5px;
+                                align-items: baseline;
+                              
+                                span{
+                                    text-decoration: line-through;
+                                     font-size: 13px;
+                                     color:grey;
+                                     font-family: $fte-sec;
+                                     margin-bottom: -4px;
+                                     outline: none;
+                                     display: block;
+                                }
+                                .off{
+                                    font-size: 14px;
+                                    font-family: $fte-sec;
+                                    display: block;
+                                    margin-left: 5px;
+                                    margin-bottom: 0px;
+                                    color: orangered;
+                                }
                             }
-                            .off{
-                                font-size: 14px;
-                                font-family: $fte-sec;
-                                display: block;
-                                margin-left: 5px;
-                                margin-bottom: 0px;
-                                color: orangered;
-                            }
+                    }               
+                    .fa-medal{
+                        align-self: flex-start;
+                        margin-top: 0px;
+                        margin-left: 20px;
+                        color:$color-wf3;
+                        font-size:2em;
+                         transform:rotate(170deg);
                         }
                    
                    
