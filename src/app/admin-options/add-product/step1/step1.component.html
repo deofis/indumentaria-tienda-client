@@ -18,8 +18,7 @@
                         <label for="brand">Marca: </label>
                         <mat-form-field class="example-full-width inputBrand">
 
-                            <input type="text" id="brand" aria-label="Number" matInput formControlName="marca"
-                                [matAutocomplete]="auto" [class.is-invalid]="marcaInvalida">
+                            <input type="text" id="brand" aria-label="Number" matInput formControlName="marca" [matAutocomplete]="auto" [class.is-invalid]="marcaInvalida">
                             <mat-autocomplete [displayWith]="mostrarNombre" #auto="matAutocomplete">
                                 <mat-option *ngFor="let marca of filteredBrands | async" [value]="marca">
                                     {{marca.nombre}}
@@ -76,8 +75,7 @@
                 <div class="row subandcat">
                     <div class="input-msj">
                         <span *ngIf="categoriaInvalida" class="text-rojo"><strong>(*)</strong></span>
-                        <select name="category" id="categories" (change)="showSubcategories()"
-                            formControlName="categoria" [ngModel]="categoria" [class.is-invalid]="categoriaInvalida">
+                        <select name="category" id="categories" (change)="showSubcategories()" formControlName="categoria" [ngModel]="categoria" [class.is-invalid]="categoriaInvalida">
                             <option disabled>{{categoria}}</option>
                             <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{categoria.nombre}}
                             </option>
@@ -87,8 +85,7 @@
                     </div>
                     <div class="input-msj">
                         <span *ngIf="subcategoriaInvalida" class="text-rojo"><strong>(*)</strong></span>
-                        <select name="subcategory" id="subcategories" formControlName="subcategoria"
-                            [class.is-invalid]="subcategoriaInvalida" [ngModel]="subcategoria">
+                        <select name="subcategory" id="subcategories" formControlName="subcategoria" [class.is-invalid]="subcategoriaInvalida" [ngModel]="subcategoria" (change)="showProperties()">
                             <option>{{subcategoria}}</option>
                             <option *ngFor="let subcategoria of subcategorias" [ngValue]="subcategoria">
                                 {{subcategoria.nombre}}
@@ -97,26 +94,25 @@
 
                     </div>
                 </div>
-                <div class="row elegir-props">
+                <form [formGroup]="formPropiedades" class="row elegir-props" *ngIf="estaSubcatSeleccionada">
                     <div class="col">
                         <div class="row">
                             <p>De las siguientes propiedades, seleccione las que son aplicables a su producto.</p>
                         </div>
                         <div class="row">
-                            <div class="propiedad-check">
-                                <input type="checkbox" id="propiedad" >
-                                <label for="propiedad"> Propiedad</label>
+                            <div *ngFor="let propiedad of propiedadesProducto; let i = index" class="propiedad-check">
+                                <input formControlName="propiedad" (change)="guardarPropiedades(propiedad)" type="checkbox" id="{{propiedad.nombre}}">
+                                <label for="{{propiedad.nombre}}">{{propiedad.nombre}}</label>
                             </div>
-                                                     
+
                         </div>
                     </div>
-                   
-                </div>
+
+                </form>
                 <div class="row">
                     <div class="input-msj">
                         <span *ngIf="unidadInvalida" class="text-rojo"><strong>(*)</strong></span>
-                        <select name="unidadMedida" id="unidadMedida" (change)="showUnit()"
-                            formControlName="unidadMedida" [ngModel]="unidad" [class.is-invalid]="unidadInvalida">
+                        <select name="unidadMedida" id="unidadMedida" (change)="showUnit()" formControlName="unidadMedida" [ngModel]="unidad" [class.is-invalid]="unidadInvalida">
                             <option>{{unidad}}</option>
                             <option *ngFor="let unidad of unidadesMedida" [ngValue]="unidad">{{unidad.nombre}}</option>
                         </select>
@@ -124,8 +120,7 @@
                     </div>
                     <div class="availability-container">
                         <label for="availability"> Disponibilidad General:</label>
-                        <input type="number" min="0" pattern="^[0-9]+" id="availability" (input)="changeUnit()"
-                            formControlName="disponibilidadGeneral">
+                        <input type="number" min="0" pattern="^[0-9]+" id="availability" (input)="changeUnit()" formControlName="disponibilidadGeneral">
                         <span id="unidadElegida"></span>
                     </div>
                     <div class="destacado">
@@ -137,8 +132,7 @@
                     <div class="price-container">
                         <label for="price"> Precio:</label>
                         <p id="euro">€</p>
-                        <input type="number" min=0 pattern="^[0-9]+" id="price" formControlName="precio"
-                            [class.is-invalid]="precioInvalido">
+                        <input type="number" min=0 pattern="^[0-9]+" id="price" formControlName="precio" [class.is-invalid]="precioInvalido">
                         <span *ngIf="precioInvalido" class="text-rojo"><strong>(*)</strong></span>
                     </div>
 
@@ -159,20 +153,18 @@
                             entre ellas.</label>
                     </div>
                 </div>
-                <span
-                    *ngIf="precioInvalido || categoriaInvalida || subcategoriaInvalida || unidadInvalida || nombreInvalido"
-                    class="text-rojo"><strong>(*)Los campos señalados son obligatorios.</strong></span>
+                <span *ngIf="precioInvalido || categoriaInvalida || subcategoriaInvalida || unidadInvalida || nombreInvalido" class="text-rojo"><strong>(*)Los campos señalados son obligatorios.</strong></span>
             </div>
             <button class="btn" id="btn-end1"> Guardar y Finalizar </button>
             <button class="btn" id="btn-end2" (click)="enviarProducto();mostrarSiguiente()"> Guardar y Continuar </button>
         </form>
-        <form class="form-promo"  *ngIf="formPromo" id="form-promo">
+        <form class="form-promo" *ngIf="formPromo" id="form-promo">
             <div class="row">
                 <div class="col-10 offset-1">
-                    <app-form-promo-product ></app-form-promo-product>
+                    <app-form-promo-product></app-form-promo-product>
                 </div>
             </div>
-         
+
             <div class="row">
                 <div class="botones-contenedor check-sku col-10 offset-1">
                     <!-- <button class="btn" id="btn-cancel"> Cancelar</button>

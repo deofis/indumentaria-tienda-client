@@ -53,22 +53,27 @@ export class Step1Component implements OnInit {
   filteredBrands:Observable<Marca[]>;
   newProduct:Producto;
 
- 
+  // propiedades
+  formPropiedades: FormGroup;
   propiedadesProducto:PropiedadProducto[];  
-  constructor( private router:Router,
-                private http:HttpClient,
-                private catalogoservice:CatalogoService,
-                private fb:FormBuilder,
-                public modal: NgbModal,
-                private productoService:ProductoService,
-                private validadores: ValidadoresService,
-                private dataService:DataService,
-                private propiedadesService:PropiedadesService,
-                ) { 
-                  this.marcas = [];
-                  this.newProduct= new Producto();
-                this.newBrand=new Marca();
-                }
+  estaSubcatSeleccionada: boolean;
+  propiedadSeleccionada: PropiedadProducto;
+  propiedadesSeleccionadas: any[];
+
+  constructor(private router:Router,
+              private catalogoservice:CatalogoService,
+              private fb:FormBuilder,
+              public modal: NgbModal,
+              private productoService:ProductoService,
+              private validadores: ValidadoresService,
+              private dataService:DataService,
+              private propiedadesService:PropiedadesService) { 
+
+    this.marcas = [];
+    this.newProduct= new Producto();
+    this.newBrand=new Marca();
+    this.propiedadesSeleccionadas = [];
+  }
 
   ngOnInit(): void {
          ///inicializar el fomulario
@@ -109,29 +114,21 @@ crearProducto(){
     this.newProduct.marca=this.form.controls.marca.value;
     this.newProduct.subcategoria=this.form.controls.subcategoria.value;
     this.newProduct.unidadMedida=this.form.controls.unidadMedida.value;
-   //  this.newProduct.propiedades=this.form.controls.subcategoria.value.propiedades ;
- 
-   this.propiedadesProducto=this.form.controls.subcategoria.value.propiedades;
-  
+    this.newProduct.propiedades = this.propiedadesSeleccionadas;
 
     this.productoService.createNewProduct(this.newProduct).subscribe( response => {
-    console.log(response);
-    this.newProduct.id=response.id;
-    this.productoService.uploadPhoto(this.selectedFile, this.newProduct?.id).subscribe(response => console.log(response));
-  //  for (let i = 0; i < this.propiedadesProducto.length; i++) {
-  //   this.propiedadesService.crearNuevaPropiedadProducto(this.propiedadesProducto[i],this.newProduct.id).subscribe(response => console.log(response));
-     
-  //  }
+      console.log(response);
+      this.newProduct.id=response.id;
+      this.productoService.uploadPhoto(this.selectedFile, this.newProduct?.id).subscribe(response => console.log(response));
    
-    this.form.disable();
-    let button1 = document.getElementById("btn-end1");
-    button1.style.display="none";
-    let button2 = document.getElementById("btn-end2");
-    button2.style.display="none";
-    let formPromocion=document.getElementById("form-promo");
-    formPromocion.style.display="flex";
-    this.deshabilitarInputFoto();
-    
+      this.form.disable();
+      let button1 = document.getElementById("btn-end1");
+      button1.style.display="none";
+      let button2 = document.getElementById("btn-end2");
+      button2.style.display="none";
+      let formPromocion=document.getElementById("form-promo");
+      formPromocion.style.display="flex";
+      this.deshabilitarInputFoto();
   }, err => {
     console.log(err);
   });
@@ -153,6 +150,9 @@ crearForm(){
     validators: this.validadores.existeMarca('marca')
   });
 
+  this.formPropiedades = this.fb.group({
+    propiedad: [""]
+  });
 }
 
   // Getters para campos invalidos formulario 
@@ -290,11 +290,37 @@ crearForm(){
       this.catalogoservice.getSubcategoriasPorCategoria(this.categoriaSeleccionada.id)
       .subscribe(response => {
         this.subcategorias=response.subcategorias;
-      })
+      });
+
+      this.formPropiedades.reset();
+      this.estaSubcatSeleccionada = false;
 
       let comboBoxSubcateories= document.getElementById("subcategories");
       comboBoxSubcateories.style.display="block";
     }
+
+    showProperties(): void {
+      let subcategoria: Subcategoria;
+      subcategoria = this.form.controls.subcategoria.value;
+      this.estaSubcatSeleccionada = true;
+
+      this.propiedadesProducto = subcategoria.propiedades;
+      this.propiedadesSeleccionadas = [];
+      this.formPropiedades.reset();
+    }
+
+    guardarPropiedades(propiedad: PropiedadProducto) {
+      let checked = this.formPropiedades.controls.propiedad.value;
+
+      if (checked) {
+        this.propiedadesSeleccionadas.push(propiedad);
+      } else {
+        this.propiedadesSeleccionadas = this.propiedadesSeleccionadas.filter(item => item !== propiedad);
+      }
+
+      console.log(this.propiedadesSeleccionadas);
+    }
+
     showUnit(){
        this.unidadSeleccionada = this.form.controls.unidadMedida.value;
      
