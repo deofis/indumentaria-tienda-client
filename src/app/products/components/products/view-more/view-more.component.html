@@ -1,14 +1,14 @@
 <div id="contenedor-vermas">
-   
+
     <section>
         <div class="superior">
-        <div class="routes">
-            <p><a [routerLink]="['/home']" title="Home">Inicio </a> <i class="fas fa-chevron-right"></i><a href=""> Categoría </a> <i class="fas fa-chevron-right"></i> <a href=""> {{infoProducto.subcategoria?.nombre}} </a> <i class="fas fa-chevron-right"></i> <a href="">{{infoProducto?.nombre}} </a></p>
-        </div>
-        <div class="iconos-detalle-producto">
-            <a title="Agregar a Favoritos"> <i class=" iconos far fa-heart"></i></a>
-            <a title="Copiá este link!"> <i class="iconos fas fa-link"></i></a>
-        </div>
+            <div class="routes">
+                <p><a [routerLink]="['/home']" title="Home">Inicio </a> <i class="fas fa-chevron-right"></i><a href=""> Categoría </a> <i class="fas fa-chevron-right"></i> <a href=""> {{infoProducto.subcategoria?.nombre}} </a> <i class="fas fa-chevron-right"></i>                    <a href="">{{infoProducto?.nombre}} </a></p>
+            </div>
+            <div class="iconos-detalle-producto">
+                <a title="Agregar a Favoritos"> <i class=" iconos far fa-heart"></i></a>
+                <a title="Copiá este link!"> <i class="iconos fas fa-link"></i></a>
+            </div>
         </div>
         <article class="contenedor-uno">
             <div id="izquierda" class="izquierda">
@@ -27,15 +27,20 @@
             <div id="derecha">
                 <div id="caja-titulo">
                     <h2>{{infoProducto?.nombre}}</h2>
-                   
+
 
                 </div>
+
                 <div id="caja-precio">
-                    <h3>€{{infoProducto.precio}}</h3>
-                    <div class="row-oferta">
-                        <span >€{{infoProducto.precio + 95}}</span>
-                        <p class="off " >20% 0FF</p>
-                     </div> 
+                    <div class="precio">
+                        <h3 *ngIf="mostrarPrecio()">€{{infoProducto.precio}}</h3>
+                        <h3 *ngIf="oferta" class="pcio-oferta">€{{infoProducto.promocion?.precioOferta}}</h3>
+                        <div class="row-oferta">
+                            <span>€{{infoProducto.precio }}</span>
+                            <p class="off ">{{infoProducto.promocion?.porcentaje * 100}}% 0FF</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-medal" *ngIf="destacado"></i>
                 </div>
 
                 <br>
@@ -140,7 +145,7 @@
                    Enviar
                 </button>
             </div>
-     
+
 
         </article>
     </section>
