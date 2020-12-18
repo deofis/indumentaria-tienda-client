@@ -15,7 +15,7 @@ export class ProductsComponent implements OnInit {
   ofertas:Producto [];
   target: HTMLInputElement;
   categorias:Categoria[];
-  
+  fotoCategoria:boolean;
   // categories:any[]=[
   //   {
   //     img:'../../../../assets/imagenes/categoria1.jpg'
@@ -91,6 +91,7 @@ const fila2=document.getElementById("contenedor-carouselOfertas");
     this.backButton1();
     this.backButton2();
   
+    this.categoriasFoto();
   }
 
   backButton1(){
@@ -166,7 +167,18 @@ showCategoriesEffect() {
       })
     }
 
-
+categoriasFoto(){
+  for (let i = 0; i < this.categorias.length; i++) {
+    if (this.categorias[i].foto!==null) {
+      if (this.categorias[i].foto.imageUrl!==null) {
+        this.fotoCategoria=true
+      }else{
+        this.fotoCategoria=false
+      }
+    }    
+  }
+ 
+}
   
 
 
