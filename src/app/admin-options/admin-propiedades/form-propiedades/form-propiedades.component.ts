@@ -19,6 +19,8 @@ export class FormPropiedadesComponent implements OnInit, AfterViewInit, OnDestro
 
   accion:string;
 
+  botonesEditarProm = true;
+
   subSeleccionada:Subcategoria;
 
   formPropiedad: FormGroup;
@@ -64,6 +66,7 @@ export class FormPropiedadesComponent implements OnInit, AfterViewInit, OnDestro
       this.propiedad = prop;
       this.cargarPropAEditar(this.propiedad);
       this.accion = "editProp"
+      this.botonesEditarProm = false;
     });
 
   }

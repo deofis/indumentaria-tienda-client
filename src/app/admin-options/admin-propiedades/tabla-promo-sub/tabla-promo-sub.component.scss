@@ -20,3 +20,15 @@ thead tr th{
     overflow:scroll;
     overflow-x: hidden;
   }
+
+.table-responsive::-webkit-scrollbar {
+    width: 7px;
+  }
+.table-responsive::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.table-responsive::-webkit-scrollbar-thumb {
+    background-color: #30384291;
+    border-radius: 5px;
+}
