@@ -20,25 +20,7 @@ export class BuscadorComponent implements OnInit {
   marcas:Marca[];
   subcategorias:Subcategoria[];
   submenu:boolean=false
-  images:any[]=[
-    {
-      img:'../../../../assets/imagenes/prod1.jpg'
-    },
-    {
-      img:'../../../../assets/imagenes/prod2.png ',
-    },
-    {
-      img:'../../../../assets/imagenes/prod3.jpg'},
-    {
-      img:'../../../../assets/imagenes/prod4.jpg',
-    },
-    {
-      img:'../../../../assets/imagenes/prod5.jpg',
-    },
-    {
-      img:'../../../../assets/imagenes/prod6.jpg',
-    }
-  ];
+
   constructor(private catalogoservice:CatalogoService, private activatedRoute:ActivatedRoute) {
 
    }
@@ -64,9 +46,7 @@ export class BuscadorComponent implements OnInit {
           this.marcas=response.marcas;
           //mostrar subcategorias
           this.subcategorias=response.subcategorias;
-          for (let index = 0; index < this.rdosBusqueda.length; index++) {
-            this.rdosBusqueda[index].foto = this.images[index]?.img;       
-          }
+     
         });
         let mostrarTermino= document.getElementById("termino-busqueda");
         mostrarTermino.innerText=termino;
