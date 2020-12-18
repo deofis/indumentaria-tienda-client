@@ -249,6 +249,27 @@ $color-ppal:#fff;
                     .subandcat{
                         margin-top: -20px;
                     }
+                    .elegir-props{
+                        display: flex;
+                        margin-bottom: -10px;
+                        p{
+                            font-family: $fte-sec;
+                            font-size: 14px;
+                            margin-bottom: -20px;
+                        }
+                        .propiedad-check{
+                            margin-top: -20px;
+                            font-family: $fte-sec;
+                            font-size: 13px;
+                            color: $color-wf3;
+                            margin-right: 25px;
+                            margin-bottom: 10px;
+                            #propiedad{
+                                margin-right: 5px;
+                            }
+                        }
+                        
+                    }
                     .textarea{
                         width: 103%;
                         font-family: $fte-sec;
@@ -319,7 +340,7 @@ $color-ppal:#fff;
                    }
                 }
                 .form-promo{
-                    display: none;
+                    // display: none;
                     flex-direction: column;
                     .botones-contenedor{
                         display: flex;

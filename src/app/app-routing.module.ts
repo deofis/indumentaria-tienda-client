@@ -24,6 +24,7 @@ import { ProductsListComponent } from "./admin-options/products-list/products-li
 import { AddProductComponent } from "./admin-options/add-product/add-product.component";
 import { AdminPromosComponent } from './admin-options/admin-promos/admin-promos.component';
 import { AdminVentasComponent } from './admin-options/admin-ventas/admin-ventas.component';
+import { AdminPropiedadesComponent } from './admin-options/admin-propiedades/admin-propiedades.component';
 
 const admin = 'ROLE_ADMIN';
 const user  = 'ROLE_USER';
@@ -43,10 +44,11 @@ const routes: Routes = [
   { path:"admin-profile", component:AdminProfileComponent, canActivate: [AuthGuard, RoleGuard], data: {role: admin} },
   { path:"brands-panel" , component:BrandsPanelComponent, canActivate: [AuthGuard, RoleGuard], data: {role: admin} },
   { path:"sales",component:AdminVentasComponent, canActivate: [AuthGuard, RoleGuard], data: {role: admin} },
-  // { path:"add-product",component:AddProductComponent, canActivate: [AuthGuard, RoleGuard], data: {role: admin} },
   { path:"add-product",component:AddProductComponent},
+  // { path:"add-product",component:AddProductComponent, canActivate: [AuthGuard, RoleGuard], data: {role: admin} },
   { path:"products-list" , component:ProductsListComponent, canActivate: [AuthGuard, RoleGuard], data: {role: admin} },
   { path:"admin-promo", component:AdminPromosComponent/* , canActivate: [AuthGuard, RoleGuard], data: {role: admin} */ },
+  { path:"admin-propiedades", component: AdminPropiedadesComponent, canActivate: [AuthGuard, RoleGuard], data: {role: admin} },
   { path:"user-sign-up",component:UserSignUpComponent },
   { path:"new-password", component:NewPasswordComponent},
   { path:"recuperar-password/:token",component:NewPasswordComponent },

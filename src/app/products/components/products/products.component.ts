@@ -1,3 +1,4 @@
+import { Promocion } from './../../../admin-options/admin-promos/clases/promocion';
 import { Component, OnInit } from '@angular/core';
 import { Categoria } from 'src/app/products/clases/categoria';
 import { Producto } from '../../clases/producto';
@@ -10,52 +11,36 @@ import { CatalogoService } from '../../services/catalogo.service';
 })
 export class ProductsComponent implements OnInit {
   productosDestacados: Producto[];
+  todosLosProductos:Producto [];
+  ofertas:Producto [];
   target: HTMLInputElement;
-   categorias:Categoria[];
-   images:any[]=[
-    {
-      img:'../../../../assets/imagenes/prod1.jpg'
-    },
-    {
-      img:'../../../../assets/imagenes/prod2.png ',
-    },
-    {
-      img:'../../../../assets/imagenes/prod3.jpg'},
-    {
-      img:'../../../../assets/imagenes/prod4.jpg',
-    },
-    {
-      img:'../../../../assets/imagenes/prod5.jpg',
-    },
-    {
-      img:'../../../../assets/imagenes/prod6.jpg',
-    }
-  ];
-  categories:any[]=[
-    {
-      img:'../../../../assets/imagenes/categoria1.jpg'
-    },
-    {
-      img:'../../../../assets/imagenes/categoria2.jpg ',
-    },
-    {
-      img:'../../../../assets/imagenes/categoria3.jpg'},
-    {
-      img:'../../../../assets/imagenes/categoria4a.jpg',
-    },
-    {
-      img:'../../../../assets/imagenes/categoria5a.jpg',
-    },
-    {
-      img:'../../../../assets/imagenes/categoria6.jpg',
-    },
-    {
-      img:'../../../../assets/imagenes/categoria7b.jpg',
-    },
-    {
-      img:'../../../../assets/imagenes/categoria8a.jpg',
-    }
-  ]
+  categorias:Categoria[];
+  fotoCategoria:boolean;
+  // categories:any[]=[
+  //   {
+  //     img:'../../../../assets/imagenes/categoria1.jpg'
+  //   },
+  //   {
+  //     img:'../../../../assets/imagenes/categoria2.jpg ',
+  //   },
+  //   {
+  //     img:'../../../../assets/imagenes/categoria3.jpg'},
+  //   {
+  //     img:'../../../../assets/imagenes/categoria4a.jpg',
+  //   },
+  //   {
+  //     img:'../../../../assets/imagenes/categoria5a.jpg',
+  //   },
+  //   {
+  //     img:'../../../../assets/imagenes/categoria6.jpg',
+  //   },
+  //   {
+  //     img:'../../../../assets/imagenes/categoria7b.jpg',
+  //   },
+  //   {
+  //     img:'../../../../assets/imagenes/categoria8a.jpg',
+  //   }
+  // ]
   back1:boolean=false;
   back2:boolean=false;
 
@@ -97,15 +82,16 @@ const fila2=document.getElementById("contenedor-carouselOfertas");
     /// EFECTO CATEGORIAS
     
     this.getProductosDestacados();
-   
-     this.getListaCategorias();
-     this.paginacion();
+    this.getOfertas()
+    this.getListaCategorias();
+    this.paginacion();
     window.addEventListener("scroll",this.showCategoriesEffect);
 
     /// ocultar boton izquierdo
-  this.backButton1();
-  this.backButton2();
+    this.backButton1();
+    this.backButton2();
   
+    this.categoriasFoto();
   }
 
   backButton1(){
@@ -160,11 +146,14 @@ showCategoriesEffect() {
     this.catalogoService.getProductosDestacados().subscribe(response => {
       this.productosDestacados=response;
 
-      for (let index = 0; index < this.productosDestacados.length; index++) {
-        this.productosDestacados[index].foto = this.images[index]?.img;       
-      }
     });
+  }
 
+  getOfertas():void{
+    this.catalogoService.getProductos().subscribe(response => {
+    this.todosLosProductos=response;
+    this.ofertas= this.todosLosProductos.filter(rdo => rdo.promocion !== null);
+    });
   }
 
 
@@ -173,14 +162,23 @@ showCategoriesEffect() {
     getListaCategorias():void{
       this.catalogoService.getListaCategorias().subscribe( response =>{
        this.categorias=response;
-       for (let index = 0; index < this.categorias.length; index++) {
-        this.categorias[index].foto = this.categories[index]?.img;       
-      }
+  
       console.log(this.categorias)
       })
     }
 
-
+categoriasFoto(){
+  for (let i = 0; i < this.categorias.length; i++) {
+    if (this.categorias[i].foto!==null) {
+      if (this.categorias[i].foto.imageUrl!==null) {
+        this.fotoCategoria=true
+      }else{
+        this.fotoCategoria=false
+      }
+    }    
+  }
+ 
+}
   
 
 

@@ -62,6 +62,10 @@ import { PromoProductoComponent } from './admin-options/admin-promos/promo-produ
 import { TablaProductosComponent } from './admin-options/admin-promos/promo-producto/tabla-productos/tabla-productos.component';
 import { FormPromoProductComponent } from './admin-options/admin-promos/promo-producto/form-promo-product/form-promo-product.component';
 import { NoimagePipe } from './pipes/noimage.pipe';
+import { AdminPropiedadesComponent } from './admin-options/admin-propiedades/admin-propiedades.component';
+import { PropiedadSubcategoriaComponent } from './admin-options/admin-propiedades/propiedad-subcategoria/propiedad-subcategoria.component';
+import { FormPropiedadesComponent } from './admin-options/admin-propiedades/form-propiedades/form-propiedades.component';
+import { TablaPromoSubComponent } from './admin-options/admin-propiedades/tabla-promo-sub/tabla-promo-sub.component';
 
 
 
@@ -110,6 +114,10 @@ import { NoimagePipe } from './pipes/noimage.pipe';
     TablaProductosComponent,
     FormPromoProductComponent,
     NoimagePipe,
+    AdminPropiedadesComponent,
+    PropiedadSubcategoriaComponent,
+    FormPropiedadesComponent,
+    TablaPromoSubComponent,
   ],
   imports: [
     BrowserModule,
