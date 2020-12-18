@@ -135,3 +135,11 @@ section {
     background-color: #1f4e84b2;
     border-radius: 5px;
 }
+
+.point{
+    cursor: pointer;
+    &:hover {
+        font-size: 1.2em;
+        color: $color-wf3;
+    }
+}

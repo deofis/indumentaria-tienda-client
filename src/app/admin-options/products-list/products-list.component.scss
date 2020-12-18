@@ -229,3 +229,228 @@ section {
         }
     }
 }
+
+
+@media screen and (max-width:720px){
+    
+    section {
+        width: 100%;
+        display: flex;
+        grid-template-rows: 1fr;
+        grid-template-columns: 200px auto;
+        height: fit-content;
+        min-height: 90vh;
+        .container-products {
+            display: flex;
+            justify-content: center;
+            .frame {
+                width: 85%;
+                margin-top: 30px;
+                .title {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 5px;
+                    h2 {
+                        font-family: $fte-ppal;
+                        font-size: 22px;
+                        color: $color-sec;
+                    }
+                    .filtros {
+                        width: 26%;
+                        ul {
+                            width: 100%;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            .ordenar {
+                                position: relative;
+                                padding-right: 5px;
+                                padding-left: 5px;
+                                z-index: 2;
+                                list-style: none;
+                                cursor: pointer;
+                                &:hover>ul {
+                                    display: block;
+                                }
+                                div {
+                                    display: flex;
+                                    justify-items: center;
+                                    align-items: center;
+                                    font-family: $fte-sec;
+                                    font-size: 13px;
+                                    margin-left: 5px;
+                                    .fa-caret-down {
+                                        color: $color-sec;
+                                        margin-left: 5px;
+                                    }
+                                }
+                                ul {
+                                    display: none;
+                                    list-style: none;
+                                    position: absolute;
+                                    right: -1px;
+                                    width: 105px;
+                                    background: $color-menues;
+                                    box-sizing: border-box;
+                                    cursor: pointer;
+                                    padding-bottom: 3px;
+                                    border-radius: 3px 0 3px 3px;
+                                    .opciones {
+                                        width: 100%;
+                                        color: rgb(34, 33, 33);
+                                        text-align: right;
+                                        font-size: 13px;
+                                        font-family: $fte-sec;
+                                        margin-right: 0px;
+                                        padding: 5px 5px;
+                                        display: block;
+                                        &:hover {
+                                            background-color: rgb(219, 216, 216);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .detalleCompras {
+                    margin-bottom: 150px;
+                    .row-product {
+                        background-color: white;
+                        padding: 30px 10px;
+                        box-shadow: 1px 2px 3px $color-sec;
+                        margin-bottom: 10px;
+                        width: 100%;
+                        font-family: $fte-sec;
+                        font-size: 15px;
+                        .row1 {
+                            width: 100%;
+                            display: grid;
+                            grid-template-columns: 7% 9% 29% 25% 23% 7%;
+                            grid-template-rows: 1fr;
+                            justify-items: center;
+                            align-items: center;
+                            .img-prod {
+                                img {
+                                    width: 60px;
+                                    height: 50px;
+                                }
+                            }
+                            .campo {
+                                span {
+                                    color: $color-sec;
+                                    cursor: default;
+                                    text-align: center;
+                                }
+                            }
+                            .name {
+                                justify-self: flex-start;
+                                font-weight: bold;
+                            }
+                            div {
+                                position: relative;
+                                &:hover>ul {
+                                    display: block;
+                                }
+                                i {
+                                    text-align: right;
+                                    color: $color-sec;
+                                    cursor: pointer;
+                                    font-size: 1.2em;
+                                    &:hover {
+                                        font-size: 1.3em;
+                                    }
+                                }
+                                .fa-angle-up {
+                                    display: none;
+                                }
+                                ul {
+                                    display: none;
+                                    list-style: none;
+                                    position: absolute;
+                                    z-index: 3;
+                                    top: 25px;
+                                    right: -100px;
+                                    width: 105px;
+                                    background: $color-menues;
+                                    box-sizing: border-box;
+                                    box-shadow: 1px 2px 2px $color-ter;
+                                    cursor: pointer;
+                                    padding-bottom: 3px;
+                                    border-radius: 3px 0 3px 3px;
+                                    .opciones-menu {
+                                        width: 100%;
+                                        color: rgb(34, 33, 33);
+                                        text-align: right;
+                                        font-size: 13px;
+                                        font-family: $fte-sec;
+                                        margin-right: 0px;
+                                        padding: 5px 5px;
+                                        display: block;
+                                        &:hover {
+                                            background-color: rgb(219, 216, 216);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .row2 {
+                            display: none;
+                            padding-top: 20px;
+                            width: 90%;
+                            margin-left: auto;
+                            margin-right: auto;
+                            .conceptos {
+                                display: grid;
+                                grid-template-rows: 1fr;
+                                grid-template-columns: 20% 20% 20% 20% 20%;
+                                font-family: $fte-sec;
+                                font-weight: bold;
+                                font-size: 13px;
+                                color: rgb(34, 33, 33);
+                                p {
+                                    margin-left: 20px;
+                                }
+                            }
+                            .lista-combinaciones {
+                                margin-top: -9px;
+                                .combinacion {
+                                    display: grid;
+                                    grid-template-rows: 1fr;
+                                    grid-template-columns: 20% 20% 18% 18% 18% 6%;
+                                    p {
+                                        font-size: 13px;
+                                        color: $color-sec;
+                                        margin-left: 20px;
+                                    }
+                                    .resol,
+                                    .disponibilidad,
+                                    .pcio {
+                                        margin-left: 55px;
+                                    }
+                                    .disponibilidad,
+                                    .pcio {
+                                        margin-left: 70px;
+                                    }
+                                    i {
+                                        text-align: right;
+                                        color: $color-sec;
+                                        cursor: pointer;
+                                        margin-left: 60px;
+                                        &:hover {
+                                            font-size: 1.1em;
+                                            color: $color-wf3;
+                                        }
+                                    }
+                                    cursor: default;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

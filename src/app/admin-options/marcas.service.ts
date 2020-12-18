@@ -24,7 +24,7 @@ export class MarcasService {
 
   createNewBrand(brand: Marca){
 
-    return this.http.post(`${this.url}/productos/marcas/nueva`, brand);
+    return this.http.post(`${this.url}/productos/marcas`, brand);
 
   };
 

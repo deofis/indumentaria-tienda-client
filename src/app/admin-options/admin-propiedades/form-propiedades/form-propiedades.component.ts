@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PropiedadProducto } from 'src/app/products/clases/propiedad-producto';
 import { Subcategoria } from 'src/app/products/clases/subcategoria';
@@ -8,13 +8,16 @@ import { PropiedadesService } from '../../propiedades.service';
 import Swal from "sweetalert2";
 
 import { DataPromoSubService } from '../data-promo-sub.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-form-propiedades',
   templateUrl: './form-propiedades.component.html',
   styleUrls: ['./form-propiedades.component.scss']
 })
-export class FormPropiedadesComponent implements OnInit {
+export class FormPropiedadesComponent implements OnInit, AfterViewInit, OnDestroy {
+
+  accion:string;
 
   subSeleccionada:Subcategoria;
 
@@ -28,21 +31,48 @@ export class FormPropiedadesComponent implements OnInit {
 
   tablaValores: boolean;
 
+  suscripcionSub: Subscription;
+  suscripcionProm: Subscription;
+
   constructor( private fb:FormBuilder,
-               private dataPromoSubService: DataPromoSubService) { }
+               private dataPromoSubService: DataPromoSubService,
+               private propiedadesService: PropiedadesService) { }
 
   ngOnInit(): void {
 
-    this.dataPromoSubService.subSelect$.subscribe(sub => {
-      this.subSeleccionada = sub;
-    });
-
+    
+    this.accion = "nuevaProp"
     this.subSeleccionada = new Subcategoria();
     this.propiedad = new PropiedadProducto();
     this.valoresPropiedad = new ValorPropiedadProducto();
     this.crearFormNuevaPromocion();
     this.tablaValores = false;
 
+  };
+
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    this.suscripcionSub = this.dataPromoSubService.subSelect$.subscribe(sub => {
+      this.subSeleccionada = sub;
+      console.log(this.subSeleccionada);
+      
+    });
+
+    this.suscripcionProm = this.dataPromoSubService.editPropiedad$.subscribe(prop => {
+      this.tablaValores = true;
+      this.propiedad = prop;
+      this.cargarPropAEditar(this.propiedad);
+      this.accion = "editProp"
+    });
+
+  }
+
+  ngOnDestroy(): void {
+    
+    this.suscripcionSub.unsubscribe();
+    this.suscripcionProm.unsubscribe();
+    
   }
 
 
@@ -101,31 +131,49 @@ export class FormPropiedadesComponent implements OnInit {
       };
 
     };
-    /* this.propiedadesService.crearNuevaPropiedadSubcategoria(this.propiedad, this.subSeleccionada.id).subscribe((resp:any) => {
-      console.log(resp);
-      
-    }); */
 
-    console.log(this.subSeleccionada, this.propiedad);
+    if (this.accion === "nuevaProp") {
+      this.propiedadesService.crearNuevaPropiedadSubcategoria(this.propiedad, this.subSeleccionada.id).subscribe((resp:any) => {
+        console.log(resp);
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: 'btn btn-success',
+          },
+          buttonsStyling: true
+        });
+        
+        swalWithBootstrapButtons.fire({
+          text: "¡Nueva propiedad creada con éxito!",
+          icon: 'success',
+          confirmButtonText: 'Aceptar',
+        });
+        this.dataPromoSubService.cerrarModal$.emit();
+        
+      });
+    }
     
-
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-success',
-      },
-      buttonsStyling: true
-    });
+    if (this.accion ==="editProp") {
+      this.propiedadesService.modificarPropiedad(this.propiedad, this.propiedad.id).subscribe((resp:any) => {
+        console.log(resp);
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: 'btn btn-success',
+          },
+          buttonsStyling: true
+        });
+        
+        swalWithBootstrapButtons.fire({
+          text: "¡Propiedad editada con éxito",
+          icon: 'success',
+          confirmButtonText: 'Aceptar',
+        });
+        this.dataPromoSubService.cerrarModal$.emit();
+      })
+    }
+    /* this.formPropiedad.reset();
+    this.ocultarTabla(); */
     
-    swalWithBootstrapButtons.fire({
-      text: "¡Nueva propiedad creada con éxito!",
-      icon: 'success',
-      confirmButtonText: 'Aceptar',
-    });
-
-    this.formPropiedad.reset();
-    this.ocultarTabla();
     
-
   };
 
   agregarValor(){
@@ -144,5 +192,21 @@ export class FormPropiedadesComponent implements OnInit {
     this.tablaValores = false;
     this.valores.clear();
   };
+
+  cargarPropAEditar(prop: PropiedadProducto){
+
+    let valors = prop.valores
+
+    for (let i = 0; i < valors.length; i++) {
+      
+      this.valores.push(this.fb.control(valors[i].valor, Validators.required))
+      
+    }
+  
+    this.formPropiedad.patchValue({
+      nombre: prop.nombre
+    })
+  }
+
 
 }

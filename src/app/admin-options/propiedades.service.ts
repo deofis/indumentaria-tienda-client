@@ -45,6 +45,10 @@ export class PropiedadesService {
 
     return this.http.post(`${this.url}/subcategorias/${idSub}/propiedades`, propiedad);
 
-  }
+  };
+
+  modificarPropiedad(propiedad: PropiedadProducto, id:number){
+    return this.http.put(`${this.url}/productos/propiedades/${id}`, propiedad);
+  };
 
 }

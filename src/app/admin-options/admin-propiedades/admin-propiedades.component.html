@@ -22,7 +22,7 @@
                         </select>
                     </div> -->
                     <div class="col-12 col-md-10 offset-md-1 text-right ">
-                        <button (click)="open(contenido)" class="btn btn-primary" style="background-color: #1f4e84; border: none;">Nueva propiedad</button>
+                        <button (click)="openModalNuevaProp(contenido)" class="btn btn-primary" style="background-color: #1f4e84; border: none;">Nueva propiedad</button>
                     </div>
                 </div>
                 
@@ -54,12 +54,17 @@
                                         </p> -->
                                         <div class="row">
                                             <div class="col" *ngFor="let subcategoria of categoria.subcategorias">
-                                                <h4 > {{subcategoria.nombre}} &nbsp;  <i *ngIf="subcategoria.propiedades.length > 0" class="far fa-edit"></i></h4>
+                                                <h4 > {{subcategoria.nombre}} &nbsp;  
+                                                    <!-- <i *ngIf="subcategoria.propiedades.length > 0" class="far fa-edit point" (click)="openModalEditProp(contenidoEdit)"></i> -->
+                                                </h4>
                                                 
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col">
-                                                        <h5 *ngFor="let propiedad of subcategoria.propiedades"> {{propiedad.nombre}}: <small *ngFor="let valor of propiedad.valores"> {{valor.valor}},  </small></h5>
+                                                        <h5 *ngFor="let propiedad of subcategoria.propiedades; let i=index"> 
+                                                            <i *ngIf="subcategoria.propiedades.length > 0" class="far fa-edit point" (click)="openModalEditProp(contenidoEdit); editar(subcategoria, propiedad)"></i>&nbsp; {{propiedad.nombre}}: 
+                                                            <small *ngFor="let valor of propiedad.valores"> {{valor.valor}},  </small>
+                                                        </h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -103,6 +108,33 @@
                         <button type="button" class="btn btn-danger" (click)="modal.close()"> Cancelar</button>
                     </div> -->
                 </ng-template>
+
+
+                <ng-template #contenidoEdit let-modal>
+                    <div class="modal-header">
+                        <h1 class="mt-4">Editar propiedad</h1>
+                        <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="row mt-4">
+                            <div class="col-md-12 col-xs-12">
+                        
+                                <app-form-propiedades></app-form-propiedades>
+                                
+                                
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" (click)="modal.close()"> Cancelar</button>
+                    </div> -->
+                </ng-template>
+
                 
             </div>
 
