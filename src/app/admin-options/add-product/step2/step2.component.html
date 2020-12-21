@@ -74,7 +74,7 @@
                             <p class="description" style="text-transform: capitalize;"> {{newProduct.nombre}} - {{sku.valoresData}} - {{sku.disponibilidad}}u. - €{{sku.precio}}  </p>
                            <div class="iconos-editar">
                             <i class="fas fa-tags"></i>
-                            <i class="far fa-edit" (click)="openCentrado(editar)"></i>
+                            <i class="far fa-edit" (click)="openCentrado(editar);skuSeleccionado(sku.id)"></i>
                             <i class="fas fa-times" (click)="deleteSku(sku.id)"></i>
                            </div>
                          
@@ -90,7 +90,7 @@
                             </div>
                             <div class="modal-body">
                                 <form action="" class="form-add-property">
-                                    <div class="row properties">
+                                    <!-- <div class="row properties">
                                         <select class="property" [(ngModel)]="opcionSeleccionado" [ngModelOptions]="{standalone: true}" (change)="guardarValores(i)" *ngFor="let property of properties ; let i=index" >
                                             <option hidden selected [ngValue]="property.nombre" >-{{property.nombre}} -</option>
                         
@@ -98,19 +98,20 @@
                                                 {{value.valor}}</option>
                                         </select>
                         
-                                    </div>
+                                    </div> -->
+                                    <p>El articulo que estás modificando es : {{skuEditado.nombre }} - {{skuEditado.valoresData}} - Disponibilidad:{{skuEditado.disponibilidad}}u  - Precio: €{{skuEditado.precio}}  </p>
                                     <div class="row">
                                         <div class="availability-container">
                                             <label for="availabilitySku"> Disponibles:</label>
-                                            <input type="number" min="0" pattern="^[0-9]+" id="availabilitySku" >
+                                            <input type="number" min="0" pattern="^[0-9]+" id="disponibilidad-editar" >
                                         </div>
                                         <div class="price-container">
                                             <label for="precio"> Precio:</label>
                                             <p id="euro-signo">€</p>
-                                            <input type="number" min="0" pattern="^[0-9]+" id="precio" >
+                                            <input type="number" min="0" pattern="^[0-9]+" id="precio-editar" >
                                         </div>
                                     </div>
-                                    <button class="btn" (click)="modal.close()"> Guardar</button>
+                                    <button class="btn" (click)="editarSku();modal.close()"> Guardar</button>
                                 </form>
                             </div>
                             

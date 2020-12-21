@@ -28,7 +28,9 @@ export class Step2Component implements OnInit {
   seleccionados= new Array;
   opcionSeleccionado:any;
   valoresSelect:Array<any>;
-  skus:Sku
+  skus:Sku;
+  idSkuSeleccionado:number;
+  skuEditado:Sku;
   constructor(private productoService:ProductoService,
               private fb:FormBuilder,
               private router:Router,
@@ -36,6 +38,7 @@ export class Step2Component implements OnInit {
               private activatedroute:ActivatedRoute,
               public modal: NgbModal,) {
      this.newSku=new Sku();
+     this.skuEditado= new Sku()
    }
 
   ngOnInit(): void {
@@ -104,6 +107,35 @@ export class Step2Component implements OnInit {
       this.productoService.getAllTheSkus(this.newProduct.id).subscribe( response => 
         this.skus=response)})
   
+  }
+  skuSeleccionado(id:number){
+    this.idSkuSeleccionado=id
+    this.productoService.getSku(this.newProduct.id, this.idSkuSeleccionado).subscribe( response => { this.skuEditado=response})
+  }
+  editarSku(){
+   
+    let disponibilidad=document.getElementById("disponibilidad-editar") as HTMLInputElement;
+    let precio= document.getElementById("precio-editar") as HTMLInputElement;
+    let disponibilidadEditar=parseInt(disponibilidad.value);
+    let precioEditar=parseInt(precio.value);
+
+    // this.skuEditado.precio=precioEditar;
+    // this.skuEditado.disponibilidad=disponibilidadEditar;
+    // this.skuEditado.id=this.idSkuSeleccionado
+    // this.productoService.editarSku(this.skuEditado).subscribe( response => { console.log(response);
+    //   this.productoService.getAllTheSkus(this.newProduct.id).subscribe( response => 
+    //     this.skus=response)
+    // })
+
+    this.productoService.editarPrecioSku(this.idSkuSeleccionado, precioEditar).subscribe( response => { console.log(response);
+      this.productoService.editarDisponibilidadSku(this.idSkuSeleccionado, disponibilidadEditar).subscribe( response => { console.log(response);
+        this.productoService.getAllTheSkus(this.newProduct.id).subscribe( response => 
+          this.skus=response)
+      })
+    })
+
+
+ 
   }
   crearSku(){
     this.newSku.precio=this.formSkus.controls.precio.value;

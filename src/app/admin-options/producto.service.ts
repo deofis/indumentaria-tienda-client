@@ -45,7 +45,11 @@ url:string=API_BASE_URL+"/api";
       map((response:any) =>response.skus as Sku )
     )
   }}
-
+  getSku(productoId:number, skuId:number){
+    return this.http.get(`${this.url}/productos/${productoId}/skus/${skuId}`).pipe(
+      map((response:any) =>response.sku as Sku )
+    )
+  }
   generateSkus(productoId:number){
     return this.http.post(`${this.url}/productos/${productoId}/generarSkus`,null).pipe(
       map((response:any) =>console.log(response) )
@@ -55,6 +59,24 @@ url:string=API_BASE_URL+"/api";
   deleteSku(skuId:number){
     return this.http.delete(`${this.url}/productos/skus/${skuId}`)
   }
+
+  editarPrecioSku(idSku:number, precio){
+    let parametros=new HttpParams();
+    parametros=parametros.append("precio",precio);
+    return this.http.put(`${this.url}/productos/skus/${idSku}/precios/base`,null, {params:parametros});
+
+  }
+
+  editarDisponibilidadSku(idSku:number, disponibilidad){
+    let parametros=new HttpParams();
+    parametros=parametros.append("disponibilidad",disponibilidad);
+    return this.http.put(`${this.url}/productos/skus/${idSku}/disponibilidad`,null, {params:parametros});
+
+  }
+  // editarSku( skuEditado){
+  //   return this.http.put(`${this.url}/productos/skus/${skuEditado.id}`,null,skuEditado);
+
+  // }
 
   uploadPhoto(archivo: File, id: any){
     let formData = new FormData();
