@@ -37,5 +37,13 @@ export class MarcasService {
     return this.http.put(`${this.url}/productos/marcas/${brand.id}`, brand);
 
   };
+  
+  // addBrand(newBrand:Marca):Observable<Marca>{
+   
+  //   return this.http.post(`${this.url}/productos/marcas/nueva
+  //   `,newBrand).pipe(
+  //     map((response:any) =>response as Marca)
+  //   )
+  // }
 
 }

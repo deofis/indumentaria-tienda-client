@@ -14,7 +14,9 @@ $color-ppal:#fff;
     margin: 0;
 }
 
-
+#nombre-producto{
+    text-transform: capitalize;
+}
     .frame{
   
         width:85% ;
@@ -228,9 +230,9 @@ $color-ppal:#fff;
                     .new-products{
                         width: 100%;
                         .product{
-                            display: grid;
-                            grid-template-columns: 90% 10%;
-                            grid-template-rows: 1fr;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
                             font-family: $fte-sec;
                             padding-top: 5px;
                             font-size: 15px;
@@ -241,16 +243,20 @@ $color-ppal:#fff;
                                 font-size: 14px;
                                 color: $color-wf2;
                             }
-                        
-                            i{
-                                text-align: right;
-                            color: $color-sec;
-                            cursor: pointer;
-                            &:hover{
-                            font-size: 1.1em;
-                            color: $color-wf3;
-                        }
+                            .iconos-editar{
+                             display: flex;
+                             justify-content: space-between;   
+                                i{
+                                    text-align: right;
+                                color: $color-sec;
+                                cursor: pointer;
+                                &:hover{
+                                font-size: 1.1em;
+                                color: $color-wf3;
+                                }
+                                }
                             }
+                        
                         }
                         .msje-advertencia{
                             font-size: 12px;

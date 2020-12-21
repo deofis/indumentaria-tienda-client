@@ -4,7 +4,7 @@
        
     </div>
 
-    <form action="" class="form form2 " autocomplete="off" [formGroup]="formSkus" (ngSubmit)="crearSku()">
+    <form  #myForm="ngForm" class="form form2 " autocomplete="off" [formGroup]="formSkus" (ngSubmit)="crearSku(); myForm.reset()">
         <div class="container-white">
             <div class="col-10 offset-1">
                 <div class="row">
@@ -58,7 +58,7 @@
               
                 <div class="container-skus">
                     <div class="titulo">
-                        <h3 >Combinaciones para  <span> {{newProduct.nombre}} </span>   </h3>
+                        <h3 >Combinaciones para  <span id="nombre-producto"> {{newProduct.nombre}} </span>   </h3>
                         <span class="generar" (click)="generateAutomaticsSkus()"> Generar combinaciones automáticas</span>
                     </div>
                    
@@ -71,8 +71,13 @@
                            </p> -->
                         </div>
                         <div class="product" *ngFor= "let sku of skus">
-                            <p class="description"> {{newProduct.nombre}} - {{sku.valoresData}} - {{sku.disponibilidad}}u. - €{{sku.precio}}  </p>
+                            <p class="description" style="text-transform: capitalize;"> {{newProduct.nombre}} - {{sku.valoresData}} - {{sku.disponibilidad}}u. - €{{sku.precio}}  </p>
+                           <div class="iconos-editar">
+                            <i class="fas fa-tags"></i>
                             <i class="far fa-edit" (click)="openCentrado(editar)"></i>
+                            <i class="fas fa-times" (click)="deleteSku(sku.id)"></i>
+                           </div>
+                         
                         </div>
                        <span class="msje-advertencia" id="advertencia">Recordá que si las combinaciones fueron generadas de manera automática, es posible que se requiera edición de precios.</span>
                         <ng-template class="modal-editar" #editar let-modal>

@@ -32,6 +32,9 @@ url:string=API_BASE_URL+"/api";
     return this.http.get(`${this.url}/subcategorias/${subcategoriaId}/propiedades`).pipe( map( (response:any)=> response.propiedades as PropiedadProducto[]));
   
   }
+  getPropertiesOfAProduct(id:number):Observable<PropiedadProducto[]>{
+    return this.http.get(`${this.url}/productos/${id}/propiedades`).pipe( map( (response:any)=> response.propiedades as PropiedadProducto[]));
+  }
   createNewSku(newSku:Sku, productoId:number):Observable<Sku>{
     return this.http.post(`${this.url}/productos/${productoId}/skus`,newSku).pipe(
       map((response:any) =>response )
@@ -47,6 +50,10 @@ url:string=API_BASE_URL+"/api";
     return this.http.post(`${this.url}/productos/${productoId}/generarSkus`,null).pipe(
       map((response:any) =>console.log(response) )
     );
+  }
+
+  deleteSku(skuId:number){
+    return this.http.delete(`${this.url}/productos/skus/${skuId}`)
   }
 
   uploadPhoto(archivo: File, id: any){

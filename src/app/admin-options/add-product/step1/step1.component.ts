@@ -1,3 +1,4 @@
+import { MarcasService } from './../../marcas.service';
 import { PropiedadesService } from './../../propiedades.service';
 import { PropiedadProducto } from './../../../products/clases/propiedad-producto';
 import { ValidadoresService } from 'src/app/log-in/services/validadores.service';
@@ -67,6 +68,7 @@ export class Step1Component implements OnInit {
               private productoService:ProductoService,
               private validadores: ValidadoresService,
               private dataService:DataService,
+              private marcaService:MarcasService,
               private propiedadesService:PropiedadesService) { 
 
     this.marcas = [];
@@ -119,7 +121,8 @@ crearProducto(){
     this.productoService.createNewProduct(this.newProduct).subscribe( response => {
       console.log(response);
       this.newProduct.id=response.id;
-      this.productoService.uploadPhoto(this.selectedFile, this.newProduct?.id).subscribe(response => console.log(response));
+      this.productoService.uploadPhoto(this.selectedFile, this.newProduct?.id).subscribe(response => 
+      console.log(response) );
    
       this.form.disable();
       let button1 = document.getElementById("btn-end1");
@@ -279,8 +282,8 @@ crearForm(){
       })
     }
     getBrands(){
-      this.catalogoservice.getBrands().subscribe((response: any) => {
-        this.marcas=response.marcas;
+      this.marcaService.getBrands().subscribe((response: any) => {
+        this.marcas=response;
       });
     }
 
@@ -360,7 +363,7 @@ crearForm(){
    this.newBrand.nombre=input.value.toLowerCase().replace(/(?:(^.)|(\s+.))/g, function(match) {
     return match.charAt(match.length-1).toUpperCase()});
    //lo envio
-   this.catalogoservice.addBrand(this.newBrand)
+   this.marcaService.createNewBrand(this.newBrand)
    .subscribe( response => {
      this.getBrands();
      console.log(response)});

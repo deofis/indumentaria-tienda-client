@@ -40,7 +40,9 @@ export class Step2Component implements OnInit {
 
   ngOnInit(): void {
      
-   this.getPropertiesOfSubcategory();
+    setTimeout(() => {
+      this.getPropertiesOfNewProduct();
+    }, 1500); 
     this.crearForm();
     console.log(this.newProduct)
   }
@@ -88,29 +90,36 @@ export class Step2Component implements OnInit {
     this.router.navigate(['/home']);
   }
   generateAutomaticsSkus(){
-    this.productoService.generateSkus(2).subscribe( response => {
+    this.productoService.generateSkus(this.newProduct.id).subscribe( response => {
       
-      this.productoService.getAllTheSkus(2).subscribe( response => 
+      this.productoService.getAllTheSkus(this.newProduct.id).subscribe( response => 
         this.skus=response)})
     setTimeout(() => {
       document.getElementById("advertencia").style.display="block"
     }, 1000);
    
   }
+  deleteSku(skuId:number){
+    this.productoService.deleteSku(skuId).subscribe( response => { console.log(response);
+      this.productoService.getAllTheSkus(this.newProduct.id).subscribe( response => 
+        this.skus=response)})
+  
+  }
   crearSku(){
     this.newSku.precio=this.formSkus.controls.precio.value;
     this.newSku.precioOferta=this.formSkus.controls.precioOferta.value;
     this.newSku.disponibilidad=this.formSkus.controls.disponibilidad.value;
     this.newSku.producto= this.newProduct;
-    this.newSku.producto.propiedades=this.seleccionados;
+    this.newSku.valores=this.seleccionados;
     console.log(this.newSku);
     // crear nuevo sku
     this.productoService.createNewSku(this.newSku,this.newProduct.id).subscribe( response => {
       console.log(response);
       this.productoService.getAllTheSkus(this.newProduct.id).subscribe( response => 
       this.skus=response);
-      
-    });}
+    })
+    this.seleccionados=[]
+    ;}
   
     
   crearForm(){
@@ -155,9 +164,9 @@ export class Step2Component implements OnInit {
   addProperty(){
     
   }
-  getPropertiesOfSubcategory(){
+  getPropertiesOfNewProduct(){
    
-    this.productoService.getPropertiesOfSubcategory(this.newProduct?.subcategoria.id).subscribe((response: any) => {
+    this.productoService.getPropertiesOfAProduct(this.newProduct?.id).subscribe((response: any) => {
       this.properties=response;
     })
   }
