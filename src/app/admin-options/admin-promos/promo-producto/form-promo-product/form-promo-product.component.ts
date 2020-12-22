@@ -19,6 +19,7 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
 
   accion: string;
 
+  algo: boolean;
   productos:Producto[] = [];
   productosASeleccionar:Producto[] = [];
   productosSeleccionados:Producto[] = [];
@@ -62,6 +63,9 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
     this.crearFormularioPromProducto();
     this.cargarFechaDesde();
     this.promocion = new Promocion();
+    this.algo = true;
+    this.formProducto.get('porcentaje').setValidators([Validators.required, Validators.max(90), Validators.min(5)]);
+    this.formProducto.get('precio').setValidators(null);
 
   };
 
@@ -77,7 +81,8 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
     this.formProducto = this.fb.group({
       fechaDesde: [''],
       fechaHasta: ['', Validators.required],
-      porcentaje: ['', [Validators.required, Validators.max(90), Validators.min(5)]],
+      porcentaje: [''],
+      precio: ['']
     },{
       validators: this.validadores.validarFechas('fechaDesde', 'fechaHasta')
     })
@@ -85,6 +90,7 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
   };
 
   get fechaDesdeInvalida(){
+    this.formProducto.setValidators([])
     return this.formProducto.get('fechaDesde');
   };
 
@@ -104,15 +110,23 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
     return this.formProducto.get('porcentaje').invalid && this.formProducto.get('porcentaje').touched;
   };
 
+  get precioInvalido(){
+    return this.formProducto.get('precio').invalid && this.formProducto.get('precio').touched;
+  };
+
   cargarFechaDesde(){
     this.formProducto.setValue({
       fechaDesde: this.date,
       fechaHasta: "",
-      porcentaje: ""
+      porcentaje: "",
+      precio: ""
     })
   };
 
   crearPromocion(){
+
+    console.log(this.formProducto);
+    
 
     if (this.formProducto.invalid) {
 
@@ -128,15 +142,21 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
 
     this.promocion.fechaDesde = this.formProducto.controls.fechaDesde.value + "-03:00";
     this.promocion.fechaHasta = this.formProducto.controls.fechaHasta.value + "-03:00";
-    this.promocion.porcentaje = ( this.formProducto.controls.porcentaje.value / 100 );
+    if (this.algo) {
+      this.promocion.porcentaje = ( this.formProducto.controls.porcentaje.value / 100 );
+    }else{
+      this.promocion.precioOferta = this.formProducto.controls.precio.value;
+      this.promocion.precioOferta = null
+    }
+    
+    
 
     console.log(this.promocion);
 
-    if (this.accion === "newPromoProduto") {
+    /* if (this.accion === "newPromoProduto") {
       
-      for (let index = 0; index < this.productosSeleccionados.length; index++) {
-        
-        this.productoService.createNewPromotionProducto(this.promocion, this.productosSeleccionados[index].id).subscribe(resp => {
+      for (let i = 0; i < this.productosSeleccionados.length; i++) {
+        this.productoService.createNewPromotionProducto(this.promocion, this.productosSeleccionados[i].id).subscribe(resp => {
           console.log(resp);
           
         }) 
@@ -144,7 +164,7 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
 
       this.alertaExito("¡Promoción creada con éxito!")
       return;
-    };
+    }; */
 
     if ( this.accion === "newPromoSku" ) {
       
@@ -192,6 +212,24 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
     }).then(result => {
       this.cerrarModal();
     })
+
+  }
+
+  precio(){
+
+    this.algo = false;
+    this.formProducto.get('porcentaje').setValidators(null);
+    this.formProducto.get('porcentaje').setValue("");
+    this.formProducto.get('precio').setValidators([Validators.required, Validators.min(0.1)]);
+
+  };
+
+  porcentaje(){
+
+    this.algo = true;
+    this.formProducto.get('precio').setValidators(null);
+    this.formProducto.get('precio').setValue("");
+    this.formProducto.get('porcentaje').setValidators([Validators.required, Validators.max(90), Validators.min(5)]);
 
   }
 

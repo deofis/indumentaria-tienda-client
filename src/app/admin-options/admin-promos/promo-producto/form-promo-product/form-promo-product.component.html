@@ -41,17 +41,44 @@
 
         </div>
         <div class="col-md-6">
-            <h3 class="ml-1 mt-3">Ingrese porcentaje de la promoción.</h3>
+            <!-- <h3 class="ml-1 mt-3">Ingrese porcentaje de la promoción.</h3> -->
+            <div class="row">
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked (click)="porcentaje()">
+                        <h3 class="form-check-label" for="gridRadios1">
+                            Porcentaje
+                        </h3>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" (click)="precio()">
+                        <h3 class="form-check-label" for="gridRadios1">
+                            Precio
+                        </h3>
+                    </div>
+                </div>
+            </div>
+           
             <div class="input-group">
-                <input type="number" class="form-control" formControlName="porcentaje" placeholder="Porcentaje" aria-label="Porcentaje" 
+                <input *ngIf="algo" type="number" class="form-control" formControlName="porcentaje" placeholder="Porcentaje" aria-label="Porcentaje" 
                        [class.is-invalid]="porcentajeInvalido" aria-describedby="basic-addon1">
 
-                <div class="input-group-append">
+                <div *ngIf="algo" class="input-group-append">
                     <span class="input-group-text" id="basic-addon1" style="background-color: white;">%</span>
+                </div>
+
+                <input *ngIf="!algo" type="number" class="form-control" formControlName="precio" placeholder="Precio" aria-label="Precio" 
+                       [class.is-invalid]="precioInvalido" aria-describedby="basic-addon1">
+
+                <div *ngIf="!algo" class="input-group-append">
+                    <span class="input-group-text" id="basic-addon1" style="background-color: white;">$</span>
                 </div>
 
             </div>
             <small *ngIf="porcentajeInvalido" class="text-danger">Ingrese un porcentaje válido.</small>
+            <small *ngIf="precioInvalido" class="text-danger">Ingrese un precio válido.</small>
 
         </div>
 
