@@ -20,13 +20,13 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
   accion: string;
 
   algo: boolean;
-  productos:Producto[] = [];
+  producto:Producto;
   productosASeleccionar:Producto[] = [];
   productosSeleccionados:Producto[] = [];
   infoFechaInicio = "Si no selecciona una fecha de inicio, por defecto será la actual.";
   filterProductos = "";
 
-  skus:Sku[] = [];
+  sku:Sku;
 
   formProducto:FormGroup;
 
@@ -48,12 +48,16 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
     this.accion = "newPromoProduto";
 
     this.suscripcion = this.dataService.productoSelec$.subscribe(producto => {
-      this.productosSeleccionados.push(producto)
+      /* this.productosSeleccionados.push(producto) */
+      this.producto = new Producto();
+      this.producto = producto;
       
     });
 
     this.suscripcionSku = this.dataService.productoSkuSelec.subscribe(sku => {
-      this.skus.push(sku)
+      /* this.sku.push(sku) */
+      this.sku = new Sku();
+      this.sku = sku;
       this.accion = "newPromoSku";
     })
 
@@ -125,7 +129,7 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
 
   crearPromocion(){
 
-    console.log(this.formProducto);
+    console.log(this.formProducto, this.producto, this.sku);
     
 
     if (this.formProducto.invalid) {
@@ -146,35 +150,29 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
       this.promocion.porcentaje = ( this.formProducto.controls.porcentaje.value / 100 );
     }else{
       this.promocion.precioOferta = this.formProducto.controls.precio.value;
-      this.promocion.precioOferta = null
     }
     
     
 
     console.log(this.promocion);
 
-    /* if (this.accion === "newPromoProduto") {
-      
-      for (let i = 0; i < this.productosSeleccionados.length; i++) {
-        this.productoService.createNewPromotionProducto(this.promocion, this.productosSeleccionados[i].id).subscribe(resp => {
-          console.log(resp);
-          
-        }) 
-      }
+    if (this.accion === "newPromoProduto") {
 
-      this.alertaExito("¡Promoción creada con éxito!")
-      return;
-    }; */
+      this.productoService.createNewPromotionProducto(this.promocion, this.producto.id).subscribe(resp => {
+        console.log(resp);
+        
+      });
+      this.alertaExito("¡Promocion creada con éxito!");
+      return
+
+    };
 
     if ( this.accion === "newPromoSku" ) {
-      
-      for (let i = 0; i < this.skus.length; i++) {
-        this.productoService.createNewPromotionSku(this.promocion, this.skus[i].id).subscribe(resp => {
-          console.log(resp);
-          
-        })
-      }
 
+      this.productoService.createNewPromotionSku(this.promocion, this.sku.id).subscribe(resp => {
+        console.log(resp);
+        
+      })
       this.alertaExito("¡Promoción creada con éxito!")
       return;
     };
@@ -186,7 +184,7 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
   eliminarProducto(j:number){
     /* this.productosASeleccionar.push(this.productosSeleccionados[j]); */
     this.dataService.productoNo$.emit(this.productosSeleccionados[j]);
-    this.productosSeleccionados.splice(j, 1);
+    /* this.productosSeleccionados.splice(j, 1); */
     
   };
 

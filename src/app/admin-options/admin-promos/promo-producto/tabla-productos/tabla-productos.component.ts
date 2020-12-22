@@ -27,9 +27,9 @@ export class TablaProductosComponent implements OnInit, OnDestroy {
     
     this.obtenerProductos();
     
-    this.suscripcionProducto = this.dataService.productoNo$.subscribe(producto => {
+    /* this.suscripcionProducto = this.dataService.productoNo$.subscribe(producto => {
       this.productosASeleccionar.push(producto)
-    });
+    }); */
 
     this.suscripcionObtenerProductos = this.dataService.promocionado$.subscribe(resp => {
       this.obtenerProductos();
@@ -39,7 +39,7 @@ export class TablaProductosComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
 
-    this.suscripcionProducto.unsubscribe();
+    /* this.suscripcionProducto.unsubscribe(); */
     this.suscripcionObtenerProductos.unsubscribe();
 
   }
@@ -55,7 +55,7 @@ export class TablaProductosComponent implements OnInit, OnDestroy {
 
     /* this.productosSeleccionados.push(this.productosASeleccionar[i]); */
     this.dataService.productoSelec$.emit(this.productosASeleccionar[i]);
-    this.productosASeleccionar.splice(i, 1);
+    /* this.productosASeleccionar.splice(i, 1); */
     
     
     
