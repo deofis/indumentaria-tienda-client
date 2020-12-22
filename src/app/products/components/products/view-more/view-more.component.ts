@@ -1,3 +1,4 @@
+import { ValorPropiedadProducto } from './../../../clases/valor-propiedad-producto';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ItemCarrito } from 'src/app/cart/clases/item-carrito';
@@ -20,9 +21,12 @@ export class ViewMoreComponent implements OnInit {
   stock: boolean;
   infoProducto:Producto;
   propiedadesProducto:PropiedadProducto[];
-
   destacado:boolean=false;
   oferta:boolean=false;
+
+  valoresSkus:ValorPropiedadProducto[]=[];
+  propiedadesFiltradas: PropiedadProducto[]=[];
+
   constructor(private catalogoservice:CatalogoService,
               private activatedroute:ActivatedRoute,
               private _cartService:MockCartService,
@@ -35,7 +39,7 @@ export class ViewMoreComponent implements OnInit {
   ngOnInit(): void {
     this.getProduct();
     this.getPropiedadesProducto();
-
+  
     // cambio de muestra de imagenes
     let img1= document.getElementById("img-uno");
     let img2= document.getElementById("img-dos");
@@ -59,6 +63,20 @@ export class ViewMoreComponent implements OnInit {
     // destacado 
     this.destacadosInsignia();
   }
+
+  obtenerValoresSkus(){
+    let skus = this.infoProducto.skus;
+
+    skus.forEach(sku => {
+      let values = sku.valores;
+      values.forEach((value) => {
+        if (!this.valoresSkus.some(val => val.id == value.id)) {
+          this.valoresSkus.push(value);
+        }
+      });
+    });
+  }
+
 
   destacadosInsignia(){
     if (this.infoProducto.destacado) {
@@ -136,10 +154,52 @@ export class ViewMoreComponent implements OnInit {
       let id= param.id;
       this.catalogoservice.getInfoProducto(id).subscribe(response => {
         this.infoProducto=response;
-        console.log(this.infoProducto);
+        setTimeout(() => {
+          this.obtenerValoresSkus();
+          this.filtrarPropiedades();
+        }, 500);
+
       });
     });
   };
+
+  filtrarPropiedades() {
+    this.propiedadesFiltradas = this.propiedadesProducto;
+    this.propiedadesFiltradas?.forEach(propiedad => {
+      let valoresPropiedad = propiedad.valores;
+      propiedad.valores = [];
+      for (let i = 0; i < this.valoresSkus.length; i++) {
+        for (let x = 0; x < valoresPropiedad.length; x++) {
+          if (valoresPropiedad[x].id == this.valoresSkus[i].id) {
+            propiedad.valores.push(this.valoresSkus[i]);
+          }
+        }
+      }
+    });
+    console.log(this.propiedadesFiltradas);
+
+
+
+    // this.propiedadesFiltradas?.forEach(prop => {
+    //   let valoresEnPropiedad = prop.valores;
+
+    //   for (let i = 0; i < this.valoresSkus?.length; i++) {
+    //    let  valorUsado=this.valoresSkus[i];
+    //    console.log(i);
+    //     for (let x = 0; x < valoresEnPropiedad.length; x++) {
+    //       console.log(x)
+    //       if (valorUsado.id == valoresEnPropiedad[x].id) {
+    //         valuesFiltrados.push(this.valoresSkus[i]);
+    //         console.log("if")
+    //       } else{
+    //         console.log("fgh")
+    //       }
+          
+    //     }
+       
+    //   }
+    // });
+  }
 
   getPropiedadesProducto(){
     this.activatedroute.params.subscribe(param => {

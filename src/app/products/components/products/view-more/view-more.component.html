@@ -45,7 +45,7 @@
 
                 <br>
                 <div class="text-center">
-                    <select id="color" *ngFor="let propiedad of propiedadesProducto" class="select">
+                    <select id="color" *ngFor="let propiedad of propiedadesFiltradas" class="select">
                         <option hidden selected value="">{{propiedad.nombre}}</option>  
                         <option [value]="valor.id" *ngFor="let valor of propiedad.valores">{{valor.valor}}</option>                         
                     </select>
