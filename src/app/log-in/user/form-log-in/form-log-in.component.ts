@@ -4,6 +4,7 @@ import { IniciarSesionRequest } from '../../clases/login-request';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL } from '../../../config/config';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-log-in',
@@ -75,7 +76,11 @@ export class FormLogInComponent implements OnInit {
     this.authService.login(this.usuario).subscribe(response => {
       this.router.navigate(['home'])
     }, err => {
-      alert('Bad Credentials');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al iniciar sesión',
+        text: err.error.error
+      });
       console.log(err);
     });
   }
