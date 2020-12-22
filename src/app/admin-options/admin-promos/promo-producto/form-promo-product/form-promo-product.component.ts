@@ -146,7 +146,7 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
       return;
     };
 
-    if (this.accion === "newPromoSku") {
+    if ( this.accion === "newPromoSku" ) {
       
       for (let i = 0; i < this.skus.length; i++) {
         this.productoService.createNewPromotionSku(this.promocion, this.skus[i].id).subscribe(resp => {
