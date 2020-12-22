@@ -1,5 +1,7 @@
+import { DataPromoSubService } from './../../admin-propiedades/data-promo-sub.service';
+import { Subscription } from 'rxjs';
 import { ValorPropiedadProducto } from './../../../products/clases/valor-propiedad-producto';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PropiedadProducto } from 'src/app/products/clases/propiedad-producto';
 import { ProductoService } from '../../producto.service';
@@ -11,15 +13,18 @@ import { Producto } from 'src/app/products/clases/producto';
 import { Input } from '@angular/core';
 import { AuthService } from '../../../log-in/services/auth.service';
 import { Router } from '@angular/router';
+import { DataService } from '../../admin-promos/data.service';
+import { Collection } from 'typescript';
 @Component({
   selector: 'app-step2',
   templateUrl: './step2.component.html',
   styleUrls: ['./step2.component.scss']
 })
-export class Step2Component implements OnInit {
+export class Step2Component implements OnInit, OnDestroy {
   @Input() newProduct:Producto;
- properties:PropiedadProducto[];
- values:ValorPropiedadProducto [];
+  properties:PropiedadProducto[];
+
+  values:ValorPropiedadProducto [];
   oferta:boolean=false;
   propertyID:number;
   formSkus:FormGroup;
@@ -31,23 +36,42 @@ export class Step2Component implements OnInit {
   skus:Sku;
   idSkuSeleccionado:number;
   skuEditado:Sku;
+  cerrarModalPromo:Subscription;
+  cerrarModalPropiedad:Subscription
   constructor(private productoService:ProductoService,
               private fb:FormBuilder,
               private router:Router,
                private authService: AuthService,
               private activatedroute:ActivatedRoute,
-              public modal: NgbModal,) {
+              public modal: NgbModal,
+              private dataService:DataService,
+              private dataPropiedad:DataPromoSubService,
+              ) {
      this.newSku=new Sku();
      this.skuEditado= new Sku()
    }
 
   ngOnInit(): void {
-     
+     console.log(this.newProduct)
     setTimeout(() => {
       this.getPropertiesOfNewProduct();
     }, 1500); 
     this.crearForm();
-    console.log(this.newProduct)
+   
+     //// para suscribirse a cerrar el componente de promos
+    this.cerrarModalPromo=this.dataService.cerrarModal$.subscribe(resp =>{
+      this.modal.dismissAll();
+    })
+
+    this.cerrarModalPropiedad=this.dataPropiedad.cerrarModal$.subscribe(resp =>{
+      this.modal.dismissAll();
+      this.getPropertiesOfNewProduct()
+
+    })
+  }
+  ngOnDestroy():void{
+    this.cerrarModalPromo.unsubscribe();
+    this.cerrarModalPropiedad.unsubscribe();
   }
  
   showLateralMenu(){
@@ -152,7 +176,11 @@ export class Step2Component implements OnInit {
     })
     this.seleccionados=[]
     ;}
-  
+  promoSku(sku:Sku){
+    setTimeout(() => {
+      this.dataService.productoSkuSelec.emit(sku)
+    }, 100);
+  }
     
   crearForm(){
     this.formSkus=this.fb.group({
@@ -193,8 +221,10 @@ export class Step2Component implements OnInit {
       this.oferta=false;
     }
   }
-  addProperty(){
-    
+  addProperty(newProduct:Producto){
+    setTimeout(() => {
+      this.dataPropiedad.prodSelect$.emit(newProduct)
+    }, 100);
   }
   getPropertiesOfNewProduct(){
    
@@ -204,8 +234,24 @@ export class Step2Component implements OnInit {
   }
 
   guardarValores(){   
-     this.seleccionados.push(this.opcionSeleccionado)
-       console.log(this.seleccionados)
+    /// formo un array de valores 
+    let valores:ValorPropiedadProducto[] = [];
+      for (let i = 0; i < this.properties.length; i++) {
+        let propiedad=this.properties[i]
+
+        for (let x = 0; x < propiedad.valores.length; x++) {
+          valores.push(propiedad.valores[x])
+        } 
+      }
+
+      /// traigo los values de mis combobox
+    let select = document.getElementsByClassName("property") as HTMLCollectionOf<HTMLInputElement>;
+    for (let z = 0; z < this.properties.length; z++) {
+        let valorCombobox= select[z].value;
+        let   valorSeleccionado= valores.filter(valor=> valor.valor ==valorCombobox);
+        let objetoValorSeleccionado = valorSeleccionado[0]
+        this.seleccionados.push(objetoValorSeleccionado)      
+      }
     }
 
 

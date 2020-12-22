@@ -1,8 +1,9 @@
+import { DataService } from './../../admin-promos/data.service';
 import { MarcasService } from './../../marcas.service';
 import { PropiedadesService } from './../../propiedades.service';
 import { PropiedadProducto } from './../../../products/clases/propiedad-producto';
 import { ValidadoresService } from 'src/app/log-in/services/validadores.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CatalogoService } from 'src/app/products/services/catalogo.service';
 import { Categoria } from 'src/app/products/clases/categoria';
 import { Router } from '@angular/router';
@@ -11,7 +12,7 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Marca } from 'src/app/products/clases/marca';
 import { UnidadMedida } from 'src/app/products/clases/unidad-medida';
 import {FormControl} from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { flatMap, map, startWith } from 'rxjs/operators';
 import { Producto } from 'src/app/products/clases/producto';
 import { ProductoService } from '../../producto.service';
@@ -19,13 +20,13 @@ import Swal from "sweetalert2";
 import {HttpClient} from '@angular/common/http';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { Output,EventEmitter } from '@angular/core';
-import { DataService } from '../../admin-promos/data.service';
+
 @Component({
   selector: 'app-step1',
   templateUrl: './step1.component.html',
   styleUrls: ['./step1.component.scss']
 })
-export class Step1Component implements OnInit {
+export class Step1Component implements OnInit, OnDestroy {
   @Output() enviar= new EventEmitter();
   showForm2:boolean = false;
   showFormPromo:boolean=false;
@@ -60,6 +61,8 @@ export class Step1Component implements OnInit {
   estaSubcatSeleccionada: boolean;
   propiedadSeleccionada: PropiedadProducto;
   propiedadesSeleccionadas: any[];
+  
+  cerrarModalPromo:Subscription
 
   constructor(private router:Router,
               private catalogoservice:CatalogoService,
@@ -69,7 +72,8 @@ export class Step1Component implements OnInit {
               private validadores: ValidadoresService,
               private dataService:DataService,
               private marcaService:MarcasService,
-              private propiedadesService:PropiedadesService) { 
+              private propiedadesService:PropiedadesService,
+              ) { 
 
     this.marcas = [];
     this.newProduct= new Producto();
@@ -92,7 +96,15 @@ export class Step1Component implements OnInit {
            return this._filter(value)
           })
         );
+
+      //// para suscribirse a cerrar el componente de promos
+    this.cerrarModalPromo=this.dataService.cerrarModal$.subscribe(resp =>{
+     this.showStep2()
+    })
       
+  }
+  ngOnDestroy():void{
+    this.cerrarModalPromo.unsubscribe();
   }
 
   mostrarNombre(marca?: Marca): string | undefined {
@@ -100,7 +112,10 @@ export class Step1Component implements OnInit {
   }
 
   enviarProducto(){
-    this.dataService.productoSelec$.emit(this.newProduct)
+    setTimeout(() => {
+      this.dataService.productoSelec$.emit(this.newProduct)
+    }, 100);
+   
   }
 /// *** ***  Formulario 1
 crearProducto(){
@@ -121,8 +136,11 @@ crearProducto(){
     this.productoService.createNewProduct(this.newProduct).subscribe( response => {
       console.log(response);
       this.newProduct.id=response.id;
-      this.productoService.uploadPhoto(this.selectedFile, this.newProduct?.id).subscribe(response => 
-      console.log(response) );
+      if (this.selectedFile!==null) {
+        this.productoService.uploadPhoto(this.selectedFile, this.newProduct?.id).subscribe(response => 
+          console.log(response) );
+      }
+ 
    
       this.form.disable();
       let button1 = document.getElementById("btn-end1");
@@ -264,7 +282,7 @@ crearForm(){
   }
   
   private _filter(value:any) {
-    const filterValue = value.toLowerCase();
+    const filterValue = value;
     return this.marcas.filter(marca => marca.nombre.toLowerCase().indexOf(filterValue) === 0);
   }
   
@@ -320,8 +338,6 @@ crearForm(){
       } else {
         this.propiedadesSeleccionadas = this.propiedadesSeleccionadas.filter(item => item !== propiedad);
       }
-
-      console.log(this.propiedadesSeleccionadas);
     }
 
     showUnit(){

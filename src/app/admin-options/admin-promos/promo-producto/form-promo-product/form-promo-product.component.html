@@ -60,7 +60,7 @@
         <div class="col-md-6 mt-md-3 offset-md-6 col-xs-12 text-center">
             <!-- <button class="btn btn-danger mt-5" style="border: none;">Cancelar</button> -->
             <button type="button" class="btn btn-secondary mt-5 mr-3" style="border: none;" (click)="cerrarModal()">Cancelar</button>
-            <button type="" class="btn btn-primary mt-5" [disabled]="!productosSeleccionados.length" style="background-color: #1f4e84; border: none;">Siguiente</button>
+            <button type="" class="btn btn-primary mt-5" [disabled]="!productosSeleccionados.length && !skus.length" style="background-color: #1f4e84; border: none;">Siguiente</button>
         </div>
     </div>
 </form>
