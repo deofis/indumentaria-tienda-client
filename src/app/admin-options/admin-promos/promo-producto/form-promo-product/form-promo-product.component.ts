@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { ProductoService } from 'src/app/admin-options/producto.service';
 import { ValidadoresService } from 'src/app/log-in/services/validadores.service';
 import { Producto } from 'src/app/products/clases/producto';
+import { Sku } from 'src/app/products/clases/sku';
 import { CatalogoService } from 'src/app/products/services/catalogo.service';
 import Swal from 'sweetalert2';
 import { Promocion } from '../../clases/promocion';
@@ -16,11 +17,15 @@ import { DataService } from '../../data.service';
 })
 export class FormPromoProductComponent implements OnInit, OnDestroy {
 
+  accion: string;
+
   productos:Producto[] = [];
   productosASeleccionar:Producto[] = [];
   productosSeleccionados:Producto[] = [];
   infoFechaInicio = "Si no selecciona una fecha de inicio, por defecto será la actual.";
   filterProductos = "";
+
+  skus:Sku[] = [];
 
   formProducto:FormGroup;
 
@@ -29,6 +34,7 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
   promocion:Promocion;
 
   suscripcion: Subscription;
+  suscripcionSku: Subscription;
 
   constructor( private catalogoService: CatalogoService,
                private validadores: ValidadoresService,
@@ -38,12 +44,20 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
+    this.accion = "newPromoProduto";
+
     this.suscripcion = this.dataService.productoSelec$.subscribe(producto => {
       this.productosSeleccionados.push(producto)
-      /* console.log(this.productosSeleccionados); */
-      
       
     });
+
+    this.suscripcionSku = this.dataService.productoSkuSelec.subscribe(sku => {
+      this.skus.push(sku)
+      this.accion = "newPromoSku";
+    })
+
+
+
     /* this.obtenerProductos(); */
     this.crearFormularioPromProducto();
     this.cargarFechaDesde();
@@ -54,6 +68,7 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
   
     this.suscripcion.unsubscribe();
+    this.suscripcionSku.unsubscribe();
     
   }
 
@@ -117,50 +132,33 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
 
     console.log(this.promocion);
 
-    if (this.productosSeleccionados.length > 1) {
+    if (this.accion === "newPromoProduto") {
       
       for (let index = 0; index < this.productosSeleccionados.length; index++) {
         
         this.productoService.createNewPromotionProducto(this.promocion, this.productosSeleccionados[index].id).subscribe(resp => {
           console.log(resp);
           
-        })
-
-        
+        }) 
       }
 
-    } else {
-      this.productoService.createNewPromotionProducto(this.promocion, this.productosSeleccionados[0].id).subscribe(resp => {
-        console.log(resp);
-        
-      })
-      
+      this.alertaExito("¡Promoción creada con éxito!")
+      return;
     };
 
-    /* this.obtenerProductos(); */
+    if (this.accion === "newPromoSku") {
+      
+      for (let i = 0; i < this.skus.length; i++) {
+        this.productoService.createNewPromotionSku(this.promocion, this.skus[i].id).subscribe(resp => {
+          console.log(resp);
+          
+        })
+      }
 
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-success',
-      },
-      buttonsStyling: true
-    })
-    
-    swalWithBootstrapButtons.fire({
-      text: "¡Nueva promoción creada con éxito!",
-      icon: 'success',
-      confirmButtonText: 'Aceptar',
-    }).then(result => {
-      this.cerrarModal();
-    })
+      this.alertaExito("¡Promoción creada con éxito!")
+      return;
+    };
 
-    /* this.productosSeleccionados = [];
-    this.dataService.promocionado$.emit(); */
-
-    
-    
-    /* this.formProducto.reset();
-    this.cargarFechaDesde(); */
     
 
   };
@@ -175,5 +173,27 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
   cerrarModal(){
     this.dataService.cerrarModal$.emit();
   };
+
+
+  alertaExito(msj: string){
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-primary',
+      },
+      buttonsStyling: true
+    })
+    
+    swalWithBootstrapButtons.fire({
+      text: msj,
+      icon: 'success',
+      confirmButtonText: 'Aceptar',
+      confirmButtonColor: '#1f4e84'
+    }).then(result => {
+      this.cerrarModal();
+    })
+
+  }
+
 
 }
