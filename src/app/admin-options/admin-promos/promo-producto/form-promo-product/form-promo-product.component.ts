@@ -19,13 +19,14 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
 
   accion: string;
 
-  productos:Producto[] = [];
+  algo: boolean;
+  producto:Producto;
   productosASeleccionar:Producto[] = [];
   productosSeleccionados:Producto[] = [];
   infoFechaInicio = "Si no selecciona una fecha de inicio, por defecto será la actual.";
   filterProductos = "";
 
-  skus:Sku[] = [];
+  sku:Sku;
 
   formProducto:FormGroup;
 
@@ -47,12 +48,16 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
     this.accion = "newPromoProduto";
 
     this.suscripcion = this.dataService.productoSelec$.subscribe(producto => {
-      this.productosSeleccionados.push(producto)
+      /* this.productosSeleccionados.push(producto) */
+      this.producto = new Producto();
+      this.producto = producto;
       
     });
 
     this.suscripcionSku = this.dataService.productoSkuSelec.subscribe(sku => {
-      this.skus.push(sku)
+      /* this.sku.push(sku) */
+      this.sku = new Sku();
+      this.sku = sku;
       this.accion = "newPromoSku";
     })
 
@@ -62,6 +67,9 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
     this.crearFormularioPromProducto();
     this.cargarFechaDesde();
     this.promocion = new Promocion();
+    this.algo = true;
+    this.formProducto.get('porcentaje').setValidators([Validators.required, Validators.max(90), Validators.min(5)]);
+    this.formProducto.get('precio').setValidators(null);
 
   };
 
@@ -77,7 +85,8 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
     this.formProducto = this.fb.group({
       fechaDesde: [''],
       fechaHasta: ['', Validators.required],
-      porcentaje: ['', [Validators.required, Validators.max(90), Validators.min(5)]],
+      porcentaje: [''],
+      precio: ['']
     },{
       validators: this.validadores.validarFechas('fechaDesde', 'fechaHasta')
     })
@@ -85,6 +94,7 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
   };
 
   get fechaDesdeInvalida(){
+    this.formProducto.setValidators([])
     return this.formProducto.get('fechaDesde');
   };
 
@@ -104,15 +114,23 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
     return this.formProducto.get('porcentaje').invalid && this.formProducto.get('porcentaje').touched;
   };
 
+  get precioInvalido(){
+    return this.formProducto.get('precio').invalid && this.formProducto.get('precio').touched;
+  };
+
   cargarFechaDesde(){
     this.formProducto.setValue({
       fechaDesde: this.date,
       fechaHasta: "",
-      porcentaje: ""
+      porcentaje: "",
+      precio: ""
     })
   };
 
   crearPromocion(){
+
+    console.log(this.formProducto, this.producto, this.sku);
+    
 
     if (this.formProducto.invalid) {
 
@@ -128,33 +146,33 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
 
     this.promocion.fechaDesde = this.formProducto.controls.fechaDesde.value + "-03:00";
     this.promocion.fechaHasta = this.formProducto.controls.fechaHasta.value + "-03:00";
-    this.promocion.porcentaje = ( this.formProducto.controls.porcentaje.value / 100 );
+    if (this.algo) {
+      this.promocion.porcentaje = ( this.formProducto.controls.porcentaje.value / 100 );
+    }else{
+      this.promocion.precioOferta = this.formProducto.controls.precio.value;
+    }
+    
+    
 
     console.log(this.promocion);
 
     if (this.accion === "newPromoProduto") {
-      
-      for (let index = 0; index < this.productosSeleccionados.length; index++) {
-        
-        this.productoService.createNewPromotionProducto(this.promocion, this.productosSeleccionados[index].id).subscribe(resp => {
-          console.log(resp);
-          
-        }) 
-      }
 
-      this.alertaExito("¡Promoción creada con éxito!")
-      return;
+      this.productoService.createNewPromotionProducto(this.promocion, this.producto.id).subscribe(resp => {
+        console.log(resp);
+        
+      });
+      this.alertaExito("¡Promocion creada con éxito!");
+      return
+
     };
 
     if ( this.accion === "newPromoSku" ) {
-      
-      for (let i = 0; i < this.skus.length; i++) {
-        this.productoService.createNewPromotionSku(this.promocion, this.skus[i].id).subscribe(resp => {
-          console.log(resp);
-          
-        })
-      }
 
+      this.productoService.createNewPromotionSku(this.promocion, this.sku.id).subscribe(resp => {
+        console.log(resp);
+        
+      })
       this.alertaExito("¡Promoción creada con éxito!")
       return;
     };
@@ -166,7 +184,7 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
   eliminarProducto(j:number){
     /* this.productosASeleccionar.push(this.productosSeleccionados[j]); */
     this.dataService.productoNo$.emit(this.productosSeleccionados[j]);
-    this.productosSeleccionados.splice(j, 1);
+    /* this.productosSeleccionados.splice(j, 1); */
     
   };
 
@@ -192,6 +210,24 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
     }).then(result => {
       this.cerrarModal();
     })
+
+  }
+
+  precio(){
+
+    this.algo = false;
+    this.formProducto.get('porcentaje').setValidators(null);
+    this.formProducto.get('porcentaje').setValue("");
+    this.formProducto.get('precio').setValidators([Validators.required, Validators.min(0.1)]);
+
+  };
+
+  porcentaje(){
+
+    this.algo = true;
+    this.formProducto.get('precio').setValidators(null);
+    this.formProducto.get('precio').setValue("");
+    this.formProducto.get('porcentaje').setValidators([Validators.required, Validators.max(90), Validators.min(5)]);
 
   }
 

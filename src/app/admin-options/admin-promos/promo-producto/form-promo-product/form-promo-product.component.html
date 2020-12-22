@@ -1,15 +1,13 @@
-
-
 <div class="row mt-5 mt-md-0">
     <div class="col-md-4 ml-3">
-        <h3 *ngIf="productosSeleccionados.length > 0">Productos seleccionados: </h3>
-        <h3 *ngIf="productosSeleccionados.length === 0">Seleccione productos.</h3>
+        <h3 *ngIf="producto || sku">Producto seleccionado: </h3>
+        <h3 *ngIf="(!producto || sku) && (producto || !sku)">Seleccione producto.</h3>
     </div>
     <div class="col" *ngIf="accion === 'newPromoProduto'">
-        <h3><span *ngFor="let prod of productosSeleccionados; let j=index" style="background-color: #1f4e84; cursor: pointer;" class="badge badge-pill badge-primary mr-1" (click)="eliminarProducto(j)">{{prod.nombre}} x</span></h3>
+        <h3><span style="background-color: #1f4e84; cursor: pointer;" class="badge badge-pill badge-primary mr-1">{{producto?.nombre | titlecase}}</span></h3>
     </div>
     <div class="col" *ngIf="accion === 'newPromoSku'">
-        <h3><span *ngFor="let sku of skus; let j=index" style="background-color: #1f4e84; cursor: pointer;" class="badge badge-pill badge-primary mr-1">{{sku.nombre}} x</span></h3>
+        <h3><span style="background-color: #1f4e84; cursor: pointer;" class="badge badge-pill badge-primary mr-1">{{sku?.nombre}}</span></h3>
     </div>
 </div>
 <hr>
@@ -21,8 +19,7 @@
             <div class="form-group">
                 <div class="input-group">
 
-                    <input class="form-control" placeholder="yyyy-mm-dd" 
-                           formControlName="fechaDesde" type="datetime-local" [min]="date" value="2020-11-20">
+                    <input class="form-control" placeholder="yyyy-mm-dd" formControlName="fechaDesde" type="datetime-local" [min]="date" value="2020-11-20">
                 </div>
             </div>
 
@@ -33,25 +30,49 @@
             <div class="form-group">
                 <div class="input-group">
 
-                    <input class="form-control" placeholder="yyyy-mm-dd" 
-                           formControlName="fechaHasta" type="datetime-local" [class.is-invalid]="fechaHastaInvalida">
+                    <input class="form-control" placeholder="yyyy-mm-dd" formControlName="fechaHasta" type="datetime-local" [class.is-invalid]="fechaHastaInvalida">
                 </div>
                 <small *ngIf="fechaHastaInvalida" class="text-danger">Ingrese una fecha válida.</small>
             </div>
 
         </div>
         <div class="col-md-6">
-            <h3 class="ml-1 mt-3">Ingrese porcentaje de la promoción.</h3>
-            <div class="input-group">
-                <input type="number" class="form-control" formControlName="porcentaje" placeholder="Porcentaje" aria-label="Porcentaje" 
-                       [class.is-invalid]="porcentajeInvalido" aria-describedby="basic-addon1">
+            <!-- <h3 class="ml-1 mt-3">Ingrese porcentaje de la promoción.</h3> -->
+            <div class="row">
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked (click)="porcentaje()">
+                        <h3 class="form-check-label" for="gridRadios1">
+                            Porcentaje
+                        </h3>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-check">
+                        <input [disabled]="!producto?.vendibleSinPropiedades" class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" (click)="precio()">
+                        <h3 class="form-check-label" for="gridRadios1">
+                            Precio
+                        </h3>
+                    </div>
+                </div>
+            </div>
 
-                <div class="input-group-append">
+            <div class="input-group">
+                <input *ngIf="algo" type="number" class="form-control" formControlName="porcentaje" placeholder="Porcentaje" aria-label="Porcentaje" [class.is-invalid]="porcentajeInvalido" aria-describedby="basic-addon1">
+
+                <div *ngIf="algo" class="input-group-append">
                     <span class="input-group-text" id="basic-addon1" style="background-color: white;">%</span>
+                </div>
+
+                <input *ngIf="!algo" type="number" class="form-control" formControlName="precio" placeholder="Precio" aria-label="Precio" [class.is-invalid]="precioInvalido" aria-describedby="basic-addon1">
+
+                <div *ngIf="!algo" class="input-group-append">
+                    <span class="input-group-text" id="basic-addon1" style="background-color: white;">$</span>
                 </div>
 
             </div>
             <small *ngIf="porcentajeInvalido" class="text-danger">Ingrese un porcentaje válido.</small>
+            <small *ngIf="precioInvalido" class="text-danger">Ingrese un precio válido.</small>
 
         </div>
 
@@ -60,7 +81,7 @@
         <div class="col-md-6 mt-md-3 offset-md-6 col-xs-12 text-center">
             <!-- <button class="btn btn-danger mt-5" style="border: none;">Cancelar</button> -->
             <button type="button" class="btn btn-secondary mt-5 mr-3" style="border: none;" (click)="cerrarModal()">Cancelar</button>
-            <button type="" class="btn btn-primary mt-5" [disabled]="!productosSeleccionados.length && !skus.length" style="background-color: #1f4e84; border: none;">Siguiente</button>
+            <button type="" class="btn btn-primary mt-5" [disabled]="!producto?.nombre" style="background-color: #1f4e84; border: none;">Aceptar</button>
         </div>
     </div>
 </form>
