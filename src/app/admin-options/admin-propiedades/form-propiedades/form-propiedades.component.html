@@ -2,12 +2,15 @@
 
 <div class="row">
     <div class="col-md-4 ml-3">
-        <h3>Subcategoría seleccionada: </h3>
-        <!-- <h3 *ngIf="subSeleccionadas.length === 0">Seleccione subcategorías.</h3> -->
+        <h3 *ngIf="subSeleccionada.nombre && (accion === 'nuevaProp' || accion === 'editProp')">Subcategoría seleccionada: </h3>
+        <h3 *ngIf="!subSeleccionada.nombre && (accion === 'nuevaProp' || accion === 'editProp')">Seleccione una subcategoría.</h3>
+        <h3 *ngIf="prodSeleccionado.nombre && accion === 'nuevaPropProd'">Producto seleccionado: </h3>
     </div>
     <div class="col offset-md-0 offset-4">
         <h3><span *ngIf="subSeleccionada.nombre"  style="background-color: #1f4e84; cursor: pointer;" 
             class="badge badge-pill badge-primary mr-1">{{subSeleccionada.nombre}}</span></h3>
+        <h3><span *ngIf="prodSeleccionado.nombre"  style="background-color: #1f4e84; cursor: pointer;" 
+            class="badge badge-pill badge-primary mr-1">{{prodSeleccionado.nombre}}</span></h3>
     </div>
 </div>
 
@@ -16,7 +19,7 @@
 <form autocomplete="off" [formGroup]="formPropiedad" (ngSubmit)="crearPropiedad()">
     <div class="row">
         <div class="col-md-6">
-            <h3 class="ml-1"><i class="far fa-question-circle fa-md mb-2" placement="bottom" ngbTooltip="{{infoNombre}}"></i> Nombre.</h3>
+            <h3 class="ml-1"><i class="far fa-question-circle fa-md mb-2" placement="right" ngbTooltip="{{infoNombre}}"></i> Nombre.</h3>
             <!-- <h3 *ngIf="subSeleccionadas.length === 0">Seleccione subcategorías.</h3> -->
             <div class="form-group">
                 <div class="input-group">
@@ -28,7 +31,7 @@
             </div>
 
 
-            <div class="row" *ngIf="botonesEditarProm">
+            <div class="row" *ngIf="accion === 'nuevaProp' || accion === 'nuevaPropProd'">
                 <div class="col col-md-4">
                     <h3 class="ml-1"><i class="far fa-question-circle fa-md mb-2" placement="bottom" ngbTooltip="{{infoValores}}"></i> Valores:</h3>
                 </div>
@@ -67,39 +70,21 @@
                     <tbody formArrayName="valores">
                         <tr *ngFor="let control of valores.controls; let i = index">
                         <td>{{i+1}}</td>
-                        <td><input type="text" class="form-control" placeholder="Nuevo valor" [formControlName]="i"></td>
-                        <td><button class="btn btn-secondary btn-sm" type="button" (click)="borrarValor(i)" [disabled]="!botonesEditarProm"><i class="far fa-trash-alt" ></i></button></td>
+                        <td><input type="text" class="form-control form-control-sm" placeholder="Nuevo valor" [formControlName]="i"></td>
+                        <td><button class="btn btn-secondary btn-sm" type="button" (click)="borrarValor(i)" [disabled]="accion === 'editProp'"><i class="far fa-trash-alt" ></i></button></td>
                         </tr>
                     </tbody>
                     </table>
                     
             </div>
             <button *ngIf="tablaValores" class="btn btn-primary btn-sm btn-block mt-3" type="button" (click)="agregarValor()" 
-                    style="background-color: #1f4e84; border: none;" [disabled]="!botonesEditarProm">Agregar valor</button>
+                    style="background-color: #1f4e84; border: none;" [disabled]="accion === 'editProp'">Agregar valor</button>
             
             
         </div>
-        <!--  <div class="col-md-6">
-            <h3 class="ml-1 mt-3">Ingrese porcentaje de la promoción.</h3>
-            <div class="input-group">                                    
-                <input type="number" class="form-control" formControlName="porcentaje" placeholder="Porcentaje" aria-label="Porcentaje" 
-                        aria-describedby="basic-addon1" [class.is-invalid]="porcentajeInvalido">
-                
-                <div class="input-group-append">
-                    <span class="input-group-text" id="basic-addon1" style="background-color: white;">%</span>
-                </div>
-                
-            </div>
-            <small *ngIf="porcentajeInvalido" class="text-danger">Ingrese un porcentaje válido.</small>
-            
-        </div> -->
+        
         
     </div>
-    <!-- <div class="row">
-        <div class="col col-md-6">
-            
-        </div>
-    </div> -->
 
 
     <div class="row form-group mt-md-4">

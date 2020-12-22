@@ -92,9 +92,12 @@ url:string=API_BASE_URL+"/api";
 
   };
 
-
   createNewPromotionProducto(promocion: Promocion, id:number){
     return this.http.post(`${this.url}/productos/${id}/promociones`, promocion);
+  };
+
+  createNewPromotionSku(promocion: Promocion, id: number){
+    return this.http.post(`${this.url}/productos/skus/${id}/promociones`, promocion);
   };
 
  

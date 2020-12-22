@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { Producto } from 'src/app/products/clases/producto';
 import { PropiedadProducto } from 'src/app/products/clases/propiedad-producto';
 import { Subcategoria } from '../../products/clases/subcategoria';
 
@@ -12,6 +13,8 @@ export class DataPromoSubService {
   editPropiedadSub$ = new EventEmitter<Subcategoria>();
   editPropiedad$ = new EventEmitter<PropiedadProducto>();
   cerrarModal$ = new EventEmitter();
+
+  prodSelect$ = new EventEmitter<Producto>();
 
   constructor() { }
 }

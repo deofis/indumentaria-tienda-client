@@ -5,8 +5,11 @@
         <h3 *ngIf="productosSeleccionados.length > 0">Productos seleccionados: </h3>
         <h3 *ngIf="productosSeleccionados.length === 0">Seleccione productos.</h3>
     </div>
-    <div class="col">
+    <div class="col" *ngIf="accion === 'newPromoProduto'">
         <h3><span *ngFor="let prod of productosSeleccionados; let j=index" style="background-color: #1f4e84; cursor: pointer;" class="badge badge-pill badge-primary mr-1" (click)="eliminarProducto(j)">{{prod.nombre}} x</span></h3>
+    </div>
+    <div class="col" *ngIf="accion === 'newPromoSku'">
+        <h3><span *ngFor="let sku of skus; let j=index" style="background-color: #1f4e84; cursor: pointer;" class="badge badge-pill badge-primary mr-1">{{sku.nombre}} x</span></h3>
     </div>
 </div>
 <hr>
