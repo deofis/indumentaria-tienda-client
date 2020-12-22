@@ -16,31 +16,7 @@ export class ProductsComponent implements OnInit {
   target: HTMLInputElement;
   categorias:Categoria[];
   fotoCategoria:boolean;
-  fotosCategorias:any[]=[
-    {
-      img:'../../../../assets/imagenes/categoria1.jpg'
-    },
-    {
-      img:'../../../../assets/imagenes/categoria2.jpg ',
-    },
-    {
-      img:'../../../../assets/imagenes/categoria3.jpg'},
-    {
-      img:'../../../../assets/imagenes/categoria4a.jpg',
-    },
-    {
-      img:'../../../../assets/imagenes/categoria5a.jpg',
-    },
-    {
-      img:'../../../../assets/imagenes/categoria6.jpg',
-    },
-    {
-      img:'../../../../assets/imagenes/categoria7b.jpg',
-    },
-    {
-      img:'../../../../assets/imagenes/categoria8a.jpg',
-    }
-  ]
+ 
   back1:boolean=false;
   back2:boolean=false;
 
@@ -50,6 +26,10 @@ cantidadPaginas= Math.ceil(this.tarjeta.length /5);
 
   }
   ngOnInit(): void {
+    setTimeout(() => {
+      console.log(this.categorias)
+    }, 4000);
+   
     /// ****  *** CARUSEL PRODUCTOS DESTACADOS *** ****  ///
     const fila=document.getElementById("contenedor-carouselDestacados");
     const flecha1= document.getElementById("flecha-izquierda-fila1");
@@ -162,10 +142,6 @@ showCategoriesEffect() {
     getListaCategorias():void{
       this.catalogoService.getListaCategorias().subscribe( response =>{
        this.categorias=response;
-
-       for (let index = 0; index < this.categorias.length; index++) {
-         this.categorias[index].foto = this.fotosCategorias[index].img;
-       }
   
       console.log(this.categorias)
       })

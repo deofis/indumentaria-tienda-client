@@ -61,17 +61,7 @@ id:number;
   getUnidades():Observable<any>{
     return this.http.get(`${this.url}/productos/unidades-medida`);
   }
-  getBrands():Observable<any>{
-    return this.http.get(`${this.url}/productos/marcas`);
-  }
-
-  addBrand(newBrand:Marca):Observable<Marca>{
-   
-    return this.http.post(`${this.url}/productos/marcas/nueva
-    `,newBrand).pipe(
-      map((response:any) =>response as Marca)
-    )
-  }
+ 
   
 
 
