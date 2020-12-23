@@ -33,7 +33,7 @@ export class Step2Component implements OnInit, OnDestroy {
   seleccionados= new Array;
   opcionSeleccionado:any;
   valoresSelect:Array<any>;
-  skus:Sku;
+  skus:Sku[];
   idSkuSeleccionado:number;
   skuEditado:Sku;
   cerrarModalPromo:Subscription;

@@ -37,7 +37,7 @@
                         <h3 *ngIf="oferta" class="pcio-oferta">€{{infoProducto.promocion?.precioOferta | number: '.2'}}</h3>
                         <div class="row-oferta">
                             <span>€{{infoProducto.precio | number: '.2'}} </span>
-                            <p class="off ">{{infoProducto.promocion?.porcentaje * 100 | number: '.0'}}% 0FF</p>
+                            <p class="off ">{{infoProducto.promocion?.porcentaje * 100 | number: '2.0-0'}}% 0FF</p>
                         </div>
                     </div>
                     <i class="fas fa-medal" *ngIf="destacado"></i>
@@ -45,9 +45,9 @@
 
                 <br>
                 <div class="text-center">
-                    <select id="color" *ngFor="let propiedad of propiedadesFiltradas" class="select">
+                    <select id="color" *ngFor="let propiedad of propiedadesFiltradas;let i=index " class="select" (change)="valoresSiguienteCombobox(i)">
                         <option hidden selected value="">{{propiedad.nombre}}</option>  
-                        <option [value]="valor.id" *ngFor="let valor of propiedad.valores">{{valor.valor}}</option>                         
+                        <option [value]="valor.valor" *ngFor="let valor of propiedad.valores">{{valor.valor}}</option>                         
                     </select>
 
                 </div>
@@ -134,7 +134,6 @@
                 </p>
             </div>
         </article>
-
         <article class="contenedor-tres" id="contenedor-tres">
             <p id="titulo-a">¿Tenés alguna pregunta?</p>
 

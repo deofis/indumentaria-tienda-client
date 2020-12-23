@@ -40,9 +40,9 @@ url:string=API_BASE_URL+"/api";
       map((response:any) =>response )
     )
   }
-  getAllTheSkus(productoId:number):Observable<Sku>{{
+  getAllTheSkus(productoId:number):Observable<Sku[]>{{
     return this.http.get(`${this.url}/productos/${productoId}/skus`).pipe(
-      map((response:any) =>response.skus as Sku )
+      map((response:any) =>response.skus as Sku[] )
     )
   }}
   getSku(productoId:number, skuId:number){

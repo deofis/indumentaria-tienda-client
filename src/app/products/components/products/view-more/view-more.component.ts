@@ -1,3 +1,4 @@
+import { ProductoService } from './../../../../admin-options/producto.service';
 import { ValorPropiedadProducto } from './../../../clases/valor-propiedad-producto';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -9,6 +10,7 @@ import { CarritoService } from '../../../../cart/services/carrito.service';
 import { AuthService } from '../../../../log-in/services/auth.service';
 import { Carrito } from '../../../../cart/clases/carrito';
 import { PropiedadProducto } from 'src/app/products/clases/propiedad-producto';
+import { Sku } from 'src/app/products/clases/sku';
 
 
 @Component({
@@ -24,6 +26,7 @@ export class ViewMoreComponent implements OnInit {
   destacado:boolean=false;
   oferta:boolean=false;
 
+  skusDelProducto:Sku [];
   valoresSkus:ValorPropiedadProducto[]=[];
   propiedadesFiltradas: PropiedadProducto[]=[];
 
@@ -31,7 +34,8 @@ export class ViewMoreComponent implements OnInit {
               private activatedroute:ActivatedRoute,
               private _cartService:MockCartService,
               private carritoService: CarritoService,
-              private authService: AuthService) { 
+              private productoService:ProductoService,
+              private authService: AuthService) {
     this.stock = true;
     this.infoProducto=new Producto();
   }
@@ -39,7 +43,7 @@ export class ViewMoreComponent implements OnInit {
   ngOnInit(): void {
     this.getProduct();
     this.getPropiedadesProducto();
-  
+
     // cambio de muestra de imagenes
     let img1= document.getElementById("img-uno");
     let img2= document.getElementById("img-dos");
@@ -56,12 +60,35 @@ export class ViewMoreComponent implements OnInit {
     //// boton enviar pregunta
     let btnSend = document.getElementById("enviarMsg")
     btnSend.addEventListener("click",this.deleteMessage);
- 
+
     /// precio oferta
     this.estaEnOferta();
 
-    // destacado 
+    // destacado
     this.destacadosInsignia();
+  }
+  valoresSiguienteCombobox(i){
+    /// obtengo los skus del producto
+      this.productoService.getAllTheSkus(this.infoProducto?.id).subscribe(response => {
+        this.skusDelProducto=response;
+      });
+
+      /// tomo el valor de la propiedad que seleccioné
+      let select = document.getElementsByClassName("select") as HTMLCollectionOf<HTMLInputElement>;
+      let valorCombobox= select[i].value;
+
+      ///filtro los skus del producto para qeudarme solo con los que tienen el valor elegido
+     for (let x = 0; x < this.skusDelProducto.length; x++) {
+      // let   valorSeleccionado= this.skusDelProducto.filter(sku=> sku.valores[x].valor ==valorCombobox);
+
+        // if(this.skusDelProducto[i].valoresData.includes)
+     }
+
+
+        console.log(valorCombobox)
+
+
+
   }
 
   obtenerValoresSkus(){
@@ -77,7 +104,6 @@ export class ViewMoreComponent implements OnInit {
     });
   }
 
-
   destacadosInsignia(){
     if (this.infoProducto.destacado) {
       this.destacado=false
@@ -87,7 +113,7 @@ export class ViewMoreComponent implements OnInit {
   }
   estaEnOferta(){
     if (this.infoProducto.promocion!== null) {
-        this.oferta=true   
+        this.oferta=true
     }else{
       this.oferta=false
     }
@@ -136,17 +162,17 @@ export class ViewMoreComponent implements OnInit {
 //////////// EVENTO DE BOTON ENVIAR ///////////
   deleteMessage(){
      let mensaje = document.getElementById("pregunta");
-     
+
     // if(mensaje.value!=="")
     // mensaje.nodeValue="";
 
-    // cabio de cartel 
+    // cabio de cartel
     let cartel=document.getElementById("cartel");
     cartel.innerHTML="Gracias! Te responderemos a la brevedad.";
     cartel.style.color="#2779cd"
     let contenedor=document.getElementById("contenedorCartel");
-   
-    
+
+
   }
 
   getProduct(){
@@ -194,9 +220,9 @@ export class ViewMoreComponent implements OnInit {
     //       } else{
     //         console.log("fgh")
     //       }
-          
+
     //     }
-       
+
     //   }
     // });
   }
@@ -208,10 +234,10 @@ export class ViewMoreComponent implements OnInit {
 
         this.propiedadesProducto = resp;
         console.log(this.propiedadesProducto);
-        
+
       });
     });
-    
+
   };
 
   agregarCarrito(producto: Producto): void {
@@ -220,7 +246,7 @@ export class ViewMoreComponent implements OnInit {
         alert('Producto agregado al carrito');
       });
     }
-    
+
     this._cartService.agregarItem(producto);
 
   }
