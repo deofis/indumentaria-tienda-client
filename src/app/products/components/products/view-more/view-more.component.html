@@ -33,11 +33,11 @@
 
                 <div id="caja-precio">
                     <div class="precio">
-                        <h3 *ngIf="mostrarPrecio()">€{{infoProducto.precio}}</h3>
-                        <h3 *ngIf="oferta" class="pcio-oferta">€{{infoProducto.promocion?.precioOferta}}</h3>
+                        <h3 *ngIf="mostrarPrecio()">€{{infoProducto.precio | number: '.2'}}</h3>
+                        <h3 *ngIf="oferta" class="pcio-oferta">€{{infoProducto.promocion?.precioOferta | number: '.2'}}</h3>
                         <div class="row-oferta">
-                            <span>€{{infoProducto.precio }}</span>
-                            <p class="off ">{{infoProducto.promocion?.porcentaje * 100}}% 0FF</p>
+                            <span>€{{infoProducto.precio | number: '.2'}} </span>
+                            <p class="off ">{{infoProducto.promocion?.porcentaje * 100 | number: '.0'}}% 0FF</p>
                         </div>
                     </div>
                     <i class="fas fa-medal" *ngIf="destacado"></i>

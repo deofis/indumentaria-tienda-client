@@ -13,11 +13,11 @@
 
     <div class="cont-precios">
       <div *ngIf="oferta" class="row-oferta">
-        <span>€{{producto.precio }}</span>
-        <p class="off ">{{producto.promocion?.porcentaje * 100}}% 0FF</p>
+        <span>€{{producto.precio | number: '.2' }}</span>
+        <p class="off ">{{producto.promocion?.porcentaje * 100 | number: '.0'}}% 0FF</p>
       </div>
-      <p class="precio" *ngIf="mostrarPrecio()">€{{producto.precio}}</p>
-      <p class="precioOferta" *ngIf="oferta">€{{producto.promocion?.precioOferta}}</p>
+      <p class="precio" *ngIf="mostrarPrecio()">€{{producto.precio | number: '.2'}}</p>
+      <p class="precioOferta" *ngIf="oferta">€{{producto.promocion?.precioOferta | number: '.2'}}</p>
     </div>
 
 
