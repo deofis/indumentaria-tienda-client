@@ -1,15 +1,27 @@
 
 
 <div class="row mt-5 mt-md-0">
-    <div class="col-md-4 ml-3">
-        <h3 *ngIf="producto || sku">Producto seleccionado: </h3>
-        <h3 *ngIf="(!producto || sku) && (producto || !sku)">Seleccione producto.</h3>
+    <div class="col ml-0 ml-md-3">
+        <h3 *ngIf="productoGeneral">Producto seleccionado: &nbsp;
+            <span *ngIf="accion === 'newPromoProduto'" style="background-color: #1f4e84; cursor: pointer;" class="badge badge-pill badge-primary mr-1">{{productoGeneral?.nombre | titlecase}}</span>
+            <span *ngIf="accion === 'newPromoSku'" style="background-color: #1f4e84; cursor: pointer;" class="badge badge-pill badge-primary mr-1">{{productoGeneral?.nombre | titlecase}}</span>
+        </h3> 
+        <h3 *ngIf="!productoGeneral">Seleccione producto.</h3>  
     </div>
-    <div class="col" *ngIf="accion === 'newPromoProduto'">
-        <h3><span  style="background-color: #1f4e84; cursor: pointer;" class="badge badge-pill badge-primary mr-1">{{producto?.nombre | titlecase}}</span></h3>
+    
+    
+</div>
+<div class="row" *ngIf="productoGeneral">
+    <div class="col-12 col-md ml-0 ml-md-3 ">
+        Precio del producto: {{productoGeneral?.precio | currency:'EUR':'symbol'}}
     </div>
-    <div class="col" *ngIf="accion === 'newPromoSku'">
-        <h3><span  style="background-color: #1f4e84; cursor: pointer;" class="badge badge-pill badge-primary mr-1">{{sku?.nombre}}</span></h3>
+    <div class="col-12 col-md" *ngIf="formProducto.controls.porcentaje.value !== '' && formProducto.controls.porcentaje.value !== null">
+        <h3 class="info"><i class="far fa-question-circle fa-md mb-2" placement="bottom" ngbTooltip="{{infoPrecioOferta}}"></i></h3>
+        <strong class="ofertaColor ml-1">Precio de oferta: {{(productoGeneral.precio - (productoGeneral.precio * (formProducto.controls.porcentaje.value / 100))) | currency:'EUR':'symbol'}}</strong>
+    </div>
+    <div class="col-12 col-md" *ngIf="formProducto.controls.precio.value !== '' && formProducto.controls.precio.value !== null">
+        <h3 class="info"><i class="far fa-question-circle fa-md mb-2" placement="bottom" ngbTooltip="{{infoPrecioOferta}}"></i></h3>
+        <strong class="ofertaColor ml-1">Precio de oferta: {{(formProducto.controls.precio.value) | currency:'EUR':'symbol'}}</strong>
     </div>
 </div>
 <hr>
@@ -53,7 +65,7 @@
                 </div>
                 <div class="col">
                     <div class="form-check">
-                        <input [disabled]="!producto?.vendibleSinPropiedades" class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" (click)="precio()">
+                        <input [disabled]="!productoGeneral?.vendibleSinPropiedades" class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" (click)="precio()">
                         <h3 class="form-check-label" for="gridRadios1">
                             Precio
                         </h3>
@@ -62,17 +74,17 @@
             </div>
            
             <div class="input-group">
-                <input *ngIf="algo" type="number" class="form-control" formControlName="porcentaje" placeholder="Porcentaje" aria-label="Porcentaje" 
+                <input *ngIf="promocionSegunSku" type="number" class="form-control" formControlName="porcentaje" placeholder="Porcentaje" aria-label="Porcentaje" 
                        [class.is-invalid]="porcentajeInvalido" aria-describedby="basic-addon1">
 
-                <div *ngIf="algo" class="input-group-append">
+                <div *ngIf="promocionSegunSku" class="input-group-append">
                     <span class="input-group-text" id="basic-addon1" style="background-color: white;">%</span>
                 </div>
 
-                <input *ngIf="!algo" type="number" class="form-control" formControlName="precio" placeholder="Precio" aria-label="Precio" 
+                <input *ngIf="!promocionSegunSku" type="number" class="form-control" formControlName="precio" placeholder="Precio" aria-label="Precio" 
                        [class.is-invalid]="precioInvalido" aria-describedby="basic-addon1">
 
-                <div *ngIf="!algo" class="input-group-append">
+                <div *ngIf="!promocionSegunSku" class="input-group-append">
                     <span class="input-group-text" id="basic-addon1" style="background-color: white;">$</span>
                 </div>
 
@@ -83,11 +95,12 @@
         </div>
 
     </div>
-    <div class="row mt-5 form-group">
-        <div class="col-md-6 mt-md-3 offset-md-6 col-xs-12 text-center">
+    <div class="row form-group">
+        <div class="col-md-6 offset-md-6 col-xs-12 text-center">
             <!-- <button class="btn btn-danger mt-5" style="border: none;">Cancelar</button> -->
             <button type="button" class="btn btn-secondary mt-5 mr-3" style="border: none;" (click)="cerrarModal()">Cancelar</button>
-            <button type="" class="btn btn-primary mt-5" [disabled]="!producto?.nombre" style="background-color: #1f4e84; border: none;">Aceptar</button>
+            <button type="" class="btn btn-primary mt-5" [disabled]="!productoGeneral" style="background-color: #1f4e84; border: none;">Aceptar</button>
         </div>
     </div>
 </form>
+

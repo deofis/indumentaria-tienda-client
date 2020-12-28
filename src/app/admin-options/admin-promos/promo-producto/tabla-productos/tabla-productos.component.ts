@@ -61,9 +61,5 @@ export class TablaProductosComponent implements OnInit, OnDestroy {
     
   }
 
-  /* eliminarProducto(j:number){
-    this.productosASeleccionar.push(this.productosSeleccionados[j]);
-    this.productosSeleccionados.splice(j, 1);
-  } */
 
 }
