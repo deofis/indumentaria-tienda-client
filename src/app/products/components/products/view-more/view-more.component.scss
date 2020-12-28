@@ -314,6 +314,23 @@ $color-ppal:#fff;
                         margin-bottom: 15px;
                     }
                 }
+                .caja-actualizar{
+                    width: 100%;
+                    margin-top: 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-self: baseline;
+                    &:hover{
+                        cursor: pointer;
+                    }
+                    .actualizar{
+                      font-family: $fte-sec;
+                    }
+                    .fa-redo{
+                        margin-right: 3px;
+                        color:$color-wf2;
+                    }
+                }
             }
         }
         .contenedor-dos{

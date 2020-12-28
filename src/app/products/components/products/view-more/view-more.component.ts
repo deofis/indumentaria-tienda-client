@@ -25,10 +25,16 @@ export class ViewMoreComponent implements OnInit {
   propiedadesProducto:PropiedadProducto[];
   destacado:boolean=false;
   oferta:boolean=false;
-
+  valoresSkuSleccionado:ValorPropiedadProducto []=[];
   skusDelProducto:Sku [];
   valoresSkus:ValorPropiedadProducto[]=[];
   propiedadesFiltradas: PropiedadProducto[]=[];
+  mostrarActualizar:boolean=false;
+  elegido:boolean=false;
+
+  /// sku que voy a enviar al carrito
+ idSkuAEnviar:number;
+ skuAEnviar:Sku;
 
   constructor(private catalogoservice:CatalogoService,
               private activatedroute:ActivatedRoute,
@@ -43,7 +49,10 @@ export class ViewMoreComponent implements OnInit {
   ngOnInit(): void {
     this.getProduct();
     this.getPropiedadesProducto();
-
+    setTimeout(() => {
+      this.getSkusDelProducto()
+    }, 1000);
+   
     // cambio de muestra de imagenes
     let img1= document.getElementById("img-uno");
     let img2= document.getElementById("img-dos");
@@ -67,28 +76,57 @@ export class ViewMoreComponent implements OnInit {
     // destacado
     this.destacadosInsignia();
   }
+  getSkusDelProducto(){
+    this.productoService.getAllTheSkus(this.infoProducto?.id).subscribe(response => {
+      this.skusDelProducto=response;
+    });
+  }
   valoresSiguienteCombobox(i){
-    /// obtengo los skus del producto
-      this.productoService.getAllTheSkus(this.infoProducto?.id).subscribe(response => {
-        this.skusDelProducto=response;
-      });
-
-      /// tomo el valor de la propiedad que seleccioné
+     /// tomo el valor de la propiedad que seleccioné
       let select = document.getElementsByClassName("select") as HTMLCollectionOf<HTMLInputElement>;
       let valorCombobox= select[i].value;
+      
+      // me fijo si es la primer seleccion que hago desde q se iniciaron los valores
+    //  if(!this.elegido){
 
+    //  }
+        for (let x = 0; x < this.skusDelProducto?.length; x++) {
+          // let   valorSeleccionado= this.skusDelProducto.filter(sku=> sku.valores[x].valor ==valorCombobox);
+          for (let z = 0; z < this.skusDelProducto[x]?.valores.length; z++) {
+             if(this.skusDelProducto[x].valores[z].valor == valorCombobox){
+           
+              for (let u = 0; u < this.skusDelProducto[x].valores.length; u++) {
+                if (!this.valoresSkuSleccionado.some(val => val.id == this.skusDelProducto[x].valores[u].id)) {
+                  this.valoresSkuSleccionado.push(this.skusDelProducto[x].valores[u]);
+                }
+              }
+             }
+          }
+         };
+        
+        console.log(this.valoresSkuSleccionado);
+      
       ///filtro los skus del producto para qeudarme solo con los que tienen el valor elegido
-     for (let x = 0; x < this.skusDelProducto.length; x++) {
-      // let   valorSeleccionado= this.skusDelProducto.filter(sku=> sku.valores[x].valor ==valorCombobox);
+      this.propiedadesFiltradas = this.propiedadesProducto;
+      this.propiedadesFiltradas?.forEach(propiedad => {
+        let valoresPropiedad = propiedad.valores;
+        propiedad.valores = [];
+        for (let i = 0; i < this.valoresSkuSleccionado.length; i++) {
+          for (let x = 0; x < valoresPropiedad.length; x++) {
+            if (valoresPropiedad[x].id == this.valoresSkuSleccionado[i].id) {
+              propiedad.valores.push(this.valoresSkuSleccionado[i])
+            }
+          }
+        }
+        console.log(valoresPropiedad)
+      });
+       console.log(valorCombobox);
+       
+      this.mostrarActualizar=true;
+  }
 
-        // if(this.skusDelProducto[i].valoresData.includes)
-     }
-
-
-        console.log(valorCombobox)
-
-
-
+  resetSeleccion(){
+    this.mostrarActualizar=false;
   }
 
   obtenerValoresSkus(){
@@ -101,6 +139,7 @@ export class ViewMoreComponent implements OnInit {
           this.valoresSkus.push(value);
         }
       });
+      console.log(this.valoresSkus)
     });
   }
 
@@ -202,29 +241,6 @@ export class ViewMoreComponent implements OnInit {
         }
       }
     });
-    console.log(this.propiedadesFiltradas);
-
-
-
-    // this.propiedadesFiltradas?.forEach(prop => {
-    //   let valoresEnPropiedad = prop.valores;
-
-    //   for (let i = 0; i < this.valoresSkus?.length; i++) {
-    //    let  valorUsado=this.valoresSkus[i];
-    //    console.log(i);
-    //     for (let x = 0; x < valoresEnPropiedad.length; x++) {
-    //       console.log(x)
-    //       if (valorUsado.id == valoresEnPropiedad[x].id) {
-    //         valuesFiltrados.push(this.valoresSkus[i]);
-    //         console.log("if")
-    //       } else{
-    //         console.log("fgh")
-    //       }
-
-    //     }
-
-    //   }
-    // });
   }
 
   getPropiedadesProducto(){
@@ -233,21 +249,62 @@ export class ViewMoreComponent implements OnInit {
       this.catalogoservice.getPropiedadesProducto(id).subscribe((resp:any) => {
 
         this.propiedadesProducto = resp;
-        console.log(this.propiedadesProducto);
 
       });
     });
 
   };
 
-  agregarCarrito(producto: Producto): void {
-    if (this.authService.isLoggedIn()) {
-      this.carritoService.agregarProducto(producto.id.toString()).subscribe(response => {
-        alert('Producto agregado al carrito');
+
+  identificarSkuSeleccionado(){
+    //guardo en un array vacio los objetos completos de propiedadque coincidadn con los valores elegidos en los select
+    let select = document.getElementsByClassName("select") as HTMLCollectionOf<HTMLInputElement>;
+    let valoresAEnviar:ValorPropiedadProducto []=[]
+    for (let i = 0; i < select.length; i++) {
+      let valorCombobox= select[i].value;
+      for (let x = 0; x < this.valoresSkus.length; x++) {
+        if (valorCombobox == this.valoresSkus[x].valor) {
+          valoresAEnviar.push(this.valoresSkus[x] as ValorPropiedadProducto); 
+        }
+      }
+    }
+    console.log(this.skusDelProducto)
+    
+    // recommo mi array de skus del producto y si algun sku tiene los mismos valores seleccionados, obtengo su id
+    for (let x = 0; x < this.skusDelProducto.length; x++) {
+      let a = this.skusDelProducto[x].valores;
+      let b = valoresAEnviar
+        if ( JSON.stringify(a) == JSON.stringify(b)) {
+          //identifico el sku
+          this.idSkuAEnviar=this.skusDelProducto[x].id
+          console.log(this.idSkuAEnviar);
+          break;
+          }  else{
+            console.log("else")
+          }       
+       }
+    
+    // con el id llamo a ese sku para luego enviarlo al servicio
+    this.productoService.getSku(this.infoProducto.id, this.idSkuAEnviar).subscribe( response => {
+       this.skuAEnviar=response;
+       this.agregarCarrito(this.skuAEnviar)
+
+   
+    })
+   }
+
+  agregarCarrito(sku:Sku): void {
+    // if localStorage.getItem("carrito")
+   if (this.authService.isLoggedIn()) {
+      this.carritoService.agregarSkuAlCarrito(sku?.id.toString()).subscribe(response => {
+        alert('Producto agregado al carrito')
+        console.log(response);
       });
+    } else{
+      console.log("usuario no logueado")
     }
 
-    this._cartService.agregarItem(producto);
+    // this._cartService.agregarItem(skuAEnviar);
 
   }
   /*

@@ -5,4 +5,6 @@ export class Promocion {
     fechaHasta: string;
     precioOferta: number;
     porcentaje: number;
+    estaVigente:boolean;
 }
+

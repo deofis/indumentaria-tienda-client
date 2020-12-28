@@ -44,14 +44,17 @@
                 </div>
 
                 <br>
-                <div class="text-center">
+                <div class="text-center" id="cont-props">
+                   
                     <select id="color" *ngFor="let propiedad of propiedadesFiltradas;let i=index " class="select" (change)="valoresSiguienteCombobox(i)">
                         <option hidden selected value="">{{propiedad.nombre}}</option>  
                         <option [value]="valor.valor" *ngFor="let valor of propiedad.valores">{{valor.valor}}</option>                         
                     </select>
 
                 </div>
-
+                <div *ngIf="mostrarActualizar" class="caja-actualizar" (click)=" resetSeleccion()">
+                    <p class="actulizar"> <i class="fas fa-redo"></i> Reiniciar selección</p>
+                </div>
                 <div id="caja-carrito">
                     <div class="color-quantity">
                         <div class="modify-quantity">
@@ -101,8 +104,8 @@
                     </div> -->
                     <hr>
                     <p>Costo de envío se informará al realizar la operación.</p>
-                    <button (click)="agregarCarrito(infoProducto)" class="btn" id="btn-carrito">Agregar al Carrito</button>
-                    <button (click)="agregarCarrito(infoProducto)" class="btn" id="btn-comprar">Comprar ahora</button>
+                    <button (click)="identificarSkuSeleccionado()" class="btn" id="btn-carrito">Agregar al Carrito</button>
+                    <button (click)="identificarSkuSeleccionado()" class="btn" id="btn-comprar">Comprar ahora</button>
 
                 </div>
 

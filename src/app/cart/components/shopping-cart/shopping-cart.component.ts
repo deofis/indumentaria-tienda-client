@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MockCartService } from '../../services/mock-cart.service';
 import { ItemCarrito } from '../../clases/item-carrito';
@@ -15,15 +16,20 @@ export class ShoppingCartComponent implements OnInit {
 
   carrito: Carrito;
   totalProductos: number;
-
-  constructor(private carritoService: CarritoService, private _cartService:MockCartService, private authService: AuthService) {
+  // item:ItemCarrito
+  constructor(private carritoService: CarritoService,
+               private _cartService:MockCartService, 
+               private authService: AuthService,
+               private Router:Router,
+               ) {
     this.carrito = new Carrito();
-    this.totalProductos = 0;
+    
    }
 
   ngOnInit(): void {
     this.getCarrito();
-
+  
+ 
     // this.items=JSON.parse(localStorage.getItem("Mi Carrito"));
     // console.log(this.items)
 
@@ -46,62 +52,70 @@ export class ShoppingCartComponent implements OnInit {
         this.totalProductos = this.carrito.items.length;
       });
     }
-
-    this.carrito = this._cartService.getCarrito();
-    this.totalProductos = this.carrito.items.length;
-    console.log(this.carrito);
-    console.log(this.totalProductos);
-    
-    
+    setTimeout(() => {
+      console.log(this.carrito)
+      console.log(this.totalProductos);
+    }, 1000);
     
   }
 
   eliminarItem(id: number): void {
-    let productoId = id.toString();
+    let skuId = id.toString();
 
-    this.carrito.items = this.carrito.items.filter((item: ItemCarrito) => id !== item.producto.id);
+    this.carrito.items = this.carrito.items.filter((item: ItemCarrito) => id !== item.sku.id);
 
-    this.carritoService.eliminarItem(productoId).subscribe(response => {
+    this.carritoService.eliminarItem(skuId).subscribe(response => {
       this.carrito = response.carritoActualizado;
     });
+
+     //para refrescar el componente y q se actualizen los nuevos valores
+     this.Router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.Router.navigate(['/shopping-cart']); 
+      }); 
   }
 
   decrementarCantidad(item: DetalleCarrito): void {
-    let productoId = item.producto.id;
+    let skuId = item.sku.id;
     
     this.carrito.items = this.carrito.items.map((item: DetalleCarrito) => {
-      if (productoId == item.producto.id) {
+      if (skuId == item.sku.id) {
         --item.cantidad;
       };
       return item;
     });
     if (item.cantidad == 0) {
-      return this.eliminarItem(productoId);
+      return this.eliminarItem(skuId);
     }
     console.log(item.cantidad);
 
-    this.carritoService.actualizarCantidad(item.cantidad.toString(), productoId.toString()).subscribe(response => {
+    this.carritoService.actualizarCantidad(item.cantidad.toString(), skuId.toString()).subscribe(response => {
       this.carrito = response.carritoActualizado;
       
     });
+
+      //para refrescar el componente y q se actualizen los nuevos valores
+      this.Router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.Router.navigate(['/shopping-cart']); 
+        }); 
   }
 
   incrementarCantidad(item: DetalleCarrito): void {
-    let productoId = item.producto.id;
-    
+    let skuId = item.sku.id;
+    console.log(skuId)
     this.carrito.items = this.carrito.items.map((item: DetalleCarrito) => {
-      if (productoId == item.producto.id) {
+      if (skuId == item.sku.id) {
         ++item.cantidad;
       };
       return item;
     });
 
-    console.log(item.cantidad);
-
-    this.carritoService.actualizarCantidad(item.cantidad.toString(), productoId.toString()).subscribe(response => {
+    this.carritoService.actualizarCantidad(item.cantidad.toString(), skuId.toString()).subscribe(response => {
       this.carrito = response.carritoActualizado;
-      
     });
+    //para refrescar el componente y q se actualizen los nuevos valores
+    // this.Router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+    //   this.Router.navigate(['/shopping-cart']); 
+    //   }); 
     
   }
 

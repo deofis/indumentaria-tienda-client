@@ -1,3 +1,4 @@
+import { Sku } from './../../products/clases/sku';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { MockCarrito } from 'src/app/cart/clases/cart';
@@ -17,7 +18,7 @@ export class MockCartService {
     this.carrito = new Carrito();
   }
 
-  agregarItem(producto: Producto) {
+  agregarItem(skuAEnviar: Sku) {
     let existeProducto: boolean;
     if (localStorage.getItem('carrito')) {
       this.carrito = JSON.parse(localStorage.getItem('carrito'));
@@ -26,7 +27,7 @@ export class MockCartService {
     }
 
     this.carrito.items.forEach(item => {
-      if (item.producto.id === producto.id) {
+      if (item.sku.id === skuAEnviar.id) {
         existeProducto = true;
         ++item.cantidad;
       } else {
@@ -36,7 +37,7 @@ export class MockCartService {
 
     if (!existeProducto) {
       let item: DetalleCarrito = new DetalleCarrito();
-      item.producto = producto;
+      item.sku = skuAEnviar;
       item.cantidad = 1;
       this.carrito.items.push(item);
     }

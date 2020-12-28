@@ -16,7 +16,6 @@ export class Producto {
     fechaCreacion: number;
     foto: Foto;
     imagenes: string[];
-    precioOferta:number;
     activo: boolean;
     destacado: boolean;
     subcategoria: Subcategoria;

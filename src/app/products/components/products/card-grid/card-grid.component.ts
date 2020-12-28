@@ -69,13 +69,6 @@ export class CardGridComponent implements OnInit {
 saveToFav() {
 
 }
-addCart(producto:Producto){
-  let item:ItemCarrito=new ItemCarrito();
-  item.cantidad=1;
-  item.producto=producto;
-  console.log(item.producto);
-  //this._cartService.changeCart(item);
 
-}
 
 }
