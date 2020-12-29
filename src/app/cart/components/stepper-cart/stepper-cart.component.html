@@ -5,15 +5,17 @@
 
     <mat-step label="Carrito" >
         <app-shopping-cart></app-shopping-cart>
-        <button mat-button matStepperNext id="btn-next">Continuar</button>
+        <button mat-button matStepperNext class="btn-cont">Continuar</button>
     </mat-step>
 
     <mat-step label="Envío y Facturación" >
-        <p>contenido</p>
-        <div>
-            <button mat-button matStepperPrevious>Atrás</button>
-            <button mat-button matStepperNext>Continuar</button>
-        </div>
+        <app-checkout></app-checkout>
+       <div class="cont-botones">
+        <button mat-button matStepperPrevious class="btn">Atrás</button>
+        <button mat-button matStepperNext class="btn">Continuar</button>
+       </div>
+           
+       
     </mat-step>
 
     <mat-step label="Checkout" >
