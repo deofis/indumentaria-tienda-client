@@ -1,0 +1,22 @@
+<mat-horizontal-stepper linear id="bg">
+    <ng-template matStepperIcon="edit">
+        <mat-icon>done</mat-icon>
+    </ng-template>
+
+    <mat-step label="Carrito" >
+        <app-shopping-cart></app-shopping-cart>
+        <button mat-button matStepperNext id="btn-next">Continuar</button>
+    </mat-step>
+
+    <mat-step label="Envío y Facturación" >
+        <p>contenido</p>
+        <div>
+            <button mat-button matStepperPrevious>Atrás</button>
+            <button mat-button matStepperNext>Continuar</button>
+        </div>
+    </mat-step>
+
+    <mat-step label="Checkout" >
+        <p>contenido</p>
+    </mat-step>
+</mat-horizontal-stepper>

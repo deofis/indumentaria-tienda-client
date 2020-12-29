@@ -66,12 +66,10 @@ export class ShoppingCartComponent implements OnInit {
 
     this.carritoService.eliminarItem(skuId).subscribe(response => {
       this.carrito = response.carritoActualizado;
+      this.getCarrito();
     });
 
-     //para refrescar el componente y q se actualizen los nuevos valores
-     this.Router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.Router.navigate(['/shopping-cart']); 
-      }); 
+  
   }
 
   decrementarCantidad(item: DetalleCarrito): void {
@@ -110,13 +108,13 @@ export class ShoppingCartComponent implements OnInit {
     });
 
     this.carritoService.actualizarCantidad(item.cantidad.toString(), skuId.toString()).subscribe(response => {
+      
       this.carrito = response.carritoActualizado;
+        this.getCarrito();
     });
-    //para refrescar el componente y q se actualizen los nuevos valores
-    // this.Router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-    //   this.Router.navigate(['/shopping-cart']); 
-    //   }); 
-    
+   
+   
+ 
   }
 
 

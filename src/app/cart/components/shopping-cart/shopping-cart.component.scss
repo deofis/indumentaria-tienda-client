@@ -8,19 +8,18 @@ $color-ppal:#fff;
  $color-wf1:#223e66;
  $color-wf2:#1f4e84;
 
-
-
 .container-left{
- margin-top: 50px;
+ margin-top: 15px;
+height: fit-content;
  margin-left: auto;
  margin-right: auto;
     h2{
         font-family: $fte-ppal;
         border-bottom: 1px solid rgb(190, 187, 187);
         margin-bottom: 5px;
-        margin-top: 10px;
+        margin-top: 0px;
         display: block;
-        font-size: 21px;
+        font-size: 22px;
     }
     .msg-empty-cart{
         padding: 20px 30px;
@@ -36,9 +35,6 @@ $color-ppal:#fff;
     .products-list{
         ul{ width: 100%;
             li{
-                // display: grid;
-                // grid-template-columns: 8% 50% 13% 13% 13% 3%;
-                // align-items: center;
                 list-style: none;
                 width: 100%;
                 border-radius: 10px;
@@ -46,8 +42,6 @@ $color-ppal:#fff;
                 padding: 10px 10px;
                 margin-top: 20px;
                 margin-bottom: 5px;
-                // position: relative;
-            
                &:hover{
                 border: 1px solid $color-menues;
                  box-shadow: 2px 3px 4px rgba(182, 179, 179, 0.514);
@@ -57,16 +51,23 @@ $color-ppal:#fff;
                     width: 50px;
                     height: 56px;
                     margin-left: -5px;
+                    margin-right: 10px;
                 }
                 .info{
                 font-family: $fte-sec;
                 display: flex;
                 flex-direction: column;
-                margin-left: 25px;
+                margin-left: 40px;
+                margin-top: 5px;
                 .item-name{
                     font-size:18px;
+                    text-transform: capitalize;
                     &:hover{
                         cursor: pointer;
+                        color: $color-wf2;
+                    }
+                    &:focus{
+                        outline: none;
                     }
                 }
                 .row-info{
@@ -131,8 +132,8 @@ $color-ppal:#fff;
                 .fa-times{
                     color: rgba(218, 40, 40, 0.746);
                     font-size: 0.8em;
-                   top: -7px;
-                   right: 12px;
+                   top: -5px;
+                   right: 17px;
                     position: absolute;
                    &:hover{
                        font-size: 0.9em;
@@ -145,7 +146,7 @@ $color-ppal:#fff;
     }
 }
 .container-right{
-    margin-top: 95px;
+    margin-top: 45px;
     margin-left: auto;
      margin-right: auto;
     margin-bottom: 250px;
@@ -249,7 +250,9 @@ $color-ppal:#fff;
         }
     }
 }
-
+#contai{
+    height: 480px;
+}
 @media  screen and (max-width: 767px)  {
 
     .container-left{

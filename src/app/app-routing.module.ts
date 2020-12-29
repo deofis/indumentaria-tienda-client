@@ -8,6 +8,7 @@ import { UserProfileComponent } from './user-options/user-profile/user-profile.c
 import { UserSignUpComponent } from './log-in/user/user-sign-up/user-sign-up.component';
 import { ShoppingCartComponent } from './cart/components/shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './cart/components/checkout/checkout/checkout.component';
+import { StepperCartComponent } from './cart/components/stepper-cart/stepper-cart.component';
 import { PreCheckoutComponent } from './cart/components/checkout/pre-checkout/pre-checkout.component';
 import { ConfirmDataComponent } from './cart/components/confirm-data/confirm-data.component';
 import { FinalMessageComponent } from './cart/components/final-message/final-message.component';
@@ -53,7 +54,7 @@ const routes: Routes = [
   { path:"new-password", component:NewPasswordComponent},
   { path:"recuperar-password/:token",component:NewPasswordComponent },
   { path:"verify/redirect",component:ActivatedMssgComponent },
-  { path:"shopping-cart",component:ShoppingCartComponent},
+  { path:"shopping-cart",component:StepperCartComponent},
   // { path:"shopping-cart",component:ShoppingCartComponent, canActivate: [AuthGuard, RoleGuard], data: {role: user} },
   { path:"checkout",component:CheckoutComponent },
   { path:"pre-checkout", component:PreCheckoutComponent },
