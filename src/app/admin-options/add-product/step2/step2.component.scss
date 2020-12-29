@@ -16,49 +16,8 @@ $color-ppal:#fff;
 
 #nombre-producto{
     text-transform: capitalize;
-}
-    .frame{
-  
-        width:85% ;
-        margin-top: 30px;
-        margin-left: 50px;
-        .title{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            h3{
-                font-family: $fte-ppal;
-                text-transform: uppercase;
-                font-size: 21px;
-                color: $color-sec;
-                img{
-                    width: 25px;
-                    height: 25px;
-                    margin-top: -3px;
-                    margin-left: -40px;
-                    margin-right: 10px;
-                }
-            }
-            #save{
-                display: none;
-                background-color: rgb(34, 33, 33);
-                color: white;
-                font-family: $fte-ppal;
-                text-transform: uppercase;
-                width: 140px;
-                height: 35px;
-                border-radius: 30px;
-                font-size: 15px;
-                border: none;
-                &:hover{
-                    background-color: $color-sec;
-                    transform: scale(1.03);
-                    box-shadow: 1px 2px 1px grey;
-                }
-            }
-        }       
-            .form2{
+}    
+        .form2{
                 width: 100%;
                 font-family:$fte-sec;
                 margin-bottom: 60px;
@@ -296,7 +255,7 @@ $color-ppal:#fff;
                 
 
         }
-    }
+   
     //modal editar
     .row{
         display: flex;
@@ -436,21 +395,3 @@ $color-ppal:#fff;
 outline: none;
     }
 }
-// .btn{
-//     background-color: $color-wf1;
-//     color: white;
-//     font-family: $fte-ppal;
-//     text-transform: uppercase;
-//     font-size: 16px;
-//     border: 0px ;
-//     margin-left: -12px;
-//     margin-top:-25px;
-//     padding: 4px 8px;
-//     align-self: center;
-//     box-sizing: border-box;
-//     width: 20%;
-//     border-radius: 0px;                        
-//     &:hover{
-//         transform: scale(1.03);
-//     }
-// }

@@ -66,6 +66,7 @@ import { AdminPropiedadesComponent } from './admin-options/admin-propiedades/adm
 import { PropiedadSubcategoriaComponent } from './admin-options/admin-propiedades/propiedad-subcategoria/propiedad-subcategoria.component';
 import { FormPropiedadesComponent } from './admin-options/admin-propiedades/form-propiedades/form-propiedades.component';
 import { TablaPromoSubComponent } from './admin-options/admin-propiedades/tabla-promo-sub/tabla-promo-sub.component';
+import { ContenedorFormComponent } from './admin-options/add-product/contenedor-form/contenedor-form.component';
 
 
 
@@ -118,6 +119,7 @@ import { TablaPromoSubComponent } from './admin-options/admin-propiedades/tabla-
     PropiedadSubcategoriaComponent,
     FormPropiedadesComponent,
     TablaPromoSubComponent,
+    ContenedorFormComponent,
   ],
   imports: [
     BrowserModule,
