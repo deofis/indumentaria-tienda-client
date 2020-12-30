@@ -11,6 +11,26 @@ $color-ppal:#fff;
  $color-wf3:#2779cd;
  $color-wf4:#70b8f3;
 
+ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button{
+    appearance: none;
+ }
+
+ %campos{
+    margin-top: 7px;
+    margin-bottom: 15px;
+    height: 35px;
+   width: 100%;
+    font-family: $fte-sec;
+    font-size: 15px;
+    padding-left: 5px;
+    box-sizing: border-box;
+    border: none;;
+    border-bottom: 1px solid grey;
+    &:focus {
+        outline: none;
+        border-bottom: 2px solid $color-wf3;
+    }
+}
 .container-left{
     margin-left: 0px;
     h2{
@@ -23,104 +43,132 @@ $color-ppal:#fff;
   
     form{
         box-sizing: border-box;
-      border-radius: 15px;
+        border-radius: 15px;
         background-color: $color-ppal;
         margin-top: 10px;
-     box-shadow: 1px 2px 4px rgba(170, 168, 168, 0.513);
+        padding: 10px 30px;
         .deliveryMethod{
             margin-top: 15px;
-            padding-top: 0px;
-     
+            .subtitulo{
+                font-family: $fte-sec;
+                font-size: 18px;
+                color: $color-sec;
+             }
             .box{
-          display: flex;
-          width: 100%;
-          justify-content: space-between;
-            }
+                display: flex;
+                width: 100%;
+                justify-content: flex-start;
+                align-items: center;
+                :first-of-type{
+                    margin-bottom: 20px;
+                }
+             }
             .deliver{
-                
-                // width: 28%;
-                // padding-left: 40px;
-                // margin-top: 20px;
-                label{
-                    font-size: 16px;
-                    font-family: $fte-sec;
+                input{
+                   margin-right: 12px;
                 }
                 i{
                  color: $color-sec;
                  font-size: 2em;
-                //  margin-right: -20px;
+                 display: block;
+                 margin-right: 20px;
                 }  
                 .options{
                     font-size: 15px;
+                    font-family: $fte-sec;
                 } 
             }
             .deliveryAdress{
                 border-top: 1px solid grey;
                 padding-top: 10px;
-                margin-top: 20px;
+                margin-top: -15px;
                 font-family: $fte-sec;
-                width: 90%;
+                width: 97%;
                 margin-left: auto;
                 margin-right: auto;
+                margin-bottom: 50px;
                 display: none;
                 p{
-                    font-size: 14px;
+                    color:grey;
+                    display: block;
+                    font-family: $fte-sec;
+                    font-size: 15px;
                 }
-                .inputAdress{
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    margin-top: 7px;
-                    
-                    #deliveryAdress{
-                        width: 40%;
+                .campos-direccion{
+                    .location{
+                        .country{
+                           @extend %campos;
+                           &.is-invalid{
+                            border-bottom: 1px solid rgb(252, 62, 62);
+                        }
+                        }
+                        .state{
+                            @extend %campos;
+                            &.is-invalid{
+                                border-bottom: 1px solid rgb(252, 62, 62);
+                            }
+                         }
+                         .city{
+                            @extend %campos;
+                            &.is-invalid{
+                                border-bottom: 1px solid rgb(252, 62, 62);
+                            }
+                         }
                     }
-                    #number{
-                        width: 9%;
-                    }
-                    #dto{
-                        width: 9%;
-                    }
-                    #CP{
-                        width: 10%;
-                       
-                    }
-                    input{
-                        border: 1px solid $color-sec;
-                        font-family: $fte-sec;
-                        padding: 2px 10px;
-                        width: 60%;
-                        outline: none;
-                        border: none;
-                         border-bottom: 1px solid grey;
-                        &:focus{
-                            border-bottom: 2px solid $color-wf3;
+                    .calle-nro{
+                        .calle {
+                            #calle{
+                                @extend %campos;
+                                &.is-invalid{
+                                    border-bottom: 1px solid rgb(252, 62, 62);
+                                }
+                            }
+                        }
+                        .piso{
+                            #piso{
+                                @extend %campos;
+                            }  
+                        }
+                        .nro{
+                            #nro{
+                                @extend %campos;
+                                &.is-invalid{
+                                    border-bottom: 1px solid rgb(252, 62, 62);
+                                }
+                            }
+                        }
+                        .cp{
+                            #cp{
+                                @extend %campos;
+                                &.is-invalid{
+                                    border-bottom: 1px solid rgb(252, 62, 62);
+                                }
+                            }
                         }
                     }
                 }
-               
             }
             .pick-up{
-                width: 47%;
-                margin-top: 30px;
-                padding-left: 40px;
-                label{
-                    font-size: 16px;
-                    font-family: $fte-sec;
-                }
+                input{
+                    margin-right: 12px;
+                 }
                 i{
                  color: $color-sec;
                  font-size: 2em;
-                 margin-right: -20px;
+                 display: block;
+                 margin-right: 20px;
                 } 
-                              
+                .options{
+                    font-size: 15px;
+                    font-family: $fte-sec;
+                }                               
             }
             .adress1{
                 display: none;
                 border-top: 1px solid grey;
-                margin-top: 15px;
+                margin-top: 0px;
                 padding-top: 10px;
-                width: 90%;
+                width: 97%;
                 margin-left: auto;
                 margin-right: auto;
                 span{
@@ -134,72 +182,66 @@ $color-ppal:#fff;
            }
         .paymentMethod{
             margin-top: 30px;
-            fieldset{
-                padding-top: 30px;
-                padding-bottom: 20px;
-                legend{
-                    font-family: $fte-sec;
-                    font-size: 18px;
-                    padding-left: 20px;
-                    padding-right: 20px;
-                }
-
-                .paypal-box{
+            .subtitulo{
+                font-family: $fte-sec;
+                font-size: 18px;
+                color: $color-sec;
+             }
+            .paypal-box{
+                display: flex;
+                width: 100%;
+                justify-content: flex-start;
+                align-items: center;
+                margin-bottom: 20px;
+                img{
+                    width: 90px;
+                    height: 43px;
+                    margin-left: 12px;
+                 }
+            }
+            .cash-box{
+               
+                display: none;
+                div{
                     display: flex;
-                    justify-content: space-between;
+                    width: 100%;
+                    justify-content: flex-start;
                     align-items: center;
-                    width: 25%;
-                    margin-bottom: 10px;
-                    padding-left: 40px;
-                    img{
-                        width: 90px;
-                        height: 43px;
-                    }
-                }
-                .cash-box{
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: baseline;
-                    margin-top: 20px;
-                    margin-bottom: 10px;
-                    padding-left: 40px;
-                    width: 58%;
-                    display: none;
-                    div{
-                        display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    width: 29%;
                     label{
                         img{
                         width: 70px;
                         height: 60px;
-                     }
+                        margin-left: 12px;
+                        }
                     }
-                    .options{
-                        font-size: 15px;
-                    }
-                    }
-                    p{
-                        font-family: $fte-sec;
-                        font-size: 13px;
-                        color:grey;
-                    }
+                }
+                p{
+                    font-family: $fte-sec;
+                    font-size: 13px;
+                    color:grey;
                 }
             }
         }
+        
     }
 }
-
+.text-rojo{
+    font-family: $fte-sec;
+    color: red;
+    line-height: 13px;
+    display: block;
+  transform: translateY(-15px);
+   }
+#combobox-estados, #combobox-ciudades{
+    display: none;
+}
 .container-right{
     background-color: white;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
-    // width: 32%;
     height: fit-content;
     margin-top: 45px;
-    
     .summary{
         font-family: $fte-sec;
         display: flex;
@@ -217,7 +259,7 @@ $color-ppal:#fff;
                 cursor: default;
             }
         }
-        #subtotal-summary,#total-summary{
+        #subtotal-summary,#total-summary, #costo-envio{
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -226,17 +268,43 @@ $color-ppal:#fff;
                 cursor: default;
             }
         }
-        #subtotal-summary{
+        #subtotal-summary, #costo-envio{
             color: $color-ter;
             font-size: 16px;
-            
         }
         #total-summary{
             font-weight: bolder;
             font-size: 19px;
             background-color:$color-menues;
-           
         }
+        .cont-detalle-compra{
+            padding-bottom: 20px;
+            .detalle-compra{
+                padding: 5px 25px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                font-family: $fte-sec;
+                color: $color-wf2;
+                .cant-nombre{
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    text-transform: capitalize;
+                    #cantidad{
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+        #linea-sep{
+            height: 1px;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            background-color:rgb(190, 187, 187) ;
+        }
+      
         .coupon{
             border: 2px solid $color-sec;
             border-radius: 10px;

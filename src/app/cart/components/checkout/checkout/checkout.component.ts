@@ -17,7 +17,7 @@ export class CheckoutComponent implements OnInit {
   totalProductos: number;
   totalPrice:number ;
   totalQuantity:number;
-  
+  costoDeEnvio:number =200
   constructor(private carritoService: CarritoService,
               private authService: AuthService,
               private Router:Router,) { 
@@ -25,20 +25,9 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCarrito();
-    /*
-    this._cartService.currentDataCart$.subscribe(x=>{
-      if(x)
-      {
-        this.items = x;
-        this.totalQuantity = x.length;
-         this.totalPrice = x.reduce((sum, current) => sum + (current.producto.precio * current.cantidad), 0);
-        
-      }
-      
-    })
-    */
+    this.getCarrito();    
   }
+
   getCarrito(): void {
     if (this.authService.isLoggedIn()) {
       this.carritoService.getCarrito().subscribe((response: any) => {
@@ -58,6 +47,8 @@ export class CheckoutComponent implements OnInit {
     newAdress.style.display="inherit";
     let ourAdress= document.getElementById("ourAdress");
     ourAdress.style.display="none";
+    let cash= document.getElementById("cash-box");
+    cash.style.display="none";
   }
   showAdress(){
     let ourAdress= document.getElementById("ourAdress");
