@@ -151,7 +151,7 @@
     <div class=" botones row">
         <div class="cont-botones">
             <button mat-button matStepperPrevious class="btn">Atrás</button>
-            <button mat-button matStepperNext (click)="guardarDatos()" class="btn">Continuar</button>
+            <button mat-button matStepperNext (click)="guardarDatos(); enviarInfoAConfirmData()" class="btn">Continuar</button>
         </div>
     </div>
 </div>

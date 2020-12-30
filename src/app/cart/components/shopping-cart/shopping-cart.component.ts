@@ -54,7 +54,7 @@ export class ShoppingCartComponent implements OnInit {
     }    
   }
 
-  eliminarItem(id: number): void {
+  eliminarItem(id?: number): void {
     let skuId = id.toString();
 
     this.carrito.items = this.carrito.items.filter((item: ItemCarrito) => id !== item.sku.id);

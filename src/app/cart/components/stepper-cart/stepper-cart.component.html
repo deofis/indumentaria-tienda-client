@@ -10,10 +10,9 @@
 
     <mat-step label="Envío y Facturación">
         <app-checkout></app-checkout>
-       
     </mat-step>
 
     <mat-step label="Comprar">
-        <app-confirm-data></app-confirm-data>
+        <app-confirm-data  [cliente]="cliente" [entrega]="entrega" [pago]="pago"></app-confirm-data>
     </mat-step>
 </mat-horizontal-stepper>

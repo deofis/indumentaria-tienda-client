@@ -1,3 +1,5 @@
+import { Cliente } from './../../../../log-in/clases/cliente/cliente';
+import { Direccion } from './../../../../log-in/clases/cliente/direccion';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MockCartService } from 'src/app/cart/services/mock-cart.service';
 import { CarritoService } from '../../../services/carrito.service';
@@ -11,6 +13,7 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Pais } from 'src/app/log-in/clases/cliente/pais';
 import { Estado } from 'src/app/log-in/clases/cliente/estado';
 import { Ciudad } from 'src/app/log-in/clases/cliente/ciudad';
+import { EnviarInfoCompraService } from 'src/app/user-options/user-profile/services/enviar-info-compra.service';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -30,10 +33,15 @@ export class CheckoutComponent implements OnInit, OnDestroy{
   estados:Estado[];
   ciudades:Ciudad[];
   paisSeleccionado:Pais;
+  // direccionEnvio:Direccion;
+  cliente:Cliente;
+  entrega:string;
+  pago:string
   constructor(private carritoService: CarritoService,
               private fb:FormBuilder,
               private authService: AuthService,
               private Router:Router,
+              private enviarInfoCompra:EnviarInfoCompraService,
               private catalogoservice:CatalogoService,
               ) { 
             this.carrito = new Carrito();
@@ -83,11 +91,13 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     this.formEntrega.get('direccion.estado').setValue("");
  
     this.envioADomicilio=false;
-    // let cash= document.getElementById("cash-box");
-    // cash.style.display="inherit";
     this.costoDeEnvio=0;
+
     let paypal = document.getElementById("paypal") as HTMLInputElement;
-    paypal.checked=false
+    if (paypal!== null) {
+      paypal.checked=false
+    }
+    
   }
 
   guardarDatos(){
@@ -95,19 +105,15 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     if (this.formEntrega.invalid){
       return this.formEntrega.markAllAsTouched();
     }
-      // this.newProduct.nombre=this.form.controls.nombre.value;
-      // this.newProduct.descripcion=this.form.controls.descripcion.value;
-      // this.newProduct.precio=this.form.controls.precio.value;
-      // this.newProduct.disponibilidadGeneral=this.form.controls.disponibilidadGeneral.value;
-      // this.newProduct.destacado=this.form.controls.destacado.value;
-      // this.newProduct.marca=this.form.controls.marca.value;
-      // this.newProduct.subcategoria=this.form.controls.subcategoria.value;
-      // this.newProduct.unidadMedida=this.form.controls.unidadMedida.value;
-      // this.newProduct.propiedades = this.propiedadesSeleccionadas;
-  
-    
+     this.cliente=this.formEntrega.controls.direccion.value
+    this.entrega=this.formEntrega.controls.formaDeEntrega?.value;
+    this.pago=this.formEntrega.controls.formaDePago?.value;
+    console.log(this.entrega);
+    console.log(this.pago);
+    console.log(this.cliente)
+
      
-        this.formEntrega.disable();
+    this.formEntrega.disable();
     console.log(this.formEntrega)
     }
   
@@ -176,5 +182,13 @@ export class CheckoutComponent implements OnInit, OnDestroy{
  }
 
 
+ enviarInfoAConfirmData(){
+  setTimeout(() => {
+    this.enviarInfoCompra.enviarCliente$.emit(this.cliente);
+    this.enviarInfoCompra.enviarEntrega$.emit(this.entrega);
+    this.enviarInfoCompra.enviarPago$.emit(this.pago);
+  }, 100);
+ 
+}
 
   }
