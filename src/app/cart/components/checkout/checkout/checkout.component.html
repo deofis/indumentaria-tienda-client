@@ -10,13 +10,26 @@
             <form action="" class="row">
                 <div class="col">
                     <div class=" row deliveryMethod">
-                        <fieldset>
-                            <legend>Forma de entrega</legend>
-                            <div class="deliver box">
+                        <div class="col">
+                            <div class="row">
+                                <h3>Forma de entrega</h3>
+                            </div>
+                            <div class="deliver box row">
                                 <input type="radio" name="deliver" id="deliver" (change)="showInputAdress()">
                                 <span><i class="fas fa-truck"></i> </span>
                                 <label for="deliver" class="options">Envío </label>
                             </div>
+                            <div class="pick-up box row">
+                                <input type="radio" name="deliver" id="entrega" (change)="showAdress()">
+    
+                                <i class="fas fa-store"></i>
+                                <label for="entrega" class="options">Retirá en nuestro local</label>
+                            </div>
+
+                        </div>
+
+                          
+                      
                             <div class="deliveryAdress " id="newAdress12">
                                 <p>Ingrese su dirección de entrega</p>
                                 <div class="inputAdress">
@@ -32,19 +45,15 @@
                                 <option value="value3"> Opcion 3</option>
                             </select> -->
                             </div>
-                            <div class="pick-up box">
-                                <input type="radio" name="deliver" id="entrega" (change)="showAdress()">
-    
-                                <i class="fas fa-store"></i>
-                                <label for="entrega" class="options">Retirá en nuestro local</label>
-                            </div>
+                 
                             <div class="adress1" id="ourAdress">
                                 <span>Av Emilio Olmos 20 - local 53, CP5000. Córdoba, Argentina</span>
                             </div>
-                        </fieldset>
+                       
                     </div>
                     <div class="row paymentMethod">
-                        <fieldset>
+                        
+
                             <legend>Método de Pago</legend>
                             <div class="paypal-box">
                                 <input type="radio" name="pago" id="paypal">
@@ -59,7 +68,7 @@
                                 <p>Pago en efectivo al momento de retirar</p>
     
                             </div>
-                        </fieldset>
+                        
                     </div>
 
                 </div>

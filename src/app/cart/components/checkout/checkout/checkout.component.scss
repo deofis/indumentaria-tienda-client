@@ -30,25 +30,17 @@ $color-ppal:#fff;
         .deliveryMethod{
             margin-top: 15px;
             padding-top: 0px;
-           fieldset{
-            // padding-top: 30px;
-            // padding-bottom: 30px;
-            
-            legend{
-                font-family: $fte-sec;
-                font-size: 18px;
-                padding-left: 20px;
-                padding-right: 20px;
-            }
+     
             .box{
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
             }
             .deliver{
-                width: 28%;
-                padding-left: 40px;
-                margin-top: 20px;
+                
+                // width: 28%;
+                // padding-left: 40px;
+                // margin-top: 20px;
                 label{
                     font-size: 16px;
                     font-family: $fte-sec;
@@ -56,7 +48,7 @@ $color-ppal:#fff;
                 i{
                  color: $color-sec;
                  font-size: 2em;
-                 margin-right: -20px;
+                //  margin-right: -20px;
                 }  
                 .options{
                     font-size: 15px;
@@ -140,7 +132,6 @@ $color-ppal:#fff;
                 }
             }
            }
-        }
         .paymentMethod{
             margin-top: 30px;
             fieldset{
