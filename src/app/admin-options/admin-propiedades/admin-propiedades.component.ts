@@ -14,6 +14,7 @@ import { DataPromoSubService } from './data-promo-sub.service';
 })
 export class AdminPropiedadesComponent implements OnInit, OnDestroy {
 
+  arrow: boolean;
   categorias: Categoria[] = [];
   cerrarModal: Subscription
 
@@ -25,6 +26,7 @@ export class AdminPropiedadesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     this.obtenerCategorias();
+    this.arrow = true;
 
     this.cerrarModal = this.dataPromoSubsService.cerrarModal$.subscribe(resp => {
       this.obtenerCategorias();
@@ -65,9 +67,17 @@ export class AdminPropiedadesComponent implements OnInit, OnDestroy {
       this.dataPromoSubsService.subSelect$.emit(sub);
       this.dataPromoSubsService.editPropiedad$.emit(prop);
     }, 100);
-    
-    
+  }
 
+  arrowIcono(i:string){
+    let icono = document.getElementById(i);
+    if (this.arrow) {
+      icono.className = "fas fa-angle-up fa-lg mr-2";
+      this.arrow = false;
+    }else{
+      icono.className = "fas fa-angle-down fa-lg mr-2";
+      this.arrow = true;
+    }
   }
 
 }

@@ -60,6 +60,8 @@ export class AdminPromosComponent implements OnInit {
 
       this.productos = promos;
       
+      
+      
     });
   };
 
@@ -76,6 +78,19 @@ export class AdminPromosComponent implements OnInit {
 
     this.modalService.open(contenido, { size: 'xl', scrollable: true});
 
-  }
+  };
+
+  arrowIcono(i:string){
+    let icono = document.getElementById(i);
+    if (this.arrow) {
+      icono.className = "fas fa-angle-up fa-lg mr-2";
+      this.arrow = false;
+    }else{
+      icono.className = "fas fa-angle-down fa-lg mr-2";
+      this.arrow = true;
+    }
+    
+  };
+
 }
 

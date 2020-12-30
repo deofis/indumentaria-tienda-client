@@ -8,8 +8,8 @@
             <th scope="col"><i class="far fa-question-circle fa-lg mb-2" placement="bottom" ngbTooltip="Tooltip on bottom"></i></th>
           </tr>
         </thead>
-        <tbody>
-          <tr *ngFor="let sub of subcategorias; let i=index" style="cursor: pointer;" (click)="setSeleccion(sub)">
+        <tbody id="filas">
+          <tr *ngFor="let sub of subcategorias; let i=index" style="cursor: pointer;" (click)="setSeleccion(sub)" [attr.id]="'fila'+i">
             <td>{{sub.nombre}}</td>
             <td> 
             </td>

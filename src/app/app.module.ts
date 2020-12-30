@@ -66,6 +66,9 @@ import { AdminPropiedadesComponent } from './admin-options/admin-propiedades/adm
 import { PropiedadSubcategoriaComponent } from './admin-options/admin-propiedades/propiedad-subcategoria/propiedad-subcategoria.component';
 import { FormPropiedadesComponent } from './admin-options/admin-propiedades/form-propiedades/form-propiedades.component';
 import { TablaPromoSubComponent } from './admin-options/admin-propiedades/tabla-promo-sub/tabla-promo-sub.component';
+import { ConvertFechaPipe } from './pipes/convert-fecha.pipe';
+import {TableModule} from 'primeng/table';
+import { ConvertEstadoOpPipe } from './pipes/convert-estado-op.pipe';
 
 
 
@@ -118,6 +121,8 @@ import { TablaPromoSubComponent } from './admin-options/admin-propiedades/tabla-
     PropiedadSubcategoriaComponent,
     FormPropiedadesComponent,
     TablaPromoSubComponent,
+    ConvertFechaPipe,
+    ConvertEstadoOpPipe,
   ],
   imports: [
     BrowserModule,
@@ -137,7 +142,8 @@ import { TablaPromoSubComponent } from './admin-options/admin-propiedades/tabla-
     MatButtonModule,
     MatTableModule,
     MatSortModule,
-    MatListModule
+    MatListModule,
+    TableModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true

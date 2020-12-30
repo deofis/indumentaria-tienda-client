@@ -42,4 +42,17 @@ export class TablaPromoSubComponent implements OnInit {
     this.dataPromoSubService.subSelect$.emit(sub);
   };
 
+  filaSeleccionada(i:string){
+    
+    let filas = document.getElementById("filas");
+    filas.style.backgroundColor = "white"
+    let fila = document.getElementById(`fila${i}`);
+    fila.style.backgroundColor = "red"
+    console.log(filas.style.backgroundColor);
+    
+    console.log(fila.style.backgroundColor);
+    
+    
+  }
+
 }
