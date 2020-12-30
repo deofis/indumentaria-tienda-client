@@ -1,13 +1,12 @@
 <div class="container-fluid" id="contai">
     <div class="row">
         <div class="col-12 col-md-7 col-lg-7 offset-lg-1 container-left">
-           
             <div class="row">
                 <div class="col">
                     <h2>Forma de entrega y pago </h2>
                 </div>
             </div>
-            <form action="" class="row">
+            <form [formGroup]="formEntrega" class="row">
                 <div class="col">
                     <div class=" row deliveryMethod">
                         <div class="col">
@@ -15,11 +14,11 @@
                                 <h3 class="subtitulo">Forma de entrega</h3>
                             </div>
                             <div class="deliver box row">
-                                <input type="radio" name="deliver" id="deliver" (change)="showInputAdress()">
+                                <input type="radio"  value="Envío a domicilio" id="deliver" formControlName="formaDeEntrega" (change)="showInputAdress()">
                                 <span><i class="fas fa-truck"></i> </span>
                                 <label for="deliver" class="options">Envío </label>
                             </div>
-                            <div class="deliveryAdress row " id="newAdress12">
+                            <div class="deliveryAdress row " *ngIf="envioADomicilio" >
                                 <div class="col">
                                     <div class="row">
                                         <p>Ingrese su dirección de entrega</p>
@@ -86,12 +85,12 @@
                                 </div>
                             </div>
                             <div class="pick-up box row">
-                                <input type="radio" name="deliver" id="entrega" (change)="showAdress()">
+                                <input type="radio" value="Retiro personalmente" id="entrega" (change)="showAdress()" formControlName="formaDeEntrega">
     
                                 <i class="fas fa-store"></i>
                                 <label for="entrega" class="options">Retirá en nuestro local</label>
                             </div>
-                            <div class="adress1 row" id="ourAdress">
+                            <div class="adress1 row" *ngIf="!envioADomicilio" >
                                 <span>Av Emilio Olmos 20 - local 53, CP5000. Córdoba, Argentina</span>
                             </div>
                         </div>
@@ -102,12 +101,12 @@
                                 <h3 class="subtitulo">Método de Pago</h3>
                             </div>
                             <div class="paypal-box row">
-                                <input type="radio" name="pago" id="paypal">
+                                <input type="radio"  value="Paypal" id="paypal"  formControlName="formaDePago">
                                 <label for="paypal"><img src="../../../../../assets/imagenes/paypal.png" alt=""></label>
                             </div>
-                            <div class="cash-box row" id="cash-box">
+                            <div class="cash-box row" id="cash-box" *ngIf="!envioADomicilio" >
                                 <div>
-                                    <input type="radio" name="pago" id="cash">
+                                    <input type="radio" [disabled]="!envioADomicilio" value="Efectivo" id="cash" formControlName="formaDePago">
     
                                     <label for="cash"><img src="../../../../../assets/imagenes/cash.png" alt=""></label>
                                 </div>
@@ -147,7 +146,12 @@
                 </div>
                 <!-- <button [routerLink]="['/pre-checkout']">Continuar</button> -->
             </div>
-
+        </div>
+    </div>
+    <div class=" botones row">
+        <div class="cont-botones">
+            <button mat-button matStepperPrevious class="btn">Atrás</button>
+            <button mat-button matStepperNext (click)="guardarDatos()" class="btn">Continuar</button>
         </div>
     </div>
 </div>

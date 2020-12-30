@@ -51,12 +51,7 @@ export class ShoppingCartComponent implements OnInit {
         this.carrito = response.carrito;
         this.totalProductos = this.carrito.items.length;
       });
-    }
-    setTimeout(() => {
-      console.log(this.carrito)
-      console.log(this.totalProductos);
-    }, 1000);
-    
+    }    
   }
 
   eliminarItem(id: number): void {

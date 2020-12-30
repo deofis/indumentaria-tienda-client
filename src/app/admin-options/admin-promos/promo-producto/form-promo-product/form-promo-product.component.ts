@@ -214,12 +214,10 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
   }
 
   precio(){
-
     this.algo = false;
     this.formProducto.get('porcentaje').setValidators(null);
     this.formProducto.get('porcentaje').setValue("");
     this.formProducto.get('precio').setValidators([Validators.required, Validators.min(0.1)]);
-
   };
 
   porcentaje(){
