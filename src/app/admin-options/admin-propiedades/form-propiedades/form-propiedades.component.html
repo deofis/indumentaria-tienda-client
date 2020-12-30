@@ -62,23 +62,26 @@
                 <table class="table table-sm">
                     <thead class="thead-dark">
                         <tr>
-                        <th>#</th>
                         <th>Valor</th>
-                        <th>Borrar</th>
+                        <th></th>
+                        <!-- <th></th> -->
                         </tr>
                     </thead>
                     <tbody formArrayName="valores">
                         <tr *ngFor="let control of valores.controls; let i = index">
-                        <td>{{i+1}}</td>
-                        <td><input type="text" class="form-control form-control-sm" placeholder="Nuevo valor" [formControlName]="i"></td>
-                        <td><button class="btn btn-secondary btn-sm" type="button" (click)="borrarValor(i)" [disabled]="accion === 'editProp'"><i class="far fa-trash-alt" ></i></button></td>
+                        <td><input type="text" class="form-control form-control-sm" placeholder="Nuevo valor" [formControlName]="i" [attr.id]="'input'+i"></td>
+                        <!-- <td></td> -->
+                        <td>
+                            <!-- <button class="btn btn-secondary btn-sm" type="button" *ngIf="accion === 'editProp'" (click)=" habilitarEdicion(i)"><i class="far fa-edit point" ></i></button> -->
+                            <button class="btn btn-secondary btn-sm ml-1" type="button" (click)="borrarValor(i)" [disabled]="accion === 'editProp'"><i class="far fa-trash-alt" ></i></button>
+                        </td>
                         </tr>
                     </tbody>
                     </table>
                     
             </div>
             <button *ngIf="tablaValores" class="btn btn-primary btn-sm btn-block mt-3" type="button" (click)="agregarValor()" 
-                    style="background-color: #1f4e84; border: none;" [disabled]="accion === 'editProp'">Agregar valor</button>
+                    style="background-color: #1f4e84; border: none;" >Agregar valor</button>
             
             
         </div>

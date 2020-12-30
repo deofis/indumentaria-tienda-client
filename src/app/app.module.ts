@@ -70,6 +70,8 @@ import { TablaPromoSubComponent } from './admin-options/admin-propiedades/tabla-
 import { ContenedorFormComponent } from './admin-options/add-product/contenedor-form/contenedor-form.component';
 import { StepperCartComponent } from './cart/components/stepper-cart/stepper-cart.component';
 import { MatIconModule } from '@angular/material/icon';
+import { ConvertFechaPipe } from './pipes/convert-fecha.pipe';
+import { ConvertEstadoOpPipe } from './pipes/convert-estado-op.pipe';
 
 
 
@@ -124,6 +126,8 @@ import { MatIconModule } from '@angular/material/icon';
     TablaPromoSubComponent,
     ContenedorFormComponent,
     StepperCartComponent,
+    ConvertFechaPipe,
+    ConvertEstadoOpPipe,
   ],
   imports: [
     BrowserModule,
@@ -145,7 +149,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatSortModule,
     MatListModule,
     MatStepperModule,
-    MatIconModule
+    MatIconModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true

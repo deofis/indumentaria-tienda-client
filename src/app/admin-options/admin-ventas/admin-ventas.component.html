@@ -7,12 +7,134 @@
             </div>
 
 
-            <div class="container text-center">
+            <!-- <div class="container text-center">
                 <img src="../../../assets/imagenes/wf.png" class="img-logo">
                 <h3>Estamos trabajando para brindarte la mejor experiencia.</h3>
             </div>
+ -->
 
+            <div class="container">
+                <table mat-table [dataSource]="data" class="mat-elevation-z8" multiTemplateDataRows>
 
+                    <!--- Note that these columns can be defined in any order.
+                          The actual rendered columns are set as a property on the row definition" -->
+                  
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="id">
+                      <th mat-header-cell *matHeaderCellDef class="headerTable"> Id </th>
+                      <td mat-cell *matCellDef="let element"> {{element.nroOperacion}} </td>
+                    </ng-container>
+                  
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="cliente.nombre">
+                      <th mat-header-cell *matHeaderCellDef class="headerTable"> Cliente </th>
+                      <td mat-cell *matCellDef="let element"> {{element.cliente.nombre}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="direccion">
+                        <th mat-header-cell *matHeaderCellDef class="headerTable"> Direccion de envio </th>
+                        <td mat-cell *matCellDef="let element"> {{element.direccionEnvio.calle}} {{element.direccionEnvio.numeroCalle}} </td>
+                      </ng-container>
+                  
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="fechaOperacion">
+                      <th mat-header-cell *matHeaderCellDef class="headerTable"> Fecha de venta </th>
+                      <td mat-cell *matCellDef="let element"> {{element.fechaOperacion | convertFecha}} </td>
+                    </ng-container>
+
+                    <!-- <ng-container matColumnDef="direccionEnvio">
+                        <th mat-header-cell *matHeaderCellDef class="headerTable"> Fecha de envío </th>
+                        <td mat-cell *matCellDef="let element"> </td>
+                    </ng-container> -->
+
+                    <ng-container matColumnDef="fechaEnvio">
+                        <th mat-header-cell *matHeaderCellDef class="headerTable"> Fecha de entrega </th>
+                        <td mat-cell *matCellDef="let element"> {{element.fechaEnviada}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="fechaEntrega">
+                        <th mat-header-cell *matHeaderCellDef class="headerTable"> Fecha de venta </th>
+                        <td mat-cell *matCellDef="let element"> {{element.fechaRecibida}}</td>
+                    </ng-container>
+                  
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="estado">
+                      <th mat-header-cell *matHeaderCellDef class="headerTable"> Estado </th>
+                      <td mat-cell *matCellDef="let element"> {{element.estado | convertEstadoOp}} </td>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="total">
+                        <th mat-header-cell *matHeaderCellDef class="headerTable"> Total </th>
+                        <td mat-cell *matCellDef="let element"> {{element.total | currency:"EUR":"symbol"}} </td>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="expandedDetail">
+                        <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+                          <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                            <div class="container-fluid jumbotron" >
+                                <h2>Detalle de venta</h2>
+                                <div class="row">
+                                    <div class="col">
+                                        <table class="table">
+                                            <thead>
+                                              <tr>
+                                                <th>Id</th>
+                                                <th>Nombre</th>
+                                                <th>Cantidad</th>
+                                                <th>Precio venta</th>
+                                                <th>Subtotal</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr *ngFor="let item of element.items">
+                                                <td>{{item.sku.id}}</td>
+                                                <td>{{item.sku.nombre}}</td>
+                                                <td>{{item.cantidad}}</td>
+                                                <td>{{item.precioVenta | currency:"EUR":"symbol"}}</td>
+                                                <td>{{item.subtotal | currency:"EUR":"symbol"}}</td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                    </div>
+                                </div>
+                                <hr>
+
+                                <div class="row" >
+                                    <div class="col">
+                                        Costo de envío: {{21 | currency:"EUR":"symbol"}} 
+                                    </div>
+                                    <div class="col">
+                                        Código de promoción: A32BC
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                            
+                          </div>
+                        </td>
+                        
+                    </ng-container>
+                    
+                  
+                    <!-- <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+    
+                    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="student-detail-row"></tr> -->
+                    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                    <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+                        class="example-element-row"
+                        [class.example-expanded-row]="expandedElement === element"
+                        (click)="expandedElement = expandedElement === element ? null : element">
+                    </tr>
+                    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+                    <!--  -->
+    
+                  </table>
+            </div>
+            <br>
+            
+            
 
         </div>
     </div>

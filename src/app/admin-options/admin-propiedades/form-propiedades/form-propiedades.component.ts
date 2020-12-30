@@ -227,6 +227,16 @@ export class FormPropiedadesComponent implements OnInit, AfterViewInit, OnDestro
     this.dataPromoSubService.cerrarModal$.emit();
 
   }
+  
+  habilitarEdicion(i:string){
+    /* let input = document.getElementById(`input${i}`) */
+    (<FormArray>this.formPropiedad.get('valores'))
+      .controls
+      .forEach(control => {
+        control.enable()
+      })
+    
+  }
 
 
 }
