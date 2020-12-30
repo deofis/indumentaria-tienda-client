@@ -1,8 +1,22 @@
 <section>
     <app-admin-sidebar></app-admin-sidebar>
     <div class="container-steps">
-        <h2>Añadir Producto</h2>
-        <app-step1></app-step1>
+        <h2 class="tit-ppal">Añadir Producto</h2>
+       
+        <div class="frame step1" id="step1">
+            <div class="title">
+                <h3> <img src="../../../assets/imagenes/nro-uno.png" alt=""> Información general</h3>
+            </div>
+            <app-step1></app-step1>
+        </div>
+
+        <div *ngIf="step2" class="frame step2" id="step2">
+            <div class="title">
+                <h3> <img src="../../../assets/imagenes/nro-dos.png" alt=""> Combinaciones posibles</h3>
+            </div>
+
+            <app-step2  [newProduct]="newProduct" ></app-step2>
+        </div>
     </div>
 
 </section>

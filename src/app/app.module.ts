@@ -45,6 +45,7 @@ import { Step2Component } from './admin-options/add-product/step2/step2.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{MatFormFieldModule}from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatStepperModule} from '@angular/material/stepper';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatButtonModule} from '@angular/material/button';
@@ -66,6 +67,9 @@ import { AdminPropiedadesComponent } from './admin-options/admin-propiedades/adm
 import { PropiedadSubcategoriaComponent } from './admin-options/admin-propiedades/propiedad-subcategoria/propiedad-subcategoria.component';
 import { FormPropiedadesComponent } from './admin-options/admin-propiedades/form-propiedades/form-propiedades.component';
 import { TablaPromoSubComponent } from './admin-options/admin-propiedades/tabla-promo-sub/tabla-promo-sub.component';
+import { ContenedorFormComponent } from './admin-options/add-product/contenedor-form/contenedor-form.component';
+import { StepperCartComponent } from './cart/components/stepper-cart/stepper-cart.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -118,6 +122,8 @@ import { TablaPromoSubComponent } from './admin-options/admin-propiedades/tabla-
     PropiedadSubcategoriaComponent,
     FormPropiedadesComponent,
     TablaPromoSubComponent,
+    ContenedorFormComponent,
+    StepperCartComponent,
   ],
   imports: [
     BrowserModule,
@@ -137,10 +143,13 @@ import { TablaPromoSubComponent } from './admin-options/admin-propiedades/tabla-
     MatButtonModule,
     MatTableModule,
     MatSortModule,
-    MatListModule
+    MatListModule,
+    MatStepperModule,
+    MatIconModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true
+  
   }],
   bootstrap: [AppComponent],
  

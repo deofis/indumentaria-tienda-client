@@ -1,52 +1,21 @@
-<div class="container-fluid">
+<div class="container-fluid" id="contai">
     <div class="row">
         <!-- listado de productos DERECHA -->
-        <div class="col-12 col-md-7 col-lg-6 offset-lg-1 container-left">
+        <div class="col-12 col-md-7 col-lg-7 offset-lg-1 container-left">
             <div class="row">
                 <div class="col">
                     <h2>Mi carrito</h2>
                 </div>
             </div>
 
-            <!-- <div class="msg-empty-cart" *ngIf="totalProductos===0">
-            <p>Tu carrito está vacio</p>
-        </div> -->
-            <!-- <div class="products-list" *ngIf="totalProductos > 0">
-            <ul class="shopping-cart-items">
-                <li class="clearfix" *ngFor="let item of carrito.items">
-                    <img src="../../../../../assets/imagenes/celu.jpg" alt="item compra" />
-                    <div class="info">
-                        <span class="item-name">{{item.producto.nombre}}</span>
-                        <div class="row-info">
-                            <span></span>
-                        </div>
-                    </div>
-                    <div class="price-u">
-                        <span>Precio:</span>
-                        <span class="item-price">${{item.producto.precio}}</span>
-                    </div>
-                    <div class="quantity">
-                        <span>Cantidad:</span>
-                        <div class="modify-quantity">
-                            <i class="fas fa-minus-circle" (click)="decrementarCantidad(item)"></i>
-                            <span class="item-quantity">{{item.cantidad}}</span>
-                            <i class="fas fa-plus-circle" (click)="incrementarCantidad(item)"></i>
-                        </div>
-                    </div>
-                    <div class="subtotal">
-                        <span>Subtotal:</span>
-                        <span class="item-subtotal">${{(item.producto.precio* item.cantidad)}}</span>
-                    </div>
-                    <i id="close" class="fas fa-times" (click)="eliminarItem(item.producto.id)"></i>
-
-                </li>
-            </ul>
-        </div> -->
+            <div class="msg-empty-cart" *ngIf="totalProductos===0">
+                <p>Tu carrito está vacio</p>
+            </div>
             <div class="  row products-list">
                 <div class="col ">
                     <ul class="shopping-cart-items">
-                            <li >
-                                <div class="row ">
+                        <li *ngFor="let item of carrito?.items">
+                            <div class="row ">
                                 <div class="col-12 col-lg-6  ">
                                     <div class="row ">
                                         <div class="col-2 col-lg-1 ">
@@ -55,10 +24,11 @@
 
                                         <div class="col-9 col-lg-9  info">
                                             <div class="row">
-                                                <span class="item-name">Samsung Galaxy S20</span>
+                                                <span class="item-name"
+                                                    [routerLink]="['/viewmore',item.sku.producto.id]">{{item?.sku.nombre}}</span>
                                             </div>
                                             <div class="row row-info">
-                                                <span>Color: Negro</span>
+                                                <span>{{item?.sku.valoresData}}</span>
                                                 <span></span>
                                             </div>
                                         </div>
@@ -68,55 +38,48 @@
                                     <div class="row ">
                                         <div class="col-4  price-u">
                                             <span>Precio:</span>
-                                            <span class="item-price">€700</span>
+                                            <span *ngIf="!item.sku.promocion.estaVigente"
+                                                class="item-price">€{{item?.sku.precio | number: '.0-2'}}</span>
+                                            <span *ngIf="item.sku.promocion.estaVigente"
+                                                class="item-price">€{{item?.sku.promocion.precioOferta | number:
+                                                '.0-2'}}</span>
                                         </div>
                                         <div class=" col-4  quantity">
                                             <span>Cantidad:</span>
                                             <div class="modify-quantity">
-                                                <i class="fas fa-minus-circle"></i>
-                                                <span class="item-quantity">1</span>
-                                                <i class="fas fa-plus-circle"></i>
+                                                <i class="fas fa-minus-circle" (click)="decrementarCantidad(item)"></i>
+                                                <span class="item-quantity">{{item?.cantidad }}</span>
+                                                <i class="fas fa-plus-circle" (click)="incrementarCantidad(item)"></i>
                                             </div>
                                         </div>
                                         <div class="col-4  subtotal">
                                             <span>Subtotal:</span>
-                                            <span class="item-subtotal">€700</span>
+                                            <span class="item-subtotal">€{{item?.subtotal | number: '.0-2'}}</span>
                                         </div>
-                                        <i id="close" class="fas fa-times"></i>
+                                        <i id="close" class="fas fa-times" (click)=" eliminarItem(item.sku.id)"></i>
                                     </div>
                                 </div>
                             </div>
-                            </li>
+                        </li>
                     </ul>
+                    
                 </div>
             </div>
         </div>
 
         <!-- resumen de compra IZQUIERDA -->
-        <div class="col-12 col-md-5 col-lg-4 offset-lg-1 container-right" >
-            <!-- <div class="summary">
-            <h2>Resumen de compra</h2>
-            <div id="subtotal-summary"><span>Subtotal:</span> <span> ${{carrito.total}}</span> </div>
-            <div id="total-summary"><span>Total:</span> <span>${{carrito.total}} </span> </div>
-            <div class="coupon">
-                <i class="fas fa-ticket-alt"></i> <span>¿Tenés un cupón de descuento?</span>
-            </div>
-        </div>
-        <button [routerLink]="['/pre-checkout']">CONTINUAR</button> -->
+        <div class="col-12 col-md-5 col-lg-4 offset-lg-1 container-right">
             <div class="row  summary">
                 <h2>Resumen de compra</h2>
-                <div id="subtotal-summary"><span>Subtotal:</span> <span>€700</span> </div>
-                <div id="total-summary"><span>Total:</span> <span>€1200</span> </div>
+                <div id="subtotal-summary"><span>Subtotal:</span> <span>€{{carrito?.total | number: '.0-2'}}</span>
+                </div>
+                <div id="total-summary"><span>Total:</span> <span>€{{carrito?.total | number: '.0-2'}}</span> </div>
                 <div class="coupon">
                     <i class="fas fa-ticket-alt"></i> <span>¿Tenés un cupón de descuento?</span>
                 </div>
-                <button [routerLink]="['/pre-checkout']">Continuar</button>
+                <!-- <button [routerLink]="['/pre-checkout']">Continuar</button> -->
             </div>
-           
+
         </div>
     </div>
-
-
-
-
 </div>

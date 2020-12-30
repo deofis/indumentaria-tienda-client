@@ -1,7 +1,7 @@
-import { Producto } from '../../products/clases/producto';
+import { Sku } from 'src/app/products/clases/sku';
 
 export class ItemCarrito{
-    producto:Producto;
+    sku:Sku;
     cantidad:number;
 
 }

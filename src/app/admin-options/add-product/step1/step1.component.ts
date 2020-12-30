@@ -20,6 +20,7 @@ import Swal from "sweetalert2";
 import {HttpClient} from '@angular/common/http';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { Output,EventEmitter } from '@angular/core';
+import { EnviarProductoService } from '../../enviar-producto.service';
 
 @Component({
   selector: 'app-step1',
@@ -73,6 +74,7 @@ export class Step1Component implements OnInit, OnDestroy {
               private dataService:DataService,
               private marcaService:MarcasService,
               private propiedadesService:PropiedadesService,
+              private enviarNewProduct:EnviarProductoService,
               ) { 
 
     this.marcas = [];
@@ -113,10 +115,17 @@ export class Step1Component implements OnInit, OnDestroy {
 
   enviarProducto(){
     setTimeout(() => {
-      this.dataService.productoSelec$.emit(this.newProduct)
+      this.dataService.productoSelec$.emit(this.newProduct);
+      this.enviarNewProduct.enviarProducto$.emit(this.newProduct);
     }, 100);
    
   }
+
+  // enviarProductoAStep2(){
+  //   setTimeout(() => {
+  //   this.enviarNewProduct.enviarProducto$.emit(this.newProduct)
+  // },300);
+  // }
 /// *** ***  Formulario 1
 crearProducto(){
 

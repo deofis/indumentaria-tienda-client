@@ -1,14 +1,20 @@
-import { Producto } from '../../products/clases/producto';
+import { Sku } from './../../products/clases/sku';
 export class DetalleCarrito {
     id: number;
-    producto: Producto;
+    sku: Sku;
     cantidad: number;
     subtotal: number;
 
     public calcularSubtotal(): number {
-        let subtotal = this.cantidad * this.producto.precio;
-        this.subtotal = subtotal;
-        
+        let subtotal =0
+        if (this.sku.promocion !==null && this.sku.promocion.estaVigente) {
+            subtotal=this.cantidad* this.sku.promocion.precioOferta;
+            this.subtotal = subtotal;
+        }else{
+            subtotal = this.cantidad * this.sku.precio;
+            this.subtotal = subtotal;
+        }
+      
         return this.subtotal;
     }
 }

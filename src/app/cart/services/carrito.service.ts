@@ -27,41 +27,42 @@ export class CarritoService {
   /**
    * Agrega un nuevo item al carrito, en caso de que el producto ya se encuentre
    * en el carrito, suma en uno la cantidad del item.
-   * @param productoId id del producto a agregar al carrito.
+   * @param skuId id del sku a agregar al carrito.
    * @return Observable con el objeto carrito.
    */
-  agregarProducto(productoId: string): Observable<any> {
-    const params = new HttpParams().set('productoId', productoId);
+  agregarSkuAlCarrito(skuId: string): Observable<any> {
+   
+    const params = new HttpParams().set('skuId', skuId);
 
     ++this.totalItems;
     this.totalItemsEmmiter.emit(this.totalItems);
     
-    return this.http.post(`${this.urlEndpoint}/carrito/producto/agregar`, null, {params: params});
+    return this.http.post(`${this.urlEndpoint}/carrito/item/agregar`, null, {params: params});
   }
 
   /**
    * Elimina un item del carrito y devuelve el mismo actualizado.
-   * @param productoId number id del producto (item) que remover del carrito.
+   * @param skuId number id del sku (item) que remover del carrito.
    */
-  eliminarItem(productoId: string): Observable<any> {
+  eliminarItem(skuId: string): Observable<any> {
     let parametros = new HttpParams();
-    parametros = parametros.append('productoId', productoId);
+    parametros = parametros.append('skuId', skuId);
 
     --this.totalItems;
     this.totalItemsEmmiter.emit(this.totalItems);
 
-    return this.http.delete(`${this.urlEndpoint}/carrito/producto/quitar`, {params: parametros});
+    return this.http.delete(`${this.urlEndpoint}/carrito/item/quitar`, {params: parametros});
   }
 
   /**
    * Actualiza la cantidad de productos de un item, y devuelve el carrito actualizado.
    * @param cantidad number cantidad nueva del item.
-   * @param productoId number id del producto al cual se debe cambiar la cantidad del item.
+   * @param skuId number id del producto al cual se debe cambiar la cantidad del item.
    */
-  actualizarCantidad(cantidad: string, productoId: string): Observable<any> {
-    const parametros = new HttpParams().set('productoId', productoId).set('cantidad', cantidad);
+  actualizarCantidad(cantidad: string, skuId: string): Observable<any> {
+    const parametros = new HttpParams().set('skuId', skuId).set('cantidad', cantidad);
 
-    return this.http.put(`${this.urlEndpoint}/carrito/producto/actualizar`, null, {params: parametros});
+    return this.http.put(`${this.urlEndpoint}/carrito/item/actualizar`, null, {params: parametros});
   }
 
   getTotalItems(): number {

@@ -1,3 +1,6 @@
+import { Producto } from './../../products/clases/producto';
+import { EnviarProductoService } from './../enviar-producto.service';
+import { Subscription } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,11 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
-
-  constructor( ) { }
+step2:boolean=false;
+subscripcionProducto : Subscription;
+newProduct:Producto;
+  constructor( private enviarProducto:EnviarProductoService) { }
 
   ngOnInit(): void {
+    
+    this.subscripcionProducto=this.enviarProducto.enviarProducto$.subscribe(producto=> {
+     console.log(producto)
+      this.newProduct=new Producto();
+      this.newProduct=producto;
+       this.step2=true;
 
+    })
   }
 
 }

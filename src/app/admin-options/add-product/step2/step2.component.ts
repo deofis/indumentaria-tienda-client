@@ -33,7 +33,7 @@ export class Step2Component implements OnInit, OnDestroy {
   seleccionados= new Array;
   opcionSeleccionado:any;
   valoresSelect:Array<any>;
-  skus:Sku;
+  skus:Sku[];
   idSkuSeleccionado:number;
   skuEditado:Sku;
   cerrarModalPromo:Subscription;
@@ -163,7 +163,7 @@ export class Step2Component implements OnInit, OnDestroy {
   }
   crearSku(){
     this.newSku.precio=this.formSkus.controls.precio.value;
-    this.newSku.precioOferta=this.formSkus.controls.precioOferta.value;
+   //this.newSku.precioOferta=this.formSkus.controls.precioOferta.value;
     this.newSku.disponibilidad=this.formSkus.controls.disponibilidad.value;
     this.newSku.producto= this.newProduct;
     this.newSku.valores=this.seleccionados;

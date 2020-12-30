@@ -33,25 +33,28 @@
 
                 <div id="caja-precio">
                     <div class="precio">
-                        <h3 *ngIf="mostrarPrecio()">€{{infoProducto.precio}}</h3>
-                        <h3 *ngIf="oferta" class="pcio-oferta">€{{infoProducto.promocion?.precioOferta}}</h3>
+                        <h3 *ngIf="mostrarPrecio()">€{{infoProducto.precio | number: '.2'}}</h3>
+                        <h3 *ngIf="oferta" class="pcio-oferta">€{{infoProducto.promocion?.precioOferta | number: '.2'}}</h3>
                         <div class="row-oferta">
-                            <span>€{{infoProducto.precio }}</span>
-                            <p class="off ">{{infoProducto.promocion?.porcentaje * 100}}% 0FF</p>
+                            <span>€{{infoProducto.precio | number: '.2'}} </span>
+                            <p class="off ">{{infoProducto.promocion?.porcentaje * 100 | number: '2.0-0'}}% 0FF</p>
                         </div>
                     </div>
                     <i class="fas fa-medal" *ngIf="destacado"></i>
                 </div>
 
                 <br>
-                <div class="text-center">
-                    <select id="color" *ngFor="let propiedad of propiedadesProducto" class="select">
+                <div class="text-center" id="cont-props">
+                   
+                    <select id="color" *ngFor="let propiedad of propiedadesFiltradas;let i=index " class="select" (change)="valoresSiguienteCombobox(i)">
                         <option hidden selected value="">{{propiedad.nombre}}</option>  
-                        <option [value]="valor.id" *ngFor="let valor of propiedad.valores">{{valor.valor}}</option>                         
+                        <option [value]="valor.valor" *ngFor="let valor of propiedad.valores">{{valor.valor}}</option>                         
                     </select>
 
                 </div>
-
+                <div *ngIf="mostrarActualizar" class="caja-actualizar" (click)=" resetSeleccion()">
+                    <p class="actulizar"> <i class="fas fa-redo"></i> Reiniciar selección</p>
+                </div>
                 <div id="caja-carrito">
                     <div class="color-quantity">
                         <div class="modify-quantity">
@@ -101,8 +104,8 @@
                     </div> -->
                     <hr>
                     <p>Costo de envío se informará al realizar la operación.</p>
-                    <button (click)="agregarCarrito(infoProducto)" class="btn" id="btn-carrito">Agregar al Carrito</button>
-                    <button (click)="agregarCarrito(infoProducto)" class="btn" id="btn-comprar">Comprar ahora</button>
+                    <button (click)="identificarSkuSeleccionado()" class="btn" id="btn-carrito">Agregar al Carrito</button>
+                    <button (click)="identificarSkuSeleccionado()" class="btn" id="btn-comprar">Comprar ahora</button>
 
                 </div>
 
@@ -134,7 +137,6 @@
                 </p>
             </div>
         </article>
-
         <article class="contenedor-tres" id="contenedor-tres">
             <p id="titulo-a">¿Tenés alguna pregunta?</p>
 

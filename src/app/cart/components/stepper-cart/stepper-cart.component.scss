@@ -1,0 +1,58 @@
+
+$fte-ppal: 'Poppins', sans-serif;
+$fte-sec: 'Open Sans', sans-serif;
+$color-ppal:#fff;
+ $color-sec: rgb(87, 83, 83);
+ $color-ter: rgb(172, 165, 165);
+ $color-menues: rgb(243, 236, 236);
+ $color-wf1:#223e66;
+ $color-wf2:#1f4e84;
+
+#bg{
+    position: relative;
+    background-color: #f8f7f7; 
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    height: fit-content;
+    min-height: 87vh;
+}
+.cont-botones{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 28%;
+    position: absolute;
+    bottom: 50px;
+    right: 45px;
+   
+}
+.btn{
+    background-color: $color-wf1;
+    color: white;
+    font-family: $fte-sec;
+    width: 40%;
+    font-size: 16px;
+    display: block;
+    &:hover{
+        background-color: $color-wf2;
+        cursor: pointer;
+    }
+}
+.btn-cont{
+    background-color: $color-wf1;
+    color: white;
+    font-family: $fte-sec;
+    width: 14%;
+    font-size: 16px;
+    position: absolute;
+    bottom: 50px;
+    right: 45px;
+    display: block;
+    &:hover{
+        background-color: $color-wf2;
+        cursor: pointer;
+    }
+}
+
