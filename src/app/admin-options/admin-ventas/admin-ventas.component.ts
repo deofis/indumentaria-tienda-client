@@ -6,7 +6,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import { VentasService } from '../ventas.service';
 import { Operacion } from './clases/Operacion';
 
-import { SortEvent } from 'primeng/api';
+// import { SortEvent } from 'primeng/api';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
