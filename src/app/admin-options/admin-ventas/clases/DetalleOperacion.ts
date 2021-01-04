@@ -5,6 +5,6 @@ export class DetalleOperacion {
     cantidad: number;
     id: number;
     precioVenta: number;
-    sku: Sku[];
+    sku: Sku;
     subtotal: number;
 }

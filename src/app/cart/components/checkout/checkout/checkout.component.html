@@ -14,11 +14,12 @@
                                 <h3 class="subtitulo">Forma de entrega</h3>
                             </div>
                             <div class="deliver box row">
-                                <input type="radio"  value="Envío a domicilio" id="deliver" formControlName="formaDeEntrega" (change)="showInputAdress()">
+                                <input type="radio" value="Envío a domicilio" id="deliver"
+                                    formControlName="formaDeEntrega" (change)="showInputAdress()">
                                 <span><i class="fas fa-truck"></i> </span>
                                 <label for="deliver" class="options">Envío </label>
                             </div>
-                            <div class="deliveryAdress row " *ngIf="envioADomicilio" >
+                            <div class="deliveryAdress row " *ngIf="envioADomicilio">
                                 <div class="col">
                                     <div class="row">
                                         <p>Ingrese su dirección de entrega</p>
@@ -85,12 +86,13 @@
                                 </div>
                             </div>
                             <div class="pick-up box row">
-                                <input type="radio" value="Retiro personalmente" id="entrega" (change)="showAdress()" formControlName="formaDeEntrega">
-    
+                                <input type="radio" value="Retiro personalmente" id="entrega" (change)="showAdress()"
+                                    formControlName="formaDeEntrega">
+
                                 <i class="fas fa-store"></i>
                                 <label for="entrega" class="options">Retirá en nuestro local</label>
                             </div>
-                            <div class="adress1 row" *ngIf="!envioADomicilio" >
+                            <div class="adress1 row" *ngIf="!envioADomicilio">
                                 <span>Av. Calle XXXX, Barcelona,Cataluña.</span>
                             </div>
                         </div>
@@ -100,7 +102,12 @@
                             <div class="row">
                                 <h3 class="subtitulo">Método de Pago</h3>
                             </div>
-                            <div class="paypal-box row">
+                            <div class="row" *ngFor="let medioPago of mediosDePago">
+                                <input type="radio" value="{{medioPago}}" id="{{medioPago.nombre}}"
+                                formControlName="formaDePago" name="pago">
+                                <label for="{{medioPago.nombre}}">{{medioPago.nombre}}</label>
+                            </div>
+                            <!-- <div class="paypal-box row">
                                 <input type="radio"  value="Paypal" id="paypal"  formControlName="formaDePago">
                                 <label for="paypal"><img src="../../../../../assets/imagenes/paypal.png" alt=""></label>
                             </div>
@@ -112,7 +119,7 @@
                                 </div>
                                 <p>Pago en efectivo al momento de retirar</p>
     
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -126,12 +133,12 @@
                         <div class="cant-nombre">
                             <span id="cantidad">{{item?.cantidad }}</span>
                             <span>{{item?.sku.nombre}}</span>
-                        </div>                    
-                        <span *ngIf="!item.sku.promocion.estaVigente"
-                            class="item-price">€{{item?.sku.precio | number: '.0-2'}}</span>
+                        </div>
+                        <span *ngIf="!item.sku.promocion.estaVigente" class="item-price">€{{item?.sku.precio | number:
+                            '.0-2'}}</span>
                         <span *ngIf="item.sku.promocion.estaVigente"
                             class="item-price">€{{item?.sku.promocion.precioOferta | number:
-                        '.0-2'}}</span>
+                            '.0-2'}}</span>
                     </div>
                 </div>
                 <span id="linea-sep"></span>
@@ -140,7 +147,8 @@
                 <div class="envio-costo" id="costo-envio">
                     <span>Costo de Envío:</span> <span>€{{costoDeEnvio | number: '.0-2'}}</span>
                 </div>
-                <div id="total-summary"><span>Total:</span> <span>€{{carrito?.total + costoDeEnvio | number: '.0-2'}}</span> </div>
+                <div id="total-summary"><span>Total:</span> <span>€{{carrito?.total + costoDeEnvio | number:
+                        '.0-2'}}</span> </div>
                 <div class="coupon">
                     <i class="fas fa-ticket-alt"></i> <span>¿Tenés un cupón de descuento?</span>
                 </div>
@@ -151,7 +159,8 @@
     <div class=" botones row">
         <div class="cont-botones">
             <button mat-button matStepperPrevious class="btn">Atrás</button>
-            <button mat-button matStepperNext (click)="guardarDatos(); enviarInfoAConfirmData()" class="btn">Continuar</button>
+            <button mat-button matStepperNext (click)="guardarDatos(); enviarInfoAConfirmData()"
+                class="btn">Continuar</button>
         </div>
     </div>
 </div>
