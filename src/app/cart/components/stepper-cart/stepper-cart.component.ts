@@ -12,6 +12,7 @@ export class StepperCartComponent implements OnInit {
   cliente:Cliente;
   pago:string;
   entrega:string;
+  abriendoStep2:boolean;
   subscripcionInfoCompra : Subscription;
   constructor(private enviarInfoCompra:EnviarInfoCompraService) { }
 

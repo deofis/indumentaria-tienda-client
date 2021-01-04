@@ -5,14 +5,14 @@
 
     <mat-step label="Carrito">
         <app-shopping-cart></app-shopping-cart>
-        <button mat-button matStepperNext class="btn-cont">Continuar</button>
+       
     </mat-step>
 
     <mat-step label="Envío y Facturación">
-        <app-checkout></app-checkout>
+        <app-checkout [abriendoStep2]="abriendoStep2"></app-checkout>
     </mat-step>
 
-    <mat-step label="Comprar">
+    <mat-step label="Confirmación">
         <app-confirm-data  [cliente]="cliente" [entrega]="entrega" [pago]="pago"></app-confirm-data>
     </mat-step>
 </mat-horizontal-stepper>

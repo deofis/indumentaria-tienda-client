@@ -12,15 +12,16 @@ section{
     display: flex;
     flex-direction: column;  
       justify-content: center;
-      align-items: center;
+    align-items: center;  
     height: fit-content;
     min-height: 75vh;
     width: 85%;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 20px;
+    padding-top: 0px;
     padding-bottom: 30px;
     box-sizing: border-box;
+    margin-top: -40px;
 }
 .container-left{
     box-sizing: border-box;
@@ -74,6 +75,8 @@ section{
                 color: $color-ter;
                 font-weight: normal;
                 margin-left:15px ;
+                text-transform: capitalize
+                ;
             }
 
         }
@@ -87,21 +90,20 @@ section{
 }
 .buttons{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    width: 40vw;
-    margin-top: -40px;
+    width: 35vw;
+    margin-top: -10px;
     .btn{
         background-color: $color-wf1;
         color: white;
         font-family: $fte-sec;
-        font-size: 17px;
-        border: 0px ;
-        padding: 8px 15px;
-        align-self: center;
-        box-sizing: border-box;
-        width: 40%;
-        border-radius: 0px;                        
+        width: 12vw;
+        font-size: 15px;
+        display: block;
+        padding: 0;
+        padding-right: 4px;
+        padding-left: 4px;
         &:hover{
             background-color: $color-wf2;
             cursor: pointer;

@@ -6,6 +6,7 @@ import { Carrito } from '../../clases/carrito';
 import { CarritoService } from '../../services/carrito.service';
 import { DetalleCarrito } from '../../clases/detalle-carrito';
 import { AuthService } from '../../../log-in/services/auth.service';
+import { EnviarInfoCompraService } from 'src/app/user-options/user-profile/services/enviar-info-compra.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -16,10 +17,12 @@ export class ShoppingCartComponent implements OnInit {
 
   carrito: Carrito;
   totalProductos: number;
+  abriendoStep2:boolean=false;
   // item:ItemCarrito
   constructor(private carritoService: CarritoService,
                private _cartService:MockCartService, 
                private authService: AuthService,
+               private enviarInfoCompra:EnviarInfoCompraService,
                private Router:Router,
                ) {
     this.carrito = new Carrito();
@@ -53,7 +56,7 @@ export class ShoppingCartComponent implements OnInit {
       });
     }    
   }
-
+ 
   eliminarItem(id?: number): void {
     let skuId = id.toString();
 
@@ -112,6 +115,15 @@ export class ShoppingCartComponent implements OnInit {
  
   }
 
+  enviarInfoACheckout(){
+    this.abriendoStep2=true
+    setTimeout(() => {
+    
+      this.enviarInfoCompra.enviarRecargarCarrito$.emit(this.abriendoStep2);
+     
+    }, 100);
+   
+  }
 
   /*
   ///inicio carrito de compras eliminar , sumar 

@@ -14,13 +14,14 @@ import { Pais } from 'src/app/log-in/clases/cliente/pais';
 import { Estado } from 'src/app/log-in/clases/cliente/estado';
 import { Ciudad } from 'src/app/log-in/clases/cliente/ciudad';
 import { EnviarInfoCompraService } from 'src/app/user-options/user-profile/services/enviar-info-compra.service';
+import { Input } from '@angular/core';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit, OnDestroy{
-
+  @Input() abriendoStep2:boolean;
   carrito: Carrito;
   totalProductos: number;
   totalPrice:number ;
@@ -48,11 +49,12 @@ export class CheckoutComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit(): void {
-    this.getCarrito();   
+  
     ///inicializar el fomulario
     this.crearForm(); 
     this.getPaises();  
     this.showAdress();
+    this.getCarrito(); 
   }
   ngOnDestroy():void{
     console.log("enviando datos")
@@ -68,15 +70,21 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     }
     
   }
-
+  /// este método se activa cuando elijo la opción de envío a domicilio ,
+  // me muestra el form para completar la dirección y oculta el método de pago efvo
   showInputAdress(){
     this.envioADomicilio=true
     this.costoDeEnvio=200;
     let paypal = document.getElementById("paypal") as HTMLInputElement;
-    paypal.checked=true
+    paypal.checked=true;
+    let efvo= document.getElementById("cash") as HTMLInputElement;
+    efvo.checked=false;
+    this.formEntrega.get("formaDePago").setValue("Paypal")
 
   }
+  /// muestro la direccion del local cuando eligen la opcion de retiro personalmente
   showAdress(){
+    //cambio los validadores  de los campos de direccion de envio para q no sean obligatorios
     this.formEntrega.get('direccion.calle').setValidators(null);
     this.formEntrega.get('direccion.nro').setValidators(null);
     this.formEntrega.get('direccion.cp').setValidators(null);
@@ -105,7 +113,9 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     if (this.formEntrega.invalid){
       return this.formEntrega.markAllAsTouched();
     }
-     this.cliente=this.formEntrega.controls.direccion.value
+    /// guardo las vriables con la info que voy a enviar al siguiente paso : direccion, forma de entrega y de pago 
+
+    this.cliente=this.formEntrega.controls.direccion.value
     this.entrega=this.formEntrega.controls.formaDeEntrega?.value;
     this.pago=this.formEntrega.controls.formaDePago?.value;
     console.log(this.entrega);
@@ -113,7 +123,7 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     console.log(this.cliente)
 
      
-    this.formEntrega.disable();
+    // this.formEntrega.disable();
     console.log(this.formEntrega)
     }
   
@@ -160,7 +170,7 @@ export class CheckoutComponent implements OnInit, OnDestroy{
      })
   }
   
-  
+  /// msotrar estados una vez que elegi el pais 
   showEstados(){
      this.paisSeleccionado = this.formEntrega.get('direccion.pais').value;
      this.catalogoservice.getEstados(this.paisSeleccionado?.id).subscribe( response =>{
@@ -170,6 +180,7 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     let comboBoxEstados= document.getElementById("combobox-estados");
     comboBoxEstados.style.display="block";
   }
+  /// mostrar ciudades una vez que elegi estado 
   showCiudades(){
     let estadoSeleccionado = this.formEntrega.get('direccion.estado').value;
     
@@ -184,6 +195,7 @@ export class CheckoutComponent implements OnInit, OnDestroy{
 
  enviarInfoAConfirmData(){
   setTimeout(() => {
+  
     this.enviarInfoCompra.enviarCliente$.emit(this.cliente);
     this.enviarInfoCompra.enviarEntrega$.emit(this.entrega);
     this.enviarInfoCompra.enviarPago$.emit(this.pago);

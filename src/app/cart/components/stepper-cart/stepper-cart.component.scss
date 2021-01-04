@@ -28,31 +28,6 @@ $color-ppal:#fff;
     right: 45px;
    
 }
-.btn{
-    background-color: $color-wf1;
-    color: white;
-    font-family: $fte-sec;
-    width: 40%;
-    font-size: 16px;
-    display: block;
-    &:hover{
-        background-color: $color-wf2;
-        cursor: pointer;
-    }
-}
-.btn-cont{
-    background-color: $color-wf1;
-    color: white;
-    font-family: $fte-sec;
-    width: 14%;
-    font-size: 16px;
-    position: absolute;
-    bottom: 50px;
-    right: 45px;
-    display: block;
-    &:hover{
-        background-color: $color-wf2;
-        cursor: pointer;
-    }
-}
+
+
 

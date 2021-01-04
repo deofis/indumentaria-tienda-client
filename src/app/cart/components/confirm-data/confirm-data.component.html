@@ -12,14 +12,15 @@
         <p>Método de Pago: <span id="pagoData"> {{pago}}</span></p>
             <p> Forma de Entrega : <span id="envioData"> {{entrega}} </span></p>
           </div>
-            <p class="campo"> Dirección de Envío : <span id="adressData"> Av. Calle XXXX, Barcelona,Cataluña. </span></p>
+            <p class="campo" *ngIf="tieneDireccEnvio()" > Dirección de Envío : <span id="adressData" > {{cliente?.calle}}  {{cliente?.nro}}<span *ngIf="cliente?.piso">- Piso: {{cliente?.piso}} </span>,  {{cliente?.ciudad.nombre}}, {{cliente?.estado.nombre}}, {{cliente?.pais.nombre}} -  CP: {{cliente?.cp}} </span></p>
+           <p class="campo" *ngIf="mostrarDireccLocal()">Dirección de Entrega: <span> Av. Calle XXXX, Barcelona,Cataluña.</span></p>
             <p class="total">Total : <span> €{{carrito?.total + costoDeEnvio | number: '.0-2'}}</span></p>
         </div>
        
     </div>
     <div class="buttons">
-    <button  [routerLink]="['/checkout']"class="btn" id="btn-edit">Editar</button>
-    <button   class="btn" id="btn-confirm">Ir a pagar</button>
+    <button mat-button matStepperPrevious class="btn" id="btn-edit">Editar</button>
+    <button  mat-button *ngIf="entrega"  class="btn" id="btn-confirm"(click)="irAPagar()">Ir a pagar</button>
 
 </div>
 </section>

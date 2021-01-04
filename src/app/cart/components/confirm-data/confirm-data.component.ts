@@ -15,9 +15,9 @@ export class ConfirmDataComponent implements OnInit {
   @Input() cliente:Cliente;
   @Input() entrega:string;
   @Input() pago:string;
-  infoCliente:Cliente[];
+  infoCliente:any;
   carrito: Carrito;
-  costoDeEnvio:number=200
+  costoDeEnvio:number=200;
 
   constructor(private perfilClienteService:PerfilClienteService,
               private authService: AuthService,
@@ -26,13 +26,13 @@ export class ConfirmDataComponent implements OnInit {
 
   ngOnInit(): void {
       this.getPerfilCliente(); 
-       this.getCarrito();   
-      
+       this.getCarrito();  
+            
   }
 
+  /// traigo la info del cliente loggeado (nombre,mail,telefono,direccion...)
 getPerfilCliente():void{
   this.perfilClienteService.getInfoPerfilCliente().subscribe(response => {
-    console.log(response);
     this.infoCliente=response
   });
 }
@@ -43,7 +43,21 @@ getCarrito(): void {
       this.carrito = response.carrito;
     });
   }
-  
+}
+//// metodos para mostrasr u ocultar la direccion de envio y la de entrega
+tieneDireccEnvio(){
+  if (this.entrega=="Envío a domicilio") {
+    return true
+  }
+}
+mostrarDireccLocal(){
+  if (this.entrega=="Retiro personalmente") {
+    return true
+  }
 }
 
+/// metodos para validar que se haya elegido 
+irAPagar(){
+alert("yendo a paypal")
+}
 }
