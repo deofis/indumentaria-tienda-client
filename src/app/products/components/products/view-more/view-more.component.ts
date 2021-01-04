@@ -36,6 +36,9 @@ export class ViewMoreComponent implements OnInit {
  idSkuAEnviar:number;
  skuAEnviar:Sku;
 
+ /// carrito del localStorage
+ skusCarritoLS;
+
   constructor(private catalogoservice:CatalogoService,
               private activatedroute:ActivatedRoute,
               private _cartService:MockCartService,
@@ -44,6 +47,7 @@ export class ViewMoreComponent implements OnInit {
               private authService: AuthService) {
     this.stock = true;
     this.infoProducto=new Producto();
+    this.skusCarritoLS= new Array();
   }
 
   ngOnInit(): void {
@@ -288,8 +292,6 @@ export class ViewMoreComponent implements OnInit {
     this.productoService.getSku(this.infoProducto.id, this.idSkuAEnviar).subscribe( response => {
        this.skuAEnviar=response;
        this.agregarCarrito(this.skuAEnviar)
-
-   
     })
    }
 
@@ -301,11 +303,28 @@ export class ViewMoreComponent implements OnInit {
         console.log(response);
       });
     } else{
-      console.log("usuario no logueado")
+      console.log("usuario no logueado");
+      // creo un arrayy vacio y le pusheo el sku q estoy agregando
+      let arrayItemsCarrito = [];
+      arrayItemsCarrito.push(sku);
+
+      // verifico si existe micarrito
+      var getlocal = localStorage.getItem("miCarrito");
+      var parslocal;
+      if(getlocal != null ){ /* osea si existe*/
+        // parseo lo que trae para poder pushearlo a mi array
+        parslocal = JSON.parse(getlocal); 
+        for (let i = 0; i < parslocal.length; i++) {
+          arrayItemsCarrito.push(parslocal[i]);
+        }
+        /// envio el array completo , con la info q me traje y parsié y con el nuevo item
+        localStorage.setItem("miCarrito",JSON.stringify(arrayItemsCarrito) );
+      }else{ /* si no existe, lo creo con el sku q estoy enviando como contenido*/
+        console.log("else");
+        localStorage.setItem("miCarrito",JSON.stringify(arrayItemsCarrito) );
+      }
+
     }
-
-    // this._cartService.agregarItem(skuAEnviar);
-
   }
   /*
 ///// CANTIDAD////
