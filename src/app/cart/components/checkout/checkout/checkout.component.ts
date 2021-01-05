@@ -1,3 +1,4 @@
+import { MedioPago } from './../../../../admin-options/admin-ventas/clases/MedioPago';
 import { Cliente } from './../../../../log-in/clases/cliente/cliente';
 import { Direccion } from './../../../../log-in/clases/cliente/direccion';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -15,7 +16,6 @@ import { Estado } from 'src/app/log-in/clases/cliente/estado';
 import { Ciudad } from 'src/app/log-in/clases/cliente/ciudad';
 import { EnviarInfoCompraService } from 'src/app/user-options/user-profile/services/enviar-info-compra.service';
 import { Input } from '@angular/core';
-import { MedioPago } from 'src/app/admin-options/admin-ventas/clases/MedioPago';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -39,7 +39,7 @@ export class CheckoutComponent implements OnInit, OnDestroy{
   // direccionEnvio:Direccion;
   clienteDireccion:any;
   entrega:string;
-  pago:string
+  pago:MedioPago;
   constructor(private carritoService: CarritoService,
               private fb:FormBuilder,
               private authService: AuthService,
@@ -48,6 +48,7 @@ export class CheckoutComponent implements OnInit, OnDestroy{
               private catalogoservice:CatalogoService,
               ) { 
             this.carrito = new Carrito();
+            this.pago = new MedioPago();
   }
 
   ngOnInit(): void {
@@ -117,13 +118,20 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     // }
     
   }
-  
+  // para obtener todos los medios de pago
+   
   getMediosDePago(){
     this.carritoService.getMediosDePago().subscribe((response: any) => {
       this.mediosDePago=response.mediosPago;
     });
   }
-
+   /// para el medio de pago elegido 
+  getMedioDePago(id:number){
+    this.carritoService.getMedioDePago(id).subscribe((response: any) => {
+      this.pago=response.medioPago;
+      console.log(this.pago)
+    });
+  }
   guardarDatos(){
 
     if (this.formEntrega.invalid){
@@ -132,12 +140,9 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     /// guardo las vriables con la info que voy a enviar al siguiente paso : direccion, forma de entrega y de pago 
 
     this.clienteDireccion=this.formEntrega.controls.direccion.value
-    // this.entrega=this.formEntrega.controls.formaDeEntrega?.value;
-    // this.pago=this.formEntrega.controls.formaDePago?.value;
-    console.log(this.entrega);
-    console.log(this.pago);
-    console.log(this.clienteDireccion)
-
+    this.entrega=this.formEntrega.controls.formaDeEntrega?.value;
+    let idPago =this.formEntrega.controls.formaDePago?.value;
+    this.getMedioDePago(idPago);
      
     // this.formEntrega.disable();
     console.log(this.formEntrega)
@@ -177,8 +182,7 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     get estadoInvalido() {
       return this.formEntrega.get('direccion.estado').invalid && this.formEntrega.get('direccion.estado').touched;
     }
-   
-
+  
       ///////// obtener paises, estado ciudad ////
   getPaises(){
     this.catalogoservice.getPaises().subscribe( response =>{
@@ -214,8 +218,24 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     this.enviarInfoCompra.enviarCliente$.emit(this.clienteDireccion);
     this.enviarInfoCompra.enviarEntrega$.emit(this.entrega);
     this.enviarInfoCompra.enviarPago$.emit(this.pago);
-  }, 100);
+  }, 600);
  
 }
+
+/**  para ver que imagen mostrar en los metodos de pago */
+ imgPayPal(i){
+  if (i+1 == 2) {
+    return true
+  } else{
+    return false
+  }
+ }
+ imgEfvo(i){
+  if (i+1 == 1) {
+    return true
+  }else{
+    return false
+  }
+ }
 
   }

@@ -1,3 +1,4 @@
+import { MedioPago } from './../../../admin-options/admin-ventas/clases/MedioPago';
 import { Direccion } from './../../../log-in/clases/cliente/direccion';
 import { Operacion } from './../../../admin-options/admin-ventas/clases/Operacion';
 import { EnviarInfoCompraService } from './../../../user-options/user-profile/services/enviar-info-compra.service';
@@ -12,7 +13,7 @@ import { Subscription } from 'rxjs';
 })
 export class StepperCartComponent implements OnInit {
   clienteDireccion:any;
-  pago:string;
+  pago:MedioPago;
   entrega:string;
   abriendoStep2:boolean;
   subscripcionInfoCompra : Subscription;
@@ -32,6 +33,7 @@ export class StepperCartComponent implements OnInit {
       //// recibo del step 2 "checkout" la info  forma de pago 
     this.subscripcionInfoCompra=this.enviarInfoCompra.enviarPago$.subscribe(pago=> {
        this.pago=pago;
+       console.log(this.pago)
      })
   }
 

@@ -189,40 +189,24 @@ $color-ppal:#fff;
                 font-size: 18px;
                 color: $color-sec;
              }
-            .paypal-box{
+             .pago{
                 display: flex;
                 width: 100%;
                 justify-content: flex-start;
                 align-items: center;
                 margin-bottom: 20px;
-                img{
-                    width: 90px;
+                
+                .cash{
+                    width: 50px;
                     height: 43px;
                     margin-left: 12px;
                  }
-            }
-            .cash-box{
-               
-                // display: none;
-                div{
-                    display: flex;
-                    width: 100%;
-                    justify-content: flex-start;
-                    align-items: center;
-                    label{
-                        img{
-                        width: 70px;
-                        height: 60px;
-                        margin-left: 12px;
-                        }
-                    }
-                }
-                p{
-                    font-family: $fte-sec;
-                    font-size: 13px;
-                    color:grey;
-                }
-            }
+                 .paypal{
+                    width: 70px;
+                    height: 35px;
+                    margin-left: 12px; 
+                 }
+             }
         }
         .cont-boton-guardar{
             position: relative;
@@ -266,126 +250,7 @@ $color-ppal:#fff;
     flex-direction: column;
     height: fit-content;
     margin-top: 45px;
-    .summary{
-        font-family: $fte-sec;
-        display: flex;
-        flex-direction: column;
-        h2{
-            font-family: $fte-ppal;
-            color: $color-sec;
-            font-size: 20px;
-            border-bottom: 1px solid rgb(190, 187, 187);
-            margin-bottom: 5px ;
-            margin-top: 14px;
-            display: block;
-            padding: 0px 25px 0px 25px;
-            &:hover{
-                cursor: default;
-            }
-        }
-        #subtotal-summary,#total-summary, #costo-envio{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 5px 25px;
-            &:hover{
-                cursor: default;
-            }
-        }
-        #subtotal-summary, #costo-envio{
-            color: $color-ter;
-            font-size: 16px;
-        }
-        #total-summary{
-            font-weight: bolder;
-            font-size: 19px;
-            background-color:$color-menues;
-        }
-        .cont-detalle-compra{
-            padding-bottom: 20px;
-            .detalle-compra{
-                padding: 5px 25px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                font-family: $fte-sec;
-                color: $color-wf2;
-                .cant-nombre{
-                    display: flex;
-                    justify-content: flex-start;
-                    align-items: center;
-                    text-transform: capitalize;
-                    #cantidad{
-                        margin-right: 10px;
-                    }
-                }
-            }
-        }
-        #linea-sep{
-            height: 1px;
-            width: 90%;
-            margin-left: auto;
-            margin-right: auto;
-            background-color:rgb(190, 187, 187) ;
-        }
-      
-        .coupon{
-            border: 2px solid $color-sec;
-            border-radius: 10px;
-            width: 85%;
-            align-self: center;
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            box-sizing: border-box;
-            padding: 5px 10px;
-            margin-top: 30px;
-            margin-bottom: 20px;
-            outline: none;
-            i{
-                color: $color-sec;
-                transform: rotate(-45deg);
-            }
-            span{
-                font-size: 13px;
-                font-weight: bolder;
-                color: $color-sec;
-            }
-            &:hover{
-                cursor: pointer;
-                background-color: $color-sec;
-            }
-            &:hover>i{
-                color: white;
-            }
-            &:hover>span{
-                color: white;
-                font-weight: normal;
-            }
-
-            
-        }
-
-    }
-    button{
-        background-color: $color-wf1;
-        font-size: 17px;
-        color: white;
-        font-family: $fte-ppal;
-        border-radius: 0px 0px 15px 15px;
-        border: 0px ;
-        margin-top:5px ;
-        box-sizing: border-box;
-        width: 100%;
-        padding: 4px 25px;
-        align-self: flex-end;
-        outline: none;
-        height: 37px;
-        &:hover{
-            cursor: pointer;
-            background-color: $color-wf2;
-        }
-    }
+   
 }
 
 .botones{

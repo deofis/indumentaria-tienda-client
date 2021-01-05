@@ -72,6 +72,7 @@ import { StepperCartComponent } from './cart/components/stepper-cart/stepper-car
 import { MatIconModule } from '@angular/material/icon';
 import { ConvertFechaPipe } from './pipes/convert-fecha.pipe';
 import { ConvertEstadoOpPipe } from './pipes/convert-estado-op.pipe';
+import { ResumenCarritoComponent } from './cart/components/checkout/resumen-carrito/resumen-carrito.component';
 
 
 
@@ -128,6 +129,7 @@ import { ConvertEstadoOpPipe } from './pipes/convert-estado-op.pipe';
     StepperCartComponent,
     ConvertFechaPipe,
     ConvertEstadoOpPipe,
+    ResumenCarritoComponent,
   ],
   imports: [
     BrowserModule,

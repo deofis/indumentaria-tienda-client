@@ -9,7 +9,7 @@
             <p> Teléfono : <span id="cellphoneData"> {{infoCliente?.telefono}}</span></p>
         </div>
         <div class="rowData">
-        <p>Método de Pago: <span id="pagoData"> {{pago}}</span></p>
+        <p>Método de Pago: <span id="pagoData" style="text-transform: lowercase;"> {{pago?.nombre}}</span></p>
             <p> Forma de Entrega : <span id="envioData"> {{entrega}} </span></p>
           </div>
             <p class="campo" *ngIf="tieneDireccEnvio()" > Dirección de Envío : <span id="adressData" > {{clienteDireccion?.calle}}  {{clienteDireccion?.nro}}<span *ngIf="clienteDireccion?.piso">- Piso: {{clienteDireccion?.piso}} </span>,  {{clienteDireccion?.ciudad.nombre}}, {{clienteDireccion?.estado.nombre}}, {{clienteDireccion?.pais.nombre}} -  CP: {{clienteDireccion?.cp}} </span></p>

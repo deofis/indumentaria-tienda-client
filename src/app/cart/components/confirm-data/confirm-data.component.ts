@@ -1,3 +1,4 @@
+import { RegistrarOperacionService } from './../../services/registrar-operacion.service';
 import { MedioPago } from './../../../admin-options/admin-ventas/clases/MedioPago';
 import { Direccion } from './../../../log-in/clases/cliente/direccion';
 import { DetalleOperacion } from './../../../admin-options/admin-ventas/clases/DetalleOperacion';
@@ -11,6 +12,9 @@ import { EnviarInfoCompraService } from 'src/app/user-options/user-profile/servi
 import { Input } from '@angular/core';
 import { Operacion } from 'src/app/admin-options/admin-ventas/clases/Operacion';
 import { DetalleCarrito } from '../../clases/detalle-carrito';
+import Swal from "sweetalert2";
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-confirm-data',
   templateUrl: './confirm-data.component.html',
@@ -19,7 +23,7 @@ import { DetalleCarrito } from '../../clases/detalle-carrito';
 export class ConfirmDataComponent implements OnInit {
   @Input() clienteDireccion:any;
   @Input() entrega:string;
-  @Input() pago:string;
+  @Input() pago:MedioPago;
   infoCliente:any;
   carrito: Carrito;
   costoDeEnvio:number=200;
@@ -32,7 +36,9 @@ export class ConfirmDataComponent implements OnInit {
   constructor(private perfilClienteService:PerfilClienteService,
               private authService: AuthService,
               private enviarInfoCompra:EnviarInfoCompraService,
-              private carritoService: CarritoService,) {
+              private carritoService: CarritoService,
+              private router: Router,
+              private registrarNuevaOperacion:RegistrarOperacionService) {
                 this.item = new DetalleOperacion();
                 this.items = new Array<DetalleOperacion>();
                 this.operacion = new Operacion();
@@ -71,9 +77,11 @@ mostrarDireccLocal(){
   }
 }
 
-/// metodos para validar que se haya elegido 
+
+
+
 irAPagar(){
-  /*** lleno el objeto operacio con  */
+  /*** lleno el objeto operacion con  */
 
   /// infoCliente
   this.operacion.cliente=this.infoCliente;
@@ -84,6 +92,7 @@ irAPagar(){
   direccion.codigoPostal=this.clienteDireccion?.cp;
   direccion.numeroCalle=this.clienteDireccion?.nro;
   direccion.piso=this.clienteDireccion?.piso;
+
   this.operacion.direccionEnvio=direccion
   /// total 
   this.operacion.total=this.carrito.total;
@@ -101,13 +110,20 @@ irAPagar(){
     this.item.subtotal=this.carrito.items[i].subtotal
   
    this.items.push(this.item)
-   this.operacion.items=this.items
+   this.operacion.items=this.items as DetalleOperacion[]
    }
 
   /// medio de pago 
-
+   this.operacion.medioPago=this.pago
 
 
     console.log(this.operacion)
+
+    
+    this.registrarNuevaOperacion.crearNuevaPropiedadProducto(this.operacion).subscribe( response => {
+      console.log(response)
+    }, err => {
+     console.log("error al enviar operacion")
+    });
 }
 }

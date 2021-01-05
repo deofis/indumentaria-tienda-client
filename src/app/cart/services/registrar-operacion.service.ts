@@ -1,15 +1,21 @@
+import { Observable } from 'rxjs';
+import { Operacion } from './../../admin-options/admin-ventas/clases/Operacion';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { API_BASE_URL } from 'src/app/config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegistrarOperacionService {
+  url:string;
+  constructor(private http:HttpClient) {
+    this.url = `${API_BASE_URL}/api`
+   }
 
-  constructor() { }
+  crearNuevaPropiedadProducto(operacion:Operacion):Observable<any>{
 
-  crearNuevaPropiedadProducto(){
-
-    // return this.http.post(`${this.url}/productos/${id}/propiedades`, propiedad);
+    return this.http.post(`${this.url}/operaciones/nueva`, operacion);
 
   };
 }

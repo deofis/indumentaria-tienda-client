@@ -78,4 +78,8 @@ export class CarritoService {
     return this.http.get(`${this.urlEndpoint}/medios-pago`)
 
   }
+  getMedioDePago(id:number):Observable<any>{
+    return this.http.get(`${this.urlEndpoint}/medios-pago/${id}`)
+
+  }
 }
