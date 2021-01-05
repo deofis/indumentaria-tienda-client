@@ -14,6 +14,7 @@ export class ResumenCarritoComponent implements OnInit {
   totalProductos: number;
   totalPrice:number ;
   totalQuantity:number;
+  costoDeEnvio = 0;
   constructor(private carritoService: CarritoService,
               private authService: AuthService,
               private Router:Router, ) {

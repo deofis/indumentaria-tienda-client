@@ -26,7 +26,7 @@ export class ConfirmDataComponent implements OnInit {
   @Input() pago:MedioPago;
   infoCliente:any;
   carrito: Carrito;
-  costoDeEnvio:number=200;
+  costoDeEnvio:number=0;
  
   
   // lo que envio al back
@@ -94,25 +94,39 @@ irAPagar(){
   direccion.piso=this.clienteDireccion?.piso;
 
   this.operacion.direccionEnvio=direccion
-  /// total 
-  this.operacion.total=this.carrito.total;
-  /// items
+  // total es calculado por el servidor
+  // this.operacion.total=this.carrito.total;
+  // items
   for (let i = 0; i < this.carrito.items.length; i++) {
     
     this.item.sku=this.carrito.items[i].sku;
     this.item.cantidad=this.carrito.items[i].cantidad;
-    this.item.id=this.carrito.items[i].id;
+    // El error era: El ITEM (DetalleOperacion) de la Operacion, es distinto al DetalleCarrito.
+    // DetalleCarrito se CREA al registrar operación, por ende, no se debe asignar ningun ID, 
+    // ya que se genera automáticamente por el servidor.
+    // **** this.item.id=this.carrito.items[i].id;  ****
+
+    // El PRECIO VENTA de cada item es generado también por el servidor, para reducir la carga
+    // del cliente.
+    /*
     if (this.carrito.items[i].sku.promocion !== null && this.carrito.items[i].sku.promocion  !== undefined ) {
      this.item.precioVenta=this.carrito.items[i].sku.promocion.precioOferta
     }else{
      this.item.precioVenta=this.carrito.items[i].sku.precio
     }
-    this.item.subtotal=this.carrito.items[i].subtotal
+    */
+    
+    // Pasa lo mismo con el subtotal del item, y el total de la operación:
+    // Es calculado y guardado por el SERVIDOR.
+    // this.item.subtotal=this.carrito.items[i].subtotal
   
    this.items.push(this.item)
-   this.operacion.items=this.items as DetalleOperacion[]
    }
 
+   this.operacion.items=this.items as DetalleOperacion[]
+   // En resumen, para completar la OPERACION, la app cliente solo debe generar los datos a enviar:
+   // cliente asociado, direccion de envio, medio de pago y los items (detalle operacion), con solamente
+   // el sku y la cantidad por sku.
   /// medio de pago 
    this.operacion.medioPago=this.pago
 
@@ -123,7 +137,7 @@ irAPagar(){
     this.registrarNuevaOperacion.crearNuevaPropiedadProducto(this.operacion).subscribe( response => {
       console.log(response)
     }, err => {
-     console.log("error al enviar operacion")
+      console.log(err);
     });
 }
 }
