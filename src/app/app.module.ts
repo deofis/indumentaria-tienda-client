@@ -74,6 +74,7 @@ import { ConvertFechaPipe } from './pipes/convert-fecha.pipe';
 import { ConvertEstadoOpPipe } from './pipes/convert-estado-op.pipe';
 import { ResumenCarritoComponent } from './cart/components/checkout/resumen-carrito/resumen-carrito.component';
 import { FmEfectivoComponent } from './cart/components/final-message/efectivo/fm-efectivo.component';
+import { PaypalCancelComponent } from './cart/components/final-message/paypal-cancel/paypal-cancel.component';
 
 
 
@@ -132,6 +133,7 @@ import { FmEfectivoComponent } from './cart/components/final-message/efectivo/fm
     ConvertEstadoOpPipe,
     ResumenCarritoComponent,
     FmEfectivoComponent,
+    PaypalCancelComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import { PaypalCancelComponent } from './cart/components/final-message/paypal-cancel/paypal-cancel.component';
 import { FmEfectivoComponent } from './cart/components/final-message/efectivo/fm-efectivo.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -61,6 +62,7 @@ const routes: Routes = [
   { path:"pre-checkout", component:PreCheckoutComponent },
   { path:"confirm-data", component:ConfirmDataComponent },
   { path:"paypal/redirect/approved" , component:FmPaypalEnvioComponent }, 
+  { path:"paypal/redirect/cancel" , component:PaypalCancelComponent }, 
   {path:"cash/approved" , component: FmEfectivoComponent},
   { path:"**", pathMatch:"full", redirectTo:"home" }
 ];
