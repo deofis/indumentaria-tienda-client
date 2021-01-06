@@ -106,21 +106,14 @@ irAPagar(){
     // ya que se genera automáticamente por el servidor.
     // **** this.item.id=this.carrito.items[i].id;  ****
 
-    // El PRECIO VENTA de cada item es generado también por el servidor, para reducir la carga
-    // del cliente.
-    /*
-    if (this.carrito.items[i].sku.promocion !== null && this.carrito.items[i].sku.promocion  !== undefined ) {
-     this.item.precioVenta=this.carrito.items[i].sku.promocion.precioOferta
-    }else{
-     this.item.precioVenta=this.carrito.items[i].sku.precio
-    }
-    */
+    
     
     // Pasa lo mismo con el subtotal del item, y el total de la operación:
     // Es calculado y guardado por el SERVIDOR.
     // this.item.subtotal=this.carrito.items[i].subtotal
   
-   this.items.push(this.item)
+   this.items.push(this.item);
+   this.item= new DetalleOperacion();
    }
 
    this.operacion.items=this.items as DetalleOperacion[]
@@ -133,11 +126,27 @@ irAPagar(){
 
     console.log(this.operacion)
 
-    
-    this.registrarNuevaOperacion.crearNuevaPropiedadProducto(this.operacion).subscribe( response => {
-      console.log(response)
-    }, err => {
-      console.log(err);
+ /// registro la operacion
+  this.registrarNuevaOperacion.crearNuevaPropiedadProducto(this.operacion).subscribe( response => {
+    console.log(response);
+       /// evaluo si el metodo de pago es paypal, abro el fm paypal
+        if(this.operacion.medioPago.id == 2){
+        window.open(response.compra.approveUrl, "_blank" )
+        }else{/// si no lo es, abro el de efvo
+          const url = this.router.serializeUrl( this.router.createUrlTree([`cash/approved`]));
+          window.open(url);
+        }
+   }, err => {
+    console.log(err);
     });
+
+    //// deshabilito los botones para q no puedan volver a realizar la misma compra o editarla
+    let btnConfirm= document.getElementById("btn-confirm") as HTMLButtonElement;
+    btnConfirm.disabled=true;
+    let btnEdit= document.getElementById("btn-edit") as HTMLButtonElement;
+    btnEdit.disabled=true;
+    }
+  
+  
 }
-}
+

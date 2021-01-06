@@ -18,4 +18,11 @@ export class RegistrarOperacionService {
     return this.http.post(`${this.url}/operaciones/nueva`, operacion);
 
   };
+
+  completarPago(nroOp:string):Observable<any>{
+    let parametros=new HttpParams();
+    parametros=parametros.append("nroOperacion",nroOp);
+    return this.http.post(`${this.url}/checkout/completar/pago`,null, {params:parametros});
+
+  }
 }

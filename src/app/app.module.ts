@@ -36,7 +36,7 @@ import { NewPasswordComponent } from './log-in/user/new-password/new-password.co
 import { FavoritesComponent } from './user-options/favorites/favorites.component';
 import { ActivatedMssgComponent } from './log-in/user/activated-mssg/activated-mssg.component';
 import { ConfirmDataComponent } from './cart/components/confirm-data/confirm-data.component';
-import { FinalMessageComponent } from './cart/components/final-message/final-message.component';
+import { FmPaypalEnvioComponent} from './cart/components/final-message/paypal/fm-paypal-envio.component';
 import { BrandsPanelComponent } from './admin-options/brands-panel/brands-panel.component';
 import { ProductsListComponent } from './admin-options/products-list/products-list.component';
 import { AddProductComponent } from './admin-options/add-product/add-product.component';
@@ -73,6 +73,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ConvertFechaPipe } from './pipes/convert-fecha.pipe';
 import { ConvertEstadoOpPipe } from './pipes/convert-estado-op.pipe';
 import { ResumenCarritoComponent } from './cart/components/checkout/resumen-carrito/resumen-carrito.component';
+import { FmEfectivoComponent } from './cart/components/final-message/efectivo/fm-efectivo.component';
 
 
 
@@ -104,7 +105,7 @@ import { ResumenCarritoComponent } from './cart/components/checkout/resumen-carr
     FavoritesComponent,
     ActivatedMssgComponent,
     ConfirmDataComponent,
-    FinalMessageComponent,
+    FmPaypalEnvioComponent,
     BrandsPanelComponent,
     ProductsListComponent,
     AddProductComponent,
@@ -130,6 +131,7 @@ import { ResumenCarritoComponent } from './cart/components/checkout/resumen-carr
     ConvertFechaPipe,
     ConvertEstadoOpPipe,
     ResumenCarritoComponent,
+    FmEfectivoComponent,
   ],
   imports: [
     BrowserModule,

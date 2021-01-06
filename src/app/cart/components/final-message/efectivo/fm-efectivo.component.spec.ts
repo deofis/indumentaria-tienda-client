@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FinalMessageComponent } from './final-message.component';
+import { FmEfectivoComponent } from './fm-efectivo.component';
 
-describe('FinalMessageComponent', () => {
-  let component: FinalMessageComponent;
-  let fixture: ComponentFixture<FinalMessageComponent>;
+describe('EfectivoComponent', () => {
+  let component: FmEfectivoComponent;
+  let fixture: ComponentFixture<FmEfectivoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FinalMessageComponent ]
+      declarations: [ FmEfectivoComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FinalMessageComponent);
+    fixture = TestBed.createComponent(FmEfectivoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
