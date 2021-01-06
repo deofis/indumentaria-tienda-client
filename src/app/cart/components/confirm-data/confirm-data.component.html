@@ -12,8 +12,14 @@
         <p>Método de Pago: <span id="pagoData" style="text-transform: lowercase;"> {{pago?.nombre}}</span></p>
             <p> Forma de Entrega : <span id="envioData"> {{entrega}} </span></p>
           </div>
-            <p class="campo" *ngIf="tieneDireccEnvio()" > Dirección de Envío : <span id="adressData" > {{clienteDireccion?.calle}}  {{clienteDireccion?.nro}}<span *ngIf="clienteDireccion?.piso">- Piso: {{clienteDireccion?.piso}} </span>,  {{clienteDireccion?.ciudad.nombre}}, {{clienteDireccion?.estado.nombre}}, {{clienteDireccion?.pais.nombre}} -  CP: {{clienteDireccion?.cp}} </span></p>
-           <p class="campo" *ngIf="mostrarDireccLocal()">Dirección de Entrega: <span> Av. Calle XXXX, Barcelona,Cataluña.</span></p>
+            <p class="campo"  > Dirección de Envío : <span id="adressData" >
+                 {{clienteDireccion?.calle}}  {{clienteDireccion?.nro}}
+                 <span *ngIf="clienteDireccion?.piso">- Piso: {{clienteDireccion?.piso}} </span>,
+                   {{clienteDireccion?.ciudad.nombre}}, 
+                   {{clienteDireccion?.estado.nombre}} ,
+                    {{clienteDireccion?.pais.nombre}} 
+                    -  CP: {{clienteDireccion?.cp}} </span></p>
+           <!-- <p class="campo" *>Dirección de Entrega: <span> Av. Calle XXXX, Barcelona,Cataluña.</span></p> -->
             <p class="total">Total : <span> €{{carrito?.total + costoDeEnvio | number: '.0-2'}}</span></p>
         </div>
        

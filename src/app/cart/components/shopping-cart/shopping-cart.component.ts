@@ -31,7 +31,16 @@ export class ShoppingCartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCarrito();
-  
+    console.log(this.carrito);
+     
+    setTimeout(() => {
+      if(this.carrito.items.length == 0){
+        console.log("entro")
+       let btnContinuar = document.getElementById("btn-cont")as HTMLButtonElement
+        btnContinuar.style.display="none"
+      }
+    }, 1000);
+   
  
     // this.items=JSON.parse(localStorage.getItem("Mi Carrito"));
     // console.log(this.items)
@@ -45,7 +54,7 @@ export class ShoppingCartComponent implements OnInit {
         
     //   }
     // })
- 
+    
   }
 
   getCarrito(): void {
@@ -54,7 +63,8 @@ export class ShoppingCartComponent implements OnInit {
         this.carrito = response.carrito;
         this.totalProductos = this.carrito.items.length;
       });
-    }    
+    }  
+   
   }
  
   eliminarItem(id?: number): void {

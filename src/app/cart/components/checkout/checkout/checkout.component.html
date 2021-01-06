@@ -15,73 +15,82 @@
                             </div>
                             <div class="deliver box row">
                                 <input type="radio" value="Envío a domicilio" id="deliver"
-                                    formControlName="formaDeEntrega" (change)="showInputAdress()">
+                                    formControlName="formaDeEntrega" (change)="showProfileAdress()">
                                 <span><i class="fas fa-truck"></i> </span>
                                 <label for="deliver" class="options">Envío </label>
                             </div>
                             <div class="deliveryAdress row " *ngIf="envioADomicilio">
                                 <div class="col">
-                                    <div class="row">
-                                        <p>Ingrese su dirección de entrega</p>
+                                    <div class="direccion-perfil row" id="dir-perfil">
+                                        <span>{{infoCliente.direccion.calle}}  {{infoCliente.direccion.numeroCalle}} - Piso:{{infoCliente.direccion.piso}} - CP: {{infoCliente.direccion.codigoPostal}} - {{infoCliente.direccion.ciudad.nombre}} </span>
+                                        <span><i class="far fa-edit" (click)="mostrarFormNewAdress()"></i></span>
                                     </div>
-                                    <div class="row campos-direccion ">
-                                        <div class="col" formGroupName="direccion">
-                                            <div class=" row location ">
-                                                <div class="col-12  col-sm-4 ">
-                                                    <select class="country" (change)="showEstados()"
-                                                        formControlName="pais" [class.is-invalid]="paisInvalido">
-                                                        <option hidden selected value="">-*Pais-</option>
-                                                        <option [ngValue]="pais" *ngFor="let pais of paises">
-                                                            {{pais.nombre}}
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-12  col-sm-4 ">
-                                                    <select class="state" (change)="showCiudades()"
-                                                        id="combobox-estados" formControlName="estado"
-                                                        [class.is-invalid]="estadoInvalido">
-                                                        <option hidden selected value="">-*Estado-</option>
-                                                        <option [ngValue]="estado" *ngFor="let estado of estados">
-                                                            {{estado.nombre}}
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-12  col-sm-4 ">
-                                                    <select class="city" id="combobox-ciudades"
-                                                        [class.is-invalid]="ciudadInvalida" formControlName="ciudad"
-                                                        [class.is-invalid]="ciudadInvalida">
-                                                        <option hidden selected value="">-*Ciudad-</option>
-                                                        <option *ngFor="let ciudad of ciudades" [ngValue]="ciudad">
-                                                            {{ciudad.nombre}}
-                                                        </option>
-                                                    </select>
-                                                </div>
+                                    <div class="row cont-nueva-dir" *ngIf="nuevaDireccion">
+                                        <div class="col">
+                                            <div class="row">
+                                                <p>Ingrese su dirección de entrega</p>
                                             </div>
-                                            <div class="row calle-nro">
-                                                <div class=" col-12 col-sm-6 calle">
-                                                    <input type="text" [class.is-invalid]="calleInvalida"
-                                                        placeholder="*Calle" id="calle" formControlName="calle">
-                                                </div>
-                                                <div class="col-12 col-sm-6">
-                                                    <div class="row">
-                                                        <div class=" col-4 nro">
-                                                            <input type="number" [class.is-invalid]="nroInvalido"
-                                                                id="nro" placeholder="*Nro" formControlName="nro">
+                                            <div class="row campos-direccion ">
+                                                <div class="col" formGroupName="direccion">
+                                                    <div class=" row location ">
+                                                        <div class="col-12  col-sm-4 ">
+                                                            <select class="country" (change)="showEstados()"
+                                                                formControlName="pais" [class.is-invalid]="paisInvalido">
+                                                                <option hidden selected value="">-*Pais-</option>
+                                                                <option [ngValue]="pais" *ngFor="let pais of paises">
+                                                                    {{pais.nombre}}
+                                                                </option>
+                                                            </select>
                                                         </div>
-                                                        <div class=" col-4 piso">
-                                                            <input type="text" id="piso" placeholder="Piso"
-                                                                formControlName="piso">
+                                                        <div class="col-12  col-sm-4 ">
+                                                            <select class="state" (change)="showCiudades()"
+                                                                id="combobox-estados" formControlName="estado"
+                                                                [class.is-invalid]="estadoInvalido">
+                                                                <option hidden selected value="">-*Estado-</option>
+                                                                <option [ngValue]="estado" *ngFor="let estado of estados">
+                                                                    {{estado.nombre}}
+                                                                </option>
+                                                            </select>
                                                         </div>
-                                                        <div class="col-4 cp">
-                                                            <input type="text" [class.is-invalid]="cpInvalido" id="cp"
-                                                                placeholder="*CP" formControlName="cp">
+                                                        <div class="col-12  col-sm-4 ">
+                                                            <select class="city" id="combobox-ciudades"
+                                                                [class.is-invalid]="ciudadInvalida" formControlName="ciudad">
+                                                                <option hidden selected value="">-*Ciudad-</option>
+                                                                <option *ngFor="let ciudad of ciudades" [ngValue]="ciudad">
+                                                                    {{ciudad.nombre}}
+                                                                </option>
+                                                            </select>
                                                         </div>
-
+                                                    </div>
+                                                    <div class="row calle-nro">
+                                                        <div class=" col-12 col-sm-6 calle">
+                                                            <input type="text" [class.is-invalid]="calleInvalida"
+                                                                placeholder="*Calle" id="calle" formControlName="calle">
+                                                        </div>
+                                                        <div class="col-12 col-sm-6">
+                                                            <div class="row">
+                                                                <div class=" col-4 nro">
+                                                                    <input type="number" [class.is-invalid]="nroInvalido"
+                                                                        id="nro" placeholder="*Nro" formControlName="nro">
+                                                                </div>
+                                                                <div class=" col-4 piso">
+                                                                    <input type="text" id="piso" placeholder="Piso"
+                                                                        formControlName="piso">
+                                                                </div>
+                                                                <div class="col-4 cp">
+                                                                    <input type="text" [class.is-invalid]="cpInvalido" id="cp"
+                                                                        placeholder="*CP" formControlName="cp">
+                                                                </div>
+        
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
+                                
 
                                 </div>
                             </div>
@@ -99,14 +108,16 @@
                     </div>
                     <div class="row paymentMethod">
                         <div class="col">
-                            <div class="row">
+                            <div class="row titulo-pago">
                                 <h3 class="subtitulo">Método de Pago</h3>
+                               
+                                <span class="leyenda">El pago en efectivo solo se encuentra disponible para la opción de entrega en tienda.</span>
                             </div>
                             <div class="row pago" *ngFor="let medioPago of mediosDePago, let i=index ">
-                                <input type="radio" value="{{medioPago.id}}" id="{{medioPago.id}}"
+                                <input type="radio" value="{{medioPago?.id}}" id="{{medioPago?.id}}"
                                 formControlName="formaDePago">
-                                <label for="{{medioPago.nombre}}">
-                                    <img class="cash" *ngIf="imgEfvo(i)" src="../../../../../assets/imagenes/cash.png" alt="">
+                                <label for="{{medioPago?.nombre}}">
+                                    <img class="cash" *ngIf="imgEfvo(i)&& mostrarEfvo" src="../../../../../assets/imagenes/cash.png" alt="">
                                     <img class="paypal" *ngIf="imgPayPal(i)" src="../../../../../assets/imagenes/paypal.png" alt="">
                                 </label>
                             </div>
@@ -130,14 +141,16 @@
         </div>
         <div class="col-12 col-md-5 col-lg-4 offset-lg-1 container-right">
           <app-resumen-carrito ></app-resumen-carrito>
-          <p>{{abriendoStep2}}</p>
         </div>
     </div>
     <div class=" botones row">
+        <div>
+            <span *ngIf="msjCamposIncompletos">Porfavor completes los campos de dirección de envio</span>
+        </div>
         <div class="cont-botones">
             <button mat-button matStepperPrevious class="btn">Atrás</button>
             <button mat-button matStepperNext (click)="guardarDatos(); enviarInfoAConfirmData()"
-                class="btn">Continuar</button>
+                class="btn" id="btn-continuar" >Continuar</button>
         </div>
     </div>
 </div>

@@ -14,7 +14,9 @@ $color-ppal:#fff;
  input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button{
     appearance: none;
  }
-
+.is-invalid{
+    border-bottom: 1px solid rgb(252, 62, 62);
+}
  %campos{
     margin-top: 7px;
     margin-bottom: 15px;
@@ -89,66 +91,93 @@ $color-ppal:#fff;
                 width: 97%;
                 margin-left: auto;
                 margin-right: auto;
-                margin-bottom: 50px;
-                p{
-                    color:grey;
-                    display: block;
-                    font-family: $fte-sec;
-                    font-size: 15px;
-                }
-                .campos-direccion{
-                    .location{
-                        .country{
-                           @extend %campos;
-                           &.is-invalid{
-                            border-bottom: 1px solid rgb(252, 62, 62);
-                        }
-                        }
-                        .state{
-                            @extend %campos;
-                            &.is-invalid{
-                                border-bottom: 1px solid rgb(252, 62, 62);
+        
+                .direccion-perfil{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    
+                    width: 87%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-bottom: 30px;
+                    span{
+                        color:grey;
+                        display: block;
+                        font-family: $fte-sec;
+                        font-size: 13px;
+                        text-transform: capitalize;
+                        .fa-edit{
+                            color: $color-sec;
+                            cursor: pointer;
+                            font-size: 16px;
+                            &:hover {
+                                font-size: 17px;
+                                color: $color-wf3;
                             }
-                         }
-                         .city{
-                            @extend %campos;
-                            &.is-invalid{
-                                border-bottom: 1px solid rgb(252, 62, 62);
-                            }
-                         }
-                    }
-                    .calle-nro{
-                        .calle {
-                            #calle{
-                                @extend %campos;
-                                &.is-invalid{
-                                    border-bottom: 1px solid rgb(252, 62, 62);
-                                }
-                            }
-                        }
-                        .piso{
-                            #piso{
-                                @extend %campos;
-                            }  
-                        }
-                        .nro{
-                            #nro{
-                                @extend %campos;
-                                &.is-invalid{
-                                    border-bottom: 1px solid rgb(252, 62, 62);
-                                }
-                            }
-                        }
-                        .cp{
-                            #cp{
-                                @extend %campos;
-                                &.is-invalid{
-                                    border-bottom: 1px solid rgb(252, 62, 62);
-                                }
-                            }
-                        }
+                          }
                     }
                 }
+                .cont-nueva-dir{
+                    width: 100%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-bottom: 30px;
+                    .campos-direccion{
+                        .location{
+                            .country{
+                               @extend %campos;
+                               &.is-invalid{
+                                border-bottom: 1px solid rgb(252, 62, 62);
+                            }
+                            }
+                            .state{
+                                @extend %campos;
+                                &.is-invalid{
+                                    border-bottom: 1px solid rgb(252, 62, 62);
+                                }
+                             }
+                             .city{
+                                @extend %campos;
+                                &.is-invalid{
+                                    border-bottom: 1px solid rgb(252, 62, 62);
+                                }
+                             }
+                        }
+                        .calle-nro{
+                            .calle {
+                                #calle{
+                                    @extend %campos;
+                                    &.is-invalid{
+                                        border-bottom: 1px solid rgb(252, 62, 62);
+                                    }
+                                }
+                            }
+                            .piso{
+                                #piso{
+                                    @extend %campos;
+                                }  
+                            }
+                            .nro{
+                                #nro{
+                                    @extend %campos;
+                                    &.is-invalid{
+                                        border-bottom: 1px solid rgb(252, 62, 62);
+                                    }
+                                }
+                            }
+                            .cp{
+                                #cp{
+                                    @extend %campos;
+                                    &.is-invalid{
+                                        border-bottom: 1px solid rgb(252, 62, 62);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
             }
             .pick-up{
                 input{
@@ -184,11 +213,26 @@ $color-ppal:#fff;
         .paymentMethod{
             padding-bottom: 10px;
             margin-top: 30px;
-            .subtitulo{
-                font-family: $fte-sec;
-                font-size: 18px;
-                color: $color-sec;
-             }
+            .titulo-pago{
+                display: flex;
+                flex-direction: column;
+                .subtitulo{
+                    font-family: $fte-sec;
+                    font-size: 18px;
+                    color: $color-sec;
+                    margin-bottom: 0px;
+                 }
+                 .leyenda{
+                     font-family: $fte-sec;
+                     color: grey;
+                     font-size: 13px;
+                     display: block;
+                     font-style: italic;
+                     margin-bottom: 20px;
+                     
+                 }
+            }
+           
              .pago{
                 display: flex;
                 width: 100%;
