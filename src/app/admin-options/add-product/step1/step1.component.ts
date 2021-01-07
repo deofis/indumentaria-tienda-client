@@ -81,6 +81,7 @@ export class Step1Component implements OnInit, OnDestroy {
     this.newProduct= new Producto();
     this.newBrand=new Marca();
     this.propiedadesSeleccionadas = [];
+    
   }
 
   ngOnInit(): void {
@@ -91,13 +92,17 @@ export class Step1Component implements OnInit, OnDestroy {
         this.getListaCategorias();
         // get brands
         this.getBrands();
-
+        
+    
         this.filteredBrands = this.form.controls.marca.valueChanges.pipe(
         startWith(''),
          map(value => {
            return this._filter(value)
           })
-        );
+        )
+
+        
+        
 
       //// para suscribirse a cerrar el componente de promos
     this.cerrarModalPromo=this.dataService.cerrarModal$.subscribe(resp =>{
@@ -105,6 +110,8 @@ export class Step1Component implements OnInit, OnDestroy {
     })
       
   }
+
+
   ngOnDestroy():void{
     this.cerrarModalPromo.unsubscribe();
   }
@@ -311,6 +318,8 @@ crearForm(){
     getBrands(){
       this.marcaService.getBrands().subscribe((response: any) => {
         this.marcas=response;
+        
+        
       });
     }
 
@@ -319,6 +328,8 @@ crearForm(){
 
       this.catalogoservice.getSubcategoriasPorCategoria(this.categoriaSeleccionada.id)
       .subscribe(response => {
+        console.log(response);
+        
         this.subcategorias=response.subcategorias;
       });
 

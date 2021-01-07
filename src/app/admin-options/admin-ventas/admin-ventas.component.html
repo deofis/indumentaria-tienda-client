@@ -3,139 +3,215 @@
     <div class="container-miscompras">
         <div class="frame">
             <div class="title">
-                <h2></h2>
+                <h2>Ventas</h2>
             </div>
-
-
-            <!-- <div class="container text-center">
-                <img src="../../../assets/imagenes/wf.png" class="img-logo">
-                <h3>Estamos trabajando para brindarte la mejor experiencia.</h3>
-            </div>
- -->
 
             <div class="container">
-                <table mat-table [dataSource]="data" class="mat-elevation-z8" multiTemplateDataRows>
 
-                    <!--- Note that these columns can be defined in any order.
-                          The actual rendered columns are set as a property on the row definition" -->
+              <div class="row mb-3">
+                <div class="col-12 col-md-3">
+                  <small id="emailHelp" class="form-text text-muted">&nbsp;Palabra clave.</small>
+                  <input class="form-control form-control-sm" (keyup)="applyFilter($event)"
+                    [(ngModel)]="key" name="key" placeholder="Search" #input>
+                </div>
+                <div class="col-12 col-md-3">
+                  <small id="emailHelp" class="form-text text-muted">&nbsp;Desde</small>
+                  <input type="date" class="form-control form-control-sm">
+                </div>
+                <div class="col-12 col-md-3">
+                  <small id="emailHelp" class="form-text text-muted">&nbsp;Hasta</small>
+                  <input type="date" class="form-control form-control-sm">
+                </div>
+                <div class="col-12 col-md-3">
+                  <div class="row">
+                    <div class="col-9">
+                      <small id="emailHelp" class="form-text text-muted">&nbsp;Estados.</small>
+                      <select class="form-control form-control-sm" (change)="applyFilter($event)" #select name = "state" [(ngModel)]="state">
+                        <option value="">Todos</option>
+                        <option *ngFor="let estado of estadosOperacion" [value] = "estado">
+                          {{estado | convertEstadoOp}}
+                        </option>
+                      </select>
+                    </div>
+                    <div class="col-1 mt-4">
+                      <button type="button" class="btn btn-primary btn-sm reset" (click)="reset();"><i class="fas fa-sync"></i></button>
+                    </div>
+                  </div>
                   
-                    <!-- Position Column -->
-                    <ng-container matColumnDef="id">
-                      <th mat-header-cell *matHeaderCellDef class="headerTable"> Id </th>
-                      <td mat-cell *matCellDef="let element"> {{element.nroOperacion}} </td>
-                    </ng-container>
                   
-                    <!-- Name Column -->
-                    <ng-container matColumnDef="cliente.nombre">
-                      <th mat-header-cell *matHeaderCellDef class="headerTable"> Cliente </th>
-                      <td mat-cell *matCellDef="let element"> {{element.cliente.nombre}} </td>
-                    </ng-container>
+                </div>
+              </div>
 
-                    <ng-container matColumnDef="direccion">
-                        <th mat-header-cell *matHeaderCellDef class="headerTable"> Direccion de envio </th>
-                        <td mat-cell *matCellDef="let element"> {{element.direccionEnvio.calle}} {{element.direccionEnvio.numeroCalle}} </td>
-                      </ng-container>
-                  
-                    <!-- Weight Column -->
-                    <ng-container matColumnDef="fechaOperacion">
-                      <th mat-header-cell *matHeaderCellDef class="headerTable"> Fecha de venta </th>
-                      <td mat-cell *matCellDef="let element"> {{element.fechaOperacion | convertFecha}} </td>
-                    </ng-container>
+              <div class="table-responsive">
+                <table mat-table matTableResponsive [dataSource]="data" matSort  class="mat-elevation-z8" multiTemplateDataRows>
 
-                    <!-- <ng-container matColumnDef="direccionEnvio">
-                        <th mat-header-cell *matHeaderCellDef class="headerTable"> Fecha de envío </th>
-                        <td mat-cell *matCellDef="let element"> </td>
-                    </ng-container> -->
+                  <!--- Note that these columns can be defined in any order.
+                        The actual rendered columns are set as a property on the row definition" -->
+                
+                  <!-- Position Column -->
+                  <ng-container  matColumnDef="nroOperacion">
+                    <th  mat-header-cell *matHeaderCellDef class="headerTable text-center" mat-sort-header> ID </th>
+                    <td mat-cell *matCellDef="let element"> {{element.nroOperacion}} </td>
+                  </ng-container>
+                
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="cliente.nombre">
+                    <th mat-header-cell *matHeaderCellDef class="headerTable text-center" mat-sort-header> Cliente </th>
+                    <td mat-cell *matCellDef="let element"> {{element.cliente.nombre}} {{element.cliente.apellido}} </td>
+                  </ng-container>
 
-                    <ng-container matColumnDef="fechaEnvio">
-                        <th mat-header-cell *matHeaderCellDef class="headerTable"> Fecha de entrega </th>
-                        <td mat-cell *matCellDef="let element"> {{element.fechaEnviada}}</td>
+                  <ng-container matColumnDef="direccion.calle">
+                      <th mat-header-cell *matHeaderCellDef class="headerTable"> Direccion de envio </th>
+                      <td mat-cell *matCellDef="let element"> {{element.direccionEnvio.calle}} {{element.direccionEnvio.numeroCalle}}, Córdoba </td>
                     </ng-container>
+                
+                  <!-- Weight Column -->
+                  <ng-container matColumnDef="fechaOperacion">
+                    <th mat-header-cell *matHeaderCellDef class="headerTable" mat-sort-header> Fecha de venta</th>
+                    <td mat-cell *matCellDef="let element"> {{element.fechaOperacion | convertFecha | slice:0:8}} </td>
+                  </ng-container>
 
-                    <ng-container matColumnDef="fechaEntrega">
-                        <th mat-header-cell *matHeaderCellDef class="headerTable"> Fecha de venta </th>
-                        <td mat-cell *matCellDef="let element"> {{element.fechaRecibida}}</td>
-                    </ng-container>
-                  
-                    <!-- Symbol Column -->
-                    <ng-container matColumnDef="estado">
-                      <th mat-header-cell *matHeaderCellDef class="headerTable"> Estado </th>
-                      <td mat-cell *matCellDef="let element"> {{element.estado | convertEstadoOp}} </td>
-                    </ng-container>
-    
-                    <ng-container matColumnDef="total">
-                        <th mat-header-cell *matHeaderCellDef class="headerTable"> Total </th>
-                        <td mat-cell *matCellDef="let element"> {{element.total | currency:"EUR":"symbol"}} </td>
-                    </ng-container>
-    
-                    <ng-container matColumnDef="expandedDetail">
-                        <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
-                          <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-                            <div class="container-fluid jumbotron" >
-                                <h2>Detalle de venta</h2>
-                                <div class="row">
-                                    <div class="col">
-                                        <table class="table">
-                                            <thead>
-                                              <tr>
-                                                <th>Id</th>
-                                                <th>Nombre</th>
-                                                <th>Cantidad</th>
-                                                <th>Precio venta</th>
-                                                <th>Subtotal</th>
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr *ngFor="let item of element.items">
-                                                <td>{{item.sku.id}}</td>
-                                                <td>{{item.sku.nombre}}</td>
-                                                <td>{{item.cantidad}}</td>
-                                                <td>{{item.precioVenta | currency:"EUR":"symbol"}}</td>
-                                                <td>{{item.subtotal | currency:"EUR":"symbol"}}</td>
-                                              </tr>
-                                            </tbody>
-                                          </table>
-                                    </div>
-                                </div>
-                                <hr>
 
-                                <div class="row" >
-                                    <div class="col">
-                                        Costo de envío: {{21 | currency:"EUR":"symbol"}} 
-                                    </div>
-                                    <div class="col">
-                                        Código de promoción: A32BC
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            
-                            
+                  <ng-container matColumnDef="fechaEnvio">
+                      <th mat-header-cell *matHeaderCellDef class="headerTable" mat-sort-header> Fecha de envío</th>
+                      <td mat-cell *matCellDef="let element">Sin datos</td> <!-- {{element.fechaEnviada}} -->
+                  </ng-container>
+
+                  <ng-container matColumnDef="fechaEntrega">
+                      <th mat-header-cell *matHeaderCellDef class="headerTable" mat-sort-header> Fecha de entrega </th>
+                      <td mat-cell *matCellDef="let element">Sin datos</td> <!-- {{element.fechaRecibida}} -->
+                  </ng-container>
+                
+                  <!-- Symbol Column -->
+                  <ng-container matColumnDef="estado">
+                    <th mat-header-cell *matHeaderCellDef class="headerTable" mat-sort-header> Estado </th>
+                    <td mat-cell *matCellDef="let element"> {{element.estado | convertEstadoOp}}</td>
+                  </ng-container>
+
+                  <!-- <ng-container matColumnDef="actualizar">
+                    <th mat-header-cell *matHeaderCellDef class="headerTable text-center" mat-sort-header> Actualizar </th>
+                    <td mat-cell *matCellDef="let element"><i class="far fa-edit"></i> </td>
+                  </ng-container> -->
+  
+                  <ng-container matColumnDef="total">
+                      <th mat-header-cell *matHeaderCellDef class="headerTable" mat-sort-header> Total </th>
+                      <td mat-cell *matCellDef="let element"> {{element.total | currency:"EUR":"symbol"}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="tools">
+                    <th mat-header-cell *matHeaderCellDef class="headerTable" mat-sort-header>  </th>
+                    <td mat-cell *matCellDef="let element"> <i class="far fa-edit point" (click)="openLg(content, element)"></i> </td>
+                </ng-container>
+  
+                  <ng-container matColumnDef="expandedDetail">
+                      <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+                        <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                          
+                          <div class="container-fluid jumbotron pt-3 pb-3">
+
+                            <app-detalle-desktop [operacion]="element"></app-detalle-desktop>                                
+                              
                           </div>
-                        </td>
-                        
-                    </ng-container>
-                    
+                                                      
+                        </div>
+                      </td>
+                      
+                  </ng-container>
                   
-                    <!-- <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-                    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
-    
-                    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="student-detail-row"></tr> -->
-                    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-                    <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
-                        class="example-element-row"
-                        [class.example-expanded-row]="expandedElement === element"
-                        (click)="expandedElement = expandedElement === element ? null : element">
-                    </tr>
-                    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-                    <!--  -->
-    
-                  </table>
+                  <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true" class="text-center"></tr>
+                  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+                      class="example-element-row rowCursor"
+                      [class.example-expanded-row]="expandedElement === element"
+                      (click)="expandedElement = expandedElement === element ? null : element">
+                  </tr>
+                  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+                  <!--  -->
+  
+                </table>
+                
+              </div>
+              <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+              
             </div>
             <br>
-            
-            
 
         </div>
+        
     </div>
+    
 </section>
+
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h1 class="mt-2">Actualizar estado</h1>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <p><strong>ID: </strong>{{updateStateVenta.nroOperacion}}</p>
+        </div>        
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <p><strong>Cliente: </strong> {{updateStateVenta.cliente.nombre}} {{updateStateVenta.cliente.apellido}}</p>
+        </div>
+        <div class="col">
+          <p><strong>Tel: </strong> 3512452296</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <p><strong>E-mail: </strong> usuario@gmail.com</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <p><strong>Estado actual: </strong> {{updateStateVenta.estado | convertEstadoOp}}</p>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <p><strong>Fecha de venta:</strong> {{updateStateVenta.fechaOperacion | convertFecha}}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <p><strong>Total: </strong> {{updateStateVenta.total | currency:'EUR':'symbol'}}</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col">
+          <p><strong>Actualizar al siguiente estado: </strong> {{prueba()}}</p>
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-2 offset-3 mr-5">
+          <button type="button" class="btn btn-secondary" style="border: none;" (click)="modal.dismiss('Cross click')">Cancelar</button>
+        </div>
+        <div class="col-2">
+          <button type="button" class="btn btn-primary reset" (click)="updateVentaSent()">Aceptar</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div> -->
+</ng-template>

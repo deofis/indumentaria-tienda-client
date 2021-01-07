@@ -39,3 +39,12 @@ background-color: #f8f7f7; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.mat-sort-header-arrow {
+    color: #fff !important;
+    
+    }
+
+
+.cdk-overlay-container { z-index: 9999; }

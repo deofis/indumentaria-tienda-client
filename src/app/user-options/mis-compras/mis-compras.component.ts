@@ -1,18 +1,46 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/log-in/services/auth.service';
+import {animate, state, style, transition, trigger} from '@angular/animations';
+
+import { ComprasService } from '../compras.service';
+import { Operacion } from 'src/app/admin-options/admin-ventas/clases/Operacion';
+
+import { MatSort } from '@angular/material/sort';
+import {MatPaginator} from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-mis-compras',
   templateUrl: './mis-compras.component.html',
-  styleUrls: ['./mis-compras.component.scss']
+  styleUrls: ['./mis-compras.component.scss'],
+  animations: [
+    trigger('detailExpand',
+    [
+        state('collapsed, void', style({ height: '0px'})),
+        state('expanded', style({ height: '*' })),
+        transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+        transition('expanded <=> void', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class MisComprasComponent implements OnInit {
- constructor( ) {
+
+  misCompras: Operacion[] = [];
+
+  estadosOperacion = ["PAYMENT_PENDING", "PAYMENT_DONE", "SENT", "RECEIVED", "CANCELLED"];
+  columnsToDisplay = ['nroOperacion', 'direccion.calle', 'fechaOperacion', 'fechaEnvio', 'fechaEntrega', 'estado', 'medioPago.nombre', 'total'];
+  data = new MatTableDataSource();
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+ constructor( private comprasServices: ComprasService ) {
 
    }
 
   ngOnInit(): void {
+
+    this.obtenerCompras();
 
   }
 
@@ -80,6 +108,18 @@ export class MisComprasComponent implements OnInit {
     
     let arrowUp1=document.getElementById("up2");
     arrowUp1.style.display="none"
+  }
+
+  obtenerCompras(){
+    this.comprasServices.getVentasUser().subscribe((resp:any) => {
+      this.misCompras = resp;
+      this.data.data = this.misCompras;
+      this.data.sort = this.sort;
+      this.data.paginator = this.paginator;
+
+      console.log(this.misCompras);
+      
+    })
   }
 
 }

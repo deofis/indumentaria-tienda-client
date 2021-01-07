@@ -35,14 +35,14 @@
                         <div class="col-2 d-none d-md-block">
                             <div *ngIf="estaLogueado"  class="iconos notificaciones" id="campanita">
                                 <!-- <i class="fas fa-bell opciones"></i> -->
-                                <img src="../../../../../assets/imagenes/icon-notif.png" alt="">
+                                <img src="../../../../../assets/imagenes/icon-notif.png" alt="" style="cursor: pointer;">
                             </div>
                         </div>
                         <div class="col-5 carrito-icono">
                             <div *ngIf="hasRole('ROLE_USER') || !estaLogueado" class="iconos carrito"
                                 [routerLink]="['/shopping-cart']">
                                 <!-- <i class="fas fa-shopping-cart opciones"></i> -->
-                                <img src="../../../../../assets/imagenes/icon-cart.png" alt="">
+                                <img src="../../../../../assets/imagenes/icon-cart.png" alt="" style="cursor: pointer;">
                                 <div class="circulo">
                                     <!-- <span>{{totalQuantity}}</span> -->
                                     <span>1</span>
@@ -52,13 +52,13 @@
                             <div *ngIf="estaLogueado && hasRole('ROLE_ADMIN')" class="iconos carrito"
                                 [routerLink]="['/sales']">
                                 <!-- <i class="fas fa-window-restore" ></i> -->
-                                <img src="../../../../../assets/imagenes/icon-ventas.png" alt="">
+                                <img src="../../../../../assets/imagenes/icon-ventas.png" alt="" style="cursor: pointer;">
                             </div>
                         </div>
                         <div class="col-3 d-none d-md-block">
                             <div class="iconos miperfil" (mouseover)="showUserMenu()" (click)="irPerfil()">
                                 <!-- <i class="fas fa-user-circle opciones"></i> -->
-                                <img src="../../../../../assets/imagenes/icon-user.png" alt="">
+                                <img src="../../../../../assets/imagenes/icon-user.png" alt="" style="cursor: pointer;">
                             </div>
                         </div>
                     </div>

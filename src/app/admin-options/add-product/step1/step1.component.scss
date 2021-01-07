@@ -105,7 +105,7 @@ $color-ppal:#fff;
                             }
                             #subcategories {
                                 margin-left: 90px;
-                                display: none;
+                                display: block;
                             }
                             #marca{
                                 
@@ -411,3 +411,9 @@ $color-ppal:#fff;
                     transform: scale(1.03);
                 }
               }
+
+
+/* .cdk-overlay-container,.cdk-global-overlay-wrapper,.cdk-overlay-connected-position-bounding-box {
+    z-index: 1050;
+} */
+

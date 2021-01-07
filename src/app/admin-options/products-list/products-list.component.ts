@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/log-in/services/auth.service';
+import { Producto } from 'src/app/products/clases/producto';
+import { EnviarProductoService } from '../enviar-producto.service';
 
 @Component({
   selector: 'app-products-list',
@@ -9,10 +13,23 @@ import { AuthService } from 'src/app/log-in/services/auth.service';
 })
 export class ProductsListComponent implements OnInit {
 
+  step2: boolean = false;
+  subscripcionProducto: Subscription;
+  newProduct: Producto;
+  flag = false;
+
   constructor( private router:Router,
-    private authService: AuthService,) {  }
+               private authService: AuthService,
+               private modalService: NgbModal, 
+               private enviarProducto: EnviarProductoService ) {  }
 
   ngOnInit(): void {
+
+    this.subscripcionProducto = this.enviarProducto.enviarProducto$.subscribe(producto => {
+      this.newProduct = new Producto();
+      this.newProduct = producto;
+      this.step2 = true;
+    });
 
   }
   showDetail1(){
@@ -32,7 +49,7 @@ export class ProductsListComponent implements OnInit {
   let arrowUp1=document.getElementById("up1");
    arrowUp1.style.display="block";
 
-  }
+  };
 
 hideDetail1() {
   ///// *** **** MOSTRAR DETALLE COMPRA *** *** /////
@@ -49,6 +66,13 @@ hideDetail1() {
   let arrowUp1=document.getElementById("up1");
   arrowUp1.style.display="none";
   
-  }
+  };
+
+
+  open(contenido){
+    
+    this.modalService.open(contenido, { size: 'xl', scrollable: true});
+
+  };
 
 }

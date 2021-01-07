@@ -287,8 +287,8 @@ $color-wf4:#70b8f3;
     #container-sub {
         background: $color-menues;
         width: 16vw;
-        height: fit-content;
-        min-height: 317px;
+        height: auto;
+        min-height: auto;
         position: absolute;
         left:calc(18vw + 209px);
         z-index: 49;
