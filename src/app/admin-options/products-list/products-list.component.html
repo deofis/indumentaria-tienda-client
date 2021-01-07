@@ -4,13 +4,13 @@
         <div class="frame">
             <div class="title">
                 <h2>Productos</h2>
-                <div class="filtros">
+                <!-- <div class="filtros">
                     <ul>
                         <li class="ordenar">
                             <div> Ordenar<i class="fas fa-caret-down"></i></div>
                             <ul>
                                 <li class="opciones">Alfabéticamente</li>
-                                <!-- <li class="opciones">Más antiguos</li> -->
+                                
                             </ul>
                         </li>
                         <li class="ordenar">
@@ -22,10 +22,17 @@
                             </ul>
                         </li>
                     </ul>
-                </div>
+                </div> -->
             </div>
             <article class="detalleCompras">
-                <div class="row-product">
+
+                <div class="col-md col-xs-12 text-right d-none d-sm-block">
+                    <button class="btn btn-primary" style="background-color: #1f4e84; border: none;" (click)="flag = true; open(contenido)">
+                        Nuevo producto
+                    </button>
+                </div>
+
+                <div class="row-product mt-3">
                     <div class="row1" id="cont-compra1">
                         <div class="arrow">
                             <i class="fas fa-angle-down" id="down1" (click)="showDetail1()"></i>
@@ -102,3 +109,35 @@
         </div>
     </div>
 </section>
+
+
+<div class="container">
+    <ng-template #contenido let-modal>
+        <div class="modal-header">
+            <h1 class="mt-4">Nuevo producto</h1>
+            <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div  class="modal-body">
+
+            <div class="container">
+                <app-add-product></app-add-product>
+            </div>
+            
+
+        </div>
+        <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="modal.close()"> Cancelar</button>
+        </div> -->
+    </ng-template>
+</div>
+
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-6">
+            <app-add-product></app-add-product>
+        </div>
+    </div>
+</div> -->
+

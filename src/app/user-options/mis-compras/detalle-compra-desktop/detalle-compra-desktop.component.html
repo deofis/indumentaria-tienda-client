@@ -1,0 +1,38 @@
+
+
+
+<div class="row" style="margin-top: 0;">
+    <div class="col">
+        <table class="table-sm table-hover" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Nombre</th>
+                    <th class="text-center">Cantidad</th>
+                    <th class="text-center">Precio venta</th>
+                    <th class="text-center">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of operacion.items" class="text-center">
+                    <!-- <td *ngIf="item.sku.producto.foto" style="width: 20px;"><img [src]="item.sku.producto.foto.imageUrl" alt="" style="width: 60px; height: auto"></td> -->
+                    <td style="width: 20px;"><img src="assets/imagenes/pumaEjemplo.png" alt="" style="width: 60px; height: auto"></td> 
+                    <td class="text-left">{{item.sku.nombre}}</td>
+                    <td class="text-center">{{item.cantidad}}</td>
+                    <td class="text-center">{{item.precioVenta | currency:"EUR":"symbol"}}</td>
+                    <td class="text-center">{{item.subtotal | currency:"EUR":"symbol"}}</td>
+                </tr>
+            </tbody>
+            </table>
+    </div>
+</div>
+<hr>
+
+<div class="row" >
+    <div class="col">
+        <strong>Costo de envío:</strong> {{21 | currency:"EUR":"symbol"}} 
+    </div>
+    <div class="col">
+        <strong>Código de promoción:</strong> A32BC
+    </div>
+</div>

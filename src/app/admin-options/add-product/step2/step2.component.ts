@@ -257,7 +257,7 @@ export class Step2Component implements OnInit, OnDestroy {
 
   ///// MODAL ////
   openCentrado(contenido){
-    this.modal.open(contenido,{centered:true})
+    this.modal.open(contenido,{size: 'lg', centered:true})
   }
 
 

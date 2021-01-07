@@ -53,3 +53,7 @@ app-banner .flickity-button:disabled {
   display: none;
 }
 /*# sourceMappingURL=styles.css.map */
+
+.mat-sort-header-arrow {
+  color: #fff !important;
+  }
