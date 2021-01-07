@@ -214,17 +214,19 @@ $color-ppal:#fff;
     font-family: $fte-ppal;
     color: $color-sec;
     font-size: 22px;
+    display: block;
     margin-bottom: 0px;
   }
   .container-categories{
   margin-left: auto;
   margin-right: auto;
+  margin-top: 45px;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  margin-bottom: 55px;
-  min-height: 80vh;
+  grid-template-columns: 1fr 1fr 1fr ;
+  grid-template-rows: 1fr;
+  margin-bottom: 65px;
+  // min-height: 80vh;
   box-sizing: border-box;
   .card-c{
     cursor: pointer;

@@ -35,7 +35,7 @@ export class ViewMoreComponent implements OnInit {
   mostrarActualizar:boolean=false;
   elegido:boolean=false;
   totalItemsCarrito:number;
-
+  pcioNormal:boolean
   /// sku que voy a enviar al carrito
  idSkuAEnviar:number;
  skuAEnviar:Sku = null;
@@ -172,9 +172,9 @@ export class ViewMoreComponent implements OnInit {
   }
   estaEnOfertaElSku(){
     if (this.infoProducto.promocion!== null) {
-        this.oferta=false;
+        this.oferta=true;
     }else{
-      this.oferta=true;
+      this.oferta=false;
     }
   }
   mostrarPrecio(){
@@ -189,6 +189,7 @@ export class ViewMoreComponent implements OnInit {
       return false
     }else{
       return true 
+      
     }
   }
   ////

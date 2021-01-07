@@ -34,13 +34,13 @@
                      <li id="filtros" id="tit-ppales"><i class="icono izquierda fas fa-sliders-h"></i>Filtros</li>
                      <p class="titulo-filtro">Subcategorías</p>
                      <div class="subcategorias" *ngFor="let subcategoria of subcategorias" (click)="filtrarSubcategorias()">
-                         <input type="radio" id="{{subcategoria.nombre}}" name="subcategoria">
+                         <input type="radio" id="{{subcategoria.nombre}}" name="subcategoria" style="margin-right: 7px;">
                          <label for="{{subcategoria.nombre}}"> {{subcategoria.nombre}}</label>
                      </div>
                      
                      <p class="titulo-filtro">Marcas</p>
                      <div class="marcas" *ngFor="let marca of marcas" (click)="filtrarMarcas()">
-                         <input type="radio" id="{{marca.nombre}}" name="marca">
+                         <input type="radio" id="{{marca.nombre}}" name="marca"  style="margin-right: 7px;">
                          <label for="{{marca.nombre}}" > {{marca.nombre}}</label>
                      </div>
                    
@@ -50,7 +50,7 @@
                          <p class="prop-tit"> {{propiedad.nombre}}</p>
                          <ul class="valores">
                              <li class="valor" *ngFor="let valor of propiedad?.valores " (click)="filtrarPropiedades(i)">
-                                 <input type="radio" id="{{valor.valor}}" name={{propiedad.nombre}}>
+                                 <input type="radio" id="{{valor.valor}}" name={{propiedad.nombre}}  style="margin-right: 7px;">
                                  <label for="{{valor.valor}}"> {{valor.valor}}</label>
                              </li>
                          </ul>

@@ -39,9 +39,9 @@
                 </div>
 
                 <div id="caja-precio">
-                    <div class="precio">
+                    <div >
                         <!-- contenedor del precio sku -->
-                        <div *ngIf="!mostrarPrecioProducto()">
+                        <div class="precio" *ngIf="!mostrarPrecioProducto()">
                             <!-- <h3 *ngIf="!ofertaSku" class="pcio-sin-oferta">€50</h3>
                             <h3 *ngIf="ofertaSku"  class="pcio-oferta">€42</h3> -->
                             <h3 *ngIf="!ofertaSku" class="pcio-sin-oferta">€{{skuAEnviar?.precio | number: '.2'}}</h3>
@@ -53,12 +53,12 @@
                         </div>
                         <!-- Fin del contenedor precio Sku  -->
                         <!-- Contenedor precio producto -->
-                        <div *ngIf="mostrarPrecioProducto()">
-                            <h3 *ngIf="mostrarPrecio()" class="pcio-sin-oferta">€{{infoProducto?.precio | number: '.2'}}
+                        <div class="precio" *ngIf="mostrarPrecioProducto()">
+                            <h3 *ngIf="!infoProducto?.promocion" class="pcio-sin-oferta">€{{infoProducto?.precio | number: '.2'}}
                             </h3>
-                            <h3 *ngIf="oferta" class="pcio-oferta">€{{infoProducto.promocion?.precioOferta | number:
+                            <h3 *ngIf="infoProducto?.promocion" class="pcio-oferta">€{{infoProducto.promocion?.precioOferta | number:
                                 '.2'}}</h3>
-                            <div *ngIf="oferta" class="row-oferta">
+                            <div *ngIf="infoProducto?.promocion" class="row-oferta">
                                 <span>€{{infoProducto?.precio | number: '.2'}} </span>
                                 <p class="off ">{{infoProducto.promocion?.porcentaje * 100 | number: '2.0-0'}}% 0FF</p>
                             </div>
