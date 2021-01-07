@@ -131,16 +131,15 @@ export class UserSignUpComponent implements OnInit {
           pais:["", Validators.required],
           estado:[""],
           calle:["", Validators.required],
-          nro:["", Validators.required],
+          numeroCalle:["", Validators.required],
           piso:[""],
-          cp:["", Validators.required],
+          codigoPostal:["", Validators.required],
           })
       }),
     }, {
       validators: this.validadores.passwordIguales('password', 'passwordRepeat')
     });
   }
-
   
   /**
    * Registra la nueva cuenta. Toma los datos de los campos del formulario, y si son validos, hace una peticion 
@@ -193,10 +192,10 @@ export class UserSignUpComponent implements OnInit {
     return this.formRegistro.controls.cliente.get('direccion.calle').invalid && this.formRegistro.controls.cliente.get('direccion.calle').touched;
   }
   get nroInvalido() {
-    return this.formRegistro.get('cliente.direccion.nro').invalid && this.formRegistro.get('cliente.direccion.nro').touched;
+    return this.formRegistro.get('cliente.direccion.numeroCalle').invalid && this.formRegistro.get('cliente.direccion.numeroCalle').touched;
   }
   get cpInvalido() {
-    return this.formRegistro.get('cliente.direccion.cp').invalid && this.formRegistro.get('cliente.direccion.cp').touched;
+    return this.formRegistro.get('cliente.direccion.codigoPostal').invalid && this.formRegistro.get('cliente.direccion.codigoPostal').touched;
   }
   get ciudadInvalida() {
     return this.formRegistro.get('cliente.direccion.ciudad').invalid && this.formRegistro.get('cliente.direccion.ciudad').touched;
