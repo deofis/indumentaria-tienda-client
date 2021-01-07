@@ -9,5 +9,6 @@ export class EnviarInfoCompraService {
   enviarEntrega$= new EventEmitter();
   enviarPago$ =new EventEmitter();
   enviarRecargarCarrito$ = new EventEmitter();
+  enviarMostrarCheckout$ =new EventEmitter();
   constructor() { }
 }

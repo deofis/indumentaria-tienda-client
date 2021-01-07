@@ -17,7 +17,7 @@ export class ShoppingCartComponent implements OnInit {
 
   carrito: Carrito;
   totalProductos: number;
-  abriendoStep2:boolean=false;
+  mostrarCheckout:boolean=false;
   // item:ItemCarrito
   constructor(private carritoService: CarritoService,
                private _cartService:MockCartService, 
@@ -31,16 +31,14 @@ export class ShoppingCartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCarrito();
+   
+  
+   
+    
+    
     console.log(this.carrito);
      
-    setTimeout(() => {
-      if(this.carrito.items.length == 0){
-        console.log("entro")
-       let btnContinuar = document.getElementById("btn-cont")as HTMLButtonElement
-        btnContinuar.style.display="none"
-      }
-    }, 1000);
-   
+    
  
     // this.items=JSON.parse(localStorage.getItem("Mi Carrito"));
     // console.log(this.items)
@@ -95,8 +93,8 @@ export class ShoppingCartComponent implements OnInit {
     console.log(item.cantidad);
 
     this.carritoService.actualizarCantidad(item.cantidad.toString(), skuId.toString()).subscribe(response => {
-      this.carrito = response.carritoActualizado;
-      
+       this.carrito = response.carritoActualizado;
+      this.getCarrito()
     });
 
       //para refrescar el componente y q se actualizen los nuevos valores
@@ -118,7 +116,7 @@ export class ShoppingCartComponent implements OnInit {
     this.carritoService.actualizarCantidad(item.cantidad.toString(), skuId.toString()).subscribe(response => {
       
       this.carrito = response.carritoActualizado;
-        this.getCarrito();
+      this.getCarrito();
     });
    
    
@@ -126,10 +124,10 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   enviarInfoACheckout(){
-    this.abriendoStep2=true
+    this.mostrarCheckout=true
     setTimeout(() => {
-    
-      this.enviarInfoCompra.enviarRecargarCarrito$.emit(this.abriendoStep2);
+    console.log(this.mostrarCheckout)
+      this.enviarInfoCompra.enviarMostrarCheckout$.emit(this.mostrarCheckout);
      
     }, 100);
    

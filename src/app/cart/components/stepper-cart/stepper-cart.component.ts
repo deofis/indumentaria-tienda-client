@@ -15,6 +15,7 @@ export class StepperCartComponent implements OnInit {
   clienteDireccion:any;
   pago:MedioPago;
   entrega:string;
+  mostrarCheckout:boolean=false;
   abriendoStep2:boolean;
   subscripcionInfoCompra : Subscription;
 
@@ -25,16 +26,22 @@ export class StepperCartComponent implements OnInit {
     //// recibo del step 2 "checkout" la info cliente
     this.subscripcionInfoCompra=this.enviarInfoCompra.enviarCliente$.subscribe(dir=> {
        this.clienteDireccion=dir;
+       console.log(this.clienteDireccion)
      })
     //// recibo del step 2 "checkout" la infoforma de entrega
     this.subscripcionInfoCompra=this.enviarInfoCompra.enviarEntrega$.subscribe(entrega=> {
        this.entrega=entrega;
+       console.log(this.entrega)
      })
       //// recibo del step 2 "checkout" la info  forma de pago 
     this.subscripcionInfoCompra=this.enviarInfoCompra.enviarPago$.subscribe(pago=> {
        this.pago=pago;
        console.log(this.pago)
      })
+
+     this.subscripcionInfoCompra=this.enviarInfoCompra.enviarMostrarCheckout$.subscribe(mostrarCheckout=> {
+      this.mostrarCheckout=mostrarCheckout;
+    })
   }
 
 }

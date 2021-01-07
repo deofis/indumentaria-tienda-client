@@ -45,7 +45,11 @@ export class CheckoutComponent implements OnInit, OnDestroy{
   direccionUsuario:Direccion;
   direccionTienda:Direccion
   pago:MedioPago;
-  msjCamposIncompletos:boolean=false
+  msjCamposIncompletos:boolean=false;
+
+  /// dato que envio para que se cierre el componente al ir atras
+  mostrarCheckout:boolean
+
   constructor(private carritoService: CarritoService,
               private fb:FormBuilder,
               private perfilClienteService:PerfilClienteService,
@@ -63,7 +67,6 @@ export class CheckoutComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit(): void {
-  
     ///inicializar el fomulario
     this.crearForm(); 
     this.getPaises();  
@@ -84,7 +87,7 @@ export class CheckoutComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy():void{
-    console.log("enviando datos")
+   
   }
   
 
@@ -171,6 +174,14 @@ export class CheckoutComponent implements OnInit, OnDestroy{
       console.log(this.pago)
     });
   }
+  cerrarComponente(){
+    this.mostrarCheckout=false
+    setTimeout(() => {
+    console.log(this.mostrarCheckout)
+      this.enviarInfoCompra.enviarMostrarCheckout$.emit(this.mostrarCheckout);
+     
+    }, 100);
+  }
   guardarDatos(){
 
    
@@ -202,11 +213,19 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     this.entrega=this.formEntrega.controls.formaDeEntrega?.value;
     let idPago =this.formEntrega.controls.formaDePago?.value;
     this.getMedioDePago(idPago);
-     
-    }, 2000);
+    
+    }, 600);
   }
     // this.formEntrega.disable();
-    console.log(this.formEntrega)
+    console.log(this.formEntrega);
+    
+    setTimeout(() => {
+      console.log(this.entrega);
+      console.log(this.clienteDireccion);
+      console.log(this.pago)
+      this.enviarInfoAConfirmData() 
+    }, 900);
+   
   }
   
   crearForm(){
@@ -274,13 +293,9 @@ export class CheckoutComponent implements OnInit, OnDestroy{
  }
 
  enviarInfoAConfirmData(){
-  setTimeout(() => {
-  
     this.enviarInfoCompra.enviarCliente$.emit(this.clienteDireccion);
     this.enviarInfoCompra.enviarEntrega$.emit(this.entrega);
     this.enviarInfoCompra.enviarPago$.emit(this.pago);
-  }, 600);
- 
 }
 
 /**  para ver que imagen mostrar en los metodos de pago */

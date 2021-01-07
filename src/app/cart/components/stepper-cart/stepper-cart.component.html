@@ -4,12 +4,12 @@
     </ng-template>
 
     <mat-step label="Carrito">
-        <app-shopping-cart></app-shopping-cart>
+        <app-shopping-cart  ></app-shopping-cart>
        
     </mat-step>
 
     <mat-step label="Envío y Facturación">
-        <app-checkout [abriendoStep2]="abriendoStep2"></app-checkout>
+        <app-checkout  [mostrarCheckout]="mostrarCheckout" *ngIf="mostrarCheckout"></app-checkout>
     </mat-step>
 
     <mat-step label="Confirmación">

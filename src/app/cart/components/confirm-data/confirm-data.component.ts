@@ -24,6 +24,7 @@ export class ConfirmDataComponent implements OnInit {
   @Input() clienteDireccion:any;
   @Input() entrega:string;
   @Input() pago:MedioPago;
+  @Input() mostrarCheckout:boolean;
   infoCliente:any;
   carrito: Carrito;
   costoDeEnvio:number=0;
@@ -47,8 +48,12 @@ export class ConfirmDataComponent implements OnInit {
   ngOnInit(): void {
       this.getPerfilCliente(); 
       this.getCarrito();  
+      this.carritoService.refreshNeeded$
+      .subscribe(()=>{
+        this.getCarrito();
+      })
      }
-
+  
   /// traigo la info del cliente loggeado (nombre,mail,telefono,direccion...)
 getPerfilCliente():void{
   this.perfilClienteService.getInfoPerfilCliente().subscribe(response => {

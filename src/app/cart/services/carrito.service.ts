@@ -1,7 +1,8 @@
+import { tap } from 'rxjs/operators';
 import { Injectable, EventEmitter, Output } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { API_BASE_URL } from '../../config/config';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +16,28 @@ export class CarritoService {
   constructor(private http: HttpClient) {
     this.urlEndpoint = `${API_BASE_URL}/api`;
   }
+  
+  //**metodo para refrescar componente  */
+ private _refreshNeeded$ =new Subject<void>();
+ 
+ get refreshNeeded$ (){
+   return this._refreshNeeded$
+ }
 
   /**
    * Obtiene el carrito del perfil de la sesión actual.
    * @return Observable con el objeto JSON convertido a Carrito.
    */
   getCarrito(): Observable<any> {
-    return this.http.get(`${this.urlEndpoint}/perfil/carrito`);
+    return this.http
+    .get(`${this.urlEndpoint}/perfil/carrito`)
+    .pipe(
+      tap(
+        ()=> {
+          this._refreshNeeded$.next();
+        }
+      )
+    );
   }
 
   /**
@@ -38,6 +54,9 @@ export class CarritoService {
     this.totalItemsEmmiter.emit(this.totalItems);
     
     return this.http.post(`${this.urlEndpoint}/carrito/item/agregar`, null, {params: params});
+    
+
+
   }
 
   /**
@@ -51,7 +70,15 @@ export class CarritoService {
     --this.totalItems;
     this.totalItemsEmmiter.emit(this.totalItems);
 
-    return this.http.delete(`${this.urlEndpoint}/carrito/item/quitar`, {params: parametros});
+    return this.http
+    .delete(`${this.urlEndpoint}/carrito/item/quitar`, {params: parametros})
+    .pipe(
+      tap(
+        ()=> {
+          this._refreshNeeded$.next();
+        }
+      )
+    );
   }
 
   /**
@@ -62,7 +89,18 @@ export class CarritoService {
   actualizarCantidad(cantidad: string, skuId: string): Observable<any> {
     const parametros = new HttpParams().set('skuId', skuId).set('cantidad', cantidad);
 
-    return this.http.put(`${this.urlEndpoint}/carrito/item/actualizar`, null, {params: parametros});
+    return this.http
+    .put(`${this.urlEndpoint}/carrito/item/actualizar`, null, {params: parametros})
+    .pipe(
+      tap(
+        ()=> {
+          this._refreshNeeded$.next();
+        }
+      )
+    )
+    ;
+    
+
   }
 
   getTotalItems(): number {
