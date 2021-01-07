@@ -257,6 +257,7 @@ $color-ppal:#fff;
                             border-radius: 5px;
                             outline: none;
                             padding-left: 10px;
+                            
                             &:focus{
                                 outline: none;
                             }
@@ -421,11 +422,10 @@ $color-ppal:#fff;
                     font-size: 17px;
                     border: 0px ;
                     height: 40px;
-                    padding: 8px 15px;
+                    padding: 4px auto;
                     align-self: center;
                     box-sizing: border-box;
-                    width: 26%;
-                    border-radius: 0px;  
+                    width: 26%; 
                     margin-top:18px;                    
                     &:hover{
                         background-color: $color-wf2;
@@ -818,6 +818,7 @@ $color-ppal:#fff;
     border-left: 0px;
     border-right: 0px;
     border-color: rgb(34, 62, 102);
+    background-color: #fff;
     cursor: pointer;
 }
 

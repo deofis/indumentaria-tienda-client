@@ -10,6 +10,8 @@ import { AuthService } from '../../../../log-in/services/auth.service';
 import { CarritoService } from '../../../../cart/services/carrito.service';
 import { Carrito } from '../../../../cart/clases/carrito';
 import { Subcategoria } from 'src/app/products/clases/subcategoria';
+import { Subscription } from 'rxjs';
+import { EnviarInfoCompraService } from 'src/app/user-options/user-profile/services/enviar-info-compra.service';
 
 @Component({
   selector: 'app-normal-header',
@@ -20,7 +22,7 @@ export class NormalHeaderComponent implements OnInit {
 
   categorias:Categoria[];
   subcategorias: Subcategoria[];
-
+  subscripcionInfoCompra : Subscription;
   //para el numero del carrito
   items: Array<ItemCarrito>;
   totalPrice:number = 0;
@@ -29,11 +31,13 @@ export class NormalHeaderComponent implements OnInit {
 
   // Para perfil de usuario
   estaLogueado: boolean;
+  totalItemsCarrito:number=null
   
   constructor (private catalogoservice:CatalogoService,
               private router:Router,
               private _cartService:MockCartService,
               private authService: AuthService,
+              private enviarInfoCompra:EnviarInfoCompraService,
               private carritoService: CarritoService) { }
 
   ngOnInit(): void {
@@ -41,6 +45,11 @@ export class NormalHeaderComponent implements OnInit {
     //this.carritoService.totalItemsEmmiter.subscribe(resp => this.totalQuantity = resp)
 
     this.verificarSesion();
+    this.getCarrito(); 
+    this.subscripcionInfoCompra=this.enviarInfoCompra.enviarCantidadProductosCarrito$.subscribe(totalProductos=> {
+      this.totalItemsCarrito=totalProductos;
+      console.log(this.totalItemsCarrito)
+    })
 
     //to keep seeing the scroll and adjust the header opacity
     // window.addEventListener("scroll",this.headerEffect)
@@ -60,7 +69,23 @@ export class NormalHeaderComponent implements OnInit {
   //   }
   //     })
   }
-
+  
+  getCarrito(): void {
+    if (this.authService.isLoggedIn()) {
+      this.carritoService.getCarrito().subscribe((response: any) => {
+        this.totalItemsCarrito = response.carrito.items.length;
+        console.log(this.totalItemsCarrito)
+      });
+    }
+    this.hayAlgoEnElCarrito()
+  }
+  hayAlgoEnElCarrito(){
+    if (this.totalItemsCarrito!== 0) {
+      return true
+    }else{
+      return false
+    }
+  }
    /***** GET CATEGORIES *****/
   getListaCategorias():void{
     this.catalogoservice.getListaCategorias().subscribe( response =>{

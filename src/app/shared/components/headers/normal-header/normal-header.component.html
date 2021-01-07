@@ -43,9 +43,8 @@
                                 [routerLink]="['/shopping-cart']">
                                 <!-- <i class="fas fa-shopping-cart opciones"></i> -->
                                 <img src="../../../../../assets/imagenes/icon-cart.png" alt="">
-                                <div class="circulo">
-                                    <!-- <span>{{totalQuantity}}</span> -->
-                                    <span>1</span>
+                                <div class="circulo" *ngIf="hayAlgoEnElCarrito()">
+                                    <span>{{totalItemsCarrito}}</span>
                                 </div>
                             </div>
 

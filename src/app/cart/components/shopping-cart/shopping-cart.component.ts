@@ -31,13 +31,8 @@ export class ShoppingCartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCarrito();
-   
-  
-   
-    
-    
     console.log(this.carrito);
-     
+       
     
  
     // this.items=JSON.parse(localStorage.getItem("Mi Carrito"));
@@ -61,6 +56,10 @@ export class ShoppingCartComponent implements OnInit {
         this.carrito = response.carrito;
         console.log(this.carrito)
         this.totalProductos = this.carrito.items.length;
+        /// envio la cantidad de producto al header para q muestre la notifiicacion
+        setTimeout(() => {
+            this.enviarInfoCompra.enviarCantidadProductosCarrito$.emit(this.totalProductos); 
+          }, 100);
       });
     }  
    

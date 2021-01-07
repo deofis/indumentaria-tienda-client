@@ -94,9 +94,9 @@
                     </div>
                     <hr>
                     <p>Costo de envío se informará al realizar la operación.</p>
-                    <button mat-button (click)="agregarCarrito(skuAEnviar)" class="btn" id="btn-carrito">Agregar al
+                    <button mat-button (click)="agregarCarrito(skuAEnviar)" class="btn" disabled id="btn-carrito">Agregar al
                         Carrito</button>
-                    <button mat-button (click)="agregarCarrito(skuAEnviar)" class="btn" id="btn-comprar">Comprar
+                    <button mat-button (click)="agregarCarrito(skuAEnviar)" class="btn" disabled id="btn-comprar">Comprar
                         ahora</button>
 
                 </div>
@@ -124,7 +124,7 @@
                 placeholder="Escribe tu mensaje aquí..."></textarea>
             <div id="contenedorCartel">
                 <p id="cartel">Estamos para despejar todas tus dudas, dejános tu consulta</p>
-                <button type="submit" id="enviarMsg">
+                <button mat-button type="submit" id="enviarMsg">
                     Enviar
                 </button>
             </div>

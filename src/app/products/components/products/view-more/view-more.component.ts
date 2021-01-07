@@ -11,6 +11,8 @@ import { AuthService } from '../../../../log-in/services/auth.service';
 import { Carrito } from '../../../../cart/clases/carrito';
 import { PropiedadProducto } from 'src/app/products/clases/propiedad-producto';
 import { Sku } from 'src/app/products/clases/sku';
+import { Router } from '@angular/router';
+import { EnviarInfoCompraService } from 'src/app/user-options/user-profile/services/enviar-info-compra.service';
 
 
 @Component({
@@ -32,6 +34,7 @@ export class ViewMoreComponent implements OnInit {
   propiedadesFiltradas: PropiedadProducto[]=[];
   mostrarActualizar:boolean=false;
   elegido:boolean=false;
+  totalItemsCarrito:number;
 
   /// sku que voy a enviar al carrito
  idSkuAEnviar:number;
@@ -43,6 +46,8 @@ export class ViewMoreComponent implements OnInit {
   constructor(private catalogoservice:CatalogoService,
               private activatedroute:ActivatedRoute,
               private _cartService:MockCartService,
+              private Router:Router,
+              private enviarInfoCompra:EnviarInfoCompraService,
               private carritoService: CarritoService,
               private productoService:ProductoService,
               private authService: AuthService) {
@@ -54,6 +59,7 @@ export class ViewMoreComponent implements OnInit {
   ngOnInit(): void {
     this.getProduct();
     this.getPropiedadesProducto();
+ 
     setTimeout(() => {
       this.getSkusDelProducto()
     }, 1000);
@@ -128,6 +134,11 @@ export class ViewMoreComponent implements OnInit {
 
   resetSeleccion(){
     this.mostrarActualizar=false;
+
+      //para refrescar el componente y q se actualizen los nuevos valores
+      this.Router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.Router.navigate(['/viewmore' ,this.infoProducto.id]); 
+        }); 
   }
 
   obtenerValoresSkus(){
@@ -151,6 +162,7 @@ export class ViewMoreComponent implements OnInit {
       this.destacado=true
     }
   }
+  /// en los siguientes metodos veo que precio y precio oferta mostrar segun si estoy viendo el producto inicial o  si ya se eligio un sku usar el del sku
   estaEnOfertaElProducto(){
     if (this.skuAEnviar?.promocion!== null) {
         this.ofertaSku=false;
@@ -178,6 +190,19 @@ export class ViewMoreComponent implements OnInit {
     }else{
       return true 
     }
+  }
+  ////
+  ////// evaluo si ya se eligio un sku para habilitar los botones de agregar al carrito y comprar ahora 
+  habilitarBotones(){
+    let btnAgregarCarrito= document.getElementById("btn-carrito") as HTMLButtonElement;
+    
+    let btnComprar= document.getElementById("btn-comprar") as HTMLButtonElement;
+    
+     if (this.skuAEnviar!== null) {
+      btnAgregarCarrito.disabled=false;
+      btnComprar.disabled=false;
+     }
+
   }
 
 
@@ -274,13 +299,14 @@ export class ViewMoreComponent implements OnInit {
             this.productoService.getSku(this.infoProducto.id, this.idSkuAEnviar).subscribe( response => {
             this.skuAEnviar=response;
 
-            console.log(this.skuAEnviar)
+            console.log(this.skuAEnviar);
+            this.habilitarBotones();
             // this.agregarCarrito(this.skuAEnviar)
             })
             break;
          }       
        }
-    
+  
   
    }
 
@@ -288,8 +314,12 @@ export class ViewMoreComponent implements OnInit {
     // if localStorage.getItem("carrito")
    if (this.authService.isLoggedIn()) {
       this.carritoService.agregarSkuAlCarrito(sku?.id.toString()).subscribe(response => {
-        alert('Producto agregado al carrito')
+        console.log("producto agregado al carrito")
         console.log(response);
+        this.totalItemsCarrito = response.carrito.items.length;
+        setTimeout(() => {
+          this.enviarInfoCompra.enviarCantidadProductosCarrito$.emit(this.totalItemsCarrito); 
+        }, 100);
       });
     } else{
       console.log("usuario no logueado");

@@ -11,5 +11,6 @@ export class EnviarInfoCompraService {
   enviarRecargarCarrito$ = new EventEmitter();
   enviarMostrarCheckout$ =new EventEmitter();
   enviarMostrarConfirmacion$ =new EventEmitter();
+  enviarCantidadProductosCarrito$ = new EventEmitter();
   constructor() { }
 }

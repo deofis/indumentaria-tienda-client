@@ -105,7 +105,7 @@ irAPagar(){
   // total es calculado por el servidor
   // this.operacion.total=this.carrito.total;
   // items
-  for (let i = 0; i < this.carrito.items.length; i++) {
+  for (let i = 0; i < this.carrito?.items.length; i++) {
     
     this.item.sku=this.carrito.items[i].sku;
     this.item.cantidad=this.carrito.items[i].cantidad;

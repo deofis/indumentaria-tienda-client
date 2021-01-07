@@ -75,6 +75,7 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     this.getCarrito(); 
     this.getMediosDePago();
     this.getPerfilCliente(); 
+    
 
     // let efvo = document.getElementById("EFECTIVO") as HTMLInputElement;
     // efvo.checked=true;
