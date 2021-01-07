@@ -1,3 +1,5 @@
+import { PaypalCancelComponent } from './cart/components/final-message/paypal-cancel/paypal-cancel.component';
+import { FmEfectivoComponent } from './cart/components/final-message/efectivo/fm-efectivo.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ViewMoreComponent } from './products/components/products/view-more/view-more.component';
@@ -11,7 +13,7 @@ import { CheckoutComponent } from './cart/components/checkout/checkout/checkout.
 import { StepperCartComponent } from './cart/components/stepper-cart/stepper-cart.component';
 import { PreCheckoutComponent } from './cart/components/checkout/pre-checkout/pre-checkout.component';
 import { ConfirmDataComponent } from './cart/components/confirm-data/confirm-data.component';
-import { FinalMessageComponent } from './cart/components/final-message/final-message.component';
+import { FmPaypalEnvioComponent } from './cart/components/final-message/paypal/fm-paypal-envio.component';
 import { Oauth2RedirectHandlerComponent } from './log-in/oauth2/oauth2-redirect-handler/oauth2-redirect-handler.component';
 import { AuthGuard } from './log-in/guards/auth.guard';
 import { RoleGuard } from './log-in/guards/role.guard';
@@ -59,7 +61,9 @@ const routes: Routes = [
   { path:"checkout",component:CheckoutComponent },
   { path:"pre-checkout", component:PreCheckoutComponent },
   { path:"confirm-data", component:ConfirmDataComponent },
-  { path:"successful-purchase" , component:FinalMessageComponent },
+  { path:"paypal/redirect/approved" , component:FmPaypalEnvioComponent }, 
+  { path:"paypal/redirect/cancel" , component:PaypalCancelComponent }, 
+  {path:"cash/approved" , component: FmEfectivoComponent},
   { path:"**", pathMatch:"full", redirectTo:"home" }
 ];
 

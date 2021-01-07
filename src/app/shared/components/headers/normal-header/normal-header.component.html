@@ -11,7 +11,7 @@
                     <!-- <div class="row"> -->
                     <nav class="nav-options d-none d-md-block ">
                         <ul class="menu">
-                            <li (mouseover)="showCategories()"><a >Categorías</a></li>
+                            <li (mouseover)="showCategories()"><a>Categorías</a></li>
                             <li id="oferta-option"><a href="#section-ofertas">Ofertas</a></li>
                         </ul>
                     </nav>
@@ -33,24 +33,21 @@
                 <div class="col-2  col-md-2 " id="contenedor_iconos">
                     <div class="row">
                         <div class="col-2 d-none d-md-block">
-                            <div *ngIf="estaLogueado"  class="iconos notificaciones" id="campanita">
+                            <div *ngIf="estaLogueado" class="iconos notificaciones" id="campanita">
                                 <!-- <i class="fas fa-bell opciones"></i> -->
                                 <img src="../../../../../assets/imagenes/icon-notif.png" alt="" style="cursor: pointer;">
                             </div>
                         </div>
                         <div class="col-5 carrito-icono">
-                            <div *ngIf="hasRole('ROLE_USER') || !estaLogueado" class="iconos carrito"
-                                [routerLink]="['/shopping-cart']">
+                            <div *ngIf="hasRole('ROLE_USER') || !estaLogueado" class="iconos carrito" [routerLink]="['/shopping-cart']">
                                 <!-- <i class="fas fa-shopping-cart opciones"></i> -->
-                                <img src="../../../../../assets/imagenes/icon-cart.png" alt="" style="cursor: pointer;">
-                                <div class="circulo">
-                                    <!-- <span>{{totalQuantity}}</span> -->
-                                    <span>1</span>
+                                <img src="../../../../../assets/imagenes/icon-cart.png" alt="">
+                                <div class="circulo" *ngIf="hayAlgoEnElCarrito()">
+                                    <span>{{totalItemsCarrito}}</span>
                                 </div>
                             </div>
 
-                            <div *ngIf="estaLogueado && hasRole('ROLE_ADMIN')" class="iconos carrito"
-                                [routerLink]="['/sales']">
+                            <div *ngIf="estaLogueado && hasRole('ROLE_ADMIN')" class="iconos carrito" [routerLink]="['/sales']">
                                 <!-- <i class="fas fa-window-restore" ></i> -->
                                 <img src="../../../../../assets/imagenes/icon-ventas.png" alt="" style="cursor: pointer;">
                             </div>
@@ -83,8 +80,7 @@
     </a> -->
 </ul>
 <!-- Normal user -->
-<ul *ngIf="estaLogueado && hasRole('ROLE_USER')" id="userOptions" (mouseover)="showUserMenu()"
-    (mouseout)="hiddeUserMenu()">
+<ul *ngIf="estaLogueado && hasRole('ROLE_USER')" id="userOptions" (mouseover)="showUserMenu()" (mouseout)="hiddeUserMenu()">
     <a [routerLink]="['/user-profile']">
         <li>Mis Datos</li>
     </a>
@@ -97,8 +93,7 @@
     <li (click)="logout()" id="salir">Salir<i class="fas fa-sign-out-alt"></i></li>
 </ul>
 <!-- Admin user -->
-<ul *ngIf="estaLogueado && hasRole('ROLE_ADMIN')" id="userOptions" (mouseover)="showUserMenu()"
-    (mouseout)="hiddeUserMenu()">
+<ul *ngIf="estaLogueado && hasRole('ROLE_ADMIN')" id="userOptions" (mouseover)="showUserMenu()" (mouseout)="hiddeUserMenu()">
     <a>
         <li [routerLink]="['/admin-profile']">Administración</li>
     </a>
@@ -110,12 +105,9 @@
 <!-- FIN Admin user -->
 <!-- categorias y subcategorias -->
 <div class="bg-menu" id="bg-menu"></div>
-<div class="contenedor-categorias" (mouseover)="showCategories()" (mouseout)="hiddeSubAndCategories()"
-    id="container-subcategories">
+<div class="contenedor-categorias" (mouseover)="showCategories()" (mouseout)="hiddeSubAndCategories()" id="container-subcategories">
     <div class="submenu " id="categoriesList">
-        <li class="items-categories" *ngFor="let categoria of categorias; let i=index"
-            (mouseover)="showsubcategories(i)" (mouseout)="hiddesubcategories()">{{categoria.nombre}}<i
-                class="fas fa-angle-down"></i>
+        <li class="items-categories" *ngFor="let categoria of categorias; let i=index" (mouseover)="showsubcategories(i)" (mouseout)="hiddesubcategories()">{{categoria.nombre}}<i class="fas fa-angle-down"></i>
 
         </li>
     </div>

@@ -4,22 +4,29 @@
         <div id="userInfo">
             <p class="titulo">Porfavor verifique que la información sea correcta antes de finalizar su compra</p>
             <div class="rowData">
-            <p> Nombre : <span id="nameData"> Juan Perez </span></p>
-            <p> E-mail : <span id="emailData">juanperez@hotmail.com </span></p>
-            <p> Teléfono : <span id="cellphoneData"> (+34) 93 78945612</span></p>
+            <p> Nombre : <span id="nameData"> {{infoCliente?.nombre }}  {{infoCliente?.apellido}} </span></p>
+            <p> E-mail : <span id="emailData">{{infoCliente?.email}}</span></p>
+            <p> Teléfono : <span id="cellphoneData"> {{infoCliente?.telefono}}</span></p>
         </div>
         <div class="rowData">
-        <p>Forma de Pago: <span id="pagoData"> Paypal</span></p>
-            <p> Forma de Entrega : <span id="envioData"> Envío a domicilio </span></p>
+        <p>Método de Pago: <span id="pagoData" style="text-transform: lowercase;"> {{pago?.nombre}}</span></p>
+            <p> Forma de Entrega : <span id="envioData"> {{entrega}} </span></p>
           </div>
-            <p class="campo"> Dirección de Envío : <span id="adressData"> Av. Calle XXXX, Barcelona,Cataluña. </span></p>
-            <p class="total">Total : <span> €790 </span></p>
+            <p class="campo"  > Dirección de Envío : <span id="adressData" >
+                 {{clienteDireccion?.calle}}  {{clienteDireccion?.nro}}
+                 <span *ngIf="clienteDireccion?.piso">- Piso: {{clienteDireccion?.piso}} </span>,
+                   {{clienteDireccion?.ciudad.nombre}}, 
+                   {{clienteDireccion?.estado.nombre}} ,
+                    {{clienteDireccion?.pais.nombre}} 
+                    -  CP: {{clienteDireccion?.cp}} </span></p>
+           <!-- <p class="campo" *>Dirección de Entrega: <span> Av. Calle XXXX, Barcelona,Cataluña.</span></p> -->
+            <p class="total">Total : <span> €{{carrito?.total + costoDeEnvio | number: '.0-2'}}</span></p>
         </div>
        
     </div>
     <div class="buttons">
-    <button  [routerLink]="['/checkout']"class="btn" id="btn-edit">Editar</button>
-    <button   class="btn" id="btn-confirm">Ir a pagar</button>
+    <button mat-button matStepperPrevious class="btn" id="btn-edit" (click)="cerrarComponente()">Editar</button>
+    <button  mat-button *ngIf="entrega && clienteDireccion && pago"  class="btn" id="btn-confirm"(click)="irAPagar()">Ir a pagar</button>
 
 </div>
 </section>

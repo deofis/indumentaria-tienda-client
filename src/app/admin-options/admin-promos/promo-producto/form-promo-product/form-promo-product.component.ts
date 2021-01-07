@@ -243,6 +243,4 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
     console.log(this.productoGeneral)
     return objeto instanceof Producto
   }
-
-
 }

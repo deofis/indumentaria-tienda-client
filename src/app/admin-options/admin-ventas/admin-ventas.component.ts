@@ -8,6 +8,7 @@ import { Operacion } from './clases/Operacion';
 
 import { MatSort } from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
+// import { SortEvent } from 'primeng/api';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';

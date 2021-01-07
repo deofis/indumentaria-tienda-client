@@ -36,7 +36,7 @@ import { NewPasswordComponent } from './log-in/user/new-password/new-password.co
 import { FavoritesComponent } from './user-options/favorites/favorites.component';
 import { ActivatedMssgComponent } from './log-in/user/activated-mssg/activated-mssg.component';
 import { ConfirmDataComponent } from './cart/components/confirm-data/confirm-data.component';
-import { FinalMessageComponent } from './cart/components/final-message/final-message.component';
+import { FmPaypalEnvioComponent} from './cart/components/final-message/paypal/fm-paypal-envio.component';
 import { BrandsPanelComponent } from './admin-options/brands-panel/brands-panel.component';
 import { ProductsListComponent } from './admin-options/products-list/products-list.component';
 import { AddProductComponent } from './admin-options/add-product/add-product.component';
@@ -75,6 +75,9 @@ import { ConvertFechaPipe } from './pipes/convert-fecha.pipe';
 import { ConvertEstadoOpPipe } from './pipes/convert-estado-op.pipe';
 import { DetalleDesktopComponent } from './admin-options/admin-ventas/detalle-desktop/detalle-desktop.component';
 import { DetalleCompraDesktopComponent } from './user-options/mis-compras/detalle-compra-desktop/detalle-compra-desktop.component';
+import { ResumenCarritoComponent } from './cart/components/checkout/resumen-carrito/resumen-carrito.component';
+import { FmEfectivoComponent } from './cart/components/final-message/efectivo/fm-efectivo.component';
+import { PaypalCancelComponent } from './cart/components/final-message/paypal-cancel/paypal-cancel.component';
 
 
 
@@ -106,7 +109,7 @@ import { DetalleCompraDesktopComponent } from './user-options/mis-compras/detall
     FavoritesComponent,
     ActivatedMssgComponent,
     ConfirmDataComponent,
-    FinalMessageComponent,
+    FmPaypalEnvioComponent,
     BrandsPanelComponent,
     ProductsListComponent,
     AddProductComponent,
@@ -133,6 +136,9 @@ import { DetalleCompraDesktopComponent } from './user-options/mis-compras/detall
     ConvertEstadoOpPipe,
     DetalleDesktopComponent,
     DetalleCompraDesktopComponent,
+    ResumenCarritoComponent,
+    FmEfectivoComponent,
+    PaypalCancelComponent,
   ],
   imports: [
     BrowserModule,

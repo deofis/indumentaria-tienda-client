@@ -19,13 +19,12 @@
                                 <div class="col-12 col-lg-6  ">
                                     <div class="row ">
                                         <div class="col-2 col-lg-1 ">
-                                            <img src="../../../../../assets/imagenes/prod2.png" alt="item compra" />
+                                            <img src="{{item.sku.producto?.foto.imageUrl}}" alt="item compra" />
                                         </div>
 
                                         <div class="col-9 col-lg-9  info">
                                             <div class="row">
-                                                <span class="item-name"
-                                                    [routerLink]="['/viewmore',item.sku.producto.id]">{{item?.sku.nombre}}</span>
+                                                <span class="item-name" [routerLink]="['/viewmore',item.sku.producto.id]">{{item?.sku.nombre}}</span>
                                             </div>
                                             <div class="row row-info">
                                                 <span>{{item?.sku.valoresData}}</span>
@@ -38,10 +37,8 @@
                                     <div class="row ">
                                         <div class="col-4  price-u">
                                             <span>Precio:</span>
-                                            <span *ngIf="!item.sku.promocion.estaVigente"
-                                                class="item-price">€{{item?.sku.precio | number: '.0-2'}}</span>
-                                            <span *ngIf="item.sku.promocion.estaVigente"
-                                                class="item-price">€{{item?.sku.promocion.precioOferta | number:
+                                            <span *ngIf="!item.sku.promocion?.estaVigente" class="item-price">€{{item?.sku.precio | number: '.0-2'}}</span>
+                                            <span *ngIf="item.sku.promocion?.estaVigente" class="item-price">€{{item?.sku.promocion.precioOferta | number:
                                                 '.0-2'}}</span>
                                         </div>
                                         <div class=" col-4  quantity">
@@ -62,7 +59,7 @@
                             </div>
                         </li>
                     </ul>
-                    
+
                 </div>
             </div>
         </div>
@@ -78,8 +75,12 @@
                     <i class="fas fa-ticket-alt"></i> <span>¿Tenés un cupón de descuento?</span>
                 </div>
                 <!-- <button [routerLink]="['/pre-checkout']">Continuar</button> -->
+
             </div>
 
         </div>
+    </div>
+    <div class="row">
+        <button mat-button matStepperNext class="btn-cont" (click)="enviarInfoACheckout()" id="btn-cont">Continuar</button>
     </div>
 </div>

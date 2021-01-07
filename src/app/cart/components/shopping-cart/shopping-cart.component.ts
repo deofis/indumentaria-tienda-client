@@ -6,6 +6,7 @@ import { Carrito } from '../../clases/carrito';
 import { CarritoService } from '../../services/carrito.service';
 import { DetalleCarrito } from '../../clases/detalle-carrito';
 import { AuthService } from '../../../log-in/services/auth.service';
+import { EnviarInfoCompraService } from 'src/app/user-options/user-profile/services/enviar-info-compra.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -16,10 +17,12 @@ export class ShoppingCartComponent implements OnInit {
 
   carrito: Carrito;
   totalProductos: number;
+  mostrarCheckout:boolean=false;
   // item:ItemCarrito
   constructor(private carritoService: CarritoService,
                private _cartService:MockCartService, 
                private authService: AuthService,
+               private enviarInfoCompra:EnviarInfoCompraService,
                private Router:Router,
                ) {
     this.carrito = new Carrito();
@@ -28,7 +31,9 @@ export class ShoppingCartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCarrito();
-  
+    console.log(this.carrito);
+       
+    
  
     // this.items=JSON.parse(localStorage.getItem("Mi Carrito"));
     // console.log(this.items)
@@ -42,26 +47,32 @@ export class ShoppingCartComponent implements OnInit {
         
     //   }
     // })
- 
+    
   }
 
   getCarrito(): void {
     if (this.authService.isLoggedIn()) {
       this.carritoService.getCarrito().subscribe((response: any) => {
         this.carrito = response.carrito;
+        console.log(this.carrito)
         this.totalProductos = this.carrito.items.length;
+        /// envio la cantidad de producto al header para q muestre la notifiicacion
+        setTimeout(() => {
+            this.enviarInfoCompra.enviarCantidadProductosCarrito$.emit(this.totalProductos); 
+          }, 100);
       });
-    }    
+    }  
+   
   }
-
-  eliminarItem(id: number): void {
+ 
+  eliminarItem(id?: number): void {
     let skuId = id.toString();
 
     this.carrito.items = this.carrito.items.filter((item: ItemCarrito) => id !== item.sku.id);
 
     this.carritoService.eliminarItem(skuId).subscribe(response => {
-      this.carrito = response.carritoActualizado;
-      this.getCarrito();
+    
+     this.getCarrito();
     });
 
   
@@ -82,14 +93,14 @@ export class ShoppingCartComponent implements OnInit {
     console.log(item.cantidad);
 
     this.carritoService.actualizarCantidad(item.cantidad.toString(), skuId.toString()).subscribe(response => {
-      this.carrito = response.carritoActualizado;
       
+       this.getCarrito()
     });
 
       //para refrescar el componente y q se actualizen los nuevos valores
-      this.Router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-        this.Router.navigate(['/shopping-cart']); 
-        }); 
+      // this.Router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      //   this.Router.navigate(['/shopping-cart']); 
+      //   }); 
   }
 
   incrementarCantidad(item: DetalleCarrito): void {
@@ -104,14 +115,22 @@ export class ShoppingCartComponent implements OnInit {
 
     this.carritoService.actualizarCantidad(item.cantidad.toString(), skuId.toString()).subscribe(response => {
       
-      this.carrito = response.carritoActualizado;
-        this.getCarrito();
+     this.getCarrito();
     });
    
    
  
   }
 
+  enviarInfoACheckout(){
+    this.mostrarCheckout=true
+    setTimeout(() => {
+    console.log(this.mostrarCheckout)
+      this.enviarInfoCompra.enviarMostrarCheckout$.emit(this.mostrarCheckout);
+     
+    }, 100);
+   
+  }
 
   /*
   ///inicio carrito de compras eliminar , sumar 

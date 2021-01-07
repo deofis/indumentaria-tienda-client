@@ -11,6 +11,8 @@ import { AuthService } from '../../../../log-in/services/auth.service';
 import { Carrito } from '../../../../cart/clases/carrito';
 import { PropiedadProducto } from 'src/app/products/clases/propiedad-producto';
 import { Sku } from 'src/app/products/clases/sku';
+import { Router } from '@angular/router';
+import { EnviarInfoCompraService } from 'src/app/user-options/user-profile/services/enviar-info-compra.service';
 
 
 @Component({
@@ -25,53 +27,53 @@ export class ViewMoreComponent implements OnInit {
   propiedadesProducto:PropiedadProducto[];
   destacado:boolean=false;
   oferta:boolean=false;
+  ofertaSku:boolean=false;
   valoresSkuSleccionado:ValorPropiedadProducto []=[];
   skusDelProducto:Sku [];
   valoresSkus:ValorPropiedadProducto[]=[];
   propiedadesFiltradas: PropiedadProducto[]=[];
   mostrarActualizar:boolean=false;
   elegido:boolean=false;
-
+  totalItemsCarrito:number;
+  pcioNormal:boolean
   /// sku que voy a enviar al carrito
  idSkuAEnviar:number;
- skuAEnviar:Sku;
+ skuAEnviar:Sku = null;
+
+ /// carrito del localStorage
+ skusCarritoLS;
 
   constructor(private catalogoservice:CatalogoService,
               private activatedroute:ActivatedRoute,
               private _cartService:MockCartService,
+              private Router:Router,
+              private enviarInfoCompra:EnviarInfoCompraService,
               private carritoService: CarritoService,
               private productoService:ProductoService,
               private authService: AuthService) {
     this.stock = true;
     this.infoProducto=new Producto();
+    this.skusCarritoLS= new Array();
   }
 
   ngOnInit(): void {
     this.getProduct();
     this.getPropiedadesProducto();
+ 
     setTimeout(() => {
       this.getSkusDelProducto()
     }, 1000);
    
     // cambio de muestra de imagenes
-    let img1= document.getElementById("img-uno");
-    let img2= document.getElementById("img-dos");
-    let img3= document.getElementById("img-tres");
-    let img4= document.getElementById("img-cuatro");
-    let img5= document.getElementById("img-cinco");
-    let img6= document.getElementById("img-seis");
-    img1.addEventListener("click",this.changeImg1);
-    img2.addEventListener("click",this.changeImg2);
-    img3.addEventListener("click",this.changeImg3);
-    img4.addEventListener("click",this.changeImg4);
-    img5.addEventListener("click",this.changeImg5);
-    img6.addEventListener("click",this.changeImg6);
+    // let img2= document.getElementById("img-dos");
+    // img2.addEventListener("click",this.changeImg2);
     //// boton enviar pregunta
     let btnSend = document.getElementById("enviarMsg")
     btnSend.addEventListener("click",this.deleteMessage);
 
     /// precio oferta
-    this.estaEnOferta();
+    this.estaEnOfertaElProducto();
+    this.estaEnOfertaElSku();
 
     // destacado
     this.destacadosInsignia();
@@ -123,10 +125,20 @@ export class ViewMoreComponent implements OnInit {
        console.log(valorCombobox);
        
       this.mostrarActualizar=true;
+
+     
+        setTimeout(() => {
+          this.identificarSkuSeleccionado()
+        }, 800);
   }
 
   resetSeleccion(){
     this.mostrarActualizar=false;
+
+      //para refrescar el componente y q se actualizen los nuevos valores
+      this.Router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.Router.navigate(['/viewmore' ,this.infoProducto.id]); 
+        }); 
   }
 
   obtenerValoresSkus(){
@@ -139,7 +151,7 @@ export class ViewMoreComponent implements OnInit {
           this.valoresSkus.push(value);
         }
       });
-      console.log(this.valoresSkus)
+      // console.log(this.valoresSkus)
     });
   }
 
@@ -150,11 +162,19 @@ export class ViewMoreComponent implements OnInit {
       this.destacado=true
     }
   }
-  estaEnOferta(){
-    if (this.infoProducto.promocion!== null) {
-        this.oferta=true
+  /// en los siguientes metodos veo que precio y precio oferta mostrar segun si estoy viendo el producto inicial o  si ya se eligio un sku usar el del sku
+  estaEnOfertaElProducto(){
+    if (this.skuAEnviar?.promocion!== null) {
+        this.ofertaSku=false;
     }else{
-      this.oferta=false
+      this.ofertaSku=true;
+    }
+  }
+  estaEnOfertaElSku(){
+    if (this.infoProducto.promocion!== null) {
+        this.oferta=true;
+    }else{
+      this.oferta=false;
     }
   }
   mostrarPrecio(){
@@ -164,38 +184,36 @@ export class ViewMoreComponent implements OnInit {
       return true
     }
   }
+  mostrarPrecioProducto(){
+    if(this.skuAEnviar!== null){
+      return false
+    }else{
+      return true 
+      
+    }
+  }
+  ////
+  ////// evaluo si ya se eligio un sku para habilitar los botones de agregar al carrito y comprar ahora 
+  habilitarBotones(){
+    let btnAgregarCarrito= document.getElementById("btn-carrito") as HTMLButtonElement;
+    
+    let btnComprar= document.getElementById("btn-comprar") as HTMLButtonElement;
+    
+     if (this.skuAEnviar!== null) {
+      btnAgregarCarrito.disabled=false;
+      btnComprar.disabled=false;
+     }
+
+  }
+
 
   ////////// INICIO CAMBIOS DE IMAGENES ////////////
-  changeImg1(){
-    let imgPpal= document.getElementById("img-ppal");
-    let url1="url(https://www.mgmstore.com.ar/339-large_default/Samsung-Galaxy-S10-Plus-128GB.jpg)";
-   imgPpal.style.backgroundImage=url1;
-  }
-  changeImg2(){
-    let imgPpal= document.getElementById("img-ppal");
-    let url2="url(https://img.global.news.samsung.com/cl/wp-content/uploads/2020/01/lite.jpeg)";
-   imgPpal.style.backgroundImage=url2;
-  }
-  changeImg3(){
-    let imgPpal= document.getElementById("img-ppal");
-    let url3="url(https://doto.vteximg.com.br/arquivos/ids/156984-1200-1200/samsung-galaxy-s20-rosa-1-doto-bothview.jpg?v=637236891053970000)";
-   imgPpal.style.backgroundImage=url3;
-  }
-  changeImg4(){
-    let imgPpal= document.getElementById("img-ppal");
-    let url4="url(https://www.maxmovil.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/_/0/_0002_samsung-galaxy-s20-plus-8-128gb-cosmic-black-libre.jpg)";
-   imgPpal.style.backgroundImage=url4;
-  }
-  changeImg5(){
-    let imgPpal= document.getElementById("img-ppal");
-    let url5="url(https://www.muycomputer.com/wp-content/uploads/2019/01/Samsung-Galaxy-S10.jpg)";
-   imgPpal.style.backgroundImage=url5;
-  }
-  changeImg6(){
-    let imgPpal= document.getElementById("img-ppal");
-    let url6="url(https://as01.epimg.net/meristation/imagenes/2020/02/11/betech/1581450045_842534_1581450104_noticia_normal_recorte1.jpg)";
-   imgPpal.style.backgroundImage=url6;
-  }
+ 
+  // changeImg2(){
+  //   let imgPpal= document.getElementById("img-ppal");
+  //   let url2="url(https://img.global.news.samsung.com/cl/wp-content/uploads/2020/01/lite.jpeg)";
+  //  imgPpal.style.backgroundImage=url2;
+  // }
 //////// FIN CAMBIO DE IMAGENES //////////
 
 //////////// EVENTO DE BOTON ENVIAR ///////////
@@ -223,7 +241,6 @@ export class ViewMoreComponent implements OnInit {
           this.obtenerValoresSkus();
           this.filtrarPropiedades();
         }, 500);
-
       });
     });
   };
@@ -252,11 +269,11 @@ export class ViewMoreComponent implements OnInit {
 
       });
     });
-
   };
 
 
   identificarSkuSeleccionado(){
+ 
     //guardo en un array vacio los objetos completos de propiedadque coincidadn con los valores elegidos en los select
     let select = document.getElementsByClassName("select") as HTMLCollectionOf<HTMLInputElement>;
     let valoresAEnviar:ValorPropiedadProducto []=[]
@@ -275,37 +292,59 @@ export class ViewMoreComponent implements OnInit {
       let a = this.skusDelProducto[x].valores;
       let b = valoresAEnviar
         if ( JSON.stringify(a) == JSON.stringify(b)) {
-          //identifico el sku
-          this.idSkuAEnviar=this.skusDelProducto[x].id
-          console.log(this.idSkuAEnviar);
-          break;
-          }  else{
-            console.log("else")
-          }       
-       }
-    
-    // con el id llamo a ese sku para luego enviarlo al servicio
-    this.productoService.getSku(this.infoProducto.id, this.idSkuAEnviar).subscribe( response => {
-       this.skuAEnviar=response;
-       this.agregarCarrito(this.skuAEnviar)
+            //identifico el sku
+            this.idSkuAEnviar=this.skusDelProducto[x].id
+            console.log(this.idSkuAEnviar);
+          
+              // con el id llamo a ese sku para luego enviarlo al servicio
+            this.productoService.getSku(this.infoProducto.id, this.idSkuAEnviar).subscribe( response => {
+            this.skuAEnviar=response;
 
-   
-    })
+            console.log(this.skuAEnviar);
+            this.habilitarBotones();
+            // this.agregarCarrito(this.skuAEnviar)
+            })
+            break;
+         }       
+       }
+  
+  
    }
 
   agregarCarrito(sku:Sku): void {
     // if localStorage.getItem("carrito")
    if (this.authService.isLoggedIn()) {
       this.carritoService.agregarSkuAlCarrito(sku?.id.toString()).subscribe(response => {
-        alert('Producto agregado al carrito')
+        console.log("producto agregado al carrito")
         console.log(response);
+        this.totalItemsCarrito = response.carrito.items.length;
+        setTimeout(() => {
+          this.enviarInfoCompra.enviarCantidadProductosCarrito$.emit(this.totalItemsCarrito); 
+        }, 100);
       });
     } else{
-      console.log("usuario no logueado")
+      console.log("usuario no logueado");
+      // creo un arrayy vacio y le pusheo el sku q estoy agregando
+      let arrayItemsCarrito = [];
+      arrayItemsCarrito.push(sku);
+
+      // verifico si existe micarrito
+      var getlocal = localStorage.getItem("miCarrito");
+      var parslocal;
+      if(getlocal != null ){ /* osea si existe*/
+        // parseo lo que trae para poder pushearlo a mi array
+        parslocal = JSON.parse(getlocal); 
+        for (let i = 0; i < parslocal.length; i++) {
+          arrayItemsCarrito.push(parslocal[i]);
+        }
+        /// envio el array completo , con la info q me traje y parsié y con el nuevo item
+        localStorage.setItem("miCarrito",JSON.stringify(arrayItemsCarrito) );
+      }else{ /* si no existe, lo creo con el sku q estoy enviando como contenido*/
+        console.log("else");
+        localStorage.setItem("miCarrito",JSON.stringify(arrayItemsCarrito) );
+      }
+
     }
-
-    // this._cartService.agregarItem(skuAEnviar);
-
   }
   /*
 ///// CANTIDAD////
