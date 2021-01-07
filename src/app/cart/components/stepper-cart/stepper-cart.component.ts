@@ -16,6 +16,7 @@ export class StepperCartComponent implements OnInit {
   pago:MedioPago;
   entrega:string;
   mostrarCheckout:boolean=false;
+  mostrarConfirmacion:boolean=true;
   abriendoStep2:boolean;
   subscripcionInfoCompra : Subscription;
 
@@ -41,6 +42,10 @@ export class StepperCartComponent implements OnInit {
 
      this.subscripcionInfoCompra=this.enviarInfoCompra.enviarMostrarCheckout$.subscribe(mostrarCheckout=> {
       this.mostrarCheckout=mostrarCheckout;
+    })
+
+    this.subscripcionInfoCompra=this.enviarInfoCompra.enviarMostrarConfirmacion$.subscribe(mostrarConfirmacion=> {
+      this.mostrarConfirmacion=mostrarConfirmacion;
     })
   }
 

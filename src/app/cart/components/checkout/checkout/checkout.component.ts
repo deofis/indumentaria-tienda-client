@@ -49,6 +49,7 @@ export class CheckoutComponent implements OnInit, OnDestroy{
 
   /// dato que envio para que se cierre el componente al ir atras
   mostrarCheckout:boolean
+  mostrarConfirmacion:boolean
 
   constructor(private carritoService: CarritoService,
               private fb:FormBuilder,
@@ -77,12 +78,7 @@ export class CheckoutComponent implements OnInit, OnDestroy{
 
     // let efvo = document.getElementById("EFECTIVO") as HTMLInputElement;
     // efvo.checked=true;
-    setTimeout(() => {
-      let efvo = document.getElementById("1") as HTMLInputElement;
-      if (efvo !== null) {
-        efvo.checked=true;
-      }
-    }, 2000);
+  
  
   }
 
@@ -104,14 +100,16 @@ export class CheckoutComponent implements OnInit, OnDestroy{
   // me muestra la direcc del perfil y me da la opcion de editarla, tambien oculta la forma de pago en efvo 
   showProfileAdress(){
     this.envioADomicilio=true
-    this.costoDeEnvio=200;
      let paypal = document.getElementById("2") as HTMLInputElement;
-        paypal.checked=true;
+        
+        this.formEntrega.get("formaDePago").setValue(2)
+        setTimeout(() => {
+          paypal.checked=true;
+        }, 100);
      let efvo= document.getElementById("1") as HTMLInputElement;
-        efvo.style.display="none"
-        efvo.disabled=true
       this.mostrarEfvo=false;
-    //this.formEntrega.get("formaDePago").setValue("Paypal")
+      efvo.style.display="none"
+    
 
 
     let inputEnvio=document.getElementById("deliver") as HTMLInputElement;
@@ -166,6 +164,12 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     this.carritoService.getMediosDePago().subscribe((response: any) => {
       this.mediosDePago=response.mediosPago;
     });
+    setTimeout(() => {
+      let efvo = document.getElementById("1") as HTMLInputElement;
+      if (efvo !== null) {
+        efvo.checked=true;
+      }
+    }, 600);
   }
    /// para el medio de pago elegido 
   getMedioDePago(id:number){
@@ -214,17 +218,18 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     let idPago =this.formEntrega.controls.formaDePago?.value;
     this.getMedioDePago(idPago);
     
-    }, 600);
+    }, 750);
   }
     // this.formEntrega.disable();
     console.log(this.formEntrega);
-    
+    this.mostrarConfirmacion=true;
+  
     setTimeout(() => {
       console.log(this.entrega);
       console.log(this.clienteDireccion);
       console.log(this.pago)
       this.enviarInfoAConfirmData() 
-    }, 900);
+    }, 1100);
    
   }
   
@@ -296,7 +301,9 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     this.enviarInfoCompra.enviarCliente$.emit(this.clienteDireccion);
     this.enviarInfoCompra.enviarEntrega$.emit(this.entrega);
     this.enviarInfoCompra.enviarPago$.emit(this.pago);
-}
+    this.enviarInfoCompra.enviarMostrarConfirmacion$.emit(this.mostrarConfirmacion);
+
+  }
 
 /**  para ver que imagen mostrar en los metodos de pago */
  imgPayPal(i){

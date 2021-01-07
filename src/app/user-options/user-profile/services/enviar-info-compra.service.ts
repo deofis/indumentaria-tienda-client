@@ -10,5 +10,6 @@ export class EnviarInfoCompraService {
   enviarPago$ =new EventEmitter();
   enviarRecargarCarrito$ = new EventEmitter();
   enviarMostrarCheckout$ =new EventEmitter();
+  enviarMostrarConfirmacion$ =new EventEmitter();
   constructor() { }
 }

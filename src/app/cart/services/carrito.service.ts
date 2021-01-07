@@ -91,13 +91,13 @@ export class CarritoService {
 
     return this.http
     .put(`${this.urlEndpoint}/carrito/item/actualizar`, null, {params: parametros})
-    .pipe(
-      tap(
-        ()=> {
-          this._refreshNeeded$.next();
-        }
-      )
-    )
+    // .pipe(
+    //   tap(
+    //     ()=> {
+    //       this._refreshNeeded$.next();
+    //     }
+    //   )
+    // )
     ;
     
 

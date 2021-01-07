@@ -59,6 +59,7 @@ export class ShoppingCartComponent implements OnInit {
     if (this.authService.isLoggedIn()) {
       this.carritoService.getCarrito().subscribe((response: any) => {
         this.carrito = response.carrito;
+        console.log(this.carrito)
         this.totalProductos = this.carrito.items.length;
       });
     }  
@@ -71,8 +72,8 @@ export class ShoppingCartComponent implements OnInit {
     this.carrito.items = this.carrito.items.filter((item: ItemCarrito) => id !== item.sku.id);
 
     this.carritoService.eliminarItem(skuId).subscribe(response => {
-      this.carrito = response.carritoActualizado;
-      this.getCarrito();
+    
+     this.getCarrito();
     });
 
   
@@ -93,14 +94,14 @@ export class ShoppingCartComponent implements OnInit {
     console.log(item.cantidad);
 
     this.carritoService.actualizarCantidad(item.cantidad.toString(), skuId.toString()).subscribe(response => {
-       this.carrito = response.carritoActualizado;
-      this.getCarrito()
+      
+       this.getCarrito()
     });
 
       //para refrescar el componente y q se actualizen los nuevos valores
-      this.Router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-        this.Router.navigate(['/shopping-cart']); 
-        }); 
+      // this.Router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      //   this.Router.navigate(['/shopping-cart']); 
+      //   }); 
   }
 
   incrementarCantidad(item: DetalleCarrito): void {
@@ -115,8 +116,7 @@ export class ShoppingCartComponent implements OnInit {
 
     this.carritoService.actualizarCantidad(item.cantidad.toString(), skuId.toString()).subscribe(response => {
       
-      this.carrito = response.carritoActualizado;
-      this.getCarrito();
+     this.getCarrito();
     });
    
    

@@ -4,7 +4,7 @@ import { Direccion } from './../../../log-in/clases/cliente/direccion';
 import { DetalleOperacion } from './../../../admin-options/admin-ventas/clases/DetalleOperacion';
 import { Cliente } from './../../../log-in/clases/cliente/cliente';
 import { PerfilClienteService } from './../../../user-options/user-profile/services/perfil-cliente.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Carrito } from '../../clases/carrito';
 import { CarritoService } from '../../services/carrito.service';
 import { AuthService } from 'src/app/log-in/services/auth.service';
@@ -20,15 +20,17 @@ import { Router } from '@angular/router';
   templateUrl: './confirm-data.component.html',
   styleUrls: ['./confirm-data.component.scss']
 })
-export class ConfirmDataComponent implements OnInit {
+export class ConfirmDataComponent implements OnInit, OnDestroy {
   @Input() clienteDireccion:any;
   @Input() entrega:string;
   @Input() pago:MedioPago;
-  @Input() mostrarCheckout:boolean;
   infoCliente:any;
   carrito: Carrito;
   costoDeEnvio:number=0;
  
+  /// para cerrar el componente cuando voy a editar
+
+  mostrarConfirmacion:boolean
   
   // lo que envio al back
   operacion:Operacion;
@@ -53,6 +55,11 @@ export class ConfirmDataComponent implements OnInit {
         this.getCarrito();
       })
      }
+
+     
+  ngOnDestroy():void{
+   console.log("cerrando compo 3")
+  }
   
   /// traigo la info del cliente loggeado (nombre,mail,telefono,direccion...)
 getPerfilCliente():void{
@@ -73,7 +80,13 @@ getCarrito(): void {
 
 
 
-
+cerrarComponente(){
+  this.mostrarConfirmacion=false
+  setTimeout(() => {
+    this.enviarInfoCompra.enviarMostrarConfirmacion$.emit(this.mostrarConfirmacion);
+   
+  }, 100);
+}
 
 irAPagar(){
   /*** lleno el objeto operacion con  */

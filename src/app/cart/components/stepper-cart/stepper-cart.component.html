@@ -13,6 +13,6 @@
     </mat-step>
 
     <mat-step label="Confirmación">
-        <app-confirm-data  [clienteDireccion]="clienteDireccion" [entrega]="entrega" [pago]="pago"></app-confirm-data>
+        <app-confirm-data *ngIf="mostrarConfirmacion" [clienteDireccion]="clienteDireccion" [entrega]="entrega" [pago]="pago"></app-confirm-data>
     </mat-step>
 </mat-horizontal-stepper>
