@@ -122,17 +122,19 @@ export class CheckoutComponent implements OnInit, OnDestroy{
   mostrarFormNewAdress(){
     this.nuevaDireccion=true;
     let dirPerfil = document.getElementById("dir-perfil");
-    dirPerfil.style.display="none"
+    dirPerfil.style.display="none";
+
+    this.formEntrega.get('direccion.calle').setValidators(Validators.required);
+    this.formEntrega.get('direccion.nro').setValidators(Validators.required);
+    this.formEntrega.get('direccion.cp').setValidators(Validators.required);
+    this.formEntrega.get('direccion.ciudad').setValidators(Validators.required);
+    this.formEntrega.get('direccion.pais').setValidators(Validators.required);
+    this.formEntrega.get('direccion.estado').setValidators(Validators.required);
   }
   /// muestro la direccion del local cuando eligen la opcion de retiro personalmente
   showAdress(){
     //cambio los validadores  de los campos de direccion de envio para q no sean obligatorios
-    this.formEntrega.get('direccion.calle').setValidators(null);
-    this.formEntrega.get('direccion.nro').setValidators(null);
-    this.formEntrega.get('direccion.cp').setValidators(null);
-    this.formEntrega.get('direccion.ciudad').setValidators(null);
-    this.formEntrega.get('direccion.pais').setValidators(null);
-    this.formEntrega.get('direccion.estado').setValidators(null);
+    
     this.formEntrega.get('direccion.calle').setValue("");
     this.formEntrega.get('direccion.nro').setValue("");
     this.formEntrega.get('direccion.cp').setValue("");
@@ -171,25 +173,14 @@ export class CheckoutComponent implements OnInit, OnDestroy{
   }
   guardarDatos(){
 
-    if (this.formEntrega.invalid){
-      console.log("completar direccion");
-      this.msjCamposIncompletos=true;
-      return this.formEntrega.markAllAsTouched();
-    
-    }
+   
     /// guardo las vriables con la info que voy a enviar al siguiente paso : direccion, forma de entrega y de pago 
     /** para la forma de entrega me fijo si tengo q poner la direccion del local, la del perfil o la nueva  */
     if(this.formEntrega.controls.formaDeEntrega?.value == "Retiro personalmente" ){
-      
-      let ciudad = [{id:32653, nombre:"Barcelona"}]
-    
         this.formEntrega.get('direccion.calle').setValue("Av Calle");
         this.formEntrega.get('direccion.nro').setValue("4678");
         this.formEntrega.get('direccion.cp').setValue("08007");
         this.formEntrega.get('direccion.ciudad').setValue(this.direccionTienda.ciudad);
-    
-     
-   
     }else{
       if (this.formEntrega.controls.formaDeEntrega?.value == "Envío a domicilio") {
         if (this.nuevaDireccion== false) {
@@ -198,9 +189,14 @@ export class CheckoutComponent implements OnInit, OnDestroy{
           this.formEntrega.get('direccion.cp').setValue(this.direccionUsuario.codigoPostal);
           this.formEntrega.get('direccion.ciudad').setValue(this.direccionUsuario.ciudad);
         }
-
       }
     }
+    if (this.formEntrega.invalid){
+      alert("Para finalizar la operación es necesario que ingrese una dirección de entrega válida")
+      this.msjCamposIncompletos=true;
+      return this.formEntrega.markAllAsTouched();
+    
+    }else{
     setTimeout(() => {
       this.clienteDireccion=this.formEntrega.controls.direccion.value
     this.entrega=this.formEntrega.controls.formaDeEntrega?.value;
@@ -208,7 +204,7 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     this.getMedioDePago(idPago);
      
     }, 2000);
-    
+  }
     // this.formEntrega.disable();
     console.log(this.formEntrega)
   }
@@ -218,13 +214,13 @@ export class CheckoutComponent implements OnInit, OnDestroy{
       formaDePago:[1,Validators.required],
       formaDeEntrega:["Retiro personalmente", Validators.required],
       direccion: this.fb.group({
-          ciudad:["", Validators.required],
-          pais:["", Validators.required],
+          ciudad:[""],
+          pais:[""],
           estado:[""],
-          calle:["", Validators.required],
-          nro:["", Validators.required],
+          calle:[""],
+          nro:[""],
           piso:[""],
-          cp:["", Validators.required],
+          cp:[""],
           })
       })
   }

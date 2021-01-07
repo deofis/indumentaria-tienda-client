@@ -65,17 +65,7 @@ getCarrito(): void {
     });
   }
 }
-//// metodos para mostrasr u ocultar la direccion de envio y la de entrega
-// tieneDireccEnvio(){
-//   if (this.entrega=="Envío a domicilio") {
-//     return true
-//   }
-// }
-// mostrarDireccLocal(){
-//   if (this.entrega=="Retiro personalmente") {
-//     return true
-//   }
-// }
+
 
 
 
