@@ -54,9 +54,6 @@ export class CarritoService {
     this.totalItemsEmmiter.emit(this.totalItems);
     
     return this.http.post(`${this.urlEndpoint}/carrito/item/agregar`, null, {params: params});
-    
-
-
   }
 
   /**
