@@ -335,7 +335,6 @@ export class ViewMoreComponent implements OnInit {
         /// envio el array completo , con la info q me traje y parsié y con el nuevo item
         localStorage.setItem("miCarrito",JSON.stringify(arrayItemsCarrito) );
       }else{ /* si no existe, lo creo con el sku q estoy enviando como contenido*/
-        console.log("else");
         localStorage.setItem("miCarrito",JSON.stringify(arrayItemsCarrito) );
       }
 
