@@ -40,6 +40,9 @@ export class Step2Component implements OnInit, OnDestroy {
   cerrarModalPromo:Subscription;
   cerrarModalPropiedad:Subscription;
   mostrarBoton:boolean=false;
+
+  modalProp = true;
+
   constructor(private productoService:ProductoService,
               private fb:FormBuilder,
               private Router:Router,
@@ -62,11 +65,15 @@ export class Step2Component implements OnInit, OnDestroy {
    
      //// para suscribirse a cerrar el componente de promos
     this.cerrarModalPromo=this.dataService.cerrarModal$.subscribe(resp =>{
-      this.modal.dismissAll();
+      /* this.modal.dismissAll(); */
     })
 
     this.cerrarModalPropiedad=this.dataPropiedad.cerrarModal$.subscribe(resp =>{
-      this.modal.dismissAll();
+      /* this.modal.dismissAll(); */
+      /* let modal2 =  document.getElementById("promoSku")
+      modal2.style.display = "none"
+      this.modalProp = false; */
+      /* this.modal.dismissAll() */
       this.getPropertiesOfNewProduct()
 
     })
@@ -325,7 +332,7 @@ export class Step2Component implements OnInit, OnDestroy {
               });
                //para refrescar el form 
                this.Router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-               this.Router.navigate(['/add-product']); 
+               this.Router.navigate(['/product-list']); 
             }); 
             }
           });
