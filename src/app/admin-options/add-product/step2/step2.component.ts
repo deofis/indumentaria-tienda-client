@@ -311,10 +311,7 @@ export class Step2Component implements OnInit, OnDestroy {
             icon: 'success',
             title: 'El producto y sus combinaciones han sido creadas con éxito',
           });
-           //para refrescar el form 
-           this.Router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-           this.Router.navigate(['/add-product']); 
-        }); 
+          
          
         }else{
           Swal.fire({
@@ -330,10 +327,7 @@ export class Step2Component implements OnInit, OnDestroy {
                 icon: 'success',
                 title: 'El producto y sus combinaciones han sido creadas con éxito',
               });
-               //para refrescar el form 
-               this.Router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-               this.Router.navigate(['/product-list']); 
-            }); 
+              
             }
           });
         
