@@ -9,10 +9,13 @@ import { CatalogoService } from 'src/app/products/services/catalogo.service';
 import Swal from 'sweetalert2';
 import { Promocion } from '../../clases/promocion';
 import { DataService } from '../../data.service';
+import { ConvertFechaPipe } from '../../../../pipes/convert-fecha.pipe';
+
 
 @Component({
   selector: 'app-form-promo-product',
   templateUrl: './form-promo-product.component.html',
+  providers: [ConvertFechaPipe],
   styleUrls: ['./form-promo-product.component.scss']
 })
 export class FormPromoProductComponent implements OnInit, OnDestroy {
@@ -33,6 +36,9 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
 
   formProducto:FormGroup;
 
+  
+  
+  today = Date.now();
   date = new Date().toISOString().substring(0, 16);
 
   promocion:Promocion;
@@ -44,7 +50,8 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
                private validadores: ValidadoresService,
                private fb:FormBuilder,
                private productoService: ProductoService,
-               private dataService: DataService ) { }
+               private dataService: DataService,
+               private fecha: ConvertFechaPipe ) { }
 
   ngOnInit(): void {
 
@@ -57,6 +64,14 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
       this.productoGeneral = producto;
       /* this.producto = producto; */
       this.cargarFechaDesde();
+      console.log(this.date);
+      console.log(this.today);
+      console.log(new Date(this.today).toISOString().substring(0, 16));
+      console.log(new Date().toLocaleDateString());
+      
+      
+      
+      
       
     });
 
