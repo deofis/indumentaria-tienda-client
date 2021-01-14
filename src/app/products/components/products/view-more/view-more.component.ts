@@ -148,7 +148,6 @@ export class ViewMoreComponent implements OnInit {
           this.valoresSkus.push(value);
         }
       });
-      // console.log(this.valoresSkus)
     });
   }
 
