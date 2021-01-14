@@ -23,12 +23,14 @@
 
   </div>
   <div class="cont-props ">
-    <div *ngFor="let propiedad of arrayMostrarProp; let i=index" class="props">
+    <!-- <div *ngFor="let propiedad of arrayMostrarProp; let i=index" class="props">
       <p> {{propiedad.nombre}}: </p>
       <span *ngFor="let valor of propiedad?.valores "> {{valor}}</span> 
     
+    </div> -->
+    <div *ngFor="let valor of valoresSkus; let i=index" class="props">
+      <span >{{valor.valor}} </span> 
     </div>
-    <!-- <p>{{valoresPropiedades}}</p> -->
   </div>
   <div class="i-fondo d-block"><i id="fav" class=" iconos far fa-heart fav" (click)="saveToFav()"></i></div>
 </div>

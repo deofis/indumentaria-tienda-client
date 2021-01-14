@@ -19,7 +19,7 @@ export class CardGridComponent implements OnInit {
   destacado:boolean=false;
   oferta:boolean=false;
   tieneFotoPpal:boolean;
-  propiedades:PropiedadProducto[];
+  propiedades:PropiedadProducto[]=[];
   valoresSkus:ValorPropiedadProducto[]=[];
   valoresPropiedades:string[];
   propiedadesYValoresUsadosEnSkus:PropiedadProducto;
@@ -89,24 +89,26 @@ export class CardGridComponent implements OnInit {
    setTimeout(() => {
     this.obtenerPropiedades()
 
-   }, 1000);
+   }, 2000);
 
     // for (let i = 0; i <this.valoresSkus.length; i++) {
     //   this.valoresPropiedades.push(this.valoresSkus[i].valor);
     // }
   }
     obtenerPropiedades(){
+      let valores =[]
+      console.log(this.propiedades)
       for (let x = 0; x < 2; x++) {
-          let propiedad =this.propiedades[x]?.nombre;
-          let valores =[]
+        let propiedad =this.propiedades[x]?.nombre;
+
           // recorro los valores de cada una de mis prop
-          for (let j = 0; j < this.propiedades[x].valores.length; j++) {
+          for (let j = 0; j < this.propiedades[x]?.valores.length; j++) {
             let idValor = this.propiedades[x].valores[j].id
             ///  loc omparo con lso ids de los valores skkus
             for (let i = 0; i < this.valoresSkus.length; i++) {
               if (idValor == this.valoresSkus[i].id) {
                 //si coinciden, lo agrego a mi array de valores de la propiedad q estoy recorriendo 
-                valores.push(this.valoresSkus[i].valor)
+                valores.push(this.valoresSkus[i]?.valor)
               }
             }
           }
@@ -117,10 +119,10 @@ export class CardGridComponent implements OnInit {
          
           //hago un push de ese objeto al array q voy a mostrar
             this.arrayMostrarProp.push(this.propiedadesYValoresUsadosEnSkus);
-            console.log(this.arrayMostrarProp);  
-          
+             console.log(this.arrayMostrarProp);  
+        
       }
-     
+      
     }
   
 saveToFav() {
