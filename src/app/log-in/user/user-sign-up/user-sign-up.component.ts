@@ -118,10 +118,8 @@ export class UserSignUpComponent implements OnInit {
   crearFormulario(): void {
     this.formRegistro = this.fb.group({
       // Expresion regular para verificar que sea un email correcto.
-      // email: ["", [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-
-      email: ["", [Validators.required, Validators.pattern( '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-
+   
+      email: ["", [Validators.required, Validators.pattern( '[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}')]],
       password: ["", [Validators.required, Validators.minLength(8)]],
       passwordRepeat: ["", Validators.required],
       checkterminos:["" ,Validators.required],
@@ -229,6 +227,9 @@ export class UserSignUpComponent implements OnInit {
   get passwordInvalida() {
     return this.formRegistro.get('password').invalid && this.formRegistro.get('password').touched;
   }
+  get passwordRepeatInvalida() {
+    return this.formRegistro.get('passwordRepeat').invalid && this.formRegistro.get('passwordRepeat').touched;
+  }
 
   /**
    * Getter validador de passwords iguales.
@@ -237,8 +238,9 @@ export class UserSignUpComponent implements OnInit {
   get passwordNoIguales() {
     const pass1 = this.formRegistro.get('password').value;
     const pass2 = this.formRegistro.get('passwordRepeat').value;
-
-    return (pass1 === pass2) ? false : true;
+    if (pass2 !== "" ) {
+      return (pass1 === pass2) ? false : true;
+    }
   }
 
 }
