@@ -1,3 +1,4 @@
+import { DetalleCarrito } from './../../../../cart/clases/detalle-carrito';
 import { ProductoService } from './../../../../admin-options/producto.service';
 import { ValorPropiedadProducto } from './../../../clases/valor-propiedad-producto';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
@@ -36,10 +37,16 @@ export class ViewMoreComponent implements OnInit {
   mostrarActualizar:boolean=false;
   elegido:boolean=false;
   totalItemsCarrito:number;
-  pcioNormal:boolean
+  pcioNormal:boolean;
+  skusCombobox:Sku[];
+
+  /// cantidad seleccionada para enviar al carrito
+cantidadSeleccionada:number
+
   /// sku que voy a enviar al carrito
  idSkuAEnviar:number;
  skuAEnviar:Sku = null;
+ itemsCarrito:DetalleCarrito[]
 
  /// carrito del localStorage
  skusCarritoLS;
@@ -61,12 +68,13 @@ export class ViewMoreComponent implements OnInit {
     this.stock = true;
     this.infoProducto=new Producto();
     this.skusCarritoLS= new Array();
+    this.skusCombobox = new Array();
   }
 
   ngOnInit(): void {
     this.getProduct();
     this.getPropiedadesProducto();
- 
+    this.cantidadSeleccionada=1
     setTimeout(() => {
       this.getSkusDelProducto()
     }, 1000);
@@ -153,25 +161,26 @@ export class ViewMoreComponent implements OnInit {
       let valorCombobox= select[i].value;
       
       // me fijo si es la primer seleccion que hago desde q se iniciaron los valores
-    //  if(!this.elegido){
+      if(!this.elegido){
 
-    //  }
+     
         for (let x = 0; x < this.skusDelProducto?.length; x++) {
           // let   valorSeleccionado= this.skusDelProducto.filter(sku=> sku.valores[x].valor ==valorCombobox);
           for (let z = 0; z < this.skusDelProducto[x]?.valores.length; z++) {
              if(this.skusDelProducto[x].valores[z].valor == valorCombobox){
-           
+           /// si no hay ninguno con ese id lo pusheo
               for (let u = 0; u < this.skusDelProducto[x].valores.length; u++) {
-                if (!this.valoresSkuSleccionado.some(val => val.id == this.skusDelProducto[x].valores[u].id)) {
+                if (!this.valoresSkuSleccionado.some(val => val.id == this.skusDelProducto[x].valores[u].id )) {
                   this.valoresSkuSleccionado.push(this.skusDelProducto[x].valores[u]);
                 }
               }
              }
           }
          };
-        
-      
-      ///filtro los skus del producto para qeudarme solo con los que tienen el valor elegido
+         console.log(this.valoresSkuSleccionado)
+       
+     this.elegido=true
+      ///lleno mis propiedades filtradas con los valores que coinciden ccon los valores del combobox seleccione
       this.propiedadesFiltradas = this.propiedadesProducto;
       this.propiedadesFiltradas?.forEach(propiedad => {
         let valoresPropiedad = propiedad.valores;
@@ -191,6 +200,18 @@ export class ViewMoreComponent implements OnInit {
         setTimeout(() => {
           this.identificarSkuSeleccionado()
         }, 800);
+      } else{
+      /// ahora le tengo q decir que se queden en valorskkusseleccionado solamente los valores
+        valorCombobox
+        // treaer los skus que forma cuero 
+        //fijarme el sku que coincida con alguna de los otras dos colores que quedan
+        // eliminar el q no va del sku
+        // for (let u = 0; u < this.skusDelProducto[x].valores.length; u++) {
+        //   if (!this.valoresSkuSleccionado.some(val => val.id == this.skusDelProducto[x].valores[u].id )) {
+        //     this.valoresSkuSleccionado.push(this.skusDelProducto[x].valores[u]);
+        //   }
+        // }
+      }
   }
   identificarSkuSeleccionado(){
  
@@ -219,7 +240,6 @@ export class ViewMoreComponent implements OnInit {
             this.skuAEnviar=response;
 
             console.log(this.skuAEnviar);
-            this.habilitarBotones();
             // this.agregarCarrito(this.skuAEnviar)
             })
             break;
@@ -285,18 +305,6 @@ export class ViewMoreComponent implements OnInit {
   ////
 
 
-  ////// evaluo si ya se eligio un sku para habilitar los botones de agregar al carrito y comprar ahora 
-  habilitarBotones(){
-    let btnAgregarCarrito= document.getElementById("btn-carrito") as HTMLButtonElement;
-    
-    let btnComprar= document.getElementById("btn-comprar") as HTMLButtonElement;
-    
-     if (this.skuAEnviar!== null) {
-      btnAgregarCarrito.disabled=false;
-      btnComprar.disabled=false;
-     }
-  }
-  //////
 
   ////////// INICIO CAMBIOS DE IMAGENES ////////////
  
@@ -306,20 +314,54 @@ export class ViewMoreComponent implements OnInit {
   //  imgPpal.style.backgroundImage=url2;
   // }
 //////// FIN CAMBIO DE IMAGENES //////////
+///// cantidad a enviar 
+
+
+sumarUnidad(){
+  /// evaluo si la cantidad seleccionada es menor q la cantidad disponible, le sumo 
+  if (this.cantidadSeleccionada < this.skuAEnviar.disponibilidad) {
+    this.cantidadSeleccionada=this.cantidadSeleccionada+1
+    if (this.cantidadSeleccionada == this.skuAEnviar.disponibilidad) {
+      document.getElementById("sumar").style.opacity="0.5"
+    }
+  }
+ 
+  if (this.cantidadSeleccionada!==1) {
+    document.getElementById("restar").style.opacity="1"
+  }
+ 
+}
+restarUnidad(){
+  if (this.cantidadSeleccionada !==1) {
+    ///  si es distinto de uno le resto uno y evaluo nuevamente, si esunocambio el estilo del boton
+    this.cantidadSeleccionada=this.cantidadSeleccionada-1;
+    document.getElementById("sumar").style.opacity="1";
+     if (this.cantidadSeleccionada==1) {
+        document.getElementById("restar").style.opacity="0.5"
+     }
+  }
+}
+
+
+////
+
 
 //// agregar al carrito y mostrar snackbar 
   agregarCarrito(sku:Sku): void {
     // if localStorage.getItem("carrito")
    if (this.authService.isLoggedIn()) {
+     /// envio el sku al carrito
       this.carritoService.agregarSkuAlCarrito(sku?.id.toString()).subscribe(response => {
-        console.log("producto agregado al carrito")
-        console.log(response);
+        /// actualizo la cantidad acorde a la cantidad elegida 
+          this.carritoService.actualizarCantidad( this.cantidadSeleccionada.toString(),sku?.id.toString()).subscribe()
+        ///seteo la cantidad de items para compartirla por el event emmiter
         this.totalItemsCarrito = response.carrito.items.length;
         setTimeout(() => {
           this.enviarInfoCompra.enviarCantidadProductosCarrito$.emit(this.totalItemsCarrito); 
         }, 100);
       });
-    } else{
+      
+     }else{
       console.log("usuario no logueado");
       // creo un arrayy vacio y le pusheo el sku q estoy agregando
       let arrayItemsCarrito = [];
@@ -342,20 +384,27 @@ export class ViewMoreComponent implements OnInit {
       }
 
     }
+
+  
   }
   openSnackBar(){
-   let snackBarRef= this.snackBar.open('Producto agregado al Carrito', null, {
-     duration:1300 ,
-     horizontalPosition : this .horizontalPosition,
-     verticalPosition : this .verticalPosition,
-     panelClass :['warning'],
-     
-  });
- 
-   snackBarRef.afterDismissed().subscribe(()=>{
-     console.log("recargando")
-   })
-  }
+    if ($(window).scrollTop() >= 30) {
+      let snackBarRef= this.snackBar.open('Producto agregado al Carrito', null, {
+        duration:1300 ,
+        horizontalPosition : this .horizontalPosition,
+        verticalPosition : this .verticalPosition,
+        panelClass :['warning'],
+        
+     });
+    }else{
+      let snackBarRef= this.snackBar.open('Producto agregado al Carrito', null, {
+        duration:1300 ,
+        horizontalPosition : this .horizontalPosition,
+        verticalPosition : this .verticalPosition,
+        
+     });
+    }
+   }
   ////
   
   //////// BOTON ENVIAR MENSAJE
