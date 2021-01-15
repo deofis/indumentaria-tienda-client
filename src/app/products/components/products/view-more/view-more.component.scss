@@ -9,6 +9,7 @@ $color-ppal:#fff;
  $color-wf2:#1f4e84;
  $color-wf3:#2779cd;
  $color-wf4:#70b8f3;
+ /* estilos de snackbar*/
  .mat-snack-bar-container{
     background-color:$color-wf2!important;
     color:white !important;
@@ -18,6 +19,7 @@ $color-ppal:#fff;
     min-width: unset !important;
     opacity: 0.9  !important;
   }
+  ///
 %prop-bg-img{
     background-size: contain;
     background-repeat: no-repeat;
