@@ -34,7 +34,6 @@ export class ShoppingCartComponent implements OnInit {
     setTimeout(() => {
       this.getCarrito();
     }, 100);
-    console.log(this.carrito);
        
     
  

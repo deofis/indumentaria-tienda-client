@@ -54,9 +54,6 @@ export class CarritoService {
     this.totalItemsEmmiter.emit(this.totalItems);
     
     return this.http.post(`${this.urlEndpoint}/carrito/item/agregar`, null, {params: params});
-    
-
-
   }
 
   /**
@@ -90,15 +87,7 @@ export class CarritoService {
     const parametros = new HttpParams().set('skuId', skuId).set('cantidad', cantidad);
 
     return this.http
-    .put(`${this.urlEndpoint}/carrito/item/actualizar`, null, {params: parametros})
-    // .pipe(
-    //   tap(
-    //     ()=> {
-    //       this._refreshNeeded$.next();
-    //     }
-    //   )
-    // )
-    ;
+    .put(`${this.urlEndpoint}/carrito/item/actualizar`, null, {params: parametros}) ;
     
 
   }

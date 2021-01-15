@@ -1,3 +1,4 @@
+import { DetalleCarrito } from './../../../../cart/clases/detalle-carrito';
 import { ProductoService } from './../../../../admin-options/producto.service';
 import { ValorPropiedadProducto } from './../../../clases/valor-propiedad-producto';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
@@ -37,9 +38,14 @@ export class ViewMoreComponent implements OnInit {
   elegido:boolean=false;
   totalItemsCarrito:number;
   pcioNormal:boolean
+
+  /// cantidad seleccionada para enviar al carrito
+cantidadSeleccionada:number
+
   /// sku que voy a enviar al carrito
  idSkuAEnviar:number;
  skuAEnviar:Sku = null;
+ itemsCarrito:DetalleCarrito[]
 
  /// carrito del localStorage
  skusCarritoLS;
@@ -66,7 +72,8 @@ export class ViewMoreComponent implements OnInit {
   ngOnInit(): void {
     this.getProduct();
     this.getPropiedadesProducto();
- 
+    this.getItemsCarrito()
+    this.cantidadSeleccionada=1
     setTimeout(() => {
       this.getSkusDelProducto()
     }, 1000);
@@ -306,14 +313,57 @@ export class ViewMoreComponent implements OnInit {
   //  imgPpal.style.backgroundImage=url2;
   // }
 //////// FIN CAMBIO DE IMAGENES //////////
+///// cantidad a enviar 
+getItemsCarrito(): void {
+  if (this.authService.isLoggedIn()) {
+    this.carritoService.getCarrito().subscribe((response: any) => {
+      this.itemsCarrito = response.carrito.items;
+      console.log(this.itemsCarrito)
+    });
+  }  
+  for (let i = 0; i < this.itemsCarrito?.length; i++) {
+    if (this.itemsCarrito[i].sku.id == this.skuAEnviar.id) {
+      this.itemsCarrito[i].cantidad
+    }
+    
+  }
+}
+
+sumarUnidad(){
+  /// evaluo si la cantidad seleccionada es menor q la cantidad disponible, le sumo 
+  if (this.cantidadSeleccionada < this.skuAEnviar.disponibilidad) {
+    this.cantidadSeleccionada=this.cantidadSeleccionada+1
+    if (this.cantidadSeleccionada == this.skuAEnviar.disponibilidad) {
+      document.getElementById("sumar").style.opacity="0.5"
+    }
+  }
+ 
+  if (this.cantidadSeleccionada!==1) {
+    document.getElementById("restar").style.opacity="1"
+  }
+ 
+}
+restarUnidad(){
+  if (this.cantidadSeleccionada !==1) {
+    ///  si es distinto de uno le resto uno y evaluo nuevamente, si esunocambio el estilo del boton
+    this.cantidadSeleccionada=this.cantidadSeleccionada-1;
+    document.getElementById("sumar").style.opacity="1";
+     if (this.cantidadSeleccionada==1) {
+        document.getElementById("restar").style.opacity="0.5"
+     }
+  }
+}
+
+
+////
+
 
 //// agregar al carrito y mostrar snackbar 
   agregarCarrito(sku:Sku): void {
     // if localStorage.getItem("carrito")
    if (this.authService.isLoggedIn()) {
+     
       this.carritoService.agregarSkuAlCarrito(sku?.id.toString()).subscribe(response => {
-        console.log("producto agregado al carrito")
-        console.log(response);
         this.totalItemsCarrito = response.carrito.items.length;
         setTimeout(() => {
           this.enviarInfoCompra.enviarCantidadProductosCarrito$.emit(this.totalItemsCarrito); 
@@ -342,6 +392,8 @@ export class ViewMoreComponent implements OnInit {
       }
 
     }
+
+  
   }
   openSnackBar(){
     if ($(window).scrollTop() >= 30) {
