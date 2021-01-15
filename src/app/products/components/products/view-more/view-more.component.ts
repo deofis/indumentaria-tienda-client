@@ -37,7 +37,8 @@ export class ViewMoreComponent implements OnInit {
   mostrarActualizar:boolean=false;
   elegido:boolean=false;
   totalItemsCarrito:number;
-  pcioNormal:boolean
+  pcioNormal:boolean;
+  skusCombobox:Sku[];
 
   /// cantidad seleccionada para enviar al carrito
 cantidadSeleccionada:number
@@ -67,6 +68,7 @@ cantidadSeleccionada:number
     this.stock = true;
     this.infoProducto=new Producto();
     this.skusCarritoLS= new Array();
+    this.skusCombobox = new Array();
   }
 
   ngOnInit(): void {
@@ -159,25 +161,26 @@ cantidadSeleccionada:number
       let valorCombobox= select[i].value;
       
       // me fijo si es la primer seleccion que hago desde q se iniciaron los valores
-    //  if(!this.elegido){
+      if(!this.elegido){
 
-    //  }
+     
         for (let x = 0; x < this.skusDelProducto?.length; x++) {
           // let   valorSeleccionado= this.skusDelProducto.filter(sku=> sku.valores[x].valor ==valorCombobox);
           for (let z = 0; z < this.skusDelProducto[x]?.valores.length; z++) {
              if(this.skusDelProducto[x].valores[z].valor == valorCombobox){
-           
+           /// si no hay ninguno con ese id lo pusheo
               for (let u = 0; u < this.skusDelProducto[x].valores.length; u++) {
-                if (!this.valoresSkuSleccionado.some(val => val.id == this.skusDelProducto[x].valores[u].id)) {
+                if (!this.valoresSkuSleccionado.some(val => val.id == this.skusDelProducto[x].valores[u].id )) {
                   this.valoresSkuSleccionado.push(this.skusDelProducto[x].valores[u]);
                 }
               }
              }
           }
          };
-        
-      
-      ///filtro los skus del producto para qeudarme solo con los que tienen el valor elegido
+         console.log(this.valoresSkuSleccionado)
+       
+     this.elegido=true
+      ///lleno mis propiedades filtradas con los valores que coinciden ccon los valores del combobox seleccione
       this.propiedadesFiltradas = this.propiedadesProducto;
       this.propiedadesFiltradas?.forEach(propiedad => {
         let valoresPropiedad = propiedad.valores;
@@ -197,6 +200,18 @@ cantidadSeleccionada:number
         setTimeout(() => {
           this.identificarSkuSeleccionado()
         }, 800);
+      } else{
+      /// ahora le tengo q decir que se queden en valorskkusseleccionado solamente los valores
+        valorCombobox
+        // treaer los skus que forma cuero 
+        //fijarme el sku que coincida con alguna de los otras dos colores que quedan
+        // eliminar el q no va del sku
+        // for (let u = 0; u < this.skusDelProducto[x].valores.length; u++) {
+        //   if (!this.valoresSkuSleccionado.some(val => val.id == this.skusDelProducto[x].valores[u].id )) {
+        //     this.valoresSkuSleccionado.push(this.skusDelProducto[x].valores[u]);
+        //   }
+        // }
+      }
   }
   identificarSkuSeleccionado(){
  
