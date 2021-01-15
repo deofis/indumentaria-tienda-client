@@ -72,7 +72,6 @@ cantidadSeleccionada:number
   ngOnInit(): void {
     this.getProduct();
     this.getPropiedadesProducto();
-    this.getItemsCarrito()
     this.cantidadSeleccionada=1
     setTimeout(() => {
       this.getSkusDelProducto()
@@ -226,7 +225,6 @@ cantidadSeleccionada:number
             this.skuAEnviar=response;
 
             console.log(this.skuAEnviar);
-            this.habilitarBotones();
             // this.agregarCarrito(this.skuAEnviar)
             })
             break;
@@ -292,18 +290,6 @@ cantidadSeleccionada:number
   ////
 
 
-  ////// evaluo si ya se eligio un sku para habilitar los botones de agregar al carrito y comprar ahora 
-  habilitarBotones(){
-    let btnAgregarCarrito= document.getElementById("btn-carrito") as HTMLButtonElement;
-    
-    let btnComprar= document.getElementById("btn-comprar") as HTMLButtonElement;
-    
-     if (this.skuAEnviar!== null) {
-      btnAgregarCarrito.disabled=false;
-      btnComprar.disabled=false;
-     }
-  }
-  //////
 
   ////////// INICIO CAMBIOS DE IMAGENES ////////////
  
@@ -314,20 +300,7 @@ cantidadSeleccionada:number
   // }
 //////// FIN CAMBIO DE IMAGENES //////////
 ///// cantidad a enviar 
-getItemsCarrito(): void {
-  if (this.authService.isLoggedIn()) {
-    this.carritoService.getCarrito().subscribe((response: any) => {
-      this.itemsCarrito = response.carrito.items;
-      console.log(this.itemsCarrito)
-    });
-  }  
-  for (let i = 0; i < this.itemsCarrito?.length; i++) {
-    if (this.itemsCarrito[i].sku.id == this.skuAEnviar.id) {
-      this.itemsCarrito[i].cantidad
-    }
-    
-  }
-}
+
 
 sumarUnidad(){
   /// evaluo si la cantidad seleccionada es menor q la cantidad disponible, le sumo 
@@ -362,14 +335,18 @@ restarUnidad(){
   agregarCarrito(sku:Sku): void {
     // if localStorage.getItem("carrito")
    if (this.authService.isLoggedIn()) {
-     
+     /// envio el sku al carrito
       this.carritoService.agregarSkuAlCarrito(sku?.id.toString()).subscribe(response => {
+        /// actualizo la cantidad acorde a la cantidad elegida 
+          this.carritoService.actualizarCantidad( this.cantidadSeleccionada.toString(),sku?.id.toString()).subscribe()
+        ///seteo la cantidad de items para compartirla por el event emmiter
         this.totalItemsCarrito = response.carrito.items.length;
         setTimeout(() => {
           this.enviarInfoCompra.enviarCantidadProductosCarrito$.emit(this.totalItemsCarrito); 
         }, 100);
       });
-    } else{
+      
+     }else{
       console.log("usuario no logueado");
       // creo un arrayy vacio y le pusheo el sku q estoy agregando
       let arrayItemsCarrito = [];

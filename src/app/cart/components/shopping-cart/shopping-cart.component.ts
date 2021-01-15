@@ -56,7 +56,6 @@ export class ShoppingCartComponent implements OnInit {
     if (this.authService.isLoggedIn()) {
       this.carritoService.getCarrito().subscribe((response: any) => {
         this.carrito = response.carrito;
-        console.log(this.carrito)
         this.totalProductos = this.carrito.items.length;
         /// envio la cantidad de producto al header para q muestre la notifiicacion
         setTimeout(() => {
