@@ -85,9 +85,6 @@
                 <div id="caja-carrito">
                     <div class="color-quantity">
                         <div class="modify-quantity">
-                            <!-- <i class="fas fa-minus-circle" (click)="removeOne(items.cantidad"></i>
-                            <span class="item-quantity">  {{items.cantidad}}</span>
-                            <i class="fas fa-plus-circle" (click)="addOne(item.cantidad)"></i> -->
                             <i class="fas fa-minus-circle"></i>
                             <span class="item-quantity"> 1</span>
                             <i class="fas fa-plus-circle"></i>
@@ -95,7 +92,7 @@
                     </div>
                     <hr>
                     <p>Costo de envío se informará al realizar la operación.</p>
-                    <button mat-button (click)="agregarCarrito(skuAEnviar)" class="btn" disabled id="btn-carrito">Agregar al
+                    <button mat-button (click)="agregarCarrito(skuAEnviar); openSnackBar();  resetSeleccion()" class="btn" disabled id="btn-carrito">Agregar al
                         Carrito</button>
                     <button mat-button (click)="agregarCarrito(skuAEnviar)" class="btn" disabled id="btn-comprar">Comprar
                         ahora</button>
