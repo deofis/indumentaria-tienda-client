@@ -344,18 +344,23 @@ export class ViewMoreComponent implements OnInit {
     }
   }
   openSnackBar(){
-   let snackBarRef= this.snackBar.open('Producto agregado al Carrito', null, {
-     duration:1300 ,
-     horizontalPosition : this .horizontalPosition,
-     verticalPosition : this .verticalPosition,
-     panelClass :['warning'],
-     
-  });
- 
-   snackBarRef.afterDismissed().subscribe(()=>{
-     console.log("recargando")
-   })
-  }
+    if ($(window).scrollTop() >= 30) {
+      let snackBarRef= this.snackBar.open('Producto agregado al Carrito', null, {
+        duration:1300 ,
+        horizontalPosition : this .horizontalPosition,
+        verticalPosition : this .verticalPosition,
+        panelClass :['warning'],
+        
+     });
+    }else{
+      let snackBarRef= this.snackBar.open('Producto agregado al Carrito', null, {
+        duration:1300 ,
+        horizontalPosition : this .horizontalPosition,
+        verticalPosition : this .verticalPosition,
+        
+     });
+    }
+   }
   ////
   
   //////// BOTON ENVIAR MENSAJE
