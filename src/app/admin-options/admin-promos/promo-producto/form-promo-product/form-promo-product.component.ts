@@ -36,10 +36,8 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
 
   formProducto:FormGroup;
 
-  
-  
-  today = Date.now();
-  date = new Date().toISOString().substring(0, 16);
+  tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+  localISOTime = (new Date(Date.now() - this.tzoffset)).toISOString().slice(0, -8);
 
   promocion:Promocion;
 
@@ -63,11 +61,7 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
       /* this.producto = new Producto(); */
       this.productoGeneral = producto;
       /* this.producto = producto; */
-      this.cargarFechaDesde();
-      console.log(this.date);
-      console.log(this.today);
-      console.log(new Date(this.today).toISOString().substring(0, 16));
-      console.log(new Date().toLocaleDateString());
+      console.log(this.localISOTime, "Prueba")
       
       
       
@@ -143,7 +137,7 @@ export class FormPromoProductComponent implements OnInit, OnDestroy {
 
   cargarFechaDesde(){
     this.formProducto.setValue({
-      fechaDesde: this.date,
+      fechaDesde: this.localISOTime,
       fechaHasta: "",
       porcentaje: "",
       precio: ""
