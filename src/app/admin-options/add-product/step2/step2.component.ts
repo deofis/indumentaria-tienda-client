@@ -160,10 +160,11 @@ export class Step2Component implements OnInit, OnDestroy {
         Swal.fire({
           icon: 'info',
           title: 'Las combinaciones de su producto han sido eliminadas, si desea crearlas nuevamente dirígase al panel de Administración de Productos ',
-        })
+        });
+        this.modal.dismissAll();
          //me envio al inicio 
         this.Router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-         this.Router.navigate(['/home']);  })
+         this.Router.navigate(['/products-list']);  })
         }
         })
 
@@ -311,6 +312,7 @@ export class Step2Component implements OnInit, OnDestroy {
             icon: 'success',
             title: 'El producto y sus combinaciones han sido creadas con éxito',
           });
+          this.modal.dismissAll();
           
          
         }else{
@@ -327,6 +329,7 @@ export class Step2Component implements OnInit, OnDestroy {
                 icon: 'success',
                 title: 'El producto y sus combinaciones han sido creadas con éxito',
               });
+              this.modal.dismissAll();
               
             }
           });
