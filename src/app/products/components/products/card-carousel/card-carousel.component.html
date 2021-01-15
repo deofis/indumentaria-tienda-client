@@ -4,6 +4,7 @@
        <!-- <img class="medalla" src="../../../../../assets/imagenes/medalla.png" alt="hdj">  -->
       <i class="fas fa-medal" *ngIf="destacado"></i>
         <img *ngIf="tieneFotoPpal" class="producto" src="{{producto.foto.imageUrl}}" alt="foto-producto">
+        <img *ngIf="!tieneFotoPpal" class="mt-0 mt-md-5" src="assets/imagenes/noimage.png" alt="" style="width: 60px; height: auto;">
     </div>
     <h3 [routerLink]="['/viewmore',producto.id]">{{producto.nombre}}</h3>
     <div class="cont-precios" [routerLink]="['/viewmore',producto.id]">

@@ -145,7 +145,8 @@ mensajeProductoCreado(){
     });
      //para refrescar el form 
      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-     this.router.navigate(['/add-product']); 
+     this.router.navigate(['/products-list']);
+     this.modal.dismissAll(); 
   }); 
   }
  
