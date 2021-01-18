@@ -88,7 +88,7 @@ export class CardGridComponent implements OnInit {
      // z abtengo las propiedades del producto , para asociar cada valor del sku a uma propiedad y mostrarla
    setTimeout(() => {
     /* this.obtenerPropiedades() */
-    /* this.obtenerPro2() */
+    this.obtenerPro2()
 
    }, 2000);
 
@@ -131,20 +131,34 @@ export class CardGridComponent implements OnInit {
     }
 
     obtenerPro2(){
-
-      let props = this.propiedades
-      console.log(props);
+      let props = new PropiedadProducto();
+      
+      props = this.copy(this.propiedades)
+      console.log(this.propiedades);
       
 
       for (let i = 0; i < this.valoresSkus.length; i++) {
+        /* console.log(this.valoresSkus[i].valor); */
+        
         
         for (let x = 0; x < this.propiedades.length; x++) {
+
+                    
           
-          for (let j = 0; j < this.propiedades[x].valores.length; j++) {
+          for (let j = 0; j <  this.propiedades[x].valores.length; j++) {
+
+            /* console.log(this.propiedades[x].valores[j].valor); */
             
-            if (this.valoresSkus[i].valor !== this.propiedades[x].valores[j].valor) {
-              props.slice(j, 1)
-              console.log(this.valoresSkus[i].valor, this.propiedades[x].valores[j].valor);
+            
+            if (this.valoresSkus[i].id !== this.propiedades[x].valores[j].id) {
+
+              /* console.log(this.valoresSkus[i].valor, this.propiedades[x].valores[j].valor); */
+              props[x].valores.splice(j, 1);
+            
+              
+    
+              
+              
               
             }
             
@@ -163,6 +177,21 @@ export class CardGridComponent implements OnInit {
   
 saveToFav() {
 
+}
+
+ copy (obj) {
+  let result;
+  if (obj instanceof Array) {
+    result = [ ...obj ];
+  } else if (typeof obj === 'object') {
+    result = {...obj}
+  } else {
+    return obj;
+  }
+  for (let prop of Reflect.ownKeys (result)) {
+    result[ prop ] = this.copy (result[ prop ]);
+  }
+  return result;
 }
 
 
