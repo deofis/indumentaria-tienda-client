@@ -70,6 +70,7 @@ import { TablaPromoSubComponent } from './admin-options/admin-propiedades/tabla-
 import { ContenedorFormComponent } from './admin-options/add-product/contenedor-form/contenedor-form.component';
 import { StepperCartComponent } from './cart/components/stepper-cart/stepper-cart.component';
 import { MatIconModule } from '@angular/material/icon';
+import {MatSnackBarModule} from  '@angular/material/snack-bar';
 import { MatRippleModule } from '@angular/material/core';
 import { ConvertFechaPipe } from './pipes/convert-fecha.pipe';
 import { ConvertEstadoOpPipe } from './pipes/convert-estado-op.pipe';
@@ -161,7 +162,8 @@ import { PaypalCancelComponent } from './cart/components/final-message/paypal-ca
     MatListModule,
     MatStepperModule,
     MatIconModule,
-    MatRippleModule
+    MatRippleModule,
+    MatSnackBarModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true

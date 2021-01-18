@@ -68,12 +68,11 @@ export class AuthService {
     return this.http.post(`${this.urlEndpoint}/logout`, refreshTokenPayload, {responseType: 'text'}).pipe(
       tap(response => {
         this.loggedIn.emit(false);
-        this.useremail.emit('');
+        this.useremail.emit(null);
         localStorage.clear();
         
         return response;
       }));
-
     
   }
 
