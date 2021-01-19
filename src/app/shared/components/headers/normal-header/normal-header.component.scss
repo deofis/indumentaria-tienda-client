@@ -143,7 +143,7 @@ $color-wf4:#70b8f3;
 #contenedor_iconos {
     .iconos {
          position: relative;
-       
+         cursor: pointer;
         &:focus{
             outline: none;
         }

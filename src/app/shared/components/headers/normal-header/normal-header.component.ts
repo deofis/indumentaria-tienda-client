@@ -1,11 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { CatalogoService } from 'src/app/products/services/catalogo.service';
 import { Categoria } from 'src/app/products/clases/categoria';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ItemCarrito } from 'src/app/cart/clases/item-carrito';
-import { MockCarrito } from 'src/app/cart/clases/cart';
-import { MockCartService } from 'src/app/cart/services/mock-cart.service';
 import { AuthService } from '../../../../log-in/services/auth.service';
 import { CarritoService } from '../../../../cart/services/carrito.service';
 import { Carrito } from '../../../../cart/clases/carrito';
@@ -13,12 +11,14 @@ import { Subcategoria } from 'src/app/products/clases/subcategoria';
 import { Subscription } from 'rxjs';
 import { EnviarInfoCompraService } from 'src/app/user-options/user-profile/services/enviar-info-compra.service';
 
+declare function inicializarNotificaciones(target: HTMLElement, email: string);
+
 @Component({
   selector: 'app-normal-header',
   templateUrl: './normal-header.component.html',
   styleUrls: ['./normal-header.component.scss']
 })
-export class NormalHeaderComponent implements OnInit {
+export class NormalHeaderComponent implements OnInit, AfterViewInit {
 
   categorias:Categoria[];
   subcategorias: Subcategoria[];
@@ -29,13 +29,14 @@ export class NormalHeaderComponent implements OnInit {
   totalQuantity:number = 0;
   carrito: Carrito;
 
-  // Para perfil de usuario
+  // Para perfil de usuario y notificaciones
+  @ViewChild('notificationsInbox') notificationsInbox: ElementRef;
   estaLogueado: boolean;
+  userEmail: string;
   totalItemsCarrito:number=null
   
   constructor (private catalogoservice:CatalogoService,
               private router:Router,
-              private _cartService:MockCartService,
               private authService: AuthService,
               private enviarInfoCompra:EnviarInfoCompraService,
               private carritoService: CarritoService) { }
@@ -69,7 +70,25 @@ export class NormalHeaderComponent implements OnInit {
   //   }
   //     })
   }
-  
+
+  ngAfterViewInit(): void {
+    this.initNotificaciones();
+  }
+
+  /**
+   * Inicializa las notificaciones en el Header, utilizando #notificationsInbox
+   * y el email del usuario logueado (en caso de estar logueado) para recibir las
+   * notificaciones correspondientes.
+   */
+  initNotificaciones(): void {
+    if (!this.estaLogueado) {
+      return ;
+    }
+      
+    let notificationsInboxHtmlElement = this.notificationsInbox?.nativeElement as HTMLElement;
+    inicializarNotificaciones(notificationsInboxHtmlElement, this.userEmail);
+  }
+
   getCarrito(): void {
     if (this.authService.isLoggedIn()) {
       this.carritoService.getCarrito().subscribe((response: any) => {
@@ -79,6 +98,7 @@ export class NormalHeaderComponent implements OnInit {
     }
     this.hayAlgoEnElCarrito()
   }
+
   hayAlgoEnElCarrito(){
     if (this.totalItemsCarrito!== 0) {
       return true
@@ -224,6 +244,9 @@ hiddeMenu(){
   verificarSesion(): void {
     this.authService.loggedIn.subscribe(resp => this.estaLogueado = resp);
     this.estaLogueado = this.authService.isLoggedIn();
+
+    this.authService.useremail.subscribe(resp => this.userEmail = resp);
+    this.userEmail = this.authService.getEmailUser();
   }
 
   /**
