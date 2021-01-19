@@ -24,7 +24,6 @@ export class CardCarouselComponent implements OnInit {
     this.destacadosInsignia();
     this.tieneFoto();
     this.estaEnOferta();
-    console.log(this.producto);
     
   }
 
