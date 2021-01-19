@@ -17,8 +17,8 @@
             <div id="izquierda" class="izquierda">
                 <div id="img-sec" class="img-sec">
                     <div id="img-uno">
-                        <!-- <img *ngIf="!infoProducto?.foto.imageUrl" src="../../../../../assets/imagenes/pumaEjemplo.png" alt="">
-                        <img *ngIf="infoProducto?.foto.imageUrl" src="{{infoProducto?.foto.imageUrl}}" alt=""> -->
+                        <img *ngIf="!infoProducto?.foto" src="assets/imagenes/noimage.png" alt="">
+                        <img *ngIf="infoProducto?.foto" src="{{infoProducto?.foto.imageUrl}}" alt="">
                     </div>
                     <!-- <div id="img-dos">
 
@@ -29,7 +29,8 @@
                     <div id="img-seis"></div> -->
                 </div>
                 <div id="img-ppal" class="img-ppal">
-                    <img src="{{infoProducto.foto?.imageUrl}}" alt="">
+                    <img *ngIf="infoProducto?.foto" src="{{infoProducto?.foto.imageUrl}}" alt="">
+                    <img *ngIf="!infoProducto?.foto" src="assets/imagenes/noimage.png" style="width: 350px; height: auto;" alt="">
                 </div>
             </div>
             <div id="derecha">
@@ -45,9 +46,9 @@
                         <div class="precio" *ngIf="!mostrarPrecioProducto()">
                             <!-- <h3 *ngIf="!ofertaSku" class="pcio-sin-oferta">€50</h3>
                             <h3 *ngIf="ofertaSku"  class="pcio-oferta">€42</h3> -->
-                            <h3 *ngIf="!ofertaSku" class="pcio-sin-oferta">€{{skuAEnviar?.precio | number: '.2'}}</h3>
-                            <h3 *ngIf="ofertaSku" class="pcio-sin-oferta">€{{skuAEnviar?.promocion.precioOferta | number: '.2'}}</h3>
-                            <div *ngIf="ofertaSku" class="row-oferta">
+                            <h3 *ngIf="!skuAEnviar?.promocion" class="pcio-sin-oferta">€{{skuAEnviar?.precio | number: '.2'}}</h3>
+                            <h3 *ngIf="skuAEnviar?.promocion" class="pcio-oferta">€{{skuAEnviar?.promocion.precioOferta | number: '.2'}}</h3>
+                            <div *ngIf="skuAEnviar?.promocion" class="row-oferta">
                                 <span>€{{skuAEnviar?.precio | number: '.2'}} </span>
                                 <p class="off ">{{skuAEnviar.promocion?.porcentaje * 100 | number: '2.0-0'}}% 0FF</p>
                             </div>
@@ -70,10 +71,10 @@
                 </div>
 
                 <br>
-                <div class="text-center" id="cont-props">
+                <div class="text-center" id="cont-props" *ngIf="tieneValores">
 
                     <select id="color" *ngFor="let propiedad of propiedadesFiltradas;let i=index " class="select"
-                        (change)="valoresSiguienteCombobox(i)">
+                        (change)="valoresSiguienteCombobox(i)" >
                         <option hidden selected value="">{{propiedad.nombre}}</option>
                         <option [value]="valor.valor" *ngFor="let valor of propiedad.valores">{{valor.valor}}</option>
                     </select>

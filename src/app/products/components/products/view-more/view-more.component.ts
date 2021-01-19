@@ -50,7 +50,7 @@ cantidadSeleccionada:number
 
  /// carrito del localStorage
  skusCarritoLS;
-
+ tieneValores:boolean=true
 
  /// posicion de la notificacion de producto agregado al carrito
  horizontalPosition : MatSnackBarHorizontalPosition = 'end' ;
@@ -87,7 +87,6 @@ cantidadSeleccionada:number
     btnSend.addEventListener("click",this.deleteMessage);
 
     /// precio oferta
-    this.estaEnOfertaElProducto();
     this.estaEnOfertaElSku();
 
     // destacado
@@ -124,7 +123,11 @@ cantidadSeleccionada:number
           }
         }
       }
+      if (propiedad.valores.length==0) {
+        this.tieneValores=false
+      }
     });
+  
   }
 
   obtenerValoresSkus(){
@@ -138,6 +141,9 @@ cantidadSeleccionada:number
         }
       });
     });
+    if (skus.length==0) {
+      this.skuAEnviar=this.infoProducto.defaultSku
+    }
   }
 
   getPropiedadesProducto(){
@@ -162,8 +168,6 @@ cantidadSeleccionada:number
       
       // me fijo si es la primer seleccion que hago desde q se iniciaron los valores
       if(!this.elegido){
-
-     
         for (let x = 0; x < this.skusDelProducto?.length; x++) {
           // let   valorSeleccionado= this.skusDelProducto.filter(sku=> sku.valores[x].valor ==valorCombobox);
           for (let z = 0; z < this.skusDelProducto[x]?.valores.length; z++) {
@@ -193,7 +197,6 @@ cantidadSeleccionada:number
           }
         }
       });
-       
       this.mostrarActualizar=true;
 
      
@@ -201,6 +204,9 @@ cantidadSeleccionada:number
           this.identificarSkuSeleccionado()
         }, 800);
       } else{
+        setTimeout(() => {
+          this.identificarSkuSeleccionado()
+        }, 800);
       /// ahora le tengo q decir que se queden en valorskkusseleccionado solamente los valores
         valorCombobox
         // treaer los skus que forma cuero 
@@ -238,7 +244,6 @@ cantidadSeleccionada:number
               // con el id llamo a ese sku para luego enviarlo al servicio
             this.productoService.getSku(this.infoProducto.id, this.idSkuAEnviar).subscribe( response => {
             this.skuAEnviar=response;
-
             console.log(this.skuAEnviar);
             // this.agregarCarrito(this.skuAEnviar)
             })
@@ -273,13 +278,7 @@ cantidadSeleccionada:number
 
 
   //// veo que precio y precio oferta mostrar segun si estoy viendo el producto inicial o  si ya se eligio un sku usar el del sku
-  estaEnOfertaElProducto(){
-    if (this.skuAEnviar?.promocion!== null) {
-        this.ofertaSku=false;
-    }else{
-      this.ofertaSku=true;
-    }
-  }
+
   estaEnOfertaElSku(){
     if (this.infoProducto.promocion!== null) {
         this.oferta=true;
