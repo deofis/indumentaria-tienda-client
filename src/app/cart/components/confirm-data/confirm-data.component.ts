@@ -36,6 +36,8 @@ export class ConfirmDataComponent implements OnInit, OnDestroy {
   operacion:Operacion;
   items:DetalleOperacion[];
   item:DetalleOperacion ;
+
+
   constructor(private perfilClienteService:PerfilClienteService,
               private authService: AuthService,
               private enviarInfoCompra:EnviarInfoCompraService,
@@ -58,6 +60,7 @@ export class ConfirmDataComponent implements OnInit, OnDestroy {
 
      
   ngOnDestroy():void{
+    console.log("cerradocomp3")
   }
   
   /// traigo la info del cliente loggeado (nombre,mail,telefono,direccion...)
@@ -79,10 +82,9 @@ getCarrito(): void {
 
 
 cerrarComponente(){
-  this.mostrarConfirmacion=false
+  this.mostrarConfirmacion=false;
   setTimeout(() => {
     this.enviarInfoCompra.enviarMostrarConfirmacion$.emit(this.mostrarConfirmacion);
-   
   }, 100);
 }
 

@@ -15,7 +15,7 @@
                             </div>
                             <div class="deliver box row">
                                 <input type="radio" value="Envío a domicilio" id="deliver"
-                                    formControlName="formaDeEntrega" (change)="showProfileAdress()">
+                                    formControlName="formaDeEntrega" (change)="showProfileAdress();guardarDatos()">
                                 <span><i class="fas fa-truck"></i> </span>
                                 <label for="deliver" class="options">Envío </label>
                             </div>
@@ -95,7 +95,7 @@
                                 </div>
                             </div>
                             <div class="pick-up box row">
-                                <input type="radio" value="Retiro personalmente" id="entrega" (change)="showAdress()"
+                                <input type="radio" value="Retiro personalmente" id="entrega" (change)="showAdress();guardarDatos()"
                                     formControlName="formaDeEntrega">
 
                                 <i class="fas fa-store"></i>
@@ -115,7 +115,7 @@
                             </div>
                             <div class="row pago" *ngFor="let medioPago of mediosDePago, let i=index ">
                                 <input type="radio" value="{{medioPago?.id}}" id="{{medioPago?.id}}" 
-                                formControlName="formaDePago">
+                                formControlName="formaDePago"  (change)="guardarDatos()">
                                 <label for="{{medioPago?.nombre}}">
                                     <img class="cash" *ngIf="imgEfvo(i)&& mostrarEfvo" src="../../../../../assets/imagenes/cash.png" alt="">
                                     <img class="paypal" *ngIf="imgPayPal(i)" src="../../../../../assets/imagenes/paypal.png" alt="">

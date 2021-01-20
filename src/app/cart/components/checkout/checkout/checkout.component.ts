@@ -54,6 +54,9 @@ export class CheckoutComponent implements OnInit, OnDestroy{
   /// para saber si llego el carrito al resumen y mostrar el boton continuar 
   llegoCarrito:boolean
   subscripcionInfoCompra : Subscription;
+
+  /// para habilitar el step  3
+  step2Completo:boolean=false
   constructor(private carritoService: CarritoService,
               private fb:FormBuilder,
               private perfilClienteService:PerfilClienteService,
@@ -78,9 +81,7 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     this.getPerfilCliente();
     this.getPaises();
     this.crearForm(); 
-    setTimeout(() => {
-      this.formEntrega.get("formaDePago").setValue(1);
-    }, 150);
+   
   
    
     //// recibo del componente resumen  si llego el carrito para mostrar el bton
@@ -92,6 +93,7 @@ export class CheckoutComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy():void{
+    console.log("cerrando comp 2 ")
   }
   
 
@@ -166,12 +168,7 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     this.carritoService.getMediosDePago().subscribe((response: any) => {
       this.mediosDePago=response.mediosPago;
     });
-    setTimeout(() => {
-      let efvo = document.getElementById("1") as HTMLInputElement;
-      if (efvo !== null) {
-        efvo.checked=true;
-      }
-    }, 600);
+    
   }
    /// para el medio de pago elegido 
   getMedioDePago(id:number){
@@ -183,13 +180,21 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     this.mostrarCheckout=false
     setTimeout(() => {
       this.enviarInfoCompra.enviarMostrarCheckout$.emit(this.mostrarCheckout);
-     
     }, 100);
   }
   guardarDatos(){
+    /// primero em fijo si es valido el form o no 
+    if (this.formEntrega.invalid){
+      console.log("invalido");
+      this.step2Completo=false;
+      return this.formEntrega.markAllAsTouched();
+    }else{
+      this.step2Completo=true;
+      this.enviarInfoCompra.enviarStep2Completo$.emit(this.step2Completo);
     /// guardo las vriables con la info que voy a enviar al siguiente paso : direccion, forma de entrega y de pago 
     /** para la forma de entrega me fijo si tengo q poner la direccion del local, la del perfil o la nueva  */
-    if(this.formEntrega.controls.formaDeEntrega?.value == "Retiro personalmente" ){
+   
+      if(this.formEntrega.controls.formaDeEntrega?.value == "Retiro personalmente" ){
         this.formEntrega.get('direccion.calle').setValue("Av Calle");
         this.formEntrega.get('direccion.nro').setValue("4678");
         this.formEntrega.get('direccion.cp').setValue("08007");
@@ -222,6 +227,8 @@ export class CheckoutComponent implements OnInit, OnDestroy{
         }
       }
     }
+    }
+  
     this.clienteDireccion=this.formEntrega.controls.direccion.value
           this.entrega=this.formEntrega.controls.formaDeEntrega?.value;
           let idPago =this.formEntrega.controls.formaDePago?.value;
@@ -241,8 +248,8 @@ export class CheckoutComponent implements OnInit, OnDestroy{
   
   crearForm(){
     this.formEntrega=this.fb.group({
-      formaDePago:[1,Validators.required],
-      formaDeEntrega:["Retiro personalmente", Validators.required],
+      formaDePago:["",Validators.required],
+      formaDeEntrega:["", Validators.required],
       direccion: this.fb.group({
           ciudad:[""],
           pais:[""],
