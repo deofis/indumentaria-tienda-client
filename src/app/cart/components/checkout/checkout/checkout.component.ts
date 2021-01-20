@@ -24,6 +24,8 @@ import { Subscription } from 'rxjs';
 })
 export class CheckoutComponent implements OnInit, OnDestroy{
   @Input() abriendoStep2:boolean;
+  @Input() actualizarCarrito:boolean;
+  @Input() mostrarResumen:boolean;
   carrito: Carrito;
   infoCliente:any;
   totalProductos: number;
@@ -56,7 +58,18 @@ export class CheckoutComponent implements OnInit, OnDestroy{
   subscripcionInfoCompra : Subscription;
 
   /// para habilitar el step  3
-  step2Completo:boolean=false
+  step2Completo:boolean=false;
+  
+
+  // para habilitar el boton 
+  formValido:boolean=false
+
+  /// para ver que form mostrar de direccion
+  tieneDireccion:boolean=false
+
+  /// msje alerta que el form no esta completo 
+  mostrarMsje:boolean=false
+  guardarDireccionFacturacion:boolean=false;
   constructor(private carritoService: CarritoService,
               private fb:FormBuilder,
               private perfilClienteService:PerfilClienteService,
@@ -81,14 +94,13 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     this.getPerfilCliente();
     this.getPaises();
     this.crearForm(); 
-   
-  
+  console.log(this.actualizarCarrito)
    
     //// recibo del componente resumen  si llego el carrito para mostrar el bton
     this.subscripcionInfoCompra=this.enviarInfoCompra.llegoCarrito$.subscribe(resp=> {
        this.llegoCarrito=resp;
      })
-     
+  
  
   }
 
@@ -118,6 +130,7 @@ export class CheckoutComponent implements OnInit, OnDestroy{
         }, 100);
      let efvo= document.getElementById("1") as HTMLInputElement;
       this.mostrarEfvo=false;
+      
       efvo.style.display="none"
     
 
@@ -127,6 +140,16 @@ export class CheckoutComponent implements OnInit, OnDestroy{
       if (!this.formEntrega.invalid){
         this.msjCamposIncompletos=true;
        }
+    }
+  }
+  ocultarFormDireccion(){
+    let inputOcultar = document.getElementById("repetir") as HTMLInputElement
+    if (inputOcultar.checked) {
+      document.getElementById("campo-ocultar").style.display="none"
+
+    }else{
+      document.getElementById("campo-ocultar").style.display="block"
+
     }
   }
   // se activa cuando toco el boton de editar la direccion de envio
@@ -187,9 +210,19 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     if (this.formEntrega.invalid){
       console.log("invalido");
       this.step2Completo=false;
+      if (this.calleInvalidaFacturacion ||this.nroInvalidoFacturacion
+        || this.cpInvalidoFacturacion || this.ciudadInvalidaFacturacion ||this.paisInvalidoFacturacion ||this.estadoInvalidoFacturacion ) {
+      this.mostrarMsje=true
+     }
       return this.formEntrega.markAllAsTouched();
+     
     }else{
       this.step2Completo=true;
+      this.formValido=true;
+      this.mostrarMsje=false;
+      document.getElementById("msje-btn-form-facturacion").style.display="none";
+      this.guardarDireccionFacturacion=true;
+       this.formEntrega.controls.direccionFacturacion.disable();
       this.enviarInfoCompra.enviarStep2Completo$.emit(this.step2Completo);
     /// guardo las vriables con la info que voy a enviar al siguiente paso : direccion, forma de entrega y de pago 
     /** para la forma de entrega me fijo si tengo q poner la direccion del local, la del perfil o la nueva  */
@@ -203,35 +236,49 @@ export class CheckoutComponent implements OnInit, OnDestroy{
         this.formEntrega.get('direccion.estado').setValue("");
     }else{
       if (this.formEntrega.controls.formaDeEntrega?.value == "Envío a domicilio") {
-        if (this.nuevaDireccion== false) {
-         
-          this.formEntrega.get('direccion.calle').setValue(this.direccionUsuario.calle);
-          this.formEntrega.get('direccion.nro').setValue(this.direccionUsuario.numeroCalle);
-          this.formEntrega.get('direccion.cp').setValue(this.direccionUsuario.codigoPostal);
-          this.formEntrega.get('direccion.ciudad').setValue(this.direccionUsuario.ciudad);
-        }else{
+        if (this.tieneDireccion) {
+          if (!this.nuevaDireccion) {
+            this.formEntrega.get('direccion.calle').setValue(this.direccionUsuario.calle);
+            this.formEntrega.get('direccion.nro').setValue(this.direccionUsuario.numeroCalle);
+            this.formEntrega.get('direccion.cp').setValue(this.direccionUsuario.codigoPostal);
+            this.formEntrega.get('direccion.ciudad').setValue(this.direccionUsuario.ciudad);
+          }else{
+            if (this.formEntrega.invalid){
+              alert("Para finalizar la operación es necesario que ingrese una dirección de entrega válida")
+              this.msjCamposIncompletos=true;
+              return this.formEntrega.markAllAsTouched();
+            }else{
+            this.clienteDireccion=this.formEntrega.controls.direccion.value
+            this.entrega=this.formEntrega.controls.formaDeEntrega?.value;
+            let idPago =this.formEntrega.controls.formaDePago?.value;
+            setTimeout(() => {
+            this.getMedioDePago(idPago);
+            
+            }, 150);
+            }
+          }
+        }else{ // si no tiene direccion 
           if (this.formEntrega.invalid){
             alert("Para finalizar la operación es necesario que ingrese una dirección de entrega válida")
             this.msjCamposIncompletos=true;
             return this.formEntrega.markAllAsTouched();
           
           }else{
-          this.clienteDireccion=this.formEntrega.controls.direccion.value
-          this.entrega=this.formEntrega.controls.formaDeEntrega?.value;
-          let idPago =this.formEntrega.controls.formaDePago?.value;
-          setTimeout(() => {
-          this.getMedioDePago(idPago);
-          
-          }, 150);
-        }
+            this.clienteDireccion=this.formEntrega.controls.direccionFacturacion.value
+            this.entrega=this.formEntrega.controls.formaDeEntrega?.value;
+            let idPago =this.formEntrega.controls.formaDePago?.value;
+            setTimeout(() => {
+            this.getMedioDePago(idPago);
+            }, 150);
+          }
         }
       }
     }
     }
   
-    this.clienteDireccion=this.formEntrega.controls.direccion.value
-          this.entrega=this.formEntrega.controls.formaDeEntrega?.value;
-          let idPago =this.formEntrega.controls.formaDePago?.value;
+    // this.clienteDireccion=this.formEntrega.controls.direccion.value
+         this.entrega=this.formEntrega.controls.formaDeEntrega?.value;
+         let idPago =this.formEntrega.controls.formaDePago?.value;
           setTimeout(() => {
           this.getMedioDePago(idPago);
           
@@ -258,10 +305,19 @@ export class CheckoutComponent implements OnInit, OnDestroy{
           nro:[""],
           piso:[""],
           cp:[""],
+          }),
+      direccionFacturacion: this.fb.group({
+          ciudad:["", Validators.required],
+          pais:["", Validators.required],
+          estado:["", Validators.required],
+          calle:["", Validators.required],
+          nro:["", Validators.required],
+          piso:["", Validators.required],
+          cp:["", Validators.required],
           })
       })
   }
-
+  //// getters direccion envio 
     get calleInvalida() {
       return this.formEntrega.get('direccion.calle').invalid && this.formEntrega.get('direccion.calle').touched;
     }
@@ -280,7 +336,31 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     get estadoInvalido() {
       return this.formEntrega.get('direccion.estado').invalid && this.formEntrega.get('direccion.estado').touched;
     }
-  
+    /// FIN direcionEnvio getters
+
+   ////// form direccion de facturacion 
+    get calleInvalidaFacturacion() {
+      return this.formEntrega.get('direccionFacturacion.calle').invalid && this.formEntrega.get('direccionFacturacion.calle').touched;
+    }
+    get nroInvalidoFacturacion() {
+      return this.formEntrega.get('direccionFacturacion.nro').invalid && this.formEntrega.get('direccionFacturacion.nro').touched;
+    }
+    get cpInvalidoFacturacion() {
+      return this.formEntrega.get('direccionFacturacion.cp').invalid && this.formEntrega.get('direccionFacturacion.cp').touched;
+    }
+    get ciudadInvalidaFacturacion() {
+      return this.formEntrega.get('direccionFacturacion.ciudad').invalid && this.formEntrega.get('direccionFacturacion.ciudad').touched;
+    }
+    get paisInvalidoFacturacion() {
+      return this.formEntrega.get('direccionFacturacion.pais').invalid && this.formEntrega.get('direccionFacturacion.pais').touched;
+    }
+    get estadoInvalidoFacturacion() {
+      return this.formEntrega.get('direccionFacturacion.estado').invalid && this.formEntrega.get('direccionFacturacion.estado').touched;
+    }
+
+    ////// FIN direccion de facturacion getters ///
+
+
       ///////// obtener paises, estado ciudad ////
   getPaises(){
     this.catalogoservice.getPaises().subscribe( response =>{
@@ -290,21 +370,36 @@ export class CheckoutComponent implements OnInit, OnDestroy{
   
   /// msotrar estados una vez que elegi el pais 
   showEstados(){
-     this.paisSeleccionado = this.formEntrega.get('direccion.pais').value;
-     this.catalogoservice.getEstados(this.paisSeleccionado?.id).subscribe( response =>{
-      this.estados=response;
-     })
+    if (this.tieneDireccion) {
+      this.paisSeleccionado = this.formEntrega.get('direccion.pais').value;
+      this.catalogoservice.getEstados(this.paisSeleccionado?.id).subscribe( response =>{
+       this.estados=response;
+      })
+    }else{
+      this.paisSeleccionado = this.formEntrega.get('direccionFacturacion.pais').value;
+      this.catalogoservice.getEstados(this.paisSeleccionado?.id).subscribe( response =>{
+       this.estados=response;
+      })
+    }
+    
 
     let comboBoxEstados= document.getElementById("combobox-estados");
     comboBoxEstados.style.display="block";
   }
   /// mostrar ciudades una vez que elegi estado 
   showCiudades(){
-    let estadoSeleccionado = this.formEntrega.get('direccion.estado').value;
+    if (this.tieneDireccion) {
+      let estadoSeleccionado = this.formEntrega.get('direccion.estado').value;
+      this.catalogoservice.getCiudades(estadoSeleccionado?.id, this.paisSeleccionado.id).subscribe( response =>{
+      this.ciudades=response;
+      })
+    }else{
+      let estadoSeleccionado = this.formEntrega.get('direccionFacturacion.estado').value;
+      this.catalogoservice.getCiudades(estadoSeleccionado?.id, this.paisSeleccionado.id).subscribe( response =>{
+      this.ciudades=response;
+      })
+    }
     
-    this.catalogoservice.getCiudades(estadoSeleccionado?.id, this.paisSeleccionado.id).subscribe( response =>{
-     this.ciudades=response;
-    })
 
    let comboBoxEstados= document.getElementById("combobox-ciudades");
    comboBoxEstados.style.display="block";
@@ -315,8 +410,9 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     this.enviarInfoCompra.enviarEntrega$.emit(this.entrega);
     this.enviarInfoCompra.enviarPago$.emit(this.pago);
     this.enviarInfoCompra.enviarMostrarConfirmacion$.emit(this.mostrarConfirmacion);
-
+     
   }
+
 
 /**  para ver que imagen mostrar en los metodos de pago */
  imgPayPal(i){

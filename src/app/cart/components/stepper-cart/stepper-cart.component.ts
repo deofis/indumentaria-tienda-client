@@ -23,7 +23,9 @@ export class StepperCartComponent implements OnInit {
   /// para q el stepper sea lineal
   step1Completo:boolean=false;
   step2Completo:boolean=false;
+  actualizarCarrito:boolean
 
+  mostrarResumen:boolean
   mostrarStep1:boolean
   constructor(private enviarInfoCompra:EnviarInfoCompraService) { }
 
@@ -57,7 +59,28 @@ export class StepperCartComponent implements OnInit {
       this.step2Completo=step2Completo;
       console.log(this.step2Completo)
     })
+    this.subscripcionInfoCompra=this.enviarInfoCompra.enviarActualizarCarrito.subscribe(actualizarCarrito=> {
+      this.actualizarCarrito=actualizarCarrito;
+      this.mostrarResumen=false;
+      this.mostrarResumen=true;
+    })
     
   }
+ recargarCarrito(){
  
+  // if (!this.mostrarConfirmacion) {
+  //   this.mostrarCheckout=true
+  //   this.mostrarResumen=false;
+  //  console.log(this.mostrarResumen)
+  // }
+  // if (this.mostrarCheckout) {
+  //   this.mostrarConfirmacion=false
+  //   this.mostrarResumen=false;
+  //   // this.mostrarResumen=true;
+  // }
+
+  // this.mostrarResumen=false;
+  // this.mostrarResumen=true;
+ 
+ }
 }
