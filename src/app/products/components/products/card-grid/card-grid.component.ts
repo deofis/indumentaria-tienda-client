@@ -22,7 +22,7 @@ export class CardGridComponent implements OnInit {
   propiedades:PropiedadProducto[]=[];
   valoresSkus:ValorPropiedadProducto[]=[];
   valoresPropiedades:string[];
-  propiedadesYValoresUsadosEnSkus:PropiedadProducto;
+  propiedadesYValoresUsadosEnSkus:PropiedadProducto[] = [];
   arrayMostrarProp:PropiedadProducto[]=[]
   constructor(private catalogoservice:CatalogoService,private _cartService:MockCartService) { }
  
@@ -30,7 +30,7 @@ export class CardGridComponent implements OnInit {
   ngOnInit(): void {
     this.infoProducto=new Producto();
     this.valoresPropiedades = new Array;
-    this.propiedadesYValoresUsadosEnSkus=  new PropiedadProducto();
+    /* this.propiedadesYValoresUsadosEnSkus=  new PropiedadProducto(); */
 
     this.destacadosInsignia();
     this.tieneFoto();
@@ -100,13 +100,16 @@ export class CardGridComponent implements OnInit {
       let valores =[]
       console.log(this.propiedades)
       for (let x = 0; x < 2; x++) {
-        let propiedad =this.propiedades[x]?.nombre;
+
+        let propiedad = this.propiedades[x]?.nombre;
 
           // recorro los valores de cada una de mis prop
           for (let j = 0; j < this.propiedades[x]?.valores.length; j++) {
+
             let idValor = this.propiedades[x].valores[j].id
-            ///  loc omparo con lso ids de los valores skkus
+            ///  lo comparo con los ids de los valores skkus
             for (let i = 0; i < this.valoresSkus.length; i++) {
+
               if (idValor == this.valoresSkus[i].id) {
                 //si coinciden, lo agrego a mi array de valores de la propiedad q estoy recorriendo 
                 valores.push(this.valoresSkus[i]?.valor)
@@ -118,27 +121,91 @@ export class CardGridComponent implements OnInit {
             
           }
           /// uno el nombre de mi propiedad y sus valores en un objeto llamado propiedades y valores usados
-          this.propiedadesYValoresUsadosEnSkus.nombre=propiedad;
+          /* this.propiedadesYValoresUsadosEnSkus.nombre=propiedad;
           this.propiedadesYValoresUsadosEnSkus.valores=valores;
-          console.log(this.propiedadesYValoresUsadosEnSkus)
+          console.log(this.propiedadesYValoresUsadosEnSkus) */
           
           //hago un push de ese objeto al array q voy a mostrar
-            this.arrayMostrarProp.push(this.propiedadesYValoresUsadosEnSkus);
-             console.log(this.arrayMostrarProp);  
+          /* this.arrayMostrarProp.push(this.propiedadesYValoresUsadosEnSkus);
+          console.log(this.arrayMostrarProp);   */
         
       }
       
     }
 
     obtenerPro2(){
+
       let props = new PropiedadProducto();
       
       props = this.copy(this.propiedades)
       console.log(this.propiedades);
-      
+
+      for (let i = 0; i < this.propiedades.length; i++) {
+
+        props[i].valores = []
+
+      }
+
+      let array = []
 
       for (let i = 0; i < this.valoresSkus.length; i++) {
-        /* console.log(this.valoresSkus[i].valor); */
+        array.push(this.valoresSkus[i].valor)
+        
+      }
+
+      console.log(array);
+      
+
+      
+
+
+      for (let i = 0; i < this.propiedades.length; i++) {
+        
+        for (let j = 0; j < this.propiedades[i].valores.length; j++) {
+          
+          if (array.includes(this.propiedades[i].valores[j].valor)) {
+
+            props[i].valores.push(this.propiedades[i].valores[j])
+            
+          }
+        
+          
+        }
+        
+      }
+
+      this.propiedadesYValoresUsadosEnSkus.push(props);
+      console.log(this.propiedadesYValoresUsadosEnSkus);
+      
+
+
+      /* for (let i = 0; i < this.propiedades.length; i++) {
+        props[i].valores = []
+        
+      } */
+
+      /* for (let o = 0; o < this.propiedades.length; o++) {
+        
+        for (let j = 0; j < this.valoresSkus.length; j++) {
+
+          if (props[o].valores[j].valor !== this.valoresSkus[j].valor) {
+            
+            props[o].valores.splice(j, 1)
+
+          }
+          
+          
+          
+        }
+        
+      } */
+
+      
+      
+      
+
+      /* for (let i = 0; i < this.valoresSkus.length; i++) {
+        
         
         
         for (let x = 0; x < this.propiedades.length; x++) {
@@ -147,16 +214,14 @@ export class CardGridComponent implements OnInit {
           
           for (let j = 0; j <  this.propiedades[x].valores.length; j++) {
 
-            /* console.log(this.propiedades[x].valores[j].valor); */
+            
             
             
             if (this.valoresSkus[i].id !== this.propiedades[x].valores[j].id) {
 
-              /* console.log(this.valoresSkus[i].valor, this.propiedades[x].valores[j].valor); */
+              
               props[x].valores.splice(j, 1);
             
-              
-    
               
               
               
@@ -166,8 +231,8 @@ export class CardGridComponent implements OnInit {
           
         }
         
-      }
-      console.log(props);
+      } */
+      
       
 
       
