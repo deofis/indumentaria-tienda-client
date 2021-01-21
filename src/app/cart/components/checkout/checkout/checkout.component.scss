@@ -318,7 +318,7 @@ $color-ppal:#fff;
     display: block;
   transform: translateY(-15px);
    }
-#combobox-estados, #combobox-ciudades{
+#combobox-estados,#combobox-estados-envio, #combobox-ciudades, #combobox-ciudades-envio{
     display: none;
 }
 .container-right{
@@ -332,14 +332,15 @@ $color-ppal:#fff;
 }
 .titulos-forms{
     font-family: $fte-sec;
-    background-color: lightblue;
+    display: block;
+    padding: 1px 7px;
+    border-radius: 3px;
+    background-color:#12d6f033;
 }
 .titulo-dir{
     border-top: 1px solid grey;
     padding-top: 20px;
-    display: flex;
     margin-top: -10px;
-    flex-direction: column;
     p{
         font-family: $fte-sec;
     }

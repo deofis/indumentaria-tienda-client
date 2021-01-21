@@ -51,7 +51,12 @@ export class ConfirmDataComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
       this.getPerfilCliente(); 
-      this.getCarrito();  
+      this.getCarrito(); 
+      console.log("alfo")
+      setTimeout(() => {
+        console.log(this.clienteDireccion)
+      }, 1000); 
+     
       // this.carritoService.refreshNeeded$
       // .subscribe(()=>{
       //   this.getCarrito();
