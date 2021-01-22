@@ -90,7 +90,7 @@ export class CardGridComponent implements OnInit {
     /* this.obtenerPropiedades() */
     this.obtenerPro2()
 
-   }, 2000);
+   }, 200);
 
     // for (let i = 0; i <this.valoresSkus.length; i++) {
     //   this.valoresPropiedades.push(this.valoresSkus[i].valor);
@@ -153,7 +153,7 @@ export class CardGridComponent implements OnInit {
         
       }
 
-      console.log(array);
+      
       
 
       

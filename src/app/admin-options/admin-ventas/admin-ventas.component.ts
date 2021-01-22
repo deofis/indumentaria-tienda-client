@@ -86,7 +86,8 @@ export class AdminVentasComponent implements OnInit, AfterViewInit {
       }
       this.data.paginator = this.paginator;
 
-      this.data.sortingDataAccessor = (obj, property) => this.getProperty(obj, property);
+      this.data.sortingDataAccessor = (obj, property) => this.getProperty(obj, property); 
+      
 
       this.data.sort = this.sort;
 

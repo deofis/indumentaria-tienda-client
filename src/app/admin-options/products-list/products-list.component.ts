@@ -140,7 +140,7 @@ hideDetail1() {
   };
 
   getProperty = (obj, path) => (
-    path.split('.').reduce((o, p) => o && o[p], obj)
+    path.split('.').reduce((o, p) => o && o[p], obj).toLocaleLowerCase()
   )
 
 }
