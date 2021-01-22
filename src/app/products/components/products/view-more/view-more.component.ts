@@ -39,14 +39,14 @@ export class ViewMoreComponent implements OnInit {
   totalItemsCarrito:number;
   pcioNormal:boolean;
   skusCombobox:Sku[];
-
+  tieneMasDeUna:boolean=true
   /// cantidad seleccionada para enviar al carrito
-cantidadSeleccionada:number
+  cantidadSeleccionada:number
 
   /// sku que voy a enviar al carrito
- idSkuAEnviar:number;
- skuAEnviar:Sku = null;
- itemsCarrito:DetalleCarrito[]
+  idSkuAEnviar:number;
+  skuAEnviar:Sku = null;
+  itemsCarrito:DetalleCarrito[]
 
  /// carrito del localStorage
  skusCarritoLS;
@@ -77,6 +77,7 @@ cantidadSeleccionada:number
     this.cantidadSeleccionada=1
     setTimeout(() => {
       this.getSkusDelProducto()
+    
     }, 1000);
    
     // cambio de muestra de imagenes
@@ -91,6 +92,7 @@ cantidadSeleccionada:number
 
     // destacado
     this.destacadosInsignia();
+   
   }
   ///// obtengo el producto, sus skus  y sus propiedades para mostrar los combobox
   getProduct(){
@@ -109,6 +111,7 @@ cantidadSeleccionada:number
   getSkusDelProducto(){
     this.productoService.getAllTheSkus(this.infoProducto?.id).subscribe(response => {
       this.skusDelProducto=response;
+      this.identificarSkuSeleccionado()
     });
   }
   filtrarPropiedades() {
@@ -162,13 +165,15 @@ cantidadSeleccionada:number
 
   //// metodo que se activa en change del combobox, para ir trayendo skus acorde al valor seleccionado
   valoresSiguienteCombobox(i){
-     /// tomo el valor de la propiedad que seleccioné
+    /// pongo el sku ocmo null para que vuelva por unos segundos a estar los botones disabled hasta q haga todo el proceso y encuentre q los valores me generan un sku a enviar 
+     this.skuAEnviar=null
+ /// tomo el valor de la propiedad que seleccioné
       let select = document.getElementsByClassName("select") as HTMLCollectionOf<HTMLInputElement>;
       let valorCombobox= select[i].value;
-      
+      let valoresElejidosHastaElMomento = []
       // me fijo si es la primer seleccion que hago desde q se iniciaron los valores
-      if(!this.elegido){
-        for (let x = 0; x < this.skusDelProducto?.length; x++) {
+      if( this.valoresSkuSleccionado.length == 0  ){
+           for (let x = 0; x < this.skusDelProducto?.length; x++) {
           // let   valorSeleccionado= this.skusDelProducto.filter(sku=> sku.valores[x].valor ==valorCombobox);
           for (let z = 0; z < this.skusDelProducto[x]?.valores.length; z++) {
              if(this.skusDelProducto[x].valores[z].valor == valorCombobox){
@@ -181,9 +186,7 @@ cantidadSeleccionada:number
              }
           }
          };
-         console.log(this.valoresSkuSleccionado)
        
-     this.elegido=true
       ///lleno mis propiedades filtradas con los valores que coinciden ccon los valores del combobox seleccione
       this.propiedadesFiltradas = this.propiedadesProducto;
       this.propiedadesFiltradas?.forEach(propiedad => {
@@ -198,17 +201,39 @@ cantidadSeleccionada:number
         }
       });
       this.mostrarActualizar=true;
-
-     
-        setTimeout(() => {
-          this.identificarSkuSeleccionado()
-        }, 800);
+         
       } else{
-        setTimeout(() => {
-          this.identificarSkuSeleccionado()
-        }, 800);
+        console.log("else")
+      /// filtro los valores de los combobx para en esa propiedad solo dejar el valor q elegi   
+      this.propiedadesFiltradas[i].valores= this.propiedadesFiltradas[i].valores.filter((k) => k.valor == valorCombobox );
+      
+
+      
+      for (let j = 0; j < select.length; j++) {
+       let valorElegido=select[j].value
+       if(valorElegido !== undefined && valorElegido !== null && valorElegido !== ""){
+        valoresElejidosHastaElMomento.push(valorElegido)
+       }
+      }
+      this.valoresSkuSleccionado=[];
+      // lo vacio y vuelvo a llenar con g
+      console.log(valoresElejidosHastaElMomento)
+      console.log(this.skusDelProducto)
+      for (let x = 0; x < this.skusDelProducto?.length; x++) {
+        // let   valorSeleccionado= this.skusDelProducto.filter(sku=> sku.valores[x].valor ==valorCombobox);
+        for (let z = 0; z < this.skusDelProducto[x]?.valores.length; z++) {
+          for (let p = 0; p < valoresElejidosHastaElMomento.length; p++) {
+            var preseleccion = []
+            if(this.skusDelProducto[x].valores[z].valor == valoresElejidosHastaElMomento[p]){
+             preseleccion.push(this.skusDelProducto[x])
+            }
+          }         
+        } 
+       };
+       console.log(preseleccion)
+      
+
       /// ahora le tengo q decir que se queden en valorskkusseleccionado solamente los valores
-        valorCombobox
         // treaer los skus que forma cuero 
         //fijarme el sku que coincida con alguna de los otras dos colores que quedan
         // eliminar el q no va del sku
@@ -218,6 +243,9 @@ cantidadSeleccionada:number
         //   }
         // }
       }
+      setTimeout(() => {
+        this.identificarSkuSeleccionado()
+      }, 800);
   }
   identificarSkuSeleccionado(){
  

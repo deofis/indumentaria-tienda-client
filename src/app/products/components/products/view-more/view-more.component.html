@@ -74,8 +74,8 @@
                 <div class="text-center" id="cont-props" *ngIf="tieneValores">
 
                     <select id="color" *ngFor="let propiedad of propiedadesFiltradas;let i=index " class="select"
-                        (change)="valoresSiguienteCombobox(i)" >
-                        <option hidden selected value="">{{propiedad.nombre}}</option>
+                        (change)="valoresSiguienteCombobox(i)">
+                        <!-- <option hidden selected value="" >{{propiedad.nombre}}</option> -->
                         <option [value]="valor.valor" *ngFor="let valor of propiedad.valores">{{valor.valor}}</option>
                     </select>
 
