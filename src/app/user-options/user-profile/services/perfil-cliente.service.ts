@@ -1,3 +1,4 @@
+import { Direccion } from './../../../log-in/clases/cliente/direccion';
 import { Cliente } from './../../../log-in/clases/cliente/cliente';
 import { Injectable, EventEmitter, Output } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -17,8 +18,8 @@ export class PerfilClienteService {
     return this.http.get(`${this.urlEndpoint}/perfil/cliente`).pipe( map( response => response as Cliente[]));
   }
 
-  editarInfoPerfilCliente(cliente:Cliente):Observable<any>{
-    return this.http.put(`${this.urlEndpoint}/clientes/actualizar/${cliente.id}`, cliente);
+  editarInfoPerfilCliente(direccion:Direccion):Observable<any>{
+    return this.http.put(`${this.urlEndpoint}/perfil/cliente/direccion`, direccion);
 
   }
 }

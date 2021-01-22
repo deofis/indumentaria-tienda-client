@@ -66,7 +66,7 @@ export class CheckoutComponent implements OnInit, OnDestroy{
   formValido:boolean=false
 
   /// para ver que form mostrar de direccion
-  tieneDireccion:boolean=false
+  tieneDireccion:boolean
 
   /// msje alerta que el form no esta completo 
   mostrarMsje:boolean=false
@@ -671,11 +671,11 @@ getPerfilCliente():void{
   this.perfilClienteService.getInfoPerfilCliente().subscribe(response => {
   this.infoCliente=response;
   this.direccionUsuario=this.infoCliente.direccion
-  // if (this.direccionUsuario== null || this.direccionUsuario== undefined) {
-  //   this.tieneDireccion=false
-  // }else{
-  //   this.tieneDireccion=true
-  // }
+  if (this.direccionUsuario== null || this.direccionUsuario== undefined) {
+    this.tieneDireccion=false
+  }else{
+    this.tieneDireccion=true
+  }
   });
   
 }
@@ -683,8 +683,7 @@ getPerfilCliente():void{
 /// si no tiene direccion , guardo la direcciond efacturacion como direccion del perfil 
   enviarDireccionPerfil(){
     if(!this.tieneDireccion){
-     this.infoCliente.direccion=this.direccionPerfil
-     this.perfilClienteService.editarInfoPerfilCliente(this.infoCliente).subscribe(response => {
+     this.perfilClienteService.editarInfoPerfilCliente(this.direccionPerfil).subscribe(response => {
      console.log(response)
       });
     }

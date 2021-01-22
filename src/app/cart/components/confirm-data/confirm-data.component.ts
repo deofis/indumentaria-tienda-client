@@ -102,8 +102,8 @@ irAPagar(){
   let direccion =new Direccion();
   direccion.calle=this.clienteDireccion?.calle;
   direccion.ciudad=this.clienteDireccion?.ciudad;
-  direccion.codigoPostal=this.clienteDireccion?.cp;
-  direccion.numeroCalle=this.clienteDireccion?.nro;
+  direccion.codigoPostal=this.clienteDireccion?.codigoPostal;
+  direccion.numeroCalle=this.clienteDireccion?.numeroCalle;
   direccion.piso=this.clienteDireccion?.piso;
 
   this.operacion.direccionEnvio=direccion
