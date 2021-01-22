@@ -1,3 +1,4 @@
+import { Cliente } from './../clases/cliente/cliente';
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { API_BASE_URL } from 'src/app/config/config';
 import { Observable } from 'rxjs';
@@ -168,4 +169,8 @@ export class AuthService {
   hasRole(role: string) {
     return localStorage.getItem('rol') == role;
   }
+
+ 
+
+
 }

@@ -1,4 +1,4 @@
-
+import { PerfilUsuarioService } from './../../../../user-options/perfil-usuario.service';
 import { MedioPago } from './../../../../admin-options/admin-ventas/clases/MedioPago';
 import { Cliente } from './../../../../log-in/clases/cliente/cliente';
 import { Direccion } from './../../../../log-in/clases/cliente/direccion';
@@ -66,7 +66,7 @@ export class CheckoutComponent implements OnInit, OnDestroy{
   formValido:boolean=false
 
   /// para ver que form mostrar de direccion
-  tieneDireccion:boolean=false
+  tieneDireccion:boolean
 
   /// msje alerta que el form no esta completo 
   mostrarMsje:boolean=false
@@ -393,7 +393,7 @@ export class CheckoutComponent implements OnInit, OnDestroy{
       this.formValido=true;
       this.mostrarMsjeEnvio=false
      
-      // this.enviarInfoCompra.enviarStep2Completo$.emit(this.step2Completo);
+      this.enviarInfoCompra.enviarStep2Completo$.emit(this.step2Completo);
     /// guardo las vriables con la info que voy a enviar al siguiente paso : direccion, forma de entrega y de pago 
     /** para la forma de entrega me fijo si tengo q poner la direccion del local, la del perfil o la nueva  */
    
@@ -671,11 +671,11 @@ getPerfilCliente():void{
   this.perfilClienteService.getInfoPerfilCliente().subscribe(response => {
   this.infoCliente=response;
   this.direccionUsuario=this.infoCliente.direccion
-  // if (this.direccionUsuario== null || this.direccionUsuario== undefined) {
-  //   this.tieneDireccion=false
-  // }else{
-  //   this.tieneDireccion=true
-  // }
+  if (this.direccionUsuario== null || this.direccionUsuario== undefined) {
+    this.tieneDireccion=false
+  }else{
+    this.tieneDireccion=true
+  }
   });
   
 }
@@ -683,10 +683,9 @@ getPerfilCliente():void{
 /// si no tiene direccion , guardo la direcciond efacturacion como direccion del perfil 
   enviarDireccionPerfil(){
     if(!this.tieneDireccion){
-    //  this.infoCliente.direccion=this.direccionPerfil
-    //  this.perfilClienteService.editarInfoPerfilCliente(this.infoCliente).subscribe(response => {
-    //  console.log(response)
-    //   });
+     this.perfilClienteService.editarInfoPerfilCliente(this.direccionPerfil).subscribe(response => {
+     console.log(response)
+      });
     }
   }
 
