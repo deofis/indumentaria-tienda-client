@@ -249,6 +249,7 @@ export class CheckoutComponent implements OnInit, OnDestroy{
   }
   // se activa cuando toco el boton de editar la direccion de envio
   mostrarFormNewAdress(){
+    this.formEntrega.controls.direccion.enable();
     this.nuevaDireccion=true;
     let dirPerfil = document.getElementById("dir-perfil");
     dirPerfil.style.display="none";
@@ -308,14 +309,22 @@ export class CheckoutComponent implements OnInit, OnDestroy{
   }
   guardarDireccion(){
     if (this.formEntrega.invalid){
+      console.log("invalidoformmm")
     if (this.calleInvalidaFacturacion ||this.nroInvalidoFacturacion
       || this.cpInvalidoFacturacion || this.ciudadInvalidaFacturacion ||this.paisInvalidoFacturacion ||this.estadoInvalidoFacturacion ) {
     this.mostrarMsje=true;
+   }else{/// espues de editar cuando pongo guardar me entra aca 
+    this.formEntrega.controls.direccionFacturacion.disable();
+    this.mostrarMsje=false;
+    document.getElementById("msje-btn-form-facturacion").style.display="none";
+    document.getElementById("edit-facturacion").style.display="block"
    }
+   
    return this.formEntrega.markAllAsTouched();
   }else{
     this.mostrarMsje=false;
     document.getElementById("msje-btn-form-facturacion").style.display="none";
+    document.getElementById("edit-facturacion").style.display="block"
       ///muestro el form de envio, y si lo muestro lo pongo con validadores required
       this.guardarDireccionFacturacion=true;
       this.formEntrega.controls.direccionFacturacion.disable();
@@ -348,26 +357,19 @@ export class CheckoutComponent implements OnInit, OnDestroy{
      }
       
       if(this.formEntrega.controls.formaDeEntrega?.value == "Retiro personalmente" ){
-      
-        this.formEntrega.get('direccion.calle').setValue("Av Calle");
-        this.formEntrega.get('direccion.numeroCalle').setValue("4678");
-        this.formEntrega.get('direccion.codigoPostal').setValue("08007");
-        this.formEntrega.get('direccion.ciudad').setValue(this.direccionTienda.ciudad);
-        this.formEntrega.get('direccion.pais').setValue("");
-        this.formEntrega.get('direccion.estado').setValue("");
         /// si elije retiro en tienda saco lso validadores de la direccion
-        this.formEntrega.get('direccionFacturacion.calle').clearValidators();
-        this.formEntrega.get('direccionFacturacion.numeroCalle').clearValidators();
-        this.formEntrega.get('direccionFacturacion.codigoPostal').clearValidators();
-        this.formEntrega.get('direccionFacturacion.ciudad').clearValidators();
-        this.formEntrega.get('direccionFacturacion.pais').clearValidators();
-        this.formEntrega.get('direccionFacturacion.estado').clearValidators();
-        this.formEntrega.get('direccionFacturacion.calle').updateValueAndValidity();
-        this.formEntrega.get('direccionFacturacion.numeroCalle').updateValueAndValidity();
-        this.formEntrega.get('direccionFacturacion.codigoPostal').updateValueAndValidity();
-        this.formEntrega.get('direccionFacturacion.ciudad').updateValueAndValidity();
-        this.formEntrega.get('direccionFacturacion.pais').updateValueAndValidity();
-        this.formEntrega.get('direccionFacturacion.estado').updateValueAndValidity();
+        this.formEntrega.get('direccion.calle').clearValidators();
+        this.formEntrega.get('direccion.numeroCalle').clearValidators();
+        this.formEntrega.get('direccion.codigoPostal').clearValidators();
+        this.formEntrega.get('direccion.ciudad').clearValidators();
+        this.formEntrega.get('direccion.pais').clearValidators();
+        this.formEntrega.get('direccion.estado').clearValidators();
+        this.formEntrega.get('direccion.calle').updateValueAndValidity();
+        this.formEntrega.get('direccion.numeroCalle').updateValueAndValidity();
+        this.formEntrega.get('direccion.codigoPostal').updateValueAndValidity();
+        this.formEntrega.get('direccion.ciudad').updateValueAndValidity();
+        this.formEntrega.get('direccion.pais').updateValueAndValidity();
+        this.formEntrega.get('direccion.estado').updateValueAndValidity();
          this.clienteDireccion=this.formEntrega.controls.direccion.value
          this.entrega=this.formEntrega.controls.formaDeEntrega?.value;
          let idPago =this.formEntrega.controls.formaDePago?.value;
@@ -686,5 +688,38 @@ getPerfilCliente():void{
      console.log(response)
       });
     }
+  }
+
+  ///*** EDITAR FORMULARIOS  */
+  ///// mara mostar el icono y editar dformulario de direccion de envio y facturacion  DEL USUARIO QUE  NO TIENE DIRECCION DE PERFIL
+  editarDirecionFacturacion(){
+    console.log("editado")
+    document.getElementById("edit-facturacion").style.display="none";
+    this.formEntrega.controls.direccionFacturacion.enable();
+    this.mostrarMsje=false;
+    document.getElementById("msje-btn-form-facturacion").style.display="block";
+  }
+  editarDireccionEnvio(){
+    document.getElementById("edit-envio-2").style.display="none";
+    this.formEntrega.controls.direccion.enable();
+    this.mostrarMsjeEnvio=false;
+    document.getElementById("btn-guardar-envio").style.display="block";
+  }
+
+  mostrarEditarForm(){
+    if (!this.formEntrega.invalid){
+      document.getElementById("edit-envio-2").style.display="block";
+    }
+  }
+///// mara mostar el icono y editar dformulario de direccion de envio DEL USUARIO QUE TIENE DIRECCION DE PERFIL
+  mostarEditarFormUno(){
+      document.getElementById("edit-envio-1").style.display="block";
+      document.getElementById("btn-guardar-envio").style.display="none";
+  }
+  editarDireccionEnvioUno(){
+    document.getElementById("edit-envio-1").style.display="none";
+    this.formEntrega.controls.direccion.enable();
+    this.mostrarMsjeEnvio=false;
+    document.getElementById("btn-guardar-envio").style.display="block";
   }
   }

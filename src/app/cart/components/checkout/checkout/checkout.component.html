@@ -32,7 +32,9 @@
                                     <div class="row cont-nueva-dir" *ngIf="nuevaDireccion">
                                         <div class="col">
                                             <div class="row">
-                                                <p>Ingrese su dirección de entrega</p>
+                                                <p class="titulos-forms">Ingrese su dirección de entrega</p>
+                                                <span><i class="far fa-edit edit-form" id="edit-envio-1" (click)="editarDireccionEnvioUno()"></i></span>
+
                                             </div>
                                             <div class="row campos-direccion ">
                                                 <div class="col" formGroupName="direccion">
@@ -97,7 +99,7 @@
                                                     <div class="row btn-span" id="msje-btn-form-envio">
                                                         <span class="span-msje" *ngIf="mostrarMsjeEnvio"> (*)Campos
                                                             obligatorios.</span>
-                                                        <button class="btn" id="btn-guardar-envio" (click)="guardarDatos()">
+                                                        <button class="btn" id="btn-guardar-envio" (click)="guardarDatos();mostarEditarFormUno()">
                                                             Guardar
                                                         </button>
                                                     </div>
@@ -116,6 +118,7 @@
                                         <div class="col">
                                             <div class="row">
                                                 <p class="titulos-forms">Ingrese su dirección de Facturación</p>
+                                                <span><i class="far fa-edit edit-form" id="edit-facturacion" (click)="editarDirecionFacturacion()"></i></span>
                                             </div>
                                             <div class="row campos-direccion">
                                                 <div class="col" formGroupName="direccionFacturacion">
@@ -197,6 +200,7 @@
                                                 <div class="col">
                                                     <div class="row">
                                                         <p class="titulos-forms">Ingrese su dirección de Envío</p>
+                                                        <span><i class="far fa-edit edit-form" id="edit-envio-2" (click)="editarDireccionEnvio()"></i></span>
                                                     </div>
                                                     <div class="check-repetir row">
                                                         <input type="checkbox" id="repetir" (change)="ocultarFormDireccion()">
@@ -278,7 +282,7 @@
                                                     <div class="row btn-span" id="msje-btn-form-envio">
                                                         <span class="span-msje" *ngIf="mostrarMsjeEnvio"> (*)Campos
                                                             obligatorios.</span>
-                                                        <button class="btn" id="btn-guardar-envio" (click)="guardarDatos()">
+                                                        <button class="btn" id="btn-guardar-envio" (click)="guardarDatos();mostrarEditarForm()">
                                                             Guardar
                                                         </button>
                                                     </div>
