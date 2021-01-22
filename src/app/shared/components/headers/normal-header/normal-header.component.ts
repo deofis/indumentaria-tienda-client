@@ -33,7 +33,9 @@ export class NormalHeaderComponent implements OnInit, AfterViewInit {
   @ViewChild('notificationsInbox') notificationsInbox: ElementRef;
   estaLogueado: boolean;
   userEmail: string;
-  totalItemsCarrito:number=null
+  totalItemsCarrito:number=null;
+
+  subcategoriasMostrar:Subcategoria[]=[];
   
   constructor (private catalogoservice:CatalogoService,
               private router:Router,
@@ -42,9 +44,7 @@ export class NormalHeaderComponent implements OnInit, AfterViewInit {
               private carritoService: CarritoService) { }
 
   ngOnInit(): void {
-    //this.totalQuantity = this.carritoService.getTotalItems();
-    //this.carritoService.totalItemsEmmiter.subscribe(resp => this.totalQuantity = resp)
-
+  
     this.verificarSesion();
     this.getCarrito(); 
     this.subscripcionInfoCompra=this.enviarInfoCompra.enviarCantidadProductosCarrito$.subscribe(totalProductos=> {
@@ -52,10 +52,6 @@ export class NormalHeaderComponent implements OnInit, AfterViewInit {
       console.log(this.totalItemsCarrito)
     })
 
-    //to keep seeing the scroll and adjust the header opacity
-    // window.addEventListener("scroll",this.headerEffect)
- 
-    // get category list 
     this.getListaCategorias();
 
     //cart counter
@@ -117,30 +113,57 @@ export class NormalHeaderComponent implements OnInit, AfterViewInit {
               /********DROP DOWN MENUS */
 //***categories */
   showCategories(){
-    let categoriesList= document.getElementById("categoriesList");
-    categoriesList.style.display="block";
+ 
+    let categoriesList= document.getElementById("container-subcategories");
+    categoriesList.style.display="flex";
 
     
-
     this.bgOpenMenu();    
   }
  
 showsubcategories(index:number){
-  let categories =document.getElementById("categoriesList");
-  categories.style.borderRadius=" 0px 0px 0px 10px"
+  /// me fijo que cantidad de subcategorias trae y en base a eso pongo la cantidad de columnas  a mostrar con los if 
  let container = document.getElementById("container-sub");
- container.style.display="initial";
+ container.style.display="grid";
  let categoriaActual=this.categorias[index]; 
  let subcatActuales=categoriaActual.subcategorias;
-
+this.subcategoriasMostrar=[]
  for (let x = 0; x < subcatActuales.length ; x++) {
-  let itemSubcategoria= document.createElement("p")
-  itemSubcategoria.classList.add("borrar");
-  itemSubcategoria.style.fontFamily="'Open Sans'";
-  itemSubcategoria.style.color="rgb(87, 83, 83)";
-  itemSubcategoria.style.cursor="pointer";
-  itemSubcategoria.innerText=subcatActuales[x].nombre;
-  document.getElementById("container-sub").appendChild(itemSubcategoria);
+  this.subcategoriasMostrar.push(subcatActuales[x])
+ }
+
+ if (subcatActuales.length>4) {
+   let columnas = subcatActuales.length /4
+   let numeroColumnas= Math.ceil(columnas)
+   if (numeroColumnas== 2) {
+     container.style.gridTemplateColumns=" 170px 170px"
+   }
+   if (numeroColumnas== 3) {
+    container.style.gridTemplateColumns=" 170px 170px 170px"
+  }
+  if (numeroColumnas== 4) {
+    container.style.gridTemplateColumns=" 170px 170px 170px 170px"
+  }
+ }
+
+ /// dejo seleccionado la categoria a la que entro
+ let categorias= document.getElementsByClassName("items-categories") as HTMLCollectionOf<HTMLElement>;
+
+ for (let j = 0; j < categorias.length; j++) {
+  categorias[j].style.backgroundColor="rgb(243, 236, 236)";
+  categorias[j].style.color="rgb(87, 83, 83)"
+   if (j==index) {
+    categorias[index].style.backgroundColor="#223e66";
+    categorias[index].style.color="#fff"
+    let flechas = document.getElementsByClassName("flecha-cat") as HTMLCollectionOf<HTMLElement>;
+    for (let z = 0; z < flechas.length; z++) {
+      if (z==index) {
+        flechas[z].style.transform="rotate(-90deg)";
+        flechas[z].style.transitionDuration="0.5s"
+      }
+      
+    }
+   }
  }
 }
 hiddesubcategories(){
@@ -150,10 +173,8 @@ hiddesubcategories(){
   }
 }
 hiddeSubAndCategories(){
-  let containerSubcategories = document.getElementById("container-sub");
- containerSubcategories.style.display="none";
- let categoriesList= document.getElementById("categoriesList");
- categoriesList.style.display="none";
+  let categoriesList= document.getElementById("container-subcategories");
+    categoriesList.style.display="none";
   this.hiddeBgMenu();
 }
 showCategoriesAndSubcategories(){
@@ -203,6 +224,7 @@ hiddeMenu(){
           /**** Search bar  ****/
   buscarProducto(termino:string):void {
     this.router.navigate(['/search',termino]);
+    this.hiddeSubAndCategories()
    }
 
    irPerfil(): void {
@@ -213,27 +235,7 @@ hiddeMenu(){
      }
    }
 
-  //   /// HEADER SCROLL EFFECT 
-  // headerEffect(){
-  //   let scrollTop= document.documentElement.scrollTop;
-  //   let header= document.getElementById("header");
-  //   let redes=document.getElementById("redes-header");
-  //   let subcategories= document.getElementById("container-subcategories")
-  //   let positionheader=1;
-  //   if(scrollTop>positionheader){
-  //     header.style.opacity="0.92";
-  //     header.style.height="80px";
-  //     redes.style.display="none";
-  //     subcategories.style.top="80px"
-
-  //   } else{
-  //     header.style.opacity="1";
-  //     header.style.height="115px"
-  //     redes.style.display="flex";
-  //     redes.style.justifyContent= "flex-end";
-  //     subcategories.style.top="115px"
-  //   }
-  // }
+ 
   
   /**
    * Se encarga de recibir los cambios en la sesión. La primera vez que carga el componente
