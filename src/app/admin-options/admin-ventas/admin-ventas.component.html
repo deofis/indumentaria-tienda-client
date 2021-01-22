@@ -28,7 +28,7 @@
                       <small id="emailHelp" class="form-text text-muted">&nbsp;Estados.</small>
                       <select class="form-control form-control-sm" (change)="applyFilter($event)" #select name = "state" [(ngModel)]="state">
                         <option value="">Todos</option>
-                        <option *ngFor="let estado of estadosOperacion" [value] = "estado">
+                        <option *ngFor="let estado of estadosOperacion" [value] = "estado | convertEstadoOp">
                           {{estado | convertEstadoOp}}
                         </option>
                       </select>

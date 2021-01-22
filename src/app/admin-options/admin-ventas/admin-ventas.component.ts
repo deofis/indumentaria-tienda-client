@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 import { VentasService } from '../ventas.service';
+
 import { Operacion } from './clases/Operacion';
 
 import { MatSort } from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
-// import { SortEvent } from 'primeng/api';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
