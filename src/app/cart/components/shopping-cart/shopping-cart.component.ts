@@ -64,7 +64,30 @@ export class ShoppingCartComponent implements OnInit {
             this.enviarInfoCompra.enviarCantidadProductosCarrito$.emit(this.totalProductos); 
           }, 100);
       });
-    }  
+    }  else{
+        const getlocal = localStorage.getItem("miCarrito");
+        if(getlocal != null ){ /* osea si existe*/
+          this.carrito = JSON.parse(getlocal); 
+        }
+        let subtotal =0
+        for (let x = 0; x < this.carrito.items.length; x++) {
+          if (this.carrito.items[x].sku.promocion !==null && this.carrito.items[x].sku.promocion.estaVigente) {
+            subtotal=this.carrito.items[x].cantidad* this.carrito.items[x].sku.promocion.precioOferta;
+            this.carrito.items[x].subtotal = subtotal;
+          }else{
+            subtotal = this.carrito.items[x].cantidad * this.carrito.items[x].sku.precio;
+            this.carrito.items[x].subtotal= subtotal;
+          }
+          
+        }
+       
+        let total = 0;
+        this.carrito.items.forEach(item => {
+            total = total + item.subtotal;
+        });
+        this.carrito.total = total;
+      
+    }
    
   }
  

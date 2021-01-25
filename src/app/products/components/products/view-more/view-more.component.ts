@@ -1,3 +1,4 @@
+import { DetalleCarrito } from './../../../../cart/clases/detalle-carrito';
 import { ProductoService } from './../../../../admin-options/producto.service';
 import { ValorPropiedadProducto } from './../../../clases/valor-propiedad-producto';
 import { Component, OnInit } from '@angular/core';
@@ -320,26 +321,41 @@ export class ViewMoreComponent implements OnInit {
     } else{
       console.log("usuario no logueado");
       // creo un arrayy vacio y le pusheo el sku q estoy agregando
-      let arrayItemsCarrito = [];
-      arrayItemsCarrito.push(sku);
+    
+      // this.arrayItemsCarrito.items.push(detalle);
 
       // verifico si existe micarrito
-      var getlocal = localStorage.getItem("miCarrito");
-      var parslocal;
+      const getlocal = localStorage.getItem("miCarrito");
+      let carrito:Carrito;
       if(getlocal != null ){ /* osea si existe*/
         // parseo lo que trae para poder pushearlo a mi array
-        parslocal = JSON.parse(getlocal); 
-        for (let i = 0; i < parslocal.length; i++) {
-          arrayItemsCarrito.push(parslocal[i]);
-        }
+        carrito = JSON.parse(getlocal); 
+        console.log(carrito);
+      
+        this.carritoService.agregarItemLocal(sku,carrito)
+          setTimeout(() => {
+            this.enviarInfoCompra.enviarCantidadProductosCarrito$.emit(this.totalItemsCarrito); 
+          }, 100);
+        
         /// envio el array completo , con la info q me traje y parsié y con el nuevo item
-        localStorage.setItem("miCarrito",JSON.stringify(arrayItemsCarrito) );
+        localStorage.setItem("miCarrito",JSON.stringify(carrito) );
       }else{ /* si no existe, lo creo con el sku q estoy enviando como contenido*/
-        localStorage.setItem("miCarrito",JSON.stringify(arrayItemsCarrito) );
+        let nuevoCarrito:Carrito= new Carrito();
+        let detalle: DetalleCarrito = new DetalleCarrito();
+        detalle.sku=sku;
+        detalle.cantidad=1;
+        // if (detalle.sku.promocion!== null) {
+        //   nuevoCarrito.total=detalle.sku.promocion.precioOferta*detalle.cantidad
+        // }else{
+        //   nuevoCarrito.total=detalle.sku.precio*detalle.cantidad
+        // }
+        nuevoCarrito.items.push(detalle);
+        localStorage.setItem("miCarrito",JSON.stringify(nuevoCarrito) );
       }
 
     }
   }
+ 
   /*
 ///// CANTIDAD////
 public  removeOne(item:ItemCarrito){
