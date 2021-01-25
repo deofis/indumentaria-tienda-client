@@ -96,10 +96,10 @@ export class NormalHeaderComponent implements OnInit, AfterViewInit {
   }
 
   hayAlgoEnElCarrito(){
-    if (this.totalItemsCarrito!== 0) {
-      return true
-    }else{
+    if (this.totalItemsCarrito=== 0) {
       return false
+    }else{
+      return true
     }
   }
    /***** GET CATEGORIES *****/

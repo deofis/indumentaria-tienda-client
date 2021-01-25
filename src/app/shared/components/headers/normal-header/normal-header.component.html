@@ -38,10 +38,10 @@
                             </div>
                         </div>
                         <div class="col-5 carrito-icono">
-                            <div *ngIf="hasRole('ROLE_USER') || !estaLogueado" class="iconos carrito" [routerLink]="['/shopping-cart']">
+                            <div *ngIf="!hasRole('ROLE_ADMIN') || !estaLogueado" class="iconos carrito" [routerLink]="['/shopping-cart']">
                                 <!-- <i class="fas fa-shopping-cart opciones"></i> -->
                                 <img src="../../../../../assets/imagenes/icon-cart.png" alt="">
-                                <div class="iconos circulo" *ngIf="hayAlgoEnElCarrito() && hasRole('ROLE_USER')">
+                                <div class="iconos circulo" *ngIf="totalItemsCarrito!==0 ">
                                     <span>{{totalItemsCarrito}}</span>
                                 </div>
                             </div>
