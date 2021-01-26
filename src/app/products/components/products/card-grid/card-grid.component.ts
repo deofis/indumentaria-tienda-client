@@ -17,7 +17,6 @@ export class CardGridComponent implements OnInit {
   @Input() producto:Producto;
   infoProducto:Producto;
   destacado:boolean=false;
-  oferta:boolean=false;
   tieneFotoPpal:boolean;
   propiedades:PropiedadProducto[]=[];
   valoresSkus:ValorPropiedadProducto[]=[];
@@ -34,7 +33,6 @@ export class CardGridComponent implements OnInit {
 
     this.destacadosInsignia();
     this.tieneFoto();
-    this.estaEnOferta();
     //obtengo los valores de mis skus
     this.obtenerValoresSkus();
     
@@ -58,20 +56,8 @@ export class CardGridComponent implements OnInit {
       }
     }
   }
-  mostrarPrecio(){
-    if (this.oferta) {
-      return false
-    }else{
-      return true
-    }
-  }
-  estaEnOferta(){
-    if (this.producto.promocion!== null) {
-        this.oferta=true   
-    }else{
-      this.oferta=false
-    }
-  }
+ 
+ 
 
   obtenerValoresSkus(){
     let skus = this.producto.skus;
@@ -259,5 +245,16 @@ saveToFav() {
   return result;
 }
 
-
+mostrarPrecioOferta(producto:Producto){
+  if (producto.promocion) {
+     if (producto.promocion.estaVigente) {
+       return true
+     }else{
+       return false
+     }
+  }else{
+    return false
+  }
+  
+}
 }

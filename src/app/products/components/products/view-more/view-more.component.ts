@@ -15,12 +15,14 @@ import { Sku } from 'src/app/products/clases/sku';
 import { Router } from '@angular/router';
 import { EnviarInfoCompraService } from 'src/app/user-options/user-profile/services/enviar-info-compra.service';
 import { MatSnackBarConfig, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, MatSnackBarRef,MatSnackBar, MatSnackBarContainer,} from  '@angular/material/snack-bar';
+import {MatSelectModule} from  '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-view-more',
   templateUrl: './view-more.component.html',
   styleUrls: ['./view-more.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+   encapsulation: ViewEncapsulation.None,
 })
 export class ViewMoreComponent implements OnInit {
 
@@ -231,17 +233,6 @@ export class ViewMoreComponent implements OnInit {
         } 
        };
        console.log(preseleccion)
-      
-
-      /// ahora le tengo q decir que se queden en valorskkusseleccionado solamente los valores
-        // treaer los skus que forma cuero 
-        //fijarme el sku que coincida con alguna de los otras dos colores que quedan
-        // eliminar el q no va del sku
-        // for (let u = 0; u < this.skusDelProducto[x].valores.length; u++) {
-        //   if (!this.valoresSkuSleccionado.some(val => val.id == this.skusDelProducto[x].valores[u].id )) {
-        //     this.valoresSkuSleccionado.push(this.skusDelProducto[x].valores[u]);
-        //   }
-        // }
       }
       setTimeout(() => {
         this.identificarSkuSeleccionado()
@@ -276,9 +267,16 @@ export class ViewMoreComponent implements OnInit {
             // this.agregarCarrito(this.skuAEnviar)
             })
             break;
-         }       
+         } 
+        
        }
-  
+       setTimeout(() => {
+        if (this.skuAEnviar== null) {
+          this.openSnackBarNoDisponible();
+          
+        }
+
+       }, 800);
   
    }
   ///////
@@ -422,13 +420,14 @@ restarUnidad(){
 
   
   }
+  /////**** ALERTAS ***/////
+  // prod agregado al carrito
   openSnackBar(){
     if ($(window).scrollTop() >= 30) {
       let snackBarRef= this.snackBar.open('Producto agregado al Carrito', null, {
         duration:1300 ,
         horizontalPosition : this .horizontalPosition,
         verticalPosition : this .verticalPosition,
-        panelClass :['warning'],
         
      });
     }else{
@@ -439,6 +438,37 @@ restarUnidad(){
         
      });
     }
+   }
+   /// combinacion no disponuble
+   openSnackBarNoDisponible(){
+    if ($(window).scrollTop() >= 30) {
+      let snackBarRef= this.snackBar.open('Combinación no disponible', null, {
+        duration:1300 ,
+        horizontalPosition : this .horizontalPosition,
+        verticalPosition : this .verticalPosition,
+        panelClass :['warning'],
+     });
+    }else{
+      let snackBarRef= this.snackBar.open('Combinación no disponible', null, {
+        duration:1300 ,
+        horizontalPosition : this .horizontalPosition,
+        verticalPosition : this .verticalPosition,
+        
+     });
+    }
+   }
+////////////////////////
+   mostrarPrecioOferta(){
+     if (this.skuAEnviar.promocion) {
+        if (this.skuAEnviar.promocion.estaVigente) {
+          return true
+        }else{
+          return false
+        }
+     }else{
+       return false
+     }
+     
    }
   ////
   

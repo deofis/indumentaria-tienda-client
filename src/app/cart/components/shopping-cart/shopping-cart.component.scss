@@ -8,6 +8,17 @@ $color-ppal:#fff;
  $color-wf1:#223e66;
  $color-wf2:#1f4e84;
 
+  /* estilos de snackbar*/
+  .mat-snack-bar-container{
+    background-color:$color-wf2!important;
+    color:white !important;
+    margin-top: 90px !important;
+    font-family: $fte-sec !important;
+    width: 310px !important;
+    min-width: unset !important;
+    opacity: 0.9  !important;
+  }
+  ///
 .container-left{
  margin-top: 15px;
 height: fit-content;
@@ -229,23 +240,19 @@ height: fit-content;
         }
 
     }
-    button{
+    .btn-cont{
         background-color: $color-wf1;
-        font-size: 17px;
         color: white;
-        font-family: $fte-ppal;
-        border-radius: 0px 0px 15px 15px;
-        border: 0px ;
-        margin-top:5px ;
-        box-sizing: border-box;
-        width: 100%;
-        padding: 4px 25px;
-        align-self: flex-end;
-        outline: none;
-        height: 37px;
+        font-family: $fte-sec;
+        width: 40%;
+        font-size: 16px;
+        position: absolute;
+        margin-top: 250px;
+        right: 5px;
+        display: block;
         &:hover{
-            cursor: pointer;
             background-color: $color-wf2;
+            cursor: pointer;
         }
     }
 }
@@ -253,21 +260,7 @@ height: fit-content;
    height: fit-content;
    padding-bottom: 50px;
 }
-.btn-cont{
-    background-color: $color-wf1;
-    color: white;
-    font-family: $fte-sec;
-    width: 14%;
-    font-size: 16px;
-    position: absolute;
-    bottom: 50px;
-    right: 45px;
-    display: block;
-    &:hover{
-        background-color: $color-wf2;
-        cursor: pointer;
-    }
-}
+
 @media  screen and (max-width: 767px)  {
 
     .container-left{

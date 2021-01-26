@@ -91,6 +91,10 @@ export class NormalHeaderComponent implements OnInit, AfterViewInit {
         this.totalItemsCarrito = response.carrito.items.length;
         console.log(this.totalItemsCarrito)
       });
+    }else{
+      const getlocal = localStorage.getItem("miCarrito");
+      this.carrito = JSON.parse(getlocal); 
+      this.totalItemsCarrito=this.carrito.items.length
     }
     this.hayAlgoEnElCarrito()
   }

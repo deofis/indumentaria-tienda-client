@@ -13,12 +13,12 @@
     <h3 [routerLink]="['/viewmore',producto.id]">{{producto.nombre}}</h3>
 
     <div class="cont-precios">
-      <div *ngIf="oferta" class="row-oferta">
+      <div *ngIf="mostrarPrecioOferta(producto)" class="row-oferta">
         <span>{{producto.precio | currency:'EUR':'symbol'}}</span>
         <p class="off ">{{producto.promocion?.porcentaje * 100 | number:'2.0-0'}}% 0FF</p>
       </div>
-      <p class="precio" *ngIf="mostrarPrecio()">{{producto.precio | currency:'EUR':'symbol'}}</p>
-      <p class="precioOferta" *ngIf="oferta">{{producto.promocion?.precioOferta | currency:'EUR':'symbol'}}</p>
+      <p class="precio" *ngIf="!mostrarPrecioOferta(producto)">{{producto.precio | currency:'EUR':'symbol'}}</p>
+      <p class="precioOferta" *ngIf="mostrarPrecioOferta(producto)">{{producto.promocion?.precioOferta | currency:'EUR':'symbol'}}</p>
     </div>
 
 

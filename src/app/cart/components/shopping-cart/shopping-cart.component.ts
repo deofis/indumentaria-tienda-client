@@ -1,17 +1,19 @@
 import { Carrito } from './../../clases/carrito';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
 import { MockCartService } from '../../services/mock-cart.service';
 import { ItemCarrito } from '../../clases/item-carrito';
 import { CarritoService } from '../../services/carrito.service';
 import { DetalleCarrito } from '../../clases/detalle-carrito';
 import { AuthService } from '../../../log-in/services/auth.service';
 import { EnviarInfoCompraService } from 'src/app/user-options/user-profile/services/enviar-info-compra.service';
+import { MatSnackBarConfig, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, MatSnackBarRef,MatSnackBar, MatSnackBarContainer,} from  '@angular/material/snack-bar';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
-  styleUrls: ['./shopping-cart.component.scss']
+  styleUrls: ['./shopping-cart.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ShoppingCartComponent implements OnInit {
 
@@ -21,9 +23,15 @@ export class ShoppingCartComponent implements OnInit {
   actualizarCarrito:boolean;
   // item:ItemCarrito
 
+
+   /// posicion de la notificacion de producto agregado al carrito
+  horizontalPosition : MatSnackBarHorizontalPosition = 'end' ;
+  verticalPosition: MatSnackBarVerticalPosition = 'top' ;
+
   constructor(private carritoService: CarritoService,
                private _cartService:MockCartService, 
                private authService: AuthService,
+               private snackBar:MatSnackBar,
                private enviarInfoCompra:EnviarInfoCompraService,
                private Router:Router,
                ) {
@@ -90,7 +98,12 @@ export class ShoppingCartComponent implements OnInit {
         this.carrito.total = total;
       
     }
-   
+    this.carrito.items = this.carrito.items.map((item: DetalleCarrito) => {
+      if (item.cantidad>item.sku.disponibilidad) {
+        item.cantidad=item.sku.disponibilidad
+      }
+      return item
+    })
   }
  
   eliminarItem(id?: number): void {
@@ -105,8 +118,12 @@ export class ShoppingCartComponent implements OnInit {
       this.carrito = JSON.parse(getlocal); 
       this.carritoService.eliminarItemLocal(id,this.carrito);
       this.getCarrito();
+      this.totalProductos=this.carrito.items.length;
+        /// envio la cantidad de producto al header para q muestre la notifiicacion
+        setTimeout(() => {
+          this.enviarInfoCompra.enviarCantidadProductosCarrito$.emit(this.totalProductos); 
+        }, 100);
     }
-    
     this.totalProductos=this.carrito.items.length
     console.log(this.totalProductos)
   
@@ -117,7 +134,12 @@ export class ShoppingCartComponent implements OnInit {
    
       this.carrito.items = this.carrito.items.map((item: DetalleCarrito) => {
         if (skuId == item.sku.id) {
-          --item.cantidad;
+            --item.cantidad;
+                   
+          if (item.cantidad!==item.sku.disponibilidad) {
+            document.getElementById("sumar").style.color="#1f4e84"
+          }
+          
         };
         return item;
       });
@@ -145,7 +167,12 @@ export class ShoppingCartComponent implements OnInit {
     let skuId = item.sku.id;
     this.carrito.items = this.carrito.items.map((item: DetalleCarrito) => {
       if (skuId == item.sku.id) {
-        ++item.cantidad;
+        if (item.cantidad< item.sku.disponibilidad) {
+          ++item.cantidad;  
+        }
+        if (item.cantidad== item.sku.disponibilidad) {
+          this.openSnackBar()
+        }  
       };
       return item;
     });
@@ -175,24 +202,19 @@ export class ShoppingCartComponent implements OnInit {
    
   }
 
-  /*
-  ///inicio carrito de compras eliminar , sumar 
-  // public remove(item:ItemCarrito){
-  //   this._cartService.removeElementCart(item);
-  // }
-  // public  removeOne(item:ItemCarrito){
-  //   this._cartService.removeOneElementCart(item)
-  // }
-  // public addOne(item:ItemCarrito){
-  //   this._cartService.addOneElementCart(item)
-  // }
-
-//// fin carrito de compras eliminar sumar 
-
-
- closeIcon(){
-  let icono=document.getElementById("close");
-  icono.style.color="red"
- }
- */
+  openSnackBar(){
+    if ($(window).scrollTop() >= 30) {
+      let snackBarRef= this.snackBar.open('Producto agregado al Carrito', null, {
+        duration:2000 ,
+        horizontalPosition : this .horizontalPosition,
+        verticalPosition : this .verticalPosition,
+     });
+    }else{
+      let snackBarRef= this.snackBar.open('Llegaste al límite de unidades disponibles.', null, {
+        duration:2000 ,
+        horizontalPosition : this .horizontalPosition,
+        verticalPosition : this .verticalPosition,
+     });
+    }
+   }
 }
