@@ -47,11 +47,14 @@ export class NormalHeaderComponent implements OnInit, AfterViewInit {
   
     this.verificarSesion();
     this.getCarrito(); 
-    this.subscripcionInfoCompra=this.enviarInfoCompra.enviarCantidadProductosCarrito$.subscribe(totalProductos=> {
-      this.totalItemsCarrito=totalProductos;
-      console.log(this.totalItemsCarrito)
-    })
-
+    setTimeout(() => {
+      this.subscripcionInfoCompra=this.enviarInfoCompra.enviarCantidadProductosCarrito$.subscribe(totalProductos=> {
+        this.totalItemsCarrito=totalProductos;
+        console.log(this.totalItemsCarrito)
+      })
+  
+    }, 300);
+   
     this.getListaCategorias();
 
     //cart counter
@@ -91,22 +94,27 @@ export class NormalHeaderComponent implements OnInit, AfterViewInit {
         this.totalItemsCarrito = response.carrito.items.length;
         console.log(this.totalItemsCarrito)
       });
+    }else{
+      const getlocal = localStorage.getItem("miCarrito");
+      this.carrito = JSON.parse(getlocal); 
+      if (this.carrito!==null) {
+        this.totalItemsCarrito=this.carrito.items.length
+      }
     }
     this.hayAlgoEnElCarrito()
   }
 
   hayAlgoEnElCarrito(){
-    if (this.totalItemsCarrito!== 0) {
-      return true
-    }else{
+    if (this.totalItemsCarrito=== 0) {
       return false
+    }else{
+      return true
     }
   }
    /***** GET CATEGORIES *****/
   getListaCategorias():void{
     this.catalogoservice.getListaCategorias().subscribe( response =>{
      this.categorias=response;
-     console.log(response);
     }
      )
   }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IniciarSesionRequest } from '../../clases/login-request';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterStateSnapshot } from '@angular/router';
 import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL } from '../../../config/config';
 import Swal from 'sweetalert2';
 
@@ -69,12 +69,16 @@ export class FormLogInComponent implements OnInit {
       return Object.values(this.formLogin.controls)
       .forEach(control => control.markAsTouched());
     }
-
+   
     this.usuario.email = this.formLogin.controls.email.value;
     this.usuario.password = this.formLogin.controls.password.value;
 
     this.authService.login(this.usuario).subscribe(response => {
-      this.router.navigate(['home'])
+      if (this.router.url== "/pre-checkout") {
+        this.router.navigate(['shopping-cart'])
+      }else{
+        this.router.navigate(['home'])
+      }
     }, err => {
       Swal.fire({
         icon: 'error',

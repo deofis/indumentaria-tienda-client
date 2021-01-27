@@ -1,10 +1,10 @@
+import { Carrito } from './../clases/carrito';
 import { tap } from 'rxjs/operators';
 import { Injectable, EventEmitter, Output } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { API_BASE_URL } from '../../config/config';
 import { Observable, Subject } from 'rxjs';
 import { Sku } from 'src/app/products/clases/sku';
-import { Carrito } from '../clases/carrito';
 import { DetalleCarrito } from '../clases/detalle-carrito';
 
 @Injectable({
@@ -49,9 +49,9 @@ export class CarritoService {
    * @param skuId id del sku a agregar al carrito.
    * @return Observable con el objeto carrito.
    */
-  agregarSkuAlCarrito(skuId: string): Observable<any> {
+  agregarSkuAlCarrito(skuId: string,cantidad:string): Observable<any> {
    
-    const params = new HttpParams().set('skuId', skuId);
+    const params = new HttpParams().set('skuId', skuId).set('cantidad',cantidad);
 
     ++this.totalItems;
     this.totalItemsEmmiter.emit(this.totalItems);
@@ -103,6 +103,17 @@ export class CarritoService {
     );
   }
 
+
+  eliminarItemLocal(skuId:number,carrito:Carrito){
+    let items = carrito.items
+    for (let x = 0; x < items.length; x++) {
+      if (items[x].sku.id===skuId) {
+        carrito.items.splice(x,1)
+        localStorage.setItem("miCarrito",JSON.stringify(carrito) );
+      }
+      
+    }
+  }
   /**
    * Actualiza la cantidad de productos de un item, y devuelve el carrito actualizado.
    * @param cantidad number cantidad nueva del item.
@@ -112,11 +123,29 @@ export class CarritoService {
     const parametros = new HttpParams().set('skuId', skuId).set('cantidad', cantidad);
 
     return this.http
-    .put(`${this.urlEndpoint}/carrito/item/actualizar`, null, {params: parametros}) ;
-    
+    .put(`${this.urlEndpoint}/carrito/item/actualizar`, null, {params: parametros}) 
 
   }
 
+  actualizarCantidadLocal(cantidad:number,skuId:number,carrito:Carrito){
+    console.log(cantidad)
+    for (let x = 0; x < carrito?.items.length; x++) {
+      if (carrito.items[x].sku.id===skuId) {
+        if (carrito.items[x].cantidad!== 0 ) {
+          carrito.items[x].cantidad=carrito.items[x].cantidad + cantidad-1        
+        }
+      }
+      localStorage.setItem("miCarrito",JSON.stringify(carrito) );
+    }
+  }
+  sumarORestarCantidadLocal(cantidad:number,skuId:number,carrito:Carrito){
+    for (let x = 0; x < carrito.items.length; x++) {
+      if (carrito.items[x].sku.id===skuId) {
+        carrito.items[x].cantidad=cantidad
+      }
+      localStorage.setItem("miCarrito",JSON.stringify(carrito) );
+    }
+  }
   getTotalItems(): number {
     let total;
     this.getCarrito().subscribe(resp => {

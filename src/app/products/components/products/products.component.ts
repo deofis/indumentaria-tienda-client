@@ -133,6 +133,7 @@ showCategoriesEffect() {
     this.catalogoService.getProductos().subscribe(response => {
     this.todosLosProductos=response;
     this.ofertas= this.todosLosProductos.filter(rdo => rdo.promocion !== null);
+    this.ofertas= this.ofertas.filter(oferta => oferta.promocion.estaVigente !== false);
     });
   }
 

@@ -15,15 +15,13 @@ export class CardCarouselComponent implements OnInit {
   @Input() producto:Producto;
   infoProducto:Producto;
   destacado:boolean=false;
-  oferta:boolean=false;
   tieneFotoPpal:boolean;
   constructor(private catalogoservice:CatalogoService,private _cartService:MockCartService) { }
 
   ngOnInit(): void {
     this.infoProducto=new Producto();
     this.destacadosInsignia();
-    this.tieneFoto();
-    this.estaEnOferta();    
+    this.tieneFoto();    
   }
 
 
@@ -43,20 +41,8 @@ export class CardCarouselComponent implements OnInit {
       }
     }
   }
-  mostrarPrecio(){
-    if (this.oferta) {
-      return false
-    }else{
-      return true
-    }
-  }
-  estaEnOferta(){
-    if (this.producto.promocion!== null) {
-        this.oferta=true   
-    }else{
-      this.oferta=false
-    }
-  }
+ 
+ 
 
 
 
@@ -68,7 +54,18 @@ export class CardCarouselComponent implements OnInit {
   // } 
  
 }
-
+mostrarPrecioOferta(producto:Producto){
+  if (producto.promocion) {
+     if (producto.promocion.estaVigente) {
+       return true
+     }else{
+       return false
+     }
+  }else{
+    return false
+  }
+  
+}
 
 
 }

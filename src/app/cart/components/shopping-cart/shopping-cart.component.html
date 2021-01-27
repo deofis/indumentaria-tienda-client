@@ -44,9 +44,9 @@
                                         <div class=" col-4  quantity">
                                             <span>Cantidad:</span>
                                             <div class="modify-quantity">
-                                                <i class="fas fa-minus-circle" (click)="decrementarCantidad(item)"></i>
+                                                <i class="fas fa-minus-circle"id="restar" (click)="decrementarCantidad(item)"></i>
                                                 <span class="item-quantity">{{item?.cantidad }}</span>
-                                                <i class="fas fa-plus-circle" (click)="incrementarCantidad(item)"></i>
+                                                <i class="fas fa-plus-circle" id="sumar"  (click)="incrementarCantidad(item)"></i>
                                             </div>
                                         </div>
                                         <div class="col-4  subtotal">
@@ -77,10 +77,11 @@
                 <!-- <button [routerLink]="['/pre-checkout']">Continuar</button> -->
 
             </div>
-
+            <div class="row">
+                <button mat-button matStepperNext class="btn-cont" (click)="enviarInfoACheckout()"  *ngIf="estaLogueado() && carrito?.total!==0 " id="btn-cont">Continuar</button>
+                <span *ngIf="!estaLogueado() && carrito?.total!==0 "  class="msje-inicio" > <a  [routerLink]="['/pre-checkout']">Iniciar sesión</a> para continuar.</span>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <button mat-button matStepperNext class="btn-cont" (click)="enviarInfoACheckout()" *ngIf="carrito?.total!==0 " id="btn-cont">Continuar</button>
-    </div>
+ 
 </div>

@@ -9,6 +9,70 @@ $color-ppal:#fff;
  $color-wf2:#1f4e84;
  $color-wf3:#2779cd;
  $color-wf4:#70b8f3;
+/* estilos combobox*/
+#cont-props{
+    display: flex;
+    grid-template-columns:1fr 1fr 1fr ;
+    grid-template-rows: 1fr 1fr ;
+    justify-content: center;
+    align-items: center;
+    .combobox-cont{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100px;
+        span{
+            color: grey;
+            font-size: 10px;
+            position: relative;;
+            z-index: 2;
+            left: 5px;
+            bottom: -20px;
+        }
+        .select{
+            margin: 5px;
+            margin-top: 0px;
+            font-size: 16px;
+            padding-top: 15px;
+            border-radius:0rem;
+            border-width: 2px;
+            line-height: 1.6rem;
+            position: relative;
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 0px;
+            border-color: rgb(34, 62, 102);
+            background-color: #fff;
+            width: 80px;
+            cursor: pointer;
+            font-family: $fte-sec;
+           
+            &:focus{
+                outline: none;
+            }
+            option{
+                background-color: $color-menues;
+                color: $color-sec;
+                font-family: $fte-sec;
+                border-radius: 0px 10px 10px 0px;
+            }
+        }
+     
+        
+        &:hover{
+            transform: scale(1.07);
+        }
+        &:hover>span{
+            color: $color-wf3;
+        }
+        &:hover>select{
+            color: $color-sec;
+        }
+        }
+}
+
+///
+
  /* estilos de snackbar*/
  .mat-snack-bar-container{
     background-color:$color-wf2!important;
@@ -228,6 +292,7 @@ $color-ppal:#fff;
                         margin-right: auto;
                         .modify-quantity{
                             border: none;
+                            margin-top: 10px;
                             border-radius: 5px;
                             display: flex;
                             justify-content: space-around;
@@ -256,22 +321,7 @@ $color-ppal:#fff;
                                 font-size: 17px;
                             }
                         }
-                        #color{
-                            width: 120px;
-                            height: 30px;
-                            font-family: $fte-sec;
-                            font-size: 17px;
-                            text-align: center;
-                            font-weight: bold;
-                            border: 1px solid $color-ter;
-                            border-radius: 5px;
-                            outline: none;
-                            padding-left: 10px;
-                            
-                            &:focus{
-                                outline: none;
-                            }
-                        }
+                      
                     }
                     .talles{
                         display: flex;
@@ -815,23 +865,4 @@ $color-ppal:#fff;
 }
 
 
-.select{
-    margin: 5px;
-    font-weight: lighter;
-    font-size: 16px;
-    padding-top: 15px;
-    border-radius:0rem;
-    border-width: 2px;
-    line-height: 1.6rem;
-    position: relative;
-    border-top: 0px;
-    border-left: 0px;
-    border-right: 0px;
-    border-color: rgb(34, 62, 102);
-    background-color: #fff;
-    cursor: pointer;
-}
 
-select:hover{
-    transform: scale(1.10);
-}
