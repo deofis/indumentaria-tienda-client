@@ -217,4 +217,12 @@ export class ShoppingCartComponent implements OnInit {
      });
     }
    }
+
+   estaLogueado(){
+    if (this.authService.isLoggedIn()) {
+      return true
+    }else{
+      return false 
+    }
+   }
 }

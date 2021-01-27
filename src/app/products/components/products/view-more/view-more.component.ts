@@ -58,6 +58,9 @@ export class ViewMoreComponent implements OnInit {
  horizontalPosition : MatSnackBarHorizontalPosition = 'end' ;
  verticalPosition: MatSnackBarVerticalPosition = 'top' ;
 
+
+ /// rol de usuario 
+
   constructor(private catalogoservice:CatalogoService,
               private activatedroute:ActivatedRoute,
               private _cartService:MockCartService,
@@ -484,6 +487,10 @@ restarUnidad(){
    cartel.innerHTML="Gracias! Te responderemos a la brevedad.";
    cartel.style.color="#2779cd"
    let contenedor=document.getElementById("contenedorCartel");
+
+
+  
+   
 
 
  }

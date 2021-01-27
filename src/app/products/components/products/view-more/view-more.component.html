@@ -61,14 +61,14 @@
                 </div>
 
                 <br>
-                <!-- <div class="text-center" id="cont-props" *ngIf="tieneValores"></div>
+                <div class="text-center" id="cont-props" *ngIf="tieneValores">
 
                      <select id="color" *ngFor="let propiedad of propiedadesFiltradas;let i=index " class="select"
                         (change)="valoresSiguienteCombobox(i)">
                         <option hidden selected value="" >{{propiedad.nombre}}</option>
                         <option [value]="valor.valor" *ngFor="let valor of propiedad.valores">{{valor.valor}}</option>
                     </select>
-                </div> -->
+                </div>
 
                
                 <!-- <div class="text-center" id="cont-props" *ngIf="tieneValores">
@@ -80,8 +80,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div> -->
-               
-                <div class="text-center" id="cont-props" *ngIf="tieneValores">
+                <!--  <div class="text-center" id="cont-props" *ngIf="tieneValores">
                     <mat-form-field >
                         <mat-label>propiedad</mat-label>
                         <mat-select>
@@ -89,7 +88,7 @@
                             <mat-option [value]="dos">opciondos</mat-option>
                         </mat-select>
                     </mat-form-field>
-                </div>
+                </div> -->
 
                 <div *ngIf="mostrarActualizar" class="caja-actualizar" (click)=" resetSeleccion()">
                     <p class="actulizar"> <i class="fas fa-redo"></i> Reiniciar selección</p>
