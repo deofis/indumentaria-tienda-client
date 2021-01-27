@@ -270,7 +270,7 @@ hiddeMenu(){
         text: response,
         width: '350px'
       }).then(() => {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/home']).then(() => window.location.reload());
         // refresh
       });
     });
