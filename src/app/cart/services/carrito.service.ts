@@ -49,9 +49,9 @@ export class CarritoService {
    * @param skuId id del sku a agregar al carrito.
    * @return Observable con el objeto carrito.
    */
-  agregarSkuAlCarrito(skuId: string): Observable<any> {
+  agregarSkuAlCarrito(skuId: string,cantidad:string): Observable<any> {
    
-    const params = new HttpParams().set('skuId', skuId);
+    const params = new HttpParams().set('skuId', skuId).set('cantidad',cantidad);
 
     ++this.totalItems;
     this.totalItemsEmmiter.emit(this.totalItems);
@@ -126,7 +126,19 @@ export class CarritoService {
     .put(`${this.urlEndpoint}/carrito/item/actualizar`, null, {params: parametros}) 
 
   }
+
   actualizarCantidadLocal(cantidad:number,skuId:number,carrito:Carrito){
+    console.log(cantidad)
+    for (let x = 0; x < carrito?.items.length; x++) {
+      if (carrito.items[x].sku.id===skuId) {
+        if (carrito.items[x].cantidad!== 0 ) {
+          carrito.items[x].cantidad=carrito.items[x].cantidad + cantidad-1        
+        }
+      }
+      localStorage.setItem("miCarrito",JSON.stringify(carrito) );
+    }
+  }
+  sumarORestarCantidadLocal(cantidad:number,skuId:number,carrito:Carrito){
     for (let x = 0; x < carrito.items.length; x++) {
       if (carrito.items[x].sku.id===skuId) {
         carrito.items[x].cantidad=cantidad
@@ -134,7 +146,6 @@ export class CarritoService {
       localStorage.setItem("miCarrito",JSON.stringify(carrito) );
     }
   }
-
   getTotalItems(): number {
     let total;
     this.getCarrito().subscribe(resp => {

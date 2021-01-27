@@ -160,9 +160,14 @@ export class ViewMoreComponent implements OnInit {
       this.catalogoservice.getPropiedadesProducto(id).subscribe((resp:any) => {
 
         this.propiedadesProducto = resp;
-
+        if (this.propiedadesProducto?.length>4) {
+          console.log("tiene muchas props ")
+          let contenedoCombobox= document.getElementById("cont-props");
+          contenedoCombobox.style.display="grid";
+        }
       });
     });
+    
   };
   ////
 
@@ -174,7 +179,9 @@ export class ViewMoreComponent implements OnInit {
      this.skuAEnviar=null
  /// tomo el valor de la propiedad que seleccioné
       let select = document.getElementsByClassName("select") as HTMLCollectionOf<HTMLInputElement>;
+      console.log(select)
       let valorCombobox= select[i].value;
+      console.log(valorCombobox)
       let valoresElejidosHastaElMomento = []
       // me fijo si es la primer seleccion que hago desde q se iniciaron los valores
       if( this.valoresSkuSleccionado.length == 0  ){
@@ -278,8 +285,14 @@ export class ViewMoreComponent implements OnInit {
           this.openSnackBarNoDisponible();
           
         }
+        if (this.skuAEnviar.disponibilidad===0) {
+           this.openSnackBarNoDisponible();
+            let btnCarrito = document.getElementById("btn-carrito") as HTMLButtonElement;
+            btnCarrito.disabled=true
+            document.getElementById("cantidad").style.display="none"
+        }
 
-       }, 800);
+       }, 700);
   
    }
   ///////
@@ -379,9 +392,8 @@ restarUnidad(){
     // if localStorage.getItem("carrito")
    if (this.authService.isLoggedIn()) {
      /// envio el sku al carrito
-      this.carritoService.agregarSkuAlCarrito(sku?.id.toString()).subscribe(response => {
+      this.carritoService.agregarSkuAlCarrito(sku?.id.toString(),this.cantidadSeleccionada.toString()).subscribe(response => {
         /// actualizo la cantidad acorde a la cantidad elegida 
-          this.carritoService.actualizarCantidad( this.cantidadSeleccionada.toString(),sku?.id.toString()).subscribe()
         ///seteo la cantidad de items para compartirla por el event emmiter
         this.totalItemsCarrito = response.carrito.items.length;
         setTimeout(() => {
@@ -400,7 +412,9 @@ restarUnidad(){
         console.log(carrito);
       
         this.carritoService.agregarItemLocal(sku,carrito)
-        
+         /// actualizo la cantidad acorde a la cantidad elegida , si ya tiene le sumo en vez de editar 
+         this.carritoService.actualizarCantidadLocal( this.cantidadSeleccionada,sku?.id,carrito)
+
         /// envio el array completo , con la info q me traje y parsié y con el nuevo item
         localStorage.setItem("miCarrito",JSON.stringify(carrito) );
         // envio la cantidad que tengo para la notif del header
@@ -414,7 +428,8 @@ restarUnidad(){
         let detalle: DetalleCarrito = new DetalleCarrito();
         detalle.sku=sku;
         detalle.cantidad=1;
-      
+        /// actualizo la cantidad acorde a la cantidad elegida 
+        this.carritoService.actualizarCantidadLocal( this.cantidadSeleccionada,sku?.id,carrito)
         nuevoCarrito.items.push(detalle);
         localStorage.setItem("miCarrito",JSON.stringify(nuevoCarrito) );
       }

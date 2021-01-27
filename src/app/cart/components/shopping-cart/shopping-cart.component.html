@@ -79,7 +79,7 @@
             </div>
             <div class="row">
                 <button mat-button matStepperNext class="btn-cont" (click)="enviarInfoACheckout()"  *ngIf="estaLogueado() && carrito?.total!==0 " id="btn-cont">Continuar</button>
-                <span *ngIf="!estaLogueado()"  class="msje-inicio" > <a  [routerLink]="['/pre-checkout']">Iniciar sesión</a> para continuar.</span>
+                <span *ngIf="!estaLogueado() && carrito?.total!==0 "  class="msje-inicio" > <a  [routerLink]="['/pre-checkout']">Iniciar sesión</a> para continuar.</span>
             </div>
         </div>
     </div>

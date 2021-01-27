@@ -47,11 +47,14 @@ export class NormalHeaderComponent implements OnInit, AfterViewInit {
   
     this.verificarSesion();
     this.getCarrito(); 
-    this.subscripcionInfoCompra=this.enviarInfoCompra.enviarCantidadProductosCarrito$.subscribe(totalProductos=> {
-      this.totalItemsCarrito=totalProductos;
-      console.log(this.totalItemsCarrito)
-    })
-
+    setTimeout(() => {
+      this.subscripcionInfoCompra=this.enviarInfoCompra.enviarCantidadProductosCarrito$.subscribe(totalProductos=> {
+        this.totalItemsCarrito=totalProductos;
+        console.log(this.totalItemsCarrito)
+      })
+  
+    }, 300);
+   
     this.getListaCategorias();
 
     //cart counter
@@ -94,7 +97,9 @@ export class NormalHeaderComponent implements OnInit, AfterViewInit {
     }else{
       const getlocal = localStorage.getItem("miCarrito");
       this.carrito = JSON.parse(getlocal); 
-      this.totalItemsCarrito=this.carrito.items.length
+      if (this.carrito!==null) {
+        this.totalItemsCarrito=this.carrito.items.length
+      }
     }
     this.hayAlgoEnElCarrito()
   }
@@ -110,7 +115,6 @@ export class NormalHeaderComponent implements OnInit, AfterViewInit {
   getListaCategorias():void{
     this.catalogoservice.getListaCategorias().subscribe( response =>{
      this.categorias=response;
-     console.log(response);
     }
      )
   }

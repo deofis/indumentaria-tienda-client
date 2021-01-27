@@ -75,7 +75,6 @@ export class FormLogInComponent implements OnInit {
 
     this.authService.login(this.usuario).subscribe(response => {
       if (this.router.url== "/pre-checkout") {
-        console.log("yendo")
         this.router.navigate(['shopping-cart'])
       }else{
         this.router.navigate(['home'])

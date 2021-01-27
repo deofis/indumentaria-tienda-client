@@ -18,7 +18,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class ShoppingCartComponent implements OnInit {
 
   carrito: Carrito;
-  totalProductos: number;
+  totalProductos: number=0;
   mostrarCheckout:boolean=false;
   actualizarCarrito:boolean;
   // item:ItemCarrito
@@ -68,6 +68,12 @@ export class ShoppingCartComponent implements OnInit {
         this.carrito = response.carrito;
         this.totalProductos = this.carrito.items.length;
         this.actualizarCarrito=true;
+        for (let x = 0; x < this.carrito.items.length; x++) {
+          if (this.carrito.items[x].cantidad > this.carrito.items[x].sku.disponibilidad ) {
+            this.carrito.items[x].cantidad=this.carrito.items[x].sku.disponibilidad
+          }
+        }
+       
         /// envio la cantidad de producto al header para q muestre la notifiicacion
         setTimeout(() => {
             this.enviarInfoCompra.enviarCantidadProductosCarrito$.emit(this.totalProductos); 
@@ -78,6 +84,8 @@ export class ShoppingCartComponent implements OnInit {
         const getlocal = localStorage.getItem("miCarrito");
         if(getlocal != null ){ /* osea si existe*/
           this.carrito = JSON.parse(getlocal); 
+          this.totalProductos=this.carrito.items.length
+          console.log(this.totalProductos)
         }
         let subtotal =0
         for (let x = 0; x < this.carrito.items.length; x++) {
@@ -146,7 +154,7 @@ export class ShoppingCartComponent implements OnInit {
       if (item.cantidad == 0) {
         return this.eliminarItem(skuId);
       }
-      console.log(item.cantidad);
+  
       if (this.authService.isLoggedIn()) {
         this.carritoService.actualizarCantidad(item.cantidad.toString(), skuId.toString()).subscribe(response => {
         
@@ -155,7 +163,7 @@ export class ShoppingCartComponent implements OnInit {
       }else{
         const getlocal = localStorage.getItem("miCarrito");
         this.carrito = JSON.parse(getlocal); 
-        this.carritoService.actualizarCantidadLocal(item.cantidad,skuId,this.carrito)
+        this.carritoService.sumarORestarCantidadLocal(item.cantidad,skuId,this.carrito)
         this.getCarrito()
       }
      
@@ -184,7 +192,7 @@ export class ShoppingCartComponent implements OnInit {
     }else{
       const getlocal = localStorage.getItem("miCarrito");
       this.carrito = JSON.parse(getlocal); 
-      this.carritoService.actualizarCantidadLocal(item.cantidad,skuId,this.carrito)
+      this.carritoService.sumarORestarCantidadLocal(item.cantidad,skuId,this.carrito)
       this.getCarrito();
     }
 

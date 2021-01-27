@@ -260,7 +260,6 @@ $color-wf4:#70b8f3;
     height: fit-content;
     left:18vw ;
     border-radius: 0px 0px 15px 15px;
-    display: flex;
     .submenu {
         width: 210px;
         background-color: $color-menues;
@@ -268,6 +267,7 @@ $color-wf4:#70b8f3;
         border-right: 1px solid rgba(187, 184, 184, 0.5);        
        margin-bottom: 27px;
         li {
+            
             background-color: $color-menues;
             font-size: 16px;
             color: $color-sec;

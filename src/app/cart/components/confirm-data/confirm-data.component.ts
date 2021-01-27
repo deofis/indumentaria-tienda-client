@@ -70,10 +70,11 @@ export class ConfirmDataComponent implements OnInit, OnDestroy {
   
   /// traigo la info del cliente loggeado (nombre,mail,telefono,direccion...)
 getPerfilCliente():void{
+  if (this.authService.isLoggedIn()) {
   this.perfilClienteService.getInfoPerfilCliente().subscribe(response => {
   this.infoCliente=response;
-  
   });
+  }
 }
 
 getCarrito(): void {
