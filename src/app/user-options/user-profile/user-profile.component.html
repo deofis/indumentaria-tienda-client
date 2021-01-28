@@ -47,7 +47,9 @@
                                 <div class="col-md-6 col-6 input-group input-group-sm">
                                     <input *ngIf="!flagNacimiento" type="date" class="form-control"  placeholder="Apellido" 
                                             formControlName="fechaNacimiento"> 
-                                    <span *ngIf="flagNacimiento" class="info">{{cliente.fechaNacimiento ? cliente.fechaNacimiento : "Sin datos"}}</span>
+                                    <span *ngIf="flagNacimiento" class="info">
+                                        {{cliente.fechaNacimiento ? (cliente.fechaNacimiento | convertFecha | slice:0:8) : "Sin datos"}}
+                                    </span>
                                 </div>
                                 <div class="col-md-1 offset-md-1 col-1">
                                     <i class="far fa-edit" (click)="editarAtributoCliente('fechaNacimiento'); flagNacimiento = false"></i>
@@ -102,7 +104,7 @@
                                     <span class="info">{{cliente.direccion?.calle}} {{cliente.direccion?.numeroCalle}}, {{cliente.direccion?.ciudad.nombre}}</span>
                                 </div>
                                 <div class="col-md-1 offset-md-1 col-1">
-                                    <i class="far fa-edit" (click)="openModalEditDireccion(contenidoEditDireccion)"></i>
+                                    <i class="far fa-edit" (click)="openModalEditDireccion(contenidoEditDireccion); cargarFormDireccion()"></i>
                                 </div>
                             </div>
 
@@ -183,33 +185,68 @@
     </div>
     <div class="modal-body">
 
-        <div class="row">
-            
+        <div class="container" [formGroup]="formPassword">
+            <!-- <div class="row">
                 
-            <div class="col-12 col-md-4 form-group">
-                <label class="ml-1"> Contraseña actual</label>
-                <input type="password" class="form-control">
+                    
+                <div class="col-12 col-md-4 form-group">
+                    <label class="ml-1"> Contraseña actual</label>
+                    <input type="password" class="form-control"
+                        formControlName="passActual" [class.is-invalid]="passActualInvalida">
+                </div>
+                <small *ngIf="passActualInvalida" class="text-danger">Ingrese su contraseña actual</small>
+                
+                
+            </div> -->
+
+            <div class="row">
+                <div class="col-12 col-md">
+                    <label class="ml-1"> Nueva contraseña</label>
+                    <div class="input-group">
+                        <input [type]="fieldTextType1 ? 'text' : 'password'" class="form-control"
+                            formControlName="passNueva" [class.is-invalid]="passNuevaInvalida">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <i class="fa" [ngClass]="{ 'fa-eye-slash': !fieldTextType1, 'fa-eye': fieldTextType1}"
+                                  (click)="toggleFieldTextType1()"></i>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <small *ngIf="passNuevaInvalida" class="text-danger">La contraseña debe tener 9 caracteres como mìnimo</small>
+                </div>
+                
+                
+
+                <div class="col-12 col-md">
+                    <label class="ml-1"> Repita contraseña</label>
+                    <div class="input-group">
+                        <input [type]="fieldTextType2 ? 'text' : 'password'" class="form-control"
+                        formControlName="passNuevaValidada"
+                        [class.is-invalid]="passRepInvalida || passwordNoIguales">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <i class="fa" [ngClass]="{ 'fa-eye-slash': !fieldTextType2, 'fa-eye': fieldTextType2}"
+                                (click)="toggleFieldTextType2()"></i>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <small *ngIf="passwordNoIguales" class="text-danger">Las contraseñas deben coincidir</small>
+                    <small *ngIf="passRepInvalida" class="text-danger">Repita la contraseña</small>
+                    
+                </div>
+                
             </div>
 
-            <div class="col-12 col-md-4 form-group">
-                <label class="ml-1"> Nueva contraseña</label>
-                <input type="password" class="form-control">
-            </div>
-
-            <div class="col-12 col-md-4 form-group">
-                <label class="ml-1"> Repita contraseña</label>
-                <input type="password" class="form-control">
-            </div>
-            
-        </div>
-
-        <div class="row mt-md-3">
-            <div class="col-6 col-md-2 offset-md-8">
-                <button type="button" class="btn btn-secondary btn-block" style="border: none;" (click)="modal.dismiss()">Cancelar</button>
-            </div>
-            <div class="col-6 col-md-2">
-                <button type="button" class="btn btn-primary btn-block"
-                        style="background-color: #1f4e84; border: none;">Aceptar</button>
+            <div class="row mt-4 mt-md-4">
+                <div class="col-6 col-md-3 offset-md-6">
+                    <button type="button" class="btn btn-secondary btn-block" style="border: none;" (click)="modal.dismiss()">Cancelar</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <button type="button" class="btn btn-primary btn-block"
+                            style="background-color: #1f4e84; border: none;" (click)="cambiarPassword()">Aceptar</button>
+                </div>
             </div>
         </div>
         
@@ -221,13 +258,95 @@
 <ng-template #contenidoEditDireccion let-modal>
     <div class="modal-header">
         <h1 class="mt-4">Editar dirección</h1>
-        <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+        <button class="close" aria-label="close" type="button" (click)="modal.dismiss(); radioDireccion = 1; createFormEditDireccion()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
 
-        
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <label>¿Desea cambiar su ciudad?</label>
+                </div>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="radioDireccion" id="inlineRadio1" [checked]="radioDireccion === 1" [value]="1" [(ngModel)]="radioDireccion" (click)="setValidadoresCiudad()">
+                <label class="form-check-label" for="inlineRadio1">No</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="radioDireccion" id="inlineRadio2" [checked]="radioDireccion === 2" [value]="2" [(ngModel)]="radioDireccion" (click)="setValidadoresCiudad()">
+                <label class="form-check-label" for="inlineRadio2">Si</label>
+            </div>
+        </div>
+
+        <div class="container mt-3" [formGroup]="formDireccion">
+            <div *ngIf="radioDireccion === 2" class="row">
+                <div class="col-12 col-md-4">
+                    <div class="form-group">
+                        <label> País</label>
+                        <select class="form-control" formControlName="pais" (change)="getEstados()" [class.is-invalid]="paisInvalido">
+                            <option hidden selected value="">Selecciones un país</option>
+                            <option *ngFor="let pais of paises" [ngValue]="pais" >{{pais.nombre}}</option>
+                        </select>
+                        <small *ngIf="paisInvalido" class="text-danger">Seleccione un país</small>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4" *ngIf="estados">
+                    <div class="form-group">
+                        <label> Estado</label>
+                        <select class="form-control" formControlName="estado" (change)="getCiudades()" [class.is-invalid]="estadoInvalido">
+                            <option hidden selected value="">Selecciones un estado</option>
+                            <option *ngFor="let estado of estados" [ngValue]="estado">{{estado.nombre}}</option>
+                        </select>
+                        <small *ngIf="estadoInvalido" class="text-danger">Seleccione un estado</small>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4" *ngIf="ciudades">
+                    <div class="form-group">
+                        <label> Ciudad</label>
+                        <select class="form-control" formControlName="ciudad" [class.is-invalid] = "ciudadInvalida">
+                            <option hidden selected value="">Selecciones una ciudad</option>
+                            <option *ngFor="let ciudad of ciudades" [ngValue]="ciudad">{{ciudad.nombre}}</option>
+                        </select>
+                        <small *ngIf="ciudadInvalida" class="text-danger">Seleccione una ciudad</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <label class="ml-1"> Calle</label>
+                    <input type="text" class="form-control"
+                           formControlName="calle" [class.is-invalid]="calleInvalida">
+                    <small *ngIf="calleInvalida" class="text-danger">Ingrese la calle</small>
+                </div>
+                <div class="col-12 col-md-2">
+                    <label class="ml-1"> Nro</label>
+                    <input type="number" class="form-control" formControlName="nro" [class.is-invalid]="nroInvalido">
+                    <small *ngIf="nroInvalido" class="text-danger">Ingrese número</small>
+                </div>
+                <div class="col-12 col-md-2">
+                    <label class="ml-1"> Piso y Dpto</label>
+                    <input type="text" class="form-control" formControlName="piso">
+                </div>
+                <div class="col-12 col-md-2">
+                    <label class="ml-1"> CP</label>
+                    <input type="number" class="form-control" formControlName="cp" [class.is-invalid]="cpInvalido">
+                    <small *ngIf="cpInvalido" class="text-danger">Ingrese el CP</small>
+                </div>
+            </div>
+
+            <div class="row mt-4 mt-md-5">
+                <div class="col-6 col-md-2 offset-md-8">
+                    <button type="button" class="btn btn-secondary btn-block" style="border: none;" (click)="modal.dismiss(); radioDireccion = 1; createFormEditDireccion()">Cancelar</button>
+                </div>
+                <div class="col-6 col-md-2">
+                    <button type="button" class="btn btn-primary btn-block"
+                            style="background-color: #1f4e84; border: none;" (click)="cambiarDireccion()">Aceptar</button>
+                </div>
+            </div>
+        </div>
 
     </div>
 </ng-template>

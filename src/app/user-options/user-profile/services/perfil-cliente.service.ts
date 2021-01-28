@@ -23,6 +23,7 @@ export class PerfilClienteService {
 
   }
 
+  //perfil/cliente/actualizar
   editarDatosCliente(cliente: Cliente){
 
     return this.http.put(`${this.urlEndpoint}/perfil/actualizar-cliente`, cliente).pipe(map ((resp: any) => {
@@ -32,9 +33,13 @@ export class PerfilClienteService {
   }
 
 
-  //Dudas, consultar eze.
+  
   changePass(passReq){
-    return this.http.post(`${this.urlEndpoint}/auth/cambiar-password`, passReq)
+    return this.http.post(`${this.urlEndpoint}/auth/cambiar-password`, passReq, {responseType: 'text'})
+  }
+
+  editarDireccionCliente(direccion: Direccion){
+    return this.http.put(`${this.urlEndpoint}/perfil/cliente/direccion`, direccion)
   }
 
 }
