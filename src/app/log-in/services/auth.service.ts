@@ -170,7 +170,9 @@ export class AuthService {
     return localStorage.getItem('rol') == role;
   }
 
- 
-
+  emitUserAndLogged(userEmail: string): void {
+    this.loggedIn.emit(true);
+    this.useremail.emit(userEmail);
+  }
 
 }
