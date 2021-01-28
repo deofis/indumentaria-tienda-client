@@ -179,7 +179,7 @@
 <ng-template #contenidoEdit let-modal>
     <div class="modal-header">
         <h1 class="mt-4">Editar contraseña</h1>
-        <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+        <button class="close" aria-label="close" type="button" (click)="modal.dismiss(); formPassword.reset()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
@@ -233,7 +233,7 @@
                     
                     </div>
                     <small *ngIf="passwordNoIguales" class="text-danger">Las contraseñas deben coincidir</small>
-                    <small *ngIf="passRepInvalida" class="text-danger">Repita la contraseña</small>
+                    <!-- <small *ngIf="passRepInvalida" class="text-danger">Repita la contraseña</small> -->
                     
                 </div>
                 
@@ -241,7 +241,7 @@
 
             <div class="row mt-4 mt-md-4">
                 <div class="col-6 col-md-3 offset-md-6">
-                    <button type="button" class="btn btn-secondary btn-block" style="border: none;" (click)="modal.dismiss()">Cancelar</button>
+                    <button type="button" class="btn btn-secondary btn-block" style="border: none;" (click)="modal.dismiss(); formPassword.reset()">Cancelar</button>
                 </div>
                 <div class="col-6 col-md-3">
                     <button type="button" class="btn btn-primary btn-block"
