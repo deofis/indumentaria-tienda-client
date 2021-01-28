@@ -80,10 +80,7 @@ export class ViewMoreComponent implements OnInit {
     this.getProduct();
     this.getPropiedadesProducto();
     this.cantidadSeleccionada=1
-    setTimeout(() => {
-      this.getSkusDelProducto()
-    
-    }, 1000);
+   
    
     // cambio de muestra de imagenes
     // let img2= document.getElementById("img-dos");
@@ -106,9 +103,10 @@ export class ViewMoreComponent implements OnInit {
       this.catalogoservice.getInfoProducto(id).subscribe(response => {
         this.infoProducto=response;
         setTimeout(() => {
+          this.getSkusDelProducto();
           this.obtenerValoresSkus();
           this.filtrarPropiedades();
-        }, 500);
+        }, 300);
       });
     });
   };
@@ -149,8 +147,14 @@ export class ViewMoreComponent implements OnInit {
         }
       });
     });
-    if (skus.length==0) {
-      this.skuAEnviar=this.infoProducto.defaultSku
+    if (skus.length===0) {
+      console.log("tengo mi defaukt sku")
+     let idDefaultSku=this.infoProducto.defaultSku.id;
+     this.productoService.getSku(this.infoProducto.id, idDefaultSku).subscribe( response => {
+      this.skuAEnviar=response;  
+      console.log(this.skuAEnviar)  
+    })
+
     }
   }
 
@@ -215,7 +219,6 @@ export class ViewMoreComponent implements OnInit {
       this.mostrarActualizar=true;
          
       } else{
-        console.log("else")
       /// filtro los valores de los combobx para en esa propiedad solo dejar el valor q elegi   
       this.propiedadesFiltradas[i].valores= this.propiedadesFiltradas[i].valores.filter((k) => k.valor == valorCombobox );
       
@@ -246,7 +249,7 @@ export class ViewMoreComponent implements OnInit {
       }
       setTimeout(() => {
         this.identificarSkuSeleccionado()
-      }, 800);
+      }, 700);
   }
   identificarSkuSeleccionado(){
  
@@ -272,27 +275,24 @@ export class ViewMoreComponent implements OnInit {
           
               // con el id llamo a ese sku para luego enviarlo al servicio
             this.productoService.getSku(this.infoProducto.id, this.idSkuAEnviar).subscribe( response => {
-            this.skuAEnviar=response;
-            console.log(this.skuAEnviar);
-            // this.agregarCarrito(this.skuAEnviar)
+            this.skuAEnviar=response;  
+            console.log(this.skuAEnviar)  
+            if (this.skuAEnviar.disponibilidad===0) {
+              this.openSnackBarNoDisponible();
+               let btnCarrito = document.getElementById("btn-carrito") as HTMLButtonElement;
+               btnCarrito.disabled=true
+               document.getElementById("cantidad").style.display="none"
+           }       
             })
             break;
-         } 
-        
+         }      
        }
        setTimeout(() => {
-        if (this.skuAEnviar== null) {
+        if (this.skuAEnviar=== null) {
           this.openSnackBarNoDisponible();
-          
         }
-        if (this.skuAEnviar.disponibilidad===0) {
-           this.openSnackBarNoDisponible();
-            let btnCarrito = document.getElementById("btn-carrito") as HTMLButtonElement;
-            btnCarrito.disabled=true
-            document.getElementById("cantidad").style.display="none"
-        }
-
-       }, 700);
+       }, 950);
+      
   
    }
   ///////
@@ -402,8 +402,6 @@ restarUnidad(){
       });
       
      }else{
-      console.log("usuario no logueado");
-
       // verifico si existe micarrito
       const getlocal = localStorage.getItem("miCarrito");
       let carrito:Carrito;
@@ -426,7 +424,9 @@ restarUnidad(){
       }else{ /* si no existe, lo creo con el sku q estoy enviando como contenido*/
         let nuevoCarrito:Carrito= new Carrito();
         let detalle: DetalleCarrito = new DetalleCarrito();
+    
         detalle.sku=sku;
+        
         detalle.cantidad=1;
         /// actualizo la cantidad acorde a la cantidad elegida 
         this.carritoService.actualizarCantidadLocal( this.cantidadSeleccionada,sku?.id,carrito)
@@ -459,21 +459,24 @@ restarUnidad(){
    }
    /// combinacion no disponuble
    openSnackBarNoDisponible(){
-    if ($(window).scrollTop() >= 30) {
-      let snackBarRef= this.snackBar.open('Combinación no disponible', null, {
-        duration:1300 ,
-        horizontalPosition : this .horizontalPosition,
-        verticalPosition : this .verticalPosition,
-        panelClass :['warning'],
-     });
-    }else{
-      let snackBarRef= this.snackBar.open('Combinación no disponible', null, {
-        duration:1300 ,
-        horizontalPosition : this .horizontalPosition,
-        verticalPosition : this .verticalPosition,
-        
-     });
+    if (this.skuAEnviar=== null) {
+      if ($(window).scrollTop() >= 30) {
+        let snackBarRef= this.snackBar.open('Combinación no disponible', null, {
+          duration:1300 ,
+          horizontalPosition : this .horizontalPosition,
+          verticalPosition : this .verticalPosition,
+          panelClass :['warning'],
+       });
+      }else{
+        let snackBarRef= this.snackBar.open('Combinación no disponible', null, {
+          duration:1300 ,
+          horizontalPosition : this .horizontalPosition,
+          verticalPosition : this .verticalPosition,
+          
+       });
+      }
     }
+   
    }
 ////////////////////////
    mostrarPrecioOferta(){
