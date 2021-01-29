@@ -41,7 +41,7 @@
                             <div *ngIf="!hasRole('ROLE_ADMIN') || !estaLogueado" class="iconos carrito" [routerLink]="['/shopping-cart']">
                                 <!-- <i class="fas fa-shopping-cart opciones"></i> -->
                                 <img src="../../../../../assets/imagenes/icon-cart.png" alt="">
-                                <div class="iconos circulo" *ngIf="totalItemsCarrito!==0 ">
+                                <div class="iconos circulo" *ngIf="totalItemsCarrito !== 0">
                                     <span>{{totalItemsCarrito}}</span>
                                 </div>
                             </div>
@@ -58,11 +58,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
-
                 </div>
             </div>
         </div>

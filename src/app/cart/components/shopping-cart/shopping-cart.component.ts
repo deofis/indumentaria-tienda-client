@@ -129,6 +129,10 @@ export class ShoppingCartComponent implements OnInit {
       this.carritoService.eliminarItemLocal(id,this.carrito);
       this.getCarrito();
       this.totalProductos=this.carrito.items.length;
+
+      if (this.carrito.items.length == undefined) {
+        this.totalProductos = 0;
+      }
         /// envio la cantidad de producto al header para q muestre la notifiicacion
         setTimeout(() => {
           this.enviarInfoCompra.enviarCantidadProductosCarrito$.emit(this.totalProductos); 
