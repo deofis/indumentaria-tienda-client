@@ -26,7 +26,7 @@ export class PerfilClienteService {
   //perfil/cliente/actualizar
   editarDatosCliente(cliente: Cliente){
 
-    return this.http.put(`${this.urlEndpoint}/perfil/actualizar-cliente`, cliente).pipe(map ((resp: any) => {
+    return this.http.put(`${this.urlEndpoint}/perfil/cliente/actualizar`, cliente).pipe(map ((resp: any) => {
       return resp
     }))
 
