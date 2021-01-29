@@ -33,7 +33,7 @@ export class NormalHeaderComponent implements OnInit, AfterViewInit {
   @ViewChild('notificationsInbox') notificationsInbox: ElementRef;
   estaLogueado: boolean;
   userEmail: string;
-  totalItemsCarrito:number=null;
+  totalItemsCarrito:number;
 
   subcategoriasMostrar:Subcategoria[]=[];
   
@@ -41,7 +41,9 @@ export class NormalHeaderComponent implements OnInit, AfterViewInit {
               private router:Router,
               private authService: AuthService,
               private enviarInfoCompra:EnviarInfoCompraService,
-              private carritoService: CarritoService) { }
+              private carritoService: CarritoService) {
+                this.totalItemsCarrito = 0;
+              }
 
   ngOnInit(): void {
   
@@ -92,13 +94,13 @@ export class NormalHeaderComponent implements OnInit, AfterViewInit {
     if (this.authService.isLoggedIn()) {
       this.carritoService.getCarrito().subscribe((response: any) => {
         this.totalItemsCarrito = response.carrito.items.length;
-        console.log(this.totalItemsCarrito)
+        console.log(this.totalItemsCarrito);
       });
     }else{
       const getlocal = localStorage.getItem("miCarrito");
       this.carrito = JSON.parse(getlocal); 
       if (this.carrito!==null) {
-        this.totalItemsCarrito=this.carrito.items.length
+        this.totalItemsCarrito=this.carrito.items.length;
       }
     }
     this.hayAlgoEnElCarrito()

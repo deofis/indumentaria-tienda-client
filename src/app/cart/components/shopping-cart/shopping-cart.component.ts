@@ -66,6 +66,7 @@ export class ShoppingCartComponent implements OnInit {
     if (this.authService.isLoggedIn()) {
       this.carritoService.getCarrito().subscribe((response: any) => {
         this.carrito = response.carrito;
+        console.log(this.carrito)
         this.totalProductos = this.carrito.items.length;
         this.actualizarCarrito=true;
         for (let x = 0; x < this.carrito.items.length; x++) {
@@ -86,6 +87,7 @@ export class ShoppingCartComponent implements OnInit {
           this.carrito = JSON.parse(getlocal); 
           this.totalProductos=this.carrito.items.length
           console.log(this.totalProductos)
+          console.log(this.carrito)
         }
         let subtotal =0
         for (let x = 0; x < this.carrito.items.length; x++) {
@@ -127,6 +129,10 @@ export class ShoppingCartComponent implements OnInit {
       this.carritoService.eliminarItemLocal(id,this.carrito);
       this.getCarrito();
       this.totalProductos=this.carrito.items.length;
+
+      if (this.carrito.items.length == undefined) {
+        this.totalProductos = 0;
+      }
         /// envio la cantidad de producto al header para q muestre la notifiicacion
         setTimeout(() => {
           this.enviarInfoCompra.enviarCantidadProductosCarrito$.emit(this.totalProductos); 

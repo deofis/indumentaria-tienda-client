@@ -1,3 +1,4 @@
+import { Carrito } from './../../../cart/clases/carrito';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IniciarSesionRequest } from '../../clases/login-request';
@@ -5,6 +6,8 @@ import { AuthService } from '../../services/auth.service';
 import { Router, RouterStateSnapshot } from '@angular/router';
 import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL } from '../../../config/config';
 import Swal from 'sweetalert2';
+import { CarritoService } from 'src/app/cart/services/carrito.service';
+import { EnviarInfoCompraService } from 'src/app/user-options/user-profile/services/enviar-info-compra.service';
 
 @Component({
   selector: 'app-form-log-in',
@@ -21,8 +24,17 @@ export class FormLogInComponent implements OnInit {
 
   usuario: IniciarSesionRequest;
 
-  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) {
+  carritoLocalStorage:Carrito;
+  carritoApi:Carrito;
+  totalItemsCarrito:number;
+  constructor(private authService: AuthService, 
+              private fb: FormBuilder,
+              private carritoService: CarritoService,
+              private enviarInfoCompra:EnviarInfoCompraService,
+              private router: Router,) {
     this.usuario = new IniciarSesionRequest();
+    this.carritoApi = new Carrito();
+    this.carritoLocalStorage= new Carrito();
   }
 
   ngOnInit(): void {
@@ -74,11 +86,13 @@ export class FormLogInComponent implements OnInit {
     this.usuario.password = this.formLogin.controls.password.value;
 
     this.authService.login(this.usuario).subscribe(response => {
+      /// si estoz iniciando sesion desde el carrito , me devuelve al carrito 
       if (this.router.url== "/pre-checkout") {
         this.router.navigate(['shopping-cart'])
-      }else{
+      }else{ // sino al home
         this.router.navigate(['home'])
       }
+      this.unirCarritos()
     }, err => {
       Swal.fire({
         icon: 'error',
@@ -88,7 +102,31 @@ export class FormLogInComponent implements OnInit {
       console.log(err);
     });
   }
-
+  /// Unir carritos de local storage con el de la api
+  unirCarritos(){
+    //traigo el carrito del local storage
+     const getlocal = localStorage.getItem("miCarrito");
+     this.carritoLocalStorage = JSON.parse(getlocal); 
+     console.log(this.carritoLocalStorage)
+    
+     // recorro sus items
+     for (let i = 0; i < this.carritoLocalStorage.items.length; i++) {
+      let skuId= this.carritoLocalStorage.items[i].sku.id;
+      let cantidad = this.carritoLocalStorage.items[i].cantidad;
+         /// envio el sku al carrito
+      this.carritoService.agregarSkuAlCarrito(skuId.toString(),cantidad.toString()).subscribe(response => {
+        ///seteo la cantidad de items para compartirla por el event emmiter
+        this.totalItemsCarrito = response.carrito.items.length;
+        setTimeout(() => {
+          this.enviarInfoCompra.enviarCantidadProductosCarrito$.emit(this.totalItemsCarrito); 
+        }, 100);
+      });
+     }
+     
+     /// elimino el local storage 
+     localStorage.removeItem('miCarrito');
+  }
+  ///
   enviarRecuperarPassword(): void {
     if (this.formOlvidePass.invalid) {
       return Object.values(this.formOlvidePass.controls)

@@ -61,6 +61,7 @@
                 </div>
 
                 <br>
+                <!-- contenedor propiedades  -->
                 <div class="text-center" id="cont-props"  *ngIf="tieneValores">
                     <div class="combobox-cont" *ngFor="let propiedad of propiedadesFiltradas;let i=index ">
                         <span>{{propiedad.nombre}}</span>
@@ -70,19 +71,8 @@
 
                        </select>
                     </div>
-                   
                 </div>
-
-               
-                <!-- <div class="text-center" id="cont-props" *ngIf="tieneValores">
-                    <mat-form-field style="margin-left: 15px; width: 80px;" *ngFor="let propiedad of propiedadesFiltradas;let i=index ">
-                        <mat-label>{{propiedad.nombre}}</mat-label>
-                        <mat-select  class="select-mat" (selectionChange)="valoresSiguienteCombobox(i)" >
-                            <mat-option  [(value)]="valor.valor" *ngFor="let valor of propiedad.valores">{{valor.valor}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div> -->
-
+                <!-- FIN contenedor propiedades  -->
                 <div *ngIf="mostrarActualizar" class="caja-actualizar" (click)=" resetSeleccion()">
                     <p class="actulizar"> <i class="fas fa-redo"></i> Reiniciar selección</p>
                 </div>
