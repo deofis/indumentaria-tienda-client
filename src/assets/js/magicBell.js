@@ -18,7 +18,7 @@ function inicializarNotificaciones(target, email) {
             if (notification.actionUrl) window.open(notification.actionUrl, '_self');
         },
         height: 500,
-        theme: { "icon": { "borderColor": "#757575", "width": "24px" }, "unseenBadge": { "backgroundColor": "#DF4759" }, "header": { "backgroundColor": "#007bff", "textColor": "#ffffff", "borderRadius": "16px", "fontFamily": null }, "footer": { "backgroundColor": "#007bff", "textColor": "#ffffff", "borderRadius": "16px", "fontFamily": null }, "notification": { "default": { "textColor": "#15091F", "borderRadius": "8px", "backgroundColor": "#007bff", "fontFamily": null }, "unseen": { "backgroundColor": "#007bff", "textColor": "#15091F", "borderRadius": "8px", "fontFamily": null }, "unread": { "backgroundColor": "#007bff", "textColor": "#15091F", "borderRadius": "8px", "fontFamily": null } } },
+        theme: { "icon": { "borderColor": "#757575", "width": "24px" }, "unseenBadge": { "backgroundColor": "#DF4759", "borderRadius": "50%" }, "header": { "backgroundColor": "#223E66", "textColor": "#ffffff", "borderRadius": "16px", "fontFamily": null }, "footer": { "backgroundColor": "#223E66", "textColor": "#ffffff", "borderRadius": "16px", "fontFamily": null }, "notification": { "default": { "textColor": "#15091F", "borderRadius": "8px", "backgroundColor": "#007bff", "fontFamily": null }, "unseen": { "backgroundColor": "#007bff", "textColor": "#15091F", "borderRadius": "8px", "fontFamily": null }, "unread": { "backgroundColor": "#007bff", "textColor": "#15091F", "borderRadius": "8px", "fontFamily": null } } },
     };
 
     magicbell('render', target, options);

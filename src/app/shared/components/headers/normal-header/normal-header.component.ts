@@ -33,7 +33,7 @@ export class NormalHeaderComponent implements OnInit, AfterViewInit {
   @ViewChild('notificationsInbox') notificationsInbox: ElementRef;
   estaLogueado: boolean;
   userEmail: string;
-  totalItemsCarrito:number=null;
+  totalItemsCarrito:number;
 
   subcategoriasMostrar:Subcategoria[]=[];
   
@@ -41,17 +41,22 @@ export class NormalHeaderComponent implements OnInit, AfterViewInit {
               private router:Router,
               private authService: AuthService,
               private enviarInfoCompra:EnviarInfoCompraService,
-              private carritoService: CarritoService) { }
+              private carritoService: CarritoService) {
+                this.totalItemsCarrito = 0;
+              }
 
   ngOnInit(): void {
   
     this.verificarSesion();
     this.getCarrito(); 
-    this.subscripcionInfoCompra=this.enviarInfoCompra.enviarCantidadProductosCarrito$.subscribe(totalProductos=> {
-      this.totalItemsCarrito=totalProductos;
-      console.log(this.totalItemsCarrito)
-    })
-
+    setTimeout(() => {
+      this.subscripcionInfoCompra=this.enviarInfoCompra.enviarCantidadProductosCarrito$.subscribe(totalProductos=> {
+        this.totalItemsCarrito=totalProductos;
+        console.log(this.totalItemsCarrito)
+      })
+  
+    }, 300);
+   
     this.getListaCategorias();
 
     //cart counter
@@ -89,24 +94,29 @@ export class NormalHeaderComponent implements OnInit, AfterViewInit {
     if (this.authService.isLoggedIn()) {
       this.carritoService.getCarrito().subscribe((response: any) => {
         this.totalItemsCarrito = response.carrito.items.length;
-        console.log(this.totalItemsCarrito)
+        console.log(this.totalItemsCarrito);
       });
+    }else{
+      const getlocal = localStorage.getItem("miCarrito");
+      this.carrito = JSON.parse(getlocal); 
+      if (this.carrito!==null) {
+        this.totalItemsCarrito=this.carrito.items.length;
+      }
     }
     this.hayAlgoEnElCarrito()
   }
 
   hayAlgoEnElCarrito(){
-    if (this.totalItemsCarrito!== 0) {
-      return true
-    }else{
+    if (this.totalItemsCarrito=== 0) {
       return false
+    }else{
+      return true
     }
   }
    /***** GET CATEGORIES *****/
   getListaCategorias():void{
     this.catalogoservice.getListaCategorias().subscribe( response =>{
      this.categorias=response;
-     console.log(response);
     }
      )
   }

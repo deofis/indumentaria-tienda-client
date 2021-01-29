@@ -71,6 +71,7 @@ import { ContenedorFormComponent } from './admin-options/add-product/contenedor-
 import { StepperCartComponent } from './cart/components/stepper-cart/stepper-cart.component';
 import { MatIconModule } from '@angular/material/icon';
 import {MatSnackBarModule} from  '@angular/material/snack-bar';
+import {MatSelectModule} from  '@angular/material/select';
 import { MatRippleModule } from '@angular/material/core';
 import { ConvertFechaPipe } from './pipes/convert-fecha.pipe';
 import { ConvertEstadoOpPipe } from './pipes/convert-estado-op.pipe';
@@ -159,6 +160,7 @@ import { PaypalCancelComponent } from './cart/components/final-message/paypal-ca
     MatButtonModule,
     MatTableModule,
     MatSortModule,
+    MatSelectModule,
     MatListModule,
     MatStepperModule,
     MatIconModule,

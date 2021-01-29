@@ -458,7 +458,7 @@ section {
 thead tr th {
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 10 !important;
     /* background-color: #1f4e84; */
 }
 
@@ -545,12 +545,6 @@ table {
 }
 
 
-thead tr th{ 
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    /* background-color: #1f4e84; */
-    }
     
     .table-responsive { 
     height: 400px;

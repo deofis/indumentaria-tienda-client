@@ -15,12 +15,14 @@ import { Sku } from 'src/app/products/clases/sku';
 import { Router } from '@angular/router';
 import { EnviarInfoCompraService } from 'src/app/user-options/user-profile/services/enviar-info-compra.service';
 import { MatSnackBarConfig, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, MatSnackBarRef,MatSnackBar, MatSnackBarContainer,} from  '@angular/material/snack-bar';
+import {MatSelectModule} from  '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-view-more',
   templateUrl: './view-more.component.html',
   styleUrls: ['./view-more.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+   encapsulation: ViewEncapsulation.None,
 })
 export class ViewMoreComponent implements OnInit {
 
@@ -56,6 +58,9 @@ export class ViewMoreComponent implements OnInit {
  horizontalPosition : MatSnackBarHorizontalPosition = 'end' ;
  verticalPosition: MatSnackBarVerticalPosition = 'top' ;
 
+
+ /// rol de usuario 
+
   constructor(private catalogoservice:CatalogoService,
               private activatedroute:ActivatedRoute,
               private _cartService:MockCartService,
@@ -75,10 +80,7 @@ export class ViewMoreComponent implements OnInit {
     this.getProduct();
     this.getPropiedadesProducto();
     this.cantidadSeleccionada=1
-    setTimeout(() => {
-      this.getSkusDelProducto()
-    
-    }, 1000);
+   
    
     // cambio de muestra de imagenes
     // let img2= document.getElementById("img-dos");
@@ -101,9 +103,10 @@ export class ViewMoreComponent implements OnInit {
       this.catalogoservice.getInfoProducto(id).subscribe(response => {
         this.infoProducto=response;
         setTimeout(() => {
+          this.getSkusDelProducto();
           this.obtenerValoresSkus();
           this.filtrarPropiedades();
-        }, 500);
+        }, 300);
       });
     });
   };
@@ -144,8 +147,14 @@ export class ViewMoreComponent implements OnInit {
         }
       });
     });
-    if (skus.length==0) {
-      this.skuAEnviar=this.infoProducto.defaultSku
+    if (skus.length===0) {
+      console.log("tengo mi defaukt sku")
+     let idDefaultSku=this.infoProducto.defaultSku.id;
+     this.productoService.getSku(this.infoProducto.id, idDefaultSku).subscribe( response => {
+      this.skuAEnviar=response;  
+      console.log(this.skuAEnviar)  
+    })
+
     }
   }
 
@@ -155,9 +164,14 @@ export class ViewMoreComponent implements OnInit {
       this.catalogoservice.getPropiedadesProducto(id).subscribe((resp:any) => {
 
         this.propiedadesProducto = resp;
-
+        if (this.propiedadesProducto?.length>4) {
+          console.log("tiene muchas props ")
+          let contenedoCombobox= document.getElementById("cont-props");
+          contenedoCombobox.style.display="grid";
+        }
       });
     });
+    
   };
   ////
 
@@ -169,7 +183,9 @@ export class ViewMoreComponent implements OnInit {
      this.skuAEnviar=null
  /// tomo el valor de la propiedad que seleccioné
       let select = document.getElementsByClassName("select") as HTMLCollectionOf<HTMLInputElement>;
+      console.log(select)
       let valorCombobox= select[i].value;
+      console.log(valorCombobox)
       let valoresElejidosHastaElMomento = []
       // me fijo si es la primer seleccion que hago desde q se iniciaron los valores
       if( this.valoresSkuSleccionado.length == 0  ){
@@ -203,7 +219,6 @@ export class ViewMoreComponent implements OnInit {
       this.mostrarActualizar=true;
          
       } else{
-        console.log("else")
       /// filtro los valores de los combobx para en esa propiedad solo dejar el valor q elegi   
       this.propiedadesFiltradas[i].valores= this.propiedadesFiltradas[i].valores.filter((k) => k.valor == valorCombobox );
       
@@ -231,21 +246,10 @@ export class ViewMoreComponent implements OnInit {
         } 
        };
        console.log(preseleccion)
-      
-
-      /// ahora le tengo q decir que se queden en valorskkusseleccionado solamente los valores
-        // treaer los skus que forma cuero 
-        //fijarme el sku que coincida con alguna de los otras dos colores que quedan
-        // eliminar el q no va del sku
-        // for (let u = 0; u < this.skusDelProducto[x].valores.length; u++) {
-        //   if (!this.valoresSkuSleccionado.some(val => val.id == this.skusDelProducto[x].valores[u].id )) {
-        //     this.valoresSkuSleccionado.push(this.skusDelProducto[x].valores[u]);
-        //   }
-        // }
       }
       setTimeout(() => {
         this.identificarSkuSeleccionado()
-      }, 800);
+      }, 700);
   }
   identificarSkuSeleccionado(){
  
@@ -271,14 +275,24 @@ export class ViewMoreComponent implements OnInit {
           
               // con el id llamo a ese sku para luego enviarlo al servicio
             this.productoService.getSku(this.infoProducto.id, this.idSkuAEnviar).subscribe( response => {
-            this.skuAEnviar=response;
-            console.log(this.skuAEnviar);
-            // this.agregarCarrito(this.skuAEnviar)
+            this.skuAEnviar=response;  
+            console.log(this.skuAEnviar)  
+            if (this.skuAEnviar.disponibilidad===0) {
+              this.openSnackBarNoDisponible();
+               let btnCarrito = document.getElementById("btn-carrito") as HTMLButtonElement;
+               btnCarrito.disabled=true
+               document.getElementById("cantidad").style.display="none"
+           }       
             })
             break;
-         }       
+         }      
        }
-  
+       setTimeout(() => {
+        if (this.skuAEnviar=== null) {
+          this.openSnackBarNoDisponible();
+        }
+       }, 950);
+      
   
    }
   ///////
@@ -378,9 +392,8 @@ restarUnidad(){
     // if localStorage.getItem("carrito")
    if (this.authService.isLoggedIn()) {
      /// envio el sku al carrito
-      this.carritoService.agregarSkuAlCarrito(sku?.id.toString()).subscribe(response => {
+      this.carritoService.agregarSkuAlCarrito(sku?.id.toString(),this.cantidadSeleccionada.toString()).subscribe(response => {
         /// actualizo la cantidad acorde a la cantidad elegida 
-          this.carritoService.actualizarCantidad( this.cantidadSeleccionada.toString(),sku?.id.toString()).subscribe()
         ///seteo la cantidad de items para compartirla por el event emmiter
         this.totalItemsCarrito = response.carrito.items.length;
         setTimeout(() => {
@@ -389,51 +402,50 @@ restarUnidad(){
       });
       
      }else{
-      console.log("usuario no logueado");
-      // creo un arrayy vacio y le pusheo el sku q estoy agregando
-    
-      // this.arrayItemsCarrito.items.push(detalle);
-
       // verifico si existe micarrito
       const getlocal = localStorage.getItem("miCarrito");
       let carrito:Carrito;
       if(getlocal != null ){ /* osea si existe*/
-        // parseo lo que trae para poder pushearlo a mi array
         carrito = JSON.parse(getlocal); 
         console.log(carrito);
       
         this.carritoService.agregarItemLocal(sku,carrito)
-          setTimeout(() => {
-            this.enviarInfoCompra.enviarCantidadProductosCarrito$.emit(this.totalItemsCarrito); 
-          }, 100);
-        
+         /// actualizo la cantidad acorde a la cantidad elegida , si ya tiene le sumo en vez de editar 
+         this.carritoService.actualizarCantidadLocal( this.cantidadSeleccionada,sku?.id,carrito)
+
         /// envio el array completo , con la info q me traje y parsié y con el nuevo item
         localStorage.setItem("miCarrito",JSON.stringify(carrito) );
+        // envio la cantidad que tengo para la notif del header
+        this.totalItemsCarrito = carrito.items.length;
+        setTimeout(() => {
+          console.log(this.totalItemsCarrito)
+          this.enviarInfoCompra.enviarCantidadProductosCarrito$.emit(this.totalItemsCarrito); 
+        }, 100);
       }else{ /* si no existe, lo creo con el sku q estoy enviando como contenido*/
         let nuevoCarrito:Carrito= new Carrito();
         let detalle: DetalleCarrito = new DetalleCarrito();
+    
         detalle.sku=sku;
+        
         detalle.cantidad=1;
-        // if (detalle.sku.promocion!== null) {
-        //   nuevoCarrito.total=detalle.sku.promocion.precioOferta*detalle.cantidad
-        // }else{
-        //   nuevoCarrito.total=detalle.sku.precio*detalle.cantidad
-        // }
+        /// actualizo la cantidad acorde a la cantidad elegida 
+        this.carritoService.actualizarCantidadLocal( this.cantidadSeleccionada,sku?.id,carrito)
         nuevoCarrito.items.push(detalle);
         localStorage.setItem("miCarrito",JSON.stringify(nuevoCarrito) );
       }
-
+    
     }
 
   
   }
+  /////**** ALERTAS ***/////
+  // prod agregado al carrito
   openSnackBar(){
     if ($(window).scrollTop() >= 30) {
       let snackBarRef= this.snackBar.open('Producto agregado al Carrito', null, {
         duration:1300 ,
         horizontalPosition : this .horizontalPosition,
         verticalPosition : this .verticalPosition,
-        panelClass :['warning'],
         
      });
     }else{
@@ -444,6 +456,40 @@ restarUnidad(){
         
      });
     }
+   }
+   /// combinacion no disponuble
+   openSnackBarNoDisponible(){
+    if (this.skuAEnviar=== null) {
+      if ($(window).scrollTop() >= 30) {
+        let snackBarRef= this.snackBar.open('Combinación no disponible', null, {
+          duration:1300 ,
+          horizontalPosition : this .horizontalPosition,
+          verticalPosition : this .verticalPosition,
+          panelClass :['warning'],
+       });
+      }else{
+        let snackBarRef= this.snackBar.open('Combinación no disponible', null, {
+          duration:1300 ,
+          horizontalPosition : this .horizontalPosition,
+          verticalPosition : this .verticalPosition,
+          
+       });
+      }
+    }
+   
+   }
+////////////////////////
+   mostrarPrecioOferta(){
+     if (this.skuAEnviar.promocion) {
+        if (this.skuAEnviar.promocion.estaVigente) {
+          return true
+        }else{
+          return false
+        }
+     }else{
+       return false
+     }
+     
    }
   ////
   
@@ -459,6 +505,10 @@ restarUnidad(){
    cartel.innerHTML="Gracias! Te responderemos a la brevedad.";
    cartel.style.color="#2779cd"
    let contenedor=document.getElementById("contenedorCartel");
+
+
+  
+   
 
 
  }

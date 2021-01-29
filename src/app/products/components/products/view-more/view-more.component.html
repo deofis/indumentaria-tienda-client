@@ -30,7 +30,8 @@
                 </div>
                 <div id="img-ppal" class="img-ppal">
                     <img *ngIf="infoProducto?.foto" src="{{infoProducto?.foto.imageUrl}}" alt="">
-                    <img *ngIf="!infoProducto?.foto" src="assets/imagenes/noimage.png" style="width: 350px; height: auto;" alt="">
+                    <img *ngIf="!infoProducto?.foto" src="assets/imagenes/noimage.png"
+                        style="width: 350px; height: auto;" alt="">
                 </div>
             </div>
             <div id="derecha">
@@ -41,61 +42,55 @@
                 </div>
 
                 <div id="caja-precio">
-                    <div >
+                    <div>
                         <!-- contenedor del precio sku -->
                         <div class="precio" *ngIf="!mostrarPrecioProducto()">
-                            <!-- <h3 *ngIf="!ofertaSku" class="pcio-sin-oferta">€50</h3>
-                            <h3 *ngIf="ofertaSku"  class="pcio-oferta">€42</h3> -->
-                            <h3 *ngIf="!skuAEnviar?.promocion" class="pcio-sin-oferta">€{{skuAEnviar?.precio | number: '.2'}}</h3>
-                            <h3 *ngIf="skuAEnviar?.promocion" class="pcio-oferta">€{{skuAEnviar?.promocion.precioOferta | number: '.2'}}</h3>
-                            <div *ngIf="skuAEnviar?.promocion" class="row-oferta">
+                            <h3 *ngIf="!mostrarPrecioOferta()" class="pcio-sin-oferta">€{{skuAEnviar?.precio | number:
+                                '.2'}}</h3>
+                            <h3 *ngIf="mostrarPrecioOferta() " class="pcio-oferta">€{{skuAEnviar?.promocion.precioOferta
+                                | number: '.2'}}</h3>
+                            <div *ngIf="mostrarPrecioOferta()" class="row-oferta">
                                 <span>€{{skuAEnviar?.precio | number: '.2'}} </span>
                                 <p class="off ">{{skuAEnviar.promocion?.porcentaje * 100 | number: '2.0-0'}}% 0FF</p>
                             </div>
                         </div>
                         <!-- Fin del contenedor precio Sku  -->
-                        <!-- Contenedor precio producto -->
-                        <div class="precio" *ngIf="mostrarPrecioProducto()">
-                            <h3 *ngIf="!infoProducto?.promocion" class="pcio-sin-oferta">€{{infoProducto?.precio | number: '.2'}}
-                            </h3>
-                            <h3 *ngIf="infoProducto?.promocion" class="pcio-oferta">€{{infoProducto.promocion?.precioOferta | number:
-                                '.2'}}</h3>
-                            <div *ngIf="infoProducto?.promocion" class="row-oferta">
-                                <span>€{{infoProducto?.precio | number: '.2'}} </span>
-                                <p class="off ">{{infoProducto.promocion?.porcentaje * 100 | number: '2.0-0'}}% 0FF</p>
-                            </div>
-                        </div>
-                        <!-- Fin del contenedor precio producto -->
+
                     </div>
                     <i class="fas fa-medal" *ngIf="destacado"></i>
                 </div>
 
                 <br>
-                <div class="text-center" id="cont-props" *ngIf="tieneValores">
+                <!-- contenedor propiedades  -->
+                <div class="text-center" id="cont-props"  *ngIf="tieneValores">
+                    <div class="combobox-cont" *ngFor="let propiedad of propiedadesFiltradas;let i=index ">
+                        <span>{{propiedad.nombre}}</span>
+                        <select id="color"  class="select"
+                           (change)="valoresSiguienteCombobox(i)">
+                            <option [value]="valor.valor" *ngFor="let valor of propiedad.valores">{{valor.valor}}</option>
 
-                    <select id="color" *ngFor="let propiedad of propiedadesFiltradas;let i=index " class="select"
-                        (change)="valoresSiguienteCombobox(i)">
-                        <!-- <option hidden selected value="" >{{propiedad.nombre}}</option> -->
-                        <option [value]="valor.valor" *ngFor="let valor of propiedad.valores">{{valor.valor}}</option>
-                    </select>
-
+                       </select>
+                    </div>
                 </div>
+                <!-- FIN contenedor propiedades  -->
                 <div *ngIf="mostrarActualizar" class="caja-actualizar" (click)=" resetSeleccion()">
                     <p class="actulizar"> <i class="fas fa-redo"></i> Reiniciar selección</p>
                 </div>
-                <div id="caja-carrito" >
-                    <div class="color-quantity" *ngIf="skuAEnviar">
+                <div id="caja-carrito">
+                    <div class="color-quantity" id="cantidad" *ngIf="skuAEnviar">
                         <div class="modify-quantity">
                             <i class="fas fa-minus-circle" id="restar" (click)="restarUnidad()"></i>
-                            <span class="item-quantity" > {{cantidadSeleccionada}}</span>
+                            <span class="item-quantity"> {{cantidadSeleccionada}}</span>
                             <i class="fas fa-plus-circle" id="sumar" (click)="sumarUnidad()"></i>
                         </div>
                     </div>
                     <hr>
                     <p>Costo de envío se informará al realizar la operación.</p>
-                    <button mat-button (click)="agregarCarrito(skuAEnviar); openSnackBar();  resetSeleccion()" class="btn" [disabled]="!skuAEnviar" id="btn-carrito">Agregar al
+                    <button mat-button (click)="agregarCarrito(skuAEnviar); openSnackBar();  resetSeleccion()"
+                        class="btn" [disabled]="!skuAEnviar" id="btn-carrito">Agregar al
                         Carrito</button>
-                    <button mat-button (click)="agregarCarrito(skuAEnviar)" class="btn" disabled id="btn-comprar">Comprar
+                    <button mat-button (click)="agregarCarrito(skuAEnviar)" class="btn" disabled
+                        id="btn-comprar">Comprar
                         ahora</button>
 
                 </div>
