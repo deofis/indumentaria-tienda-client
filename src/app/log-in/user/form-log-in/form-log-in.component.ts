@@ -25,7 +25,6 @@ export class FormLogInComponent implements OnInit {
   usuario: IniciarSesionRequest;
 
   carritoLocalStorage:Carrito;
-  carritoApi:Carrito;
   totalItemsCarrito:number;
   constructor(private authService: AuthService, 
               private fb: FormBuilder,
@@ -33,7 +32,6 @@ export class FormLogInComponent implements OnInit {
               private enviarInfoCompra:EnviarInfoCompraService,
               private router: Router,) {
     this.usuario = new IniciarSesionRequest();
-    this.carritoApi = new Carrito();
     this.carritoLocalStorage= new Carrito();
   }
 
@@ -107,22 +105,23 @@ export class FormLogInComponent implements OnInit {
     //traigo el carrito del local storage
      const getlocal = localStorage.getItem("miCarrito");
      this.carritoLocalStorage = JSON.parse(getlocal); 
-     console.log(this.carritoLocalStorage)
     
-     // recorro sus items
-     for (let i = 0; i < this.carritoLocalStorage.items.length; i++) {
-      let skuId= this.carritoLocalStorage.items[i].sku.id;
-      let cantidad = this.carritoLocalStorage.items[i].cantidad;
-         /// envio el sku al carrito
-      this.carritoService.agregarSkuAlCarrito(skuId.toString(),cantidad.toString()).subscribe(response => {
-        ///seteo la cantidad de items para compartirla por el event emmiter
-        this.totalItemsCarrito = response.carrito.items.length;
-        setTimeout(() => {
-          this.enviarInfoCompra.enviarCantidadProductosCarrito$.emit(this.totalItemsCarrito); 
-        }, 100);
-      });
+     // si existe el carrito , recorro sus items
+     if (this.carritoLocalStorage!== null) {
+      for (let i = 0; i < this.carritoLocalStorage.items.length; i++) {
+        let skuId= this.carritoLocalStorage.items[i].sku.id;
+        let cantidad = this.carritoLocalStorage.items[i].cantidad;
+          /// envio el sku al carrito
+        this.carritoService.agregarSkuAlCarrito(skuId.toString(),cantidad.toString()).subscribe(response => {
+          ///seteo la cantidad de items para compartirla por el event emmiter
+          this.totalItemsCarrito = response.carrito.items.length;
+          setTimeout(() => {
+            this.enviarInfoCompra.enviarCantidadProductosCarrito$.emit(this.totalItemsCarrito); 
+          }, 100);
+        });
+      }
      }
-     
+    
      /// elimino el local storage 
      localStorage.removeItem('miCarrito');
   }
