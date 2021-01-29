@@ -344,7 +344,7 @@
             <!-- <span>Debe  seleccionar una forma de entrega y pago antes de continuar.</span> -->
         </div>
         <div class="col-12 col-md-5 col-lg-4 offset-lg-1 container-right">
-            <app-resumen-carrito [actualizarCarrito]="actualizarCarrito" *ngIf="mostrarResumen"></app-resumen-carrito>
+            <app-resumen-carrito  *ngIf="mostrarResumen"></app-resumen-carrito>
             <div class="cont-botones">
                 <button mat-button matStepperPrevious class="btn" (click)="cerrarComponente()">Atrás</button>
                 <button mat-button matStepperNext (click)="guardarDatos()" class="btn" id="btn-continuar"

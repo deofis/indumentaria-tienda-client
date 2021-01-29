@@ -19,6 +19,8 @@ export class ShoppingCartComponent implements OnInit {
 
   carrito: Carrito;
   totalProductos: number=0;
+  mostrarConfirmacion:boolean=false;
+  mostrarResumen:boolean=false;
   mostrarCheckout:boolean=false;
   actualizarCarrito:boolean;
   // item:ItemCarrito
@@ -239,4 +241,15 @@ export class ShoppingCartComponent implements OnInit {
       return false 
     }
    }
+
+   /// cuando toco agregar cantidad, restar o eliminar item se me cierran los componentes 2 y 3 para q no se queden con info vieja
+   cerrarComponentes(){
+    this.mostrarResumen=false;
+    this.mostrarConfirmacion=false;
+    setTimeout(() => {
+      this.enviarInfoCompra.enviarMostrarConfirmacion$.emit(this.mostrarConfirmacion);
+      this.enviarInfoCompra.enviarMostrarResumen$.emit(this.mostrarResumen);
+    }, 100);
+   }
+
 }

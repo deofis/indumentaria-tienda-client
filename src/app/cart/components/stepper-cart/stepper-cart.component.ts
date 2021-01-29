@@ -17,6 +17,7 @@ export class StepperCartComponent implements OnInit {
   entrega:string;
   mostrarCheckout:boolean=false;
   mostrarConfirmacion:boolean=true;
+  mostrarResumen:boolean
   abriendoStep2:boolean;
   subscripcionInfoCompra : Subscription;
 
@@ -25,7 +26,7 @@ export class StepperCartComponent implements OnInit {
   step2Completo:boolean=false;
   actualizarCarrito:boolean
 
-  mostrarResumen:boolean
+
   mostrarStep1:boolean
   constructor(private enviarInfoCompra:EnviarInfoCompraService) { }
 
@@ -59,6 +60,10 @@ export class StepperCartComponent implements OnInit {
       this.step2Completo=step2Completo;
       console.log(this.step2Completo)
     })
+    this.subscripcionInfoCompra=this.enviarInfoCompra.enviarMostrarResumen$.subscribe(mostrar=> {
+      this.mostrarResumen=mostrar;
+      console.log(this.mostrarResumen)
+    })
     this.subscripcionInfoCompra=this.enviarInfoCompra.enviarActualizarCarrito.subscribe(actualizarCarrito=> {
       this.actualizarCarrito=actualizarCarrito;
       this.mostrarResumen=false;
@@ -66,21 +71,4 @@ export class StepperCartComponent implements OnInit {
     })
     
   }
- recargarCarrito(){
- 
-  // if (!this.mostrarConfirmacion) {
-  //   this.mostrarCheckout=true
-  //   this.mostrarResumen=false;
-  //  console.log(this.mostrarResumen)
-  // }
-  // if (this.mostrarCheckout) {
-  //   this.mostrarConfirmacion=false
-  //   this.mostrarResumen=false;
-  //   // this.mostrarResumen=true;
-  // }
-
-  // this.mostrarResumen=false;
-  // this.mostrarResumen=true;
- 
- }
 }

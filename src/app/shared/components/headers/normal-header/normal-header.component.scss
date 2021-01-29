@@ -160,10 +160,10 @@ $color-wf4:#70b8f3;
         }
         .circulo {
             background-color: #df4759;
-            border-radius: 20px;
-            width: 15px;
-            height: 15px;
-            top: -5px;
+            border-radius: 50%;
+            width: 14px;
+            height: 18px;
+            top: -6px;
             left: 17px;
             position: absolute;
             display: flex;
@@ -174,7 +174,7 @@ $color-wf4:#70b8f3;
                 display: block;
                 color: $color-ppal;
                 text-align: center;
-                font-size: 11px;
+                font-size: 10px;
                 margin-top: 1px;
                 margin-left: 1px;
             }

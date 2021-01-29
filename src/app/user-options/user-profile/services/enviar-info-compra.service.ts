@@ -10,11 +10,11 @@ export class EnviarInfoCompraService {
   enviarPago$ =new EventEmitter();
   enviarRecargarCarrito$ = new EventEmitter();
   enviarMostrarCheckout$ =new EventEmitter();
+  enviarMostrarResumen$ =new EventEmitter();
   enviarMostrarConfirmacion$ =new EventEmitter();
   enviarCantidadProductosCarrito$ = new EventEmitter();
   enviarStep2Completo$ =new EventEmitter();
   enviarActualizarCarrito = new EventEmitter();
-  enviarmostrarresumen$= new EventEmitter();
   // para avisar q llego el carrito al resumen  y asi se muestre el boton continuar en el checkout 
   llegoCarrito$ = new EventEmitter()
   constructor() { }

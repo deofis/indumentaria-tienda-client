@@ -61,16 +61,16 @@
                                         <div class=" col-4  quantity">
                                             <span>Cantidad:</span>
                                             <div class="modify-quantity">
-                                                <i class="fas fa-minus-circle"id="restar" (click)="decrementarCantidad(item)"></i>
+                                                <i class="fas fa-minus-circle"id="restar" (click)="decrementarCantidad(item);cerrarComponentes()"></i>
                                                 <span class="item-quantity">{{item?.cantidad }}</span>
-                                                <i class="fas fa-plus-circle" id="sumar"  (click)="incrementarCantidad(item)"></i>
+                                                <i class="fas fa-plus-circle" id="sumar"  (click)="incrementarCantidad(item);cerrarComponentes()"></i>
                                             </div>
                                         </div>
                                         <div class="col-4  subtotal">
                                             <span>Subtotal:</span>
                                             <span class="item-subtotal">€{{item?.subtotal | number: '.0-2'}}</span>
                                         </div>
-                                        <i id="close" class="fas fa-times" (click)=" eliminarItem(item.sku.id)"></i>
+                                        <i id="close" class="fas fa-times" (click)=" eliminarItem(item.sku.id);cerrarComponentes()"></i>
                                     </div>
                                 </div>
                             </div>
