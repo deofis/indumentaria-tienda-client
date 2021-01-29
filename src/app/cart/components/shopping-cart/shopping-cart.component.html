@@ -19,12 +19,29 @@
                                 <div class="col-12 col-lg-6  ">
                                     <div class="row ">
                                         <div class="col-2 col-lg-1 ">
-                                            <img src="{{item.sku.producto.foto?.imageUrl}}" alt="item compra" />
+                                            <!-- img carrito con api -->
+                                            <img *ngIf="item.sku.defaultProducto && item.sku.foto" src="{{item.sku.foto?.imageUrl}}" alt="item compra" />
+                                            <img *ngIf="item.sku.defaultProducto && !item.sku.foto" src="../../../../assets/imagenes/noimage.png" alt="item compra" />
+
+                                            <img *ngIf="item.sku.producto && item.sku.producto.foto" src="{{item.sku.producto.foto?.imageUrl}}" alt="item compra" />
+                                            <img *ngIf="item.sku.producto && !item.sku.producto.foto" src="../../../../assets/imagenes/noimage.png" alt="item compra" />
+                                            <!-- fin img carrito con api -->
+
+                                            <!-- img carrito local storage -->
+                                            <!-- <img *ngIf="item.sku.foto " src="{{item.sku.foto?.imageUrl}}" alt="item compra" />
+                                            <img *ngIf="!item.sku.foto " src="../../../../assets/imagenes/noimage.png" alt="item compra" /> -->
+                                            <!-- fin carrito local storage -->
+
                                         </div>
 
                                         <div class="col-9 col-lg-9  info">
                                             <div class="row">
-                                                <span class="item-name" [routerLink]="['/viewmore',item.sku.producto.id]">{{item?.sku.nombre}}</span>
+                                                <!--  carrito local api -->
+                                                <span class="item-name" *ngIf="!item.sku.defaultProducto" [routerLink]="['/viewmore',item.sku.producto.id]">{{item?.sku.nombre}}</span>
+                                                <span class="item-name" *ngIf="item.sku.defaultProducto"  [routerLink]="['/viewmore',item.sku.defaultProducto.id]">{{item?.sku.nombre}}</span>
+                                                <!-- fin carrito api -->
+
+                  
                                             </div>
                                             <div class="row row-info">
                                                 <span>{{item?.sku.valoresData}}</span>

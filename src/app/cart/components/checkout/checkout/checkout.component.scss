@@ -330,12 +330,29 @@ $color-ppal:#fff;
     }
 }
 .container-right{
-    background-color: white;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     height: fit-content;
     margin-top: 45px;
+    .cont-botones{
+       margin-top: 50px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        .btn{
+            background-color: $color-wf1;
+            color: white;
+            font-family: $fte-sec;
+            width: 40%;
+            font-size: 16px;
+            display: block;
+            &:hover{
+                background-color: $color-wf2;
+                cursor: pointer;
+            }
+        }
+    }
    
 }
 .titulos-forms{
@@ -360,27 +377,4 @@ $color-ppal:#fff;
         }
     }
 }
-.botones{
-    position: relative;
-    margin-top:20px;
-    margin-bottom: 70px;
-    .cont-botones{
-        position: absolute;
-        right: 0;
-        display: flex;
-        justify-content: space-between;
-        width: 35%;
-        .btn{
-            background-color: $color-wf1;
-            color: white;
-            font-family: $fte-sec;
-            width: 40%;
-            font-size: 16px;
-            display: block;
-            &:hover{
-                background-color: $color-wf2;
-                cursor: pointer;
-            }
-        }
-    }
-}
+
