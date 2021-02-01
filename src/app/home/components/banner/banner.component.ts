@@ -19,7 +19,7 @@ export class BannerComponent implements OnInit {
     },
     {
       name:'imagen 3',
-      img:'../../../../assets/imagenes/banners/bannerindumentaria1.3pg',
+      img:'../../../../assets/imagenes/banners/bannerindumentaria3.jpg',
     },
     {
       name:'imagen 3',
